@@ -48,8 +48,8 @@
     var desc = '快乐家庭7座SUV-开瑞K60震撼上市( 全网直播进行中)'; // 分享描述
 
     function getSingPackage(){
-        var p = escape(location.href);
-        Http.ajaxRequest({uri:'wx/signature/'+p,success:function(rt){
+        var p ='url='+ escape(location.href);
+        Http.ajaxRequest({uri:'wx/signature',datas:p,success:function(rt){
             if (rt.success) {
                 var data = rt.data;
                 $("input[name=appId]").val(data.appId);
