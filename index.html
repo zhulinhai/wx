@@ -5,6 +5,12 @@
     <title>测试微信网页授权</title>
 </head>
 <body>
+<!-- 分享 -->
+<input type="hidden" name="appId" value="">
+<input type="hidden" name="timestamp" value="">
+<input type="hidden" name="nonceStr" value="">
+<input type="hidden" name="signature" value="">
+
 <h1>授权成功！</h1>
 <input type="button" onclick="getSingPackage();" value="点击分享">
 </body>
@@ -46,6 +52,7 @@
     var title ='0元起拍，开瑞K60心动“价”到，任性开走'; // 分享标题
     var link ='https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx91b9ea7e64becfbb&redirect_uri=http%3a%2f%2fwx.bjczxda.com%2findex.html&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect';
     var desc = '快乐家庭7座SUV-开瑞K60震撼上市( 全网直播进行中)'; // 分享描述
+    var imgUrl = '';
 
     function getSingPackage(){
         var p ='url='+ escape(location.href);
