@@ -14,7 +14,7 @@
     window.onload = function(){
        var code = request('code');
         Http = new Http('http://api.bobo119.com/api/');
-        Http.ajaxRequest({url:'wx/userInfo/'+code,'success':function(json){
+        Http.ajaxRequest({uri:'wx/userInfo/'+code,'success':function(json){
             if(json.success){
                 var data = json.data;
                 alert('nickname :' + data.nickname + ' openid:' + data.openid);
