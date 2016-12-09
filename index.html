@@ -7,9 +7,15 @@
 <body>
 <h1>授权成功！</h1>
 </body>
+<script src="public/scripts/jquery-1.12.1.min.js"></script>
+<script src="public/scripts/utils/httpUtil.js"></script>
 <script>
+    var Http;
     window.onload = function(){
-        alert(request('code'));
+       var code = request('code');
+        Http = new Http();
+        Http.ajaxRequest({url:'wx/userInfo/'+code,'success':function(json){
+        }});
     }
 
     function request(paras){
