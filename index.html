@@ -6,6 +6,7 @@
 </head>
 <body>
 <h1>授权成功！</h1>
+<input type="button" onclick="getSingPackage();" value="点击分享">
 </body>
 <script src="public/scripts/jquery-1.12.1.min.js"></script>
 <script src="public/scripts/utils/httpUtil.js"></script>
@@ -22,7 +23,6 @@
                 alert('nickname :' + data.nickname + ' openid:' + data.openid);
             }
         }});
-        getSingPackage();
     }
 
     function request(paras){
