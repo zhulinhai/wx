@@ -42,8 +42,12 @@ function Http(h){
                 error:function(error){
                     if(error && typeof error == 'function')
                         error(json);
-                    else
-                        alert('系统错误');
+                    else{
+                      if(error.responseJSON){
+                          alert(error.responseJSON.message);
+                      }else
+                         alert('Server Error!');
+                    }
                 }
             });
         }
