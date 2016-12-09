@@ -15,6 +15,10 @@
        var code = request('code');
         Http = new Http();
         Http.ajaxRequest({url:'wx/userInfo/'+code,'success':function(json){
+            if(json.success){
+                var data = json.data;
+                alert('nickname :' + data.nickname + ' openid:' + data.openid);
+            }
         }});
     }
 
