@@ -33,7 +33,7 @@
                 * 发红包
                 * */
                 Http.ajaxRequest({
-                    uri:'wx/redPack?openid'+data.openid,
+                    uri:'wx/redPack?openid='+data.openid,
                     scuccess:function(json){
                         alert('看看的你手机，红包一会就到！');
                     }
