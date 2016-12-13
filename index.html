@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>测试微信网页授权</title>
 </head>
 <body>
@@ -11,8 +12,8 @@
 <input type="hidden" name="nonceStr" value="">
 <input type="hidden" name="signature" value="">
 
-<h1>授权成功！</h1>
-<input type="button" onclick="getSingPackage();" value="点击分享">
+<h1>发红包啦！</h1>
+<!--<input type="button" onclick="getSingPackage();" value="点击分享">-->
 </body>
 <script src="public/scripts/jquery-1.12.1.min.js"></script>
 <script src="public/scripts/utils/httpUtil.js"></script>
@@ -20,13 +21,23 @@
 <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 <script>
     var Http;
+
     window.onload = function(){
        var code = request('code');
         Http = new Http('http://api.bobo119.com/api/');
         Http.ajaxRequest({uri:'wx/userInfo/'+code,'success':function(json){
             if(json.success){
                 var data = json.data;
-                alert('nickname :' + data.nickname + ' openid:' + data.openid);
+//                alert('nickname :' + data.nickname + ' openid:' + data.openid);
+                /*
+                * 发红包
+                * */
+                Http.ajaxRequest({
+                    uri:'wx/redPack?openid'+data.openid,
+                    scuccess:function(json){
+                        alert('看看的你手机，红包一会就到！');
+                    }
+                });
             }
         }});
     }
