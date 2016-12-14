@@ -68,11 +68,11 @@
     RongIMClient.setOnReceiveMessageListener({
         // 接收到的消息
         onReceived: function (message) {
-            console.log(message);
             // 判断消息类型
             switch(message.messageType){
                 case RongIMClient.MessageType.TextMessage:
                     // message.content.content => 消息内容
+                    console.log(message.content.content);
                     break;
                 case RongIMClient.MessageType.VoiceMessage:
                     // 对声音进行预加载
