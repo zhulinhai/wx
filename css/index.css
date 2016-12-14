@@ -38,11 +38,11 @@ body {
 }
 
 .name {
-    width: 20%;
-    text-align: right;
+    width: 30%;
+    text-align: center;
 }
 .content{
-    width: 80%;
+    width: 70%;
 }
 
 
