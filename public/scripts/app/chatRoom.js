@@ -55,7 +55,7 @@ var chartRoom = (function ($){
                     // message.content.content => 消息内容
                     //var html = '<div class="tt"><p class="name">'+ message.content.extra +'</p><p class="content">'+ message.content.content +'</p></div>';
                     //$('.text').append(html);
-                    dealMessage(message);
+                    this.dealHistoryMessage(message);
                     console.log(message.content.content);
                     break;
                 case RongIMClient.MessageType.VoiceMessage:
@@ -137,6 +137,13 @@ var chartRoom = (function ($){
 
     return {
 
+        dealHistoryMessage:function(msg){
+            var html = '<div class="tt">'
+                + '<p class="name">'+ msg.content.extra +'</p>'
+                + '<p class="content">'+ msg.content.content+'</p>'
+                + '</div>';
+            $('.text').append();
+        },
         connectServer:function(token){
 
             RongIMClient.connect(token, {
