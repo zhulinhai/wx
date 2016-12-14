@@ -62,5 +62,6 @@ body {
 
 .btn{
     width: 18%;
-    line-height: 32px;
+    line-height: 36px;
+    height: 36px;
 }

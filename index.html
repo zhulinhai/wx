@@ -72,6 +72,8 @@
             switch(message.messageType){
                 case RongIMClient.MessageType.TextMessage:
                     // message.content.content => 消息内容
+                    var html = '<div class="tt"><p class="name">'+ message.content.extra +'</p><p class="content">'+ message.content.content +'</p></div>';
+                    $('.text').append(html);
                     console.log(message.content.content);
                     break;
                 case RongIMClient.MessageType.VoiceMessage:
@@ -188,7 +190,7 @@
     var currentText ;
     function sendMessage(){
         currentText = $('input[name="message"]').val();
-        var msg = new RongIMLib.TextMessage({content:currentText,extra:"附加信息"});
+        var msg = new RongIMLib.TextMessage({content:currentText,extra:name});
         var conversationtype = RongIMLib.ConversationType.CHATROOM ; // 聊天室,其他会话选择相应的消息类型即可。
         var targetId = '10001'; // 目标 Id
         RongIMClient.getInstance().sendMessage(conversationtype, targetId, msg, {
