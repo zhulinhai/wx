@@ -4,7 +4,11 @@
 var chartRoom = (function ($){
 
     var appkey = 'm7ua80gbmysmm';
-    var RoomId = '';
+    /**
+     * 全局聊天室房间
+     * @type {string}
+     */
+    var RoomId = '10001';
     var dealMessage;
 
     // 初始化
@@ -170,10 +174,7 @@ var chartRoom = (function ($){
 
             var sMsg = new RongIMLib.TextMessage({content:msg, extra:userName});
             var conversationtype = RongIMLib.ConversationType.CHATROOM ; // 聊天室,其他会话选择相应的消息类型即可。
-            /**
-             * 全局保存roomID
-             */
-            RoomId = roomId;
+
             dealMessage = callback;
 
             RongIMClient.getInstance().sendMessage(conversationtype, roomId, sMsg, {
