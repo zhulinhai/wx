@@ -142,7 +142,7 @@ var chartRoom = (function ($){
                 + '<p class="name">'+ msg.content.extra +'</p>'
                 + '<p class="content">'+ msg.content.content+'</p>'
                 + '</div>';
-            $('.text').append();
+            $('.text').append(html);
         },
         connectServer:function(token){
 
