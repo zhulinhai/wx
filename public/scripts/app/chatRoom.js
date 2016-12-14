@@ -1,7 +1,7 @@
 /**
  * Created by luhao on 2016/12/14.
  */
-(function ($){
+var chartRoom = (function ($){
 
     var appkey = 'm7ua80gbmysmm';
     var RoomId = '';

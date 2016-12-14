@@ -42,7 +42,7 @@
                 Http.ajaxRequest({uri:'im/getToken',datas:datas,success:function(json){
                     if(json.success){
                         var data = json.data;
-                        connectServer(data);
+                        chartRoom.connectServer(data);
                     }
                 }})
             }
@@ -51,7 +51,7 @@
 
     $('.btn').on('click',function(e){
         var msg = $('input[name="message"]').val();
-        sendMessage(msg,userName,roomID,function(msg){
+        chartRoom.sendMessage(msg,userName,roomID,function(msg){
             var html = '<div class="tt">'
                     + '<p class="name">'+ msg.content.extra+'</p>'
                     + '<p class="content">'+ msg.content.content+'</p>'
