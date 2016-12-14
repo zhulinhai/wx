@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="css/index.css"/>
     <title>测试微信网页授权</title>
 </head>
 <body>
@@ -11,9 +12,15 @@
 <input type="hidden" name="timestamp" value="">
 <input type="hidden" name="nonceStr" value="">
 <input type="hidden" name="signature" value="">
-
-<h1>发红包啦！</h1>
-<!--<input type="button" onclick="getSingPackage();" value="点击分享">-->
+<!-- 消息框 -->
+<div class="text">
+    <div class="tt">
+        <p class="name">小小：</p>
+        <p class="content">啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦</p>
+    </div>
+</div>
+<!-- 输入框 -->
+<div class="send"><input class="msg" type="text" name="message"/><input class="btn" type="button" value="发送" onclick="sendMessage();"/></div>
 </body>
 <script src="public/scripts/jquery-1.12.1.min.js"></script>
 <script src="public/scripts/utils/httpUtil.js"></script>
@@ -22,6 +29,7 @@
 <script>
     var Http;
     var appkey = 'm7ua80gbmysmm';
+    var name;
 
     // 初始化
     // RongIMClient.init(appkey, [dataAccessProvider],[options]);
@@ -36,6 +44,7 @@
             switch (status) {
                 case RongIMLib.ConnectionStatus.CONNECTED:
                     console.log('链接成功');
+                    joinChatRoom();
                     break;
                 case RongIMLib.ConnectionStatus.CONNECTING:
                     console.log('正在链接');
@@ -115,6 +124,7 @@
         Http.ajaxRequest({uri:'wx/userInfo/'+code,'success':function(json){
             if(json.success){
                 var data = json.data;
+                name = data.nickname;
                 var datas = 'openid='+data.openid + '&name='+data.nickname + '&portraitUri=' + data.portraitUri;
                 Http.ajaxRequest({uri:'im/getToken',datas:datas,success:function(json){
                     if(json.success){
@@ -157,6 +167,65 @@
                 console.log(errorCode);
             }
         });
+    }
+
+    function joinChatRoom(){
+        var chatRoomId = "10001"; // 聊天室 Id。
+        var count = 50;// 拉取最近聊天最多 50 条。
+        RongIMClient.getInstance().joinChatRoom(chatRoomId, count, {
+            onSuccess: function(list) {
+                // 加入聊天室成功。
+                console.log(list);
+            },
+            onError: function(error) {
+                // 加入聊天室失败
+                console.log('error');
+            }
+        });
+    }
+
+    var currentText ;
+    function sendMessage(){
+        currentText = $('input[name="message"]').val();
+        var msg = new RongIMLib.TextMessage({content:currentText,extra:"附加信息"});
+        var conversationtype = RongIMLib.ConversationType.CHATROOM ; // 聊天室,其他会话选择相应的消息类型即可。
+        var targetId = '10001'; // 目标 Id
+        RongIMClient.getInstance().sendMessage(conversationtype, targetId, msg, {
+                    onSuccess: function (message) {
+                        //message 为发送的消息对象并且包含服务器返回的消息唯一Id和发送消息时间戳
+                        var html = '<div class="tt"><p class="name">'+ name +'</p><p class="content">'+ currentText +'</p></div>';
+                        $('.text').append();
+                        console.log("Send successfully");
+                    },
+                    onError: function (errorCode,message) {
+                        var info = '';
+                        switch (errorCode) {
+                            case RongIMLib.ErrorCode.TIMEOUT:
+                                info = '超时';
+                                break;
+                            case RongIMLib.ErrorCode.UNKNOWN_ERROR:
+                                info = '未知错误';
+                                break;
+                            case RongIMLib.ErrorCode.REJECTED_BY_BLACKLIST:
+                                info = '在黑名单中，无法向对方发送消息';
+                                break;
+                            case RongIMLib.ErrorCode.NOT_IN_DISCUSSION:
+                                info = '不在讨论组中';
+                                break;
+                            case RongIMLib.ErrorCode.NOT_IN_GROUP:
+                                info = '不在群组中';
+                                break;
+                            case RongIMLib.ErrorCode.NOT_IN_CHATROOM:
+                                info = '不在聊天室中';
+                                break;
+                            default :
+                                info = x;
+                                break;
+                        }
+                        console.log('发送失败:' + info);
+                    }
+                }
+        );
     }
 
     function request(paras){
