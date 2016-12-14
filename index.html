@@ -14,10 +14,10 @@
 <input type="hidden" name="signature" value="">
 <!-- 消息框 -->
 <div class="text">
-    <div class="tt">
-        <p class="name">小小：</p>
-        <p class="content">啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦</p>
-    </div>
+    <!--<div class="tt">-->
+        <!--<p class="name">小小：</p>-->
+        <!--<p class="content">啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦</p>-->
+    <!--</div>-->
 </div>
 <!-- 输入框 -->
 <div class="send"><input class="msg" type="text" name="message"/><input class="btn" type="button" value="发送" onclick="sendMessage();"/></div>
@@ -195,7 +195,7 @@
                     onSuccess: function (message) {
                         //message 为发送的消息对象并且包含服务器返回的消息唯一Id和发送消息时间戳
                         var html = '<div class="tt"><p class="name">'+ name +'</p><p class="content">'+ currentText +'</p></div>';
-                        $('.text').append();
+                        $('.text').append(html);
                         console.log("Send successfully");
                     },
                     onError: function (errorCode,message) {
