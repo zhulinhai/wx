@@ -3,76 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <link rel="stylesheet" href="css/index.css"/>
-    <title>测试微信聊天室</title>
+    <title>微信聊天室</title>
+    <script type="text/javascript" src="public/react/react.js"></script>
+    <script type="text/javascript" src="public/react/react-dom.js"></script>
+    <script type="text/javascript" src="https://npmcdn.com/babel-core@5.8.38/browser.min.js"></script>
+    <script src="public/scripts/jquery-1.12.1.min.js"></script>
+    <script src="public/scripts/utils/httpUtil.js"></script>
+    <script src="http://cdn.ronghub.com/RongIMLib-2.2.4.min.js"></script>
+
 </head>
 <body>
-<!-- 分享 -->
-<input type="hidden" name="appId" value="">
-<input type="hidden" name="timestamp" value="">
-<input type="hidden" name="nonceStr" value="">
-<input type="hidden" name="signature" value="">
-<!-- 消息框 -->
-<div class="text">
-    <!--<div class="tt">-->
-        <!--<p class="name">小小：</p>-->
-        <!--<p class="content">啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦</p>-->
-    <!--</div>-->
-</div>
-<!-- 输入框 -->
-<div class="send"><input class="msg" type="text" name="message"/><input class="btn" type="button" value="发送"/></div>
+<div id="app"></div>
 </body>
-<script src="public/scripts/jquery-1.12.1.min.js"></script>
-<script src="public/scripts/utils/httpUtil.js"></script>
-<script src="http://cdn.ronghub.com/RongIMLib-2.2.4.min.js"></script>
-<script src="public/scripts/app/chatRoom.js"></script>
-<!-- 微信分享api -->
-<script>
-    var Http;
-    var userName;
-    var roomID = '10001';
-    window.onload = function(){
-        var code = request('code');
-        Http = new Http('http://api.bobo119.com/api/');
-        Http.ajaxRequest({uri:'wx/userInfo/'+code,'success':function(json){
-            if(json.success){
-                var data = json.data;
-                userName = data.nickname;
-                var datas = 'openid='+data.openid + '&name='+data.nickname + '&portraitUri=' + data.portraitUri;
-                Http.ajaxRequest({uri:'im/getToken',datas:datas,success:function(json){
-                    if(json.success){
-                        var data = json.data;
-                        chartRoom.connectServer(data);
-                    }
-                }})
-            }
-        }});
-    }
-
-    $('.btn').on('click',function(e){
-        var msg = $('input[name="message"]').val();
-        chartRoom.sendMessage(msg,userName,roomID,function(msg){
-            var html = '<div class="tt">'
-                    + '<p class="name">'+ msg.content.extra+'</p>'
-                    + '<p class="content">'+ msg.content.content+'</p>'
-                    + '</div>';
-            $('.text').append(html);
-        });
-    });
-
-    function request(paras){
-        var url = location.search;
-        var paraString = url.substring(url.indexOf("?")+1,url.length).split("&");
-        var paraObj = {};
-        for (i=0; j=paraString[i]; i++){
-            paraObj[j.substring(0,j.indexOf("=")).toLowerCase()] = j.substring(j.indexOf("=")+1,j.length);
-        }
-        var returnValue = paraObj[paras.toLowerCase()];
-        if(typeof(returnValue)=="undefined"){
-            return "";
-        }else{
-            return returnValue;
-        }
-    }
-</script>
+<script type="text/babel" src="public/scripts/app/reactApp.js"></script>
 </html>
