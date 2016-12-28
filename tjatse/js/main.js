@@ -1,7 +1,6 @@
 /**
  * Created by luhao on 2016/12/28.
  */
-
 /**
  * 微信分享
  */
@@ -15,6 +14,18 @@ window.onload = function(){
     getSingPackage();
 };
 
+
+/**
+ * 后台接口
+ */
+function initPage(){
+
+}
+
+
+/**
+ * 微信分享
+ */
 function getSingPackage(){
     var p ='url='+ escape(location.href);
     Http.ajaxRequest({uri:'wx/signature?'+p,success:function(rt){
@@ -24,16 +35,14 @@ function getSingPackage(){
             $('input[name=timestamp]').val(data.timestamp);
             $('input[name=nonceStr]').val(data.nonceStr);
             $('input[name=signature]').val(data.signature);
-            runShare(null,null);
+
+            wxConfig();
         }
     }});
 }
 
 
-function runShare(pTitle, pDesc){
-
-    title = !pTitle?title:pTitle;
-    desc = !pDesc?desc:pDesc;
+function wxConfig(){
 
     wx.config({
         debug: false,
@@ -50,9 +59,7 @@ function runShare(pTitle, pDesc){
         ]
     });
     wx.ready(function () {
-        //alert($('#shareWeixinImg').attr('src'));
         // 在这里调用 API
-
         wx.onMenuShareTimeline({
             title:title, // 分享标题
             link: link, // 分享链接
