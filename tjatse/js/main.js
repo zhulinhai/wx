@@ -17,7 +17,7 @@ window.onload = function(){
 
 function getSingPackage(){
     var p ='url='+ escape(location.href);
-    Http.ajaxRequest({uri:'wx/signature?p',success:function(rt){
+    Http.ajaxRequest({uri:'wx/signature?'+p,success:function(rt){
         if (rt.success) {
             var data = rt.data;
             $("input[name=appId]").val(data.appId);
