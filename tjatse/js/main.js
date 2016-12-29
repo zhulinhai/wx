@@ -79,7 +79,7 @@ function initPage(){
  * 微信分享
  */
 function getSingPackage(){
-    var p ='url='+ escape(location.href);
+    var p ='url='+ encodeURIComponent(location.href);
     Http.ajaxRequest({uri:'wx/signature?'+p,success:function(rt){
         if (rt.success) {
             var data = rt.data;
