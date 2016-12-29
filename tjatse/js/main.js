@@ -22,9 +22,14 @@ var updateTimeout = 0;
 var loadInterval = null;
 
 
-window.onload = function(){
+//window.onload = function(){
+//
+//}
+
+Pace.once('start',function(){
+    Http = new Http(host);
     pageLoad();
-}
+});
 
 Pace.once('hide',function(){
     /**
