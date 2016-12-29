@@ -19,26 +19,34 @@ var host = 'http://api.bobo119.com/api/';
 
 var updateTimeout = 0;
 
-Pace.once('start',function(){
-    updateProgress();
-});
+var loadInterval = null;
+
+
+window.onload = function(){
+    pageLoad();
+}
 
 Pace.once('hide',function(){
     /**
      * 元素加载完毕后执行
      */
-    //clearTimeout(updateTimeout);
-    //updateTimeout = null;
+    clearInterval(loadInterval);
+    loadInterval = null;
+
     alert('加载完毕');
 });
+
 /**
  * 预加载方法
  */
-function updateProgress() {
-    var t = $('.pace-progress').attr('data-progress-text');
-    t = parseInt(t);
-    $('#text').html(t +'%');
-    updateTimeout = setTimeout(updateProgress,10);
+function pageLoad() {
+
+    loadInterval = setInterval(function(){
+        var t = $('.pace-progress').attr('data-progress-text');
+        t = parseInt(!t?0:t);
+        $('#text').html(t +'%');
+    },10);
+
 }
 
 /**
