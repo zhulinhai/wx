@@ -10,15 +10,31 @@ var MsgRow = React.createClass({
   }
 });
 
-var MsgSendBtn = React.createClass({
-    render:function(){
-        return (<div>
-            <input type="text" name="msg"/><input type="button" value="发送"/>
-        </div>);
-    }
-});
+//var MsgSendBtn = React.createClass({
+//    getInitialState:function(){
+//        return { messages:messages};},
+//
+//    handClick:function(){
+//        messages.push({name:"鲁昊",content:'测试按钮'});
+//        this.setState({messages:messages});
+//    },
+//    render:function(){
+//        return (<div>
+//            <input type="text" name="msg"/><input type="button" value="发送" onClick={this.handClick}/>
+//        </div>);
+//    }
+//});
 
 var MsgArea = React.createClass({
+
+    getInitialState:function(){
+        return { messages:messages};},
+
+    handClick:function(){
+        messages.push({name:"鲁昊",content:'测试按钮'});
+        this.setState({messages:messages});
+    },
+
     render:function(){
         var rows = [];
         this.props.messages.forEach(function(msg){
@@ -27,7 +43,7 @@ var MsgArea = React.createClass({
         return (<div>
           <p>====== 聊天区域 =======</p>
             {rows}
-            <MsgSendBtn />
+            <input type="text" name="msg"/><input type="button" value="发送" onClick={this.handClick}/>
         </div>);
     }
 });

@@ -2,22 +2,48 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>蒂阿兹</title>
 </head>
-<script src="../../public/scripts/jquery-1.12.1.min.js"></script>
-<script src="../../public/scripts/utils/httpUtil.js"></script>
+<script type="text/javascript" src="../../public/scripts/pace.js"></script>
+<script type="text/javascript" src="../../public/scripts/jquery-1.12.1.min.js"></script>
+<script type="text/javascript" src="../../public/scripts/swiper-3.3.1.jquery.min.js"></script>
+<script type="text/javascript" src="../../public/scripts/video.js"></script>
+<script type="text/javascript" src="../../public/scripts/videojs-contrib-hls.min.js"></script>
+<script type="text/javascript" src="../../public/scripts/utils/httpUtil.js"></script>
 <body>
+<!--屏幕兼容代码-->
+<script type="text/javascript">
+
+    (function() {
+        // deicePixelRatio ：设备像素
+        var scale = 1 / devicePixelRatio;
+        if(navigator.userAgent.indexOf('iPhone')!=-1){
+            //设置meta 压缩界面 模拟设备的高分辨率
+            document.querySelector('meta[name="viewport"]').setAttribute('content', 'initial-scale=' + scale + ', maximum-scale=' + scale + ', minimum-scale=' + scale + ', user-scalable=no');
+        }
+        var deviceWidth = document.documentElement.clientWidth > 1300 ? 1300 : document.documentElement.clientWidth;
+        //按照640像素下字体为100px的标准来，得到一个字体缩放比例值 6.4
+        document.documentElement.style.fontSize = (deviceWidth / 6.4) + 'px'; //320 fontSize = 50px
+    })();
+</script>
 <!-- 分享 -->
 <input type="hidden" name="appId" value="">
 <input type="hidden" name="timestamp" value="">
 <input type="hidden" name="nonceStr" value="">
 <input type="hidden" name="signature" value="">
+<!-- loading页 -->
+<div class="loading">
+    <p id="text"></p>
+</div>
 
-<div class="loading"></div>
+<!-- 长页面 -->
 <div class="main">
     <div class="pop">
     </div>
-    <div class="page"></div>
+    <div class="page">
+
+    </div>
 </div>
 </body>
 <!-- 微信分享api -->
