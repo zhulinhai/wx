@@ -6,12 +6,17 @@
     $.ajax({
         type:'GET',
         url:'http://api.bobo119.com/api/wx/signature?'+ param,
-        async:false, //同步请求
+        async:true, //异步请求
         success:function(rt){
 
             if(!rt.success){
                 return alert(rt.message);
             }
+
+            var title ='0元起拍，开瑞K60心动“价”到，任性开走'; // 分享标题
+            var link ='http://wx.bjczxda.com/tjatse/html/index.html';
+            var desc = '快乐家庭7座SUV-开瑞K60震撼上市( 全网直播进行中)'; // 分享描述
+            var imgUrl = '';
 
             var wx_appId = rt.data.appId;
             var wx_timestamp = rt.data.timestamp;
@@ -32,6 +37,7 @@
                     // 所有要调用的 API 都要加到这个列表中
                 ]
             });
+
             wx.ready(function () {
                 // 在这里调用 API
                 wx.onMenuShareTimeline({
