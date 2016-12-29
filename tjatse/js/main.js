@@ -39,10 +39,14 @@ Pace.once('hide',function(){
     loadInterval = null;
 
     initPage();
-    getSingPackage();
+
 
     alert('加载完毕');
 });
+
+window.onload = function(){
+    getSingPackage();
+}
 
 /**
  * 页面加载
