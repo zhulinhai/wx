@@ -36,14 +36,14 @@ Pace.once('hide',function(){
      */
     //clearInterval(loadInterval);
     //loadInterval = null;
-    initPage();
+    //initPage();
     //alert('加载完毕');
 });
 
-//window.onload = function(){
-//    Http = new Http(host);
-//    pageLoad();
-//}
+window.onload = function(){
+    //Http = new Http(host);
+    pageLoad();
+}
 
 /**
  * 页面加载
