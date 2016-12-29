@@ -33,11 +33,14 @@ Pace.once('hide',function(){
     clearInterval(loadInterval);
     loadInterval = null;
 
+    initPage();
+    getSingPackage();
+
     alert('加载完毕');
 });
 
 /**
- * 预加载方法
+ * 页面加载
  */
 function pageLoad() {
 
