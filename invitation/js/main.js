@@ -216,5 +216,5 @@ $(".page03-futou").click(function(){
     $(".page03-map").fadeOut();
 });
 $('.futougif').click(function(){
-    window.open('http://www.qinlinhui.cn/invitation/jssdk/map.php');
+    window.open('http://wx.bjczxda.com/invitation/map.html');
 });
