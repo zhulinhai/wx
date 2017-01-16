@@ -204,7 +204,7 @@ $signPackage = $jssdk->GetSignPackage();
        wx.onMenuShareAppMessage({
           title: '行圆汽车2017新年团拜邀请函',
           desc: '一元复始万象新，行圆汽车新春共话2017',
-          link: 'http://www.qinlinhui.cn/invitation/test.php',
+          link: 'http://wx.bjczxda.com/invitation/index.php',
           imgUrl: 'http://www.qinlinhui.cn/invitation/img/log1.png',
           trigger: function (res) {
             // 不要尝试在trigger中使用ajax异步请求修改本次分享的内容，因为客户端分享操作是一个同步操作，这时候使用ajax的回包会还没有返回
@@ -223,7 +223,7 @@ $signPackage = $jssdk->GetSignPackage();
        //分享朋友圈
        wx.onMenuShareTimeline({
           title: '行圆汽车2017新年团拜邀请函', // 分享标题
-          link: 'http://www.qinlinhui.cn/invitation/test.php', // 分享链接
+          link: 'http://wx.bjczxda.com/invitation/index.php', // 分享链接
           imgUrl: 'http://www.qinlinhui.cn/invitation/img/log1.png', // 分享图标
           success: function () { 
               // 用户确认分享后执行的回调函数
@@ -267,7 +267,7 @@ $signPackage = $jssdk->GetSignPackage();
     wx.onMenuShareQZone({
         title: '行圆汽车2017新年团拜邀请函',
           desc: '一元复始万象新，行圆汽车新春共话2017',
-          link: 'http://www.qinlinhui.cn/invitation/test.php',
+          link: 'http://wx.bjczxda.com/invitation/index.php',
           imgUrl: 'http://www.qinlinhui.cn/invitation/img/log1.png',
           trigger: function (res) {
             // 不要尝试在trigger中使用ajax异步请求修改本次分享的内容，因为客户端分享操作是一个同步操作，这时候使用ajax的回包会还没有返回
