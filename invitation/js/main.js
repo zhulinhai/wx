@@ -68,7 +68,8 @@ function funImgLoading(containID,txtID,fnComplete) {
         var percent = parseInt((++imgLoadedNum) / imgAllNum * 100);
 
         loadDiv.innerHTML = percent+'%';
-        console.log(percent);
+        $('#page02').css('display','none');
+        // console.log(percent);
         if (percent<=50) {
 
         } else {
@@ -77,7 +78,7 @@ function funImgLoading(containID,txtID,fnComplete) {
             if(percent >= 100) {
 
                 setTimeout(fnComplete,500);
-
+                $('#page02').fadeIn();
                 sessionStorage.setItem("pageloaded", "true");
             }
         }
@@ -146,22 +147,14 @@ funImgLoading("page-box","img-loading-txt",function(){
     }
 })(window);
 
-
-//$(window).ready(function(){
-//    musicStar.play();
-//});
-
 $('#bird').click(function(){
     console.log(1111);
     $('#bird').removeClass('bird-paused').addClass('bird-flying');
-
     $('.page02-heibai').addClass('page01-heibai-fly');
     $('.page02-new').addClass('page02-new-show');
-
     $('.shangshuzhi div[class^="shangshuhua"]').addClass('kaihuala');
     $('.chuanghu div[class^="chuanghua0"]').addClass('kaihuala');
     $('.table div[class^="ping"]').addClass('kaihuala');
-    //$('.shuye').addClass('shuyedong');
     $('.dachuan').addClass('dachuankai');
     $('.taiyang').addClass('taiyangdong');
     $('.chuanghuaban01').addClass('huabandiao01');
@@ -177,16 +170,18 @@ $('#bird').click(function(){
         $('#birdnew').css('background-image','url(img/bird-flying.gif)');
     },1750);
     setTimeout(function(){
-        $('#birdnew').css({'background-image':'url(img/bird-flying.gif)',width:'102/90rem','height':'84/90rem',' background-size': '102/90rem 84/90rem'});
-    },2500);
+        $('#birdnew').css({'background-image':'url(img/bird-flying.gif)'});
+    },2700);
     setTimeout(function(){
-
+        $('#birdnew').css({'background-image':'url(img/zhuantouniu02.gif)'});
+    },2900);
+     setTimeout(function(){
+        $('#birdnew').css({'background-image':'url(img/bird-flying.gif)'});
+    },4000);
+    setTimeout(function(){
         $('.page02').addClass('page02-slideing');
-
         $('.page03').addClass('page03-slideing');
-
         $('.table').addClass('tablebianxiao');
-        //$('.table-heibai').addClass('tablebianxiao');
         $('#movebird').addClass('birdflytop movebirdletter');
         $('#openletter').addClass('openletter');
         $('#mailbuttom').addClass('mailbuttom');
@@ -205,11 +200,11 @@ $('#bird').click(function(){
 /******************����ҳ*****************/
 $("#move2-mapbutton2").click(function(){
     $(".page03-map").fadeIn();
-    console.log(123444);
+   
 });
 $(".mapmove").on('click','#move2-mapbutton',function(){
     $(".page03-map").fadeIn();
-    console.log(123444);
+    
 });
 
 $(".page03-futou").click(function(){

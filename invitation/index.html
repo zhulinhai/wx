@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="css/styletwo.css"/>
     <script>
         document.addEventListener("WeixinJSBridgeReady", function () {
-            audioAutoPlay('musicStar');//给个全局函数
+            audioAutoPlay('musicStar');
         }, false);
     </script>
 </head>
@@ -28,7 +28,7 @@
         </div>
     </div>
     <!--初始页面-->
-    <div class="page02">
+    <div class="page02" id="page02">
         <div class="page02-heibai">
             <div class="shangshuzhi-heibai01"></div>
             <div class="chuanghu-heibai01">
@@ -110,7 +110,7 @@
                 <img src="img/pic-mail/glassbird02.gif"  id="bird-grass" style="width: 1.68rem; height: 1.38rem; position: absolute; left:6.24rem ; top: 7.5rem; opacity: 0; z-index: 150;"/>
             </div>
             <div class="logo">
-                <img src="img/pic-mail/logo标准鸟.png" class="" id="birdlogo" style="width: 1.6rem; height: 1.57rem; position: absolute; left:6.34rem ; top: 7.6rem; z-index: 150; opacity: 0;"/>
+                <img src="img/pic-mail/logo标准鸟.png" class="" id="birdlogo" style="width: 1.6rem; height: 1.57rem; position: absolute; left:6.34rem ; top: 7.4rem; z-index: 150; opacity: 0;"/>
             </div>
             <div class="time move2" >
                 <img src="img/pic-mail/wenzi02.png" class="letter " id="moveletter">
@@ -143,12 +143,10 @@
     <audio src="res/music-two.mp3" id="musicChange" loop="loop" preload="load"></audio>
 </div>
 </body>
-<!--<script src="js/slip.js"></script>-->
 <script  src="js/jquery-1.8.3.min.js"></script>
 <script src="js/main.js"></script>
 <script>
-
-    function audioAutoPlay(id){//全局控制播放函数
+    function audioAutoPlay(id){
         var audio = document.getElementById(id),
                 play = function(){
                     audio.play();
@@ -157,11 +155,7 @@
         audio.play();
         document.addEventListener("touchstart",play, false);
     }
-
     var isAppInside=/micromessenger/i.test(navigator.userAgent.toLowerCase())||/yixin/i.test(navigator.userAgent.toLowerCase());
-    //    if(!isAppInside){//给非微信易信浏览器
-    //        audioAutoPlay();
-    //    }
 </script>
 </html>
 <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>

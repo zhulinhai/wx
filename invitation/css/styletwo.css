@@ -1,7 +1,5 @@
 .page03{position: relative;}
-.page03-map{
-	/*background-image:url(../img/pic-mail/background.png);*/
-	/*background-size: 100% 100%;*/
+.page03-map{	
 	background:rgba(0,0,0,0.7);
 	width: 100%;
 	height: 100%;
@@ -13,9 +11,6 @@
 }
 .letter{width: 8.5466666667rem; height: 12.653333333rem; position: absolute; left:0.73333333rem; top:-13rem; z-index: 2;}
 .openletter{width: 10rem; height: 2.4533333333rem; position: absolute; left: 0rem; top: 0.68rem;z-index: 100;}
-/*.birdflygif{*/
-	/*width: 1.36rem; height: 1.0666666667rem; position: absolute; left:4.3733333333rem; top: -13.526666667rem; z-index: 99;*/
-/*}*/
 .movebird{width: 1.36rem; height: 1.0666666667rem; position: absolute; left:4.3733333333rem; top: -13.526666667rem; z-index: 99;}
 .sugar{width: 4.0rem; height: 6.2266666667rem; position: absolute; left: 0.12rem; top:-13rem; z-index:90;}
 .move2-text1{width: 1.2533333333rem; height:4.68rem; position: absolute; left: 6.52rem; top: 2.9866666667rem; z-index: 100; opacity: 0;}
@@ -341,7 +336,7 @@
 	50%{
 		opacity: 1;
 	}
-	99%{
+	90%{
 		opacity: 1;
 	}
 	100%{
@@ -356,7 +351,7 @@
 	50%{
 		opacity: 1;
 	}
-	99%{
+	90%{
 		opacity: 1;
 	}
 	100%{
@@ -364,17 +359,20 @@
 	}
 }
 .birdlogo{
-	-webkit-animation: birdlogoshow 0.5s 6.8s linear forwards;
-	-moz-animation: birdlogoshow 0.5s 6.8s linear forwards;
-	-o-animation: birdlogoshow 0.5s 6.8s linear forwards;
-	animation: birdlogoshow 0.5s 6.8s linear forwards;
+	-webkit-animation: birdlogoshow 0.5s 6.2s linear forwards;
+	-moz-animation: birdlogoshow 0.5s 6.2s linear forwards;
+	-o-animation: birdlogoshow 0.5s 6.2s linear forwards;
+	animation: birdlogoshow 0.5s 6.2s linear forwards;
 }
 @keyframes birdlogoshow{
 	0%{
 		opacity: 0;
 	}
-	1%{
-		opacity: 1;
+	50%{
+		opacity: 0;
+	}
+	90%{
+		opacity: 0;
 	}
 	100%{
 		opacity: 1;
@@ -384,8 +382,11 @@
 	0%{
 		opacity: 0;
 	}
-	1%{
-		opacity: 1;
+	50%{
+		opacity: 0;
+	}
+	90%{
+		opacity: 0;
 	}
 	100%{
 		opacity: 1;

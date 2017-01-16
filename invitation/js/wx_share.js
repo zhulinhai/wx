@@ -15,7 +15,7 @@
 
             var title ='行圆汽车2017新年团拜邀请函'; // 分享标题
             var link ='http://wx.bjczxda.com/invitation/index.html';
-            var desc = '一元复始万象新，行圆汽车新春共话2017'; // 分享描述
+            var desc = '守得一元终复始，自来万象始更新。'; // 分享描述
             var imgUrl = 'http://wx.bjczxda.com/invitation/img/log1.png';
 
             var wx_appId = rt.data.appId;
