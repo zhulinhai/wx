@@ -169,7 +169,7 @@ input[type="search"] {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url(../img/page01-bg02.png);
+  background-image: url(../img/page01-bg0203.png);
   background-size: cover;
   z-index: 1000;
 }
@@ -237,7 +237,7 @@ input[type="search"] {
   top: 0;
   width: 100%;
   height: 100%;
-  background-image: url(../img/page01-bg02.png);
+  background-image: url(../img/page01-bg0203.png);
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -774,7 +774,7 @@ input[type="search"] {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url(../img/page01-bg02.png);
+  background-image: url(../img/page01-bg0203.png);
   background-size: cover;
   z-index: 100;
   opacity: 0;
@@ -1233,7 +1233,7 @@ input[type="search"] {
   transform: translate(-50%, 0);
   width: 8rem;
   height: 7.333rem;
-  background-image: url(../img/chuanghu-heibai.png);
+  background-image: url(../img/chuanghu-heibai02.png);
   background-size: 8rem 7.333rem;
 }
 .chuanghu {
@@ -1244,7 +1244,7 @@ input[type="search"] {
   transform: translate(-50%, 0);
   width: 8rem;
   height: 7.333rem;
-  background-image: url(../img/chuanghu.png);
+  background-image: url(../img/chuanghu02.png);
   background-size: 8rem 7.333rem;
 }
 .chuanghu .chuanghua01 {
