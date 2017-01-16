@@ -1,0 +1,1585 @@
+/*reset*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+}
+body{
+  font-family:"STHeiti", Helvetica, Arial, sans-serif;
+  background:#fff;
+  font-size:14px;
+  height:100%;
+  max-width:750px;
+  min-width:20pc;
+  line-height:1.5;
+}
+table{
+  border-collapse:collapse;
+  border-spacing:0
+}
+fieldset, img{
+  border:0
+}
+legend{
+  display:none
+}
+address, caption, cite, code, dfn, em, strong, th, var{
+  font-style:normal;
+  font-weight:normal
+}
+ol, ul{
+  list-style:none
+}
+caption, th{
+  text-align:left
+}
+h1, h2, h3, h4, h5, h6{
+  font-size:100%;
+  font-weight:normal
+}
+q:before, q:after{
+  content:''
+}
+abbr, acronym{
+  border:0
+}
+html{-webkit-text-size-adjust:none;width:100%;height:100% } /*禁用iphone中safari的字号自动调整*/
+input[type="text"], input[type="button"], input[type="submit"], input[type="search"]{
+  -webkit-appearance:none;
+  border-radius:0;
+} /*去除iphone默认样式（input的圆角）*/
+
+@normalsize:75;
+/*****图片加载页面*********/
+.box{
+  position: relative;
+  height:100%;
+  width:100%;
+  overflow: hidden;
+}
+
+/************初始页**************/
+.page01{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background-image: url(../img/page01-bg02.png);
+  background-size:cover;
+  z-index: 1000;
+}
+.img-load-now{
+  position: absolute;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+  width:1.48rem;
+  height:2rem;
+}
+.bird-loading{
+  width:1.48rem;
+  height:1.266rem;
+  background-image:url(../img/birddace.gif);
+  background-size:1.48rem 1.2666rem ;
+  animation: birdloadingla 1s ease  infinite;
+  -webkit-animation: birdloadingla 1s ease  infinite;
+}
+.mask{
+  text-align: center;
+  margin-top: 30/75rem;
+}
+@keyframes birdloadingla {
+  0%, 60%, 75%, 90%, 100% {
+    -webkit-transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+    transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+  }
+
+  0% {
+    -webkit-transform: translate3d(0, 0px, 0);
+    transform: translate3d(0, 0px, 0);
+  }
+
+  50% {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 5px, 0);
+    transform: translate3d(0, 5px, 0);
+  }
+
+  75% {
+    -webkit-transform: translate3d(0, -2px, 0);
+    transform: translate3d(0, -2px, 0);
+  }
+
+  90% {
+    -webkit-transform: translate3d(0, 2px, 0);
+    transform: translate3d(0, 2px, 0);
+  }
+
+  100% {
+    -webkit-transform: none;
+    transform: none;
+    opacity:1;
+  }
+}
+.page01,.page02,.page03{
+  height:100%;
+}
+
+.page03{
+  transform: translate(0,100%);
+  position: absolute;
+  left:0;
+  top:0;
+  width:100%;
+  height:100%;
+  background-image:url(../img/page01-bg02.png);
+  background-size:cover;
+  background-repeat: no-repeat;
+}
+.page02{
+  height:100%;
+  position: absolute;
+  left:0;
+  top:0;
+  width:100%;
+  .bird{
+    position: absolute;
+    left:0.10rem;
+    bottom:0.4rem;
+    z-index: 300;
+  }
+  .page02-heibai{
+    position: absolute;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    background-image:url(../img/page01-bg02-heibai.png);
+    background-size:cover;
+    background-repeat: no-repeat;
+    -webkit-transition: all 1.5s ease-out;
+    transition: all 1.5s ease-out;
+
+  }
+
+  .bird-paused{
+    background-image:url(../img/heibai-00000.png);
+    background-size:210px auto;
+    width:70px;
+    height:70px;
+    animation: bird-pause 0.8s steps(2,end) infinite;
+    -webkit-animation: bird-pause 0.8s steps(2,end) infinite;
+  }
+  @keyframes bird-pause {
+    0%{
+      background-position:0 0 ;
+    }
+    100%{
+       background-position:-140px  0 ;
+     }
+  }
+  .bird-flying{
+    background-image:none;
+    width:99/80rem;
+    height:98/80rem;
+    -webkit-animation: bird-flyX 5s ease-out forwards;
+    animation: bird-flyX 5s ease-out forwards;
+    -moz-animation: bird-flyX 5s ease-out forwards;
+    -o-animation: bird-flyX 5s ease-out forwards;
+  }
+  .bird-new {
+    display: none;
+    position: absolute;
+    right:0;
+    top:0;
+    width:99/85rem;
+    height:98/85rem;
+    //background-image:url(../img/bird-flying.gif);
+    background-image:url(../img/youcefei.gif);
+    background-size:99/75rem 98/75rem ;
+    background-repeat: no-repeat;
+  }
+  .bird-new-flying{
+    display:block;
+    animation: bird-flyY 5s  ease-out forwards;
+    -o-animation: bird-flyY 5s  ease-out forwards;
+    -moz-animation: bird-flyY 5s  ease-out forwards;
+    -webkit-animation: bird-flyY 5s  ease-out forwards;
+    left:0.2rem;
+    top:-0.1rem;
+  }
+
+  @keyframes bird-flyX {
+    0% {
+      -webkit-animation-timing-function: ease-in;
+      -moz-animation-timing-function: ease-in;
+      -o-animation-timing-function: ease-in;
+      animation-timing-function: ease-in;
+      -webkit-transform: translateX(0) ;
+      -o-transform: translateX(0) ;
+      -moz-transform: translateX(0) ;
+      transform: translateX(0) ;
+    }
+    2%{
+      -webkit-animation-timing-function: ease-in;
+      -moz-animation-timing-function: ease-in;
+      -o-animation-timing-function: ease-in;
+      animation-timing-function: ease-in;
+      -webkit-transform: translateX(0rem) ;
+      -o-transform: translateX(0rem) ;
+      -moz-transform: translateX(0rem) ;
+      transform: translateX(0rem) ;
+    }
+    5%{
+      -webkit-animation-timing-function: ease-in;
+      -moz-animation-timing-function: ease-in;
+      -o-animation-timing-function: ease-in;
+      animation-timing-function: ease-in;
+      -webkit-transform: translateX(0) ;
+      transform: translateX(0rem) ;
+      -o-transform: translateX(0rem) ;
+      -moz-transform: translateX(0rem) ;
+    }
+    25% {
+      -webkit-animation-timing-function: ease-in;
+      -moz-animation-timing-function: ease-in;
+      -o-animation-timing-function: ease-in;
+      animation-timing-function: ease-in;
+      -webkit-transform: translateX(5rem) ;
+      transform: translateX(5rem) ;
+      -moz-transform: translateX(5rem) ;
+      -o-transform: translateX(5rem) ;
+    }
+    40% {
+      -webkit-animation-timing-function: ease-in;
+      -moz-animation-timing-function: ease-in;
+      -o-animation-timing-function: ease-in;
+      animation-timing-function: ease-in;
+      -webkit-transform: translateX(5rem) ;
+      transform: translateX(5rem) ;
+      -moz-transform: translateX(5rem) ;
+      -o-transform: translateX(5rem) ;
+    }
+   60% {
+     -webkit-animation-timing-function: ease-in;
+     -moz-animation-timing-function: ease-in;
+     -o-animation-timing-function: ease-in;
+     animation-timing-function: ease-in;
+     -webkit-transform: translateX(3rem) ;
+     transform: translateX(3rem) ;
+     -moz-transform: translateX(3rem) ;
+     -o-transform: translateX(3rem) ;
+    }
+
+    70% {
+      -webkit-animation-timing-function: ease-in;
+      -moz-animation-timing-function: ease-in;
+      -o-animation-timing-function: ease-in;
+      animation-timing-function: ease-in;
+      -webkit-transform: translateX(3rem) ;
+      transform: translateX(3rem) ;
+      -moz-transform: translateX(5rem) ;
+      -o-transform: translateX(5rem) ;
+    }
+
+    90% {
+      -webkit-animation-timing-function: ease-in;
+      -moz-animation-timing-function: ease-in;
+      -o-animation-timing-function: ease-in;
+      animation-timing-function: ease-in;
+      -webkit-transform: translateX(2.65rem) ;
+      transform: translateX(2.65rem) ;
+      -moz-transform: translateX(2.65rem) ;
+      -o-transform: translateX(2.65rem) ;
+
+    }
+    100% {
+      -webkit-animation-timing-function: ease-in;
+      -moz-animation-timing-function: ease-in;
+      -o-animation-timing-function: ease-in;
+      animation-timing-function: ease-in;
+      -webkit-transform: translateX(2.65rem) ;
+      transform: translateX(2.65rem) ;
+      -moz-transform: translateX(2.65rem) ;
+      -o-transform: translateX(2.65rem) ;
+    }
+
+  }
+  @-webkit-keyframes bird-flyX {
+    0% {
+      -webkit-animation-timing-function: ease-in;
+      -moz-animation-timing-function: ease-in;
+      -o-animation-timing-function: ease-in;
+      animation-timing-function: ease-in;
+      -webkit-transform: translateX(0) ;
+      -o-transform: translateX(0) ;
+      -moz-transform: translateX(0) ;
+      transform: translateX(0) ;
+    }
+    2%{
+      -webkit-animation-timing-function: ease-in;
+      -moz-animation-timing-function: ease-in;
+      -o-animation-timing-function: ease-in;
+      animation-timing-function: ease-in;
+      -webkit-transform: translateX(0rem) ;
+      -o-transform: translateX(0rem) ;
+      -moz-transform: translateX(0rem) ;
+      transform: translateX(0rem) ;
+    }
+    5%{
+      -webkit-animation-timing-function: ease-in;
+      -moz-animation-timing-function: ease-in;
+      -o-animation-timing-function: ease-in;
+      animation-timing-function: ease-in;
+      -webkit-transform: translateX(0) ;
+      transform: translateX(0rem) ;
+      -o-transform: translateX(0rem) ;
+      -moz-transform: translateX(0rem) ;
+    }
+    25% {
+      -webkit-animation-timing-function: ease-in;
+      -moz-animation-timing-function: ease-in;
+      -o-animation-timing-function: ease-in;
+      animation-timing-function: ease-in;
+      -webkit-transform: translateX(5rem) ;
+      transform: translateX(5rem) ;
+      -moz-transform: translateX(5rem) ;
+      -o-transform: translateX(5rem) ;
+    }
+    40% {
+      -webkit-animation-timing-function: ease-in;
+      -moz-animation-timing-function: ease-in;
+      -o-animation-timing-function: ease-in;
+      animation-timing-function: ease-in;
+      -webkit-transform: translateX(5rem) ;
+      transform: translateX(5rem) ;
+      -moz-transform: translateX(5rem) ;
+      -o-transform: translateX(5rem) ;
+    }
+    60% {
+      -webkit-animation-timing-function: ease-in;
+      -moz-animation-timing-function: ease-in;
+      -o-animation-timing-function: ease-in;
+      animation-timing-function: ease-in;
+      -webkit-transform: translateX(3rem) ;
+      transform: translateX(3rem) ;
+      -moz-transform: translateX(3rem) ;
+      -o-transform: translateX(3rem) ;
+    }
+
+    70% {
+      -webkit-animation-timing-function: ease-in;
+      -moz-animation-timing-function: ease-in;
+      -o-animation-timing-function: ease-in;
+      animation-timing-function: ease-in;
+      -webkit-transform: translateX(3rem) ;
+      transform: translateX(3rem) ;
+      -moz-transform: translateX(5rem) ;
+      -o-transform: translateX(5rem) ;
+    }
+
+    90% {
+      -webkit-animation-timing-function: ease-in;
+      -moz-animation-timing-function: ease-in;
+      -o-animation-timing-function: ease-in;
+      animation-timing-function: ease-in;
+      -webkit-transform: translateX(2.65rem) ;
+      transform: translateX(2.65rem) ;
+      -moz-transform: translateX(2.65rem) ;
+      -o-transform: translateX(2.65rem) ;
+
+    }
+    100% {
+      -webkit-animation-timing-function: ease-in;
+      -moz-animation-timing-function: ease-in;
+      -o-animation-timing-function: ease-in;
+      animation-timing-function: ease-in;
+      -webkit-transform: translateX(2.65rem) ;
+      transform: translateX(2.65rem) ;
+      -moz-transform: translateX(2.65rem) ;
+      -o-transform: translateX(2.65rem) ;
+    }
+  }
+
+  @keyframes bird-flyY {
+    0%{
+      -webkit-animation-timing-function: ease-out;
+      animation-timing-function: ease-out;
+      -moz-animation-timing-function: ease-out;
+      -o-animation-timing-function: ease-out;
+      -webkit-transform: translateY(0) ;
+      transform: translateY(0) ;
+      -moz-transform: translateY(0) ;
+      -o-transform: translateY(0) ;
+      background-size:99/80rem 98/80rem ;
+    }
+    2%{
+      -webkit-animation-timing-function: ease-out;
+      animation-timing-function: ease-out;
+      -moz-animation-timing-function: ease-out;
+      -o-animation-timing-function: ease-out;
+      -webkit-transform: translateY(-0.3rem) ;
+      transform: translateY(-0.3rem) ;
+      -moz-transform: translateY(-0.3rem) ;
+      -o-transform: translateY(-0.3rem) ;
+    }
+    5%{
+      -webkit-animation-timing-function: ease-out;
+      animation-timing-function: ease-out;
+      -moz-animation-timing-function: ease-out;
+      -o-animation-timing-function: ease-out;
+      -webkit-transform:  translateY(0);
+
+      transform:  translateY(0);
+      -moz-transform:  translateY(0);
+      -o-transform:  translateY(0);
+      background-size:99/80rem 98/80rem ;
+    }
+    25% {
+      -webkit-animation-timing-function: ease-out;
+      animation-timing-function: ease-out;
+      -moz-animation-timing-function: ease-out;
+      -o-animation-timing-function: ease-out;
+      transform:  translateY(-5.8rem) ;
+      -moz-transform:  translateY(-5.8rem) ;
+      -o-transform:  translateY(-5.8rem) ;
+      -webkit-transform:  translateY(-5.8rem) ;
+      background-size:99/85rem 98/85rem ;
+    }
+    25.5%,32.5%,39.5% {
+      transform:  translateY(-5.9rem) ;
+      -webkit-transform:  translateY(-5.9rem) ;
+      -moz-transform:  translateY(-5.9rem) ;
+      -o-transform:  translateY(-5.9rem) ;
+    }
+    26%,33%{
+      transform:  translateY(-5.8rem) ;
+      -moz-transform:  translateY(-5.8rem) ;
+      -o-transform:  translateY(-5.8rem) ;
+      -webkit-transform:  translateY(-5.8rem) ;
+      background-size:99/85rem 98/85rem ;
+    }
+    39.5%{
+      transform:  translateY(-5.8rem) rotateY(0deg);
+      -webkit-transform:  translateY(-5.8rem) rotateY(0deg);
+      -moz-transform:  translateY(-5.8rem) rotateY(0deg);
+      -o-transform:  translateY(-5.8rem) rotateY(0deg);
+      background-size: 102/90rem 84/90rem;
+    }
+    40% {
+      -webkit-animation-timing-function: ease-out;
+      animation-timing-function: ease-out;
+      -moz-animation-timing-function: ease-out;
+      -o-animation-timing-function: ease-out;
+      -webkit-transform:translateY(-5.8rem)  rotateY(-35deg);
+      -moz-transform:translateY(-5.8rem)  rotateY(-35deg);
+      -o-transform:translateY(-5.8rem)  rotateY(-35deg);
+      transform:translateY(-5.8rem)  rotateY(-35deg);
+      background-size: 102/90rem 84/90rem;
+    }
+    60% {
+      -webkit-animation-timing-function: ease-out;
+      animation-timing-function: ease-out;
+      -moz-animation-timing-function: ease-out;
+      -o-animation-timing-function: ease-out;
+      transform: translateY(-9.8rem);
+      -webkit-transform: translateY(-9.8rem);
+      -moz-transform: translateY(-9.8rem);
+      -o-transform: translateY(-9.8rem);
+      background-size: 102/90rem 84/90rem;
+
+    }
+    60.5%,65.5%{
+      -webkit-transform:  translateY(-9.7rem)  ;
+      transform:  translateY(-9.7rem)  ;
+      -moz-transform:  translateY(-9.7rem)  ;
+      -o-transform:  translateY(-9.7rem)  ;
+      background-size: 102/90rem 84/90rem;
+    }
+    61%,66%{
+      transform:  translateY(-9.8rem)  ;
+    }
+    70% {
+      -webkit-animation-timing-function: ease-out;
+      animation-timing-function: ease-out;
+      -moz-animation-timing-function: ease-out;
+      -o-animation-timing-function: ease-out;
+      -webkit-transform: translate3d(0,-9.8rem,0);
+      -moz-transform: translate3d(0,-9.8rem,0);
+      -o-transform: translate3d(0,-9.8rem,0);
+      transform: translate3d(0,-9.8rem,0);
+      background-size: 102/90rem 84/90rem;
+      opacity:1;
+    }
+
+    90%{
+      -webkit-animation-timing-function: ease-out;
+      animation-timing-function: ease-out;
+      -moz-animation-timing-function: ease-out;
+      -o-animation-timing-function: ease-out;
+      -webkit-transform: translate3d(0,-11.2rem,30rem);
+      -moz-transform: translate3d(0,-11.2rem,30rem);
+      -o-transform: translate3d(0,-11.2rem,30rem);
+      transform: translate3d(0,-11.2rem,30rem);
+      background-size: 102/150rem 84/150rem ;
+      opacity: 0.7;
+    }
+    100% {
+      -webkit-transform: translate3d(0,-11.2rem,50rem);
+      -webkit-background-size: 102/250rem 84/250rem ;
+      transform: translate3d(0,-11.2rem,50rem);
+      -moz-transform: translate3d(0,-11.2rem,50rem);
+      -o-transform: translate3d(0,-11.2rem,50rem);
+      background-size: 102/250rem 84/250rem ;
+      opacity: 0;
+    }
+  }
+  @-webkit-keyframes bird-flyY {
+    0%{
+      -webkit-animation-timing-function: ease-out;
+      animation-timing-function: ease-out;
+      -moz-animation-timing-function: ease-out;
+      -o-animation-timing-function: ease-out;
+      -webkit-transform: translateY(0) ;
+      transform: translateY(0) ;
+      -moz-transform: translateY(0) ;
+      -o-transform: translateY(0) ;
+      background-size:99/80rem 98/80rem ;
+    }
+    2%{
+      -webkit-animation-timing-function: ease-out;
+      animation-timing-function: ease-out;
+      -moz-animation-timing-function: ease-out;
+      -o-animation-timing-function: ease-out;
+      -webkit-transform: translateY(-0.3rem) ;
+      transform: translateY(-0.3rem) ;
+      -moz-transform: translateY(-0.3rem) ;
+      -o-transform: translateY(-0.3rem) ;
+    }
+    5%{
+      -webkit-animation-timing-function: ease-out;
+      animation-timing-function: ease-out;
+      -moz-animation-timing-function: ease-out;
+      -o-animation-timing-function: ease-out;
+      -webkit-transform:  translateY(0);
+
+      transform:  translateY(0);
+      -moz-transform:  translateY(0);
+      -o-transform:  translateY(0);
+      background-size:99/80rem 98/80rem ;
+    }
+    25% {
+      -webkit-animation-timing-function: ease-out;
+      animation-timing-function: ease-out;
+      -moz-animation-timing-function: ease-out;
+      -o-animation-timing-function: ease-out;
+      transform:  translateY(-5.8rem) ;
+      -moz-transform:  translateY(-5.8rem) ;
+      -o-transform:  translateY(-5.8rem) ;
+      -webkit-transform:  translateY(-5.8rem) ;
+      background-size:99/85rem 98/85rem ;
+    }
+    25.5%,32.5%,39.5% {
+      transform:  translateY(-5.9rem) ;
+      -webkit-transform:  translateY(-5.9rem) ;
+      -moz-transform:  translateY(-5.9rem) ;
+      -o-transform:  translateY(-5.9rem) ;
+    }
+    26%,33%{
+      transform:  translateY(-5.8rem) ;
+      -moz-transform:  translateY(-5.8rem) ;
+      -o-transform:  translateY(-5.8rem) ;
+      -webkit-transform:  translateY(-5.8rem) ;
+      background-size:99/85rem 98/85rem ;
+    }
+    39.5%{
+      transform:  translateY(-5.8rem) rotateY(0deg);
+      -webkit-transform:  translateY(-5.8rem) rotateY(0deg);
+      -moz-transform:  translateY(-5.8rem) rotateY(0deg);
+      -o-transform:  translateY(-5.8rem) rotateY(0deg);
+      background-size: 102/90rem 84/90rem;
+    }
+    40% {
+      -webkit-animation-timing-function: ease-out;
+      animation-timing-function: ease-out;
+      -moz-animation-timing-function: ease-out;
+      -o-animation-timing-function: ease-out;
+      -webkit-transform:translateY(-5.8rem)  rotateY(-35deg);
+      -moz-transform:translateY(-5.8rem)  rotateY(-35deg);
+      -o-transform:translateY(-5.8rem)  rotateY(-35deg);
+      transform:translateY(-5.8rem)  rotateY(-35deg);
+      background-size: 102/90rem 84/90rem;
+    }
+    60% {
+      -webkit-animation-timing-function: ease-out;
+      animation-timing-function: ease-out;
+      -moz-animation-timing-function: ease-out;
+      -o-animation-timing-function: ease-out;
+      transform: translateY(-9.8rem);
+      -webkit-transform: translateY(-9.8rem);
+      -moz-transform: translateY(-9.8rem);
+      -o-transform: translateY(-9.8rem);
+      background-size: 102/90rem 84/90rem;
+
+    }
+    60.5%,65.5%{
+      -webkit-transform:  translateY(-9.7rem)  ;
+      transform:  translateY(-9.7rem)  ;
+      -moz-transform:  translateY(-9.7rem)  ;
+      -o-transform:  translateY(-9.7rem)  ;
+      background-size: 102/90rem 84/90rem;
+    }
+    61%,66%{
+      transform:  translateY(-9.8rem)  ;
+    }
+    70% {
+      -webkit-animation-timing-function: ease-out;
+      animation-timing-function: ease-out;
+      -moz-animation-timing-function: ease-out;
+      -o-animation-timing-function: ease-out;
+      -webkit-transform: translate3d(0,-9.8rem,0);
+      -moz-transform: translate3d(0,-9.8rem,0);
+      -o-transform: translate3d(0,-9.8rem,0);
+      transform: translate3d(0,-9.8rem,0);
+      background-size: 102/90rem 84/90rem;
+      opacity:1;
+    }
+
+    90%{
+      -webkit-animation-timing-function: ease-out;
+      animation-timing-function: ease-out;
+      -moz-animation-timing-function: ease-out;
+      -o-animation-timing-function: ease-out;
+      -webkit-transform: translate3d(0,-11.2rem,30rem);
+      -moz-transform: translate3d(0,-11.2rem,30rem);
+      -o-transform: translate3d(0,-11.2rem,30rem);
+      transform: translate3d(0,-11.2rem,30rem);
+      background-size: 102/150rem 84/150rem ;
+      opacity: 0.7;
+    }
+    100% {
+      -webkit-transform: translate3d(0,-11.2rem,50rem);
+      -webkit-background-size: 102/250rem 84/250rem ;
+      transform: translate3d(0,-11.2rem,50rem);
+      -moz-transform: translate3d(0,-11.2rem,50rem);
+      -o-transform: translate3d(0,-11.2rem,50rem);
+      background-size: 102/250rem 84/250rem ;
+      opacity: 0;
+    }
+  }
+}
+
+.page02-heibai-fly{
+
+  opacity:0;
+
+}
+.page02-new{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background-image: url(../img/page01-bg02.png);
+  background-size: cover;
+  z-index: 100;
+  opacity:0;
+  display:block;
+  -webkit-transition:all 1.5s ease-out;
+  -moz-transition: all 1.5s ease-out;
+  -o-transition: all 1.5s ease-out;
+  transition: all 1.5s ease-out;
+
+}
+.page02-new-show{
+  opacity:1;
+
+}
+@keyframes page02newfly {
+  0%{
+    opacity:0;
+  }
+  100%{
+    opacity:1;
+  }
+}
+.page02-slideing{
+  -webkit-animation:page02fly 1.8s  ease-in forwards;
+  -o-animation:page02fly 1.8s  ease-in forwards;
+  -moz-animation:page02fly 1.8s  ease-in forwards;
+  animation:page02fly 1.8s  ease-in forwards;
+}
+@-webkit-keyframes page02newfly {
+  0%{
+    opacity:0;
+  }
+  100%{
+    opacity:1;
+  }
+}
+.page02-slideing{
+  -webkit-animation:page02fly 1.8s  ease-in forwards;
+  -o-animation:page02fly 1.8s  ease-in forwards;
+  -moz-animation:page02fly 1.8s  ease-in forwards;
+  animation:page02fly 1.8s  ease-in forwards;
+}
+
+@keyframes page02fly {
+  0%{
+
+    -webkit-transform: translate3d(0,0%,0) scale(1);
+    -o-transform: translate3d(0,0%,0) scale(1);
+    -moz-transform: translate3d(0,0%,0) scale(1);
+    transform: translate3d(0,0%,0) scale(1);
+    opacity:1
+  }
+  18%{
+
+    -webkit-transform: translate3d(0,0%,0) scale(0.95) ;
+    transform: translate3d(0,0%,0) scale(0.95) ;
+    opacity:0.8;
+  }
+  35%{
+    transform: translate3d(0,0%,0) scale(1);
+    -webkit-transform: translate3d(0,0%,0) scale(1);
+    opacity: 1;
+  }
+  100%{
+    -webkit-transform: translate(0,-100%);
+    transform: translate(0,-100%);
+  }
+}
+@-webkit-keyframes page02fly {
+  0%{
+
+    -webkit-transform: translate3d(0,0%,0) scale(1);
+    -o-transform: translate3d(0,0%,0) scale(1);
+    -moz-transform: translate3d(0,0%,0) scale(1);
+    transform: translate3d(0,0%,0) scale(1);
+    opacity:1
+  }
+  18%{
+
+    -webkit-transform: translate3d(0,0%,0) scale(0.95) ;
+    transform: translate3d(0,0%,0) scale(0.95) ;
+    opacity:0.8;
+  }
+  35%{
+    transform: translate3d(0,0%,0) scale(1);
+    -webkit-transform: translate3d(0,0%,0) scale(1);
+    opacity: 1;
+  }
+  100%{
+    -webkit-transform: translate(0,-100%);
+    transform: translate(0,-100%);
+  }
+}
+.page03-slideing{
+  -webkit-animation:page03fly 1.8s  ease-in forwards;
+  animation:page03fly 1.8s  ease-in forwards;
+}
+@keyframes page03fly {
+  0%{
+    -webkit-transform: translate(0,100%);
+    transform: translate(0,100%);
+  }
+  35%{
+    -webkit-transform: translate(0,100%);
+    transform: translate(0,100%);
+
+  }
+  100%{
+    -webkit-transform: translate(0,0);
+    transform: translate(0,0);
+  }
+}
+@-webkit-keyframes page03fly {
+  0%{
+    -webkit-transform: translate(0,100%);
+    transform: translate(0,100%);
+  }
+  35%{
+    -webkit-transform: translate(0,100%);
+    transform: translate(0,100%);
+
+  }
+  100%{
+    -webkit-transform: translate(0,0);
+    transform: translate(0,0);
+  }
+}
+.tablebianxiao{
+  -webkit-animation:tablebianxiaola 1s 0.8s ease forwards;
+  animation:tablebianxiaola 1s 0.8s ease forwards;
+  transform-origin:50% 100%;
+}
+@keyframes tablebianxiaola {
+  0%{
+    -webkit-transform:scale(1);
+    transform:scale(1)
+  }
+  100%{
+    -webkit-transform: scale(0.968);
+    transform: scale(0.968);
+  }
+}
+@-webkit-keyframes tablebianxiaola {
+  0%{
+    -webkit-transform:scale(1);
+    transform:scale(1)
+  }
+  100%{
+    -webkit-transform: scale(0.968);
+    transform: scale(0.968);
+  }
+}
+.shangshuzhi-heibai,.shangshuzhi-heibai01{
+  position: absolute;
+  top:0;
+  left:0;
+  width:2.56rem;
+  height:1.2rem;
+  background-image:url(../img/shangshuzhi-heibai.png);
+  background-size:2.56rem 1.2rem;
+}
+.shangshuzhi{
+  position: absolute;
+  top:0;
+  left:0;
+  width:2.56rem;
+  height:1.2rem;
+  background-image:url(../img/shangshuzhi.png);
+  background-size:2.56rem 1.2rem;
+  .shangshuhua01{
+    position: absolute;
+    top:7/75rem;
+    left:15/75rem;
+    width:35/75rem;
+    height:32/75rem;
+    background-image:url(../img/shuhua01.png);
+    background-size:35/75rem 32/75rem;
+  }
+  .shangshuhua02{
+    position: absolute;
+    top:45/75rem;
+    left:35/75rem;
+    width:20/75rem;
+    height:19/75rem;
+    background-image:url(../img/shuhua02.png);
+    background-size:20/75rem 19/75rem;
+  }
+  .shangshuhua03{
+    position: absolute;
+    top:74/75rem;
+    left:53/75rem;
+    width:25/75rem;
+    height:25/75rem;
+    background-image:url(../img/shuhua04.png);
+    background-size:25/75rem 25/75rem;
+  }
+  .shangshuhua04{
+    position: absolute;
+    top:40/75rem;
+    left:78/75rem;
+    width:38/75rem;
+    height:42/75rem;
+    background-image:url(../img/shuhua03.png);
+    background-size:38/75rem 42/75rem;
+  }
+  .shangshuhua05{
+    position: absolute;
+    top:35/75rem;
+    left:165/75rem;
+    width:22/75rem;
+    height:16/75rem;
+    background-image:url(../img/shuhua05.png);
+    background-size:22/75rem 16/75rem;
+  }
+  .shangshuhua06{
+    position: absolute;
+    top:15/75rem;
+    left:180/75rem;
+    width:13/75rem;
+    height:12/75rem;
+    background-image:url(../img/shuhua06.png);
+    background-size:13/75rem 12/75rem;
+  }
+}
+.shangshuhua01,.shangshuhua02,.shangshuhua03,.shangshuhua04,.shangshuhua05,.shangshuhua06,.shangshuhua07,
+.chuanghua01,.chuanghua02,.chuanghua03,.chuanghua04,.chuanghua05,
+.pinghua01,.pinghua02,.pinghua03,.pinghua04,.pinghua05,.pinghua06,.pinghua07,.pinghua08,.pinghua09,
+.pingya01,.pingya02,.pingya03{
+  opacity: 0;
+  transform:scale(0);
+  -webkit-transform:scale(0);
+  //animation:all 2.5s ease-in;
+}
+.pinghua01.kaihuala{
+  -webkit-animation:kaihua01 0.4s ease-in 1s forwards ;
+  animation:kaihua01 0.4s ease-in 1s forwards ;
+}
+.pinghua02.kaihuala{
+  -webkit-animation:kaihua01 0.4s ease-in 1s forwards ;
+  animation:kaihua01 0.4s ease-in 1s forwards ;
+}
+.pinghua03.kaihuala{
+  -webkit-animation:kaihua01 0.4s ease-in 0.9s forwards ;
+  animation:kaihua01 0.4s ease-in 0.9s forwards ;
+}
+.pinghua04.kaihuala{
+  -webkit-animation:kaihua01 0.4s ease-in 0.8s forwards ;
+  animation:kaihua01 0.4s ease-in 0.8s forwards ;
+}
+.pinghua05.kaihuala{
+  -webkit-animation:kaihua01 0.4s ease-in 1.1s forwards ;
+  animation:kaihua01 0.4s ease-in 1.1s forwards ;
+}
+.pinghua06.kaihuala{
+  -webkit-animation:kaihua01 0.4s ease-in 0.6s forwards ;
+  animation:kaihua01 0.4s ease-in 0.6s forwards ;
+}
+.pinghua07.kaihuala{
+  -webkit-animation:kaihua01 0.4s ease-in 0.7s forwards ;
+  animation:kaihua01 0.4s ease-in 0.7s forwards ;
+}
+.pinghua08.kaihuala{
+  -webkit-animation:kaihua01 0.4s ease-in 0.8s forwards ;
+  animation:kaihua01 0.4s ease-in 0.8s forwards ;
+}
+.pinghua09.kaihuala{
+  -webkit-animation:kaihua01 0.4s ease-in 0.9s forwards ;
+  animation:kaihua01 0.4s ease-in 0.9s forwards ;
+}
+
+.chuanghua01.kaihuala{
+  -webkit-animation:kaihua01 0.4s ease-in 1.6s forwards ;
+  animation:kaihua01 0.4s ease-in 1.6s forwards ;
+}
+.chuanghua02.kaihuala{
+  -webkit-animation:kaihua01 0.4s ease-in 2.6s forwards ;
+  animation:kaihua01 0.4s ease-in 2.6s forwards ;
+}
+.chuanghua03.kaihuala{
+  -webkit-animation:kaihua01 0.4s ease-in 2.1s forwards ;
+  animation:kaihua01 0.4s ease-in 2.1s forwards ;
+}
+.chuanghua04.kaihuala{
+  -webkit-animation:kaihua01 0.4s ease-in 2.3s forwards ;
+  animation:kaihua01 0.4s ease-in 2.3s forwards ;
+}
+.chuanghua05.kaihuala{
+  -webkit-animation:kaihua01 0.4s ease-in 2.4s forwards ;
+  animation:kaihua01 0.4s ease-in 2.4s forwards ;
+}
+.shangshuhua01.kaihuala{
+  -webkit-animation:kaihua01 0.4s ease-in 2.5s forwards ;
+  animation:kaihua01 0.4s ease-in 2.5s forwards ;
+}
+
+.shangshuhua01.kaihuala{
+  -webkit-animation:kaihua01 0.4s ease-in 1.2s forwards ;
+  animation:kaihua01 0.4s ease-in 1.2s forwards ;
+}
+.shangshuhua02.kaihuala{
+  -webkit-animation:kaihua01 0.4s ease-in 0.9s forwards ;
+  animation:kaihua01 0.4s ease-in 0.9s forwards ;
+}
+.shangshuhua03.kaihuala{
+  -webkit-animation:kaihua01 0.4s ease-in 1.1s forwards ;
+  animation:kaihua01 0.4s ease-in 1.1s forwards ;
+}
+.shangshuhua04.kaihuala{
+  -webkit-animation:kaihua01 0.4s ease-in 1.2s forwards ;
+  animation:kaihua01 0.4s ease-in 1.2s forwards ;
+}
+.shangshuhua05.kaihuala{
+  -webkit-animation:kaihua01 0.4s ease-in 1.3s forwards ;
+  animation:kaihua01 0.4s ease-in 1.3s forwards ;
+}
+
+@keyframes kaihua01 {
+  0%{
+    -webkit-transform: scale(0);
+    transform: scale(0);
+    opacity: 0;
+  }
+  35%{
+    -webkit-transform: scale(0.5);
+    transform: scale(0.5);
+     opacity: 1;
+   }
+  40%{
+    -webkit-transform: scale(0.2);
+    transform: scale(0.2);
+    opacity: 1;
+  }
+  45%{
+    -webkit-transform: scale(0.5);
+    transform: scale(0.5);
+    opacity: 1;
+  }
+  85%{
+    -webkit-transform: scale(0.6);
+    transform: scale(0.6);
+    opacity: 1;
+  }
+  90%{
+    -webkit-transform: scale(0.9);
+    transform: scale(0.9);
+    opacity: 1;
+  }
+  100%{
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+@-webkit-keyframes kaihua01 {
+  0%{
+    -webkit-transform: scale(0);
+    transform: scale(0);
+    opacity: 0;
+  }
+  35%{
+    -webkit-transform: scale(0.5);
+    transform: scale(0.5);
+    opacity: 1;
+  }
+  40%{
+    -webkit-transform: scale(0.2);
+    transform: scale(0.2);
+    opacity: 1;
+  }
+  45%{
+    -webkit-transform: scale(0.5);
+    transform: scale(0.5);
+    opacity: 1;
+  }
+  85%{
+    -webkit-transform: scale(0.6);
+    transform: scale(0.6);
+    opacity: 1;
+  }
+  90%{
+    -webkit-transform: scale(0.9);
+    transform: scale(0.9);
+    opacity: 1;
+  }
+  100%{
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+.wenzi01{
+  position: absolute;
+  top:0.2rem;
+  right:0.2rem;
+  background-image:url(../img/wenzi01.png);
+  background-size: 1.946rem 3.8933rem;
+  width:1.946rem;
+  height:3.8933rem;
+  opacity:1;
+
+}
+.wenzi02{
+  position: absolute;
+  top:0.2rem;
+  right:0.2rem;
+  background-image:url(../img/wenzi02.png);
+  background-size: 1.946rem 3.8933rem;
+  width:1.946rem;
+  height:3.8933rem;
+  opacity:0;
+
+}
+.wenzi01-heibai{
+  position: absolute;
+  top:0.2rem;
+  right:0.2rem;
+  background-image:url(../img/wenzi01-heibai.png);
+  background-size: 1.946rem 3.8933rem;
+  width:1.946rem;
+  height:3.8933rem;
+  opacity:0;
+}
+.wenzi02-heibai{
+  position: absolute;
+  top:0.2rem;
+  right:0.2rem;
+  background-image:url(../img/wenzi02-heibai.png);
+  background-size: 1.946rem 3.8933rem;
+  width:1.946rem;
+  height:3.8933rem;
+  opacity:1;
+}
+.wenzi01-show{
+  opacity:0;
+  -webkit-transition: all 1s 1.5s ease;
+  transition: all 1s 1.5s ease;
+}
+.wenzi02-show{
+  opacity: 1;
+  -webkit-transition:all 3s 2.5s ease;
+  transition:all 3s 2.5s ease;
+}
+
+/**************窗户***************/
+.chuanghu-heibai,.chuanghu-heibai01{
+  position: absolute;
+  left:50%;
+  top:2rem;
+  -webkit-transform: translate(-50%,0);
+  transform: translate(-50%,0);
+  width:8rem;
+  height:7.333rem;
+  background-image:url(../img/chuanghu-heibai.png);
+  background-size:8rem 7.333rem;
+}
+.chuanghu{
+  position: absolute;
+  left:50%;
+  top:2rem;
+  -webkit-transform: translate(-50%,0);
+  transform: translate(-50%,0);
+  width:8rem;
+  height:7.333rem;
+  background-image:url(../img/chuanghu.png);
+  background-size:8rem 7.333rem;
+  .chuanghua01{
+    position: absolute;
+    right:216/75rem;
+    top:133/75rem;
+    width:6/75rem;
+    height:7/75rem;
+    background-image:url(../img/chuanghua01.png);
+    background-size:6/75rem 7/75rem;
+  }
+  .chuanghua02{
+     position: absolute;
+     right:194/75rem;
+     top:119/75rem;
+     width:22/75rem;
+     height:18/75rem;
+     background-image:url(../img/chuanghua02.png);
+     background-size:22/75rem 18/75rem;
+   }
+  .chuanghua03{
+      position: absolute;
+      right:110/75rem;
+      top:150/75rem;
+      width:30/75rem;
+      height:47/75rem;
+      background-image:url(../img/chuanghua03.png);
+      background-size:30/75rem 47/75rem;
+    }
+  .chuanghua04{
+    position: absolute;
+    right:138/75rem;
+    top:203/75rem;
+    width:24/75rem;
+    height:28/75rem;
+    background-image:url(../img/chuanghua04.png);
+    background-size:24/75rem 28/75rem;
+  }
+  .chuanghua05{
+    position: absolute;
+    right:145/75rem;
+    top:176/75rem;
+    width:8/75rem;
+    height:12/75rem;
+    background-image:url(../img/chuanghua01.png);
+    background-size:8/75rem 12/75rem;
+  }
+  .chuanghuaban01{
+    position: absolute;
+    right:105/75rem;
+    top:235/75rem;
+    width:15/75rem;
+    height:17/75rem;
+    background-image:url(../img/chuanghuaban01.png);
+    background-size:15/75rem 17/75rem;
+    opacity: 0;
+  }
+  .chuanghuaban02{
+    position: absolute;
+    right:110/75rem;
+    top:240/75rem;
+    width:16/75rem;
+    height:12/75rem;
+    background-image:url(../img/chuanghuaban02.png);
+    background-size:15/75rem 17/75rem;
+    opacity: 0;
+  }
+  .chuanghuaban03{
+    position: absolute;
+    right:110/75rem;
+    top:260/75rem;
+    width:13/75rem;
+    height:16/75rem;
+    background-image:url(../img/chuanghuaban03.png);
+    background-size:15/75rem 17/75rem;
+    opacity: 0;
+  }
+}
+.chuanghuaban01.huabandiao01{
+  -webkit-animation:huabandiaola 2s   ease-in 0s infinite;
+  animation:huabandiaola 2s   ease-in 0s infinite;
+}
+.chuanghuaban02.huabandiao02{
+  -webkit-animation:huabandiaola 3s   ease-in 1s infinite;
+  animation:huabandiaola 3s   ease-in 1s infinite;
+}
+.chuanghuaban03.huabandiao03{
+  -webkit-animation:huabandiaola 3s  ease-in 1s infinite;
+  animation:huabandiaola 3s  ease-in 1s infinite;
+}
+@keyframes huabandiaola {
+  0%{
+    opacity:0;
+    top:220/75rem;
+  }
+  50%{
+    opacity:1;
+  }
+  100%{
+    opacity:0.5;
+    top:340/75rem;
+  }
+
+}
+@-webkit-keyframes huabandiaola {
+  0%{
+    opacity:0;
+    top:220/75rem;
+  }
+  50%{
+    opacity:1;
+  }
+  100%{
+    opacity:0.5;
+    top:340/75rem;
+  }
+
+}
+.taiyang{
+  position: absolute;
+  top:0.62666rem;
+  left:2.733rem;
+  background-image:url(../img/taiyang.png);
+  background-size: 0.6rem 0.36rem;
+  width:0.6rem;
+  height:0.36rem;
+}
+.taiyangdong{
+  animation:taiyangdongla 5s ease-in infinite;
+  -webkit-animation:taiyangdongla 5s ease-in infinite;
+}
+@keyframes taiyangdongla {
+  0%{
+    opacity: 0.5;
+  }
+  50%{
+    opacity: 1;
+  }
+  100%{
+    opacity: 0.5;
+  }
+}
+@-webkit-keyframes taiyangdongla {
+  0%{
+    opacity: 0.5;
+  }
+  50%{
+    opacity: 1;
+  }
+  100%{
+    opacity: 0.5;
+  }
+}
+.dachuanqiang{
+  position: absolute;
+  top:170/75rem;
+  right:45.5/75rem;
+  width:194/75rem;
+  height:194/75rem;
+  overflow: hidden;
+  clip-path: polygon(73% 0, 100% 46%, 77% 100%, 25% 100%, 0 49%, 24% 0);
+  -webkit-clip-path: polygon(73% 0, 100% 46%, 77% 100%, 25% 100%, 0 49%, 24% 0);
+}
+.dachuan{
+  position:absolute;
+  bottom:0;
+  right:-30%;
+  background-image: url(../img/dachuan-02.png);
+  background-size:194/75rem 128/75rem;
+  width:194/75rem;
+  height:128/75rem;
+
+}
+.dachuan-heibai{
+  position:absolute;
+  bottom:0;
+  right:-30%;
+  background-image: url(../img/dachuan-heibai.png);
+  background-size:194/75rem 128/75rem;
+  width:194/75rem;
+  height:128/75rem;
+}
+.dachuankai{
+  animation: dachuankaila 5s 0.5s linear forwards ;
+  -webkit-animation: dachuankaila 5s 0.5s linear forwards ;
+}
+@keyframes dachuankaila {
+  0%{
+    right:-30%;
+  }
+  100%{
+    right:0%;
+  }
+}
+@-webkit-keyframes dachuankaila {
+  0%{
+    right:-30%;
+  }
+  100%{
+    right:0%;
+  }
+}
+.shuye-heibai,.shuye-heibai01{
+  position:absolute;
+  bottom:285/75rem;
+  left:0;
+  background-image: url(../img/shuye-heibai.png);
+  background-size:191/75rem 273/75rem;
+  width:191/75rem;
+  height:273/75rem;
+  transform-origin: 0 50%;
+
+}
+.shuye{
+  position:absolute;
+  bottom:285/75rem;
+  left:0;
+  background-image: url(../img/shuye-caise04.gif);
+  background-size:191/75rem 273/75rem;
+  width:191/75rem;
+  height:273/75rem;
+  transform-origin: 0 50%;
+}
+/********树叶动*********/
+//.shuyedong{
+//  animation:shuyedongla 5s ease-in-out 2s infinite;
+//}
+//@keyframes shuyedongla {
+//  0% {
+//    opacity: 1;
+//    -webkit-transform: rotate(0);
+//    transform: rotate(0)
+//  }
+//
+//  33% {
+//    opacity: 1;
+//    -webkit-transform: rotate(20deg);
+//    transform: rotate(20deg)
+//  }
+//
+//  66% {
+//    opacity: 1;
+//    -webkit-transform: rotate(-15deg);
+//    transform: rotate(-15deg)
+//  }
+//
+//  100% {
+//    opacity: 1;
+//    -webkit-transform: rotate(0deg);
+//    transform: rotate(0deg)
+//  }
+//}
+.table-heibai,.table-heibai01{
+  position: absolute;
+  bottom:0;
+  left:0;
+  background-image: url(../img/zhuomian-heibai.png);
+  background-size: 10rem 9.68rem;
+  width:10rem;
+  height:9.68rem;
+}
+.table-heibai{
+
+}
+.table{
+  position: absolute;
+  bottom:0;
+  left:0;
+  background-image: url(../img/page01-table.png);
+  background-size: 10rem 9.68rem;
+  width:10rem;
+  height:9.68rem;
+  .pinghua01{
+    position: absolute;
+    right:32/75rem;
+    top:10/75rem;
+    width:14/75rem;
+    height:13/75rem;
+    background-image:url(../img/pinghua01.png);
+    background-size:14/75rem 13/75rem;
+  }
+  .pinghua02{
+    position: absolute;
+    right:83/75rem;
+    top:25/75rem;
+    width:18/75rem;
+    height:20/75rem;
+    background-image:url(../img/pinghua02.png);
+    background-size:18/75rem 20/75rem;
+  }
+  .pinghua03{
+    position: absolute;
+    right:83/75rem;
+    top:60/75rem;
+    width:23/75rem;
+    height:36/75rem;
+    background-image:url(../img/pinghua03.png);
+    background-size:23/75rem 36/75rem;
+  }
+  .pinghua04{
+    position: absolute;
+    right:109/75rem;
+    top:100/75rem;
+    width:27/75rem;
+    height:37/75rem;
+    background-image:url(../img/pinghua04.png);
+    background-size:27/75rem 37/75rem;
+  }
+  .pinghua05{
+    position: absolute;
+    right:120/75rem;
+    top:230/75rem;
+    width:35/75rem;
+    height:44/75rem;
+    background-image:url(../img/pinghua05.png);
+    background-size:35/75rem 44/75rem;
+  }
+  .pinghua06{
+    position: absolute;
+    right:175/75rem;
+    top:250/75rem;
+    width:20/75rem;
+    height:36/75rem;
+    background-image:url(../img/pinghua06.png);
+    background-size:20/75rem 36/75rem;
+  }
+  .pinghua07{
+     position: absolute;
+     right:170/75rem;
+     top:208/75rem;
+     width:31/75rem;
+     height:27/75rem;
+     background-image:url(../img/pinghua07.png);
+     background-size:31/75rem 27/75rem;
+   }
+  .pinghua08{
+    position: absolute;
+    right:205/75rem;
+    top:193/75rem;
+    width:19/75rem;
+    height:24/75rem;
+    background-image:url(../img/pinghua08.png);
+    background-size:19/75rem 24/75rem;
+  }
+  .pinghua09{
+    position: absolute;
+    right:247/75rem;
+    top:212/75rem;
+    width:12/75rem;
+    height:14/75rem;
+    background-image:url(../img/pinghua09.png);
+    background-size:12/75rem 14/75rem;
+  }
+  .pingya01{
+    position: absolute;
+    right:130/75rem;
+    top:154/75rem;
+    width:12/75rem;
+    height:13/75rem;
+    background-image:url(../img/pingya01.png);
+    background-size:12/75rem 13/75rem;
+  }
+  .pingya02{
+    position: absolute;
+    right:155/75rem;
+    top:262/75rem;
+    width:15/75rem;
+    height:19/75rem;
+    background-image:url(../img/pingya02.png);
+    background-size:15/75rem 19/75rem;
+  }
+  .pingya03{
+    position: absolute;
+    right:183/75rem;
+    top:230/75rem;
+    width:15/75rem;
+    height:18/75rem;
+    background-image:url(../img/pingya03.png);
+    background-size:15/75rem 18/75rem;
+  }
+}
+
+//.slideUp{
+//  width:1.48rem;
+//  height:1.266rem;
+//  //background-image:url(../img/bird-zheng.png);
+//  background-size:1.48rem 1.2666rem ;
+//  position: absolute;
+//  left:5-0.74rem;
+//  bottom:0.7rem;
+//  //-webkit-transform: translateX(-50%);
+//  //-ms-transform: translateX(-50%);
+//  //transform: translateX(-50%);
+//  display:none;
+//  //z-index: 300;
+//}
+//.slideUping{
+//  display:block;
+//  -webkit-animation: fadeInUp 1.5s .2s ease infinite;
+//  animation: fadeInUp 1.5s .2s ease infinite;
+//}
+//@keyframes fadeInUp {
+//  0% {
+//    opacity: 0;
+//    -webkit-transform: translate3d(0,-20/75rem,0);
+//    transform: translate3d(0,-20/75rem,0)
+//  }
+//  100% {
+//    opacity: 1;
+//    -webkit-transform: translate3d(0,0,0);
+//    transform: translate3d(0,0,0)
+//  }
+//}
+//@keyframes fadeInUp {
+//  0% {
+//    opacity: 0;
+//    -webkit-transform: translate3d(0,-20/75rem,0);
+//    transform: translate3d(0,-20/75rem,0)
+//  }
+//  100% {
+//    opacity: 1;
+//    -webkit-transform: translate3d(0,0,0);
+//    transform: translate3d(0,0,0)
+//  }
+//}
