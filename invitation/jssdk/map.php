@@ -52,7 +52,7 @@ $signPackage = $jssdk->GetSignPackage();
           name: '中关村皇冠假日酒店', // 位置名
           address: '北京市海淀区知春路106号中关村皇冠假日酒店，三层皇冠宴会厅', // 地址详情说明
           scale: 15, // 地图缩放级别,整形值,范围从1~28。默认为最大
-          infoUrl: 'http://www.qinlinhui.cn/invitation/test.php' // 在查看位置界面底部显示的超链接,可点击跳转
+          infoUrl: 'http://wx.bjczxda.com/invitation/test.php' // 在查看位置界面底部显示的超链接,可点击跳转
       });
 
        //获取地理位置接口
