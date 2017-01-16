@@ -448,7 +448,7 @@ input[type="search"] {
     -moz-transform: translateX(3rem);
     -o-transform: translateX(3rem);
   }
-  70% {
+  80% {
     -webkit-animation-timing-function: ease-in;
     -moz-animation-timing-function: ease-in;
     -o-animation-timing-function: ease-in;
@@ -540,7 +540,7 @@ input[type="search"] {
     -moz-transform: translateX(3rem);
     -o-transform: translateX(3rem);
   }
-  70% {
+  80% {
     -webkit-animation-timing-function: ease-in;
     -moz-animation-timing-function: ease-in;
     -o-animation-timing-function: ease-in;
@@ -714,7 +714,7 @@ input[type="search"] {
     opacity: 0;
   }
 }
-/*@-webkit-keyframes bird-flyY {
+@-webkit-keyframes bird-flyY {
   0% {
     -webkit-animation-timing-function: ease-out;
     animation-timing-function: ease-out;
@@ -756,15 +756,15 @@ input[type="search"] {
     -moz-transform: translateY(-5.8rem);
     -o-transform: translateY(-5.8rem);
     -webkit-transform: translateY(-5.8rem);
-    background-size: 1.16470588rem 1.15294118rem;
+    background-size: 1.2375rem 1.225rem;
   }
   25.5%,
-  32.5%,
-  39.5% {
+  32.5%{
     transform: translateY(-5.9rem);
     -webkit-transform: translateY(-5.9rem);
     -moz-transform: translateY(-5.9rem);
     -o-transform: translateY(-5.9rem);
+    
   }
   26%,
   33% {
@@ -772,14 +772,18 @@ input[type="search"] {
     -moz-transform: translateY(-5.8rem);
     -o-transform: translateY(-5.8rem);
     -webkit-transform: translateY(-5.8rem);
-    background-size: 1.16470588rem 1.15294118rem;
+    background-size: 1.2375rem 1.225rem;
   }
+
   39.5% {
     transform: translateY(-5.8rem) rotateY(0deg);
     -webkit-transform: translateY(-5.8rem) rotateY(0deg);
     -moz-transform: translateY(-5.8rem) rotateY(0deg);
     -o-transform: translateY(-5.8rem) rotateY(0deg);
-    background-size: 1.13333333rem 0.93333333rem;
+     
+  }
+  39.9%{
+    background-size: 1.13333333rem 0.93333rem;
   }
   40% {
     -webkit-animation-timing-function: ease-out;
@@ -790,7 +794,7 @@ input[type="search"] {
     -moz-transform: translateY(-5.8rem) rotateY(-35deg);
     -o-transform: translateY(-5.8rem) rotateY(-35deg);
     transform: translateY(-5.8rem) rotateY(-35deg);
-    background-size: 1.13333333rem 0.93333333rem;
+    /*background-size: 1.02rem 0.84rem;*/
   }
   60% {
     -webkit-animation-timing-function: ease-out;
@@ -801,7 +805,7 @@ input[type="search"] {
     -webkit-transform: translateY(-9.8rem);
     -moz-transform: translateY(-9.8rem);
     -o-transform: translateY(-9.8rem);
-    background-size: 1.13333333rem 0.93333333rem;
+    /*background-size: 1.02rem 0.84rem;*/
   }
   60.5%,
   65.5% {
@@ -809,10 +813,14 @@ input[type="search"] {
     transform: translateY(-9.7rem);
     -moz-transform: translateY(-9.7rem);
     -o-transform: translateY(-9.7rem);
-    background-size: 1.13333333rem 0.93333333rem;
+   background-size: 1.13333333rem 0.93333rem;
+
   }
   61%,
   66% {
+    -webkit-transform: translateY(-9.8rem);
+    -moz-transform: translateY(-9.8rem);
+    -o-transform: translateY(-9.8rem);
     transform: translateY(-9.8rem);
   }
   80% {
@@ -824,7 +832,7 @@ input[type="search"] {
     -moz-transform: translate3d(0, -9.8rem, 0);
     -o-transform: translate3d(0, -9.8rem, 0);
     transform: translate3d(0, -9.8rem, 0);
-    background-size: 1.13333333rem 0.93333333rem;
+   background-size: 1.13333333rem 0.93333rem;
     opacity: 1;
   }
   90% {
@@ -848,7 +856,7 @@ input[type="search"] {
     background-size: 0.408rem 0.336rem;
     opacity: 0;
   }
-}*/
+}
 .page02-heibai-fly {
   opacity: 0;
 }
