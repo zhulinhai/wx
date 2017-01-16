@@ -21,11 +21,6 @@
                 return alert(rt.message);
             }
 
-            var title ='行圆汽车2017新年团拜邀请函'; // 分享标题
-            var link ='http://wx.bjczxda.com/invitation/index.html';
-            var desc = '一元复始万象新，行圆汽车新春共话2017'; // 分享描述
-            var imgUrl = 'http://wx.bjczxda.com/invitation/img/log1.png';
-
             var wx_appId = rt.data.appId;
             var wx_timestamp = rt.data.timestamp;
             var wx_nonceStr = rt.data.nonceStr;
@@ -43,7 +38,7 @@
              * 邮件内容说明：用简明的语言描述问题所在，并交代清楚遇到该问题的场景，可附上截屏图片，微信团队会尽快处理你的反馈。
              */
             wx.config({
-                debug: true,
+                debug: false,
                 appId: wx_appId,
                 timestamp: wx_timestamp,
                 nonceStr: wx_nonceStr,
