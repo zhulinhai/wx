@@ -12,21 +12,21 @@
 .letter{width: 8.5466666667rem; height: 12.653333333rem; position: absolute; left:0.73333333rem; top:-13rem; z-index: 2;}
 .openletter{width: 10rem; height: 2.4533333333rem; position: absolute; left: 0rem; top: 0.68rem;z-index: 100;}
 .movebird{width: 1.36rem; height: 1.0666666667rem; position: absolute; left:4.3733333333rem; top: -13.526666667rem; z-index: 99;}
-.sugar{width: 1.906rem; height: 3.426rem; position: absolute; left: 6.65rem; top:-4rem; z-index:90;}
+.sugar{width: 1.906rem; height: 3.426rem; position: absolute; bottom:0;right: -1.906rem; z-index:90;}
 .move2-text1{width: 1.2533333333rem; height:4.68rem; position: absolute; left: 6.52rem; top: 2.9866666667rem; z-index: 100; opacity: 0;}
 .move2-text2{width: 0.8666666667rem; height: 5.2266666667rem;  position: absolute; left: 5.2rem; top: 4.26rem; z-index: 100; opacity: 0;}
 .move2-text3{width: 0.8933333333rem; height: 4.48rem; position: absolute; left:4.1rem; top: 4.26rem;z-index:100; opacity: 0;}
 .move2-mapbutton{width: 1.32rem; height: 1.32rem; position:absolute;left:4.346rem; top:11.446666667rem; z-index: 150; opacity: 0;}
 .move2-mapbutton2{width: 1.8666666667rem; height: 1.8666666667rem; position: absolute;left:4.0666666666rem; top:11.18rem ; z-index: 150; opacity: 0;}
-.openletter{-webkit-animation: show 0.3s   linear forwards;
-	-moz-animation: show 0.3s   linear forwards;
-	-o-animation: show 0.3s   linear forwards;
-	animation: show  0.3s  linear forwards;}
+.openletter{-webkit-animation: show 0.4s  2.7s linear forwards;
+	-moz-animation: show 0.5s 2.7s  linear forwards;
+	-o-animation: show 0.5s  2.7s  linear forwards;
+	animation: show  0.5s  2.7s linear forwards;}
 @keyframes show{
 	0%{
 		opacity: 1;
 	}
-	70%{
+	95%{
 		opacity: 1;
 	}
 	100%{
@@ -37,7 +37,7 @@
 	0%{
 		opacity: 1;
 	}
-	70%{
+	95%{
 		opacity: 1;
 	}
 	100%{
@@ -45,16 +45,22 @@
 	}
 }
 .mailbuttom{
-	-webkit-animation: textshow 0.7s 1.8s linear forwards;
-	-moz-animation: textshow 0.7s 1.8s  linear forwards;
-	-o-animation: textshow 0.7s 1.8s  linear forwards;
-	animation: textshow 0.7s 1.8s linear forwards;
+	-webkit-animation: textshow 0.7s 2.5s linear forwards;
+	-moz-animation: textshow 0.7s  2.5s  linear forwards;
+	-o-animation: textshow 0.7s  2.5s  linear forwards;
+	animation: textshow 0.7s  2.5s linear forwards;
+}
+.yinying{
+	-webkit-animation: textshow 0.7s 2.3s linear forwards;
+	-moz-animation: textshow 0.7s  2.3s  linear forwards;
+	-o-animation: textshow 0.7s  2.3s  linear forwards;
+	animation: textshow 0.7s  2.3s linear forwards;
 }
 @keyframes textshow{
 	0%{
 		opacity: 0;
 	}
-	65%{
+	80%{
 		opacity: 0;
 	}
 	100%{
@@ -65,17 +71,18 @@
 	0%{
 		opacity: 0;
 	}
-	65%{
+	80%{
 		opacity: 0;
 	}
 	100%{
 		opacity: 1;
 	}
 }
-.moveletter{-webkit-animation: moveletter 0.7s 2.8s ease-out forwards;
-	-moz-animation: moveletter 0.7s 2.8s  ease-out forwards;
-	-o-animation: moveletter 0.7s 2.8s ease-out forwards;
-	animation: moveletter 0.7s 2.8s ease-out forwards;}
+
+.moveletter{-webkit-animation: moveletter 0.7s 3.7s ease-out forwards;
+	-moz-animation: moveletter 0.7s 3.7s  ease-out forwards;
+	-o-animation: moveletter 0.7s 3.7s ease-out forwards;
+	animation: moveletter 0.7s 3.7s ease-out forwards;}
 @keyframes moveletter{
 	0%{
 		top: -8rem;
@@ -99,32 +106,36 @@
 
 	}
 }
-.movesuger{-webkit-animation: movesguer 0.6s 3s ease-out forwards;
-	-moz-animation: movesguer 0.6s 3s ease-out forwards;
-	-o-animation: movesguer 0.6s 3s ease-out forwards;
-	animation: movesguer 0.6s 3s ease-out forwards;}
+.movesuger{-webkit-animation: movesguer 1.3s 4.2s ease-out forwards;
+	-moz-animation: movesguer 1.3s 4.2s  ease-out forwards;
+	-o-animation: movesguer 1.3s 4.2s  ease-out forwards;
+	animation: movesguer 1.3s 4.2s  ease-out forwards;}
 @keyframes movesguer{
 	0%{
-		top: -3.426rem;
+		bottom:0;
+		right: -1.906rem;
 	}
 	100%{
-		top:8.36rem;
+		bottom:4.4rem; 
+		right: 1.58rem;
 	}
 }
 @-webkit-keyframes movesguer{
 	0%{
-		top: -3.426rem;
+		bottom:0;
+		right: -1.906rem;
 	}
 	100%{
-		top:8.36rem;
+		bottom:4.4rem; 
+		right: 1.58rem;
 	}
 }
 /*��ť����*/
 .move2-mapbutton {
-	-webkit-animation: warnon 2s 3.5s linear infinite;
-	-moz-animation: warnon 2s 3.5s linear infinite;
-	-o-animation: warnon 2s 3.5s linear infinite;
-	animation: warnon 2s 3.5s linear infinite;
+	-webkit-animation: warnon 2s 4.7s linear infinite;
+	-moz-animation: warnon 2s 4.7s linear infinite;
+	-o-animation: warnon 2s 4.7s linear infinite;
+	animation: warnon 2s 4.7s linear infinite;
 }
 @keyframes warnon {
 	0% {
@@ -167,10 +178,10 @@
 	}
 }
 .move2-mapbutton2{
-	-webkit-animation: warnin 2s 3.5s linear infinite;
-	-moz-animation: warnin 2s 3.5s linear infinite;
-	animation: warnin 2s linear 3.5s infinite;
-	-o-animation: warnin 2s linear 3.5s infinite;
+	-webkit-animation: warnin 2s 4.7s linear infinite;
+	-moz-animation: warnin 2s 4.7s linear infinite;
+	animation: warnin 2s linear 4.7s infinite;
+	-o-animation: warnin 2s linear 4.7s infinite;
 }
 @keyframes warnin {
 	0% {
@@ -266,53 +277,49 @@
 		opacity: 1;
 	}
 }
-/*.birdflytop{
-	-webkit-animation: birdtop 2s 3.8s linear forwards;
-	-moz-animation: birdtop 2s 3.8s linear forwards;
-	-o-animation: birdtop 2s 3.8s linear forwards;
-	animation: birdtop 2s 3.8s linear forwards;
+.birdflytop{
+	-webkit-animation: birdtop 1.2s 1.5s linear forwards;
+	-moz-animation: birdtop 1.2s 1.5s linear forwards;
+	-o-animation: birdtop 1.2s 1.5s linear forwards;
+	animation: birdtop 1.2s 1.5s linear forwards;
 }
 @keyframes birdtop{
 	0%{
-		top: 19.526666667rem;
-		left:1.3733333333rem;
-		opacity: 1;
-	}
-	60%{
-		top: 11rem;
-		left: 5.8rem;
+		
+		left:-1.32rem;
 		opacity: 1;
 	}
 	90%{
+		
+		left: 2rem;
 		opacity: 1;
 	}
+	
 	100%{
-		top:7.8rem;
-		left: 6.44rem;
+		
+		left: 2rem;
 		opacity: 0;
 	}
 }
 @-webkit-keyframes birdtop{
 	0%{
-		top: 19.526666667rem;
-		left:1.3733333333rem;
-		opacity: 1;
-	}
-	60%{
-		top: 11rem;
-		left: 5.8rem;
+		
+		left:-1.32rem;
 		opacity: 1;
 	}
 	90%{
+		
+		left: 2rem;
 		opacity: 1;
 	}
+	
 	100%{
-		top:7.8rem;
-		left: 6.44rem;
+		
+		left: 2rem;
 		opacity: 0;
 	}
 }
-.bird-grass{
+/*.bird-grass{
 	-webkit-animation: birdglass 1s 5.8s linear forwards;
 	-moz-animation: birdglass 1s 5.8s linear forwards;
 	-o-animation: birdglass 1s 5.8s linear forwards;
@@ -349,13 +356,16 @@
 	}
 }*/
 .birdlogo{
-	-webkit-animation: birdlogoshow 0.7s 3.7s linear forwards;
-	-moz-animation: birdlogoshow 0.7s 3.5s linear forwards;
-	-o-animation: birdlogoshow 0.7s 3.5s linear forwards;
-	animation: birdlogoshow 0.7s 3.5s linear forwards;
+	-webkit-animation: birdlogoshow 0.3s 2.4s linear forwards;
+	-moz-animation: birdlogoshow 0.3s 2.4s linear forwards;
+	-o-animation: birdlogoshow 0.3s 2.4s linear forwards;
+	animation: birdlogoshow 0.3s 2.4s linear forwards;
 }
 @keyframes birdlogoshow{
 	0%{
+		opacity: 0;
+	}
+	90%{
 		opacity: 0;
 	}
 	100%{
@@ -364,6 +374,9 @@
 }
 @-webkit-keyframes birdlogoshow{
 	0%{
+		opacity: 0;
+	}
+	90%{
 		opacity: 0;
 	}
 	100%{
