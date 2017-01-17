@@ -182,12 +182,12 @@ $('#bird').click(function(){
         $('.page02').addClass('page02-slideing');
         $('.page03').addClass('page03-slideing');
         $('.table').addClass('tablebianxiao');
-        $('#movebird').addClass('birdflytop movebirdletter');
+        // $('#movebird').addClass('birdflytop movebirdletter');
         $('#openletter').addClass('openletter');
         $('#mailbuttom').addClass('mailbuttom');
         $('#moveletter').addClass("moveletter");
         $('#movesuger').addClass('movesuger');
-        $('#bird-grass').addClass('bird-grass');
+        // $('#bird-grass').addClass('bird-grass');
         $('#birdlogo').addClass('birdlogo');
         $('#move2-mapbutton').addClass('move2-mapbutton');
         $('#move2-mapbutton2').addClass('move2-mapbutton2');

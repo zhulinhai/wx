@@ -12,7 +12,7 @@
 .letter{width: 8.5466666667rem; height: 12.653333333rem; position: absolute; left:0.73333333rem; top:-13rem; z-index: 2;}
 .openletter{width: 10rem; height: 2.4533333333rem; position: absolute; left: 0rem; top: 0.68rem;z-index: 100;}
 .movebird{width: 1.36rem; height: 1.0666666667rem; position: absolute; left:4.3733333333rem; top: -13.526666667rem; z-index: 99;}
-.sugar{width: 4.0rem; height: 6.2266666667rem; position: absolute; left: 0.12rem; top:-13rem; z-index:90;}
+.sugar{width: 1.906rem; height: 3.426rem; position: absolute; left: 6.65rem; top:-4rem; z-index:90;}
 .move2-text1{width: 1.2533333333rem; height:4.68rem; position: absolute; left: 6.52rem; top: 2.9866666667rem; z-index: 100; opacity: 0;}
 .move2-text2{width: 0.8666666667rem; height: 5.2266666667rem;  position: absolute; left: 5.2rem; top: 4.26rem; z-index: 100; opacity: 0;}
 .move2-text3{width: 0.8933333333rem; height: 4.48rem; position: absolute; left:4.1rem; top: 4.26rem;z-index:100; opacity: 0;}
@@ -99,24 +99,24 @@
 
 	}
 }
-.movesuger{-webkit-animation: movesguer 0.5s 2.8s ease-out forwards;
-	-moz-animation: movesguer 0.5s 2.8s ease-out forwards;
-	-o-animation: movesguer 0.5s 2.8s ease-out forwards;
-	animation: movesguer 0.5s 2.8s ease-out forwards;}
+.movesuger{-webkit-animation: movesguer 0.6s 3s ease-out forwards;
+	-moz-animation: movesguer 0.6s 3s ease-out forwards;
+	-o-animation: movesguer 0.6s 3s ease-out forwards;
+	animation: movesguer 0.6s 3s ease-out forwards;}
 @keyframes movesguer{
 	0%{
-		top: -4rem;
+		top: -3.426rem;
 	}
 	100%{
-		top:0rem;
+		top:8.36rem;
 	}
 }
 @-webkit-keyframes movesguer{
 	0%{
-		top: -4rem;
+		top: -3.426rem;
 	}
 	100%{
-		top:0rem;
+		top:8.36rem;
 	}
 }
 /*��ť����*/
@@ -266,7 +266,7 @@
 		opacity: 1;
 	}
 }
-.birdflytop{
+/*.birdflytop{
 	-webkit-animation: birdtop 2s 3.8s linear forwards;
 	-moz-animation: birdtop 2s 3.8s linear forwards;
 	-o-animation: birdtop 2s 3.8s linear forwards;
@@ -278,11 +278,6 @@
 		left:1.3733333333rem;
 		opacity: 1;
 	}
-	/*40%{*/
-	/*top: 10.3rem;*/
-	/*left: 6.3rem;*/
-	/*opacity: 1;*/
-	/*}*/
 	60%{
 		top: 11rem;
 		left: 5.8rem;
@@ -303,11 +298,6 @@
 		left:1.3733333333rem;
 		opacity: 1;
 	}
-	/*40%{*/
-	/*top: 10.3rem;*/
-	/*left: 6.3rem;*/
-	/*opacity: 1;*/
-	/*}*/
 	60%{
 		top: 11rem;
 		left: 5.8rem;
@@ -357,21 +347,15 @@
 	100%{
 		opacity: 0;
 	}
-}
+}*/
 .birdlogo{
-	-webkit-animation: birdlogoshow 0.5s 6.2s linear forwards;
-	-moz-animation: birdlogoshow 0.5s 6.2s linear forwards;
-	-o-animation: birdlogoshow 0.5s 6.2s linear forwards;
-	animation: birdlogoshow 0.5s 6.2s linear forwards;
+	-webkit-animation: birdlogoshow 0.7s 3.7s linear forwards;
+	-moz-animation: birdlogoshow 0.7s 3.5s linear forwards;
+	-o-animation: birdlogoshow 0.7s 3.5s linear forwards;
+	animation: birdlogoshow 0.7s 3.5s linear forwards;
 }
 @keyframes birdlogoshow{
 	0%{
-		opacity: 0;
-	}
-	50%{
-		opacity: 0;
-	}
-	90%{
 		opacity: 0;
 	}
 	100%{
@@ -380,12 +364,6 @@
 }
 @-webkit-keyframes birdlogoshow{
 	0%{
-		opacity: 0;
-	}
-	50%{
-		opacity: 0;
-	}
-	90%{
 		opacity: 0;
 	}
 	100%{
