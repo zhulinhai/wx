@@ -50,12 +50,6 @@
 	-o-animation: textshow 0.7s  2.5s  linear forwards;
 	animation: textshow 0.7s  2.5s linear forwards;
 }
-.yinying{
-	-webkit-animation: textshow 0.7s 2.3s linear forwards;
-	-moz-animation: textshow 0.7s  2.3s  linear forwards;
-	-o-animation: textshow 0.7s  2.3s  linear forwards;
-	animation: textshow 0.7s  2.3s linear forwards;
-}
 @keyframes textshow{
 	0%{
 		opacity: 0;
@@ -74,6 +68,30 @@
 	80%{
 		opacity: 0;
 	}
+	100%{
+		opacity: 1;
+	}
+}
+.yinying{
+	-webkit-animation: textshow02 0.4s 3.5s linear forwards;
+	-moz-animation: textshow02 0.4s  3.5s  linear forwards;
+	-o-animation: textshow02 0.4s  3.5s  linear forwards;
+	animation: textshow02 0.4s  3.5s linear forwards;
+}
+@keyframes textshow02{
+	0%{
+		opacity: 0;
+	}
+	
+	100%{
+		opacity: 1;
+	}
+}
+@-webkit-keyframes textshow02{
+	0%{
+		opacity: 0;
+	}
+	
 	100%{
 		opacity: 1;
 	}
