@@ -1,5 +1,4 @@
 @import "common";
-@import "loading";
 @import "swiper.min.scss";
 @import "animate.min.scss";
 
@@ -8,9 +7,11 @@ body,html {
   height: 100%;
   overflow: hidden;
   font-size: 20px;
-  background-color: black;
   font-family: "Microsoft YaHei UI", "微软雅黑", "宋体", sans-serif;
+  user-select: none;
 }
+a {text-decoration: none;-webkit-tap-highlight-color: rgba(0, 0, 0, 0);color: white;}
+a:link,a:visited,a:hover,a:active{text-decoration: none;}
 
 #loadingDialog {
   position: fixed;
@@ -24,93 +25,225 @@ body,html {
     position: absolute;
     top: 50%;
     left: 50%;
-    margin-top: -6.3rem;
+    margin-top: -4.3rem;
     margin-left: -2.3rem;
     width: 4.6rem;
     height: 4.6rem;
     .loading-logo {
-      width: 100%;
+      display: block;
+      margin: 0 auto;
+      width: 3.5rem;
     }
     .loading-percent {
+      margin-top: 1rem;
       font-size: 0.6rem;
-      color: #535354;
+      color: #5A5A5B;
       text-align: center;
     }
   }
 }
 
-.swiper-container, .swiper-wrapper, .swiper-slide {
+#submitDialog {
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-}
-
-#submitDialog {
-  .form {
-    background-size: 4.9rem auto;
-    label {
-      display: inline-block;
-      width: 2.8rem;
-      height: 1.2rem;
-      line-height: 1.2rem;
-      color: white;
-      font-size: 0.65rem;
-      text-align: left;
-      margin-left: 1.6rem;
-    }
+  background-color: rgba(0, 0, 0, 0.2);
+  z-index: 11;
+  .contentFrame {
+    position: absolute;
+    top: 50%;
+    margin-top: -9.3rem;
+    margin-left: 1rem;
+    width: 14rem;
+    height: 19.6rem;
+    background: white url("../src/car-bottom.png") no-repeat center 15rem;
+    background-size: 8.2rem 4rem;
     input, select {
       -webkit-appearance: none;
       box-sizing: border-box;
       -moz-box-sizing: border-box;  /*Firefox3.5+*/
       -webkit-box-sizing: border-box; /*Safari3.2+*/
-      width: 8.5rem;
-      height: 1.2rem;
-      line-height: 1.2rem;
-      color: white;
-      font-size: 0.65rem;
-      margin-top: 0.5rem;
-      border: 0.05rem solid white;
-      border-radius: inherit;
-      background-color: transparent;
-      padding-left: 0.2rem;
-      padding-right: 1rem;
-    }
-    select {
-      //background: url("../img/3-arrowDown.png") no-repeat 7.5rem center;
-      background-size: 0.5rem 0.3rem;
-    }
-    .checkFrame {
-      display: inline-block;
-      vertical-align: middle;
-      width: 0.55rem;
-      height: 0.55rem;
-      margin-right: 0.2rem;
-    }
-    .submitInfo {
-      display: block;
-      margin: 0.5rem auto;
-      color: white;
-      font-size: 0.6rem;
-      text-align: center;
-      width: 5.3rem;
+      width: 12rem;
       height: 1.5rem;
       line-height: 1.5rem;
-      background-color: #B72E22;
-      border-radius: 3px;
+      color: #5A5A5B;
+      font-size: 0.65rem;
+      border: 1px solid #5A5A5B;
+      border-radius: inherit;
+      background-color: transparent;
+      text-indent: 0.2rem;
+      margin-left: 1rem;
+      margin-top: 0.5rem;
     }
-    .allowTip {
-      margin-left: 4.4rem;
-      margin-top: 0.3rem;
-      width: 8.5rem;
+    input::-webkit-input-placeholder {color: #5A5A5B;}
+    input::-moz-placeholder {color: #5A5A5B;}
+    input:-moz-placeholder {color: #5A5A5B;}
+    select {
+      background: white url("../src/arrowDown.png") no-repeat 11rem center;
+      background-size: 0.5rem 0.3rem;
+    }
+    .close {
+      position: absolute;
+      right: 0.5rem;
+      top: 0.5rem;
+      width: 1rem;
       height: 1rem;
-      line-height: 1rem;
-      font-size: 0.6rem;
+      background: url("../src/close.png") no-repeat center;
+      background-size: 0.6rem;
     }
-    .buyTip {
-      width: 13.8rem;
-      font-size: 0.55rem;
-      line-height: 0.8rem;
-      margin-left: 0.3rem;
-      color: #B72E22;
+    .title {
+      text-align: center;
+      width: 8rem;
+      margin-top: 0.5rem;
+      margin-left: 3rem;
+      line-height: 2rem;
+      font-size: 1rem;
+      color: #333;
+    }
+    .p1, .p2 {
+      font-size: 0.6rem;
+      color: #5A5A5B;
+      line-height: 1rem;
+      text-align: center;
+      margin: 0 0.5rem 0.5rem;
+    }
+    .p1 {
+      padding-top: 0.5rem;
+      margin-bottom: 0;
+      border-top: 1px solid #E3E3E4;
+    }
+    .i1, .s1 {
+      float: left;
+      width: 5.5rem;
+      height: 1.5rem;
+    }
+    .s1 {
+      float: right;
+      margin-right: 1rem;
+      background: white url("../src/arrowDown.png") no-repeat 4.5rem center;
+      background-size: 0.5rem 0.3rem;
+    }
+    .btnSubmit {
+      color: white;
+      text-align: center;
+      width: 12rem;
+      height: 1.5rem;
+      line-height: 1.5rem;
+      margin-left: 1rem;
+      margin-top: 1rem;
+      font-size: 0.7rem;
+      background-color: black;
     }
   }
+}
+
+.page {
+  width: 100%;
+  height: 100%;
+}
+
+.page-0 {
+  background: white url("../src/bg.jpg") no-repeat;
+  background-size: 100% auto;
+  .pTitle {
+    text-align: center;
+    font-size: 0.8rem;
+    padding-top: 1rem;
+    color: #5A5A5B;
+  }
+  .logo {
+    display: block;
+    margin: 6rem auto 0;
+    width: 3.5rem;
+  }
+  .bottomFrame {
+    position: absolute;
+    bottom: 0;
+    .actTitle {
+      text-align: center;
+      font-size: 0.6rem;
+      margin: 0.5rem 0;
+      color: #5A5A5B;
+    }
+    .menu-container {
+      width: 15rem;
+      height: 1.35rem;
+      margin: 0.5rem;
+      .swiper-wrapper {
+        width: 100%;
+        .swiper-slide {
+          width: 2.25rem;
+          height: 1.25rem;
+          border: 1px solid #5A5A5B;
+          img {
+            display: block;
+            margin: 0.35rem auto 0;
+            width: 1.65rem;
+            height: 0.6rem;
+          }
+        }
+      }
+
+    }
+    .banner-container {
+      width: 15rem;
+      margin-left: 0.5rem;
+      overflow: hidden;
+      .swiper-wrapper {
+        width: 100%;
+        .swiper-slide {
+          img {
+            width: 100%;
+          }
+        }
+      }
+    }
+
+    .btnDetail {
+      color: white;
+      text-align: center;
+      width: 15rem;
+      height: 1.5rem;
+      line-height: 1.5rem;
+      margin: 0 0.5rem 0.6rem 0.5rem;
+      font-size: 0.7rem;
+      background-color: black;
+    }
+
+  }
+}
+
+.page-1 {
+  .image-container {
+    width: 100%;
+    overflow: hidden;
+    .swiper-wrapper {
+      width: 100%;
+      .swiper-slide {
+        img {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  .logo {
+    display: block;
+    margin: 6rem auto 0;
+    width: 3.5rem;
+  }
+
+  .btnDrive {
+    color: white;
+    text-align: center;
+    width: 15rem;
+    height: 1.5rem;
+    line-height: 1.5rem;
+    margin: 0 0.5rem 0.6rem 0.5rem;
+    font-size: 0.7rem;
+    background-color: black;
+  }
+
 }
