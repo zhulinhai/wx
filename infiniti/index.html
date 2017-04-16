@@ -5,10 +5,118 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes" />
-    <title>英菲尼迪</title>
+    <title>英菲尼迪金融方案</title>
+    <link rel="stylesheet" href="css/index.css">
+    <script type="text/javascript" src="js/pace.min.js"></script>
+    <script>
+        // 百度统计
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?10830f0d7bf5ba649eac1047c276b1a7";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+    <script type="text/javascript">
+        //rem设置
+        (function(doc, win) {
+            var docEl = doc.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                recalc = function() {
+                    var clientWidth = docEl.clientWidth;
+                    if (!clientWidth) return;
+                    docEl.style.fontSize = 20 * (clientWidth / 320) + 'px';
+                };
+            win.addEventListener(resizeEvt, recalc, false);
+            doc.addEventListener('DOMContentLoaded', recalc, false);
+        })(document, window);
+
+        //pace加载页面
+        paceOptions = {
+            elements: true,
+            restartOnRequestAfter: false
+        };
+
+        var loadingHandler = {
+            curProgress: 0,
+            myInterval: -1,
+            init: function () {
+            },
+            startInterval: function () {
+                loadingHandler.myInterval = setInterval(function(){
+                    var progress = parseInt(document.querySelectorAll('.pace-progress')[0].getAttribute("data-progress"));
+                    loadingHandler.setLoadingPercent(progress);
+                },100);
+            },
+            clearInterval: function () {
+                clearInterval(loadingHandler.myInterval);
+                loadingHandler.myInterval = -1;
+            },
+            setLoadingPercent: function (progress) {
+                if (progress < loadingHandler.curProgress) {
+                    return;
+                }
+                document.getElementById('loading-percent').innerHTML = progress + '%';
+                loadingHandler.curProgress = progress;
+            },
+        };
+        loadingHandler.startInterval();
+
+        Pace.on('hide', function() {
+            loadingHandler.clearInterval();
+            loadingHandler.setLoadingPercent(100);
+            setTimeout(function(){
+//                changeLoadingToPage1();
+            }, 1000);
+        });
+        // end pace加载
+
+    </script>
 </head>
 <body>
-    <p>英菲尼迪项目初始化</p>
+    <!-- H5 loading对话框 -->
+    <div class="dialog" id="loadingDialog">
+        <div class="contentFrame">
+            <img class="loading-logo" src="src/logo.jpg" />
+            <p class="loading-percent" id="loading-percent"></p>
+        </div>
+    </div>
+
+    <div >
+        <p>预约试驾</p>
+        <p>请详细填写一下信息，我们的经销商会第一时间</p>
+        <p>为您提供贴心的预约试驾服务</p>
+
+        <input placeholder="您的姓名" /><select><option>称谓</option><option>先生</option><option>女士</option></select>
+        <input placeholder="您的手机" />
+        <select>
+            <option>意向经销商</option>
+            <option>上海永达浦东店</option>
+            <option>上海永达浦西店</option>
+            <option>上海东昌店</option>
+        </select>
+        <div>提交预约试驾信息</div>
+    </div>
+
+    <div class="page-0">
+        <p>多重金融礼遇，随心驾享。</p>
+
+        <p>活动车型</p>
+        <
+    </div>
+    <div class="page-1">
+
+    </div>
+
+    <div id="orientLayer"><!-- 横屏提示 -->
+        <div class="contentFrame">
+            <img class="phone rotatePhoneAnimation" src="src/rotatePhone.png" />
+            <p class="tipTitle">为了更好的体验，请使用竖屏浏览</p>
+        </div>
+    </div>
+
+
     <script type="text/javascript" src="../public/scripts/jquery-1.12.1.min.js"></script>
     <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
     <script type="text/javascript" src="js/wx_share.js?201703061139"></script>
