@@ -13,7 +13,13 @@
            uri:'h5/storeComment?' + params + '&flag='+flag,
            success:function(json){
                alert(json.data);
-           }
+           },
+            error:function(e){
+                if(e.responseJSON){
+                    alert(e.responseJSON.message);
+                }else
+                    alert('您已参加活动，请继续浏览后续内容!');
+            }
        });
     });
 
@@ -24,6 +30,12 @@
             uri:'h5/storeProposer?' + params + '&flag='+flag,
             success:function(json){
                 alert(json.data);
+            },
+            error:function(e){
+                if(e.responseJSON){
+                    alert(e.responseJSON.message);
+                }else
+                    alert('您已参加活动，请继续浏览后续内容!');
             }
         });
     });
