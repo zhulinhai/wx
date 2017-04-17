@@ -30,7 +30,7 @@ var mainHandler = {
         });
         /* 点击关闭预约试驾 按钮 */
         $('#closeSubmitBtn').click(function () {
-            $('#submitDialog').hide();
+            $('#submitDialog').fadeOut(300);
         });
         /* 点击提交预约试驾信息  */
         $('.btnSubmit').click(mainHandler.submitInfo);
