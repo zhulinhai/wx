@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>蒙迪欧页面参数设置</title>
+    <script type="text/javascript" src="../public/scripts/jquery-1.12.1.min.js"></script>
+    <script type="text/javascript" src="../public/scripts/utils/httpUtil.js"></script>
+</head>
+<style>
+    label { font-size: 16px;}
+    .clear{  clear: both;  }
+    .row label{ float: left; }
+    .row div:nth-child(2) { float: left; text-align: left;border-bottom: 1px solid black;height: 17px; width: 100px;}
+</style>
+<body>
+<div>
+    <p style="color: red">蒙迪欧直播数据</p>
+    <div class="row">
+       <label>人气数:</label><div id="lives"></div>
+        <div class="clear"></div>
+    </div>
+    <div class="row">
+        <label>同时在线人数:</label><div id="audiences"></div>
+        <div class="clear"></div>
+    </div>
+    <input type="button" id="resetRedis" value="清空直播人气数据"/>
+</div>
+<div>
+    <p style="color: red">蒙迪欧直播跑圈数据</p>
+    <form>
+        <div>
+           <label>三环：</label><input type="text" id="tricyclic_turns" name="tricyclic_turns"/>
+        </div>
+        <div>
+            <label>四环：</label><input type="text" id="tetracyclic_turns" name="tetracyclic_turns" />
+        </div>
+            <label>五环：</label><input type="text" id="pentacyclic_turns" name="pentacyclic_turns" />
+        <div>
+            <label>已使用油量：</label><input type="text" id="used_gasoline" name="used_gasoline" />
+        </div>
+        <div class="row">
+            <label>总耗时：</label><div id="pastTime"></div>
+            <div class="clear"></div>
+        </div>
+    </form>
+    <div>
+     <input type="button" id="submit" value="提交挑战数据" /><input type="button" id="resetMondeoProps" value="重置挑战数据" />
+    </div>
+</div>
+</body>
+<script type="text/javascript">
+    var http;
+    var host = 'http://api.bjczxda.com/api/';
+
+    window.onload = function(){
+        http = new Http(host);
+        http.ajaxRequest({type:'GET',uri:'h5/getInitDatas?flag=MONDEO_20170501',success:function(json){
+            var data = json.data;
+            $('#lives').html(data.lives ? data.lives : 0);
+            $('#audiences').html(data.audiences ? data.audiences : 0);
+            $('#tricyclic_turns').val(data.tricyclic_turns);
+            $('#tetracyclic_turns').val(data.tetracyclic_turns);
+            $('#pentacyclic_turns').val(data.pentacyclic_turns);
+            $('#used_gasoline').val(data.used_gasoline);
+            $('#pastTime').html(data.pastTime ? data.pastTime : 0);
+        }});
+    }
+
+    $('#resetRedis').on('click',function(e){
+        var flag = confirm("是否清空蒙迪欧直播人气数，同时在线人数?");
+        if(flag){
+            http.ajaxRequest({type:'GET',uri:'h5/resetRedisDatas?flag=MONDEO_20170501',success:function(json){
+                var data = json.data;
+                $('#lives').html(0);
+                $('#audiences').html(0);
+                alert('已清空直播人气数!');
+            }});
+        }
+    });
+
+    $('#submit').on('click',function(e){
+        var params = $('form').serialize();
+        http.ajaxRequest({type:'GET',uri:'h5/updateMondeoProps?' + params + '&flag=MONDEO_20170501',success:function(json){
+            var data = json.data;
+            $('#tricyclic_turns').val(data.tricyclic_turns);
+            $('#tetracyclic_turns').val(data.tetracyclic_turns);
+            $('#pentacyclic_turns').val(data.pentacyclic_turns);
+            $('#used_gasoline').val(data.used_gasoline);
+            $('#pastTime').html(data.pastTime ? data.pastTime : 0);
+            alert('设置数据成功');
+        }});
+    });
+
+    $('#resetMondeoProps').on('click',function(e){
+        var flag = confirm("是重置空蒙迪欧挑战数据?");
+
+        if(flag){
+            http.ajaxRequest({type:'GET',uri:'h5/updateMondeoProps?reset=1',success:function(json){
+                var data = json.data;
+                $('#tricyclic_turns').val(data.tricyclic_turns);
+                $('#tetracyclic_turns').val(data.tetracyclic_turns);
+                $('#pentacyclic_turns').val(data.pentacyclic_turns);
+                $('#used_gasoline').val(data.used_gasoline);
+                $('#pastTime').html(data.pastTime ? data.pastTime : 0);
+                alert('重置蒙迪欧挑战数据成功');
+            }});
+        }
+    });
+</script>
+</html>
