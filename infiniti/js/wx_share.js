@@ -13,9 +13,9 @@
                 return alert(rt.message);
             }
 
-            var title ='行圆汽车2017新年团拜邀请函'; // 分享标题
+            var title ='英菲尼迪多重金融礼遇，随心驾享。'; // 分享标题
             var link ='http://wx.bjczxda.com/infiniti/index.html';
-            var desc = '守得一元终复始，自来万象始更新。'; // 分享描述
+            var desc = '英菲尼迪2017年上海车展诚邀您亲临共赏，尊享万元置换特权礼遇。'; // 分享描述
             var imgUrl = 'http://wx.bjczxda.com/infiniti/src/shareLogo.png';
 
             var wx_appId = rt.data.appId;

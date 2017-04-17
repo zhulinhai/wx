@@ -2919,11 +2919,9 @@ a:link, a:visited, a:hover, a:active {
       font-size: 0.7rem;
       background-color: black; }
 
-.page {
-  width: 100%;
-  height: 100%; }
-
 .page-0 {
+  width: 100%;
+  height: 100%;
   background: white url("../src/bg.jpg") no-repeat;
   background-size: 100% auto; }
   .page-0 .pTitle {
@@ -2976,25 +2974,37 @@ a:link, a:visited, a:hover, a:active {
       font-size: 0.7rem;
       background-color: black; }
 
-.page-1 .image-container {
+.page-1 {
+  display: none;
   width: 100%;
-  overflow: hidden; }
-  .page-1 .image-container .swiper-wrapper {
-    width: 100%; }
-    .page-1 .image-container .swiper-wrapper .swiper-slide img {
+  height: 100%;
+  background-color: white; }
+  .page-1 .image-container {
+    width: 100%;
+    overflow: hidden; }
+    .page-1 .image-container .swiper-wrapper {
       width: 100%; }
-.page-1 .logo {
-  display: block;
-  margin: 6rem auto 0;
-  width: 3.5rem; }
-.page-1 .btnDrive {
-  color: white;
-  text-align: center;
-  width: 15rem;
-  height: 1.5rem;
-  line-height: 1.5rem;
-  margin: 0 0.5rem 0.6rem 0.5rem;
-  font-size: 0.7rem;
-  background-color: black; }
+      .page-1 .image-container .swiper-wrapper .swiper-slide img {
+        width: 100%; }
+  .page-1 .info {
+    margin: 0 0.5rem;
+    line-height: 1.2rem;
+    font-size: 0.7rem;
+    color: #5A5A5B; }
+  .page-1 .logo {
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    margin-left: -1.75rem;
+    width: 3.5rem; }
+  .page-1 .btnDrive {
+    color: white;
+    text-align: center;
+    width: 4.5rem;
+    height: 1.5rem;
+    line-height: 1.5rem;
+    margin: 1rem auto 0;
+    font-size: 0.7rem;
+    background-color: black; }
 
 /*# sourceMappingURL=index.css.map */
