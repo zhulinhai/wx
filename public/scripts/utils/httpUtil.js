@@ -41,7 +41,7 @@ function Http(h){
                 },
                 error:function(e){
                     if(error && typeof error == 'function')
-                        error(json);
+                        error(e);
                     else{
                       if(e.responseJSON){
                           alert(e.responseJSON.message);
