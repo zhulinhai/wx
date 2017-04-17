@@ -6,6 +6,7 @@
     <title>蒙迪欧页面参数设置</title>
     <script type="text/javascript" src="../public/scripts/jquery-1.12.1.min.js"></script>
     <script type="text/javascript" src="../public/scripts/utils/httpUtil.js"></script>
+    <script type="text/javascript" src="../public/scripts/utils/commentUtil.js"></script>
 </head>
 <style>
     label { font-size: 16px;}
@@ -63,7 +64,7 @@
             $('#tetracyclic_turns').val(data.tetracyclic_turns);
             $('#pentacyclic_turns').val(data.pentacyclic_turns);
             $('#used_gasoline').val(data.used_gasoline);
-            $('#pastTime').html(data.pastTime ? data.pastTime : 0);
+            $('#pastTime').html(data.pastTime ? changeSecondToHms(data.pastTime) : 0);
         }});
     }
 
@@ -102,7 +103,7 @@
                 $('#tetracyclic_turns').val(data.tetracyclic_turns);
                 $('#pentacyclic_turns').val(data.pentacyclic_turns);
                 $('#used_gasoline').val(data.used_gasoline);
-                $('#pastTime').html(data.pastTime ? data.pastTime : 0);
+                $('#pastTime').html(data.pastTime ? changeSecondToHms(data.pastTime)  : 0);
                 alert('重置蒙迪欧挑战数据成功');
             }});
         }
