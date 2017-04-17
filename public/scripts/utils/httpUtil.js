@@ -39,12 +39,12 @@ function Http(h){
                     if(success && typeof success == 'function')
                         success(json);
                 },
-                error:function(error){
+                error:function(e){
                     if(error && typeof error == 'function')
                         error(json);
                     else{
-                      if(error.responseJSON){
-                          alert(error.responseJSON.message);
+                      if(e.responseJSON){
+                          alert(e.responseJSON.message);
                       }else
                          alert('Server Error!');
                     }
