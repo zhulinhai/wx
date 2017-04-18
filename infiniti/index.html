@@ -60,6 +60,9 @@
                 document.getElementById('loading-percent').innerHTML = progress + '%';
                 loadingHandler.curProgress = progress;
             },
+            changeLoadingToPage1: function () {
+                $('#loadingDialog').fadeOut(300);
+            }
         };
         loadingHandler.startInterval();
 
@@ -67,8 +70,7 @@
             loadingHandler.clearInterval();
             loadingHandler.setLoadingPercent(100);
             setTimeout(function(){
-//                changeLoadingToPage1();
-                $('#loadingDialog').hide();
+                loadingHandler.changeLoadingToPage1();
             }, 1000);
         });
         // end pace加载
@@ -77,7 +79,7 @@
 </head>
 <body>
     <!-- H5 loading对话框 -->
-    <div class="dialog" id="loadingDialog" style="display: none">
+    <div class="dialog" id="loadingDialog" style="display: block">
         <div class="contentFrame">
             <img class="loading-logo" src="src/logo.png" />
             <p class="loading-percent" id="loading-percent"></p>
@@ -89,9 +91,11 @@
             <p class="title">预约试驾</p>
             <p class="p1">请详细填写以下信息，我们的经销商会第一时间</p>
             <p class="p2">为您提供贴心的预约试驾服务</p>
-            <input class="i1" placeholder="您的姓名" /><select class="s1"><option>称谓</option><option>先生</option><option>女士</option></select>
-            <input placeholder="您的手机" />
-            <select>
+            <input type="hidden" name="flag" value="infiniti">
+            <input name="realname" id="realname" class="i1" placeholder="您的姓名" />
+            <select name="call" id="call" class="s1"><option>称谓</option><option>先生</option><option>女士</option></select>
+            <input name="mobile" id="mobile" placeholder="您的手机" />
+            <select name="dealer" id="dealer">
                 <option>意向经销商</option>
                 <option>上海永达浦东店</option>
                 <option>上海永达浦西店</option>
@@ -102,12 +106,10 @@
     </div>
     <div class="page page-0">
         <p class="pTitle">多重金融礼遇，随心驾享。</p>
-        <img class="logo" src="src/logo.png" />
         <div class="bottomFrame">
+            <img class="logo" src="src/logo.png" />
             <p class="actTitle">活动车型</p>
-            <div class="menu-container">
-                <div class="swiper-wrapper"></div>
-            </div>
+            <div class="menu-container"></div>
             <!-- 大图展示区域 -->
             <div class="banner-container">
                 <div class="swiper-wrapper"></div>
@@ -115,24 +117,20 @@
             <div id="btnDetail" class="btnDetail">了解详情</div>
         </div>
     </div>
-    <div class="page page-1">
+    <div class="page page-1" id="page-1">
+        <img class="title" />
         <div class="image-container">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <img src="src/banner/esq.jpg" />
-                </div>
-                <div class="swiper-slide">
-                    <img src="src/banner/esq.jpg" />
-                </div>
-                <div class="swiper-slide">
-                    <img src="src/banner/esq.jpg" />
-                </div>
-            </div>
+            <div class="swiper-wrapper"></div>
         </div>
-        <p class="info">日供100元及5年超长期贷款。</p>
-        <p class="info">最低首付和日供不能同时享受。</p>
-        <div id="btnDrive" class="btnDrive">预约试驾</div>
-        <img class="logo" src="src/logo.png" />
+        <div class="pagination"></div>
+        <div class="bottomFrame">
+            <div class="infoFrame">
+                <p id="policyInfo" class="info">日供100元及5年超长期贷款。日供100元及5年超长期贷款日供100元及5年超长期贷款</p>
+                <p class="info">最低首付和日供不能同时享受。</p>
+            </div>
+            <div id="btnDrive" class="btnDrive">预约试驾</div>
+            <img class="logo" src="src/logo.png" />
+        </div>
     </div>
 
     <div id="orientLayer"><!-- 横屏提示 -->
@@ -144,6 +142,8 @@
 
     <script type="text/javascript" src="../public/scripts/jquery-1.12.1.min.js"></script>
     <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script type="text/javascript" src="js/hammer.min.js"></script>
+    <script type="text/javascript" src="js/cookie.js"></script>
     <script type="text/javascript" src="js/swiper.min.js"></script>
     <script type="text/javascript" src="js/wx_share.js?201703061139"></script>
     <script type="text/javascript" src="js/data.js"></script>

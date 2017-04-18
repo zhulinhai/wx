@@ -16,7 +16,7 @@
             var title ='英菲尼迪多重金融礼遇，随心驾享。'; // 分享标题
             var link ='http://wx.bjczxda.com/infiniti/index.html';
             var desc = '英菲尼迪2017年上海车展诚邀您亲临共赏，尊享万元置换特权礼遇。'; // 分享描述
-            var imgUrl = 'http://wx.bjczxda.com/infiniti/src/shareLogo.png';
+            var imgUrl = 'http://wx.bjczxda.com/infiniti/src/shareLogo.jpg';
 
             var wx_appId = rt.data.appId;
             var wx_timestamp = rt.data.timestamp;

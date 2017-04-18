@@ -2840,7 +2840,7 @@ a:link, a:visited, a:hover, a:active {
   #submitDialog .contentFrame {
     position: absolute;
     top: 50%;
-    margin-top: -9.3rem;
+    margin-top: -9.8rem;
     margin-left: 1rem;
     width: 14rem;
     height: 19.6rem;
@@ -2919,9 +2919,16 @@ a:link, a:visited, a:hover, a:active {
       font-size: 0.7rem;
       background-color: black; }
 
-.page-0 {
+.page {
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
+  overflow: hidden;
+  z-index: 1; }
+
+.page-0 {
   background: white url("../src/bg.jpg") no-repeat;
   background-size: 100% auto; }
   .page-0 .pTitle {
@@ -2929,56 +2936,68 @@ a:link, a:visited, a:hover, a:active {
     font-size: 0.8rem;
     padding-top: 1rem;
     color: #5A5A5B; }
-  .page-0 .logo {
-    display: block;
-    margin: 6rem auto 0;
-    width: 3.5rem; }
   .page-0 .bottomFrame {
     position: absolute;
-    bottom: 0; }
+    bottom: 0;
+    transform-origin: bottom;
+    -webkit-transform-origin: bottom; }
+    .page-0 .bottomFrame .logo {
+      display: block;
+      margin: 0 auto;
+      width: 3.5rem; }
     .page-0 .bottomFrame .actTitle {
       text-align: center;
-      font-size: 0.6rem;
-      margin: 0.5rem 0;
+      font-size: 0.7rem;
+      margin: 1rem 0 0.5rem;
       color: #5A5A5B; }
     .page-0 .bottomFrame .menu-container {
       width: 15rem;
       height: 1.35rem;
-      margin: 0.5rem; }
-      .page-0 .bottomFrame .menu-container .swiper-wrapper {
-        width: 100%; }
-        .page-0 .bottomFrame .menu-container .swiper-wrapper .swiper-slide {
-          width: 2.25rem;
-          height: 1.25rem;
-          border: 1px solid #5A5A5B; }
-          .page-0 .bottomFrame .menu-container .swiper-wrapper .swiper-slide img {
-            display: block;
-            margin: 0.35rem auto 0;
-            width: 1.65rem;
-            height: 0.6rem; }
+      margin: 0.5rem;
+      overflow: hidden; }
+      .page-0 .bottomFrame .menu-container .item {
+        display: inline-block;
+        width: 2.23rem;
+        height: 1.25rem;
+        margin-right: 0.2rem;
+        border: 1px solid #5A5A5B;
+        background: white no-repeat center;
+        background-size: 1.65rem 0.6rem; }
+      .page-0 .bottomFrame .menu-container .item1 {
+        margin-right: 0; }
+      .page-0 .bottomFrame .menu-container .hover {
+        background-color: black; }
     .page-0 .bottomFrame .banner-container {
       width: 15rem;
-      margin-left: 0.5rem;
-      overflow: hidden; }
+      margin: 0.5rem; }
       .page-0 .bottomFrame .banner-container .swiper-wrapper {
-        width: 100%; }
-        .page-0 .bottomFrame .banner-container .swiper-wrapper .swiper-slide img {
+        width: 100%;
+        height: 9.35rem; }
+        .page-0 .bottomFrame .banner-container .swiper-wrapper .swiper-slide {
           width: 100%; }
+          .page-0 .bottomFrame .banner-container .swiper-wrapper .swiper-slide img {
+            width: 15rem;
+            height: 9.35rem; }
     .page-0 .bottomFrame .btnDetail {
       color: white;
       text-align: center;
       width: 15rem;
       height: 1.5rem;
       line-height: 1.5rem;
-      margin: 0 0.5rem 0.6rem 0.5rem;
+      margin: 0 0.5rem 1rem 0.5rem;
       font-size: 0.7rem;
       background-color: black; }
 
 .page-1 {
-  display: none;
-  width: 100%;
-  height: 100%;
+  top: 100%;
   background-color: white; }
+  .page-1 .title {
+    position: absolute;
+    width: 2.5rem;
+    top: 1rem;
+    left: 50%;
+    margin-left: -1.25rem;
+    z-index: 10; }
   .page-1 .image-container {
     width: 100%;
     overflow: hidden; }
@@ -2986,25 +3005,48 @@ a:link, a:visited, a:hover, a:active {
       width: 100%; }
       .page-1 .image-container .swiper-wrapper .swiper-slide img {
         width: 100%; }
-  .page-1 .info {
-    margin: 0 0.5rem;
-    line-height: 1.2rem;
-    font-size: 0.7rem;
-    color: #5A5A5B; }
-  .page-1 .logo {
+  .page-1 .pagination {
     position: absolute;
-    bottom: 1rem;
-    left: 50%;
-    margin-left: -1.75rem;
-    width: 3.5rem; }
-  .page-1 .btnDrive {
-    color: white;
     text-align: center;
-    width: 4.5rem;
-    height: 1.5rem;
-    line-height: 1.5rem;
-    margin: 1rem auto 0;
-    font-size: 0.7rem;
-    background-color: black; }
+    left: 50%;
+    margin-left: -6rem;
+    width: 12rem;
+    bottom: 11rem;
+    z-index: 10; }
+    .page-1 .pagination .swiper-pagination-bullet {
+      background: #C7C8C9; }
+    .page-1 .pagination .swiper-pagination-bullet-active {
+      background: black; }
+  .page-1 .bottomFrame {
+    position: absolute;
+    width: 100%;
+    height: 11rem;
+    bottom: 0;
+    background-color: white;
+    z-index: 10; }
+    .page-1 .bottomFrame .infoFrame {
+      width: 100%;
+      height: 4rem; }
+      .page-1 .bottomFrame .infoFrame .info {
+        margin: 0.8rem 1.5rem 0 0.5rem;
+        line-height: 0.8rem;
+        font-size: 0.6rem;
+        color: #5A5A5B;
+        padding-left: 1rem;
+        background: url("../src/dot.png") no-repeat 0.3rem 0.22rem;
+        background-size: 0.36rem; }
+    .page-1 .bottomFrame .logo {
+      display: block;
+      margin: 1rem auto;
+      width: 3.5rem; }
+    .page-1 .bottomFrame .btnDrive {
+      color: white;
+      text-align: center;
+      width: 4.5rem;
+      height: 1.5rem;
+      line-height: 1.5rem;
+      margin: 0.5rem auto 1rem;
+      font-size: 0.7rem;
+      background-color: black; }
 
 /*# sourceMappingURL=index.css.map */
