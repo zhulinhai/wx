@@ -49,10 +49,24 @@
      <input type="button" id="submit" value="提交挑战数据" /><input type="button" id="resetMondeoProps" value="重置挑战数据" />
     </div>
 </div>
+<div>
+    <div class="table_row marginTop"><p><img style="width:.45rem;" name="img_province"><span>省份</span></p>
+        <select id="province" name="province" data-action="changeProvince"><option>请选择</option></select>
+    </div>
+    <div class="table_row marginTop"><p><img style="width:.65rem;" name="img_city"><span>城市</span></p>
+        <select id="city" name="city" data-action="changeCity"><option>请选择</option></select>
+    </div>
+    <div class="table_row marginTop"><p><img style="width:.755rem;" name="img_dealer"><span>经销商</span></p>
+        <select id="dealer" name="dealer"><option>请选择</option></select>
+    </div>
+</div>
 </body>
 <script type="text/javascript">
     var http;
     var host = 'http://api.bjczxda.com/api/';
+    var provinces;
+    var cities;
+    var dealers;
 
     window.onload = function(){
         http = new Http(host);
@@ -66,7 +80,40 @@
             $('#used_gasoline').val(data.used_gasoline);
             $('#pastTime').html(data.pastTime ? changeSecondToHms(data.pastTime) : 0);
         }});
+
+        $.getJSON("datas/data.json",function(data){
+            provinces = data.province;
+            cities = data.city;
+            dealers = data.dealer;
+            for(var i = 0; i < provinces.length; i ++)
+                $('#province').append('<option>'+provinces[i].p+'</option>');
+        });
     }
+
+    $('#province').on('change',function(e){
+        $('#city').empty();
+        $('#city').html('<option>请选择</option>');
+        $('#dealer').empty();
+        $('#dealer').html('<option>请选择</option>');
+
+        if($('#province').val() != '请选择'){
+            for(var j = 0; j < cities.length; j++)
+                if(cities[j].p == $('#province').val())
+                    $('#city').append('<option>'+cities[j].c+'</option>');
+        }
+    });
+
+    $('#city').on('change',function(e){
+        $('#dealer').empty();
+        $('#dealer').html('<option>请选择</option>');
+
+        if($('#city').val() != '请选择'){
+            for(var j = 0; j < dealers.length; j++)
+                if(dealers[j].c == $('#city').val())
+                    $('#dealer').append('<option>'+dealers[j].d +'</option>');
+
+        }
+    });
 
     $('#resetRedis').on('click',function(e){
         var flag = confirm("是否清空蒙迪欧直播人气数，同时在线人数?");
@@ -103,7 +150,7 @@
                 $('#tetracyclic_turns').val(data.tetracyclic_turns);
                 $('#pentacyclic_turns').val(data.pentacyclic_turns);
                 $('#used_gasoline').val(data.used_gasoline);
-                $('#pastTime').html(data.pastTime ? changeSecondToHms(data.pastTime)  : 0);
+                $('#pastTime').html(data.pastTime ? changeSecondToHms(data.pastTime) : 0);
                 alert('重置蒙迪欧挑战数据成功');
             }});
         }
