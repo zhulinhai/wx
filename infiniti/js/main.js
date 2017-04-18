@@ -13,8 +13,13 @@ var mainHandler = {
         mainHandler.fixSize();
     },
     bindSwipes: function () {
-        var page1Touch = util.toucher(document.getElementById('page-1'));
-        page1Touch.on('swipeDown', function(e){
+        $('#page-1').on('swipeDown', function () {
+            mainHandler.changePage2To1();
+        });
+
+        var pageHammer = Hammer(document.getElementById("page-1"));
+        pageHammer.get('swipe').set({ direction: Hammer.DIRECTION_DOWN });
+        pageHammer.on("swipe",function(e){
             mainHandler.changePage2To1();
         });
     },
