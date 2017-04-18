@@ -62,6 +62,7 @@
             },
             changeLoadingToPage1: function () {
                 $('#loadingDialog').fadeOut(300);
+                setTimeout(mainHandler.page1Animation, 300);
             }
         };
         loadingHandler.startInterval();
@@ -105,7 +106,17 @@
         </div>
     </div>
     <div class="page page-0">
-        <p class="pTitle">多重金融礼遇，随心驾享。</p>
+        <p class="pTitle" style="display: none">多重金融礼遇，随心驾享。</p>
+        <div class="carFrame">
+            <img class="car-1" style="display: none" src="src/car/car-1.png" />
+            <img class="car-2" style="display: none" src="src/car/car-2.png" />
+            <img class="car-3" style="display: none" src="src/car/car-3.png" />
+            <img class="car-4" style="display: none" src="src/car/car-4.png" />
+            <img class="car-5" style="display: none" src="src/car/car-5.png" />
+            <img class="car-6" style="display: none" src="src/car/car-6.png" />
+            <img class="car-7" style="display: none" src="src/car/car-7.png" />
+            <img class="car-8" style="display: none" src="src/car/car-8.png" />
+        </div>
         <div class="bottomFrame">
             <img class="logo" src="src/logo.png" />
             <p class="actTitle">活动车型</p>
@@ -118,6 +129,7 @@
         </div>
     </div>
     <div class="page page-1" id="page-1">
+        <img class="arrowUp animated fadeInUp infinite" src="src/arrowUp.png" />
         <img class="title" />
         <div class="image-container">
             <div class="swiper-wrapper"></div>
