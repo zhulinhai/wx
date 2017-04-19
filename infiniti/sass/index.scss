@@ -1,13 +1,11 @@
 @import "common";
-@import "swiper.min.scss";
-@import "animate.min.scss";
 
 body,html {
   width: 100%;
   height: 100%;
   overflow: hidden;
   font-size: 20px;
-  font-family: "Microsoft YaHei UI", "微软雅黑", "宋体", sans-serif;
+  font-family: Verdana, sans-serif;
   user-select: none;
 }
 a {text-decoration: none;-webkit-tap-highlight-color: rgba(0, 0, 0, 0);color: white;}
@@ -107,7 +105,7 @@ a:link,a:visited,a:hover,a:active{text-decoration: none;}
       color: #5A5A5B;
       line-height: 1rem;
       text-align: center;
-      margin: 0 0.5rem 0.5rem;
+      margin-bottom: 0.5rem;
     }
     .p1 {
       padding-top: 0.5rem;
@@ -158,6 +156,67 @@ a:link,a:visited,a:hover,a:active{text-decoration: none;}
     padding-top: 1rem;
     color: #5A5A5B;
   }
+  .carFrame {
+    .car-1 {
+      position: absolute;
+      top: 5.7rem;
+      left: 50%;
+      margin-left: -8rem;
+      width: 2.65rem;
+    }
+    .car-2 {
+      position: absolute;
+      top: 5.7rem;
+      left: 50%;
+      margin-left: -6.7rem;
+      width: 3rem;
+    }
+    .car-3 {
+      position: absolute;
+      top: 5.6rem;
+      left: 50%;
+      margin-left: -5.3rem;
+      width: 3.5rem;
+    }
+    .car-4 {
+      position: absolute;
+      top: 5.4rem;
+      left: 50%;
+      margin-left: -3.5rem;
+      width: 3.4rem;
+    }
+    .car-5 {
+      position: absolute;
+      top: 5.2rem;
+      left: 50%;
+      margin-left: -1rem;
+      width: 2.7rem;
+    }
+    .car-6 {
+      position: absolute;
+      top: 5.4rem;
+      left: 50%;
+      margin-left: 1rem;
+      width: 3.3rem;
+      z-index: -1;
+    }
+    .car-7 {
+      position: absolute;
+      top: 5.6rem;
+      left: 50%;
+      margin-left: 2.9rem;
+      width: 3.1rem;
+      z-index: -2;
+    }
+    .car-8 {
+      position: absolute;
+      top: 5.7rem;
+      left: 50%;
+      margin-left: 4.8rem;
+      width: 3rem;
+      z-index: -3;
+    }
+  }
   .bottomFrame {
     position: absolute;
     bottom: 0;
@@ -185,8 +244,10 @@ a:link,a:visited,a:hover,a:active{text-decoration: none;}
         height: 1.25rem;
         margin-right: 0.2rem;
         border: 1px solid #5A5A5B;
-        background: white no-repeat center;
-        background-size: 1.65rem 0.6rem;
+        //background: white no-repeat center;
+        //background-size: 1.65rem 0.6rem;
+        background: white url("../src/title_sprite.png") no-repeat ;
+        background-size: 600% 200%;
       }
       .item1 { margin-right: 0; }
       .hover { background-color: black; }
@@ -226,10 +287,18 @@ a:link,a:visited,a:hover,a:active{text-decoration: none;}
   .title {
     position: absolute;
     width: 2.5rem;
-    top: 1rem;
+    top: 2rem;
     left: 50%;
     margin-left: -1.25rem;
     z-index: 10;
+  }
+  .arrowUp {
+    position: absolute;
+    width: 0.4rem;
+    left: 50%;
+    margin-left: -0.2rem;
+    margin-top: 0.5rem;
+    z-index: 2;
   }
   .image-container {
     width: 100%;
@@ -294,6 +363,6 @@ a:link,a:visited,a:hover,a:active{text-decoration: none;}
       background-color: black;
     }
   }
-
-
 }
+@import "swiper.min.scss";
+@import "animate.min.scss";

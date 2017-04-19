@@ -16,7 +16,6 @@ var mainHandler = {
         $('#page-1').on('swipeDown', function () {
             mainHandler.changePage2To1();
         });
-
         var pageHammer = Hammer(document.getElementById("page-1"));
         pageHammer.get('swipe').set({ direction: Hammer.DIRECTION_DOWN });
         pageHammer.on("swipe",function(e){
@@ -44,6 +43,19 @@ var mainHandler = {
             mainHandler.updateMenu($(this).index());
         });
     },
+    page1Animation: function () {
+        setTimeout(function () { $('.car-1').show().addClass('animated fadeInRight'); }, 700);
+        setTimeout(function () { $('.car-2').show().addClass('animated fadeInRight'); }, 1000);
+        setTimeout(function () { $('.car-3').show().addClass('animated fadeInRight'); }, 1300);
+        setTimeout(function () { $('.car-4').show().addClass('animated fadeInRight'); }, 1600);
+        setTimeout(function () { $('.car-5').show().addClass('animated zoomIn'); }, 1900);
+        setTimeout(function () { $('.car-6').show().addClass('animated fadeInLeft'); }, 2200);
+        setTimeout(function () { $('.car-7').show().addClass('animated fadeInLeft'); }, 2500);
+        setTimeout(function () { $('.car-8').show().addClass('animated fadeInLeft'); }, 2800);
+        setTimeout(function () {
+            $('.pTitle').show().addClass('animated bounceInDown');
+        }, 3500);
+    },
     changePage1To2: function() {
         $('.page-0').animate({'top': '-100%'}, 700);
         $('.page-1').animate({'top': '0'}, 700);
@@ -58,7 +70,6 @@ var mainHandler = {
         if (cNeedHeight > curHeight) {
             var scaleRate = curHeight / cNeedHeight;
             $('.page-0').find('.bottomFrame').css('-webkit-transform', 'scale(' + scaleRate + ')');
-            console.log('scaleRate:' + scaleRate);
         }
     },
     initSwiper: function () {
@@ -89,8 +100,8 @@ var mainHandler = {
     initContent: function () {
         var content = '';
         for (var i = 0; i < carsPlan.length; i ++) {
-            var url = 'src/' + carsPlan[i].normal;
-            content += '<div class="item' + (i==carsPlan.length -1?' item1':'') + '" style="background-image: url(' + url + ')" /></div>';
+            var percent = i * 20;
+            content += '<div class="item' + (i==carsPlan.length -1?' item1':'') + '" style="background-position: '+ percent + '% 0" ></div>';//background-image: url(' + url + ')
         }
         $('.menu-container').html(content);
         mainHandler.updateMenu(0);
@@ -105,11 +116,11 @@ var mainHandler = {
             var menuItems = $('.menu-container').find('.item');
             if (mainHandler.checkedIndex!= -1) {
                 $(menuItems[mainHandler.checkedIndex]).removeClass('hover');
-                $(menuItems[mainHandler.checkedIndex]).css('background-image', 'url(src/'+ carsPlan[mainHandler.checkedIndex].normal +')');
+                $(menuItems[mainHandler.checkedIndex]).css('background-position', mainHandler.checkedIndex * 20 + '% 0');
             }
             mainHandler.checkedIndex = index;
             $(menuItems[mainHandler.checkedIndex]).addClass('hover');
-            $(menuItems[mainHandler.checkedIndex]).css('background-image', 'url(src/'+ carsPlan[mainHandler.checkedIndex].hover +')');
+            $(menuItems[mainHandler.checkedIndex]).css('background-position', mainHandler.checkedIndex * 20 + '% 100%');
             mainHandler.bannerSwiper.slideTo(mainHandler.checkedIndex, 1000 ,false);
         }
     },

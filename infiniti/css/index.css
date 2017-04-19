@@ -71,6 +71,326 @@
   100% {
     -webkit-transform: rotate(0deg);
     transform: rotate(0deg); } }
+body, html {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-size: 20px;
+  font-family: Verdana, sans-serif;
+  user-select: none; }
+
+a {
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+  color: white; }
+
+a:link, a:visited, a:hover, a:active {
+  text-decoration: none; }
+
+#loadingDialog {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  z-index: 10; }
+  #loadingDialog .contentFrame {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -4.3rem;
+    margin-left: -2.3rem;
+    width: 4.6rem;
+    height: 4.6rem; }
+    #loadingDialog .contentFrame .loading-logo {
+      display: block;
+      margin: 0 auto;
+      width: 3.5rem; }
+    #loadingDialog .contentFrame .loading-percent {
+      margin-top: 1rem;
+      font-size: 0.6rem;
+      color: #5A5A5B;
+      text-align: center; }
+
+#submitDialog {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  z-index: 11; }
+  #submitDialog .contentFrame {
+    position: absolute;
+    top: 50%;
+    margin-top: -9.8rem;
+    margin-left: 1rem;
+    width: 14rem;
+    height: 19.6rem;
+    background: white url("../src/car-bottom.png") no-repeat center 15rem;
+    background-size: 8.2rem 4rem; }
+    #submitDialog .contentFrame input, #submitDialog .contentFrame select {
+      -webkit-appearance: none;
+      box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      /*Firefox3.5+*/
+      -webkit-box-sizing: border-box;
+      /*Safari3.2+*/
+      width: 12rem;
+      height: 1.5rem;
+      line-height: 1.5rem;
+      color: #5A5A5B;
+      font-size: 0.65rem;
+      border: 1px solid #5A5A5B;
+      border-radius: inherit;
+      background-color: transparent;
+      text-indent: 0.2rem;
+      margin-left: 1rem;
+      margin-top: 0.5rem; }
+    #submitDialog .contentFrame input::-webkit-input-placeholder {
+      color: #5A5A5B; }
+    #submitDialog .contentFrame input::-moz-placeholder {
+      color: #5A5A5B; }
+    #submitDialog .contentFrame input:-moz-placeholder {
+      color: #5A5A5B; }
+    #submitDialog .contentFrame select {
+      background: white url("../src/arrowDown.png") no-repeat 11rem center;
+      background-size: 0.5rem 0.3rem; }
+    #submitDialog .contentFrame .close {
+      position: absolute;
+      right: 0.5rem;
+      top: 0.5rem;
+      width: 1rem;
+      height: 1rem;
+      background: url("../src/close.png") no-repeat center;
+      background-size: 0.6rem; }
+    #submitDialog .contentFrame .title {
+      text-align: center;
+      width: 8rem;
+      margin-top: 0.5rem;
+      margin-left: 3rem;
+      line-height: 2rem;
+      font-size: 1rem;
+      color: #333; }
+    #submitDialog .contentFrame .p1, #submitDialog .contentFrame .p2 {
+      font-size: 0.6rem;
+      color: #5A5A5B;
+      line-height: 1rem;
+      text-align: center;
+      margin-bottom: 0.5rem; }
+    #submitDialog .contentFrame .p1 {
+      padding-top: 0.5rem;
+      margin-bottom: 0;
+      border-top: 1px solid #E3E3E4; }
+    #submitDialog .contentFrame .i1, #submitDialog .contentFrame .s1 {
+      float: left;
+      width: 5.5rem;
+      height: 1.5rem; }
+    #submitDialog .contentFrame .s1 {
+      float: right;
+      margin-right: 1rem;
+      background: white url("../src/arrowDown.png") no-repeat 4.5rem center;
+      background-size: 0.5rem 0.3rem; }
+    #submitDialog .contentFrame .btnSubmit {
+      color: white;
+      text-align: center;
+      width: 12rem;
+      height: 1.5rem;
+      line-height: 1.5rem;
+      margin-left: 1rem;
+      margin-top: 1rem;
+      font-size: 0.7rem;
+      background-color: black; }
+
+.page {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1; }
+
+.page-0 {
+  background: white url("../src/bg.jpg") no-repeat;
+  background-size: 100% auto; }
+  .page-0 .pTitle {
+    text-align: center;
+    font-size: 0.8rem;
+    padding-top: 1rem;
+    color: #5A5A5B; }
+  .page-0 .carFrame .car-1 {
+    position: absolute;
+    top: 5.7rem;
+    left: 50%;
+    margin-left: -8rem;
+    width: 2.65rem; }
+  .page-0 .carFrame .car-2 {
+    position: absolute;
+    top: 5.7rem;
+    left: 50%;
+    margin-left: -6.7rem;
+    width: 3rem; }
+  .page-0 .carFrame .car-3 {
+    position: absolute;
+    top: 5.6rem;
+    left: 50%;
+    margin-left: -5.3rem;
+    width: 3.5rem; }
+  .page-0 .carFrame .car-4 {
+    position: absolute;
+    top: 5.4rem;
+    left: 50%;
+    margin-left: -3.5rem;
+    width: 3.4rem; }
+  .page-0 .carFrame .car-5 {
+    position: absolute;
+    top: 5.2rem;
+    left: 50%;
+    margin-left: -1rem;
+    width: 2.7rem; }
+  .page-0 .carFrame .car-6 {
+    position: absolute;
+    top: 5.4rem;
+    left: 50%;
+    margin-left: 1rem;
+    width: 3.3rem;
+    z-index: -1; }
+  .page-0 .carFrame .car-7 {
+    position: absolute;
+    top: 5.6rem;
+    left: 50%;
+    margin-left: 2.9rem;
+    width: 3.1rem;
+    z-index: -2; }
+  .page-0 .carFrame .car-8 {
+    position: absolute;
+    top: 5.7rem;
+    left: 50%;
+    margin-left: 4.8rem;
+    width: 3rem;
+    z-index: -3; }
+  .page-0 .bottomFrame {
+    position: absolute;
+    bottom: 0;
+    transform-origin: bottom;
+    -webkit-transform-origin: bottom; }
+    .page-0 .bottomFrame .logo {
+      display: block;
+      margin: 0 auto;
+      width: 3.5rem; }
+    .page-0 .bottomFrame .actTitle {
+      text-align: center;
+      font-size: 0.7rem;
+      margin: 1rem 0 0.5rem;
+      color: #5A5A5B; }
+    .page-0 .bottomFrame .menu-container {
+      width: 15rem;
+      height: 1.35rem;
+      margin: 0.5rem;
+      overflow: hidden; }
+      .page-0 .bottomFrame .menu-container .item {
+        display: inline-block;
+        width: 2.23rem;
+        height: 1.25rem;
+        margin-right: 0.2rem;
+        border: 1px solid #5A5A5B;
+        background: white url("../src/title_sprite.png") no-repeat;
+        background-size: 600% 200%; }
+      .page-0 .bottomFrame .menu-container .item1 {
+        margin-right: 0; }
+      .page-0 .bottomFrame .menu-container .hover {
+        background-color: black; }
+    .page-0 .bottomFrame .banner-container {
+      width: 15rem;
+      margin: 0.5rem; }
+      .page-0 .bottomFrame .banner-container .swiper-wrapper {
+        width: 100%;
+        height: 9.35rem; }
+        .page-0 .bottomFrame .banner-container .swiper-wrapper .swiper-slide {
+          width: 100%; }
+          .page-0 .bottomFrame .banner-container .swiper-wrapper .swiper-slide img {
+            width: 15rem;
+            height: 9.35rem; }
+    .page-0 .bottomFrame .btnDetail {
+      color: white;
+      text-align: center;
+      width: 15rem;
+      height: 1.5rem;
+      line-height: 1.5rem;
+      margin: 0 0.5rem 1rem 0.5rem;
+      font-size: 0.7rem;
+      background-color: black; }
+
+.page-1 {
+  top: 100%;
+  background-color: white; }
+  .page-1 .title {
+    position: absolute;
+    width: 2.5rem;
+    top: 2rem;
+    left: 50%;
+    margin-left: -1.25rem;
+    z-index: 10; }
+  .page-1 .arrowUp {
+    position: absolute;
+    width: 0.4rem;
+    left: 50%;
+    margin-left: -0.2rem;
+    margin-top: 0.5rem;
+    z-index: 2; }
+  .page-1 .image-container {
+    width: 100%;
+    overflow: hidden; }
+    .page-1 .image-container .swiper-wrapper {
+      width: 100%; }
+      .page-1 .image-container .swiper-wrapper .swiper-slide img {
+        width: 100%; }
+  .page-1 .pagination {
+    position: absolute;
+    text-align: center;
+    left: 50%;
+    margin-left: -6rem;
+    width: 12rem;
+    bottom: 11rem;
+    z-index: 10; }
+    .page-1 .pagination .swiper-pagination-bullet {
+      background: #C7C8C9; }
+    .page-1 .pagination .swiper-pagination-bullet-active {
+      background: black; }
+  .page-1 .bottomFrame {
+    position: absolute;
+    width: 100%;
+    height: 11rem;
+    bottom: 0;
+    background-color: white;
+    z-index: 10; }
+    .page-1 .bottomFrame .infoFrame {
+      width: 100%;
+      height: 4rem; }
+      .page-1 .bottomFrame .infoFrame .info {
+        margin: 0.8rem 1.5rem 0 0.5rem;
+        line-height: 0.8rem;
+        font-size: 0.6rem;
+        color: #5A5A5B;
+        padding-left: 1rem;
+        background: url("../src/dot.png") no-repeat 0.3rem 0.22rem;
+        background-size: 0.36rem; }
+    .page-1 .bottomFrame .logo {
+      display: block;
+      margin: 1rem auto;
+      width: 3.5rem; }
+    .page-1 .bottomFrame .btnDrive {
+      color: white;
+      text-align: center;
+      width: 4.5rem;
+      height: 1.5rem;
+      line-height: 1.5rem;
+      margin: 0.5rem auto 1rem;
+      font-size: 0.7rem;
+      background-color: black; }
+
 /**
  * Swiper 3.1.0
  * Most modern mobile touch slider and framework with hardware accelerated transitions
@@ -2786,267 +3106,5 @@ Copyright (c) 2015 Daniel Eden
 .slideOutUp {
   -webkit-animation-name: slideOutUp;
   animation-name: slideOutUp; }
-
-body, html {
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  font-size: 20px;
-  font-family: "Microsoft YaHei UI", "微软雅黑", "宋体", sans-serif;
-  user-select: none; }
-
-a {
-  text-decoration: none;
-  -webkit-tap-highlight-color: transparent;
-  color: white; }
-
-a:link, a:visited, a:hover, a:active {
-  text-decoration: none; }
-
-#loadingDialog {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: white;
-  z-index: 10; }
-  #loadingDialog .contentFrame {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-top: -4.3rem;
-    margin-left: -2.3rem;
-    width: 4.6rem;
-    height: 4.6rem; }
-    #loadingDialog .contentFrame .loading-logo {
-      display: block;
-      margin: 0 auto;
-      width: 3.5rem; }
-    #loadingDialog .contentFrame .loading-percent {
-      margin-top: 1rem;
-      font-size: 0.6rem;
-      color: #5A5A5B;
-      text-align: center; }
-
-#submitDialog {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.2);
-  z-index: 11; }
-  #submitDialog .contentFrame {
-    position: absolute;
-    top: 50%;
-    margin-top: -9.8rem;
-    margin-left: 1rem;
-    width: 14rem;
-    height: 19.6rem;
-    background: white url("../src/car-bottom.png") no-repeat center 15rem;
-    background-size: 8.2rem 4rem; }
-    #submitDialog .contentFrame input, #submitDialog .contentFrame select {
-      -webkit-appearance: none;
-      box-sizing: border-box;
-      -moz-box-sizing: border-box;
-      /*Firefox3.5+*/
-      -webkit-box-sizing: border-box;
-      /*Safari3.2+*/
-      width: 12rem;
-      height: 1.5rem;
-      line-height: 1.5rem;
-      color: #5A5A5B;
-      font-size: 0.65rem;
-      border: 1px solid #5A5A5B;
-      border-radius: inherit;
-      background-color: transparent;
-      text-indent: 0.2rem;
-      margin-left: 1rem;
-      margin-top: 0.5rem; }
-    #submitDialog .contentFrame input::-webkit-input-placeholder {
-      color: #5A5A5B; }
-    #submitDialog .contentFrame input::-moz-placeholder {
-      color: #5A5A5B; }
-    #submitDialog .contentFrame input:-moz-placeholder {
-      color: #5A5A5B; }
-    #submitDialog .contentFrame select {
-      background: white url("../src/arrowDown.png") no-repeat 11rem center;
-      background-size: 0.5rem 0.3rem; }
-    #submitDialog .contentFrame .close {
-      position: absolute;
-      right: 0.5rem;
-      top: 0.5rem;
-      width: 1rem;
-      height: 1rem;
-      background: url("../src/close.png") no-repeat center;
-      background-size: 0.6rem; }
-    #submitDialog .contentFrame .title {
-      text-align: center;
-      width: 8rem;
-      margin-top: 0.5rem;
-      margin-left: 3rem;
-      line-height: 2rem;
-      font-size: 1rem;
-      color: #333; }
-    #submitDialog .contentFrame .p1, #submitDialog .contentFrame .p2 {
-      font-size: 0.6rem;
-      color: #5A5A5B;
-      line-height: 1rem;
-      text-align: center;
-      margin: 0 0.5rem 0.5rem; }
-    #submitDialog .contentFrame .p1 {
-      padding-top: 0.5rem;
-      margin-bottom: 0;
-      border-top: 1px solid #E3E3E4; }
-    #submitDialog .contentFrame .i1, #submitDialog .contentFrame .s1 {
-      float: left;
-      width: 5.5rem;
-      height: 1.5rem; }
-    #submitDialog .contentFrame .s1 {
-      float: right;
-      margin-right: 1rem;
-      background: white url("../src/arrowDown.png") no-repeat 4.5rem center;
-      background-size: 0.5rem 0.3rem; }
-    #submitDialog .contentFrame .btnSubmit {
-      color: white;
-      text-align: center;
-      width: 12rem;
-      height: 1.5rem;
-      line-height: 1.5rem;
-      margin-left: 1rem;
-      margin-top: 1rem;
-      font-size: 0.7rem;
-      background-color: black; }
-
-.page {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  z-index: 1; }
-
-.page-0 {
-  background: white url("../src/bg.jpg") no-repeat;
-  background-size: 100% auto; }
-  .page-0 .pTitle {
-    text-align: center;
-    font-size: 0.8rem;
-    padding-top: 1rem;
-    color: #5A5A5B; }
-  .page-0 .bottomFrame {
-    position: absolute;
-    bottom: 0;
-    transform-origin: bottom;
-    -webkit-transform-origin: bottom; }
-    .page-0 .bottomFrame .logo {
-      display: block;
-      margin: 0 auto;
-      width: 3.5rem; }
-    .page-0 .bottomFrame .actTitle {
-      text-align: center;
-      font-size: 0.7rem;
-      margin: 1rem 0 0.5rem;
-      color: #5A5A5B; }
-    .page-0 .bottomFrame .menu-container {
-      width: 15rem;
-      height: 1.35rem;
-      margin: 0.5rem;
-      overflow: hidden; }
-      .page-0 .bottomFrame .menu-container .item {
-        display: inline-block;
-        width: 2.23rem;
-        height: 1.25rem;
-        margin-right: 0.2rem;
-        border: 1px solid #5A5A5B;
-        background: white no-repeat center;
-        background-size: 1.65rem 0.6rem; }
-      .page-0 .bottomFrame .menu-container .item1 {
-        margin-right: 0; }
-      .page-0 .bottomFrame .menu-container .hover {
-        background-color: black; }
-    .page-0 .bottomFrame .banner-container {
-      width: 15rem;
-      margin: 0.5rem; }
-      .page-0 .bottomFrame .banner-container .swiper-wrapper {
-        width: 100%;
-        height: 9.35rem; }
-        .page-0 .bottomFrame .banner-container .swiper-wrapper .swiper-slide {
-          width: 100%; }
-          .page-0 .bottomFrame .banner-container .swiper-wrapper .swiper-slide img {
-            width: 15rem;
-            height: 9.35rem; }
-    .page-0 .bottomFrame .btnDetail {
-      color: white;
-      text-align: center;
-      width: 15rem;
-      height: 1.5rem;
-      line-height: 1.5rem;
-      margin: 0 0.5rem 1rem 0.5rem;
-      font-size: 0.7rem;
-      background-color: black; }
-
-.page-1 {
-  top: 100%;
-  background-color: white; }
-  .page-1 .title {
-    position: absolute;
-    width: 2.5rem;
-    top: 1rem;
-    left: 50%;
-    margin-left: -1.25rem;
-    z-index: 10; }
-  .page-1 .image-container {
-    width: 100%;
-    overflow: hidden; }
-    .page-1 .image-container .swiper-wrapper {
-      width: 100%; }
-      .page-1 .image-container .swiper-wrapper .swiper-slide img {
-        width: 100%; }
-  .page-1 .pagination {
-    position: absolute;
-    text-align: center;
-    left: 50%;
-    margin-left: -6rem;
-    width: 12rem;
-    bottom: 11rem;
-    z-index: 10; }
-    .page-1 .pagination .swiper-pagination-bullet {
-      background: #C7C8C9; }
-    .page-1 .pagination .swiper-pagination-bullet-active {
-      background: black; }
-  .page-1 .bottomFrame {
-    position: absolute;
-    width: 100%;
-    height: 11rem;
-    bottom: 0;
-    background-color: white;
-    z-index: 10; }
-    .page-1 .bottomFrame .infoFrame {
-      width: 100%;
-      height: 4rem; }
-      .page-1 .bottomFrame .infoFrame .info {
-        margin: 0.8rem 1.5rem 0 0.5rem;
-        line-height: 0.8rem;
-        font-size: 0.6rem;
-        color: #5A5A5B;
-        padding-left: 1rem;
-        background: url("../src/dot.png") no-repeat 0.3rem 0.22rem;
-        background-size: 0.36rem; }
-    .page-1 .bottomFrame .logo {
-      display: block;
-      margin: 1rem auto;
-      width: 3.5rem; }
-    .page-1 .bottomFrame .btnDrive {
-      color: white;
-      text-align: center;
-      width: 4.5rem;
-      height: 1.5rem;
-      line-height: 1.5rem;
-      margin: 0.5rem auto 1rem;
-      font-size: 0.7rem;
-      background-color: black; }
 
 /*# sourceMappingURL=index.css.map */
