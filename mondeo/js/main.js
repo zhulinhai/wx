@@ -16,38 +16,59 @@
         support:0, //支持挑战成功人数
         nonsupport:0 //不支持人数
     };
+    /**
+     * 忽略部分ajax请求
+     * @type {{ajax: {ignoreURLs: *[]}}}
+     */
+    Pace.options = {
+        ajax: {
+            ignoreURLs: [host+'h5/storeComment'
+                , host+'h5/storeProposer']
+        }
+    }
 
-    $('#submitComment').on('click',function(e){
-       var params = $('form:first').serialize();
-        http.ajaxRequest({
-           type:'GET',
-           uri:'h5/storeComment?' + params + '&flag='+flag,
-           success:function(json){
-               alert(json.data);
-           },
-            error:function(e){
-                if(e.responseJSON){
-                    alert(e.responseJSON.message);
-                }else
-                    alert('您已参加活动，请继续浏览后续内容!');
-            }
-       });
+    /**
+     * 完成加载
+     */
+    Pace.once('hide', function(e){
+
+        bindEvent();
     });
 
-    $('#submitApply').on('click',function(e){
-        var params = $('form:last').serialize();
-        http.ajaxRequest({
-            type:'GET',
-            uri:'h5/storeProposer?' + params + '&flag='+flag,
-            success:function(json){
-                alert(json.data);
-            },
-            error:function(e){
-                if(e.responseJSON){
-                    alert(e.responseJSON.message);
-                }else
-                    alert('您已参加活动，请继续浏览后续内容!');
-            }
+    function bindEvent(){
+
+        $('#submitComment').on('click',function(e){
+            var params = $('form:first').serialize();
+            http.ajaxRequest({
+                type:'GET',
+                uri:'h5/storeComment?' + params + '&flag='+flag,
+                success:function(json){
+                    alert(json.data);
+                },
+                error:function(e){
+                    if(e.responseJSON){
+                        alert(e.responseJSON.message);
+                    }else
+                        alert('您已参加活动，请继续浏览后续内容!');
+                }
+            });
         });
-    });
+
+        $('#submitApply').on('click',function(e){
+            var params = $('form:last').serialize();
+            http.ajaxRequest({
+                type:'GET',
+                uri:'h5/storeProposer?' + params + '&flag='+flag,
+                success:function(json){
+                    alert(json.data);
+                },
+                error:function(e){
+                    if(e.responseJSON){
+                        alert(e.responseJSON.message);
+                    }else
+                        alert('您已参加活动，请继续浏览后续内容!');
+                }
+            });
+        });
+    }
 })($)
