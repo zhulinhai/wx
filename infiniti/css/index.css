@@ -216,61 +216,69 @@ a:link, a:visited, a:hover, a:active {
   background: white url("../src/bg.jpg") no-repeat;
   background-size: 100% auto; }
   .page-0 .pTitle {
+    position: absolute;
+    width: 100%;
     text-align: center;
     font-size: 0.8rem;
-    padding-top: 1rem;
-    color: #5A5A5B; }
+    margin-top: 1rem;
+    color: #5A5A5B;
+    z-index: 8; }
   .page-0 .carFrame .car-1 {
     position: absolute;
     top: 5.7rem;
     left: 50%;
     margin-left: -8rem;
-    width: 2.65rem; }
+    width: 2.65rem;
+    z-index: 2; }
   .page-0 .carFrame .car-2 {
     position: absolute;
     top: 5.7rem;
     left: 50%;
     margin-left: -6.7rem;
-    width: 3rem; }
+    width: 3rem;
+    z-index: 3; }
   .page-0 .carFrame .car-3 {
     position: absolute;
     top: 5.6rem;
     left: 50%;
     margin-left: -5.3rem;
-    width: 3.5rem; }
+    width: 3.5rem;
+    z-index: 4; }
   .page-0 .carFrame .car-4 {
     position: absolute;
     top: 5.4rem;
     left: 50%;
     margin-left: -3.5rem;
-    width: 3.4rem; }
+    width: 3.4rem;
+    z-index: 5; }
   .page-0 .carFrame .car-5 {
     position: absolute;
     top: 5.2rem;
     left: 50%;
     margin-left: -1rem;
-    width: 2.7rem; }
+    width: 2.7rem;
+    z-index: 6; }
   .page-0 .carFrame .car-6 {
     position: absolute;
     top: 5.4rem;
     left: 50%;
     margin-left: 1rem;
     width: 3.3rem;
-    z-index: -1; }
+    z-index: 5; }
   .page-0 .carFrame .car-7 {
     position: absolute;
     top: 5.6rem;
     left: 50%;
     margin-left: 2.9rem;
     width: 3.1rem;
-    z-index: -2; }
+    z-index: 4; }
   .page-0 .carFrame .car-8 {
     position: absolute;
     top: 5.7rem;
     left: 50%;
     margin-left: 4.8rem;
     width: 3rem;
-    z-index: -3; }
+    z-index: 3; }
   .page-0 .bottomFrame {
     position: absolute;
     bottom: 0;
