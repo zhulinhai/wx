@@ -44,14 +44,14 @@ var mainHandler = {
         });
     },
     page1Animation: function () {
-        setTimeout(function () { $('.car-1').show().addClass('animated fadeInRight'); }, 700);
-        setTimeout(function () { $('.car-2').show().addClass('animated fadeInRight'); }, 1000);
-        setTimeout(function () { $('.car-3').show().addClass('animated fadeInRight'); }, 1300);
-        setTimeout(function () { $('.car-4').show().addClass('animated fadeInRight'); }, 1600);
-        setTimeout(function () { $('.car-5').show().addClass('animated zoomIn'); }, 1900);
-        setTimeout(function () { $('.car-6').show().addClass('animated fadeInLeft'); }, 2200);
-        setTimeout(function () { $('.car-7').show().addClass('animated fadeInLeft'); }, 2500);
-        setTimeout(function () { $('.car-8').show().addClass('animated fadeInLeft'); }, 2800);
+        setTimeout(function () { $('.car-1').show().addClass('animated fadeInRight'); }, 2800);
+        setTimeout(function () { $('.car-2').show().addClass('animated fadeInRight'); }, 2100);
+        setTimeout(function () { $('.car-3').show().addClass('animated fadeInRight'); }, 1400);
+        setTimeout(function () { $('.car-4').show().addClass('animated fadeInRight'); }, 700);
+        setTimeout(function () { $('.car-5').show().addClass('animated zoomIn'); }, 0);
+        setTimeout(function () { $('.car-6').show().addClass('animated fadeInLeft'); }, 700);
+        setTimeout(function () { $('.car-7').show().addClass('animated fadeInLeft'); }, 1400);
+        setTimeout(function () { $('.car-8').show().addClass('animated fadeInLeft'); }, 2100);
         setTimeout(function () {
             $('.pTitle').show().addClass('animated bounceInDown');
         }, 3500);
@@ -59,6 +59,7 @@ var mainHandler = {
     changePage1To2: function() {
         $('.page-0').animate({'top': '-100%'}, 700);
         $('.page-1').animate({'top': '0'}, 700);
+        $('.arrowUp').show();
     },
     changePage2To1: function () {
         $('.page-0').animate({'top': '0'}, 700);
