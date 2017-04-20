@@ -38,11 +38,22 @@
         </div>
             <label>五环：</label><input type="text" id="pentacyclic_turns" name="pentacyclic_turns" />
         <div>
-            <label>已使用油量：</label><input type="text" id="used_gasoline" name="used_gasoline" />
+            <label>三环已使用油量：</label><input type="text" id="used_gasoline" name="used_gasoline" />
         </div>
-        <div class="row">
-            <label>总耗时：</label><div id="pastTime"></div>
-            <div class="clear"></div>
+        <div>
+            <label>四环已使用油量：</label><input type="text" id="used_gasonline_tera" name="used_gasonline_tera" />
+        </div>
+        <div>
+            <label>五环已使用油量：</label><input type="text" id="used_gasonline_penta" name="used_gasonline_penta" />
+        </div>
+        <div>
+            <label>三环总耗时：</label><input type="text" id="used_time_tri" name="used_time_tri" />
+        </div>
+        <div>
+            <label>四环总耗时：</label><input type="text" id="used_time_tera" name="used_time_tera" />
+        </div>
+        <div>
+            <label>五环总耗时：</label><input type="text" id="used_time_penta" name="used_time_penta" />
         </div>
     </form>
     <div>
@@ -64,6 +75,7 @@
 <script type="text/javascript">
     var http;
     var host = 'http://api.bjczxda.com/api/';
+//    var host = 'http://localhost:9090/api/';
     var provinces;
     var cities;
     var dealers;
@@ -74,11 +86,16 @@
             var data = json.data;
             $('#lives').html(data.lives ? data.lives : 0);
             $('#audiences').html(data.audiences ? data.audiences : 0);
+            $('#used_time_tri').val(data.used_time_tri);
+            $('#used_time_tera').val(data.used_time_tera);
+            $('#used_time_penta').val(data.used_time_penta);
             $('#tricyclic_turns').val(data.tricyclic_turns);
             $('#tetracyclic_turns').val(data.tetracyclic_turns);
             $('#pentacyclic_turns').val(data.pentacyclic_turns);
             $('#used_gasoline').val(data.used_gasoline);
-            $('#pastTime').html(data.pastTime ? changeSecondToHms(data.pastTime) : 0);
+            $('#used_gasonline_tera').val(data.used_gasonline_tera);
+            $('#used_gasonline_penta').val(data.used_gasonline_penta);
+
         }});
 
         $.getJSON("datas/data.json",function(data){
@@ -131,11 +148,15 @@
         var params = $('form').serialize();
         http.ajaxRequest({type:'GET',uri:'h5/updateMondeoProps?' + params + '&flag=MONDEO_20170501',success:function(json){
             var data = json.data;
+            $('#used_time_tri').val(data.used_time_tri);
+            $('#used_time_tera').val(data.used_time_tera);
+            $('#used_time_penta').val(data.used_time_penta);
             $('#tricyclic_turns').val(data.tricyclic_turns);
             $('#tetracyclic_turns').val(data.tetracyclic_turns);
             $('#pentacyclic_turns').val(data.pentacyclic_turns);
             $('#used_gasoline').val(data.used_gasoline);
-            $('#pastTime').html(data.pastTime ? changeSecondToHms(data.pastTime) : 0);
+            $('#used_gasonline_tera').val(data.used_gasonline_tera);
+            $('#used_gasonline_penta').val(data.used_gasonline_penta);
             alert('设置数据成功');
         }});
     });
@@ -146,11 +167,15 @@
         if(flag){
             http.ajaxRequest({type:'GET',uri:'h5/updateMondeoProps?reset=1',success:function(json){
                 var data = json.data;
+                $('#used_time_tri').val(data.used_time_tri);
+                $('#used_time_tera').val(data.used_time_tera);
+                $('#used_time_penta').val(data.used_time_penta);
                 $('#tricyclic_turns').val(data.tricyclic_turns);
                 $('#tetracyclic_turns').val(data.tetracyclic_turns);
                 $('#pentacyclic_turns').val(data.pentacyclic_turns);
                 $('#used_gasoline').val(data.used_gasoline);
-                $('#pastTime').html(data.pastTime ? changeSecondToHms(data.pastTime) : 0);
+                $('#used_gasonline_tera').val(data.used_gasonline_tera);
+                $('#used_gasonline_penta').val(data.used_gasonline_penta);
                 alert('重置蒙迪欧挑战数据成功');
             }});
         }

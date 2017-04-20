@@ -37,7 +37,7 @@
 
     function bindEvent(){
 
-        $('#submitComment').on('click',function(e){
+        $('#submitComment').hammer().bind('tap',function(e){
             var params = $('form:first').serialize();
             http.ajaxRequest({
                 type:'GET',
@@ -54,7 +54,7 @@
             });
         });
 
-        $('#submitApply').on('click',function(e){
+        $('#submitApply').hammer().bind('tap',function(e){
             var params = $('form:last').serialize();
             http.ajaxRequest({
                 type:'GET',
