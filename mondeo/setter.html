@@ -49,12 +49,12 @@
         <div>
             <label>三环总耗时：</label><input type="text" id="used_time_tri" name="used_time_tri" />
         </div>
-        <div>
-            <label>四环总耗时：</label><input type="text" id="used_time_tera" name="used_time_tera" />
-        </div>
-        <div>
-            <label>五环总耗时：</label><input type="text" id="used_time_penta" name="used_time_penta" />
-        </div>
+        <!--<div>-->
+            <!--<label>四环总耗时：</label><input type="text" id="used_time_tera" name="used_time_tera" />-->
+        <!--</div>-->
+        <!--<div>-->
+            <!--<label>五环总耗时：</label><input type="text" id="used_time_penta" name="used_time_penta" />-->
+        <!--</div>-->
     </form>
     <div>
      <input type="button" id="submit" value="提交挑战数据" /><input type="button" id="resetMondeoProps" value="重置挑战数据" />
@@ -87,8 +87,8 @@
             $('#lives').html(data.lives ? data.lives : 0);
             $('#audiences').html(data.audiences ? data.audiences : 0);
             $('#used_time_tri').val(data.used_time_tri);
-            $('#used_time_tera').val(data.used_time_tera);
-            $('#used_time_penta').val(data.used_time_penta);
+//            $('#used_time_tera').val(data.used_time_tera);
+//            $('#used_time_penta').val(data.used_time_penta);
             $('#tricyclic_turns').val(data.tricyclic_turns);
             $('#tetracyclic_turns').val(data.tetracyclic_turns);
             $('#pentacyclic_turns').val(data.pentacyclic_turns);
@@ -149,8 +149,8 @@
         http.ajaxRequest({type:'GET',uri:'h5/updateMondeoProps?' + params + '&flag=MONDEO_20170501',success:function(json){
             var data = json.data;
             $('#used_time_tri').val(data.used_time_tri);
-            $('#used_time_tera').val(data.used_time_tera);
-            $('#used_time_penta').val(data.used_time_penta);
+//            $('#used_time_tera').val(data.used_time_tera);
+//            $('#used_time_penta').val(data.used_time_penta);
             $('#tricyclic_turns').val(data.tricyclic_turns);
             $('#tetracyclic_turns').val(data.tetracyclic_turns);
             $('#pentacyclic_turns').val(data.pentacyclic_turns);
@@ -168,8 +168,8 @@
             http.ajaxRequest({type:'GET',uri:'h5/updateMondeoProps?reset=1',success:function(json){
                 var data = json.data;
                 $('#used_time_tri').val(data.used_time_tri);
-                $('#used_time_tera').val(data.used_time_tera);
-                $('#used_time_penta').val(data.used_time_penta);
+//                $('#used_time_tera').val(data.used_time_tera);
+//                $('#used_time_penta').val(data.used_time_penta);
                 $('#tricyclic_turns').val(data.tricyclic_turns);
                 $('#tetracyclic_turns').val(data.tetracyclic_turns);
                 $('#pentacyclic_turns').val(data.pentacyclic_turns);
