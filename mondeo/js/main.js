@@ -19,6 +19,7 @@
         nonsupport:0, //不支持人数
         active_state:0 // 活动状态 0：活动前期 1：活动中期（直播） 2：活动后期（直播结束）
     };
+
     /**
      * videojs 对象
      * @type {null}
