@@ -94,23 +94,6 @@
                     }
                 });
 
-                wx.onVoiceRecordEnd({
-                    // 录音时间超过一分钟没有停止的时候会执行 complete 回调
-                    complete: function (res) {
-                        var localId = res.localId;
-                    }
-                });
-
-                wx.stopRecord({
-                    success: function (res) {
-                        var localId = res.localId;
-                    }
-                });
-
-                wx.playVoice({
-                    localId: '' // 需要播放的音频的本地ID，由stopRecord接口获得
-                });
-
             });
         },
         error:function(error){

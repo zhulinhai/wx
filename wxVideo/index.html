@@ -6,10 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <title>微信语音录制</title>
+    <style type="text/css">
+        button {
+            margin-right: 20px;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
-    <button onclick="javascript:wxVideoPlayer.startRecord();">开始录音</button>
-    <button onclick="javascript:wxVideoPlayer.stopRecord();">停止录音</button>
+    <button onclick="javascript:wxVideoPlayer.startRecord();">开始录制</button>
+    <button onclick="javascript:wxVideoPlayer.stopRecord();">停止录制</button>
 
     <button onclick="javascript:wxVideoPlayer.playVoice(wxVideoPlayer.gLocalId);">播放录音</button>
     <button onclick="javascript:wxVideoPlayer.pauseVoice(wxVideoPlayer.gLocalId);">暂停录音</button>
@@ -36,7 +42,7 @@
                     // 录音时间超过一分钟没有停止的时候会执行 complete 回调
                     complete: function (res) {
                         wxVideoPlayer.glocalId = res.localId;
-                        alert("录音结果");
+                        alert(wxVideoPlayer.glocalId);
                     }
                 });
             },
