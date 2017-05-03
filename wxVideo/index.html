@@ -42,7 +42,7 @@
                     // 录音时间超过一分钟没有停止的时候会执行 complete 回调
                     complete: function (res) {
                         gLocalId = res.localId;
-                        alert(wxVideoPlayer.glocalId);
+                        alert(gLocalId);
                     }
                 });
             },
@@ -55,6 +55,7 @@
                 });
             },
             playVoice: function () {
+                alert("播放音频："+gLocalId);
                 wx.playVoice({
                     localId: gLocalId // 需要播放的音频的本地ID，由stopRecord接口获得
                 });
