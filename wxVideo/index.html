@@ -125,6 +125,7 @@
     <script type="text/javascript" src="../public/scripts/jquery-1.12.1.min.js"></script>
     <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
     <script>
+        var param = 'url='+encodeURIComponent(location.href);
         $.ajax({
             type: 'GET',
             url: 'http://api.bobo119.com/api/wx/signature?' + param,
@@ -134,11 +135,6 @@
                 if (!rt.success) {
                     return alert(rt.message);
                 }
-
-                var title = '英菲尼迪多重金融礼遇，随心驾享。'; // 分享标题
-                var link = 'http://wx.bjczxda.com/infiniti/index.html';
-                var desc = '英菲尼迪2017年上海车展诚邀您亲临共赏，尊享万元置换特权礼遇。'; // 分享描述
-                var imgUrl = 'http://wx.bjczxda.com/infiniti/src/shareLogo.jpg';
 
                 var wx_appId = rt.data.appId;
                 var wx_timestamp = rt.data.timestamp;
