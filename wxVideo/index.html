@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>微信语音录制</title>
+</head>
+<body>
+    <button onclick="javascript:wxVideoPlayer.startRecord();">开始录音</button>
+    <button onclick="javascript:wxVideoPlayer.stopRecord();">停止录音</button>
+
+    <button onclick="javascript:wxVideoPlayer.playVoice(wxVideoPlayer.gLocalId);">播放录音</button>
+    <button onclick="javascript:wxVideoPlayer.pauseVoice(wxVideoPlayer.gLocalId);">暂停录音</button>
+    <button onclick="javascript:wxVideoPlayer.stopVoice(wxVideoPlayer.gLocalId);">停止录音</button>
+    <button onclick="javascript:wxVideoPlayer.translateVoice(wxVideoPlayer.gLocalId);">转义语音</button>
+
+    <p>转义结果：</p>
+    <p id="result">暂无结果</p>
+
+    <script type="text/javascript" src="../public/scripts/jquery-1.12.1.min.js"></script>
+    <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script type="text/javascript" src="js/wx_share.js?v20170418"></script>
+    <script type="text/javascript">
+
+        let wxVideoPlayer = {
+            gLocalId: -1,
+            init: function () {
+
+            },
+            startRecord: function () {
+                alert("开始录音");
+                wx.startRecord();
+                wx.onVoiceRecordEnd({
+                    // 录音时间超过一分钟没有停止的时候会执行 complete 回调
+                    complete: function (res) {
+                        wxVideoPlayer.glocalId = res.localId;
+                        alert("录音结果");
+                    }
+                });
+            },
+            stopRecord: function () {
+                alert("停止录音");
+                wx.stopRecord({
+                    success: function (res) {
+                        wxVideoPlayer.glocalId = res.localId;
+                    }
+                });
+            },
+            playVoice: function (voiceId) {
+                alert("播放录音");
+                wx.playVoice({
+                    localId: voiceId // 需要播放的音频的本地ID，由stopRecord接口获得
+                });
+
+                wx.onVoicePlayEnd({
+                    success: function (res) {
+                        wxVideoPlayer.glocalId = res.localId; // 返回音频的本地ID
+                    }
+                });
+            },
+            pauseVoice: function pauseVoice(voiceId) {
+                alert("暂停播放");
+                wx.pauseVoice({
+                    localId: voiceId // 需要暂停的音频的本地ID，由stopRecord接口获得
+                });
+            },
+            stopVoice: function (voiceId) {
+                alert("停止播放");
+                wx.stopVoice({
+                    localId: voiceId // 需要停止的音频的本地ID，由stopRecord接口获得
+                });
+            },
+            translateVoice: function translateVoice(voiceId) {
+                wx.translateVoice({
+                    localId: voiceId, // 需要识别的音频的本地Id，由录音相关接口获得
+                    isShowProgressTips: 1, // 默认为1，显示进度提示
+                    success: function (res) {
+                        alert(res.translateResult); // 语音识别的结果
+                        $('#result').html(res.translateResult);
+                    }
+                });
+            }
+
+        };
+        wxVideoPlayer.init();
+        
+    </script>
+</body>
+</html>
