@@ -47,15 +47,14 @@
                 });
             },
             stopRecord: function () {
-                alert("停止录音");
                 wx.stopRecord({
                     success: function (res) {
                         wxVideoPlayer.glocalId = res.localId;
+                        alert("停止录音");
                     }
                 });
             },
             playVoice: function (voiceId) {
-                alert("播放录音");
                 wx.playVoice({
                     localId: voiceId // 需要播放的音频的本地ID，由stopRecord接口获得
                 });
@@ -63,14 +62,15 @@
                 wx.onVoicePlayEnd({
                     success: function (res) {
                         wxVideoPlayer.glocalId = res.localId; // 返回音频的本地ID
+                        alert("播放录音");
                     }
                 });
             },
             pauseVoice: function pauseVoice(voiceId) {
-                alert("暂停播放");
                 wx.pauseVoice({
                     localId: voiceId // 需要暂停的音频的本地ID，由stopRecord接口获得
                 });
+                alert("暂停播放");
             },
             stopVoice: function (voiceId) {
                 alert("停止播放");
