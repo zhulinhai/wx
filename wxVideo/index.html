@@ -73,10 +73,10 @@
                 alert("暂停播放");
             },
             stopVoice: function (voiceId) {
-                alert("停止播放");
                 wx.stopVoice({
                     localId: voiceId // 需要停止的音频的本地ID，由stopRecord接口获得
                 });
+                alert("停止播放");
             },
             translateVoice: function translateVoice(voiceId) {
                 wx.translateVoice({
