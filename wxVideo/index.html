@@ -17,10 +17,10 @@
     <button onclick="javascript:wxVideoPlayer.startRecord();">开始录制</button>
     <button onclick="javascript:wxVideoPlayer.stopRecord();">停止录制</button>
 
-    <button onclick="javascript:wxVideoPlayer.playVoice(wxVideoPlayer.gLocalId);">播放录音</button>
-    <button onclick="javascript:wxVideoPlayer.pauseVoice(wxVideoPlayer.gLocalId);">暂停录音</button>
-    <button onclick="javascript:wxVideoPlayer.stopVoice(wxVideoPlayer.gLocalId);">停止录音</button>
-    <button onclick="javascript:wxVideoPlayer.translateVoice(wxVideoPlayer.gLocalId);">转义语音</button>
+    <button onclick="javascript:wxVideoPlayer.playVoice();">播放录音</button>
+    <button onclick="javascript:wxVideoPlayer.pauseVoice();">暂停录音</button>
+    <button onclick="javascript:wxVideoPlayer.stopVoice();">停止录音</button>
+    <button onclick="javascript:wxVideoPlayer.translateVoice();">转义语音</button>
 
     <p>转义结果：</p>
     <p id="result">暂无结果</p>
@@ -30,8 +30,8 @@
     <script type="text/javascript" src="js/wx_share.js?v20170418"></script>
     <script type="text/javascript">
 
+        var gLocalId: -1;
         let wxVideoPlayer = {
-            gLocalId: -1,
             init: function () {
 
             },
@@ -41,7 +41,7 @@
                 wx.onVoiceRecordEnd({
                     // 录音时间超过一分钟没有停止的时候会执行 complete 回调
                     complete: function (res) {
-                        wxVideoPlayer.glocalId = res.localId;
+                        gLocalId = res.localId;
                         alert(wxVideoPlayer.glocalId);
                     }
                 });
@@ -49,38 +49,38 @@
             stopRecord: function () {
                 wx.stopRecord({
                     success: function (res) {
-                        wxVideoPlayer.glocalId = res.localId;
+                        gLocalId = res.localId;
                         alert("停止录音");
                     }
                 });
             },
-            playVoice: function (voiceId) {
+            playVoice: function () {
                 wx.playVoice({
-                    localId: voiceId // 需要播放的音频的本地ID，由stopRecord接口获得
+                    localId: gLocalId // 需要播放的音频的本地ID，由stopRecord接口获得
                 });
 
                 wx.onVoicePlayEnd({
                     success: function (res) {
-                        wxVideoPlayer.glocalId = res.localId; // 返回音频的本地ID
+                        gLocalId = res.localId; // 返回音频的本地ID
                         alert("播放录音");
                     }
                 });
             },
-            pauseVoice: function pauseVoice(voiceId) {
+            pauseVoice: function pauseVoice() {
                 wx.pauseVoice({
-                    localId: voiceId // 需要暂停的音频的本地ID，由stopRecord接口获得
+                    localId: gLocalId // 需要暂停的音频的本地ID，由stopRecord接口获得
                 });
                 alert("暂停播放");
             },
-            stopVoice: function (voiceId) {
+            stopVoice: function () {
                 wx.stopVoice({
-                    localId: voiceId // 需要停止的音频的本地ID，由stopRecord接口获得
+                    localId: gLocalId // 需要停止的音频的本地ID，由stopRecord接口获得
                 });
                 alert("停止播放");
             },
-            translateVoice: function translateVoice(voiceId) {
+            translateVoice: function translateVoice() {
                 wx.translateVoice({
-                    localId: voiceId, // 需要识别的音频的本地Id，由录音相关接口获得
+                    localId: gLocalId, // 需要识别的音频的本地Id，由录音相关接口获得
                     isShowProgressTips: 1, // 默认为1，显示进度提示
                     success: function (res) {
                         alert(res.translateResult); // 语音识别的结果
