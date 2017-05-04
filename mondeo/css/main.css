@@ -11,11 +11,11 @@
     left: 1rem;
     width: 4.3rem;
     height: 4.3rem;
-    border: 1px solid #e4e8eb;
+    border: 1px solid #8a9cac;
     border-radius: 50%;
 }
 
-.circular > div { position:absolute; z-index:100; width: .1rem; height: .1rem;border-radius: 50%;border: 1px solid #e4e8eb; }
+.circular > div { position:absolute; z-index:100; width: .1rem; height: .1rem;border-radius: 50%;border: 1px solid #8a9cac; background-color: #8a9cac;}
 .circular > div:nth-child(1){ top:-.05rem;  left: 50%;  animation: dotAn 5s linear 3s infinite; }
 .circular > div:nth-child(2){  top:-.05rem; left: 50%; animation: dotAn2 5s linear 3s infinite; }
 .circular > img{
