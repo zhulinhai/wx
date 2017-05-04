@@ -135,24 +135,30 @@
      */
     var unsupported = 0;
     window.onload = function(){
-        unsupported = Math.round(Math.random()* 100);
+//        unsupported = Math.round(Math.random()* 100);
         console.log(unsupported);
-        theCircle(unsupported);
+        /*
+        setInterval(function(){
+            unsupported = Math.round(Math.random()* 100);
+            console.log(unsupported);
+            theCircle(unsupported);
+        },2000);
+        */
+//        theCircle(unsupported);
     }
     function theCircle(p){
-
         var scale = (225 - 45) / 50;
-//        p = parseInt(15);
-        p = 15;
+        p = parseInt(p);
         /**
          * 转动右侧
          */
-        var circleR = p < 50 ? (p * scale) : 225;
-        circleR +=45;
+        var circleR = p < 50 ? ((p * scale) + 45) : 225;
         $('.rightcircle').css('transform','rotate(' + circleR + 'deg)');
-
-        var circleL = p < 50 ? 45 : scale* (p - 50);
-        circleL +=45;
+        /**
+         * 转动左侧
+         */
+        var circleL = p < 50 ? 45 : (scale * (p - 50) + 45);
+//        circleL = circleL < 45 ? (45 + circleL) : circleL;
         $('.leftcircle').css('transform','rotate('+circleL+'deg)');
     }
 </script>
