@@ -24,7 +24,7 @@
      * videojs 对象
      * @type {null}
      */
-    var player = null;
+    var  player= null;
 
     /**
      * websocket server address
@@ -53,14 +53,15 @@
 
         bindEvent();
 
-        player = videojs('my-player',{
-            controls: true,
-            autoplay: false,
-            loop:true,
-            preload: 'auto'
-        });
+        //player = videojs('my-player',{
+        //    controls: true,
+        //    autoplay: false,
+        //
+        //    loop:true,
+        //    preload: 'auto'
+        //});
 
-        player.src('http://vedio.yunmfang.com/K6015-480p-16-9.mp4');
+        //player.src('http://vedio.yunmfang.com/K6015-480p-16-9.mp4');
 
         // connect websocket server
         socket = io.connect(websocket_url);

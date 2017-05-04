@@ -13,9 +13,9 @@
                 return alert(rt.message);
             }
 
-            var title ='易车流言终结者'; // 分享标题
+            var title ='易车网 · 流言终结者 第一季'; // 分享标题
             var link ='http://wx.bjczxda.com/mondeo/index.html';
-            var desc = '新蒙迪欧HEV  一箱油一千公里油耗挑战赛。'; // 分享描述
+            var desc = '新蒙迪欧HEV一箱油1214+公里京城挑战赛。'; // 分享描述
             var imgUrl = 'http://wx.bjczxda.com/mondeo/src/share.jpg';
 
             var wx_appId = rt.data.appId;
