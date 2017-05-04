@@ -40,6 +40,6 @@
 }
 
 @keyframes rotateCar {
-    0%{ transform:rotateZ(0deg);transform-origin:50% 50%;}
-    100%{ transform:rotateZ(360deg);transform-origin:50% 50%;}
+    0%{ transform:rotateZ(0deg);transform-origin:center center;}
+    100%{ transform:rotateZ(360deg);transform-origin:center center;}
 }
