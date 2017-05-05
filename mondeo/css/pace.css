@@ -1,7 +1,6 @@
 .pace {
     -webkit-pointer-events: none;
     pointer-events: none;
-
     -webkit-user-select: none;
     -moz-user-select: none;
     user-select: none;
@@ -18,7 +17,6 @@
     right: 0;
     height: 5rem;
     width: 5rem;
-
     -webkit-transform: translate3d(0, 0, 0) !important;
     -ms-transform: translate3d(0, 0, 0) !important;
     transform: translate3d(0, 0, 0) !important;
@@ -32,8 +30,12 @@
     content: attr(data-progress-text);
     font-family: "Helvetica Neue", sans-serif;
     font-weight: 100;
-    font-size: 5rem;
+    font-size: .2rem;
     line-height: 1;
     text-align: right;
     color: rgba(0, 0, 0, 0.19999999999999996);
+    width: 4rem;
+    height: 4rem;
+    background: url(../images/img-circular.png) left top no-repeat;
+    background-size: cover;
 }

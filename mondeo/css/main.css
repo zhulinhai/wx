@@ -1,4 +1,14 @@
-#logo {  position: absolute; top:.17rem;left: .18rem;  width: 1.3rem;  }
+/**
+*loading页
+*/
+.loading { position:absolute; width: 100%; height: 100%; z-index: 1000; background-color: white; overflow: hidden; }
+.loading .content {position: relative; margin:40% auto 0 auto; width: 2.4rem; height:2.4rem; }
+.loading .content > img { position:absolute;left: 0; top: 0; width: 100%; animation: rotateCar linear 3s infinite; }
+.loading .content > div { position: absolute; top: 35%; width: 100%; text-align: center; }
+.loading .content > div p { font-size: .22rem; line-height: 150%; color: black; }
+.loading .content > div p:last-child { font-size: .26rem; line-height: 100%;}
+
+#logo {  position: absolute; top:.17rem;left: .18rem;  width: 1.3rem; z-index:1; }
 /**
 *首页样式
 */

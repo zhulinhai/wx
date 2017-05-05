@@ -45,11 +45,24 @@
                 , host+'h5/storeProposer']
         }
     }
+    var loadInterval = null;
+    Pace.once('start',function(){
+        loadInterval = setInterval(function(){
+            var load = $('.pace-progress').attr('data-progress-text');
+            $('#loading').html(load);
+        },100);
+    });
 
     /**
      * 完成加载
      */
     Pace.once('hide', function(e){
+        /**
+         * stop loading
+         */
+        clearInterval(loadInterval);
+        loadInterval = -1;
+        $('.loading').hide();
 
         bindEvent();
 
