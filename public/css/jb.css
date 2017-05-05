@@ -1,0 +1,346 @@
+@charset "utf-8";
+/* CSS Document */
+	*{ margin:0; padding:0;}
+	.none{ display:none!important;}
+	body{ background:#011135; font-family:Arial,"Î¢ÈíÑÅºÚ";-webkit-text-size-adjust:none}
+	button, a{-webkit-tap-highlight-color:rgba(255,255,255,0);-webkit-appearance:none;}
+	.container{}
+
+#landscape { position: absolute; width: 100%; height: 100%; z-index: 100000; top: 0; background-color: #000;}
+#landscape p { position: absolute; text-align: center; top: 50%; margin-top: -15px; font-size: 18px; color: #fff; height: 30px; line-height: 30px; background: url(http://img.wmy-ad.com/jaguar/20150514/images/landscape.png) 0 50% no-repeat; background-size: auto 30px; -webkit-background-size: auto 30px; width: 170px; padding-left: 60px; left: 50%; margin-left: -115px;}
+#landscape.none { left: 100%;}
+
+@media all and (orientation : landscape){
+	#landscape {
+		display: none;
+	}
+}
+@media all and (orientation : portrait){
+	#landscape {
+		display: none;
+	}
+}
+
+.before_wrap,.before_det,.future_bg,.future_wrap,.future_det{ -webkit-transform:translateZ(0);}
+	.slider{width:640px; height:1136px; overflow:hidden;}
+	/*.slider ul{ -webkit-transition:all ease 0.5s; -webkit-transform:translateZ(0); }*/
+	.slider ul li{ list-style:none; -webkit-transform:translateZ(0); position:relative; overflow:hidden; background:#32444a;width: 387px; height: 678px;}
+	.slider ul li.nth-child1{ background: url(http://img.wmy-ad.com/jaguar/20150514/images/bg.jpg) no-repeat; background-size:100% 100%;}
+	.slider ul li.nth-child2{ background: url(http://img.wmy-ad.com/jaguar/20150514/images/p2_bg.jpg) no-repeat; background-size:100% 100%;}
+	.slider ul li.nth-child3{ background: url(http://img.wmy-ad.com/jaguar/20150514/images/bg.jpg) no-repeat; background-size:100% 100%;}
+	.slider ul li.nth-child4{ background: url(http://img.wmy-ad.com/jaguar/20150514/images/bg.jpg) no-repeat; background-size:100% 100%;}
+	.slider ul li.nth-child5{ background: url(http://img.wmy-ad.com/jaguar/20150514/images/p5_car_bg.jpg) no-repeat; background-size:100% 100%;}
+	.slider ul li.nth-child6{ background:#4f4960;}
+	.slider ul li.nth-child7{ background:#417079;}
+	.slider ul li .word img{ width:100%; height:100%; }
+	.slider ul li .word{ opacity:0;}
+	.slider ul li img.bg{ width:100%; height:100%; display:block;-webkit-transform:translateZ(0); position:relative; -webkit-transform:scale(1.1); -webkit-transition:all 1s linear;}
+	.slider ul li.cur img.bg{-webkit-transform:scale(1); }
+	.slider ul li #btn_wrap{ display:none;}
+	.slider ul li.show #btn_wrap{ display:block;}
+	#btn_wrap{position:absolute; left:50%; bottom:35%; margin-left:-150px;width:300px!important; height:32px!important; outline:none; 
+			-webkit-transform-origin:0 0 0; -webkit-transition:-webkit-transform .3s ease-out;-webkit-transform-style: preserve-3d;}
+	#btn_wrap a{ text-decoration:none;}
+	#btn_wrap p{ font-size:12px; width: 80%;margin: 0 auto;color:#fff; text-align:left;-webkit-animation:shadeIn2 1s linear 2s; opacity:0;; -webkit-animation-fill-mode: forwards; line-height:1.7;}
+	#join_btn,#back{ font-size:13px; background:#0c7bff; color:#fff; font-family:Arial,"Î¢ÈíÑÅºÚ"; width:138px;  display:block; border:2px solid #0c7bff; text-align:center; line-height:30px;
+					-webkit-animation:shadeIn2 1s linear 2s; -webkit-animation-fill-mode: forwards;opacity:0;-webkit-transform:rotateX(0deg);-webkit-transform-origin:0 0 0; 
+					position:absolute; left:-300%; top:0; z-index:10; outline:none; }
+	#back{background:#0955b3; color:#fff; -webkit-transform:rotateX(270deg); border:2px solid #0955b3; -webkit-transform-origin:0 0 0;  z-index:100;opacity:1; top:auto; bottom:-100%;}
+	.slider ul li.show #btn_wrap.active{-webkit-transform:rotateX(90deg); opacity:1;outline:none;}
+	#arrow{ background: url(http://img.wmy-ad.com/jaguar/20150514/images/arrow.png) no-repeat; width:28px; height:19px; background-size:28px 17px; position: absolute; left:50%; bottom:20px; margin-left:-14px;-webkit-animation: arrowUp 2s infinite ease-in-out;}
+	 @-webkit-keyframes shadeIn1{
+		 0%{opacity:0;}	
+		 40%{opacity:1;}	
+		 70%{opacity:1;}	
+		 100%{ opacity:0;}
+	 }
+	 @-webkit-keyframes shadeIn2{
+		 0%{ opacity:0; }	
+		 100%{ opacity:1;}
+	 }
+	 @-webkit-keyframes shadeIn3{
+		 0%{ opacity:0; -webkit-transform: translateY(-50px)}	
+		 100%{ opacity:1; -webkit-transform: translateY(0px);}
+	 }
+	li{}
+	@-webkit-keyframes arrowUp {
+		0%, 30% {
+		opacity:0;
+		-webkit-transform:translate(0, 8px)
+		}
+		60% {
+		opacity:1;
+		-webkit-transform:translate(0, 0)
+		}
+		100% {
+		opacity:0;
+		-webkit-transform:translate(0, -8px)
+		}
+	}
+	
+	.slider li.nth-child1 .bg{ width:100%; height:100%;}
+	.slider li.cur .bg .rings ,.slider li.nth-child1.cur .bg .icons{ opacity:1;}
+	 @-webkit-keyframes rollAn{
+		 0%{ -webkit-transform: rotate(0) translatez(0);}	
+		 100%{  -webkit-transform: rotate(360deg) translatez(0);}
+	 }
+	 @-webkit-keyframes rollAn2{
+		 0%{ -webkit-transform: rotate(0) translatez(0);}	
+		 100%{  -webkit-transform: rotate(-360deg) translatez(0);}
+	 }
+	.slider li.nth-child1.cur .bg .line1{ -webkit-transform:translate(150px);opacity:1;}
+	.slider li.nth-child1.cur .bg .line2{ -webkit-transform:translate(-150px);opacity:1;}
+	#switch_wrap{position:absolute; top:-200px; right:20px; padding:10px 20px;width:5px; height:395px;}
+	/*common style*/
+	.before_wrap{ top:0px!important;-webkit-transform:scale(0.92);}
+	.future_wrap{ bottom:0px!important;-webkit-transform:scale(0.92);}
+	.before_det,.future_det{opacity:0;}
+	.cur .before_det{-webkit-animation:anfeather1 1s linear ; -webkit-animation-fill-mode: forwards;}
+	.cur .future_det{-webkit-animation:anfeather1 1s linear ; -webkit-animation-fill-mode: forwards;}
+/*-page 0-*/
+	.slider li.nth-child0{ background:#000;}
+	.slider li.nth-child0 .logo_an{ -webkit-animation:bgAn 3s steps(35) 0.5s; width:213px; height:155px; position:absolute; left:50%; top:50%; margin-left:-106px; margin-top:-78px; -webkit-transform:scale(1.7);}
+	.slider li.nth-child0 .logo_an img{ width:100%; height:100%;}
+
+
+/*-page 1-*/
+	.logo{ background: url(http://img.wmy-ad.com/jaguar/20150514/images/logo.png) no-repeat; width:47px; height:21px; background-size:100%; position:absolute; right:20px; top:18px;}
+	.video_wrap{ width:100%; position:absolute; left:0; top:50%; margin-top:-100px; -webkit-transform:translateZ(0);}
+	.video_wrap video{ width:100%; -webkit-transform:translateZ(0); display:block; }
+	.video_wrap video source{ -webkit-transform:translateZ(0); background:url(http://img.wmy-ad.com/jaguar/20150514/images/P1_video_bg.jpg) no-repeat; background-size:100% 100%;}
+	.btn_play{ background:url(http://img.wmy-ad.com/jaguar/20150514/images/p1_btn_play.png) no-repeat; width:44px; height:44px; background-size:100% 100%; position:absolute; left:50%; top:50%; margin-left:-22px; margin-top:-22px;}
+	.holder{ position:absolute; left:0; top:0; right:0; bottom:0; background:url(http://img.wmy-ad.com/jaguar/20150514/images/P1_video_bg.jpg) no-repeat; background-size:cover;}
+	.btn_skip{ width:92px; height:25px; line-height:25px; text-align:center; color:#a40a2e; border:1px solid #a40a2e; font-size:12px; font-family:Arial,"Î¢ÈíÑÅºÚ"; position:absolute; bottom:80px; left:50%; margin-left:-46px;}
+	
+	
+
+/*-page 2-*/
+	.slider li.nth-child2{}
+	.slider li.nth-child2 .car{ background:url(http://img.wmy-ad.com/jaguar/20150514/images/p2_car.png) no-repeat; width:308px; height:296px; background-size:100% 100%; position:absolute; bottom:-40px; left:50%; margin-left:-154px;-webkit-transform:scale(0.8); opacity:0.6; -webkit-transition:all 1.2s ease-in;}
+	.slider li.nth-child2.cur .car{ -webkit-transform:scale(1);-webkit-transform-origin: 50% 50%; opacity:1;}
+	.slider li.nth-child2 .circle{ background:url(http://img.wmy-ad.com/jaguar/20150514/images/p2_tit_cirle.png) no-repeat; background-size:100% 100%; width:200px; height:200px; position:absolute; left:50%; margin-left:-100px; top:50%; margin-top:-210px; -webkit-transition:80px;opacity:0;}
+	.slider li.nth-child2.cur .circle{-webkit-animation: circleAn 1.5s linear 0.5s 1; -webkit-animation-fill-mode: forwards;-webkit-transform:rotateX(360deg) translateY(80px); }
+	 @-webkit-keyframes circleAn{
+		 0%{ opacity:0;-webkit-transform:rotateX(360deg) translateY(80px);}	
+		 100%{ opacity:1;-webkit-transform:rotateX(0deg) translateY(0px);}
+	 }
+	.slider li.nth-child2 .tit{  background:url(http://img.wmy-ad.com/jaguar/20150514/images/p2_tit.png) no-repeat; background-size:100% 100%; width:144px; height:102px; position:absolute; left:50%; margin-left:-72px; top:50%; margin-top:-165px;opacity:0;-webkit-transform:rotateX(360deg) translateY(0px); }
+	.slider li.nth-child2.cur .tit{-webkit-animation: titAn 1.5s linear 1.5s 1; -webkit-animation-fill-mode: forwards;}
+	 @-webkit-keyframes titAn{
+		 0%{ opacity:0;-webkit-transform:rotateY(360deg) translateY(0px);}	
+		 100%{ opacity:1;-webkit-transform:rotateY(0deg) translateY(0px);}
+	 }
+	.slider li.nth-child2 .circle_big{  background:url(http://img.wmy-ad.com/jaguar/20150514/images/p2_tit_cirle_big.png) no-repeat center; width:491px; height:491px; position:absolute; left:50%;  top:50%; margin-left:-245px; margin-top:-234px; background-size:491px 491px;-webkit-transform:rotateX(360deg); opacity:0;}
+	.slider li.nth-child2.cur .circle_big{-webkit-animation: circleAn 3s linear 0s 1; -webkit-animation-fill-mode: forwards;}
+	.slider li.nth-child2 .circle_big .dot{ width:10px; height:10px; border-radius:10px; background:#c5c5c5; position:absolute; left:50%; margin-left:-5px; top:-5px; -webkit-transform-origin:4.5px 250px;}
+	.slider li.nth-child2 .circle_big .dot:nth-child(2){-webkit-transform:rotateZ(270deg) scale(1.2);}
+	.slider li.nth-child2.cur .circle_big .dot{-webkit-animation:dotAn 5s linear 3s infinite; -webkit-animation-fill-mode: forwards;-webkit-transform:rotateZ(360deg);-webkit-transform-origin:4.5px 250px; }
+	.slider li.nth-child2.cur .circle_big .dot:nth-child(2){-webkit-animation:dotAn2 5s linear 3s infinite; -webkit-animation-fill-mode: forwards;-webkit-transform:rotateZ(-270deg);-webkit-transform-origin:4.5px 250px; }
+	 @-webkit-keyframes dotAn{
+		 0%{ -webkit-transform:rotateZ(360deg);-webkit-transform-origin:4.5px 250px;}	
+		 100%{ -webkit-transform:rotateZ(0deg);-webkit-transform-origin:4.5px 250px;}
+	 }
+	 @-webkit-keyframes dotAn2{
+		 0%{ -webkit-transform:rotateZ(-270deg) ;-webkit-transform-origin:4.5px 250px;}	
+		 100%{ -webkit-transform:rotateZ(-90deg);-webkit-transform-origin:4.5px 250px;}
+	 }
+	.slider li.nth-child2 .line1{ background:url(http://img.wmy-ad.com/jaguar/20150514/images/p2_tit_line1.png) no-repeat; width:74px; height:108px; left:0; top:50%; margin-top:-100px; background-size:100%; position:absolute; -webkit-transition:all ease 1s 4s;-webkit-transform:translateY(200px); opacity:0;}
+	.slider li.nth-child2.cur .line1{ -webkit-transform:translateY(0); opacity:1;}
+	
+	
+	.slider li.nth-child2 .line2{ background:url(http://img.wmy-ad.com/jaguar/20150514/images/p2_tit_line2.png) no-repeat; width:70px; height:107px; right:0; top:50%; margin-top:-207px; background-size:100%; position:absolute ;-webkit-transition:all ease 1s 4s;-webkit-transform:translateY(-200px); opacity:0;}
+	.slider li.nth-child2.cur .line2{ -webkit-transform:translateY(0); opacity:1;}
+
+
+/*-page 3-*/
+	.slider li.nth-child3{}
+	.slider li.nth-child3 .bg{ background:url(http://img.wmy-ad.com/jaguar/20150514/images/p3_feature_bg.jpg) no-repeat; background-size:100% 100%; position:absolute; left:0; right:0; top:0; bottom:0; opacity:0; -webkit-transition:opacity ease 2s;}
+	.slider li.nth-child3 .bg.active{ opacity:1;}
+	.slider li.nth-child3 .book{ width:78px; height:24px; line-height:24px; background:#9e0023; color:#fff; font-size:14px; text-align:center; position:absolute; right:0;bottom:50px; z-index: 1000;}
+	.runway_view{width:245px; height:93px; position:absolute; top:40px; left:50%; margin-left:-130px;  overflow:hidden;  top: 60px;
+  -webkit-transform: scale(1.125);}
+	.runway_items{white-space:nowrap; width:490px;vertical-align:central; font-size:1px; -webkit-transition:all ease 0.5s;}
+	.slider li.nth-child3 .runway_wrap{ width:245px; height:83px; display:inline-block; position:relative;}
+	.slider li.nth-child3 .runway{ background:url(http://img.wmy-ad.com/jaguar/20150514/images/p3_paodao.png) no-repeat; width:194px; height:72px; position:absolute; top:10px; left:40px; background-size:100% 100%;}
+	.slider li.nth-child3 .icon{ width:39px; height:39px; position:absolute;}
+	.slider li.nth-child3 .icon.i1{ background:url(http://img.wmy-ad.com/jaguar/20150514/images/p3_feature_icon1h.png) no-repeat; background-size:100%; bottom:-10px; left:110px;}
+	.slider li.nth-child3 .icon.i2{ background:url(http://img.wmy-ad.com/jaguar/20150514/images/p3_feature_icon2h.png) no-repeat; background-size:100%; bottom:0px; left:201px;}
+	.slider li.nth-child3 .icon.i3{ background:url(http://img.wmy-ad.com/jaguar/20150514/images/p3_feature_icon3h.png) no-repeat; background-size:100%; bottom:42px; left:179px; }
+	.slider li.nth-child3 .icon.i4{ background:url(http://img.wmy-ad.com/jaguar/20150514/images/p3_feature_icon4h.png) no-repeat; background-size:100%; bottom:38px; left:50px; }
+	.slider li.nth-child3 .icon.i5{ background:url(http://img.wmy-ad.com/jaguar/20150514/images/p3_feature_icon5h.png) no-repeat; background-size:100%; bottom:-3px; left:16px;}
+	.slider li.nth-child3 .icon .icon_fg{ width:39px; height:39px; position:absolute; opacity:0; -webkit-transition:opacity 0.5s ease;}
+	.slider li.nth-child3 .icon.i1 .icon_fg{ background:url(http://img.wmy-ad.com/jaguar/20150514/images/p3_feature_icon1.png) no-repeat; background-size:100%; bottom:0; left:0;}
+	.slider li.nth-child3 .icon.i2 .icon_fg{ background:url(http://img.wmy-ad.com/jaguar/20150514/images/p3_feature_icon2.png) no-repeat; background-size:100%; bottom:0; left:0;}
+	.slider li.nth-child3 .icon.i3 .icon_fg{ background:url(http://img.wmy-ad.com/jaguar/20150514/images/p3_feature_icon3.png) no-repeat; background-size:100%; bottom:0; left:0; width:100%; height:100%;}
+	.slider li.nth-child3 .icon.i4 .icon_fg{ background:url(http://img.wmy-ad.com/jaguar/20150514/images/p3_feature_icon4.png) no-repeat; background-size:100%; bottom:0; left:0; width:100%; height:100%;}
+	.slider li.nth-child3 .icon.i5 .icon_fg{ background:url(http://img.wmy-ad.com/jaguar/20150514/images/p3_feature_icon5.png) no-repeat; background-size:100%; bottom:0; left:0;}
+	.feature{ position:absolute; left:4%; right:4%; top:200px;}
+	.feature h1{ font-size:20px; color:#7f0018; font-weight:bold; font-family:Arial,"Î¢ÈíÑÅºÚ"; text-align:center; margin-bottom:8px;}
+	.slider li.nth-child3.cur .icon .icon_fg.cur{ opacity:1;}
+	.slider_tip{width:29px; height:42px; position: absolute; background-size: 100%; left: 50%; margin-left: -14px;
+	 top: 152px;}
+	 .slider_tip .hand{ background:url(http://img.wmy-ad.com/jaguar/20150514/images/bg_hand.png) no-repeat; width:29px; height:42px; background-size:100% 100%; position:relative;}
+	 .slider_tip p{width: 200px;color: #9e0023;position: relative;left: -24px; top: 10px;font-size: 13px;}
+	 @-webkit-keyframes arrowAN{
+		 0%{  opacity:0; }	
+		 50%{  opacity:1;}	
+		 100%{  opacity:0;}	
+	 }
+	 .slider_tip .dot{ position:absolute; left:6px; top:-2px; background:url(http://img.wmy-ad.com/jaguar/20150514/images/bg_hand_circle.png) no-repeat; width:10px; height:9px; background-size:100% 100%;-webkit-animation: arrowAN 1s infinite; opacity:0;}
+	.slider li.nth-child3 .other .icon.i1{ background:url(http://img.wmy-ad.com/jaguar/20150514/images/p3_feature_icon6h.png) no-repeat;background-size:100%;}	
+	.slider li.nth-child3 .other .icon.i2{ background:url(http://img.wmy-ad.com/jaguar/20150514/images/p3_feature_icon7h.png) no-repeat;background-size:100%;}	
+	.slider li.nth-child3 .other .icon.i3{ background:url(http://img.wmy-ad.com/jaguar/20150514/images/p3_feature_icon8h.png) no-repeat;background-size:100%;}	
+	.slider li.nth-child3 .other .icon.i4{ background:url(http://img.wmy-ad.com/jaguar/20150514/images/p3_feature_icon9h.png) no-repeat;background-size:100%;}	
+	.slider li.nth-child3 .other .icon.i5{ background:url(http://img.wmy-ad.com/jaguar/20150514/images/p3_feature_icon10h.png) no-repeat;background-size:100%;}
+	.slider li.nth-child3 .other .icon .icon_fg{ opacity:0;}	
+	.slider li.nth-child3 .other .icon.i1 .icon_fg{ background:url(http://img.wmy-ad.com/jaguar/20150514/images/p3_feature_icon6.png) no-repeat;background-size:100%;}
+	.slider li.nth-child3 .other .icon.i2 .icon_fg{ background:url(http://img.wmy-ad.com/jaguar/20150514/images/p3_feature_icon7.png) no-repeat;background-size:100%;}
+	.slider li.nth-child3 .other .icon.i3 .icon_fg{ background:url(http://img.wmy-ad.com/jaguar/20150514/images/p3_feature_icon8.png) no-repeat;background-size:100%;}
+	.slider li.nth-child3 .other .icon.i4 .icon_fg{ background:url(http://img.wmy-ad.com/jaguar/20150514/images/p3_feature_icon9.png) no-repeat;background-size:100%;}
+	.slider li.nth-child3 .other .icon.i5 .icon_fg{ background:url(http://img.wmy-ad.com/jaguar/20150514/images/p3_feature_icon10.png) no-repeat;background-size:100%;}
+	
+	
+	.feature p{ font-size:13.5px; color:#777; text-align:center;}
+	.slider li.nth-child3 .car_wrap{width:274px; height:229px;position:absolute; bottom:0; left:50%; margin-left:-137px;-webkit-transform:scale(1.125);}
+	.slider li.nth-child3 .car_wrap .car{background:url(http://img.wmy-ad.com/jaguar/20150514/images/p3_car.png) no-repeat; width:274px; background-size:274px 229px;  height:229px; opacity:0; -webkit-transition:all 1s;}
+	.slider li.nth-child3 .car_wrap .car.active{ opacity:1;}
+	.slider li.nth-child3 .car_wrap .light{ background:url(http://img.wmy-ad.com/jaguar/20150514/images/p3_car_light.png) no-repeat; width:191px; height:38px; background-size:100%; position:absolute; left:37px; top:54px; opacity:0;}
+	.slider li.nth-child3 .car_wrap .light.active{-webkit-animation:lightAn 1s 1s 1;-webkit-animation-fill-mode: forwards;}
+	 @-webkit-keyframes lightAn{
+		 0%{  opacity:0;}	
+		 100%{ opacity:1;}	
+	 }
+	
+	.slider li.nth-child3 .car_wrap .scan_line{ background:url(http://img.wmy-ad.com/jaguar/20150514/images/p3_sacnline.png) no-repeat; width:268px; height:4.5px; background-size:100% 100%; position:absolute; margin:0 auto;}
+
+/*-page 4-*/
+	.slider li.nth-child4{}
+	.slider li.nth-child4 .panel_wrap{265px; height:265px; position:absolute; top:100px; left:50%; margin-left:-132px;}
+	.slider li.nth-child4 .panel{ background:url(http://img.wmy-ad.com/jaguar/20150514/images/p4_panel.png) no-repeat; width:265px; height:265px; background-size:100% 100%;}
+	.slider li.nth-child4 .panel_l{position:absolute; top:111px; left:106px; -webkit-transform-origin:23px 27px; -webkit-transform:rotate(40deg);}
+	.slider li.nth-child4 .panel_l.active{-webkit-animation:lworkAn 3s 1;-webkit-animation-fill-mode: forwards;} 
+		 @-webkit-keyframes lworkAn{
+			 0%{ -webkit-transform:rotate(40deg);}
+			 100%{ -webkit-transform:rotate(320deg);}	
+		 }
+	.slider li.nth-child4 .panel_l div{ background:url(http://img.wmy-ad.com/jaguar/20150514/images/p4_panel_l.png) no-repeat; width:41px; height:116px; background-size:100%; -webkit-transform-origin:23px 27px;}
+	.slider li.nth-child4 .panel_l div.active{ -webkit-animation:lAn 1s infinite; -webkit-animation-direction:alternate;}
+	 @-webkit-keyframes lAn{
+		 0%{ -webkit-transform:rotate(2deg);}	
+		 100%{ -webkit-transform:rotate(-2deg);}	
+	 }
+	.slider li.nth-child4 .tit{ background:url(http://img.wmy-ad.com/jaguar/20150514/images/p4_tit.png) no-repeat; width:169px; height:13px; background-size:100% 100%; position:absolute; left:50%; margin-left:-85px; top:380px;}
+	.slider li.nth-child4 .btn_start{ background:url(http://img.wmy-ad.com/jaguar/20150514/images/p4_panel_start.png) no-repeat; width:83px; height:83px; background-size:100% 100%; position:absolute; left:50%; margin-left:-42px; top:420px;}
+
+/*-page 5-*/
+	.slider li.nth-child5{}
+	.slider li.nth-child5 .car{ background:url(http://img.wmy-ad.com/jaguar/20150514/images/p5_car.png) no-repeat; width:332px; height:223px; background-size:100% 100%; position:absolute; left:50%; margin-left:-166px; bottom:0;opacity:1;}
+	.slider li.nth-child5 .car.active{  -webkit-animation-fill-mode: forwards;  -webkit-animation:carGo 1s  cubic-bezier(0, 0, 0, 0.99) 1;-webkit-animation-fill-mode: forwards;opacity:1;  -webkit-transform-origin: 50% 0%;}
+	 @-webkit-keyframes carGo{
+		 0%{opacity:1;}	
+		 80%{opacity:.8;}	
+		 100%{ -webkit-transform:scale(0.2);opacity:0;}	
+	 }
+	
+	
+	.slider li.nth-child5 .arrow{ background:url(http://img.wmy-ad.com/jaguar/20150514/images/p5_car_arrow.png) no-repeat; width:17px; height:16px; background-size:100% 100%; position:absolute; left:50%; margin-left:-8px; bottom:40px;  -webkit-animation: arrowUp 2s infinite ease-in-out;}
+	.slider li.nth-child5 .tip{ text-align:center; font-size:13px; color:#fff; font-weight:bold; position:absolute; left:0; bottom:10px; width:100%;}
+	.slider li.nth-child5 .result_wrap{width:212px;  position:absolute; left:50%; margin-left:-106px; top:50px;  opacity:0; -webkit-transition:all 1s; -webkit-transform:translateY(-600px);}
+.slider li.nth-child5 .result_wrap.active{ display:block; opacity:1; -webkit-transform:translateY(0);}	
+	.slider li.nth-child5 .result{width:212px; height:200px; position:absolute; left:0; top:0;}
+	.slider li.nth-child5 .circle{ background:url(http://img.wmy-ad.com/jaguar/20150514/images/p5_car_result.png) no-repeat; width:212px; height:200px; background-size:100%; position:absolute; left:0; top:0;}
+	.slider li.nth-child5  .active .circle { -webkit-animation:circleAn2 1s 1s 3 ; -webkit-animation-direction:alternate;-webkit-animation-fill-mode: forwards;}
+	 @-webkit-keyframes circleAn2{
+		 0%{ -webkit-transform:rotate(0deg);}	
+		 100%{ -webkit-transform:rotate(180deg);}	
+	 }
+	.slider li.nth-child5 p{  text-align: center;  font-size: 13px;  margin-top: 70px;color: #a40a2e; line-height:1.8;}
+	.slider li.nth-child5 span{ font-weight:bold;}
+	.btn_book2,.btn_load,.btn_share{ width:107px; height:29px; border:1px solid #a40a2e; color:#a40a2e; text-align:center; line-height:29px; margin-bottom:20px; position:absolute; left:50%; margin-left:-53px; top:230px; font-size:14px; text-align:center;}
+	.btn_load{ top:281px;}
+	.btn_share{ top:330px;}
+	.pop_wrap{ background:rgba(255,255,255,.6); position: absolute; left:0; top:0; right:0; bottom:0; z-index:100000;}
+	.pop{ position:absolute; left:16px; right:16px; top:50px; background:rgba(255,255,255,.9); border:1px solid #ac2142; border-radius:6px; padding:32px 6px 12px 6px;}
+	.pop_book{ top:50%; margin-top:-235px; height:420px; }
+	.pop .input_wrap{ margin-bottom:16px; margin-left: 23px;}
+	.pop_error_tip{color: #F00; position: absolute; left: 0;top: 131px;font-size: 12px;text-align: center; right: 0; display:none; margin-top:0!important;}
+	.pop .input_wrap label{ color:#a81538;}
+	.pop .input_wrap input{ line-height:39px; border:1px solid #a81538; font-size:16px; color:#727272; padding-left:10px;}
+	.pop .btn_book{ width:148px; height:39px; line-height:39px; font-size:14px; position: static; margin:20px auto; color:#fff; background:#a81538; text-align:center;}
+	.pop .info{}
+	.pop .info h1{ font-size:16px; color:#727272; text-align:center; }
+	.pop .info h4{ font-size:10px; color:#727272;text-align:center; font-weight: normal;}
+	.pop .info h2{ font-size:11px; color:#a40a2e; font-weight:bold;}
+	.slider li.nth-child5 .pop .info p,.slider li.nth-child3 .pop .info p{ font-size:12px;color:#727272; text-align: left; margin:6px 0; line-height: normal;}
+	.pop .btn_cl{ background:url(http://img.wmy-ad.com/jaguar/20150514/images/p5_btn_cl.png) no-repeat; width:26px; height:26px; background-size:100%; position:absolute; right:-13px; top:-13px;}	
+	.icon_load{ background:url(http://img.wmy-ad.com/jaguar/20150514/images/p5_icon_load.png) no-repeat; width:96px; height:70px; background-size:100%; margin:0 auto 20px auto;}
+	.load_tip{ font-size:13px; color:#a40a2e; text-align:center; line-height:1.4;}
+	.one_year{ font-size:31px; color:#a40a2e; text-align:center; font-weight:bold;}
+	.slider_mask{ position:absolute; top:242px; bottom:0; left:0; right:77px; background:rgba(0,0,0,0); display:none;}
+	.share_arrow{ position:absolute; right:0; top:0; display:none; width:100px; height:200px;}
+	.share_arrow .arrow_icon{ background:url(http://img.wmy-ad.com/jaguar/20150514/images/share_tip.png) no-repeat; width:70px; height:80px; background-size:100% 100%; position:absolute; right:10px; top:10px;-webkit-animation: arrowUp 1.52s infinite ease-in-out;}
+	.share_arrow .txt{ font-size:12px; color:#a40a2e; font-weight:bold; position:absolute; top:89px; width:101px; text-align:center; }
+	.music_btn{ width:30px; height:30px;  position:absolute; top:10px; left:10px; background: url(http://img.wmy-ad.com/jaguar/20150514/images/icon-music-1.png) 0 -30px no-repeat; background-size: 100% auto;}
+	.music_btn.active{ background-position: 0 0;}	
+	
+
+
+
+
+
+@media (device-width:360px){
+/*samsung S */
+.slider li.nth-child0 .logo_an{-webkit-transform:scale(1.70);}
+}	
+	
+
+@media (device-width:360px)  and (device-height:604px)  and (-webkit-device-pixel-ratio:3){
+/*huawei meta7 */
+.slider li.nth-child0 .logo_an{-webkit-transform:scale(1.70);}
+.slider li.nth-child4 .panel_wrap{ top:30px;}
+.slider li.nth-child4 .tit{ top:310px;}
+.slider li.nth-child4 .btn_start{ top:350px;}
+}	
+
+
+@media (device-height:568px) and (-webkit-min-device-pixel-ratio:2){
+/*iphone5 */
+.slider li.nth-child0 .logo_an{-webkit-transform:scale(1.50);}
+.slider li.nth-child4 .panel_wrap{ top:30px;}
+.slider li.nth-child4 .tit{ top:310px;}
+.slider li.nth-child4 .btn_start{ top:350px;}
+.feature{ top:170px;}
+.pop_book{ height:420px; margin-top:-233px;}
+}	
+	
+	
+@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (orientation : portrait) {
+/*iPhone 6 Portrait*/
+	.logo_an{-webkit-transform:scale(1.75);}
+	.logo{ -webkit-transform:scale(1.125); top:22px;}
+	.runway_view{ top:100px; -webkit-transform: scale(1.125);}
+	.slider_tip{top: 197px;}
+	.feature{top:240px;}
+	.slider li.nth-child4 .panel_wrap{top:100px;}
+	.slider li.nth-child4 .tit { top:400px;-webkit-transform:scale(1.125);}
+	.slider li.nth-child4 .btn_start{ top:430px;-webkit-transform:scale(1.125);}
+	.panel_wrap{-webkit-transform:scale(1.125);}
+}
+
+@media only screen and (min-device-width: 414px) and (max-device-width: 736px) and (orientation : portrait) {
+/*iPhone 6+ Portrait*/
+	.logo_an{-webkit-transform:scale(1.88);}
+	.logo{ -webkit-transform:scale(1.125); top:22px;}
+	.runway_view{ top:100px;-webkit-transform: scale(1.125);}
+	.slider_tip{top: 197px;}
+	.feature{top:240px;}
+	.slider li.nth-child4 .panel_wrap{top:100px;}
+	.slider li.nth-child4 .tit { top:400px;-webkit-transform:scale(1.125);}
+	.slider li.nth-child4 .btn_start{ top:430px;-webkit-transform:scale(1.125);}
+	.panel_wrap{-webkit-transform:scale(1.125);}
+}
+@media (device-width:360px)  and (-webkit-min-device-pixel-ratio:4){
+/*LG d858 */
+.slider li.nth-child0 .logo_an{-webkit-transform:scale(1.70);}
+}	
+	
