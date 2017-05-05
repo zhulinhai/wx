@@ -47,6 +47,7 @@
                     imgUrl:imgUrl, // 分享图标
                     success: function () {
                         // 用户确认分享后执行的回调函数
+                        alert(111);
                     },
                     cancel: function () {
                         // 用户取消分享后执行的回调函数
