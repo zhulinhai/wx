@@ -37,15 +37,30 @@
         document.documentElement.style.fontSize = (deviceWidth / 6.4) + 'px'; //320 fontSize = 50px
     })();
 </script>
+<img id="logo" src="images/img-logo.png">
 <!-- 首页 -->
 <div class="page-1">
     <div class="circular">
         <div class="dotA"></div>
         <div class="dotB"></div>
         <img src="images/img-circular.png">
+        <img src="images/img-slogan.png">
     </div>
+    <img class="line-right" src="images/img-line-r.png">
+    <img class="line-left" src="images/img-line-l.png">
+    <img class="first-car" src="images/img-car.png">
+    <!--<div class="btn"><div></div><div><img src="images/icon-live.png"><span></span></div></div>-->
+    <div class="btn" style="display: none;">
+    </div>
+    <a href="javascript:alert('live');" class="btn-live"></a>
+    <a href="javascript:alert('more');" class="btn-more"></a>
 </div>
 </body>
 <script type="text/javascript" src="../public/scripts/utils/httpUtil.js"></script>
 <script type="text/javascript" src="js/main.js"></script>
+<script>
+    window.onload = function(){
+    alert(document.body.clientHeight);
+    }
+</script>
 </html>
