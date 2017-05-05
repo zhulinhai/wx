@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>易车网 · 流言终结者</title>
     <link rel="stylesheet" href="../public/css/reset-h5.css">
+    <link rel="stylesheet" href="../public/css/animate.css">
     <link rel="stylesheet" href="css/main.css">
     <!--<link rel="stylesheet" href="css/pace.css">-->
     <!-- videojs css-->
@@ -22,7 +23,7 @@
     <!-- videojs -->
     <script type="text/javascript" src="../public/plugins/videojs/5.8.8/video.min.js"></script>
 </head>
-<body>
+<body ontouchmove="event.preventDefault();">
 <!--屏幕兼容代码-->
 <script type="text/javascript">
 
@@ -42,11 +43,14 @@
 <div class="loading"><div class="content"><img src="images/img-circular.png"><div><p>Loading</p><p id="loading">0%</p></div></div></div>
 <!-- logo -->
 <img id="logo" src="images/img-logo.png">
+
 <!-- 首页 -->
 <div class="page-1">
-    <div class="circular">
-        <div class="dotA"></div>
-        <div class="dotB"></div>
+    <div class="circle">
+        <div class="circular">
+            <div class="dotA"></div>
+            <div class="dotB"></div>
+        </div>
         <img src="images/img-circular.png">
         <img src="images/img-slogan.png">
     </div>
@@ -58,6 +62,7 @@
     </div>
     <a href="javascript:alert('live');" class="btn-live"></a>
     <a href="javascript:alert('more');" class="btn-more"></a>
+    <img class="slideDown" src="images/icon-slidedown.png">
 </div>
 </body>
 <script type="text/javascript" src="../public/scripts/utils/httpUtil.js"></script>

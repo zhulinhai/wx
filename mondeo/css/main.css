@@ -9,6 +9,13 @@
 .loading .content > div p:last-child { font-size: .26rem; line-height: 100%;}
 
 #logo {  position: absolute; top:.17rem;left: .18rem;  width: 1.3rem; z-index:1; }
+.slideDown { position: absolute; bottom:.3rem;left: 50%; width: .2rem; margin-left: -.1rem; animation: slideAni 1.5s infinite ease-in-out;}
+
+@keyframes slideAni {
+    0%,30% {opacity: 0;transform: translate(0,10px);}
+    60% {opacity: 1;transform: translate(0,0);}
+    100% {opacity: 0;transform: translate(0,-8px);}
+}
 /**
 *首页样式
 */
@@ -16,13 +23,21 @@
 /**
 *圆环
 */
-.circular{  position: absolute;  top:2rem;  left: 1rem;  width: 4.3rem;  height: 4.3rem;  border: 1px solid #8a9cac;  border-radius: 50%;  }
+.circle { position: absolute;  top:2rem;  left: 1rem;  width: 4.3rem;  height: 4.3rem;}
+.circular{  position: absolute;  top:0rem;  left: 0rem;  width: 4.3rem;  height: 4.3rem;  border: 1px solid #8a9cac;  border-radius: 50%;
+    animation: circleAn 3.5s linear 0.5s 1; }
 .circular > div { position:absolute; z-index:100; width: .1rem; height: .1rem;border-radius: 50%;border: 1px solid #8a9cac; background-color: #8a9cac;}
 .circular > div:nth-child(1){ top:-.055rem;  left: 50%;  animation: dotAn 5s linear 3s infinite; }
 .circular > div:nth-child(2){  top:-.055rem; left: 50%; animation: dotAn2 5s linear 3s infinite; }
-.circular > img:nth-child(3){  position: absolute;  display: block;  top:.15rem;  left: .15rem;  width: 4rem;  height: 4rem;
+
+.circle > img:nth-child(2){  position: absolute;  display: block;  top:.15rem;  left: .15rem;  width: 4rem;  height: 4rem;
     animation: rotateCar 6.5s linear 3s infinite;  }
-.circular > img:nth-child(4){ display:none; position:absolute; top:1rem; width: 4.26rem;}
+.circle > img:nth-child(3){ display:none; position:absolute; top:1rem; width: 4.26rem;}
+
+@-webkit-keyframes circleAn{
+    0%{ opacity:0;-webkit-transform:rotateX(360deg) translateY(80px);}
+    100%{ opacity:1;-webkit-transform:rotateX(0deg) translateY(0px);}
+}
 
 @keyframes dotAn{
     0%{ transform:rotateZ(360deg);transform-origin:0rem 2.2rem;}

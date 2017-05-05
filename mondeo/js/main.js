@@ -5,6 +5,7 @@
     var host = 'http://api.bjczxda.com/api/';
     var http = new Http(host);
     var flag = 'MONDEO_20170501';
+    var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
     var store = {
         lives:0, //直播人气数
         audiences:0, //同时在线人数
@@ -60,9 +61,13 @@
         /**
          * stop loading
          */
-        clearInterval(loadInterval);
-        loadInterval = -1;
-        $('.loading').hide();
+        setTimeout(function(){
+            clearInterval(loadInterval);
+            loadInterval = -1;
+            $('.loading').addClass('animated fadeOut').one(animationEnd,function(){
+                $(this).hide();});
+        },1000);
+
 
         bindEvent();
 
