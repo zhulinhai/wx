@@ -8,7 +8,7 @@
 .loading .content > div p { font-size: .22rem; line-height: 150%; color: black; }
 .loading .content > div p:last-child { font-size: .26rem; line-height: 100%;}
 
-#logo {  position: absolute; top:.17rem;left: .18rem;  width: 1.3rem; z-index:1; }
+#logo {  position: absolute; top:.17rem;left: .18rem;  width: 1.3rem; z-index:10; }
 .slideDown { position: absolute; bottom:.3rem;left: 50%; width: .2rem; margin-left: -.1rem; animation: slideAni 1.5s infinite ease-in-out;}
 
 @keyframes slideAni {
@@ -16,6 +16,48 @@
     60% {opacity: 1;transform: translate(0,0);}
     100% {opacity: 0;transform: translate(0,-8px);}
 }
+
+#mainSwiper { position:relative; width: 100%;height: 100% }
+#mainSwiper .swiper-slide{  width: 100%;  height: 100%;  }
+
+/**
+*通用矩形按钮样式
+*/
+.rect-btn {  display:block; width: 1.41rem; height: .52rem; color: black; font-size: .2rem; line-height: .52rem; text-align: center;
+ background: url("../images/bg-rect-btn.png") left top no-repeat; background-size: cover; }
+
+.pop-box { position: absolute; left: 0; top:0; width: 100%; height: 100%; z-index: 1000; background-color: rgba(0,0,0,.3); }
+
+.pop-main {position: relative; width: 100%; height:7.25rem;}
+.pop-main > img { position: absolute; width: .72rem; }
+.pop-main > img:first-child { left: 0; top:0; }
+.pop-main > img:nth-child(2) { right: 0; bottom:0; transform: rotate(-180deg);}
+.pop-main > div { width: 5.6rem;height: 100%; margin: 1rem auto 0 auto;
+    background: url("../images/bg-pop-box.png") center center no-repeat; background-size: cover; text-align: center; overflow: hidden; }
+.pop-title { margin-top:.48rem; font-size: .52rem; font-weight: bolder; text-align: center; }
+.success { color: #b70001;}
+.fail { color: #808080; }
+.pop-car { margin-top:.32rem; width: 4rem;}
+.pop-form { width: 4rem; margin: .18rem auto 0 auto; font-size: .22rem; }
+.pop-form > div { width: 100%; text-align: left;}
+.pop-form > div:nth-child(n + 2) { margin-top: .2rem;}
+.pop-form > div > label { width: 30%; }
+.pop-form > div > input,.pop-form > div > textarea { width: 65%; margin-left:5%; border: 1px solid #eff1f3; background-color: transparent; font-size: .22rem; line-height: 150%; }
+.pop-form > div > textarea { padding: 0; }
+.btn-submit { margin: .15rem auto 0 auto;}
+
+.close { position: relative; overflow: hidden; width: 3.6rem; height: .97rem; margin: .5rem auto 0 auto;}
+.close > div { position:absolute; top: 50%; width: 1.32rem; height: 0; border-top:1px solid white; }
+.left-line { left: 0;}
+.right-line { right: 0; }
+.btn-close { position: absolute; z-index: 1; display: block; left:1.31rem; width: .97rem; height: .97rem; }
+.btn-close > div > img { position: absolute; }
+.btn-close > div > img:first-child { width:100%; animation: normalRotate 5s linear 1s infinite; }
+.btn-close > div > img:last-child { top:.17rem; left:.17rem; width: .63rem;  }
+.btn-share { margin: .96rem auto 0 auto; }
+
+#rule-content { width: 5rem;  height: 4.5rem;  overflow: hidden;  margin: .3rem auto 0 auto; }
+#scroller { width: 100%; height: 12rem; }
 /**
 *首页样式
 */
@@ -31,7 +73,7 @@
 .circular > div:nth-child(2){  top:-.055rem; left: 50%; animation: dotAn2 5s linear 3s infinite; }
 
 .circle > img:nth-child(2){  position: absolute;  display: block;  top:.15rem;  left: .15rem;  width: 4rem;  height: 4rem;
-    animation: rotateCar 6.5s linear 3s infinite;  }
+    animation: normalRotate 6.5s linear 3s infinite;  }
 .circle > img:nth-child(3){ display:none; position:absolute; top:1rem; width: 4.26rem;}
 
 @-webkit-keyframes circleAn{
@@ -49,7 +91,7 @@
     100%{ transform:rotateZ(0deg);transform-origin:0rem 2.2rem;}
 }
 
-@keyframes rotateCar {
+@keyframes normalRotate {
     0%{ transform:rotateZ(0deg);transform-origin:center center;}
     100%{ transform:rotateZ(360deg);transform-origin:center center;}
 }
@@ -72,3 +114,50 @@
 .btn-more {  position: absolute;  right: 0;  top: 8.2rem;  display: block;  width: 1.36rem;  height: 1.67rem;
     background: url(../images/icon-more-.png) left top no-repeat;  background-size: cover;  }
 
+/**
+*KOL页 left:9c9e9d, right:ced1d5
+*/
+.page-2{ position:relative; width: 100%;height: 100%; overflow: hidden; background-color: gainsboro;  }
+.vote { position: relative; width: 6rem; margin: 3.3rem auto 0 auto; overflow: hidden;}
+.vote .support,.vote .unsupport { position: absolute; top:0rem;  height: .35rem;}
+.vote .support {left: .1rem; transform: skew(-30deg);}
+.vote .unsupport {right: .1rem; transform: skew(30deg); }
+.vote .support div, .vote .unsupport div{ border: 1px solid #9c9e9d; width: .075rem; height: .33rem; float:left; }
+.vote .support div:nth-child(n+2) ,.vote .unsupport div:nth-child(n+2){ margin-left: .075rem;}
+.vote .active { background-color: #9c9e9d; }
+.vote .un-active { background-color: #ced1d5; }
+
+.vote .support-votes ,.vote .nonsupport-votes { position: absolute; top:.5rem; font-size: .2rem; color: black;}
+.vote .support-votes { left: 0;}
+.vote .nonsupport-votes {right: 0;}
+
+.vote a {position: absolute; top:.8rem; }
+.vote a img{ width:.26rem; vertical-align: middle; }
+.vote a span{ margin-left: 8px; vertical-align: middle;}
+.btn-support {left: 0;}
+.btn-unsupport{ right: 0;}
+
+
+.comment { width: 6rem; height:1.8rem; margin: .1rem auto 0 auto; }
+.comment > div { width: 4.85rem; height: 1.2rem; margin: 0 auto; overflow: hidden;}
+.comment > div > div { width: 100%; height: 100%; }
+.clients .swiper-slide { width: 100%; height: 100%; }
+.clients .swiper-slide:after{ content:'';width: 0;height:0; clear: both;}
+.clients .swiper-slide > p { float: left; font-size: .18rem; }
+.clients .swiper-slide > p:nth-child(odd) { width: .75rem; color: black; }
+.clients .swiper-slide > p:nth-child(even) { width:3.8rem; margin-left:.1rem; color: #7b7d7d; text-align: justify;line-height: 150%;}
+
+.vote-circle { position: relative; margin:0 auto; width: 1.8rem; height: 1.8rem;}
+.circleProgress_wrapper{  position: absolute;  width: 1.4rem;  height: 1.4rem; top:.2rem; left: .2rem; }
+.wrapper{  position: absolute;  width: .7rem;  height: 1.4rem;  top:0;  overflow: hidden;  }
+.left{  left: 0;  }
+.right{  right: 0;  }
+.circleProgress {  position: absolute;  top:0;  width: 1rem;  height: 1rem;  border: .2rem solid #ced1d5;  border-radius: 50%;  }
+.rightcircle{  border-top:.2rem solid #9c9e9d;  border-right:.2rem solid #9c9e9d;  right:0;  transform: rotate(45deg);  }
+.leftcircle{  border-left:.2rem solid #9c9e9d;  border-bottom:.2rem solid #9c9e9d;  left: 0;  transform: rotate(45deg);  }
+
+/**
+* 报名页
+*/
+.page-3 {position: relative; overflow: hidden; width: 100%; height: 100%; font-size: .22rem; }
+.page-3 input, .page-3 select { font-size: .22rem; width: 1.2rem; border: 1px solid black;}

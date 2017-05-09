@@ -46,8 +46,11 @@
                     desc: desc, // 分享描述
                     imgUrl:imgUrl, // 分享图标
                     success: function () {
+                        if(window.mobile){
                         // 用户确认分享后执行的回调函数
-                        alert(111);
+                            $.get("http://api.bjczxda.com/api/updateWXShareStatus?flag=MONDEO_20170501&mobile="+window.mobile, function(result){
+                            });
+                        }
                     },
                     cancel: function () {
                         // 用户取消分享后执行的回调函数

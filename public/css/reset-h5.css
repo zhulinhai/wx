@@ -40,9 +40,10 @@ a:link, a:visited, a:hover, a:active {
     outline: none;
 }
 
-input, select {
+input, select,textarea {
     border: none;
     border-radius: 0;
+    -webkit-appearance: none;
     box-sizing: border-box;
     vertical-align:middle;
 }
