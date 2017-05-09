@@ -48,7 +48,7 @@
                     success: function () {
                         if(window.mobile){
                         // 用户确认分享后执行的回调函数
-                            $.get("http://api.bjczxda.com/api/updateWXShareStatus?flag=MONDEO_20170501&mobile="+window.mobile, function(result){
+                            $.get("http://api.bjczxda.com/api/h5/updateWXShareStatus?flag=MONDEO_20170501&mobile="+window.mobile, function(result){
                             });
                         }
                     },
