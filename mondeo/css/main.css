@@ -3,7 +3,7 @@
 */
 .loading { position:absolute; width: 100%; height: 100%; z-index: 1000; background-color: white; overflow: hidden; }
 .loading .content {position: relative; margin:40% auto 0 auto; width: 2.4rem; height:2.4rem; }
-.loading .content > img { position:absolute;left: 0; top: 0; width: 100%; animation: rotateCar linear 3s infinite; }
+.loading .content > img { position:absolute;left: 0; top: 0; width: 100%; animation: normalRotate linear 3s infinite; }
 .loading .content > div { position: absolute; top: 35%; width: 100%; text-align: center; }
 .loading .content > div p { font-size: .22rem; line-height: 150%; color: black; }
 .loading .content > div p:last-child { font-size: .26rem; line-height: 100%;}
@@ -66,36 +66,14 @@
 *圆环
 */
 .circle { position: absolute;  top:2rem;  left: 1rem;  width: 4.3rem;  height: 4.3rem;}
-.circular{  position: absolute;  top:0rem;  left: 0rem;  width: 4.3rem;  height: 4.3rem;  border: 1px solid #8a9cac;  border-radius: 50%;
-    animation: circleAn 3.5s linear 0.5s 1; }
+.circular{  position: absolute;  top:0rem;  left: 0rem;  width: 4.3rem;  height: 4.3rem;  border: 1px solid #8a9cac;  border-radius: 50%;  }
 .circular > div { position:absolute; z-index:100; width: .1rem; height: .1rem;border-radius: 50%;border: 1px solid #8a9cac; background-color: #8a9cac;}
 .circular > div:nth-child(1){ top:-.055rem;  left: 50%;  animation: dotAn 5s linear 3s infinite; }
 .circular > div:nth-child(2){  top:-.055rem; left: 50%; animation: dotAn2 5s linear 3s infinite; }
 
-.circle > img:nth-child(2){  position: absolute;  display: block;  top:.15rem;  left: .15rem;  width: 4rem;  height: 4rem;
-    animation: normalRotate 6.5s linear 3s infinite;  }
-.circle > img:nth-child(3){ display:none; position:absolute; top:1rem; width: 4.26rem;}
-
-@-webkit-keyframes circleAn{
-    0%{ opacity:0;-webkit-transform:rotateX(360deg) translateY(80px);}
-    100%{ opacity:1;-webkit-transform:rotateX(0deg) translateY(0px);}
-}
-
-@keyframes dotAn{
-    0%{ transform:rotateZ(360deg);transform-origin:0rem 2.2rem;}
-    100%{ transform:rotateZ(0deg);transform-origin:0rem 2.2rem;}
-}
-
-@keyframes dotAn2{
-    0%{ transform:rotateZ(-360deg);transform-origin:0rem 2.2rem;}
-    100%{ transform:rotateZ(0deg);transform-origin:0rem 2.2rem;}
-}
-
-@keyframes normalRotate {
-    0%{ transform:rotateZ(0deg);transform-origin:center center;}
-    100%{ transform:rotateZ(360deg);transform-origin:center center;}
-}
-
+.circle > img:nth-child(2){  position: absolute;  display: block;  top:.15rem;  left: .15rem;  width: 4rem;  height: 4rem; visibility: visible; }
+.circle > img:nth-child(3){ position:absolute; top:1.2rem; left: .4rem; width: 3.6rem;}
+#location { position: absolute;font-size:.18rem; top: .9rem;text-align: center; width: 100%; color: #979CA0;}
 
 .line-right,.line-left {position: absolute; width: 1.07rem;}
 .line-right { top:.8rem; right: 0;}
@@ -161,3 +139,98 @@
 */
 .page-3 {position: relative; overflow: hidden; width: 100%; height: 100%; font-size: .22rem; }
 .page-3 input, .page-3 select { font-size: .22rem; width: 1.2rem; border: 1px solid black;}
+
+
+/**************************************************************************************************
+*   自定义动画类
+***************************************************************************************************/
+.fadeInBiasLeftUp {
+    animation-name: fadeInBiasLeftUp;
+}
+
+@keyframes fadeInBiasLeftUp {
+    from {  opacity: 0;  transform: translate3D(-100%,100%,0);  }
+    to {  opacity: 1;  transform: none;  }
+}
+
+.fadeInBiasRightDown {
+    animation-name: fadeInBiasRightDown;
+}
+
+@keyframes fadeInBiasRightDown {
+    from {  opacity: 0;  transform: translate3D(100%,-100%,0);  }
+    to {  opacity: 1;  transform: none;  }
+}
+
+.fadeInBiasLeftCar {
+    animation-name: fadeInBiasLeftCar;
+}
+
+@keyframes fadeInBiasLeftCar {
+    from {  opacity: 0;  transform: translate3D(-100%,-50%,0);  }
+    to {  opacity: 1;  transform: none;  }
+}
+
+.circleAn { animation: circleAn 3.5s linear;  animation-fill-mode: both; }
+
+@keyframes circleAn{
+    0%{ opacity:0; transform:rotateX(360deg) translateY(80px);}
+    100%{ opacity:1; transform:rotateX(0deg) translateY(0px);}
+}
+
+/*.circular > div:nth-child(1){ top:-.055rem;  left: 50%;  animation: dotAn 5s linear 3s infinite; }*/
+/*.circular > div:nth-child(2){  top:-.055rem; left: 50%; animation: dotAn2 5s linear 3s infinite; }*/
+
+@keyframes dotAn{
+    0%{ transform:rotateZ(360deg);transform-origin:0rem 2.2rem;}
+    100%{ transform:rotateZ(0deg);transform-origin:0rem 2.2rem;}
+}
+
+@keyframes dotAn2{
+    0%{ transform:rotateZ(-360deg);transform-origin:0rem 2.2rem;}
+    100%{ transform:rotateZ(0deg);transform-origin:0rem 2.2rem;}
+}
+
+/*.circle > img:nth-child(2){  position: absolute;  display: block;  top:.15rem;  left: .15rem;  width: 4rem;  height: 4rem;*/
+    /*animation: normalRotate 6.5s linear 3s infinite;  }*/
+
+.normalRotate { animation: normalRotate 6.5s linear infinite; animation-fill-mode: both; }
+
+@keyframes normalRotate {
+    0%{ transform:rotateZ(0deg);transform-origin:center center;}
+    100%{ transform:rotateZ(360deg);transform-origin:center center;}
+}
+
+.titAn { animation: titAn 1.5s linear 2s; animation-fill-mode: both; }
+
+@keyframes titAn{
+    0%{ opacity:0; transform:rotateY(360deg) translateY(0px);}
+    100%{ opacity:1;transform:rotateY(0deg) translateY(0px);}
+}
+
+
+.rotateAntiIn { animation-name: rotateAntiIn; }
+
+@keyframes rotateAntiIn {
+    from {
+        transform-origin: center;
+        transform: rotate3d(0, 0, 1, 200deg);
+        opacity: 0;
+    }
+
+    to {
+        transform-origin: center;
+        transform: none;
+        opacity: 1;
+    }
+}
+
+.delay_1s{  animation-delay: 1s;  }
+.delay_1-5s{  animation-delay: 1.5s;  }
+.delay_2s{  animation-delay: 2s;  }
+.delay_2-5s{  animation-delay: 2.5s;  }
+.delay_3s{  animation-delay: 3s;  }
+.delay_3-5s{  animation-delay: 3.5s;  }
+.delay_4s{  animation-delay: 4s;  }
+.delay_4-5s{  animation-delay: 4.5s;  }
+.delay_5s{  animation-delay: 5s;  }
