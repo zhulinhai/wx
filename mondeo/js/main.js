@@ -93,6 +93,25 @@
                     alert('您已参加活动，请继续浏览后续内容!');
             }
         });
+
+        /**
+         * 初始化页面数据
+         */
+        http.ajaxRequest({type:'GET',uri:'h5/getInitDatas?flag='+flag,success:function(json){
+            var data = json.data;
+            if(data){
+                store.lives = data.lives;
+                store.audiences = data.audiences;
+                store.tricyclic_turns = data.tricyclic_turns;
+                store.tetracyclic_turns = data.tetracyclic_turns;
+                store.pentacyclic_turns = data.pentacyclic_turns;
+                store.used_gasoline = data.used_gasonline_tera;
+                store.used_gasonline_penta = data.used_gasonline_penta;
+                store.used_time_tri = data.used_time_tri;
+                store.support = data.support;
+                store.nonsupport = data.nonsupport;
+            }
+        }});
     });
 
 
@@ -108,6 +127,10 @@
         //    clearInterval(loadInterval);
         //    loadInterval = -1;
         //    $('.loading').addClass('animated fadeOut').one(animationEnd,function(){
+        //        /**
+        //         * 隐藏加载图片
+        //         */
+        //        $('#loadingImg').hide();
         //        $(this).hide();});
         //},1000);
 
@@ -136,7 +159,7 @@
         //listen the channel broadcast
         socket.on('live_channel_'+flag , function(data){
             console.log(data);
-            $('#code').html(data.props);
+            //$('#code').html(data.props);
         });
 
         /**
@@ -144,11 +167,31 @@
          * @type {Swiper|Window.Swiper}
          */
         mainSwiper = new Swiper('#mainSwiper',{
-            initialSlide:1,
+            initialSlide:0,
             direction : 'vertical',
             loop: false,
             onSlideChangeStart: function(swiper){
-                if(swiper.activeIndex == 1){
+                if(swiper.activeIndex == 0){
+                    /**
+                     * 首页动画
+                     */
+                    $('.circular').addClass('circleAn');
+                    $('#circleCar').addClass('animated rotateAntiIn');
+                    $('#slogan').addClass('titAn');
+                    $('#location').addClass('animated delay_3s fadeIn');
+                    $('.line-right').addClass('animated fadeInBiasRightDown');
+                    $('.line-left').addClass('animated fadeInBiasLeftUp');
+                    $('.first-car').addClass('animated fadeInBiasLeftCar');
+                    $('.btn-live').addClass('animated fadeInBiasRightDown');
+                    $('.btn-more').addClass('animated fadeInBiasRightDown');
+                }else if(swiper.activeIndex == 1){
+                    /**
+                     * 首页动画
+                     */
+                    $('#dotA').removeClass('dotA');
+                    $('#dotB').removeClass('dotB');
+                    $('#circleCar').removeClass('normalRotate');
+
                     if(commentSwiper == null){
                         commentSwiper = new Swiper('#commentSwiper',{
                             autoplay:3000,
@@ -182,7 +225,6 @@
     function openPopUpBox(type){
         type = parseInt(type);
         $('.pop-box').show();
-
         if(type == BOX_SUPPORT){
             $('#submit-pop').show();
             $('#submit-title').removeClass('fail');
@@ -202,6 +244,7 @@
             if(!ruleScroller) ruleScroller = new IScroll('#rule-content',{ scrollbars: 'custom'
                 ,resizeScrollbars:false });
         }
+        $('.pop-content').addClass('animated bounceIn');
     }
 
     /**
@@ -271,7 +314,6 @@
          * 转动左侧
          */
         var circleL = p < 50 ? 45 : (scale * (p - 50) + 45);
-//        circleL = circleL < 45 ? (45 + circleL) : circleL;
         $('.leftcircle').css('transform','rotate('+circleL+'deg)');
     }
 
@@ -280,6 +322,45 @@
     }
 
     function bindEvent(){
+        /*******************************************************
+         *            监听动画
+         *******************************************************/
+        /**
+         * 首页动画
+         */
+        $('.line-right').on(animationEnd,function(e){
+            $(this).removeClass('animated fadeInBiasRightDown');
+        });
+        $('.line-left').on(animationEnd,function(e){
+            $(this).removeClass('animated fadeInBiasLeftUp');
+        });
+        $('.first-car').on(animationEnd,function(e){
+            $(this).removeClass('animated fadeInBiasLeftCar');
+        });
+        $('.circular').on(animationEnd,function(e){
+            $(this).removeClass('circleAn');
+        });
+        $('#circleCar').on(animationEnd,function(e){
+            $(this).removeClass('animated rotateAntiIn');
+        });
+        $('#slogan').on(animationEnd,function(e){
+            $(this).removeClass('titAn');
+            $('#dotA').addClass('dotA');
+            $('#dotB').addClass('dotB');
+            $('#circleCar').addClass('normalRotate');
+        });
+        $('#location').on(animationEnd,function(e){
+            $(this).removeClass('animated fadeIn');
+        });
+        $('.btn-live').on(animationEnd,function(e){
+            $(this).removeClass('animated fadeInBiasRightDown');
+        });
+        $('.btn-more').on(animationEnd,function(e){
+            $(this).removeClass('animated fadeInBiasRightDown');
+        });
+        /**
+         * end 首页动画
+         */
 
         /**
          * 监听表单元素focus事件

@@ -67,10 +67,27 @@
             left: 0;
             transform: rotate(45deg);
         }
+
+        #run {
+            margin-left: 300px;
+            margin-top: 300px;
+            animation: run linear 1s;
+        }
+
+        @keyframes run {
+            0%{
+                opacity: 0;
+                transform:translate3D(100%,-100%,0);
+            }
+            100%{
+                opacity: 1;
+                transform:none;
+            }
+        }
     </style>
 </head>
 <body>
-<div style="width: 10px;height: 25px;transform: skew(-20deg); border: 1px solid red;">
+<div id="run" style="width: 10px;height: 25px;border: 1px solid red;">
 </div>
 <div class="circle-progress">
     <div class="circleProgress_wrapper">
