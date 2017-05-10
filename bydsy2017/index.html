@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>揭秘宋元盖世宝藏</title>
+    <link rel="stylesheet" href="sass/index.css">
+    <script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
+    <script type="text/javascript" src="js/swiper.min.js"></script>
+    <script type="text/javascript" src="js/common.js"></script>
+    <script type="text/javascript" src="js/iscroll.js"></script>
+    <script type="text/javascript" src="js/gamePlayer.js"></script>
+    <script type="text/javascript" src="js/pace.min.js"></script>
+    <script type="text/javascript" src="js/loading.js"></script>
+    <script type="text/javascript">
+        function bindClicks() {
+            $('#btnStartGame').click(function () {
+                $('.section-1').hide();
+                $('.section-2').show();
+                gamePlayer.init();
+            });
+            $('#btnActRule').click(function () {
+
+            });
+        }
+
+        $(function () {
+            bindClicks();
+        });
+    </script>
+    <!-- 百度统计 -->
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?5f25116dee8511803aaafc26c33b456f";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+</head>
+<body>
+    <div id="loadingDialog" style="display: block">
+        <img class="box animated tada infinite" src="src/2-box.png" />
+        <p class="loading-percent" id="loading-percent"></p>
+    </div>
+    <!-- 比亚迪宋元视频弹出框 -->
+    <div id="videoDialog">
+        <div class="videoFrame">
+            <div class="video-js-box" ><!-- vjs-big-play-centered -->
+                <video id="videoPlayer" class="video-js" poster="img/4-placeHolder.jpg" controls="controls" src="http://vedio.yunmfang.com/job_MGZSTVC30S.mp4" preload="auto" loop="true" webkit-playsinline playsinline></video>
+            </div>
+        </div>
+    </div>
+    <div class="logo"></div>
+    <div class="bgCover"></div>
+    <div class="section-1" style="display: none">
+        <img class="title-1" src="src/1-title.png" />
+        <img class="stars" src="src/1-stars.png" />
+        <img class="light" src="src/1-light.png" />
+        <div class="box open"></div>
+        <img class="location1" src="src/1-location1.png" />
+        <img class="location2" src="src/1-location1.png" />
+        <img class="location3" src="src/1-location1.png" />
+        <img class="car" src="src/1-car.png" />
+        <div id="btnStartGame"></div>
+        <div id="btnActRule">活动规则</div>
+    </div>
+    <div class="section-2" style="display: none">
+        <div id="wrapper">
+            <div id="game-box" class="game-box">
+                <img class="bg" src="src/2-bg.jpg" />
+                <img class="box box1" src="src/2-box.png" />
+                <img class="box box2" src="src/2-box.png" />
+                <img class="box box3" src="src/2-box.png" />
+                <img class="box box4" src="src/2-box.png" />
+                <img class="box box5" src="src/2-box.png" />
+                <img class="box box6" src="src/2-box.png" />
+                <img class="box box7" src="src/2-box.png" />
+            </div>
+        </div>
+        <div class="toolDiv">
+            <img class="title" src="src/2-title.png" />
+            <ul>
+                <li><img src="src/2-key.png" /></li>
+                <li><img src="src/2-key.png" /></li>
+                <li><img src="src/2-key.png" /></li>
+            </ul>
+        </div>
+    </div>
+    <div id="orientLayer"><!-- 横屏提示 -->
+        <div class="contentFrame">
+            <img class="phone rotatePhoneAnimation" src="src/rotatePhone.png" />
+            <p class="tipTitle">为了更好的体验，请使用竖屏浏览</p>
+        </div>
+    </div>
+
+</body>
+</html>
