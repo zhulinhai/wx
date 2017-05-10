@@ -40,14 +40,115 @@ a:link,a:visited,a:hover,a:active{text-decoration: none;}
   z-index: 8;
 }
 
-.videoDialog {
-
+#videoDialog {
+  position: fixed;
+  z-index: 10;
 }
-
-.section-1 {
+#actRuleDialog {
   position: fixed;
   top: 0;
   left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.6);
+  z-index: 11;
+}
+
+#infoDialog {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.6);
+  z-index: 11;
+  .contentFrame {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -9.1rem;
+    margin-left: -7rem;
+    width: 14rem;
+    height: 18.2rem;
+    background-color: white;
+    .closeDiv {
+      width: 100%;
+      height: 2rem;
+      .close {
+        float: right;
+        margin-right: 0.5rem;
+        margin-top: 0.5rem;
+        width: 0.8rem;
+        height: 0.8rem;
+      }
+    }
+    .title {
+      width: 100%;
+    }
+    .subInfo {
+      height: 0.8rem;
+      font-size: 0.6rem;
+      text-align: center;
+    }
+    .infoDiv {
+      width: 100%;
+      height: 11rem;
+      .leftDiv {
+        float: left;
+        margin-left: 1rem;
+        width: 3.5rem;
+        p {
+          height: 1.5rem;
+          line-height: 1.5rem;
+          margin-top: 0.5rem;
+          font-size: 0.7rem;
+          color: #5A5A5B;
+        }
+      }
+      .rightDiv {
+        float: right;
+        margin-right: 1rem;
+        width: 8.5rem;
+        input, select {
+          -webkit-appearance: none;
+          box-sizing: border-box;
+          -moz-box-sizing: border-box;  /*Firefox3.5+*/
+          -webkit-box-sizing: border-box; /*Safari3.2+*/
+          width: 8.5rem;
+          height: 1.5rem;
+          line-height: 1.5rem;
+          padding-right: 1rem;
+          color: #5A5A5B;
+          font-size: 0.65rem;
+          border: 1px solid #5A5A5B;
+          border-radius: inherit;
+          background-color: transparent;
+          text-indent: 0.2rem;
+          margin-top: 0.5rem;
+        }
+        input::-webkit-input-placeholder {color: #5A5A5B;}
+        input::-moz-placeholder {color: #5A5A5B;}
+        input:-moz-placeholder {color: #5A5A5B;}
+        select {
+          background: white url("../src/arrowDown.png") no-repeat 7.5rem center;
+          background-size: 0.5rem 0.3rem;
+        }
+      }
+    }
+    #btnSubmit {
+      display: block;
+      margin: 0 auto;
+      text-align: center;
+      font-size: 0.7rem;
+      width: 6rem;
+      height: 1.6rem;
+      line-height: 1.6rem;
+      background-color: red;
+    }
+  }
+}
+
+.section-1 {
   width: 100%;
   height: 100%;
   background: black url("../src/1-bg.jpg") no-repeat 0 center;
@@ -187,9 +288,7 @@ a:link,a:visited,a:hover,a:active{text-decoration: none;}
         z-index: 2;
       }
     }
-
   }
-
 
   .toolDiv {
     position: absolute;

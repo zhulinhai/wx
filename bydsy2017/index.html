@@ -7,29 +7,6 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <title>揭秘宋元盖世宝藏</title>
     <link rel="stylesheet" href="sass/index.css">
-    <script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
-    <script type="text/javascript" src="js/swiper.min.js"></script>
-    <script type="text/javascript" src="js/common.js"></script>
-    <script type="text/javascript" src="js/iscroll.js"></script>
-    <script type="text/javascript" src="js/gamePlayer.js"></script>
-    <script type="text/javascript" src="js/pace.min.js"></script>
-    <script type="text/javascript" src="js/loading.js"></script>
-    <script type="text/javascript">
-        function bindClicks() {
-            $('#btnStartGame').click(function () {
-                $('.section-1').hide();
-                $('.section-2').show();
-                gamePlayer.init();
-            });
-            $('#btnActRule').click(function () {
-
-            });
-        }
-
-        $(function () {
-            bindClicks();
-        });
-    </script>
     <!-- 百度统计 -->
     <script>
         var _hmt = _hmt || [];
@@ -47,11 +24,60 @@
         <p class="loading-percent" id="loading-percent"></p>
     </div>
     <!-- 比亚迪宋元视频弹出框 -->
-    <div id="videoDialog">
+    <div id="videoDialog" style="display: none">
         <div class="videoFrame">
             <div class="video-js-box" ><!-- vjs-big-play-centered -->
-                <video id="videoPlayer" class="video-js" poster="img/4-placeHolder.jpg" controls="controls" src="http://vedio.yunmfang.com/job_MGZSTVC30S.mp4" preload="auto" loop="true" webkit-playsinline playsinline></video>
+                <video id="videoPlayer" class="video-js" poster="" controls="controls" src="http://vedio.yunmfang.com/job_MGZSTVC30S.mp4" preload="auto" loop="true" webkit-playsinline playsinline></video>
             </div>
+        </div>
+    </div>
+    <!-- 车型亮点弹出框 -->
+    <div id="carInfoDialog" style="display: none">
+
+    </div>
+    <!-- 活动规则 -->
+    <div id="actRuleDialog" style="display: block">
+        <div class="contentFrame">
+            <p>盖世升级四重礼</p>
+            <p>自动挡补贴礼</p>
+            <p>宋全系自动挡最高享9000元现金补贴（1.5TID舒适型不享受补贴）；</p>
+            <p>1.5TID宋盖世升级版自动挡享3000元的补贴（实际零售价12.39万）；</p>
+            <p>元自动挡最高享3000元现金补贴（1.5L自动挡酷炫活力型不享受该活动）</p>
+            <p>升级装备礼</p>
+            <p>前20000名下订客户享最高5000元配置升级；</p>
+            <p>前20000名购买手动酷炫互联型可升级为豪华皮座椅。</p>
+            <p>盖世红包礼</p>
+            <p>CarPad下载盖世红包，APP有机会领取微信红包</p>
+            <p>金融贴息礼</p>
+            <p>宋最高可享10000元金融贴息优惠；</p>
+            <p>元最高可享5000元金融贴息优惠</p>
+            <p>活动详询比亚迪汽车官网或者当地经销商，本活动最终解释权归比亚迪所有</p>
+        </div>
+    </div>
+    <!-- 留资弹出框 -->
+    <div id="infoDialog" style="display: none">
+        <div class="contentFrame">
+            <div class="closeDiv"><img id="closeInfoDialog" class="close" src="src/close.jpg" alt="关闭" /></div>
+            <p class="subInfo">请填写个人真实信息，并保持手机畅通。</p>
+            <p class="subInfo">活动结束后，易车工作人员将与你联系发放奖品。</p>
+            <div class="infoDiv">
+                <div class="leftDiv">
+                    <p>姓&nbsp;&nbsp;&nbsp;名：</p>
+                    <p>手&nbsp;&nbsp;&nbsp;机：</p>
+                    <p>省&nbsp;&nbsp;&nbsp;份：</p>
+                    <p>城&nbsp;&nbsp;&nbsp;市：</p>
+                    <p>经销商：</p>
+                </div>
+                <div class="rightDiv">
+                    <input type="hidden" name="flag" value="bydsy2017" />
+                    <input name="realname" id="realname" type="text" />
+                    <input name="mobile" id="mobile" type="tel" />
+                    <select name="province" id="province"><option>请选择</option></select>
+                    <select name="city" id="city"><option>请选择</option></select>
+                    <select name="dealer" id="dealer"><option>请选择</option></select>
+                </div>
+            </div>
+            <div id="btnSubmit">领奖</div>
         </div>
     </div>
     <div class="logo"></div>
@@ -85,8 +111,8 @@
             <img class="title" src="src/2-title.png" />
             <ul>
                 <li><img src="src/2-key.png" /></li>
-                <li><img src="src/2-key.png" /></li>
-                <li><img src="src/2-key.png" /></li>
+                <li><img src="src/2-key-hover.png" /></li>
+                <li><img src="src/2-key-hover.png" /></li>
             </ul>
         </div>
     </div>
@@ -96,6 +122,33 @@
             <p class="tipTitle">为了更好的体验，请使用竖屏浏览</p>
         </div>
     </div>
+    <script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
+    <script type="text/javascript" src="js/swiper.min.js"></script>
+    <script type="text/javascript" src="js/common.js"></script>
+    <script type="text/javascript" src="js/iscroll.js"></script>
+    <script type="text/javascript" src="js/gamePlayer.js"></script>
+    <script type="text/javascript" src="js/pace.min.js"></script>
+    <script type="text/javascript" src="js/loading.js"></script>
+    <script type="text/javascript" src="js/data.js"></script>
+    <script type="text/javascript" src="js/bindInfo.js"></script>
+    <script type="text/javascript">
+        function bindClicks() {
+            $('#btnStartGame').click(function () {
+                $('.section-1').hide();
+                $('.section-2').show();
+                gamePlayer.init();
+            });
+            $('#btnActRule').click(function () {
+                alert("活动规则");
+            });
+            $('#closeInfoDialog').click(function () {
+                $('#infoDialog').hide();
+            });
+        }
 
+        $(function () {
+            bindClicks();
+        });
+    </script>
 </body>
 </html>
