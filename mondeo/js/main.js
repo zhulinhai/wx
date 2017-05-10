@@ -172,6 +172,9 @@
             loop: false,
             onSlideChangeStart: function(swiper){
                 if(swiper.activeIndex == 0){
+                    /**
+                     * 首页动画
+                     */
                     $('.circular').addClass('circleAn');
                     $('#circleCar').addClass('animated rotateAntiIn');
                     $('#slogan').addClass('titAn');
@@ -182,7 +185,9 @@
                     $('.btn-live').addClass('animated fadeInBiasRightDown');
                     $('.btn-more').addClass('animated fadeInBiasRightDown');
                 }else if(swiper.activeIndex == 1){
-
+                    /**
+                     * 首页动画
+                     */
                     $('#dotA').removeClass('dotA');
                     $('#dotB').removeClass('dotB');
                     $('#circleCar').removeClass('normalRotate');
@@ -309,7 +314,6 @@
          * 转动左侧
          */
         var circleL = p < 50 ? 45 : (scale * (p - 50) + 45);
-//        circleL = circleL < 45 ? (45 + circleL) : circleL;
         $('.leftcircle').css('transform','rotate('+circleL+'deg)');
     }
 
@@ -321,6 +325,9 @@
         /*******************************************************
          *            监听动画
          *******************************************************/
+        /**
+         * 首页动画
+         */
         $('.line-right').on(animationEnd,function(e){
             $(this).removeClass('animated fadeInBiasRightDown');
         });
@@ -336,14 +343,12 @@
         $('#circleCar').on(animationEnd,function(e){
             $(this).removeClass('animated rotateAntiIn');
         });
-
         $('#slogan').on(animationEnd,function(e){
             $(this).removeClass('titAn');
             $('#dotA').addClass('dotA');
             $('#dotB').addClass('dotB');
             $('#circleCar').addClass('normalRotate');
         });
-
         $('#location').on(animationEnd,function(e){
             $(this).removeClass('animated fadeIn');
         });
@@ -353,6 +358,9 @@
         $('.btn-more').on(animationEnd,function(e){
             $(this).removeClass('animated fadeInBiasRightDown');
         });
+        /**
+         * end 首页动画
+         */
 
         /**
          * 监听表单元素focus事件
