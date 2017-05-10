@@ -4,7 +4,9 @@
 (function(){
     var host = 'http://api.bjczxda.com/api/';
     var http = new Http(host);
+    var validate = new InputUtil();
     var flag = 'MONDEO_20170501';
+    var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
     var store = {
         lives:0, //直播人气数
         audiences:0, //同时在线人数
@@ -24,7 +26,7 @@
      * videojs 对象
      * @type {null}
      */
-    var player = null;
+    var  player= null;
 
     /**
      * websocket server address
@@ -32,7 +34,21 @@
      */
     var websocket_url =  'ws://node.bjczxda.com';
     var socket = null;
-
+    /**
+     * 主swiper对象
+     * @type {null}
+     */
+    var mainSwiper = null;
+    /**
+     * 网友评论swiper对象
+     * @type {null}
+     */
+    var commentSwiper = null;
+    /**
+     * 活动规则的iscroll对象
+     * @type {null}
+     */
+    var ruleScroller = null;
 
 
     /**
@@ -45,22 +61,74 @@
                 , host+'h5/storeProposer']
         }
     }
+    var loadInterval = null;
+    Pace.once('start',function(){
+        //loadInterval = setInterval(function(){
+        //    var load = $('.pace-progress').attr('data-progress-text');
+        //    $('#loading').html(load);
+        //},100);
+
+        /**
+         * 获取网页评论
+         */
+        http.ajaxRequest({
+            type:'GET',
+            uri:'h5/getComments?flag='+flag,
+            success:function(json){
+                var comments = json.data.data;
+                var dom = $('#commentSwiper').find('.swiper-wrapper');
+                var htmlStr = '';
+                for(var i =0; i < comments.length; i++){
+                    var comment = comments[i];
+                    htmlStr += '<div class="swiper-slide swiper-no-swiping">';
+                    htmlStr += '<p>&nbsp;'+comment.name+'&nbsp;:</p><p>'+ comment.comment +'</p>';
+                    htmlStr += '</div>';
+                }
+                $(dom).html(htmlStr);
+            },
+            error:function(e){
+                if(e.responseJSON){
+                    alert(e.responseJSON.message);
+                }else
+                    alert('您已参加活动，请继续浏览后续内容!');
+            }
+        });
+    });
+
+
 
     /**
      * 完成加载
      */
     Pace.once('hide', function(e){
+        /**
+         * stop loading
+         */
+        //setTimeout(function(){
+        //    clearInterval(loadInterval);
+        //    loadInterval = -1;
+        //    $('.loading').addClass('animated fadeOut').one(animationEnd,function(){
+        //        $(this).hide();});
+        //},1000);
+
 
         bindEvent();
 
-        player = videojs('my-player',{
-            controls: true,
-            autoplay: false,
-            loop:true,
-            preload: 'auto'
-        });
 
-        player.src('http://vedio.yunmfang.com/K6015-480p-16-9.mp4');
+        //player = videojs('my-player',{
+        //    controls: true,
+        //    autoplay: false,
+        //
+        //    loop:true,
+        //    preload: 'auto'
+        //});
+
+        //player.src('http://vedio.yunmfang.com/K6015-480p-16-9.mp4');
+        //player.on('ended',function(){
+        //    alert('play ended!');
+        //});
+
+
 
         // connect websocket server
         socket = io.connect(websocket_url);
@@ -71,37 +139,246 @@
             $('#code').html(data.props);
         });
 
-        //player.on('ended',function(){
-        //    alert('play ended!');
-        //});
+        /**
+         * 初始化主swiper
+         * @type {Swiper|Window.Swiper}
+         */
+        mainSwiper = new Swiper('#mainSwiper',{
+            initialSlide:1,
+            direction : 'vertical',
+            loop: false,
+            onSlideChangeStart: function(swiper){
+                if(swiper.activeIndex == 1){
+                    if(commentSwiper == null){
+                        commentSwiper = new Swiper('#commentSwiper',{
+                            autoplay:3000,
+                            loop:true,
+                            noSwiping:true
+                        });
+                    }
+                    //setInterval(function(){
+                    //    unsupported = Math.round(Math.random()* 100);
+                    //    console.log(unsupported);
+                    //    theCircle(unsupported);
+                    //    fillColor(unsupported);
+                    //},2000);
+                }
+            }
+        });
     });
+
+    var BOX_SUPPORT = 1;
+    var BOX_NONSUPPORT = 2;
+    var BOX_SHARE = 3;
+    var BOX_RULE = 4;
+    /**
+     * 打开弹出框
+     * @param type 弹出框类型
+     * type: 1 支持弹出框
+     * type: 2 不支持弹出框
+     * type: 3 分享弹出框
+     * type: 4 活动规则弹出框
+     */
+    function openPopUpBox(type){
+        type = parseInt(type);
+        $('.pop-box').show();
+
+        if(type == BOX_SUPPORT){
+            $('#submit-pop').show();
+            $('#submit-title').removeClass('fail');
+            $('#submit-title').addClass('success');
+            $('#submit-title').html('挑战成功');
+            $('input[name="state"]').val(1);
+        }else if(type == BOX_NONSUPPORT){
+            $('#submit-pop').show();
+            $('#submit-title').removeClass('success');
+            $('#submit-title').addClass('fail');
+            $('#submit-title').html('挑战失败');
+            $('input[name="state"]').val(2);
+        }else if(type == BOX_SHARE){
+            $('#share-pop').show();
+        }else if(type == BOX_RULE){
+            $('#rule-pop').show();
+            if(!ruleScroller) ruleScroller = new IScroll('#rule-content',{ scrollbars: 'custom'
+                ,resizeScrollbars:false });
+        }
+    }
+
+    /**
+     * 关闭弹出框
+     */
+    function closePopUpBox(){
+        $('.pop-box').hide();
+        $('.submit-pop').hide();
+        $('.rule-pop').hide();
+        $('.share-pop').hide();
+    }
+
+    function fillColor(p){
+        var total = 14;
+        var support = 100 -p;
+        /**
+         * 计算并填充支持进度条
+         */
+        var s_step = Math.round((14 * support) / 100);
+        var cur_s_doms = $('.support').find('.active');
+        var s_dom_size = cur_s_doms.length;
+        if(s_step  > s_dom_size){
+            var doms = $('.support').find('div');
+            for(var i = (s_dom_size -1); i < s_step; i++){
+                $(doms[i]).addClass('active');
+            }
+        }else if(s_step < s_dom_size){
+            var w = s_dom_size - s_step;
+            while (w > 0){
+                $(cur_s_doms[--s_dom_size]).removeClass('active');
+                w--;
+            }
+        }
+        /**
+         * 计算并填充不支持进度条
+         */
+        var un_step = Math.round((14 * p) / 100);
+        var all_un_doms = $('.unsupport').find('div');
+        var cur_un_doms = $('.unsupport').find('.un-active');
+        var un_dom_size = cur_un_doms.length;
+
+        if(un_step > un_dom_size){
+            var w = un_step - un_dom_size;
+            var start = total - un_dom_size;
+            while (w > 0){
+                $(all_un_doms[--start]).addClass('un-active');
+                w--;
+            }
+        }if(un_step < un_dom_size){
+            var start = 0;
+            while (un_step < un_dom_size){
+                $(cur_un_doms[start++]).removeClass('un-active');
+                un_step++;
+            }
+        }
+    }
+
+    function theCircle(p){
+        var scale = (225 - 45) / 50;
+        p = parseInt(p);
+        /**
+         * 转动右侧
+         */
+        var circleR = p < 50 ? ((p * scale) + 45) : 225;
+        $('.rightcircle').css('transform','rotate(' + circleR + 'deg)');
+        /**
+         * 转动左侧
+         */
+        var circleL = p < 50 ? 45 : (scale * (p - 50) + 45);
+//        circleL = circleL < 45 ? (45 + circleL) : circleL;
+        $('.leftcircle').css('transform','rotate('+circleL+'deg)');
+    }
+
+    function showError(str){
+        $('#error').html(str);
+    }
 
     function bindEvent(){
 
+        /**
+         * 监听表单元素focus事件
+         */
+        $($('#commentForm').find('input')).focus(function(e){
+            $('#error').empty();
+        });
+        /**
+         * 提交网友留言
+         */
         $('#submitComment').hammer().bind('tap',function(e){
-            var params = $('form:first').serialize();
+            var params = $('#commentForm').serialize();
+            var comment = $('textarea[name="comment"]').val();
+            var name = $('input[name="name"]').val();
+            var mobile = $('input[name="mobile"]').val();
+
+            if(validate.isEmpty(comment)) {
+                showError('留言不能为空');
+                return false;
+            }
+            if(comment.length > 30){
+                showError('留言不能超过30个字');
+                return false;
+            }
+            if(validate.isEmpty(name)){
+                showError('姓名不能为空');
+                return false;
+            }
+            if(comment.length > 6){
+                showError('昵称不能超过6个字');
+                return false;
+            }
+            if(validate.isEmpty(mobile)){
+                showError('手机号不能为空');
+                return false;
+            }
+            if(!validate.isMobile(mobile)){
+                showError('请输入手机号');
+                return false;
+            }
             http.ajaxRequest({
                 type:'GET',
                 uri:'h5/storeComment?' + params + '&flag='+flag,
                 success:function(json){
-                    alert(json.data);
+                    var data = json.data;
+                    if(data) {
+                        window.mobile = $('input[name="mobile"]').val();
+                        store.support = data.support;
+                        store.nonsupport = data.nonsupport;
+                        var nonsupport =Math.round((store.nonsupport / (store.support + store.nonsupport))*100);
+                        $('.support-votes').html(store.support + '票');
+                        $('.nonsupport-votes').html(store.nonsupport + '票');
+                        theCircle(nonsupport);
+                        fillColor(nonsupport);
+                        $('#commentForm')[0].reset();
+                        $('#submit-pop').hide();
+                        $('#share-pop').show();
+                    }
                 },
                 error:function(e){
                     if(e.responseJSON){
                         alert(e.responseJSON.message);
                     }else
-                        alert('您已参加活动，请继续浏览后续内容!');
+                        showError('您已参加活动，请继续浏览后续内容!');
                 }
             });
         });
 
+        /**
+         * 提交报名信息
+         */
         $('#submitApply').hammer().bind('tap',function(e){
-            var params = $('form:last').serialize();
+            var params = $('#applyForm').serialize();
+            var name = $('#applyForm input[name="name"]').val();
+            var mobile = $('#applyForm input[name="mobile"]').val();
+            var sex = $('#applyForm select[name="sex"]').val();
+
+            if(validate.isEmpty(name)){
+                alert('姓名不能为空');
+                return false;
+            }
+            if(validate.isEmpty(sex)) {
+                alert('性别不能为空');
+                return false;
+            }
+            if(validate.isEmpty(mobile)){
+                alert('手机号不能为空');
+                return false;
+            }
+            if(!validate.isMobile(mobile)){
+                alert('请输入手机号');
+                return false;
+            }
             http.ajaxRequest({
                 type:'GET',
                 uri:'h5/storeProposer?' + params + '&flag='+flag,
                 success:function(json){
-                    alert(json.data);
+                    window.mobile = $('#applyForm input[name="mobile"]').val();
+                    openPopUpBox(BOX_SHARE);
                 },
                 error:function(e){
                     if(e.responseJSON){

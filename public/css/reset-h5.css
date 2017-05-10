@@ -7,16 +7,16 @@ html, body {
 
 body {
     overflow: hidden;
+    font-size: .12rem;
 }
 
-div, span, object, iframe, p, img, ul, li,
+html,body,div, span, object, iframe, p, img, ul, li,
 label, table, tbody, tfoot, thead, tr, th, td,
 canvas, audio, video {
     margin:0;
     padding:0;
     border:0;
     outline:0;
-    font-size:100%;
     vertical-align:baseline;
     background:transparent;
 }
@@ -40,9 +40,10 @@ a:link, a:visited, a:hover, a:active {
     outline: none;
 }
 
-input, select {
+input, select,textarea {
     border: none;
     border-radius: 0;
+    -webkit-appearance: none;
     box-sizing: border-box;
     vertical-align:middle;
 }
