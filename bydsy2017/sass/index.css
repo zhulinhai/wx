@@ -2431,6 +2431,7 @@ body, html {
   overflow: hidden;
   font-size: 20px;
   font-family: Verdana, sans-serif;
+  background-color: black;
   user-select: none;
   /*禁止选择文本*/
   user-select: none;
@@ -2464,10 +2465,6 @@ a:link, a:visited, a:hover, a:active {
   pointer-events: none;
   z-index: 8; }
 
-#videoDialog {
-  position: fixed;
-  z-index: 10; }
-
 #actRuleDialog {
   position: fixed;
   top: 0;
@@ -2476,8 +2473,54 @@ a:link, a:visited, a:hover, a:active {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.6);
   z-index: 11; }
+  #actRuleDialog .contentFrame {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -6.45rem;
+    margin-top: -9.05rem;
+    width: 12.9rem;
+    height: 18.1rem;
+    background: url("../src/actRuleBg.jpg") no-repeat 0 bottom;
+    background-size: 100% auto; }
+    #actRuleDialog .contentFrame .closeDiv {
+      width: 100%;
+      height: 1.5rem; }
+      #actRuleDialog .contentFrame .closeDiv .close {
+        float: right;
+        margin-right: 0.5rem;
+        margin-top: 0.5rem;
+        width: 0.8rem;
+        height: 0.8rem; }
+    #actRuleDialog .contentFrame .title {
+      display: block;
+      margin: 0 auto;
+      width: 4.5rem;
+      height: 1.15rem; }
+    #actRuleDialog .contentFrame .menu {
+      font-weight: bold;
+      color: black;
+      font-size: 0.6rem;
+      margin: 0.3rem 0.8rem 0.2rem; }
+    #actRuleDialog .contentFrame .menuWithLine {
+      font-weight: bold;
+      color: black;
+      font-size: 0.6rem;
+      height: 1rem;
+      margin: 0.3rem 0.8rem 0.2rem;
+      border-bottom: 1px dotted #B9A27C; }
+    #actRuleDialog .contentFrame p {
+      font-size: 0.5rem;
+      line-height: 0.8rem;
+      margin: 0 0.8rem; }
+      #actRuleDialog .contentFrame p span {
+        color: #8E1B12; }
+    #actRuleDialog .contentFrame .gift {
+      float: right;
+      margin-right: 0.5rem;
+      width: 1.8rem; }
 
-#infoDialog {
+#videoDialog {
   position: fixed;
   top: 0;
   left: 0;
@@ -2485,83 +2528,251 @@ a:link, a:visited, a:hover, a:active {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.6);
   z-index: 11; }
-  #infoDialog .contentFrame {
+  #videoDialog .videoFrame {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -7.8rem;
+    margin-top: -11rem;
+    width: 15.6rem;
+    height: 11.35rem;
+    background: url("../src/videoBg.png") no-repeat 0 bottom;
+    background-size: 100% auto; }
+    #videoDialog .videoFrame .closeDiv {
+      width: 100%;
+      height: 1.5rem; }
+      #videoDialog .videoFrame .closeDiv .close {
+        float: right;
+        margin-right: 0;
+        margin-top: 0.5rem;
+        width: 0.8rem;
+        height: 0.8rem; }
+    #videoDialog .videoFrame .video-js-box {
+      display: block;
+      margin: 0.5rem auto 0;
+      width: 15.25rem;
+      height: 8.55rem; }
+
+#carInfoDialog {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 11; }
+  #carInfoDialog .contentFrame {
     position: absolute;
     top: 50%;
     left: 50%;
-    margin-top: -9.1rem;
-    margin-left: -7rem;
-    width: 14rem;
-    height: 18.2rem;
-    background-color: white; }
-    #infoDialog .contentFrame .closeDiv {
+    margin-top: -9.6rem;
+    margin-left: -7.25rem;
+    width: 14.5rem;
+    height: 19.2rem; }
+    #carInfoDialog .contentFrame .closeDiv {
       width: 100%;
-      height: 2rem; }
-      #infoDialog .contentFrame .closeDiv .close {
+      height: 1.5rem; }
+      #carInfoDialog .contentFrame .closeDiv .close {
+        float: left;
+        margin-right: 0.5rem;
+        margin-top: 0.5rem;
+        width: 0.8rem;
+        height: 0.8rem; }
+
+#giftRuleDialog {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 11; }
+  #giftRuleDialog .contentFrame {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -9.6rem;
+    margin-left: -7.25rem;
+    width: 14.5rem;
+    height: 19.2rem;
+    background: url("../src/dialogBg2.png") no-repeat;
+    background-size: 100%; }
+    #giftRuleDialog .contentFrame .closeDiv {
+      width: 100%;
+      height: 1.5rem; }
+      #giftRuleDialog .contentFrame .closeDiv .close {
         float: right;
         margin-right: 0.5rem;
         margin-top: 0.5rem;
         width: 0.8rem;
         height: 0.8rem; }
-    #infoDialog .contentFrame .title {
-      width: 100%; }
-    #infoDialog .contentFrame .subInfo {
-      height: 0.8rem;
+    #giftRuleDialog .contentFrame .title-2 {
+      display: block;
+      margin: 0 auto 0.5rem;
+      width: 8rem; }
+    #giftRuleDialog .contentFrame .menu {
+      font-weight: bold;
+      color: black;
       font-size: 0.6rem;
-      text-align: center; }
-    #infoDialog .contentFrame .infoDiv {
+      margin: 0.3rem 0.8rem; }
+    #giftRuleDialog .contentFrame .note {
+      color: #5A5A5B;
+      font-size: 0.5rem;
+      line-height: 0.7rem;
+      margin-top: 0.5rem; }
+    #giftRuleDialog .contentFrame p {
+      font-size: 0.5rem;
+      line-height: 0.8rem;
+      margin: 0 0.8rem; }
+      #giftRuleDialog .contentFrame p span {
+        font-weight: bold;
+        color: black; }
+
+#userInfoDialog {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 11; }
+  #userInfoDialog .contentFrame {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -6.45rem;
+    margin-top: -9.05rem;
+    width: 12.9rem;
+    height: 18.1rem;
+    background: url("../src/userInfoBg.jpg") no-repeat;
+    background-size: 100% auto; }
+    #userInfoDialog .contentFrame .closeDiv {
       width: 100%;
-      height: 11rem; }
-      #infoDialog .contentFrame .infoDiv .leftDiv {
+      height: 2rem; }
+      #userInfoDialog .contentFrame .closeDiv .close {
+        float: right;
+        margin-right: 0.5rem;
+        margin-top: 0.5rem;
+        width: 0.8rem;
+        height: 0.8rem; }
+    #userInfoDialog .contentFrame .title {
+      display: block;
+      margin: 0 auto 0.5rem;
+      width: 10.3rem;
+      height: 1.15rem; }
+    #userInfoDialog .contentFrame .subInfo {
+      height: 0.8rem;
+      font-size: 0.5rem;
+      color: #5A5A5B;
+      text-align: center; }
+    #userInfoDialog .contentFrame .infoDiv {
+      width: 100%;
+      height: 9.5rem; }
+      #userInfoDialog .contentFrame .infoDiv .leftDiv {
         float: left;
         margin-left: 1rem;
-        width: 3.5rem; }
-        #infoDialog .contentFrame .infoDiv .leftDiv p {
-          height: 1.5rem;
-          line-height: 1.5rem;
+        width: 3rem; }
+        #userInfoDialog .contentFrame .infoDiv .leftDiv p {
+          height: 1.2rem;
+          line-height: 1.2rem;
           margin-top: 0.5rem;
           font-size: 0.7rem;
-          color: #5A5A5B; }
-      #infoDialog .contentFrame .infoDiv .rightDiv {
+          color: #3E260C; }
+      #userInfoDialog .contentFrame .infoDiv .rightDiv {
         float: right;
-        margin-right: 1rem;
-        width: 8.5rem; }
-        #infoDialog .contentFrame .infoDiv .rightDiv input, #infoDialog .contentFrame .infoDiv .rightDiv select {
+        margin-right: 0.8rem;
+        width: 8rem; }
+        #userInfoDialog .contentFrame .infoDiv .rightDiv input, #userInfoDialog .contentFrame .infoDiv .rightDiv select {
           -webkit-appearance: none;
           box-sizing: border-box;
           -moz-box-sizing: border-box;
           /*Firefox3.5+*/
           -webkit-box-sizing: border-box;
           /*Safari3.2+*/
-          width: 8.5rem;
-          height: 1.5rem;
-          line-height: 1.5rem;
+          width: 8rem;
+          height: 1.2rem;
+          line-height: 1.2rem;
           padding-right: 1rem;
-          color: #5A5A5B;
+          color: #3E260C;
           font-size: 0.65rem;
           border: 1px solid #5A5A5B;
           border-radius: inherit;
           background-color: transparent;
           text-indent: 0.2rem;
           margin-top: 0.5rem; }
-        #infoDialog .contentFrame .infoDiv .rightDiv input::-webkit-input-placeholder {
+        #userInfoDialog .contentFrame .infoDiv .rightDiv input::-webkit-input-placeholder {
           color: #5A5A5B; }
-        #infoDialog .contentFrame .infoDiv .rightDiv input::-moz-placeholder {
+        #userInfoDialog .contentFrame .infoDiv .rightDiv input::-moz-placeholder {
           color: #5A5A5B; }
-        #infoDialog .contentFrame .infoDiv .rightDiv input:-moz-placeholder {
+        #userInfoDialog .contentFrame .infoDiv .rightDiv input:-moz-placeholder {
           color: #5A5A5B; }
-        #infoDialog .contentFrame .infoDiv .rightDiv select {
-          background: white url("../src/arrowDown.png") no-repeat 7.5rem center;
+        #userInfoDialog .contentFrame .infoDiv .rightDiv select {
+          background: transparent url("../src/arrowDown.png") no-repeat 7rem center;
           background-size: 0.5rem 0.3rem; }
-    #infoDialog .contentFrame #btnSubmit {
+    #userInfoDialog .contentFrame #btnSubmit {
       display: block;
       margin: 0 auto;
       text-align: center;
       font-size: 0.7rem;
-      width: 6rem;
-      height: 1.6rem;
-      line-height: 1.6rem;
-      background-color: red; }
+      width: 6.6rem;
+      height: 1.8rem;
+      line-height: 1.8rem;
+      background: url("../src/btnSubmit.jpg") no-repeat;
+      background-size: 100% auto; }
+
+.tipResultDialog {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 11; }
+  .tipResultDialog .contentFrame {
+    position: absolute;
+    width: 11.3rem;
+    height: 15rem;
+    top: 50%;
+    left: 50%;
+    margin-top: -7.5rem;
+    margin-left: -5.65rem;
+    background: url("../src/dialogBg3.png") no-repeat;
+    background-size: 11.3rem 15rem; }
+    .tipResultDialog .contentFrame .closeDiv {
+      width: 100%;
+      height: 2rem; }
+      .tipResultDialog .contentFrame .closeDiv .close {
+        float: right;
+        margin-right: 0.5rem;
+        margin-top: 0.5rem;
+        width: 0.8rem;
+        height: 0.8rem; }
+    .tipResultDialog .contentFrame .title {
+      display: block;
+      margin: 0 auto;
+      width: 6.9rem;
+      height: 1.15rem; }
+    .tipResultDialog .contentFrame .result {
+      display: block;
+      margin: 0 auto;
+      width: 5.35rem;
+      height: 4.75rem; }
+    .tipResultDialog .contentFrame p {
+      display: block;
+      margin: 0.5rem auto 1rem;
+      text-align: center;
+      width: 8rem;
+      line-height: 1.1rem;
+      height: 2rem;
+      font-size: 0.7rem;
+      color: #6A110A; }
+    .tipResultDialog .contentFrame .btnDiscover {
+      display: block;
+      margin: 0 auto;
+      width: 6.6rem;
+      height: 1.8rem;
+      background: url("../src/btnDiscover.jpg") no-repeat;
+      background-size: 6.6rem 1.8rem; }
 
 .section-1 {
   width: 100%;
@@ -2686,8 +2897,8 @@ a:link, a:visited, a:hover, a:active {
         height: 100%; }
       .section-2 #wrapper .game-box .box {
         position: absolute;
-        width: 1.45rem;
-        height: 1.05rem;
+        width: 2.1rem;
+        height: 1.75rem;
         z-index: 2; }
   .section-2 .toolDiv {
     position: absolute;
