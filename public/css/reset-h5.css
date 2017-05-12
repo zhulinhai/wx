@@ -3,6 +3,7 @@ html, body {
     height: 100%;
     font-family: "microsoft yahei",sans-serif;
     user-select: none;
+    overflow: hidden;
 }
 
 body {
