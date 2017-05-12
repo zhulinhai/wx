@@ -1,6 +1,7 @@
 @import "common";
 @import "loading";
 @import "animate.min";
+@import "swiper.min";
 * {
   padding: 0;
   margin: 0;
@@ -49,6 +50,25 @@ a:link,a:visited,a:hover,a:active{text-decoration: none;}
   background-color: rgba(0,0,0,0.6);
   z-index: 11;
 }
+#shareDialog {
+  @include dialog();
+  background-color: rgba(0,0,0,0.8);
+  .shareArrow {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    width: 0.95rem;
+    height: 0.7rem;
+  }
+  .shareCar {
+    position: absolute;
+    right: 2rem;
+    top: 2rem;
+    width: 4.75rem;
+    height: 2.9rem;
+  }
+}
+
 #actRuleDialog {
   @include dialog();
   .contentFrame {
@@ -138,25 +158,149 @@ a:link,a:visited,a:hover,a:active{text-decoration: none;}
     }
   }
 }
+
+@mixin skewElement($deg: -10deg) {
+  transform: skewY($deg);
+  -webkit-transform: skewY($deg);
+  -moz-transform: skewY($deg);
+  outline:1px solid transparent;
+}
+
 #carInfoDialog {
   @include dialog();
   .contentFrame {
     position: absolute;
     top: 50%;
-    left: 50%;
-    margin-top: -9.6rem;
-    margin-left: -7.25rem;
-    width: 14.5rem;
-    height: 19.2rem;
+    left: 0;
+    margin-top: -11.5rem;
+    width: 100%;
+    height: 23rem;
     .closeDiv {
       width: 100%;
       height: 1.5rem;
       .close {
         float: left;
-        margin-right: 0.5rem;
+        margin-left: 0.5rem;
         margin-top: 0.5rem;
-        width: 0.8rem;
-        height: 0.8rem;
+        width: 1rem;
+        height: 1rem;
+      }
+    }
+    #menuDiv {
+      position: absolute;
+      width: 16rem;
+      height: 1.5rem;
+      @include skewElement();
+      z-index: 2;
+      .item {
+        float: left;
+        margin-right: 0.5rem;
+        width: 6rem;
+        text-align: center;
+        height: 1.5rem;
+        line-height: 1.5rem;
+        font-size: 0.7rem;
+        color: white;
+        background: url("../src/btnNormal.jpg") no-repeat;
+        background-size: 6rem 1.5rem;
+      }
+      .hover {
+        background: url("../src/btnHover.jpg") no-repeat;
+      }
+    }
+    .coverDiv {
+      position: absolute;
+      right: 0;
+      top: 15rem;
+      width: 6.8rem;
+      height: 1.5rem;
+      background-color: #342919;
+      @include skewElement();
+      z-index: 3;
+    }
+    #mainContainer {
+      width: 16rem;
+      height: 16rem;
+      margin-top: 1.55rem;
+      background-color: white;
+      overflow: hidden;
+      @include skewElement();
+      .main-container,.swiper-wrapper,.swiper-slide {
+        width: 100%;
+        height: 100%;
+      }
+      .swiper-slide {
+        width: 100%;
+        height: 100%;
+        img {
+          position: absolute;
+          width: 16rem;
+          height: 19.35rem;
+          margin-top: -2rem;
+          @include skewElement(10deg);
+        }
+        .titleFrame {
+          position: absolute;
+          width: 16rem;
+          height: 2rem;
+          line-height: 2rem;
+          text-indent: 1rem;
+          font-size: 0.6rem;
+          text-align: left;
+          bottom: 0;
+          color: #563B14;
+          background-color: #f1f0f6;
+          z-index: 1;
+        }
+      }
+    }
+    .bottomFrame {
+      width: 100%;
+      height: 2.6rem;
+      margin-top: 1.5rem;
+      .btnPrev {
+        float: left;
+        width: 1rem;
+        height: 2.5rem;
+        left: 0;
+        background: url("../src/arrowLeft.png") no-repeat center;
+        background-size: 0.45rem auto;
+      }
+      .btnNext {
+        float: right;
+        right: 0;
+        width: 1rem;
+        height: 2.5rem;
+        background: url("../src/arrowRight.png") no-repeat center;
+        background-size: 0.45rem auto;
+      }
+      .bottom-container {
+        display: block;
+        margin: 0 auto;
+        width: 14rem;
+        height: 2.5rem;
+        overflow: hidden;
+        .swiper-slide {
+          width: 4.3rem;
+          height: 2.5rem;
+          .cover {
+            position: absolute;
+            width: 100%;
+            height: 2.5rem;
+            pointer-events:none;
+            background-color: rgba(0,0,0,0.6);
+          }
+          img {
+            width: 4.2rem;
+            height: 2.4rem;
+            border: 1px solid #333435;
+          }
+        }
+        .swiper-slide-active {
+          .cover {
+            background-color: rgba(0,0,0,0);
+          }
+        }
       }
     }
   }
