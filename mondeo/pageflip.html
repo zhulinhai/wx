@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="../public/css/reset-h5.css">
+    <script type="text/javascript" src="../public/scripts/jquery-1.12.1.min.js"></script>
+    <script type="text/javascript" src="../public/plugins/turn.js-master/turn.js"></script>
+    <title>Title</title>
+    <style>
+        .page-main {
+            width: 100%;
+            height: 100%;
+        }
+        .page-main .turn-page {
+            background-color: red;
+        }
+
+        .page-main > div{
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body ontouchmove="event.preventDefault();">
+<div class="page-main">
+    <div style="background-color: yellow"></div>
+    <div style="background-color: blue"></div>
+    <div style="background-color: green"></div>
+</div>
+</body>
+<script>
+    $('.page-main').turn({
+        // Width
+        width:$(window).width(),
+        // Height
+        height:$(window).height(),
+        //acceleration: false,
+        // Elevation
+        elevation: 50,
+        display :'single',
+        // Enable gradients
+        gradients: true,
+        // Auto center this flipbook
+        autoCenter: true,
+
+        when: {
+            turning: function(event, page, view){
+                //alert("dddd");
+
+            },
+            turned: function(event, page, view){
+                //alert(page);
+
+            }
+            //missing: function (e, pages){
+            //alert('aaaa');
+            //}
+
+        }
+    });
+
+</script>
+</html>
