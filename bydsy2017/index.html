@@ -20,10 +20,6 @@
     </script>
 </head>
 <body>
-    <div id="loadingDialog">
-        <img class="box animated tada infinite" src="src/2-box.png" />
-        <p class="loading-percent" id="loading-percent"></p>
-    </div>
     <!-- 分享 -->
     <div id="shareDialog" style="display: none">
         <img class="shareArrow" src="src/shareArrow.png" />
@@ -49,7 +45,7 @@
     </div>
     <!-- 比亚迪宋元视频弹出框 宝藏一 -->
     <div id="videoDialog" style="display: none">
-        <div class="videoFrame">
+        <div class="contentFrame">
             <div class="closeDiv"><img id="closeVideoDialog" class="close" src="src/close.jpg" alt="关闭" /></div>
             <div class="video-js-box" ><!-- vjs-big-play-centered -->
                 <video id="videoPlayer" class="video-js" controls="controls" preload="auto" loop="true" webkit-playsinline playsinline></video>
@@ -135,7 +131,8 @@
     <!-- 钥匙获取提示框 -->
     <div id="keyTipDialog" class="keyTipDialog" style="display: none">
         <div class="contentFrame">
-
+            <div class="closeDiv"><img id="closeKeyTipDialog" class="close" src="src/close.jpg" alt="关闭" /></div>
+            <div class="keyInfo"></div>
         </div>
     </div>
     <!-- 留资弹出框 -->
@@ -165,25 +162,32 @@
             <div id="btnSubmit"></div>
         </div>
     </div>
-    <div class="logo"></div>
-    <div class="bgCover"></div>
-    <div class="section-1" style="display: none">
-        <img class="title-1" src="src/1-title.png" />
-        <img class="stars" src="src/1-stars.png" />
-        <img class="light" src="src/1-light.png" />
-        <div class="box open"></div>
-        <img class="location1" src="src/1-location1.png" />
-        <img class="location2" src="src/1-location1.png" />
-        <img class="location3" src="src/1-location1.png" />
-        <img class="car" src="src/1-car.png" />
-        <div id="btnStartGame"></div>
-        <div id="btnActRule">活动规则</div>
+
+    <!-- main content -->
+    <div id="loadingDialog">
+        <img class="box animated tada infinite" src="src/2-box.png" />
+        <p class="loading-percent" id="loading-percent"></p>
     </div>
-    <div class="section-2" style="display: none">
+    <div class="logo"></div>
+    <div id="section-1" class="section-1" style="opacity: 0.1">
+        <div class="bgCover"></div>
+        <div class="title-1"></div>
+        <img class="stars lightStart" style="display: none" src="src/1-stars.png" />
+        <img class="light" style="display: none" src="src/1-light.png" />
+        <div class="box" style="display: none"></div> <!-- *open*/ -->
+        <img class="location1" style="display: none" src="src/1-location1.png" />
+        <img class="location2" style="display: none" src="src/1-location1.png" />
+        <img class="location3" style="display: none" src="src/1-location1.png" />
+        <img class="car" style="display: none" src="src/1-car.png" />
+        <div id="btnStartGame" style="display: none"></div>
+        <div id="btnActRule" style="display: none">活动规则</div>
+    </div>
+    <div id="section-2" class="section-2" style="display: none">
+        <div class="bgCover"></div>
         <div id="wrapper">
             <div id="game-box" class="game-box">
                 <img class="bg" src="src/2-bg.jpg" />
-                <img class="box box1" src="src/2-boxopen.png" />
+                <img class="box box1" src="src/2-box.png" />
                 <img class="box box2" src="src/2-box.png" />
                 <img class="box box3" src="src/2-box.png" />
             </div>
@@ -211,10 +215,5 @@
     <script type="text/javascript" src="js/pace.min.js"></script>
     <script type="text/javascript" src="js/loading.js"></script>
     <script type="text/javascript" src="js/gamePlayer.js"></script>
-    <script type="text/javascript">
-        $(function () {
-            gamePlayer.init();
-        });
-    </script>
 </body>
 </html>

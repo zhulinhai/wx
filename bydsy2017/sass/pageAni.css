@@ -1,0 +1,14 @@
+.loadingAni {
+  animation-name: pageScaleOut;
+  animation-duration: 5s;
+  -webkit-animation-name: pageScaleOut;
+  -webkit-animation-duration: 5s; }
+
+@keyframes pageScaleOut {
+  to {
+    transform: scale(100); } }
+@-webkit-keyframes pageScaleOut /* Safari and Chrome */ {
+  to {
+    -webkit-transform: scale(100); } }
+
+/*# sourceMappingURL=pageAni.css.map */

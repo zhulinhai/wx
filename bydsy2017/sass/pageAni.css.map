@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,WACA;EACE,cAAc,EAAC,YAAY;EAC3B,kBAAkB,EAAC,EAAE;EACrB,sBAAsB,EAAC,YAAY;EACnC,0BAA0B,EAAC,EAAE;;AAG/B,uBAGC;EADC,EAAG;IAAC,SAAS,EAAE,UAAU;AAG3B,uDAGC;EADC,EAAG;IAAC,iBAAiB,EAAE,UAAU",
+"sources": ["pageAni.scss"],
+"names": [],
+"file": "pageAni.css"
+}

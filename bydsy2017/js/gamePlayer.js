@@ -5,6 +5,11 @@ const imgWidth = 1280, imgHeight = 1055;
 const videoUrl = 'http://vedio.yunmfang.com/bydVideo2017-480p.mp4';
 const postUrl = 'src/placeHolder.png';
 const $videoBox = $('.video-js-box');
+const $keyTipDialog = $('#keyTipDialog');
+const $actRuleDialog = $('#actRuleDialog');
+const $videoDialog =  $('#videoDialog');
+const $carInfoDialog = $('#carInfoDialog');
+const $giftRuleDialog = $('#giftRuleDialog');
 const carsInfo= {
     'song': [
         {'title':'时尚外观','img':'1-1.jpg','thumbImg':'1.1.jpg'},
@@ -29,6 +34,11 @@ const carsInfo= {
         {'title':'时尚备胎','img':'2-9.jpg','thumbImg':'2.9.jpg'},
     ]
 };
+const keyInfoList = [
+    '<div class="keyList"><img class="key key1" src="src/key.png" /></div><img class="congratulate" src="src/congratulate.png" alt="恭喜" /><div class="line"></div><p>您获得一把钥匙</p><p></p><div class="btnKeep"></div>',
+    '<div class="keyList"><img class="key key2" src="src/key.png" /><img class="key" src="src/key.png" /></div><img class="congratulate" src="src/congratulate.png" alt="恭喜" /><div class="line"></div><p>您获得一把钥匙</p><p class="note">当前您已获得2把钥匙</p> <div class="btnKeep"></div>',
+    '<div class="keyList"><img class="key key3" src="src/key.png" /><img class="key" src="src/key.png" /><img class="key" src="src/key.png" /></div><img class="congratulate" src="src/congratulate.png" alt="恭喜" /><div class="line"></div><p>您已获得3把钥匙可获得</p><p>一次抽奖机会</p><div class="btnReward"></div>'
+];
 var gamePlayer = {
     imgWidth: 1280,
     imgHeight: 1055,
@@ -61,7 +71,6 @@ var gamePlayer = {
             direction: 'horizontal',
             loop: false
         });
-
         var slideSpace = (15 -4.3 * 3) / 3 * $(document).width()/320 * 20;
         this.bottomSwiper = new Swiper('.bottom-container', {
             threshold : 20,
@@ -79,38 +88,70 @@ var gamePlayer = {
 
     },
     changePage1To2: function () {
-        this.fixPageSize();
-        this.initScroll();
-        this.initBoxes();
+        var that = this;
+        $('#section-1').addClass('section1OutAni');
+        setTimeout(function () {
+            $('#section-2').show().addClass('section2InAni');
+            that.fixPageSize();
+            that.initScroll();
+            that.initBoxes();
+        }, 1000);
+        setTimeout(function () { $('#section-1').hide(); }, 2000);
+    },
+    updateKeyTipInfo: function () {
+        var index = this.getKeyList.length - 1;
+        var info = keyInfoList[index];
+        $keyTipDialog.find('.keyInfo').html(info);
+        this.showAniDialog($keyTipDialog);
+        $('.btnReward').click(function () {
+            gamePlayer.closeAniDialog($keyTipDialog);
+            $('#userInfoDialog').show();
+        });
+        $('.btnKeep').click(function () {
+            gamePlayer.closeAniDialog($keyTipDialog);
+        });
+    },
+    showKeyTipToast: function (keyIndex) {
+        if (this.getKeyList.indexOf(keyIndex) < 0) {
+            this.getKeyList.push(keyIndex);
+            this.updateKeyList();
+            this.updateKeyTipInfo();
+        } else {
+            if (this.getKeyList.length === 3) {
+                $('#userInfoDialog').show();
+            }
+        }
     },
     bindClicks: function () {
         var that = this;
         /*点击开启盖世宝藏*/
         $('#btnStartGame').click(function () {
-            $('.section-1').hide();
-            $('.section-2').show();
             that.changePage1To2();
         });
         /*点击活动规则按钮*/
         $('#btnActRule').click(function () {
-            $('#actRuleDialog').show();
+            that.showAniDialog($actRuleDialog);
         });
         /*关闭留资抽奖对话框*/
         $('#closeInfoDialog').click(function () {
-            $('#infoDialog').hide();
+            that.closeAniDialog($('#userInfoDialog'));
         });
         /*关闭视频弹出框*/
         $('#closeVideoDialog').click(function () {
             $('#videoPlayer').get(0).pause();
-            $('#videoDialog').hide();
+            that.closeSpotDialog($videoDialog, 0);
         });
         /*关闭车型亮点弹出框*/
         $('#closeCarInfoDialog').click(function () {
-            $('#carInfoDialog').hide();
+            that.closeSpotDialog($carInfoDialog, 1);
+        });
+        /*关闭奖品规则弹出框*/
+        $('#closeGiftRuleDialog').click(function () {
+            that.closeSpotDialog($giftRuleDialog, 2);
         });
         /*关闭活动规则页面*/
         $('#closeActRuleDialog').click(function () {
-            $('#actRuleDialog').hide();
+            that.closeAniDialog($actRuleDialog);
         });
         /*关闭结果提示框*/
         $('#closeTipResultDialog').click(function () {
@@ -144,6 +185,9 @@ var gamePlayer = {
                 $(this).addClass('hover');
             }
             that.loadYuanInfo();
+        });
+        $('#closeKeyTipDialog').click(function () {
+            that.closeAniDialog($('#keyTipDialog'));
         });
         /*end*/
     },
@@ -183,23 +227,29 @@ var gamePlayer = {
                 'top': e.y * gamePlayer.bgScale ,
                 'left': e.x * gamePlayer.bgScale
             }).click(function () {
-                if (e.index == 0) {
-                    $('#videoDialog').show();
-                } else if (e.index == 1) {
-                    $('#carInfoDialog').show();
-                    that.initSwiper();
-                    that.loadSongInfo();
-                } else if (e.index == 2) {
-                    $('#actRuleDialog').show();
-                }
-
                 if (!that.boxPoints[e.index].isOpened ) {
+                    $(e.el).attr('src','./src/2-boxopen.png');
+                    setTimeout(function () {
+                        if (e.index == 0) {
+                            that.showSpotDialog($videoDialog);
+                        } else if (e.index == 1) {
+                            that.showSpotDialog($carInfoDialog);
+                            that.initSwiper();
+                            that.loadSongInfo();
+                        } else if (e.index == 2) {
+                            that.showSpotDialog($giftRuleDialog);
+                        }
+                    }, 300);
                     that.boxPoints[e.index].isOpened = true;
-                    /*todo 展示宝箱打开动画 */
-                    that.getKeyList.push(e.index);
-                    that.updateKeyList();
+                } else {
+                    if (e.index == 0) {
+                        that.showSpotDialog($videoDialog);
+                    } else if (e.index == 1) {
+                        that.showSpotDialog($carInfoDialog);
+                    } else if (e.index == 2) {
+                        that.showSpotDialog($giftRuleDialog);
+                    }
                 }
-                console.log(that.boxPoints);
             });
 
         });
@@ -210,6 +260,31 @@ var gamePlayer = {
             content += '<li><img src="' + (i < this.getKeyList.length?'src/2-key-hover.png': 'src/2-key.png') + '"/></li>';
         }
         $('#keyList').html(content);
-
+    },
+    showSpotDialog: function (handler) {
+        handler.show();
+        handler.find('.contentFrame').removeClass('zoomOut').addClass('animated zoomIn');
+    },
+    showAniDialog: function (handler) {
+        handler.show();
+        handler.find('.contentFrame').removeClass('bounceOutUp').addClass('animated bounceInDown');
+    },
+    closeAniDialog: function (handler) {
+        handler.find('.contentFrame').removeClass('bounceInDown').addClass('bounceOutUp');
+        setTimeout(function () {
+            handler.fadeOut(300);
+        }, 700);
+    },
+    closeSpotDialog: function (handler, index) {
+        handler.find('.contentFrame').removeClass('zoomIn').addClass('zoomOut');
+        setTimeout(function () {
+            handler.fadeOut(300);
+            if (index >= 0) {
+                setTimeout(function () {
+                    gamePlayer.showKeyTipToast(index);
+                }, 700);
+            }
+        }, 700);
     }
 };
+gamePlayer.init();

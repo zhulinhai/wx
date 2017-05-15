@@ -30,9 +30,53 @@ var loadingHandler = {
         loadingHandler.curProgress = progress;
     },
     changeLoadingToPage1: function () {
-        $('#loadingDialog').fadeOut(300);
-        $('.section-1').show();
-        // setTimeout(mainHandler.page1Animation, 300);
+        $('#loadingDialog').animate({top: '-100%'}, 1000);
+        $('#section-1').animate({top: 0}, 1000, function () {
+            $(this).addClass('section1Ani');
+            setTimeout(function () {
+                loadingHandler.playPage1Ani();
+            }, 1000);
+        });
+    },
+    playPage1Ani: function () {
+        var $page1 = $('#section-1');
+        var $box = $page1.find('.box');
+        var $light = $page1.find('.light');
+        var $stars = $page1.find('.stars');
+        var $car = $page1.find('.car');
+        var $location1 = $page1.find('.location1'), $location2 = $page1.find('.location2'), $location3 = $page1.find('.location3');
+        var $title1 = $page1.find('.title-1');
+        var $btnStartGame = $('#btnStartGame'), $btnActRule = $('#btnActRule');
+        $box.show().addClass('animated bounceInDown');
+        setTimeout(function () {
+            $box.addClass('open');
+            $light.show().animate({opacity :'1'}, 300);
+            setTimeout(function () {
+                $stars.show();
+            }, 400);
+            setTimeout(function () {
+                $car.show().addClass('animated fadeInRight');
+            }, 700);
+            setTimeout(function () {
+                $location3.show().addClass('animated bounceInDown');
+            }, 1400);
+            setTimeout(function () {
+                $location2.show().addClass('animated bounceInDown');
+            }, 1600);
+            setTimeout(function () {
+                $location1.show().addClass('animated bounceInDown');
+            }, 1800);
+            setTimeout(function () {
+                $title1.animate({width: '13.8rem'}, 2000);
+            }, 2800);
+            setTimeout(function () {
+                $btnStartGame.show().addClass('animated fadeInUp');
+                $btnActRule.show().addClass('animated fadeInUp');
+                setTimeout(function () {
+                    $btnStartGame.removeClass('animated fadeInUp').addClass('btnNucleusAni');
+                }, 1000);
+            }, 4800);
+        }, 1000);
     }
 };
 loadingHandler.startInterval();

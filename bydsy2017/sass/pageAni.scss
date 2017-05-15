@@ -1,0 +1,104 @@
+.section1Ani {
+  animation: pageShow 2s ease normal forwards;
+  -webkit-animation: pageShow 2s ease normal forwards;
+}
+@keyframes pageShow
+{
+  to {opacity:1;}
+}
+
+@-webkit-keyframes pageShow /* Safari and Chrome */
+{
+  to {opacity:1;}
+}
+
+.section1OutAni {
+  transform-origin: center 40%;
+  -webkit-transform-origin: center 40%;
+  animation: pageOut 3s ease normal forwards;
+  -webkit-animation: pageOut 3s ease normal forwards;
+}
+@keyframes pageOut
+{
+  from {opacity: 1;}
+  to {transform: scale(20); opacity: 0;}
+}
+
+@-webkit-keyframes pageOut /* Safari and Chrome */
+{
+  from {opacity: 1;}
+  to {-webkit-transform: scale(20); opacity: 0;}
+}
+
+.section2InAni {
+  animation: pageIn 2s ease normal forwards;
+  -webkit-animation: pageIn 2s ease normal forwards;
+}
+
+@keyframes pageIn
+{
+  from {transform: scale(0.1);opacity: 0;}
+  to {transform: scale(1); opacity: 1;}
+}
+
+@-webkit-keyframes pageIn /* Safari and Chrome */
+{
+  from {-webkit-transform: scale(0.1);opacity: 0;}
+  to {-webkit-transform: scale(1); opacity: 1;}
+}
+
+.btnNucleusAni {
+  -webkit-animation: nucleus 3s infinite ease-in-out forwards;
+  -moz-animation: nucleus 3s infinite ease-in-out forwards;
+  animation: nucleus 3s infinite ease-in-out forwards;
+}
+
+/*
+* 灯光效果
+*/
+.lightStart {
+  -webkit-animation: lightAnimation 1s ease-in-out both infinite alternate;
+  animation: lightAnimation 1s ease-in-out both infinite alternate;
+}
+
+@-webkit-keyframes lightAnimation {
+  0% {opacity:0.4;}
+  100% {opacity:1;}
+}
+@keyframes lightAnimation {
+  0% {opacity:0.4;}
+  100% {opacity:1;}
+}
+
+/**
+ * 光晕效果
+ */
+@keyframes nucleus {
+  0% {
+    box-shadow: 0 0 1rem #8B2310;
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 0 transparent;
+    transform: scale(0.9);
+  }
+  100% {
+    box-shadow: 0 0 1rem #8B2310;
+    transform: scale(1);
+  }
+}
+
+@-webkit-keyframes nucleus {
+  0% {
+    box-shadow: 0 0 1rem #8B2310;
+    -webkit-transform: scale(1);transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 0 transparent;
+    -webkit-transform: scale(0.9);transform: scale(0.9);
+  }
+  100% {
+    box-shadow: 0 0 1rem #8B2310;
+    -webkit-transform: scale(1);transform: scale(1);
+  }
+}
