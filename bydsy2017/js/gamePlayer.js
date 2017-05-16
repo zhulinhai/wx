@@ -18,7 +18,7 @@ const dealers = dataList.dealer;
 const $province = $('#province'),
     $city = $('#city'),
     $dealer = $('#dealer');
-const host = 'http://api.bobo119.com/api';
+const host = 'http://api.bjczxda.com/api';
 
 const carsInfo= {
     'song': [
@@ -353,36 +353,29 @@ var gamePlayer = {
             return 0;
         }
 
-        this.isPrize = 1;
-        if (this.isPrize == 0) {
-            $tipResultDialog.find('.contentFrame').html(tipResultList[0]);
-        } else if (this.isPrize == 1) {
-            $tipResultDialog.find('.contentFrame').html(tipResultList[1]);
-        }
-        $tipResultDialog.show();
-        /*点击分享好友*/
-        $('.btnDiscover').click(function () {
-            gamePlayer.closeAniDialog($tipResultDialog);
-            setTimeout(function () {
-                $('#shareDialog').fadeIn(300);
-            }, 700);
-        });
-        /*关闭结果提示框*/
-        $('.closeResultDialog').click(function () {
-            $('#tipResultDialog').hide();
-        });
-        return;
         var flag = request('flag');
-        var url = host + '/clients?flag=' + flag +'&name='+ name +'&mobile=' + mobile + '&province='+ province + '&city=' + city + '&dealer=' + dealer + '&allow=true';
+        var url = host + '/byd/luckyDraw?flag=' + flag +'&name='+ name +'&mobile=' + mobile + '&province='+ province + '&city=' + city + '&dealer=' + dealer;
         $.ajax({
-            type: "POST",
+            type: "get",
             url: url,
             dataType: "json",
             success: function(data){
                 var response = eval('(data)');
                 if (response.success) {
-                    $('#submitDialog').fadeOut(0);
-                    $('#tipSuccessDialog').show();
+                    var prize = parseInt(response.data.prize);
+                    $tipResultDialog.find('.contentFrame').html(tipResultList[prize]);
+                    $tipResultDialog.show();
+                    /*点击分享好友*/
+                    $('.btnDiscover').click(function () {
+                        gamePlayer.closeAniDialog($tipResultDialog);
+                        setTimeout(function () {
+                            $('#shareDialog').fadeIn(300);
+                        }, 700);
+                    });
+                    /*关闭结果提示框*/
+                    $('.closeResultDialog').click(function () {
+                        $('#tipResultDialog').hide();
+                    });
                 } else {
                     alert(response.message);
                 }
