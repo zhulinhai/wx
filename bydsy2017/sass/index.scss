@@ -102,15 +102,13 @@ a:link,a:visited,a:hover,a:active{text-decoration: none;}
     }
     .menu {
       font-weight: bold;
-      color: black;
+      color: #3F2D12;
       font-size: 0.6rem;
       margin: 0.3rem 0.8rem 0.2rem;
     }
-    .menuWithLine {
-      font-weight: bold;
-      color: black;
-      font-size: 0.6rem;
-      height: 1rem;
+    .line {
+      width: 11.3rem;
+      height: 1px;
       margin: 0.3rem 0.8rem 0.2rem;
       border-bottom: 1px dotted #B9A27C;
     }
@@ -442,6 +440,7 @@ a:link,a:visited,a:hover,a:active{text-decoration: none;}
 }
 #userInfoDialog {
   @include dialog();
+  z-index: 16;
   .contentFrame {
     position: absolute;
     left: 50%;
