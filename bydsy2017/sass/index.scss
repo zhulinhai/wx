@@ -494,7 +494,7 @@ a:link,a:visited,a:hover,a:active{text-decoration: none;}
         float: right;
         margin-right: 0.8rem;
         width: 8rem;
-        input, select {
+        input {
           -webkit-appearance: none;
           box-sizing: border-box;
           -moz-box-sizing: border-box;  /*Firefox3.5+*/
@@ -515,7 +515,21 @@ a:link,a:visited,a:hover,a:active{text-decoration: none;}
         input::-moz-placeholder {color: #5A5A5B;}
         input:-moz-placeholder {color: #5A5A5B;}
         select {
-          background: transparent url("../src/arrowDown.png") no-repeat 7rem center;
+          -webkit-appearance: none;
+          box-sizing: border-box;
+          -moz-box-sizing: border-box;  /*Firefox3.5+*/
+          -webkit-box-sizing: border-box; /*Safari3.2+*/
+          width: 8rem;
+          height: 1.2rem;
+          line-height: 1.2rem;
+          padding-right: 1rem;
+          color: #3E260C;
+          font-size: 0.65rem;
+          border: 1px solid #5A5A5B;
+          border-radius: inherit;
+          text-indent: 0.2rem;
+          margin-top: 0.5rem;
+          background: transparent url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAAJCAMAAADepFZYAAAAOVBMVEUAAABFJwdFJwdFJwdFJwdFJwdFJwdFJwdFJwdFJwdFJwdFJwdFJwdFJwdFJwdFJwdFJwdFJwdFJwcIUp7IAAAAEnRSTlMA++6mD9+EOfHnxrmad11EIheCwoUqAAAAQklEQVQI103MSQ7AIAxDUacE6NzC/Q+LFQLibaK/iHFvJNUEaKxDVCCLh2TQ45VgLosTXTkY+w/38fXFlDi+CGqnAR/UA5PZbQIAAAAAAElFTkSuQmCC") no-repeat 7rem center;
           background-size: 0.5rem 0.3rem;
         }
       }

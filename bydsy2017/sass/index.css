@@ -3369,7 +3369,7 @@ a:link, a:visited, a:hover, a:active {
         float: right;
         margin-right: 0.8rem;
         width: 8rem; }
-        #userInfoDialog .contentFrame .infoDiv .rightDiv input, #userInfoDialog .contentFrame .infoDiv .rightDiv select {
+        #userInfoDialog .contentFrame .infoDiv .rightDiv input {
           -webkit-appearance: none;
           box-sizing: border-box;
           -moz-box-sizing: border-box;
@@ -3394,7 +3394,23 @@ a:link, a:visited, a:hover, a:active {
         #userInfoDialog .contentFrame .infoDiv .rightDiv input:-moz-placeholder {
           color: #5A5A5B; }
         #userInfoDialog .contentFrame .infoDiv .rightDiv select {
-          background: transparent url("../src/arrowDown.png") no-repeat 7rem center;
+          -webkit-appearance: none;
+          box-sizing: border-box;
+          -moz-box-sizing: border-box;
+          /*Firefox3.5+*/
+          -webkit-box-sizing: border-box;
+          /*Safari3.2+*/
+          width: 8rem;
+          height: 1.2rem;
+          line-height: 1.2rem;
+          padding-right: 1rem;
+          color: #3E260C;
+          font-size: 0.65rem;
+          border: 1px solid #5A5A5B;
+          border-radius: inherit;
+          text-indent: 0.2rem;
+          margin-top: 0.5rem;
+          background: transparent url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAAJCAMAAADepFZYAAAAOVBMVEUAAABFJwdFJwdFJwdFJwdFJwdFJwdFJwdFJwdFJwdFJwdFJwdFJwdFJwdFJwdFJwdFJwdFJwdFJwcIUp7IAAAAEnRSTlMA++6mD9+EOfHnxrmad11EIheCwoUqAAAAQklEQVQI103MSQ7AIAxDUacE6NzC/Q+LFQLibaK/iHFvJNUEaKxDVCCLh2TQ45VgLosTXTkY+w/38fXFlDi+CGqnAR/UA5PZbQIAAAAAAElFTkSuQmCC") no-repeat 7rem center;
           background-size: 0.5rem 0.3rem; }
     #userInfoDialog .contentFrame #btnSubmit {
       display: block;

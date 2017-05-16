@@ -122,7 +122,6 @@ var gamePlayer = {
                 for(var j = 0; j < dealers.length; j++)
                     if(dealers[j].d == $('#city').val())
                         $('#dealer').append('<option>'+dealers[j].c +'</option>');
-
             }
         });
 
@@ -161,6 +160,8 @@ var gamePlayer = {
         } else {
             if (this.getKeyList.length === 3 && !this.isSubmitInfo) {
                 this.showAniDialog($userInfoDialog);
+            } else {
+                $tipResultDialog.fadeIn(300);
             }
         }
     },
@@ -299,7 +300,7 @@ var gamePlayer = {
         $('#keyList').html(content);
     },
     showSpotDialog: function (handler) {
-        handler.show();
+        handler.fadeIn(300);
     },
     showAniDialog: function (handler) {
         handler.show();
@@ -320,7 +321,7 @@ var gamePlayer = {
         if (index >= 0) {
             setTimeout(function () {
                 gamePlayer.showKeyTipToast(index);
-            }, 700);
+            }, 300);
         }
     },
     closeKeyDialog: function (handler) {
@@ -356,26 +357,28 @@ var gamePlayer = {
         var flag = request('flag');
         var url = host + '/byd/luckyDraw?flag=' + flag +'&name='+ name +'&mobile=' + mobile + '&province='+ province + '&city=' + city + '&dealer=' + dealer;
         $.ajax({
-            type: "get",
+            type: "post",
             url: url,
             dataType: "json",
             success: function(data){
                 var response = eval('(data)');
                 if (response.success) {
                     var prize = parseInt(response.data.prize);
-                    $tipResultDialog.find('.contentFrame').html(tipResultList[prize]);
-                    $tipResultDialog.show();
-                    /*点击分享好友*/
-                    $('.btnDiscover').click(function () {
-                        gamePlayer.closeAniDialog($tipResultDialog);
-                        setTimeout(function () {
+                    gamePlayer.isPrize = prize;
+                    gamePlayer.isSubmitInfo = true;
+                    gamePlayer.closeAniDialog($userInfoDialog);
+                    setTimeout(function () {
+                        $tipResultDialog.find('.contentFrame').html(tipResultList[prize]);
+                        $tipResultDialog.fadeIn(300);
+                        /*点击分享好友*/
+                        $('.btnDiscover').click(function () {
                             $('#shareDialog').fadeIn(300);
-                        }, 700);
-                    });
-                    /*关闭结果提示框*/
-                    $('.closeResultDialog').click(function () {
-                        $('#tipResultDialog').hide();
-                    });
+                        });
+                        /*关闭结果提示框*/
+                        $('.closeResultDialog').click(function () {
+                            $('#tipResultDialog').fadeOut(300);
+                        });
+                    }, 700);
                 } else {
                     alert(response.message);
                 }
