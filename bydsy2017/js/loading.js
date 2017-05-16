@@ -71,9 +71,9 @@ var loadingHandler = {
             }, 2800);
             setTimeout(function () {
                 $btnStartGame.show().addClass('animated fadeInUp');
-                $btnActRule.show().addClass('animated fadeInUp');
                 setTimeout(function () {
                     $btnStartGame.removeClass('animated fadeInUp').addClass('btnNucleusAni');
+                    $btnActRule.show().addClass('animated fadeInUp');
                 }, 1000);
             }, 4800);
         }, 1000);

@@ -10,6 +10,16 @@ const $actRuleDialog = $('#actRuleDialog');
 const $videoDialog =  $('#videoDialog');
 const $carInfoDialog = $('#carInfoDialog');
 const $giftRuleDialog = $('#giftRuleDialog');
+const $tipResultDialog = $('#tipResultDialog');
+const $userInfoDialog = $('#userInfoDialog');
+const provinces = dataList.province;
+const cities = dataList.city;
+const dealers = dataList.dealer;
+const $province = $('#province'),
+    $city = $('#city'),
+    $dealer = $('#dealer');
+const host = 'http://api.bobo119.com/api';
+
 const carsInfo= {
     'song': [
         {'title':'时尚外观','img':'1-1.jpg','thumbImg':'1.1.jpg'},
@@ -39,6 +49,10 @@ const keyInfoList = [
     '<div class="keyList"><img class="key key2" src="src/key.png" /><img class="key" src="src/key.png" /></div><img class="congratulate" src="src/congratulate.png" alt="恭喜" /><div class="line"></div><p>您获得一把钥匙</p><p class="note">当前您已获得2把钥匙</p> <div class="btnKeep"></div>',
     '<div class="keyList"><img class="key key3" src="src/key.png" /><img class="key" src="src/key.png" /><img class="key" src="src/key.png" /></div><img class="congratulate" src="src/congratulate.png" alt="恭喜" /><div class="line"></div><p>您已获得3把钥匙可获得</p><p>一次抽奖机会</p><div class="btnReward"></div>'
 ];
+const tipResultList = [
+    '<div class="closeDiv"><img class="close closeResultDialog" src="src/close.jpg" alt="关闭" /></div><img class="result" src="src/result.png" /> <p  style="margin-bottom: 1.8rem">很遗憾，还差一点点就能获得宝藏。</p><div class="btnDiscover"></div>',
+    '<div class="closeDiv"><img class="close closeResultDialog" src="src/close.jpg" alt="关闭" /></div><img class="title" src="src/title-1.png" /> <img class="result" src="src/result-2.png" /><p>恭喜您获得了比亚迪盖世宝藏1G流量。</p><div class="btnDiscover"></div>'
+];
 var gamePlayer = {
     imgWidth: 1280,
     imgHeight: 1055,
@@ -46,6 +60,8 @@ var gamePlayer = {
     myScroll: null,
     mainSwiper: null,
     bottomSwiper: null,
+    isSubmitInfo: false,
+    isPrize: -1,
     keyList: [0, 1, 2],
     getKeyList: [],
     boxPoints: [
@@ -56,6 +72,7 @@ var gamePlayer = {
     init: function () {
         this.bgScale = $(window).height() /imgHeight;
         this.bindClicks();
+        this.bindUserInfo();
     },
     initScroll: function () {
         this.myScroll = new IScroll('#wrapper', {
@@ -87,6 +104,30 @@ var gamePlayer = {
         this.bottomSwiper.params.control = this.mainSwiper;
 
     },
+    bindUserInfo: function () {
+        $province.change(function(){
+            $city.empty().html('<option>请选择</option>');
+            $dealer.empty().html('<option>请选择</option>');
+
+            if($province.val() != '请选择'){
+                for(var j = 0; j < cities.length; j++)
+                    if(cities[j].p == $('#province').val())
+                        $('#city').append('<option>'+cities[j].c+'</option>');
+            }
+        });
+
+        $city.change(function(){
+            $dealer.empty().html('<option>请选择</option>');
+            if($city.val() != '请选择'){
+                for(var j = 0; j < dealers.length; j++)
+                    if(dealers[j].d == $('#city').val())
+                        $('#dealer').append('<option>'+dealers[j].c +'</option>');
+
+            }
+        });
+
+        for(var i = 0; i < provinces.length; i ++) $('#province').append('<option>'+provinces[i].p+'</option>');
+    },
     changePage1To2: function () {
         var that = this;
         $('#section-1').addClass('section1OutAni');
@@ -100,15 +141,16 @@ var gamePlayer = {
     },
     updateKeyTipInfo: function () {
         var index = this.getKeyList.length - 1;
-        var info = keyInfoList[index];
-        $keyTipDialog.find('.keyInfo').html(info);
-        this.showAniDialog($keyTipDialog);
+        $keyTipDialog.find('.keyInfo').html(keyInfoList[index]);
+        this.showKeyDialog($keyTipDialog);
         $('.btnReward').click(function () {
-            gamePlayer.closeAniDialog($keyTipDialog);
-            $('#userInfoDialog').show();
+            gamePlayer.closeKeyDialog($keyTipDialog);
+            setTimeout(function () {
+                gamePlayer.showAniDialog($userInfoDialog);
+            }, 700);
         });
         $('.btnKeep').click(function () {
-            gamePlayer.closeAniDialog($keyTipDialog);
+            gamePlayer.closeKeyDialog($keyTipDialog);
         });
     },
     showKeyTipToast: function (keyIndex) {
@@ -117,8 +159,8 @@ var gamePlayer = {
             this.updateKeyList();
             this.updateKeyTipInfo();
         } else {
-            if (this.getKeyList.length === 3) {
-                $('#userInfoDialog').show();
+            if (this.getKeyList.length === 3 && !this.isSubmitInfo) {
+                this.showAniDialog($userInfoDialog);
             }
         }
     },
@@ -134,7 +176,7 @@ var gamePlayer = {
         });
         /*关闭留资抽奖对话框*/
         $('#closeInfoDialog').click(function () {
-            that.closeAniDialog($('#userInfoDialog'));
+            that.closeAniDialog($userInfoDialog);
         });
         /*关闭视频弹出框*/
         $('#closeVideoDialog').click(function () {
@@ -153,23 +195,17 @@ var gamePlayer = {
         $('#closeActRuleDialog').click(function () {
             that.closeAniDialog($actRuleDialog);
         });
-        /*关闭结果提示框*/
-        $('#closeTipResultDialog').click(function () {
-            $('#tipResultDialog').hide();
-        });
         /*点击关闭用户信息框*/
         $('#closeUserInfoDialog').click(function () {
-            $('#userInfoDialog').hide();
+            that.closeAniDialog($userInfoDialog);
         });
         /*点击提交用户信息*/
-        $('#btnSubmit').click(submitInfo);
-        /*点击分享好友*/
-        $('.btnDiscover').click(function () {
-            $('#shareDialog').show();
+        $('#btnSubmit').click(function () {
+            that.submitInfo();
         });
         /*点击分享浮层*/
         $('#shareDialog').click(function () {
-            $(this).hide();
+            $(this).fadeOut(300);
         });
         /*点击宋元菜单*/
         $('#itemSong').click(function () {
@@ -186,8 +222,9 @@ var gamePlayer = {
             }
             that.loadYuanInfo();
         });
+        /* 关闭获取key对话框*/
         $('#closeKeyTipDialog').click(function () {
-            that.closeAniDialog($('#keyTipDialog'));
+            that.closeKeyDialog($keyTipDialog);
         });
         /*end*/
     },
@@ -263,11 +300,14 @@ var gamePlayer = {
     },
     showSpotDialog: function (handler) {
         handler.show();
-        handler.find('.contentFrame').removeClass('zoomOut').addClass('animated zoomIn');
     },
     showAniDialog: function (handler) {
         handler.show();
         handler.find('.contentFrame').removeClass('bounceOutUp').addClass('animated bounceInDown');
+    },
+    showKeyDialog: function (handler) {
+        handler.show();
+        handler.find('.contentFrame').removeClass('zoomOutDown').addClass('animated zoomInDown');
     },
     closeAniDialog: function (handler) {
         handler.find('.contentFrame').removeClass('bounceInDown').addClass('bounceOutUp');
@@ -276,15 +316,81 @@ var gamePlayer = {
         }, 700);
     },
     closeSpotDialog: function (handler, index) {
-        handler.find('.contentFrame').removeClass('zoomIn').addClass('zoomOut');
+        handler.fadeOut(300);
+        if (index >= 0) {
+            setTimeout(function () {
+                gamePlayer.showKeyTipToast(index);
+            }, 700);
+        }
+    },
+    closeKeyDialog: function (handler) {
+        handler.find('.contentFrame').removeClass('zoomInDown').addClass('zoomOutDown');
         setTimeout(function () {
             handler.fadeOut(300);
-            if (index >= 0) {
-                setTimeout(function () {
-                    gamePlayer.showKeyTipToast(index);
-                }, 700);
-            }
         }, 700);
+    },
+    submitInfo: function () {
+        var name, mobile, province,city, dealer;
+        name=trim($("input[name='realname']").val());
+        mobile=trim($("input[name='mobile']").val());
+        province =trim($("#province").find("option:selected").text());
+        city =trim($("#city").find("option:selected").text());
+        dealer=trim($("#dealer").find("option:selected").text());
+        if(isNullOrEmpty(name)) {
+            alert("请填写姓名!");
+            return 0;
+        }else if(!checkIsMobile(mobile)){
+            alert("请输入正确的手机号!");
+            return 0;
+        }else if(province.indexOf("请选择")>=0){
+            alert("请选择省份");
+            return 0;
+        }else if(city.indexOf("请选择")>=0){
+            alert("请选择城市");
+            return 0;
+        }else if(dealer.indexOf("请选择")>=0){
+            alert("请选择经销商");
+            return 0;
+        }
+
+        this.isPrize = 1;
+        if (this.isPrize == 0) {
+            $tipResultDialog.find('.contentFrame').html(tipResultList[0]);
+        } else if (this.isPrize == 1) {
+            $tipResultDialog.find('.contentFrame').html(tipResultList[1]);
+        }
+        $tipResultDialog.show();
+        /*点击分享好友*/
+        $('.btnDiscover').click(function () {
+            gamePlayer.closeAniDialog($tipResultDialog);
+            setTimeout(function () {
+                $('#shareDialog').fadeIn(300);
+            }, 700);
+        });
+        /*关闭结果提示框*/
+        $('.closeResultDialog').click(function () {
+            $('#tipResultDialog').hide();
+        });
+        return;
+        var flag = request('flag');
+        var url = host + '/clients?flag=' + flag +'&name='+ name +'&mobile=' + mobile + '&province='+ province + '&city=' + city + '&dealer=' + dealer + '&allow=true';
+        $.ajax({
+            type: "POST",
+            url: url,
+            dataType: "json",
+            success: function(data){
+                var response = eval('(data)');
+                if (response.success) {
+                    $('#submitDialog').fadeOut(0);
+                    $('#tipSuccessDialog').show();
+                } else {
+                    alert(response.message);
+                }
+            },
+            error: function(data){
+                alert("加载超时,请检查网络连接");
+            }
+        });
     }
 };
 gamePlayer.init();

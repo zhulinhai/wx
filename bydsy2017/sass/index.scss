@@ -12,7 +12,7 @@ body,html {
   height: 100%;
   overflow: hidden;
   font-size: 20px;
-  font-family: Verdana, sans-serif;
+  font-family: "microsoft yahei",sans-serif;
   background-color: black;
   user-select: none;
   /*禁止选择文本*/
@@ -54,6 +54,7 @@ a:link,a:visited,a:hover,a:active{text-decoration: none;}
 #shareDialog {
   @include dialog();
   background-color: rgba(0,0,0,0.8);
+  z-index: 20;
   .shareArrow {
     position: absolute;
     right: 1rem;
@@ -532,8 +533,9 @@ a:link,a:visited,a:hover,a:active{text-decoration: none;}
     }
   }
 }
-.tipResultDialog {
+#tipResultDialog {
   @include dialog();
+  z-index: 18;
   .contentFrame {
     position: absolute;
     width: 11.3rem;
