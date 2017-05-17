@@ -3682,3 +3682,12 @@ a:link, a:visited, a:hover, a:active {
   from{ opacity: 0; transform: translate3D(20%,5%,0);}
   to{ opacity: 1; transform: none;}
 }
+
+.finger{
+  animation: fingerAni 1.5s ease infinite both;
+}
+
+@keyframes fingerAni {
+  from { transform: translate3D(100%,0,0);}
+  to { transform: translate3D(-100%,0,0);}
+}

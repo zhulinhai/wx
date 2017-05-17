@@ -137,6 +137,13 @@ var gamePlayer = {
             that.initBoxes();
         }, 1000);
         setTimeout(function () { $('#section-1').hide(); }, 2000);
+        setTimeout(function(){
+            $('#hint').show();
+        },3000);
+
+        setTimeout(function(){
+            $('#hint').hide();
+        },8000);
     },
     updateKeyTipInfo: function () {
         var index = this.getKeyList.length - 1;
@@ -170,6 +177,9 @@ var gamePlayer = {
         /*点击开启盖世宝藏*/
         $('#btnStartGame').click(function () {
             that.changePage1To2();
+        });
+        $('#hint').click(function(){
+            $('#hint').hide();
         });
         /*点击活动规则按钮*/
         $('#btnActRule').click(function () {
