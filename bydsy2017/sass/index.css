@@ -3489,11 +3489,11 @@ a:link, a:visited, a:hover, a:active {
 
 .section-1 {
   position: fixed;
-  top: 100%;
+  top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: black url("../src/1-bg.jpg") no-repeat 0 center;
+  background: url("../src/1-bg.jpg") no-repeat 0 center;
   background-size: 100%;
   z-index: 7; }
   .section-1 .title-1 {

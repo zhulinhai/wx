@@ -30,13 +30,14 @@ var loadingHandler = {
         loadingHandler.curProgress = progress;
     },
     changeLoadingToPage1: function () {
-        $('#loadingDialog').animate({top: '-100%'}, 1000);
-        $('#section-1').animate({top: 0}, 1000, function () {
-            $(this).addClass('section1Ani');
-            setTimeout(function () {
-                loadingHandler.playPage1Ani();
-            }, 1000);
-        });
+        $('#loadingDialog').hide();
+        loadingHandler.playPage1Ani();
+        //$('#section-1').animate({top: 0}, 1000, function () {
+        //    $(this).addClass('section1Ani');
+        //    setTimeout(function () {
+        //        loadingHandler.playPage1Ani();
+        //    }, 1000);
+        //});
     },
     playPage1Ani: function () {
         var $page1 = $('#section-1');
@@ -58,6 +59,7 @@ var loadingHandler = {
             setTimeout(function () {
                 $car1.show().addClass('animated carIn-1');
                 $car2.show().addClass('animated carIn-2');
+                $title1.animate({width: '13.8rem'}, 1000);
             }, 700);
             setTimeout(function () {
                 $location3.show().addClass('animated bounceInDown');
@@ -68,16 +70,16 @@ var loadingHandler = {
             setTimeout(function () {
                 $location1.show().addClass('animated bounceInDown');
             }, 1800);
-            setTimeout(function () {
-                $title1.animate({width: '13.8rem'}, 2000);
-            }, 2800);
+            //setTimeout(function () {
+            //    $title1.animate({width: '13.8rem'}, 1000);
+            //}, 2800);
             setTimeout(function () {
                 $btnStartGame.show().addClass('animated fadeInUp');
                 setTimeout(function () {
                     $btnStartGame.removeClass('animated fadeInUp').addClass('btnNucleusAni');
                     $btnActRule.show().addClass('animated fadeInUp');
                 }, 1000);
-            }, 4800);
+            }, 2800);
         }, 1000);
     }
 };
