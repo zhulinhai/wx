@@ -34,8 +34,8 @@ const carsInfo= {
     ],
     'yuan': [
         {'title':'炫酷外观','img':'2-1.jpg','thumbImg':'2.1.jpg'},
-        {'title':'质感软内饰','img':'2-2.jpg','thumbImg':'2.2.jpg'},
-        {'title':'360°高清全景影像','img':'2-3.jpg','thumbImg':'2.3.jpg'},
+        {'title':'质感软内饰','img':'_2-2.jpg','thumbImg':'_2.2.jpg'},
+        {'title':'360°高清全景影像','img':'_2-3.jpg','thumbImg':'_2.3.jpg'},
         {'title':'大尺寸全景天窗','img':'2-4.jpg','thumbImg':'2.4.jpg'},
         {'title':'开放式CarPad安卓车载系统','img':'2-5.jpg','thumbImg':'2.5.jpg'},
         {'title':'行车记录仪','img':'2-6.jpg','thumbImg':'2.6.jpg'},
