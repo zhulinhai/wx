@@ -43,7 +43,8 @@ var loadingHandler = {
         var $box = $page1.find('.box');
         var $light = $page1.find('.light');
         var $stars = $page1.find('.stars');
-        var $car = $page1.find('.car');
+        var $car1 = $page1.find('.car-1');
+        var $car2 = $page1.find('.car-2');
         var $location1 = $page1.find('.location1'), $location2 = $page1.find('.location2'), $location3 = $page1.find('.location3');
         var $title1 = $page1.find('.title-1');
         var $btnStartGame = $('#btnStartGame'), $btnActRule = $('#btnActRule');
@@ -55,7 +56,8 @@ var loadingHandler = {
                 $stars.show();
             }, 400);
             setTimeout(function () {
-                $car.show().addClass('animated fadeInRight');
+                $car1.show().addClass('animated carIn-1');
+                $car2.show().addClass('animated carIn-2');
             }, 700);
             setTimeout(function () {
                 $location3.show().addClass('animated bounceInDown');
