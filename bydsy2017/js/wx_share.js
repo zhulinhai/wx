@@ -13,9 +13,9 @@
                 return alert(rt.message);
             }
 
-            var title ='传说中的宋盖世宝藏已出，速速来揭秘'; // 分享标题
+            var title ='传说中的宋元盖世宝藏已出，速速来揭秘'; // 分享标题
             var link ='http://wx.bjczxda.com/bydsy2017/index.html';
-            var desc = '集齐3把钥匙即可开启，开启送盖世宝藏，有机会抢先体验比亚迪宋盖世升级版~'; // 分享描述
+            var desc = '集齐3把钥匙即可开启宋元盖世宝藏，有机会抢先体验比亚迪宋元盖世升级版~'; // 分享描述
             var imgUrl = 'http://wx.bjczxda.com/bydsy2017/src/shareLogo.jpg';
 
             var wx_appId = rt.data.appId;
