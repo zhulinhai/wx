@@ -368,7 +368,7 @@ var gamePlayer = {
             return 0;
         }
 
-        var flag = request('flag');
+        var flag = trim($("input[name='flag']").val());
         var url = host + '/byd/luckyDraw?flag=' + flag +'&name='+ name +'&mobile=' + mobile + '&province='+ province + '&city=' + city + '&dealer=' + dealer;
         $.ajax({
             type: "post",
