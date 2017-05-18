@@ -259,7 +259,7 @@
   animation: carAni 1s linear .5s;
   -webkit-animation: carAni 1s linear .5s;
   animation-fill-mode: both;
-  -webkit-animation-fill-mode: bot; }
+  -webkit-animation-fill-mode: both; }
 
 @keyframes carAni {
   0% {
@@ -3260,6 +3260,28 @@ a:link, a:visited, a:hover, a:active {
           color: #563B14;
           background-color: #f1f0f6;
           z-index: 1; }
+    #carInfoDialog .contentFrame .btnMainPrev {
+      position: absolute;
+      top: 50%;
+      left: 0.5rem;
+      margin-top: -1rem;
+      width: 1rem;
+      height: 1.6rem;
+      background: rgba(0, 0, 0, 0.6) url("../src/arrowLeft.png") no-repeat center;
+      background-size: 0.45rem auto;
+      z-index: 10; }
+    #carInfoDialog .contentFrame .btnMainNext {
+      position: absolute;
+      top: 50%;
+      margin-top: -1.6rem;
+      right: 0.5rem;
+      width: 1rem;
+      height: 1.6rem;
+      background: rgba(0, 0, 0, 0.6) url("../src/arrowRight.png") no-repeat center;
+      background-size: 0.45rem auto;
+      z-index: 10; }
+    #carInfoDialog .contentFrame .swiper-button-disabled {
+      opacity: 0.5; }
     #carInfoDialog .contentFrame .bottomFrame {
       width: 100%;
       height: 2.6rem;
@@ -3269,15 +3291,15 @@ a:link, a:visited, a:hover, a:active {
         width: 1rem;
         height: 2.5rem;
         left: 0;
-        background: url("../src/arrowLeft.png") no-repeat center;
-        background-size: 0.45rem auto; }
+        background: url("../src/arrowLeftW.png") no-repeat center;
+        background-size: 0.3rem auto; }
       #carInfoDialog .contentFrame .bottomFrame .btnNext {
         float: right;
         right: 0;
         width: 1rem;
         height: 2.5rem;
-        background: url("../src/arrowRight.png") no-repeat center;
-        background-size: 0.45rem auto; }
+        background: url("../src/arrowRightW.png") no-repeat center;
+        background-size: 0.3rem auto; }
       #carInfoDialog .contentFrame .bottomFrame .bottom-container {
         display: block;
         margin: 0 auto;

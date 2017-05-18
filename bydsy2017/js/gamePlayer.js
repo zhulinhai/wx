@@ -86,7 +86,9 @@ var gamePlayer = {
     initSwiper: function () {
         this.mainSwiper = new Swiper ('.main-container', {
             direction: 'horizontal',
-            loop: false
+            loop: false,
+            nextButton: '.btnMainNext',
+            prevButton: '.btnMainPrev',
         });
         var slideSpace = (15 -4.3 * 3) / 3 * $(document).width()/320 * 20;
         this.bottomSwiper = new Swiper('.bottom-container', {
