@@ -73,6 +73,11 @@ var gamePlayer = {
         this.bgScale = $(window).height() /imgHeight;
         this.bindClicks();
         this.bindUserInfo();
+        /*修复旋转手机后背景图拖动问题*/
+        $(window).resize(function () {
+            $('#game-box').width(this.bgScale * imgWidth);
+        });
+        /*end*/
     },
     initScroll: function () {
         this.myScroll = new IScroll('#wrapper', {
