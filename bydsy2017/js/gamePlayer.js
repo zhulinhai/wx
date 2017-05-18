@@ -165,10 +165,12 @@ var gamePlayer = {
             this.updateKeyList();
             this.updateKeyTipInfo();
         } else {
-            if (this.getKeyList.length === 3 && !this.isSubmitInfo) {
-                this.showAniDialog($userInfoDialog);
-            } else {
-                $tipResultDialog.fadeIn(300);
+            if (this.getKeyList.length === 3) {
+                if (!this.isSubmitInfo) {
+                    this.showAniDialog($userInfoDialog);
+                } else {
+                    $tipResultDialog.fadeIn(300);
+                }
             }
         }
     },

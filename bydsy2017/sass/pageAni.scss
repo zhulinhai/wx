@@ -98,3 +98,83 @@
     box-shadow: 0 0 1rem #8B2310;
   }
 }
+
+.finger{
+  animation: fingerAni 1.5s ease infinite both;
+}
+
+@keyframes fingerAni {
+  from { transform: translate3D(100%,0,0);}
+  to { transform: translate3D(-100%,0,0);}
+}
+
+@-webkit-keyframes fingerAni {
+  from { -webkit-transform: translate3D(100%,0,0); transform: translate3D(100%,0,0);}
+  to { -webkit-transform: translate3D(-100%,0,0); transform: translate3D(-100%,0,0);}
+}
+
+.car-1{
+  display: none;
+  position: absolute;
+  top: 50%;
+  margin-top: 3.78rem;
+  width: 9rem;
+  animation-fill-mode: both;
+  -webkit-animation-fill-mode: both;
+}
+
+.car-2{
+  display: none;
+  position: absolute;
+  top: 50%;
+  margin-top: 3.5rem;
+  left: 4rem;
+  width: 11rem;
+  animation-fill-mode: both;
+  -webkit-animation-fill-mode: both;
+}
+.carIn-2 {
+  animation-name: carIn-2;
+  -webkit-animation-name: carIn-2;
+}
+@keyframes carIn-2 {
+  from{ opacity: 0; transform:scale(.8) translate3D(30%,5%,0);}
+  to{ opacity: 1; transform: none;}
+}
+@-webkit-keyframes carIn-2 {
+  from{ opacity: 0; -webkit-transform:scale(.8) translate3D(30%,5%,0);}
+  to{ opacity: 1; -webkit-transform: none;}
+}
+
+.carIn-1 {
+  animation-name: carIn-1;
+  -webkit-animation-name: carIn-1;
+  animation-delay: 1s;
+  -webkit-animation-delay: 1s;
+}
+
+@keyframes carIn-1 {
+  from{ opacity: 0; transform: translate3D(20%,5%,0);}
+  to{ opacity: 1; transform: none;}
+}
+
+#shareDialog .shareCar {
+  position: absolute;
+  right: 2rem;
+  top: 1.5rem;
+  width: 4rem;
+  animation: carAni 1s linear .5s;
+  -webkit-animation: carAni 1s linear .5s;
+  animation-fill-mode: both;
+  -webkit-animation-fill-mode: both;
+}
+
+@keyframes carAni {
+  0% { transform: translate(-100%, 100%);}
+  100% { transform: translate(0, 0);}
+}
+
+@-webkit-keyframes carAni {
+  0% { -webkit-transform: translate(-100%, 100%);transform: translate(-100%, 100%);}
+  100% { -webkit-transform: translate(0, 0); transform: translate(0, 0);}
+}

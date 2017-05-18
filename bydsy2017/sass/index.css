@@ -186,6 +186,93 @@
     box-shadow: 0 0 0 transparent; }
   100% {
     box-shadow: 0 0 1rem #8B2310; } }
+.finger {
+  animation: fingerAni 1.5s ease infinite both; }
+
+@keyframes fingerAni {
+  from {
+    transform: translate3D(100%, 0, 0); }
+  to {
+    transform: translate3D(-100%, 0, 0); } }
+@-webkit-keyframes fingerAni {
+  from {
+    -webkit-transform: translate3D(100%, 0, 0);
+    transform: translate3D(100%, 0, 0); }
+  to {
+    -webkit-transform: translate3D(-100%, 0, 0);
+    transform: translate3D(-100%, 0, 0); } }
+.car-1 {
+  display: none;
+  position: absolute;
+  top: 50%;
+  margin-top: 3.78rem;
+  width: 9rem;
+  animation-fill-mode: both;
+  -webkit-animation-fill-mode: both; }
+
+.car-2 {
+  display: none;
+  position: absolute;
+  top: 50%;
+  margin-top: 3.5rem;
+  left: 4rem;
+  width: 11rem;
+  animation-fill-mode: both;
+  -webkit-animation-fill-mode: both; }
+
+.carIn-2 {
+  animation-name: carIn-2;
+  -webkit-animation-name: carIn-2; }
+
+@keyframes carIn-2 {
+  from {
+    opacity: 0;
+    transform: scale(0.8) translate3D(30%, 5%, 0); }
+  to {
+    opacity: 1;
+    transform: none; } }
+@-webkit-keyframes carIn-2 {
+  from {
+    opacity: 0;
+    -webkit-transform: scale(0.8) translate3D(30%, 5%, 0); }
+  to {
+    opacity: 1;
+    -webkit-transform: none; } }
+.carIn-1 {
+  animation-name: carIn-1;
+  -webkit-animation-name: carIn-1;
+  animation-delay: 1s;
+  -webkit-animation-delay: 1s; }
+
+@keyframes carIn-1 {
+  from {
+    opacity: 0;
+    transform: translate3D(20%, 5%, 0); }
+  to {
+    opacity: 1;
+    transform: none; } }
+#shareDialog .shareCar {
+  position: absolute;
+  right: 2rem;
+  top: 1.5rem;
+  width: 4rem;
+  animation: carAni 1s linear .5s;
+  -webkit-animation: carAni 1s linear .5s;
+  animation-fill-mode: both;
+  -webkit-animation-fill-mode: bot; }
+
+@keyframes carAni {
+  0% {
+    transform: translate(-100%, 100%); }
+  100% {
+    transform: translate(0, 0); } }
+@-webkit-keyframes carAni {
+  0% {
+    -webkit-transform: translate(-100%, 100%);
+    transform: translate(-100%, 100%); }
+  100% {
+    -webkit-transform: translate(0, 0);
+    transform: translate(0, 0); } }
                  /*!
 Animate.css - http://daneden.me/animate
 Licensed under the MIT license - http://opensource.org/licenses/MIT
@@ -2946,6 +3033,26 @@ a:link, a:visited, a:hover, a:active {
   pointer-events: none;
   z-index: 8; }
 
+#hint {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.5);
+  text-align: center; }
+  #hint .arrow {
+    margin-top: 60%;
+    width: 2.5rem; }
+  #hint .finger {
+    width: 1rem;
+    margin-top: .5rem; }
+  #hint .tip {
+    color: white;
+    font-size: .6rem;
+    margin-top: .3rem; }
+
 #shareDialog {
   position: fixed;
   top: 0;
@@ -2962,20 +3069,15 @@ a:link, a:visited, a:hover, a:active {
     top: 1rem;
     width: 0.95rem;
     height: 0.7rem; }
-
   #shareDialog .shareCar {
     position: absolute;
     right: 2rem;
     top: 1.5rem;
     width: 4rem;
     animation: carAni 1s linear .5s;
+    -webkit-animation: carAni 1s linear .5s;
     animation-fill-mode: both;
-  }
-
-  @keyframes carAni {
-    0% { transform: translate(-100%, 100%);}
-    100% { transform: translate(0, 0);}
-  }
+    -webkit-animation-fill-mode: both; }
 
 #actRuleDialog {
   position: fixed;
@@ -3125,13 +3227,12 @@ a:link, a:visited, a:hover, a:active {
       width: 16rem;
       height: 16rem;
       margin-top: 1.55rem;
-      /*background-color: white;*/
+      background-color: white;
       overflow: hidden;
       transform: skewY(-10deg);
       -webkit-transform: skewY(-10deg);
-      /*-moz-transform: skewY(-10deg) translateZ(0);*/
-      outline: 1px solid transparent;
-    }
+      -moz-transform: skewY(-10deg);
+      outline: 1px solid transparent; }
       #carInfoDialog .contentFrame #mainContainer .main-container, #carInfoDialog .contentFrame #mainContainer .swiper-wrapper, #carInfoDialog .contentFrame #mainContainer .swiper-slide {
         width: 100%;
         height: 100%; }
@@ -3145,9 +3246,8 @@ a:link, a:visited, a:hover, a:active {
           margin-top: -2rem;
           transform: skewY(10deg);
           -webkit-transform: skewY(10deg);
-          /*-moz-transform: skewY(10deg) translateZ(0);*/
-          outline: 1px solid transparent;
-        }
+          -moz-transform: skewY(10deg);
+          outline: 1px solid transparent; }
         #carInfoDialog .contentFrame #mainContainer .swiper-slide .titleFrame {
           position: absolute;
           width: 16rem;
@@ -3493,7 +3593,7 @@ a:link, a:visited, a:hover, a:active {
   left: 0;
   width: 100%;
   height: 100%;
-  background: url("../src/1-bg.jpg") no-repeat 0 center;
+  background: black url("../src/1-bg.jpg") no-repeat 0 center;
   background-size: 100%;
   z-index: 7; }
   .section-1 .title-1 {
@@ -3646,48 +3746,3 @@ a:link, a:visited, a:hover, a:active {
           height: 2.3rem; }
 
 /*# sourceMappingURL=index.css.map */
-.car-1{
-  display: none;
-  position: absolute;
-  top: 50%;
-  margin-top: 3.78rem;
-  width: 9rem;
-  animation-fill-mode: both;
-}
-
-
-.car-2{
-  display: none;
-  position: absolute;
-  top: 50%;
-  margin-top: 3.5rem;
-  left: 4rem;
-  width: 11rem;
-  animation-fill-mode: both;
-}
-.carIn-2 {
-  animation-name: carIn-2;
-}
-@keyframes carIn-2 {
-  from{ opacity: 0; transform:scale(.8) translate3D(30%,5%,0);}
-  to{ opacity: 1; transform: none;}
-}
-
-.carIn-1 {
-  animation-name: carIn-1;
-  animation-delay: 1s;
-}
-
-@keyframes carIn-1 {
-  from{ opacity: 0; transform: translate3D(20%,5%,0);}
-  to{ opacity: 1; transform: none;}
-}
-
-.finger{
-  animation: fingerAni 1.5s ease infinite both;
-}
-
-@keyframes fingerAni {
-  from { transform: translate3D(100%,0,0);}
-  to { transform: translate3D(-100%,0,0);}
-}

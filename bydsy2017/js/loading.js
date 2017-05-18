@@ -30,8 +30,10 @@ var loadingHandler = {
         loadingHandler.curProgress = progress;
     },
     changeLoadingToPage1: function () {
-        $('#loadingDialog').hide();
-        loadingHandler.playPage1Ani();
+        $('#loadingDialog').fadeOut(300);
+        setTimeout(function () {
+            loadingHandler.playPage1Ani();
+        }, 300);
         //$('#section-1').animate({top: 0}, 1000, function () {
         //    $(this).addClass('section1Ani');
         //    setTimeout(function () {

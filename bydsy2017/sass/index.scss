@@ -51,6 +51,29 @@ a:link,a:visited,a:hover,a:active{text-decoration: none;}
   background-color: rgba(0,0,0,0.6);
   z-index: 11;
 }
+#hint {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top:0;left: 0;
+  z-index: 1000;
+  background-color: rgba(0,0,0,.5);
+  text-align: center;
+  .arrow {
+    margin-top: 60%;
+    width: 2.5rem;
+  }
+  .finger {
+    width: 1rem;
+    margin-top: .5rem;
+  }
+  .tip {
+    color: white;
+    font-size: .6rem;
+    margin-top: .3rem;
+  }
+}
+
 #shareDialog {
   @include dialog();
   background-color: rgba(0,0,0,0.8);
@@ -65,9 +88,12 @@ a:link,a:visited,a:hover,a:active{text-decoration: none;}
   .shareCar {
     position: absolute;
     right: 2rem;
-    top: 2rem;
-    width: 4.75rem;
-    height: 2.9rem;
+    top: 1.5rem;
+    width: 4rem;
+    animation: carAni 1s linear .5s;
+    -webkit-animation: carAni 1s linear .5s;;
+    animation-fill-mode: both;
+    -webkit-animation-fill-mode: both;
   }
 }
 
@@ -605,7 +631,7 @@ a:link,a:visited,a:hover,a:active{text-decoration: none;}
 
 .section-1 {
   position: fixed;
-  top: 100%;
+  top: 0;
   left: 0;
   width: 100%;
   height: 100%;

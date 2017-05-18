@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <title>揭秘宋元盖世宝藏</title>
-    <link rel="stylesheet" href="sass/index.css">
+    <link rel="stylesheet" href="sass/index.css?v=1.0">
     <script type="text/javascript" src="js/common.js"></script>
     <!-- 百度统计 -->
     <script>
@@ -20,11 +20,12 @@
     </script>
 </head>
 <body>
-    <div id="hint" style="position: absolute; width: 100%; height: 100%; top:0;left: 0;z-index: 1000;background-color: rgba(0,0,0,.5);text-align: center;display: none;">
-        <img style="margin-top: 60%;width: 2.5rem;" src="src/117-17.png">
+    <!-- 手势提示框 -->
+    <div id="hint" style="display: none;">
+        <img class="arrow" src="src/117-17.png">
         <div></div>
-        <img id="finger" class="finger" style="width: 1rem; margin-top: .5rem;" src="src/47-63.png">
-        <p style="color: white;font-size: .6rem;margin-top: .3rem;">手指向左滑动，进入您的寻宝之旅</p>
+        <img id="finger" class="finger" src="src/47-63.png">
+        <p class="tip" >手指向左滑动，进入您的寻宝之旅</p>
     </div>
     <!-- 分享 -->
     <div id="shareDialog" style="display: none">
@@ -211,7 +212,7 @@
     <script type="text/javascript" src="js/iscroll.js"></script>
     <script type="text/javascript" src="js/data.js"></script>
     <script type="text/javascript" src="js/pace.min.js"></script>
-    <script type="text/javascript" src="js/loading.js"></script>
-    <script type="text/javascript" src="js/gamePlayer.js"></script>
+    <script type="text/javascript" src="js/loading.js?v=1.0"></script>
+    <script type="text/javascript" src="js/gamePlayer.js?v=1.0"></script>
 </body>
 </html>
