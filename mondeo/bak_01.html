@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>易车网 · 流言终结者</title>
+    <link rel="stylesheet" href="../public/css/reset-h5.css">
+    <link rel="stylesheet" href="../public/css/animate.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/self-scroll.css">
+    <!--<link rel="stylesheet" href="css/pace.css">-->
+    <!-- videojs css-->
+    <link rel="stylesheet" href="../public/plugins/videojs/5.8.8/video-js.css" >
+    <!-- socket.io client -->
+    <script type="text/javascript" src="http://node.bjczxda.com/socket.io/socket.io.js"></script>
+    <!-- 预加载插件 -->
+    <script type="text/javascript" src="../public/scripts/pace.js"></script>
+    <!-- css3免前缀插件 -->
+    <script type="text/javascript" src="../public/scripts/prefixfree.min.js"></script>
+    <script type="text/javascript" src="../public/scripts/jquery-1.12.1.min.js"></script>
+    <!-- hammer:html5手势插件 -->
+    <script type="text/javascript" src="../public/scripts/hammer.js"></script>
+    <script type="text/javascript" src="../public/scripts/jquery.hammer.js"></script>
+    <!-- videojs -->
+    <script type="text/javascript" src="../public/plugins/videojs/5.8.8/video.min.js"></script>
+    <!-- Swiper -->
+    <link rel="stylesheet" href="../public/plugins/Swiper-3.4.2/dist/css/swiper.min.css">
+    <script type="text/javascript" src="../public/plugins/Swiper-3.4.2/dist/js/swiper.jquery.min.js"></script>
+    <!-- iscroll -->
+    <script type="text/javascript" src="../public/scripts/iscroll.js"></script>
+    <!-- TweenLite.min.js-->
+    <script type="text/javascript" src="../public/plugins/greensock-js/src/minified/TweenLite.min.js"></script>
+</head>
+<body ontouchmove="event.preventDefault();">
+<!--屏幕兼容代码-->
+<script type="text/javascript">
+
+    (function() {
+        // deicePixelRatio ：设备像素
+        var scale = 1 / devicePixelRatio;
+        if(navigator.userAgent.indexOf('iPhone')!=-1){
+            //设置meta 压缩界面 模拟设备的高分辨率
+            document.querySelector('meta[name="viewport"]').setAttribute('content', 'initial-scale=' + scale + ', maximum-scale=' + scale + ', minimum-scale=' + scale + ', user-scalable=no');
+        }
+        var deviceWidth = document.documentElement.clientWidth > 1300 ? 1300 : document.documentElement.clientWidth;
+        //按照640像素下字体为100px的标准来，得到一个字体缩放比例值 6.4
+        document.documentElement.style.fontSize = (deviceWidth / 6.4) + 'px'; //320 fontSize = 50px
+    })();
+</script>
+<!-- loading页 -->
+<div class="loading" style="display: none"><div class="content"><img src="images/img-circular.png"><div><p>Loading</p><p id="loading">0%</p></div></div></div>
+<div id="loadingImg" style="position: absolute;left: 0;right: 0;">
+    <!--<img src="images/bg-page-1.jpg">-->
+    <!--<img src="images/bg-pop-box.png">-->
+    <!--<img src="images/bg-rect-btn.png">-->
+    <!--<img src="images/img-car-1.png">-->
+    <!--<img src="images/img-car.png">-->
+    <!--<img src="images/img-circular.png">-->
+    <!--<img src="images/img-slogan.png">-->
+</div>
+<!-- logo -->
+<img id="logo" src="images/img-logo.png">
+<!-- 弹出框 -->
+<div class="pop-box" style="display: none;">
+    <div class="pop-main">
+        <img id="pop-line-l" src="images/img-pop-line.png">
+        <img id="pop-line-r" src="images/img-pop-line-r.png">
+        <div class="pop-content">
+            <div id="rule-pop" style="display: none;text-align: left;">
+                <p class="pop-title success">活动规则</p>
+                <div id="rule-content">
+                    <div id="scroller">
+                        <div style="width: 100%;height: 3rem;background-color: bisque;"></div>
+                        <div style="width: 100%;height: 3rem;background-color: red;"></div>
+                        <div style="width: 100%;height: 3rem;background-color: darkblue;"></div>
+                        <div style="width: 100%;height: 3rem;background-color: gold;"></div>
+                    </div>
+                    <div class="scroll-line"></div>
+                </div>
+                <img style="width: 2.4rem;margin-top: .42rem;margin-left: .1rem;" src="images/img-car-1.png">
+            </div>
+            <div id="share-pop" style="display: none;">
+                <p style="margin-top:.94rem;font-size: .52rem; font-weight: bolder; text-align: center; color: #b70001;">您的信息已</p>
+                <p style="font-size: .52rem; font-weight: bolder; text-align: center; color: #b70001;">提交成功</p>
+                <img style="margin-top:1rem;width: 4.08rem;" src="images/img-car.png">
+                <a href="javascript:alert('shared!');" class="rect-btn btn-share"><span>速来围观</span></a>
+            </div>
+            <div id="submit-pop" style="display: none;">
+                <p id="submit-title" class="pop-title fail">挑战成功</p>
+                <img class="pop-car" src="images/img-car.png">
+                <form id="commentForm"><div class="pop-form">
+                    <div><label style="vertical-align: text-top">我想说</label><textarea name="comment" rows=2 style="vertical-align: text-top"></textarea></div>
+                    <div><label>姓&nbsp;&nbsp;&nbsp;名</label><input type="text" name="name" /></div>
+                    <div><label>电&nbsp;&nbsp;&nbsp;话</label><input type="text" name="mobile" /></div>
+                    <div style="width: 70%; margin-left: .76rem; margin-top:5px; overflow: hidden;">
+                        <span style="color: #ce6b6a;float: left;">*</span>
+                        <p style="width:95%;margin-left:3px;color: #c4cace;font-size: .18rem;line-height: 150%;float: left;">个人信息仅作易车工作人员联系，不会泄露第三方</p>
+                    </div>
+                    <p id="error" style="visibility:visible;margin-top: 5px;text-align: center;color: red;;font-size: .18rem;"></p>
+                    <input type="hidden" name="state" />
+                    <a id="submitComment" href="javascript:void(0);" class="rect-btn btn-submit"><span>提交信息</span></a>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="close">
+        <a href="javascript:closePopUpBox();" class="btn-close">
+            <div>
+                <img src="images/img-pop-circle.png">
+                <img src="images/img-pop-close.png">
+            </div>
+        </a>
+        <div class="left-line"></div>
+        <div class="right-line"></div>
+    </div>
+</div>
+<!-- 主要页面 -->
+<div id="mainSwiper" class="swiper-container">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide">
+            <!-- 首页 -->
+            <div class="page-1">
+                <div class="circle">
+                    <div class="circular circleAn">
+                        <div id="dotA"></div>
+                        <div id="dotB"></div>
+                    </div>
+                    <img id="circleCar" class="animated delay_1s rotateAntiIn" src="images/img-circular.png">
+                    <img id="slogan" class="titAn" src="images/img-slogan.png">
+                    <p id="location" class="animated delay_3s fadeIn"><img style="vertical-align: middle;width: .15rem;margin-right: 10px;" src="images/icon-location.png">北京2017-05-28</p>
+                </div>
+                <img class="line-right animated delay_3-5s fadeInBiasRightDown" src="images/img-line-r.png">
+                <img class="line-left animated delay_3-5s fadeInBiasLeftUp" src="images/img-line-l.png">
+                <img class="first-car animated delay_3-5s fadeInBiasLeftCar" src="images/img-car.png">
+                <!--<div class="btn"><div></div><div><img src="images/icon-live.png"><span></span></div></div>-->
+                <div class="btn" style="display: none;">
+                </div>
+                <a href="javascript:alert('live');" class="btn-live animated delay_4s fadeInBiasRightDown"></a>
+                <a href="javascript:alert('more');" class="btn-more animated delay_4s fadeInBiasRightDown"></a>
+                <img class="slideDown" src="images/icon-slidedown.png">
+            </div>
+        </div>
+        <div class="swiper-slide">
+            <div class="page-2">
+                <div style="margin-top: .8rem;">
+                    <input type="button" onclick="openPopUpBox(1);" value="支持"/>
+                    <input type="button" onclick="openPopUpBox(2);" value="不支持"/>
+                    <input type="button" onclick="openPopUpBox(3)" value="分享"/>
+                    <input type="button" onclick="openPopUpBox(4)" value="活动规则"/>
+                </div>
+                <!-- 投票和显示票数区域 -->
+                <div class="vote">
+                    <div class="support">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <div class="vote-circle">
+                        <div class="circleProgress_wrapper">
+                            <div class="wrapper right">
+                                <div class="circleProgress rightcircle"></div>
+                            </div>
+                            <div class="wrapper left">
+                                <div class="circleProgress leftcircle"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="unsupport">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <p class="support-votes">
+                        1000票
+                    </p>
+                    <p class="nonsupport-votes">
+                        2000票
+                    </p>
+                    <a class="rect-btn btn-support"><img src="images/icon-support.png"><span>挑战成功</span></a>
+                    <a class="rect-btn btn-unsupport"><img src="images/icon-unsupport.png"><span>挑战失败</span></a>
+                </div>
+                <div class="comment kol">
+                    <div class="content"></div>
+                </div>
+                <div class="comment clients">
+                    <div class="content">
+                        <div id="commentSwiper" class="swiper-container">
+                            <div class="swiper-wrapper">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <img class="slideDown" src="images/icon-slidedown.png">
+            </div>
+        </div>
+        <div class="swiper-slide">
+            <div class="page-3">
+                <form id="applyForm">
+                    <div style="margin-top: 3rem;">
+                        <label>姓名:</label><input type="text" name="name"/>
+                    </div>
+                    <div>
+                        <label>电话:</label><input type="text" name="mobile"/>
+                    </div>
+                    <div>
+                        <label>性别:</label>
+                        <select name="sex">
+                            <option value="">称谓</option>
+                            <option value="1">男</option>
+                            <option value="2">女</option>
+                        </select>
+                    </div>
+                    <div><input type="button" id="submitApply" value="提交申请"/></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script>
+    var ruleScroller = null;
+    /**
+     * 打开弹出框
+     * @param type 弹出框类型
+     * type: 1 支持弹出框
+     * type: 2 不支持弹出框
+     * type: 3 分享弹出框
+     * type: 4 活动规则弹出框
+     */
+    function openPopUpBox(type){
+        type = parseInt(type);
+        $('.pop-box').show();
+        if(type == 1){
+            $('#submit-pop').show();
+            $('#submit-title').removeClass('fail');
+            $('#submit-title').addClass('success');
+            $('#submit-title').html('挑战成功');
+            $('input[name="state"]').val(1);
+        }else if(type == 2){
+            $('#submit-pop').show();
+            $('#submit-title').removeClass('success');
+            $('#submit-title').addClass('fail');
+            $('#submit-title').html('挑战失败');
+            $('input[name="state"]').val(2);
+        }else if(type == 3){
+            $('#share-pop').show();
+        }else if(type == 4){
+            $('#rule-pop').show();
+            if(!ruleScroller) ruleScroller = new IScroll('#rule-content',{ scrollbars: 'custom' ,resizeScrollbars:false });
+        }
+        $('.pop-content').addClass('animated zoomIn');
+        $('#pop-line-l').addClass('animated fadeInBiasLeftUp');
+        $('#pop-line-r').addClass('animated fadeInBiasRightDown');
+    }
+
+    /**
+     * 关闭弹出框
+     */
+    function closePopUpBox(){
+        $('.pop-box').hide();
+        $('#submit-pop').hide();
+        $('#rule-pop').hide();
+        $('#share-pop').hide();
+    }
+</script>
+<script type="text/javascript" src="../public/scripts/utils/httpUtil.js"></script>
+<script type="text/javascript" src="../public/scripts/utils/validateUtil.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+<!-- 微信分享api -->
+<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript" src="js/wx_share.js"></script>
+</html>
