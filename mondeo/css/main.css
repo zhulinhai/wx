@@ -246,7 +246,7 @@
     top:0;
     width: 100%;
     height: 100%;
-    animation: flashAni .4s steps(1) infinite;
+    animation: flashAni .4s step-start infinite;
     background: url(../images/temp/flash-1.jpg) center center no-repeat;
     background-size: cover;
 }
@@ -320,10 +320,15 @@
     right: .3rem;
     bottom: .5rem;
     width: .81rem;
-    animation: outAni 1s ease 4s;
 }
 
-@keyframes outAni {
+.carFadeOutRight {
+  animation-name: carFadeOutRight;
+  animation-timing-function: ease;
+  animation-fill-mode: backwards;
+}
+
+@keyframes carFadeOutRight {
     0% { opacity: 1; transform: translate(0);}
     100%{ opacity: 0; transform: translate(200%);}
 }

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>易车 · 老司机周刊</title>
+    <link rel="stylesheet" href="../public/css/reset-h5.css">
+    <link rel="stylesheet" href="../public/css/animate.css">
+    <link rel="stylesheet" href="css/main.css">
+    <!-- videojs css-->
+    <link rel="stylesheet" href="../public/plugins/videojs/5.8.8/video-js.css" >
+    <!-- 预加载插件 -->
+    <script type="text/javascript" src="../public/scripts/pace.js"></script>
+    <!-- css3免前缀插件 -->
+    <script type="text/javascript" src="../public/scripts/prefixfree.min.js"></script>
+    <!-- videojs -->
+    <script type="text/javascript" src="../public/plugins/videojs/5.8.8/video.min.js"></script>
+    <script type="text/javascript" src="../public/scripts/jquery-1.12.1.min.js"></script>
+</head>
+<body ontouchmove="event.preventDefault();">
+<!--屏幕兼容代码-->
+<script type="text/javascript">
+
+    (function() {
+        // deicePixelRatio ：设备像素
+        var scale = 1 / devicePixelRatio;
+        if(navigator.userAgent.indexOf('iPhone')!=-1){
+            //设置meta 压缩界面 模拟设备的高分辨率
+            document.querySelector('meta[name="viewport"]').setAttribute('content', 'initial-scale=' + scale + ', maximum-scale=' + scale + ', minimum-scale=' + scale + ', user-scalable=no');
+        }
+        var deviceWidth = document.documentElement.clientWidth > 1300 ? 1300 : document.documentElement.clientWidth;
+        //按照640像素下字体为100px的标准来，得到一个字体缩放比例值 6.4
+        document.documentElement.style.fontSize = (deviceWidth / 6.4) + 'px'; //320 fontSize = 50px
+    })();
+</script>
+<div id="v" style="width: 5.6rem; height: 3.15rem;margin: 0 auto;">
+    <video id="my-player" class="vjs-big-play-centered" webkit-playsinline playsinline autoplay="true"></video>
+</div>
+</body>
+<script>
+    var player;
+
+    window.onload = function(){
+
+        $('video').width($('#v').width()).height($('#v').height());
+
+        player = videojs('my-player',{
+            controls: true,
+            autoplay: true,
+            loop:true,
+            preload: 'auto'
+        });
+
+        player.src('http://pili-live-hls.yunmfang.com/ford/mondeo.m3u8');
+
+        player.on('error',function(){
+            alert('视频源失效');
+        });
+
+        player.on('ended',function(){
+            alert('play ended!');
+        });
+    }
+
+</script>
+</html>
