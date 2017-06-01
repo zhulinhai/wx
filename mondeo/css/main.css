@@ -228,34 +228,75 @@
 .delay_4-5s{  animation-delay: 4.5s;  }
 .delay_5s{  animation-delay: 5s;  }
 
+#mainPage {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
 
+#mainPage .swiper-slide{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: url(../images/bg.jpg) center center no-repeat;
+    background-size: cover;
+}
 
+#mainPage .page{  position: relative;  width: 100%;  height: 100%; overflow: hidden; }
+#mainPage .page .title{  position: absolute; top: .1rem; width: 6.26rem; left: .07rem; }
+#mainPage .page .bottom-line{  position: absolute;  bottom: .6rem;  width: 100%;  }
+#mainPage .page .bottom-arrow{  position: absolute;  bottom: .15rem;  left: 50%;  margin-left: -.1rem;  width: .19rem;  animation: slideAni 1.5s infinite ease-in-out;  }
+#mainPage .page .btn-back,#mainPage .page .btn-rule {position: absolute; display: block; bottom:.22rem; width: 1.21rem; height: .41rem; }
+#mainPage .page .btn-back { left: .22rem; background: url("../images/btn-back.png") center no-repeat; background-size: cover; }
+#mainPage .page .btn-rule { right: .22rem; background: url("../images/btn-rule.png") center no-repeat; background-size: cover; }
+#mainPage .page .topic-banner { position:absolute; top:1.74rem; left:.075rem; width:6.25rem; }
 /**************************************************************************************************
  1.0    loading page
 ***************************************************************************************************/
 
 .loading { position:absolute; width: 100%; height: 100%; z-index: 1000; background-color: white; overflow: hidden; }
+.loading .content { position: relative; width: 3.06rem; height: 2.67rem; margin: 3rem auto 0 auto;}
+.loading .content .cloud {position: absolute; top:0; left: 0; width: 100%;}
+.loading .superman {position:  absolute; width: 1.56rem; z-index: 1; left: 50%;  margin-left: -.78rem;  top: .6rem;}
+.loading .percent{ width: 100%; margin-top: .3rem; text-align: center;font-size: .22rem; line-height: 200%; color: black; }
 
+.vibrateAni {
+    animation-name: vibrateAni ;
+    animation-duration: .4s;
+    animation-timing-function: steps(1,start);
+    animation-iteration-count: infinite;
+    animation-direction:alternate;
+}
+
+@keyframes vibrateAni {
+    0% { transform: translate(0,0);}
+    50% { transform: translate(-2px,2px);}
+    100% { transform: translate(2px,-2px);}
+}
+.cloudAni {
+    animation-name: cloudAni ;
+    animation-duration: .4s;
+    animation-timing-function: steps(1,start);
+    animation-iteration-count: infinite;
+    animation-direction:alternate;
+}
+
+@keyframes cloudAni {
+    0% { transform: translate(0,0);}
+    50% { transform: translate(-10px,10px);}
+    100% { transform: translate(10px,-10px);}
+}
 
 /**************************************************************************************************
- 2.0    index page
+ 2.0    first page
 ***************************************************************************************************/
 .first-page {
-    position: relative;
-    left: 0;
-    top:0;
-    width: 100%;
-    height: 100%;
     animation: flashAni .4s step-start infinite;
     background: url(../images/temp/flash-1.jpg) center center no-repeat;
     background-size: cover;
 }
 
-.first-page .title{
-    position: absolute;
-    top: 0;
-    width: 100%;
-}
+
 .first-page .slide{
     position: absolute;
     top: 2.3rem;
@@ -279,21 +320,6 @@
     0% { background-image: url(../images/temp/flash-1.jpg);}
     50% { background-image: url(../images/temp/flash-2.jpg);}
     100% { background-image: url(../images/temp/flash-3.jpg);}
-}
-
-.first-page .bottom-line{
-    position: absolute;
-    bottom: .6rem;
-    width: 100%;
-}
-
-.first-page .bottom-arrow{
-    position: absolute;
-    bottom: .15rem;
-    left: 50%;
-    margin-left: -.19rem;
-    width: .19rem;
-    animation: slideAni 1.5s infinite ease-in-out;
 }
 
 .first-page .superman{
@@ -369,3 +395,87 @@
     bottom: 0rem;
     width: .27rem;
 }
+
+/**************************************************************************************************
+ 3.0    second page
+***************************************************************************************************/
+
+/**************************************************************************************************
+ 4.0    third page
+***************************************************************************************************/
+/**************************************************************************************************
+ 5.0    fourth page
+***************************************************************************************************/
+#victory { position: absolute; top:1.78rem; right: .5rem; width: .49rem;}
+.fourth-page .dialogue { margin:3rem auto 0 auto; width: 5.14rem; overflow: hidden; }
+.fourth-page .dialogue > div { width:2.31rem; }
+.fourth-page .dialogue > div:first-child { float: left; text-align: right; }
+.fourth-page .dialogue > div:last-child { float: right; text-align: left; }
+.fourth-page .dialogue:after {content:'';width: 0;height: 0;clear: both; }
+.left-dialogue,.right-dialogue { width: 100%; height: 1.95rem;  background-position: .28rem .28rem, center;  background-repeat: no-repeat;  background-size: .29rem .28rem,auto auto;overflow: hidden; }
+.left-dialogue {  background-image: url(../images/icon-start.png),url(../images/img-left-pop.png);  }
+.right-dialogue {  background-image: url(../images/icon-start.png),url(../images/img-right-pop.png); }
+.left-dialogue > p { margin-top:.6rem; padding-left:.3rem; padding-right: .3rem; font-size: .18rem; color:#07496a; text-align: justify; }
+.right-dialogue > p { padding-left:.3rem; padding-right: .3rem; font-size: .18rem; text-align: left; color:#07496a;}
+.right-dialogue > p:first-child { margin-top:.7rem; color:#b62530; }
+
+.fourth-page .banner {position:relative; margin:.5rem auto 0 auto; width: 5.25rem; height: 1.27rem; background: url("../images/img-p5-w.png") center no-repeat; background-size: cover; text-align: center; }
+.fourth-page .banner > img:first-child { margin-top: .25rem; width:4.67rem; }
+.fourth-page .banner > img:last-child { position: absolute; bottom:-.35rem; left:50%; margin-left:-.5rem; width:1.05rem; }
+/**************************************************************************************************
+ 6.0    fifth page
+***************************************************************************************************/
+.fifth-page .trumpet {position: absolute; top:3rem; left: .27rem;  width: 1.76rem; }
+.fifth-page .introduce {position: absolute; top:3rem; right: .1rem;  width: 4.37rem; }
+.fifth-page .small-people-1 {position: absolute; bottom:3rem; right:.1rem; width: 2.57rem; }
+.fifth-page .callUpon {position: absolute;bottom: 1.5rem; right: .26rem;  width: 2.27rem; }
+.fifth-page .small-people-2 {position: absolute; bottom: .8rem; right: .26rem;  width: .48rem; }
+.fifth-page .superman { position: absolute; left: 0;bottom: 1rem; width: 4rem; }
+/**************************************************************************************************
+ 7.0    sixth page
+***************************************************************************************************/
+.sixth-page { text-align: center;}
+.sixth-page .terminator{position:absolute; width: 4.09rem; top: 2.9rem;left: 1.5rem; }
+.sixth-page .superman { position: absolute; width: 2.5rem;  left: .4rem;  bottom: 4.2rem; }
+.sixth-page .buttonGroup { position: absolute; left:.275rem;  bottom:.5rem; width: 5.85rem; overflow: hidden;}
+.sixth-page .buttonGroup a { display: block;}
+.sixth-page .buttonGroup a:nth-child(1){float: left;  width: 2.82rem; height: 1.33rem; background: url(../images/btn-1.png) center center no-repeat; background-size: cover; }
+.sixth-page .buttonGroup a:nth-child(2){float: right;  width: 2.82rem; height: 1.33rem; background: url(../images/btn-2.png) center center no-repeat; background-size: cover;}
+.sixth-page .buttonGroup a:nth-child(3){float: right; width: 100%; height: 1.68rem; margin-top:.46rem; background: url(../images/btn-3.png) center center no-repeat; background-size: cover; }
+.sixth-page .buttonGroup:after {  content:'';width: 0;height: 0;clear: both;  }
+
+/**************************************************************************************************
+ 8.0    seventh page
+***************************************************************************************************/
+.seventh-page { }
+.seventh-page .banner { position:relative; width: 5.92rem; height:1.26rem; overflow: hidden; margin: 1.86rem auto 0 auto; }
+.seventh-page .banner > img:first-child { position: absolute; left: 0; top:0; width: 100%; }
+.seventh-page .banner > img:last-child { position: absolute; right: .8rem; top:0; width: .61rem; }
+.seventh-page .vs { position: relative; width: 100%; overflow: hidden; text-align: center; margin-top: .15rem; }
+.seventh-page .vs img:nth-child(1) { float: left; width: 2.11rem;}
+.seventh-page .vs img:nth-child(2) { width: 1.65rem; }
+.seventh-page .vs img:nth-child(3) {float: right; width: 2.11rem; }
+.seventh-page .vs :after {  content:'';width: 0;height: 0;clear: both;  }
+.seventh-page .buttonGroup { margin:.25rem auto 0 auto; width: 5rem; overflow: hidden;}
+.seventh-page .buttonGroup > div { width: 1.9rem;}
+.seventh-page .buttonGroup > div:first-child { float: left;}
+.seventh-page .buttonGroup > div:last-child { float: right;}
+#support-num,#nonsupport-num { width: 100%; text-align: center; font-size: .22rem; line-height: 200%; }
+#support-num { color: #b62530; }
+#nonsupport-num { color: #07496a; }
+#btn-support,#btn-nonsupport { display: block; width: 100%; height: .89rem; }
+#btn-support { background: url(../images/btn-4.png) center center no-repeat; background-size: cover; }
+#btn-nonsupport { background: url(../images/btn-5.png) center center no-repeat; background-size: cover; }
+.seventh-page .buttonGroup:after {  content:'';width: 0;height: 0;clear: both;  }
+.seventh-page .kol {position: relative; width:5.84rem; height: 3.24rem; margin: .2rem auto 0 auto; background: url("../images/img-p7-frame.png") center no-repeat; background-size: cover; }
+.seventh-page .kol > div { width: 100%; height: 50%; }
+.seventh-page .kol > div:first-child > img { float: left; margin-top:.39rem; margin-left:.35rem; width: .7rem; }
+.seventh-page .kol > div:first-child > div { float: left; margin-top:.39rem; margin-left:.1rem; width:4.3rem; height: .7rem; }
+.seventh-page .kol > div:first-child > div p, #commentSwiper p { width:100%; font-size: .22rem; color:#07496a; line-height: 150%; }
+.kol-name { font-weight:bolder; }
+.emphasis {margin-left: 5px; padding-left:5px; padding-right:5px;  color:white; font-weight:bold; background: url(../images/img-emphasis.png) center no-repeat; background-size: .94rem .27rem;}
+.topic { color:#b62530; margin-right: .2rem; }
+.seventh-page .kol > div:first-child :after { content:'';width: 0;height: 0;clear: both; }
+.seventh-page .kol .line { position: absolute; top:50%; margin-top:-.14rem;left:.2rem; width: 5.44rem;}
+#commentSwiper { margin-top:.35rem; margin-left:.35rem; width: 5.4rem;}
+#commentSwiper .swiper-slide { background:none; }

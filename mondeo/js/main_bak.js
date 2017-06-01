@@ -123,16 +123,16 @@
         /**
          * stop loading
          */
-            //setTimeout(function(){
-            //    clearInterval(loadInterval);
-            //    loadInterval = -1;
-            //    $('.loading').addClass('animated fadeOut').one(animationEnd,function(){
-            //        /**
-            //         * 隐藏加载图片
-            //         */
-            //        $('#loadingImg').hide();
-            //        $(this).hide();});
-            //},1000);
+        //setTimeout(function(){
+        //    clearInterval(loadInterval);
+        //    loadInterval = -1;
+        //    $('.loading').addClass('animated fadeOut').one(animationEnd,function(){
+        //        /**
+        //         * 隐藏加载图片
+        //         */
+        //        $('#loadingImg').hide();
+        //        $(this).hide();});
+        //},1000);
 
 
         bindEvent();

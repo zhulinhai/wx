@@ -47,75 +47,224 @@
         document.documentElement.style.fontSize = (deviceWidth / 6.4) + 'px'; //320 fontSize = 50px
     })();
 </script>
-<div class="loading">
+<div class="loading" style="display: none;">
+    <div class="content">
+        <img class="cloud cloudAni" src="images/img-cloud.png">
+        <img class="superman vibrateAni" src="images/superman.png">
+    </div>
+    <p class="percent">80%</p>
 </div>
-<div class="first-page">
-    <img class="title" src="images/temp/img-title.png">
-    <img class="slide" src="images/temp/img-slide.png">
-    <img class="superman" src="images/temp/superman.gif">
-    <div class="aside">
-        <img id="aside-1" class="animated delay_2s bounceIn" src="images/temp/img-aside-1.png">
-        <img id="aside-2" class="animated delay_1-5s bounceIn" src="images/temp/img-aside-2.png">
-        <img id="aside-3" class="animated delay_1s bounceIn" src="images/temp/img-aside-3.png">
-        <img id="aside-4" class="animated bounceIn" src="images/temp/img-aside-4.png">
+<div id="mainPage" class="swiper-container">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide">
+            <div class="page first-page">
+                <img class="title" src="images/temp/img-title.png">
+                <img class="slide" src="images/temp/img-slide.png">
+                <img class="superman" src="images/temp/superman.gif">
+                <div class="aside">
+                    <img id="aside-1" class="animated delay_2s bounceIn" src="images/temp/img-aside-1.png">
+                    <img id="aside-2" class="animated delay_1-5s bounceIn" src="images/temp/img-aside-2.png">
+                    <img id="aside-3" class="animated delay_1s bounceIn" src="images/temp/img-aside-3.png">
+                    <img id="aside-4" class="animated bounceIn" src="images/temp/img-aside-4.png">
+                </div>
+                <div class="older animated delay_3s bounceIn">
+                    <img src="images/temp/img-old-driver.png">
+                    <img id="fp-car" class="car animated delay_4s carFadeOutRight" src="images/temp/icon-car.png">
+                </div>
+                <img class="bottom-line" src="images/temp/img-bottom.png">
+                <img class="bottom-arrow" src="images/temp/icon-arrow.png">
+            </div>
+        </div>
+        <div class="swiper-slide">
+            <div class="page second-page">
+                <img class="title" src="images/temp/img-title.png">
+                <img class="topic-banner" src="images/img-p2-banner.png">
+                <img class="bottom-line" src="images/temp/img-bottom.png">
+                <img class="bottom-arrow" src="images/temp/icon-arrow.png">
+            </div>
+        </div>
+        <div class="swiper-slide">
+            <div class="page third-page">
+                <img class="title" src="images/temp/img-title.png">
+                <img class="topic-banner" src="images/img-p3-banner.png">
+                <img class="bottom-line" src="images/temp/img-bottom.png">
+                <img class="bottom-arrow" src="images/temp/icon-arrow.png">
+            </div>
+        </div>
+        <div class="swiper-slide">
+            <div class="page fourth-page">
+                <img class="title" src="images/temp/img-title.png">
+                <img class="topic-banner" src="images/img-p4-banner.png">
+                <img id="victory" src="images/icon-victory.png">
+                 <div class="dialogue">
+                     <div><div class="left-dialogue"><p>美系不行，油老虎！我只知道日系混动大法好！</p></div><img src="images/img-s-p-4.png"></div>
+                     <div><div><div class="right-dialogue"><p>native!</p><p>混动出的早就好？</p></div><img src="images/img-s-p-5.png"></div>
+                     </div>
+                 </div>
+                <div class="banner">
+                    <img src="images/img-p5-ww.png">
+                    <img id="p4-car" src="images/icon-car-1.png">
+                </div>
+                <img class="bottom-line" src="images/temp/img-bottom.png">
+                <img class="bottom-arrow" src="images/temp/icon-arrow.png">
+            </div>
+        </div>
+        <div class="swiper-slide">
+            <div class="page fifth-page">
+                <img class="title" src="images/temp/img-title.png">
+                <img class="topic-banner" src="images/img-p5-banner.png">
+                <img class="trumpet" src="images/img-trumpet.png">
+                <img class="introduce" src="images/img-p5-w1.png">
+                <img class="small-people-1" src="images/img-s-p-3.png">
+                <img class="callUpon" src="images/img-p5-w2.png">
+                <img class="small-people-2" src="images/img-s-p-2.png">
+                <img class="superman" src="images/temp/superman.gif">
+                <img class="bottom-line" src="images/temp/img-bottom.png">
+                <img class="bottom-arrow" src="images/temp/icon-arrow.png">
+            </div>
+        </div>
+        <div class="swiper-slide">
+            <div class="page sixth-page">
+                <img class="title" src="images/temp/img-title.png">
+                <img class="topic-banner" src="images/img-p6-banner.png">
+                <img class="terminator" src="images/img-p6-w2.png">
+                <img class="superman" src="images/temp/superman.gif">
+                <div class="buttonGroup">
+                    <a id="btn-select" href="javascript:void(0);"></a>
+                    <a id="btn-join" href="javascript:void(0);"></a>
+                    <a id="btn-live" href="javascript:void(0);"></a>
+                </div>
+            </div>
+        </div>
+        <div class="swiper-slide">
+            <div class="page seventh-page">
+                <img class="title" src="images/temp/img-title.png">
+                <div class="banner">
+                    <img id="p7-w" src="images/img-p7-w1.png">
+                    <img id="p7-s-p" src="images/img-s-p-1.png">
+                </div>
+                <div class="vs">
+                    <img id="leftHand" src="images/img-left-hand.png">
+                    <img id="vs" src="images/img-vs.png">
+                    <img id="rightHand" src="images/img-right-hand.png">
+                </div>
+                <div class="buttonGroup">
+                    <div><p id="support-num">123123</p><a id="btn-support" href="javascript:void(0);"></a></div>
+                    <div><p id="nonsupport-num">3213213</p><a id="btn-nonsupport" href="javascript:void(0);"></a></div>
+                </div>
+                <div class="kol">
+                    <div>
+                        <img class="portrait" src="images/img-portrait.png">
+                        <div>
+                            <p><span class="kol-name">初晓敏</span><span class="emphasis">汽车达人</span></p>
+                            <p><span class="topic">#新蒙迪欧HEV#</span>挑战一定成功！打算打算大所大所大所大多打算打算大所多打算打</p>
+                        </div>
+                    </div>
+                    <div>
+                        <div id="commentSwiper" class="swiper-container">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <p style="font-weight: bolder">皮卡丘 ：</p>
+                                    <p><span class="topic">#新蒙迪欧HEV#</span> 棒棒哒，期待直播的精彩表现哦！打算打算大所大所大所大多打算打算大所多</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <img class="line" src="images/img-p7-line.png">
+                </div>
+                <a class="btn-back" href="javascript:void(0);"></a>
+                <a class="btn-rule" href="javascript:void(0);"></a>
+            </div>
+        </div>
+        <div class="swiper-slide">
+            <div class="page eighth-page">
+                <img class="title" src="images/temp/img-title.png">
+                <a class="btn-back" href="javascript:void(0);"></a>
+                <a class="btn-rule" href="javascript:void(0);"></a>
+            </div>
+        </div>
+        <div class="swiper-slide">
+            <div class="page ninth-page">
+                <img class="title" src="images/temp/img-title.png">
+                <a class="btn-back" href="javascript:void(0);"></a>
+            </div>
+        </div>
     </div>
-    <div class="older animated delay_3s bounceIn">
-        <img src="images/temp/img-old-driver.png">
-        <img id="fp-car" class="car animated delay_4s carFadeOutRight" src="images/temp/icon-car.png">
-    </div>
-    <img class="bottom-line" src="images/temp/img-bottom.png">
-    <img class="bottom-arrow" src="images/temp/icon-arrow.png">
 </div>
 </body>
 <script>
-//    var ruleScroller = null;
-//    /**
-//     * 打开弹出框
-//     * @param type 弹出框类型
-//     * type: 1 支持弹出框
-//     * type: 2 不支持弹出框
-//     * type: 3 分享弹出框
-//     * type: 4 活动规则弹出框
-//     */
-//    function openPopUpBox(type){
-//        type = parseInt(type);
-//        $('.pop-box').show();
-//        if(type == 1){
-//            $('#submit-pop').show();
-//            $('#submit-title').removeClass('fail');
-//            $('#submit-title').addClass('success');
-//            $('#submit-title').html('挑战成功');
-//            $('input[name="state"]').val(1);
-//        }else if(type == 2){
-//            $('#submit-pop').show();
-//            $('#submit-title').removeClass('success');
-//            $('#submit-title').addClass('fail');
-//            $('#submit-title').html('挑战失败');
-//            $('input[name="state"]').val(2);
-//        }else if(type == 3){
-//            $('#share-pop').show();
-//        }else if(type == 4){
-//            $('#rule-pop').show();
-//            if(!ruleScroller) ruleScroller = new IScroll('#rule-content',{ scrollbars: 'custom' ,resizeScrollbars:false });
-//        }
-//        $('.pop-content').addClass('animated zoomIn');
-//        $('#pop-line-l').addClass('animated fadeInBiasLeftUp');
-//        $('#pop-line-r').addClass('animated fadeInBiasRightDown');
-//    }
-//
-//    /**
-//     * 关闭弹出框
-//     */
-//    function closePopUpBox(){
-//        $('.pop-box').hide();
-//        $('#submit-pop').hide();
-//        $('#rule-pop').hide();
-//        $('#share-pop').hide();
-//    }
+ var FIRST_PAGE = 0;
+ var FOURTH_PAGE = 3;
+ var FIFTH_PAGE = 4;
+ var SIXTH_PAGE = 5;
+ var SEVENTH_PAGE = 6;
+ var EIGHTH_PAGE = 7;
+ var NINTH_PAGE = 8;
+
+ var current_page_index = 0;
+ var mswiper = null;
+
+    window.onload = function(){
+        mswiper = new Swiper('#mainPage',{
+            initialSlide:FOURTH_PAGE,
+            direction : 'vertical',
+            loop: false,
+            onInit: function(swiper){
+                if(swiper.activeIndex == FIRST_PAGE)
+                    swiper.lockSwipeToPrev();
+            },
+            onSlideChangeStart: handlerChangeStart
+        });
+    }
+
+ function handlerChangeStart(swiper){
+
+     current_page_index = swiper.activeIndex;
+
+     switch (swiper.activeIndex){
+         case FIRST_PAGE:
+             swiper.lockSwipeToPrev();
+             break;
+         case SIXTH_PAGE:
+             swiper.unlockSwipeToPrev();
+             swiper.lockSwipeToNext();
+             break;
+         case SEVENTH_PAGE:
+         case EIGHTH_PAGE:
+         case NINTH_PAGE:
+             swiper.lockSwipeToPrev();
+             swiper.lockSwipeToNext();
+             break;
+         default:
+             swiper.unlockSwipeToNext();
+             swiper.unlockSwipeToPrev();
+             break;
+     }
+ }
+
+ $('#btn-select').click(function(e){
+   mswiper.unlockSwipeToNext();
+   mswiper.slideTo(SEVENTH_PAGE);
+});
+
+ $('#btn-join').click(function(e){
+     mswiper.unlockSwipeToNext();
+     mswiper.slideTo(EIGHTH_PAGE);
+ });
+
+ $('#btn-live').click(function(e){
+     mswiper.unlockSwipeToNext();
+     mswiper.slideTo(NINTH_PAGE);
+ });
+
+ $('.btn-back').click(function(e){
+     mswiper.unlockSwipeToPrev();
+     mswiper.slideTo(SIXTH_PAGE);
+});
 </script>
 <script type="text/javascript" src="../public/scripts/utils/httpUtil.js"></script>
 <script type="text/javascript" src="../public/scripts/utils/validateUtil.js"></script>
-<!--<script type="text/javascript" src="js/main.js"></script>-->
+<!--<script type="text/javascript" src="js/main_bak.js"></script>-->
 <!-- 微信分享api -->
 <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 <script type="text/javascript" src="js/wx_share.js"></script>
