@@ -333,7 +333,7 @@
  var mswiper = null;
  var myScroll = null;
     window.onload = function(){
-        myScroll = new IScroll('#wrapper', { mouseWheel: true });
+
         mswiper = new Swiper('#mainPage',{
             initialSlide:FIRST_PAGE,
             direction : 'vertical',
@@ -389,6 +389,23 @@
  $('.btn-back').click(function(e){
      mswiper.unlockSwipeToPrev();
      mswiper.slideTo(SIXTH_PAGE);
+});
+
+$('.btn-rule').click(function(e){
+    if(current_page_index == SEVENTH_PAGE){
+        $('#pop-select').show();
+        $('.pop-rule').show();
+    }else if(current_page_index == EIGHTH_PAGE){
+        $('#pop-join').show();
+        $('.pop-rule').show();
+    }
+
+    if(myScroll == null)
+        myScroll = new IScroll('#wrapper', { mouseWheel: true });
+});
+
+$('.close').click(function(e){
+    $('.pop').hide();
 });
 </script>
 <script type="text/javascript" src="../public/scripts/utils/httpUtil.js"></script>
