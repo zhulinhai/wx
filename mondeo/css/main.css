@@ -1,5 +1,3 @@
-
-
 #logo {  position: absolute; top:.17rem;left: .18rem;  width: 1.3rem; z-index:10; }
 .slideDown { position: absolute; bottom:.3rem;left: 50%; width: .2rem; margin-left: -.1rem; animation: slideAni 1.5s infinite ease-in-out;}
 
@@ -29,7 +27,7 @@
 .pop-title { margin-top:.48rem; font-size: .52rem; font-weight: bolder; text-align: center; }
 .success { color: #b70001;}
 .fail { color: #808080; }
-.pop-car { margin-top:.32rem; width: 4rem;}
+
 .pop-form { width: 4rem; margin: .18rem auto 0 auto; font-size: .22rem; }
 .pop-form > div { width: 100%; text-align: left;}
 .pop-form > div:nth-child(n + 2) { margin-top: .2rem;}
@@ -38,8 +36,6 @@
 .pop-form > div > textarea { padding: 0; }
 .btn-submit { margin: .15rem auto 0 auto;}
 
-.close { position: relative; overflow: hidden; width: 3.6rem; height: .97rem; margin: .5rem auto 0 auto;}
-.close > div { position:absolute; top: 50%; width: 1.32rem; height: 0; border-top:1px solid white; }
 .left-line { left: 0;}
 .right-line { right: 0; }
 .btn-close { position: absolute; z-index: 1; display: block; left:1.31rem; width: .97rem; height: .97rem; }
@@ -49,7 +45,7 @@
 .btn-share { margin: .96rem auto 0 auto; }
 
 #rule-content { width: 5rem;  height: 4.5rem;  overflow: hidden;  margin: .3rem auto 0 auto; }
-#scroller { width: 100%; height: 12rem; }
+
 /**
 *首页样式
 */
@@ -250,6 +246,101 @@
 #mainPage .page .btn-back { left: .22rem; background: url("../images/btn-back.png") center no-repeat; background-size: cover; }
 #mainPage .page .btn-rule { right: .22rem; background: url("../images/btn-rule.png") center no-repeat; background-size: cover; }
 #mainPage .page .topic-banner { position:absolute; top:1.74rem; left:.075rem; width:6.25rem; }
+
+.normal-input {
+    padding-left: 10px;
+    width: 2.42rem;
+    height: .44rem;
+    line-height: .44rem;
+    background: url(../images/img-input-normal.png) center no-repeat;
+    background-size: cover;
+    color: black;
+    font-size: .22rem;
+}
+
+.long-input {
+    padding-left: 10px;
+    width: 3.48rem;
+    height: .62rem;
+    line-height: .62rem;
+    background: url(../images/img-input-long.png) center no-repeat;
+    background-size: cover;
+    color: black;
+    font-size: .22rem;
+}
+
+textarea {
+    padding-top: 10px;
+    padding-left: 10px;
+    width: 3.52rem;
+    height: 1.73rem;
+    line-height: 120%;
+    background: url(../images/img-textarea.png) center no-repeat;
+    background-size: cover;
+    color: black;
+    font-size: .22rem;
+}
+
+input::-webkit-input-placeholder{
+    color: #07496a;
+    font-weight: bold;
+}
+
+.pop { position: absolute; left:0; top:0; width: 100%; height: 100%; background-color: white; z-index: 1000; }
+.pop .close {
+    display: block;
+    position: absolute;
+    right: .3rem;
+    top: .3rem;
+    width: .26rem;
+    height: .25rem;
+    background: url("../images/icon-close.png") center no-repeat;
+    background-size: cover;
+    z-index: 1;
+}
+
+.pop .pop-car { position: absolute; width: 1.05rem; left: 50%; margin-left: -.6rem; bottom: -.3rem;
+animation: smallCarAni .6s step-start infinite;
+}
+@keyframes smallCarAni {
+    0% { transform: translateY(0);}
+    50% { transform: translateY(-2px);}
+    100% { transform: translateY(2px);}
+}
+.pop-rule > div, .pop-submit > div {
+    position: relative;
+    width: 5.44rem;
+    margin: .65rem auto 0 auto;
+    text-align: center;
+}
+
+.pop-submit > div { height: 7.56rem; background: url(../images/bg-submit.png) center no-repeat;  background-size: cover; }
+.pop-submit > div .attitude { width: 3.02rem; margin-top:.25rem; }
+#selectForm { width:4.3rem; margin: 0 auto; }
+#selectForm > div { width: 100%; overflow: hidden; }
+#selectForm > div > span { float: left; color: #07496a; font-size: .22rem; line-height: .62rem; }
+#selectForm > div > input, #selectForm > div > textarea { float: right; }
+#selectForm > div:after { content:'';width: 0;height: 0;clear: both; }
+#selectForm > div:nth-child(n+2) { margin-top: .1rem; }
+.pop-submit .pop-car { margin-left: -.3rem; bottom: -.2rem; }
+#submit-support { display: block; width: 1.98rem; height: .85rem; background: url(../images/btn-7.png) center center no-repeat; background-size: cover;
+margin-top: .26rem; margin-left: 35%; }
+.pop-rule > div { height: 8.25rem;  background: url(../images/bg-rule.png) center no-repeat;  background-size: cover; }
+.pop-rule > div > img:first-child {  width: 5.31rem; margin-top: .3rem; }
+.pop-rule .pop-detail {
+    width: 4.9rem;
+    height: 4.7rem;
+    margin: .62rem auto 0 auto;
+    overflow: hidden;
+}
+
+#scroller { width: 100%; }
+.detailed-rule { width: 100%; }
+.scroller > p,.detailed-rule > p { font-size: .22rem; color: #07496a; line-height: 150%; text-align: justify;}
+.scroller > p:nth-child(n + 2) { margin-top: .45rem; }
+.detailed-rule > p { margin-top: .2rem; }
+.scroller .item { color: white; background: url("../images/img-emphasis.png") center no-repeat; background-size: cover; padding-left: .05rem; padding-right: .05rem; }
+
 /**************************************************************************************************
  1.0    loading page
 ***************************************************************************************************/
@@ -399,10 +490,31 @@
 /**************************************************************************************************
  3.0    second page
 ***************************************************************************************************/
+.p2-middle { width: 6.2rem; overflow: hidden; margin: 2.81rem auto;}
+.p2-middle > div:first-child { float: left; }
+.p2-middle > div:last-child { float: right; }
+.p2-middle > div:first-child > p {  border-left:.1rem #07496a solid; color: #07496a; font-size: .22rem; padding-left: 20px; }
+.p2-middle > div:first-child > img { width: 2.71rem; }
+.p2-middle > div:last-child > p {   border-right:.1rem #07496a solid; color: #07496a; font-size: .22rem; padding-right: 20px; }
+.p2-middle:after { content:'';width: 0;height: 0;clear: both; }
+
+.p2-hi { position:relative; height:1.15rem; margin-bottom: .2rem;}
+.p2-hi > img:first-child { position:absolute; left: .65rem;  width: 1.21rem; }
+.p2-hi > img:last-child { position:absolute; width: .72rem; right:.4rem; bottom: -.2rem; }
 
 /**************************************************************************************************
  4.0    third page
 ***************************************************************************************************/
+.third-page .request { position:absolute; top:2.94rem; right:.2rem; width: 2.83rem; height: 1.54rem;
+background: url("../images/img-request.png") center no-repeat; background-size: 100% 100%; }
+.third-page .request > img {  position: absolute;  width: .58rem;  right: .35rem;  top: .45rem; }
+.third-page .book { position:absolute; top:3.35rem; left:.7rem; width: 3.48rem; height: 4.39rem;
+    background: url("../images/img-book.png") center no-repeat; background-size: 100% 100%; }
+.third-page .explain { width: 5.9rem; margin: 7.5rem auto 0 auto; }
+.third-page .explain .car { width: 1.05rem; height: .7rem; background: url("../images/icon-car-1.png") center no-repeat; background-size: 100% 100%; }
+.third-page .explain .line { width: 100%; height: 8px; background: url("../images/img-line.png") center no-repeat; background-size: 100% 100%; }
+.third-page .explain > ul {  list-style:square inside url("../images/icon-light.png"); width: 100%; margin-top: .2rem; }
+.third-page .explain > ul li { font-size: .22rem; color: #07496a; line-height: 150%; text-align: left; padding-left:.35rem; text-indent:-.35rem; }
 /**************************************************************************************************
  5.0    fourth page
 ***************************************************************************************************/
@@ -412,7 +524,7 @@
 .fourth-page .dialogue > div:first-child { float: left; text-align: right; }
 .fourth-page .dialogue > div:last-child { float: right; text-align: left; }
 .fourth-page .dialogue:after {content:'';width: 0;height: 0;clear: both; }
-.left-dialogue,.right-dialogue { width: 100%; height: 1.95rem;  background-position: .28rem .28rem, center;  background-repeat: no-repeat;  background-size: .29rem .28rem,auto auto;overflow: hidden; }
+.left-dialogue,.right-dialogue { width: 100%; height: 1.95rem;  background-position: .28rem .28rem, center;  background-repeat: no-repeat;  background-size: .29rem .28rem,98% 98%;overflow: hidden; }
 .left-dialogue {  background-image: url(../images/icon-start.png),url(../images/img-left-pop.png);  }
 .right-dialogue {  background-image: url(../images/icon-start.png),url(../images/img-right-pop.png); }
 .left-dialogue > p { margin-top:.6rem; padding-left:.3rem; padding-right: .3rem; font-size: .18rem; color:#07496a; text-align: justify; }
@@ -479,3 +591,38 @@
 .seventh-page .kol .line { position: absolute; top:50%; margin-top:-.14rem;left:.2rem; width: 5.44rem;}
 #commentSwiper { margin-top:.35rem; margin-left:.35rem; width: 5.4rem;}
 #commentSwiper .swiper-slide { background:none; }
+/****************************************************************************************************************
+ 9.0 eighth-page
+*****************************************************************************************************************/
+.eighth-page { animation: p8Ani .4s step-start infinite;  background: url(../images/bg-p8.jpg) center center no-repeat;  background-size: cover;  text-align: center; }
+.wantYou { margin-top: 1.9rem; width: 2.05rem; }
+.eighth-page .banner { width: 4.04rem; margin: 0 auto; }
+.eighth-page .banner > img:first-child { width: 100%; }
+.eighth-page .banner p { width: 100%; font-size: .22rem; color: #07496a; text-align: center; line-height: 150%; }
+#joinForm > div { width: 5.1rem; margin: .30rem auto 0 auto; overflow: hidden; }
+#joinForm > div > input:first-child {float: left;}
+#joinForm > div > input:last-child {float: right;}
+#joinForm > div:after{ content:'';width: 0;height: 0;clear: both;  }
+#submit-join { display: block; width: 1.98rem; height: .85rem; background: url(../images/btn-6.png) center center no-repeat; background-size: cover; margin: .26rem auto 0 auto; }
+#p8-car { width: 1.05rem; margin-top: .53rem; }
+@keyframes p8Ani {
+    0% { background-image: url(../images/bg-p8.jpg);}
+    25% { background-image: url(../images/bg-p8-2.jpg);}
+    75% { background-image: url(../images/bg-p8-3.jpg);}
+    100% { background-image: url(../images/bg-p8.jpg);}
+}
+/****************************************************************************************************************
+ 10.0 ninth-page
+*****************************************************************************************************************/
+.ninth-page { background: url(../images/bg-p9.jpg) center center no-repeat;  background-size: cover;  text-align: center; }
+.ninth-page .banner { width: 6rem; margin: 2rem auto 0 auto; }
+.ninth-page .banner > img:first-child { width: 100%; }
+.ninth-page .liveData { position: relative;  width: 100%; margin-top: .2rem;  font-size: .22rem; color: #07496a; text-align: center; }
+.ninth-page .liveData .d { display: inline-block; width: 0; height: .15rem; border-left: 1px #07496a solid; vertical-align: middle;  }
+.ninth-page .live { width: 100%; height: 3.6rem; background-color: black;}
+.ninth-page .carDatas { width: 5.4rem; margin: .32rem auto 0 auto; }
+.ninth-page .carDatas > table { width: 100%; }
+.ninth-page .carDatas > table img { width: .19rem; vertical-align: middle; }
+.ninth-page .carDatas > table span { font-size:.22rem; color:#07496a; vertical-align: middle; }
+.ninth-page .carDatas .data { display: inline-block; width: .6rem; border: 1px #07496a solid; height:.33rem; line-height: .33rem; vertical-align: middle; font-size: .22rem; color: #07496a; }
+.ninth-page .carDatas > p { text-align: right; font-size: .22rem; color: #848586; margin-top: .28rem; }
