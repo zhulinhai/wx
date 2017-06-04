@@ -505,16 +505,16 @@ margin-top: .26rem; margin-left: 35%; }
 /**************************************************************************************************
  4.0    third page
 ***************************************************************************************************/
-.third-page .request { position:absolute; top:2.94rem; right:.2rem; width: 2.83rem; height: 1.54rem;
+.third-page .request { position:absolute; top:2.74rem; right:.2rem; width: 2.38rem; height: 1.54rem;
 background: url("../images/img-request.png") center no-repeat; background-size: 100% 100%; }
-.third-page .request > img {  position: absolute;  width: .58rem;  right: .35rem;  top: .45rem; }
-.third-page .book { position:absolute; top:3.35rem; left:.7rem; width: 3.48rem; height: 4.39rem;
+.third-page .request > img {  position: absolute;  width: .58rem;  right: .2rem;  top: .45rem; }
+.third-page .book { position:absolute; top:3rem; left:1rem; width: 3.48rem; height: 4.39rem;
     background: url("../images/img-book.png") center no-repeat; background-size: 100% 100%; }
-.third-page .explain { width: 5.9rem; margin: 7.5rem auto 0 auto; }
+.third-page .explain { width: 5.9rem; margin: 7.1rem auto 0 auto; }
 .third-page .explain .car { width: 1.05rem; height: .7rem; background: url("../images/icon-car-1.png") center no-repeat; background-size: 100% 100%; }
 .third-page .explain .line { width: 100%; height: 8px; background: url("../images/img-line.png") center no-repeat; background-size: 100% 100%; }
-.third-page .explain > ul {  list-style:square inside url("../images/icon-light.png"); width: 100%; margin-top: .2rem; }
-.third-page .explain > ul li { font-size: .22rem; color: #07496a; line-height: 150%; text-align: left; padding-left:.35rem; text-indent:-.35rem; }
+.third-page .explain > ul {  list-style:square inside url("../images/icon-light.png"); width: 100%; margin-top: .1rem; }
+.third-page .explain > ul li { font-size: .14rem; color: #07496a; line-height: 120%; text-align: left; padding-left:.4rem; text-indent:-.4rem; }
 /**************************************************************************************************
  5.0    fourth page
 ***************************************************************************************************/
@@ -539,7 +539,7 @@ background: url("../images/img-request.png") center no-repeat; background-size: 
 ***************************************************************************************************/
 .fifth-page .trumpet {position: absolute; top:3rem; left: .27rem;  width: 1.76rem; }
 .fifth-page .introduce {position: absolute; top:3rem; right: .1rem;  width: 4.37rem; }
-.fifth-page .small-people-1 {position: absolute; bottom:3rem; right:.1rem; width: 2.57rem; }
+.fifth-page .small-people-1 {position: absolute; bottom:2.5rem; right:.1rem; width: 2.57rem; }
 .fifth-page .callUpon {position: absolute;bottom: 1.5rem; right: .26rem;  width: 2.27rem; }
 .fifth-page .small-people-2 {position: absolute; bottom: .8rem; right: .26rem;  width: .48rem; }
 .fifth-page .superman { position: absolute; left: 0;bottom: 1rem; width: 4rem; }
@@ -568,7 +568,7 @@ background: url("../images/img-request.png") center no-repeat; background-size: 
 .seventh-page .vs img:nth-child(2) { width: 1.65rem; }
 .seventh-page .vs img:nth-child(3) {float: right; width: 2.11rem; }
 .seventh-page .vs :after {  content:'';width: 0;height: 0;clear: both;  }
-.seventh-page .buttonGroup { margin:.25rem auto 0 auto; width: 5rem; overflow: hidden;}
+.seventh-page .buttonGroup { margin:0 auto; width: 5rem; overflow: hidden;}
 .seventh-page .buttonGroup > div { width: 1.9rem;}
 .seventh-page .buttonGroup > div:first-child { float: left;}
 .seventh-page .buttonGroup > div:last-child { float: right;}
@@ -626,3 +626,12 @@ background: url("../images/img-request.png") center no-repeat; background-size: 
 .ninth-page .carDatas > table span { font-size:.22rem; color:#07496a; vertical-align: middle; }
 .ninth-page .carDatas .data { display: inline-block; width: .6rem; border: 1px #07496a solid; height:.33rem; line-height: .33rem; vertical-align: middle; font-size: .22rem; color: #07496a; }
 .ninth-page .carDatas > p { text-align: right; font-size: .22rem; color: #848586; margin-top: .28rem; }
+
+.datasRow { width: 100%; height: .4rem; }
+.datasRow > div { float:left; width: 25%; font-size: .22rem; color: #07496a; text-align: left; line-height: .4rem; height: 100%; }
+.datasRow label { margin-left:.15rem; vertical-align: middle;}
+.datasRow img { width: .19rem; vertical-align: middle; }
+.especially span { float: left; }
+.especially div { float: left; width: .6rem; height:.33rem; line-height: .33rem; border: 1px #07496a solid; text-align: center; }
+.especially:after { content:'';width: 0;height: 0;clear: both; }
+.datasRow:after { content:'';width: 0;height: 0;clear: both; }

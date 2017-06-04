@@ -294,22 +294,34 @@
                 </div>
                 <div class="live"></div>
                 <div class="carDatas">
-                    <table>
-                        <tr>
-                            <td style="height: .44rem;"><img src="images/icon-oil.png"></td>
-                            <td><span>油 耗：</span></td>
-                            <td><span>三环：</span><div class="data">30L</div></td>
-                            <td><span>四环：</span><div class="data"></div></td>
-                            <td><span>五环：</span><div class="data"></div></td>
-                        </tr>
-                        <tr>
-                            <td><img src="images/icon-turns.png"></td>
-                            <td><span>圈 数：</span></td>
-                            <td><span>三环：</span><div class="data">30L</div></td>
-                            <td><span>四环：</span><div class="data"></div></td>
-                            <td><span>五环：</span><div class="data"></div></td>
-                        </tr>
-                    </table>
+                    <div class="datasRow">
+                        <div><img src="images/icon-oil.png"><label>油&nbsp;&nbsp;耗</label>：</div>
+                        <div class="especially"><span>3环：</span><div></div></div>
+                        <div class="especially"><span>4环：</span><div></div></div>
+                        <div class="especially"><span>5环：</span><div></div></div>
+                    </div>
+                    <div class="datasRow" style="margin-top: .1rem;">
+                        <div><img src="images/icon-turns.png"><label>圈&nbsp;&nbsp;数</label>：</div>
+                        <div class="especially"><span>3环：</span><div>30L</div></div>
+                        <div class="especially"><span>4环：</span><div></div></div>
+                        <div class="especially"><span>5环：</span><div></div></div>
+                    </div>
+                    <!--<table>-->
+                        <!--<tr>-->
+                            <!--<td style="height: .44rem;"><img src="images/icon-oil.png"></td>-->
+                            <!--<td><span>油 耗：</span></td>-->
+                            <!--<td><span>三环：</span><div class="data">30L</div></td>-->
+                            <!--<td><span>四环：</span><div class="data"></div></td>-->
+                            <!--<td><span>五环：</span><div class="data"></div></td>-->
+                        <!--</tr>-->
+                        <!--<tr>-->
+                            <!--<td><img src="images/icon-turns.png"></td>-->
+                            <!--<td><span>圈 数：</span></td>-->
+                            <!--<td><span>三环：</span><div class="data">30L</div></td>-->
+                            <!--<td><span>四环：</span><div class="data"></div></td>-->
+                            <!--<td><span>五环：</span><div class="data"></div></td>-->
+                        <!--</tr>-->
+                    <!--</table>-->
                     <p>注： 本数据1小时更新1次</p>
                 </div>
                 <a class="btn-back" href="javascript:void(0);"></a>
@@ -335,7 +347,7 @@
     window.onload = function(){
 
         mswiper = new Swiper('#mainPage',{
-            initialSlide:FIRST_PAGE,
+            initialSlide:NINTH_PAGE,
             direction : 'vertical',
             loop: false,
             onInit: function(swiper){
@@ -412,6 +424,6 @@ $('.close').click(function(e){
 <script type="text/javascript" src="../public/scripts/utils/validateUtil.js"></script>
 <!--<script type="text/javascript" src="js/main_bak.js"></script>-->
 <!-- 微信分享api -->
-<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
-<script type="text/javascript" src="js/wx_share.js"></script>
+<!--<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>-->
+<!--<script type="text/javascript" src="js/wx_share.js"></script>-->
 </html>
