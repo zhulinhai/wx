@@ -64,10 +64,10 @@
     var loadInterval = null;
 
     Pace.once('start',function(){
-        //loadInterval = setInterval(function(){
-        //    var load = $('.pace-progress').attr('data-progress-text');
-        //    $('#loading').html(load);
-        //},100);
+        loadInterval = setInterval(function(){
+            var load = $('.pace-progress').attr('data-progress-text');
+            $('.percent').html(load);
+        },100);
 
         /**
          * 获取网页评论
@@ -153,29 +153,38 @@
         /**
          * stop loading
          */
-            //setTimeout(function(){
-            //    clearInterval(loadInterval);
-            //    loadInterval = -1;
-            //    $('.loading').addClass('animated fadeOut').one(animationEnd,function(){
-            //        /**
-            //         * 隐藏加载图片
-            //         */
-            //        $('#loadingImg').hide();
-            //        $(this).hide();});
-            //},1000);
+            setTimeout(function(){
+                clearInterval(loadInterval);
+                loadInterval = -1;
+                $('.loading .superman').removeClass('vibrateAni').addClass('supermanFlyOut');
+                $('.cloud').removeClass('cloudAni');
+                var $cloud = $('.cloud');
+                TweenLite.to($cloud,1,{ opacity :0 });
+                $('.loading').addClass('animated delay_1s fadeOut').one(animationEnd,function(){
+                    $(this).hide();
+                    firstPageAni();
+                });
+            },1000);
 
-        //player = videojs('my-player',{
-        //    controls: true,
-        //    autoplay: false,
-        //
-        //    loop:true,
-        //    preload: 'auto'
-        //});
+        $('#my-player').width($('.live').width()).height($('.live').height());
 
-        //player.src('http://vedio.yunmfang.com/K6015-480p-16-9.mp4');
-        //player.on('ended',function(){
-        //    alert('play ended!');
-        //});
+        player = videojs('my-player',{
+            controls: true,
+            autoplay: false,
+            loop:true,
+            preload: 'auto'
+        });
+
+        player.src('http://pili-live-hls.yunmfang.com/ford/mondeo.m3u8');
+
+        player.on('error',function(){
+            alert('视频源失效');
+            player.src('http://vedio.yunmfang.com/K6015-480p-16-9.mp4');
+        });
+
+        player.on('ended',function(){
+            alert('play ended!');
+        });
 
         clickEventBind();
 
@@ -217,18 +226,21 @@
          * @type {Swiper|Window.Swiper}
          */
         mainSwiper = new Swiper('#mainPage',{
-            initialSlide:FIFTH_PAGE,
+            initialSlide:FIRST_PAGE,
             direction : 'vertical',
             loop: false,
             onInit: function(swiper){
-                if(swiper.activeIndex == FIFTH_PAGE)
+                if(swiper.activeIndex == FIFTH_PAGE){
                     swiper.lockSwipeToPrev();
+                }
             },
             onSlideChangeStart: handlerChangeStart
         });
     });
 
     var AUTO_PLAY_SPEED = 2000;
+    var AUTO_PLAY_SPEED_KOL = 3000;
+    var kolSwiper = null;
 
     function handlerChangeStart(swiper){
 
@@ -236,6 +248,7 @@
 
         switch (swiper.activeIndex){
             case FIRST_PAGE:
+                firstPageAni();
                 swiper.lockSwipeToPrev();
                 break;
             case SIXTH_PAGE:
@@ -249,11 +262,40 @@
                         autoplay :AUTO_PLAY_SPEED,
                         loop:true,
                     });
+                if(!kolSwiper)
+                    kolSwiper = new Swiper('#kolSwiper',{
+                        direction:'horizontal',
+                        autoplay :AUTO_PLAY_SPEED_KOL,
+                        loop:true,
+                    });
+                /**
+                 * 动画
+                 */
+                $('#leftHand').addClass('animated bounceInLeft').one(animationEnd,function(){
+                    $(this).removeClass('animated bounceInLeft');});
+                $('#rightHand').addClass('animated bounceInRight').one(animationEnd,function(){
+                    $(this).removeClass('animated bounceInRight');});
+                $('#vs').addClass('animated delay_h1s zoomIn').one(animationEnd,function(){
+                    $(this).removeClass('animated zoomIn');});
+                //$('.seventh-page .banner').addClass('animated delay_1-5s bounceInDown').one(animationEnd,function(){
+                //    $(this).removeClass('animated bounceInDown');
+                //});
+                //swiper.lockSwipeToPrev();
+                //swiper.lockSwipeToNext();
                 break;
             case EIGHTH_PAGE:
+                $('.wantYou').addClass('animated delay_1s zoomIn_quick').one(animationEnd,function(){
+                    $(this).removeClass('animated delay_1s zoomIn_quick');
+                    startPulse();
+                });
+                $('.eighth-page .banner').addClass('animated delay_1-5s fadeIn').one(animationEnd,function(){
+                    $(this).removeClass('animated delay_3-5s fadeIn');});
+                //swiper.lockSwipeToPrev();
+                //swiper.lockSwipeToNext();
+                break;
             case NINTH_PAGE:
-                swiper.lockSwipeToPrev();
-                swiper.lockSwipeToNext();
+                //swiper.lockSwipeToPrev();
+                //swiper.lockSwipeToNext();
                 break;
             default:
                 swiper.unlockSwipeToNext();
@@ -261,7 +303,6 @@
                 break;
         }
     }
-
     /**
      *点击事件绑定
      */
@@ -330,6 +371,7 @@
 
         //关闭所以弹窗
         $('.close').click(function(e){
+            stopPulse();
             $('.pop').hide();
         });
     }
@@ -436,11 +478,62 @@
         });
     }
 
+    function firstPageAni(){
+        $('.first-page .superman').addClass('supermanFlyIn').one(animationEnd,function(){
+            $(this).removeClass('supermanFlyIn');
+        });
+        $('#aside-1').addClass('animated delay_2-5s bounceIn').one(animationEnd,function(){
+            $(this).removeClass('animated delay_2-5s bounceIn');
+        });
+        $('#aside-2').addClass('animated delay_2s bounceIn').one(animationEnd,function(){
+            $(this).removeClass('animated delay_2s bounceIn');
+        });
+        $('#aside-3').addClass('animated delay_1-5s bounceIn').one(animationEnd,function(){
+            $(this).removeClass('animated delay_1-5s bounceIn');
+        });
+        $('#aside-4').addClass('animated delay_1s bounceIn').one(animationEnd,function(){
+            $(this).removeClass('animated delay_1s bounceIn');
+        });
+        $('.older').addClass('animated delay_3-5s bounceIn').one(animationEnd,function(){
+            $(this).removeClass('animated delay_3-5s bounceIn');
+        });
+        $('#fp-car').addClass('animated delay_4-5s carFadeOutRight').one(animationEnd,function(){
+            $(this).removeClass('animated delay_4-5s carFadeOutRight');
+        });
+    }
+
     /**
      * 监听动画事件
      */
     function listenAniEvent(){
 
+    }
+
+
+    //==========================================================
+    //====== 脉冲改变属性 ======//
+    //==========================================================
+    var animationPulse,lockPulse=false;
+    function stopPulse(){
+        lockPulse = true;
+        $('.wantYou').data('angle',0);
+        clearTimeout(animationPulse);
+    }
+    function startPulse() {
+        lockPulse = false;
+        doPulse();
+    }
+    function doPulse(){
+        if(lockPulse) return;
+        pulseScaleElem($('.wantYou'),0.1);
+        animationPulse = setTimeout(function(){ doPulse(); }, 60);
+    }
+
+    var DEG_TO_RAD = Math.PI/180;
+    function pulseScaleElem($elem,scale){
+        var angle = !$elem.data('angle') ? 0: $elem.data('angle');
+        var s = 1+scale*Math.abs(Math.sin(angle*DEG_TO_RAD));
+        $elem.css('transform','scale('+s+','+s+')').data('angle',(angle+6));
     }
 
     var BOX_SUPPORT = 1;

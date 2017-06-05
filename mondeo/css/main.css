@@ -349,7 +349,7 @@ margin-top: .26rem; margin-left: 35%; }
 .loading .content { position: relative; width: 3.06rem; height: 2.67rem; margin: 3rem auto 0 auto;}
 .loading .content .cloud {position: absolute; top:0; left: 0; width: 100%;}
 .loading .superman {position:  absolute; width: 1.56rem; z-index: 1; left: 50%;  margin-left: -.78rem;  top: .6rem;}
-.loading .percent{ width: 100%; margin-top: .3rem; text-align: center;font-size: .22rem; line-height: 200%; color: black; }
+.loading .percent{ width: 100%; margin-top: .5rem; text-align: center;font-size: .22rem; line-height: 200%; color: black; }
 
 .vibrateAni {
     animation-name: vibrateAni ;
@@ -513,8 +513,8 @@ background: url("../images/img-request.png") center no-repeat; background-size: 
 .third-page .explain { width: 5.9rem; margin: 7.1rem auto 0 auto; }
 .third-page .explain .car { width: 1.05rem; height: .7rem; background: url("../images/icon-car-1.png") center no-repeat; background-size: 100% 100%; }
 .third-page .explain .line { width: 100%; height: 8px; background: url("../images/img-line.png") center no-repeat; background-size: 100% 100%; }
-.third-page .explain > ul {  list-style:square inside url("../images/icon-light.png"); width: 100%; margin-top: .1rem; }
-.third-page .explain > ul li { font-size: .14rem; color: #07496a; line-height: 120%; text-align: left; padding-left:.4rem; text-indent:-.4rem; }
+.third-page .explain > ul {  list-style:none; width: 100%; margin-top: .1rem; }
+.third-page .explain > ul li { font-size: .14rem; color: #07496a; line-height: 120%; text-align: left; padding-left:.5rem; text-indent:-.5rem; }
 /**************************************************************************************************
  5.0    fourth page
 ***************************************************************************************************/
@@ -583,16 +583,17 @@ background: url("../images/img-request.png") center no-repeat; background-size: 
 .seventh-page .buttonGroup:after {  content:'';width: 0;height: 0;clear: both;  }
 .seventh-page .kol {position: relative; width:5.84rem; height: 3.24rem; margin: .2rem auto 0 auto; background: url("../images/img-p7-frame.png") center no-repeat; background-size: cover; }
 .seventh-page .kol > div { width: 100%; height: 50%; }
-.seventh-page .kol > div:first-child > img { float: left; margin-top:.39rem; margin-left:.35rem; width: .7rem; }
-.seventh-page .kol > div:first-child > div { float: left; margin-top:.39rem; margin-left:.1rem; width:4.3rem; height: .7rem; }
-.seventh-page .kol > div:first-child > div p, #commentSwiper p { width:100%; font-size: .22rem; color:#07496a; line-height: 150%; }
 .kol-name { font-weight:bolder; }
 .emphasis {margin-left: 5px; padding-left:5px; padding-right:5px;  color:white; font-weight:bold; background: url(../images/img-emphasis.png) center no-repeat; background-size: .94rem .27rem;}
 .topic { color:#b62530; margin-right: .2rem; }
 .seventh-page .kol > div:first-child :after { content:'';width: 0;height: 0;clear: both; }
 .seventh-page .kol .line { position: absolute; top:50%; margin-top:-.14rem;left:.2rem; width: 5.44rem;}
+#kolSwiper { width: 100%; height: 50%; }
+#kolSwiper img { float: left; margin-top:.39rem; margin-left:.35rem; width: .7rem; }
+#kolSwiper .swiper-slide > div { float: left; margin-top:.39rem; margin-left:.1rem; width:4.3rem; height: .7rem; }
+#kolSwiper p, #commentSwiper p { width:100%; font-size: .22rem; color:#07496a; line-height: 150%; }
 #commentSwiper { margin-top:.35rem; margin-left:.35rem; width: 5.4rem;}
-#commentSwiper .swiper-slide { background:none; }
+#commentSwiper .swiper-slide,#kolSwiper .swiper-slide { background:none; }
 /****************************************************************************************************************
  9.0 eighth-page
 *****************************************************************************************************************/
@@ -641,3 +642,27 @@ background: url("../images/img-request.png") center no-repeat; background-size: 
 /****************************************************************************************************************
  11.0 common animation
 *****************************************************************************************************************/
+.zoomIn_quick {
+    animation-name: zoomIn;
+    animation-duration: .5s;
+}
+
+.supermanFlyOut {
+    animation: supermanFlyOut 1s ease;
+    animation-fill-mode: both;
+}
+
+@keyframes supermanFlyOut {
+    0% { opacity: 1; transform: none;}
+    100% { opacity: 0; transform:translate(100%,-100%); }
+}
+
+.supermanFlyIn {
+    animation: supermanFlyIn 1s ease;
+    animation-fill-mode: both;
+}
+
+@keyframes supermanFlyIn {
+    0% { opacity: 0; transform: translate(-100%,100%);}
+    100% { opacity: 1; transform:none; }
+}

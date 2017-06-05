@@ -42,7 +42,7 @@
 
     window.onload = function(){
 
-        $('video').width($('#v').width()).height($('#v').height());
+        $('#my-player').width($('#v').width()).height($('#v').height());
 
         player = videojs('my-player',{
             controls: true,

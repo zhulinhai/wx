@@ -30,6 +30,8 @@
     <script type="text/javascript" src="../public/scripts/iscroll.js"></script>
     <!-- TweenLite.min.js-->
     <script type="text/javascript" src="../public/plugins/greensock-js/src/minified/TweenLite.min.js"></script>
+    <script type="text/javascript" src="../public/plugins/greensock-js/src/uncompressed/plugins/CSSPlugin.js"></script>
+
     <script>
         var _hmt = _hmt || [];
         (function() {
@@ -56,7 +58,7 @@
         document.documentElement.style.fontSize = (deviceWidth / 6.4) + 'px'; //320 fontSize = 50px
     })();
 </script>
-<div class="loading" style="display: none;">
+<div class="loading">
     <div class="content">
         <img class="cloud cloudAni" src="images/img-cloud.png">
         <img class="superman vibrateAni" src="images/superman.png">
@@ -128,14 +130,14 @@
                 <img class="slide" src="images/temp/img-slide.png">
                 <img class="superman" src="images/temp/superman.gif">
                 <div class="aside">
-                    <img id="aside-1" class="animated delay_2s bounceIn" src="images/temp/img-aside-1.png">
-                    <img id="aside-2" class="animated delay_1-5s bounceIn" src="images/temp/img-aside-2.png">
-                    <img id="aside-3" class="animated delay_1s bounceIn" src="images/temp/img-aside-3.png">
-                    <img id="aside-4" class="animated bounceIn" src="images/temp/img-aside-4.png">
+                    <img id="aside-1" src="images/temp/img-aside-1.png">
+                    <img id="aside-2" src="images/temp/img-aside-2.png">
+                    <img id="aside-3" src="images/temp/img-aside-3.png">
+                    <img id="aside-4" src="images/temp/img-aside-4.png">
                 </div>
-                <div class="older animated delay_3s bounceIn">
+                <div class="older">
                     <img src="images/temp/img-old-driver.png">
-                    <img id="fp-car" class="car animated delay_4s carFadeOutRight" src="images/temp/icon-car.png">
+                    <img id="fp-car" class="car" src="images/temp/icon-car.png">
                 </div>
                 <img class="bottom-line" src="images/temp/img-bottom.png">
                 <img class="bottom-arrow" src="images/temp/icon-arrow.png">
@@ -182,8 +184,8 @@
                     <div class="car"></div>
                     <div class="line"></div>
                     <ul>
-                        <li>将刹车、减速、停车怠速时多余动能收集转化为电能存储到电池中。</li>
-                        <li>不仅跑的远，节油又环保，告别憋尿好心情好。</li>
+                        <li><img style="width: .35rem; vertical-align: middle;margin-right: .1rem;" src="images/icon-light.png"><span style="vertical-align: middle;">将刹车、减速、停车怠速时多余动能收集转化为电能存储到电池中。</span></li>
+                        <li><img style="width: .35rem; vertical-align: middle;margin-right: .1rem;" src="images/icon-light.png"><span style="vertical-align: middle;">不仅跑的远，节油又环保，告别憋尿好心情好。</span></li>
                     </ul>
                 </div>
                 <img class="bottom-line" src="images/temp/img-bottom.png">
@@ -194,7 +196,7 @@
             <div class="page fourth-page">
                 <img class="title" src="images/temp/img-title.png">
                 <img class="topic-banner" src="images/img-p4-banner.png">
-                <img id="victory" src="images/icon-victory.png">
+                <img id="victory" class="animated infinite wobble" src="images/icon-victory.png">
                  <div class="dialogue">
                      <div><div class="left-dialogue"><p>美系不行，油老虎！我只知道日系混动大法好！</p></div><img src="images/img-s-p-4.png"></div>
                      <div><div><div class="right-dialogue"><p>native!</p><p>混动出的早就好？</p></div><img src="images/img-s-p-5.png"></div>
@@ -254,11 +256,20 @@
                     <div><p id="nonsupport-num">3213213</p><a id="btn-nonsupport" href="javascript:void(0);"></a></div>
                 </div>
                 <div class="kol">
-                    <div>
-                        <img class="portrait" src="images/img-portrait.png">
-                        <div>
-                            <p><span class="kol-name">初晓敏</span><span class="emphasis">汽车达人</span></p>
-                            <p><span class="topic">#新蒙迪欧HEV#</span>挑战一定成功！打算打算大所大所大所大多打算打算大所多打算打</p>
+                    <div id="kolSwiper" class="swiper-container">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide swiper-no-swiping">
+                                <img class="portrait" src="images/img-portrait.png">
+                                <div><p><span class="kol-name">初晓敏</span><span class="emphasis">汽车达人</span></p><p><span class="topic">#新蒙迪欧HEV#</span>挑战一定成功！打算打算大所大所大所大多打算打算大所多打算打</p></div>
+                            </div>
+                            <div class="swiper-slide swiper-no-swiping">
+                                <img class="portrait" src="images/img-portrait.png">
+                                <div><p><span class="kol-name">王大力</span><span class="emphasis">汽车达人</span></p><p><span class="topic">#新蒙迪欧HEV#</span>挑战一定成功！打算打算大所大所大所大多打算打算大所多打算打</p></div>
+                            </div>
+                            <div class="swiper-slide swiper-no-swiping">
+                                <img class="portrait" src="images/img-portrait.png">
+                                <div><p><span class="kol-name">包奕凡</span><span class="emphasis">汽车达人</span></p><p><span class="topic">#新蒙迪欧HEV#</span>挑战一定成功！打算打算大所大所大所大多打算打算大所多打算打</p></div>
+                            </div>
                         </div>
                     </div>
                     <div>
@@ -304,7 +315,10 @@
                 <div class="liveData">
                     <span>人气数 ：</span><span id="lives" style="margin-right: 20px;">123232</span><span class="d"></span><span style="margin-left: 20px;">在线人数 ：</span><span id="audiences">31231231</span>
                 </div>
-                <div class="live"></div>
+                <div class="live">
+                    <video id="my-player" class="video-js vjs-big-play-centered" webkit-playsinline playsinline autoplay="true">
+                    </video>
+                </div>
                 <div class="carDatas">
                     <div class="datasRow">
                         <div><img src="images/icon-oil.png"><label>油&nbsp;&nbsp;耗</label>：</div>
@@ -318,22 +332,6 @@
                         <div class="especially"><span>4环：</span><div id="tetracyclic_turns"></div></div>
                         <div class="especially"><span>5环：</span><div id="pentacyclic_turns"></div></div>
                     </div>
-                    <!--<table>-->
-                        <!--<tr>-->
-                            <!--<td style="height: .44rem;"><img src="images/icon-oil.png"></td>-->
-                            <!--<td><span>油 耗：</span></td>-->
-                            <!--<td><span>三环：</span><div class="data">30L</div></td>-->
-                            <!--<td><span>四环：</span><div class="data"></div></td>-->
-                            <!--<td><span>五环：</span><div class="data"></div></td>-->
-                        <!--</tr>-->
-                        <!--<tr>-->
-                            <!--<td><img src="images/icon-turns.png"></td>-->
-                            <!--<td><span>圈 数：</span></td>-->
-                            <!--<td><span>三环：</span><div class="data">30L</div></td>-->
-                            <!--<td><span>四环：</span><div class="data"></div></td>-->
-                            <!--<td><span>五环：</span><div class="data"></div></td>-->
-                        <!--</tr>-->
-                    <!--</table>-->
                     <p>注： 本数据1小时更新1次</p>
                 </div>
                 <a class="btn-back" href="javascript:void(0);"></a>
