@@ -315,7 +315,9 @@ animation: smallCarAni .6s step-start infinite;
 }
 
 .pop-submit > div { height: 7.56rem; background: url(../images/bg-submit.png) center no-repeat;  background-size: cover; }
-.pop-submit > div .attitude { width: 3.02rem; margin-top:.25rem; }
+.pop-submit > div .attitude {position: relative; width: 3.02rem; height:2.15rem; margin:0 auto; padding-top: .25rem;
+background: url("../images/img-pop-support.png") left top no-repeat; background-size: 100% 1.53rem; }
+.pop-submit > div .attitude > img { position: absolute; bottom:0; right: 0; width: .9rem; }
 #selectForm { width:4.3rem; margin: 0 auto; }
 #selectForm > div { width: 100%; overflow: hidden; }
 #selectForm > div > span { float: left; color: #07496a; font-size: .22rem; line-height: .62rem; }
@@ -618,8 +620,9 @@ background: url("../images/img-request.png") center no-repeat; background-size: 
  10.0 ninth-page
 *****************************************************************************************************************/
 .ninth-page { background: url(../images/bg-p9.jpg) center center no-repeat;  background-size: cover;  text-align: center; }
-.ninth-page .banner { width: 6rem; margin: 2rem auto 0 auto; }
+.ninth-page .banner {position: relative; width: 6rem; margin: 2rem auto 0 auto; }
 .ninth-page .banner > img:first-child { width: 100%; }
+.ninth-page .banner > img:last-child { position:absolute; top:0; right:.3rem; width: .61rem; }
 .ninth-page .liveData { position: relative;  width: 100%; margin-top: .2rem;  font-size: .22rem; color: #07496a; text-align: center; }
 .ninth-page .liveData .d { display: inline-block; width: 0; height: .15rem; border-left: 1px #07496a solid; vertical-align: middle;  }
 .ninth-page .live { width: 100%; height: 3.6rem; background-color: black;}

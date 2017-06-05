@@ -335,14 +335,14 @@
         });
 
         $('#btn-support').click(function(e){
-            $('.attitude').attr('src','images/img-pop-support.png');
+            $('.attitude').css('background-image','url("images/img-pop-support.png")');
             $('input[name="state"]').val(1);
             $('.pop-submit').show();
             $('.pop-content').addClass('animated bounceIn');
         });
 
         $('#btn-nonsupport').click(function(e){
-            $('.attitude').attr('src','images/img-pop-nonsupport.png');
+            $('.attitude').css('background-image','url("images/img-pop-nonsupport.png")');
             $('input[name="state"]').val(2);
             $('.pop-submit').show();
             $('.pop-content').addClass('animated bounceIn');
