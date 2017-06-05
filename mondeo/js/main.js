@@ -15,7 +15,7 @@
         pentacyclic_turns:0, //五环圈数
         used_gasoline:0, // 三环已使用油量
         used_gasonline_tera:0, // 四环已使用油量
-        used_gasonline_penta:0, // 武汉已使用油量
+        used_gasonline_penta:0, // 五环已使用油量
         used_time_tri:0, // 已挑战时间
         support:0, //支持挑战成功人数
         nonsupport:0, //不支持人数
@@ -62,6 +62,7 @@
         }
     }
     var loadInterval = null;
+
     Pace.once('start',function(){
         //loadInterval = setInterval(function(){
         //    var load = $('.pace-progress').attr('data-progress-text');
@@ -81,7 +82,8 @@
                 for(var i =0; i < comments.length; i++){
                     var comment = comments[i];
                     htmlStr += '<div class="swiper-slide swiper-no-swiping">';
-                    htmlStr += '<p>&nbsp;'+comment.name+'&nbsp;:</p><p>'+ comment.comment +'</p>';
+                    htmlStr += '<p style="font-weight: bolder">' + comment.name+'&nbsp;:</p>';
+                    htmlStr += '<p><span class="topic">#新蒙迪欧HEV#</span>'+ comment.comment +'</p>';
                     htmlStr += '</div>';
                 }
                 $(dom).html(htmlStr);
@@ -105,17 +107,45 @@
                 store.tricyclic_turns = data.tricyclic_turns;
                 store.tetracyclic_turns = data.tetracyclic_turns;
                 store.pentacyclic_turns = data.pentacyclic_turns;
-                store.used_gasoline = data.used_gasonline_tera;
+                store.used_gasoline = data.used_gasoline;
+                store.used_gasonline_tera  = data.used_gasonline_tera;
                 store.used_gasonline_penta = data.used_gasonline_penta;
                 store.used_time_tri = data.used_time_tri;
                 store.support = data.support;
                 store.nonsupport = data.nonsupport;
+
+                $('#lives').html(store.lives);
+                $('#audiences').html(store.audiences);
+
+                $('#tricyclic_turns').html(store.tricyclic_turns + '圈');
+                $('#tetracyclic_turns').html(store.tetracyclic_turns + '圈');
+                $('#pentacyclic_turns').html(store.pentacyclic_turns + '圈');
+
+                $('#used_gasoline').html(store.used_gasoline + 'L');
+                $('#used_gasonline_tera').html(store.used_gasonline_tera + 'L');
+                $('#used_gasonline_penta').html(store.used_gasonline_penta + 'L');
+
+                $('#support-num').html(store.support);
+                $('#nonsupport-num').html(store.nonsupport);
             }
         }});
     });
 
-
-
+    /**
+     * 常量 页面索引
+     * @type {number}
+     */
+    var FIRST_PAGE = 0; //首页
+    var SECOND_PAGE = 1; //故事一
+    var THIRD_PAGE = 2; //故事二
+    var FOURTH_PAGE = 3; //故事三
+    var FIFTH_PAGE = 4; //故事四
+    var SIXTH_PAGE = 5;  //按钮页
+    var SEVENTH_PAGE = 6; //站队页
+    var EIGHTH_PAGE = 7; //报名页
+    var NINTH_PAGE = 8; //直播页
+    //当前页面索引
+    var current_page_index = 0;
     /**
      * 完成加载
      */
@@ -134,10 +164,6 @@
             //        $(this).hide();});
             //},1000);
 
-
-        bindEvent();
-
-
         //player = videojs('my-player',{
         //    controls: true,
         //    autoplay: false,
@@ -151,7 +177,9 @@
         //    alert('play ended!');
         //});
 
+        clickEventBind();
 
+        submitEventBind();
 
         // connect websocket server
         socket = io.connect(websocket_url);
@@ -159,56 +187,261 @@
         //listen the channel broadcast
         socket.on('live_channel_'+flag , function(data){
             console.log(data);
-            //$('#code').html(data.props);
+
+            store.lives = !data.lives ? store.lives :data.lives;
+            store.audiences = !data.audiences ?store.audiences : data.audiences;
+
+            store.tricyclic_turns = !data.tricyclic_turns ? store.tricyclic_turns : data.tricyclic_turns;
+            store.tetracyclic_turns = !data.tetracyclic_turns ? store.tetracyclic_turns : data.tetracyclic_turns;
+            store.pentacyclic_turns = !data.pentacyclic_turns ? store.pentacyclic_turns : data.pentacyclic_turns;
+
+            store.used_gasoline = !data.used_gasoline ? store.used_gasoline : data.used_gasoline;
+            store.used_gasonline_tera  = !data.used_gasonline_tera ? store.used_gasonline_tera : data.used_gasonline_tera;
+            store.used_gasonline_penta = !data.used_gasonline_penta ? store.used_gasonline_penta : data.used_gasonline_penta;
+
+            $('#lives').html(store.lives);
+            $('#audiences').html(store.audiences);
+
+            $('#tricyclic_turns').html(store.tricyclic_turns + '圈');
+            $('#tetracyclic_turns').html(store.tetracyclic_turns + '圈');
+            $('#pentacyclic_turns').html(store.pentacyclic_turns + '圈');
+
+            $('#used_gasoline').html(store.used_gasoline + 'L');
+            $('#used_gasonline_tera').html(store.used_gasonline_tera + 'L');
+            $('#used_gasonline_penta').html(store.used_gasonline_penta + 'L');
+
         });
 
         /**
          * 初始化主swiper
          * @type {Swiper|Window.Swiper}
          */
-        mainSwiper = new Swiper('#mainSwiper',{
-            initialSlide:0,
+        mainSwiper = new Swiper('#mainPage',{
+            initialSlide:FIFTH_PAGE,
             direction : 'vertical',
             loop: false,
-            onSlideChangeStart: function(swiper){
-                if(swiper.activeIndex == 0){
-                    /**
-                     * 首页动画
-                     */
-                    $('.circular').addClass('circleAn');
-                    $('#circleCar').addClass('animated rotateAntiIn');
-                    $('#slogan').addClass('titAn');
-                    $('#location').addClass('animated delay_3s fadeIn');
-                    $('.line-right').addClass('animated fadeInBiasRightDown');
-                    $('.line-left').addClass('animated fadeInBiasLeftUp');
-                    $('.first-car').addClass('animated fadeInBiasLeftCar');
-                    $('.btn-live').addClass('animated fadeInBiasRightDown');
-                    $('.btn-more').addClass('animated fadeInBiasRightDown');
-                }else if(swiper.activeIndex == 1){
-                    /**
-                     * 首页动画
-                     */
-                    $('#dotA').removeClass('dotA');
-                    $('#dotB').removeClass('dotB');
-                    $('#circleCar').removeClass('normalRotate');
-
-                    if(commentSwiper == null){
-                        commentSwiper = new Swiper('#commentSwiper',{
-                            autoplay:3000,
-                            loop:true,
-                            noSwiping:true
-                        });
-                    }
-                    //setInterval(function(){
-                    //    unsupported = Math.round(Math.random()* 100);
-                    //    console.log(unsupported);
-                    //    theCircle(unsupported);
-                    //    fillColor(unsupported);
-                    //},2000);
-                }
-            }
+            onInit: function(swiper){
+                if(swiper.activeIndex == FIFTH_PAGE)
+                    swiper.lockSwipeToPrev();
+            },
+            onSlideChangeStart: handlerChangeStart
         });
     });
+
+    var AUTO_PLAY_SPEED = 2000;
+
+    function handlerChangeStart(swiper){
+
+        current_page_index = swiper.activeIndex;
+
+        switch (swiper.activeIndex){
+            case FIRST_PAGE:
+                swiper.lockSwipeToPrev();
+                break;
+            case SIXTH_PAGE:
+                swiper.unlockSwipeToPrev();
+                swiper.lockSwipeToNext();
+                break;
+            case SEVENTH_PAGE:
+                if(!commentSwiper)
+                    commentSwiper = new Swiper('#commentSwiper',{
+                        direction:'horizontal',
+                        autoplay :AUTO_PLAY_SPEED,
+                        loop:true,
+                    });
+                break;
+            case EIGHTH_PAGE:
+            case NINTH_PAGE:
+                swiper.lockSwipeToPrev();
+                swiper.lockSwipeToNext();
+                break;
+            default:
+                swiper.unlockSwipeToNext();
+                swiper.unlockSwipeToPrev();
+                break;
+        }
+    }
+
+    /**
+     *点击事件绑定
+     */
+    function clickEventBind (){
+        /**
+         * 跳转站队页面
+         */
+        $('#btn-select').click(function(e){
+            mainSwiper.unlockSwipeToNext();
+            mainSwiper.slideTo(SEVENTH_PAGE);
+        });
+        /**
+         * 跳转报名页面
+         */
+        $('#btn-join').click(function(e){
+            mainSwiper.unlockSwipeToNext();
+            mainSwiper.slideTo(EIGHTH_PAGE);
+        });
+        /**
+         * 跳转直播页面
+         */
+        $('#btn-live').click(function(e){
+            mainSwiper.unlockSwipeToNext();
+            mainSwiper.slideTo(NINTH_PAGE);
+        });
+
+        $('.btn-back').click(function(e){
+            mainSwiper.unlockSwipeToPrev();
+            mainSwiper.slideTo(SIXTH_PAGE);
+        });
+
+        $('#btn-support').click(function(e){
+            $('.attitude').attr('src','images/img-pop-support.png');
+            $('input[name="state"]').val(1);
+            $('.pop-submit').show();
+            $('.pop-content').addClass('animated bounceIn');
+        });
+
+        $('#btn-nonsupport').click(function(e){
+            $('.attitude').attr('src','images/img-pop-nonsupport.png');
+            $('input[name="state"]').val(2);
+            $('.pop-submit').show();
+            $('.pop-content').addClass('animated bounceIn');
+        });
+
+        /**
+         * 打开活动规则弹框
+         */
+        $('.btn-rule').click(function(e){
+
+            if(current_page_index == SEVENTH_PAGE){
+                $('#pop-join').hide();
+                $('#pop-select').show()
+
+            }else if(current_page_index == EIGHTH_PAGE){
+
+                $('#pop-select').hide();
+                $('#pop-join').show();
+            }
+
+            $('.pop-rule').show();
+            $('.pop-content').addClass('animated bounceIn');
+            if(ruleScroller == null)
+                ruleScroller = new IScroll('#wrapper', { mouseWheel: true });
+        });
+
+        //关闭所以弹窗
+        $('.close').click(function(e){
+            $('.pop').hide();
+        });
+    }
+
+    /**
+     * 绑定提交事件
+     */
+    function submitEventBind(){
+        /**
+         * 提交网友留言
+         */
+        $('#submit-support').hammer().bind('tap',function(e){
+
+            var params = $('#selectForm').serialize();
+            var comment = $('textarea[name="comment"]').val();
+            var name = $('input[name="name"]').val();
+            var mobile = $('input[name="mobile"]').val();
+
+            if(validate.isEmpty(comment)) {
+                alert('留言不能为空');
+                return false;
+            }
+            if(comment.length > 30){
+                alert('留言不能超过30个字');
+                return false;
+            }
+            if(validate.isEmpty(name)){
+                alert('姓名不能为空');
+                return false;
+            }
+            if(name.length > 6){
+                alert('昵称不能超过6个字');
+                return false;
+            }
+            if(validate.isEmpty(mobile)){
+                alert('手机号不能为空');
+                return false;
+            }
+            if(!validate.isMobile(mobile)){
+                alert('请输入手机号');
+                return false;
+            }
+            http.ajaxRequest({
+                type:'GET',
+                uri:'h5/storeComment?' + params + '&flag='+flag,
+                success:function(json){
+                    var data = json.data;
+                    if(data) {
+                        window.mobile = $('input[name="mobile"]').val();
+                        store.support = data.support;
+                        store.nonsupport = data.nonsupport;
+                        $('#support-num').html(store.support);
+                        $('#nonsupport-num').html(store.nonsupport);
+                        alert('提交成功');
+                    }
+                },
+                error:function(e){
+                    if(e.responseJSON){
+                        alert(e.responseJSON.message);
+                    }else
+                        alert('您已参加活动，请继续浏览后续内容!');
+                }
+            });
+        });
+
+        /**
+         * 提交报名信息
+         */
+        $('#submit-join').hammer().bind('tap',function(e){
+            var params = $('#joinForm').serialize();
+            var name = $('#joinForm input[name="name"]').val();
+            var mobile = $('#joinForm input[name="mobile"]').val();
+
+            if(validate.isEmpty(name)){
+                alert('姓名不能为空');
+                return false;
+            }
+
+            if(validate.isEmpty(mobile)){
+                alert('手机号不能为空');
+                return false;
+            }
+            if(!validate.isMobile(mobile)){
+                alert('请输入手机号');
+                return false;
+            }
+            http.ajaxRequest({
+                type:'GET',
+                uri:'h5/storeProposer?' + params + '&flag='+flag,
+                success:function(json){
+                    window.mobile = $('#joinForm input[name="mobile"]').val();
+                    alert('报名成功！');
+                    $('#p8-car').addClass('animated fadeOutRight').one(animationEnd,function(){
+                        $(this).removeClass('animated fadeOutRight');
+                    });
+                },
+                error:function(e){
+                    if(e.responseJSON){
+                        alert(e.responseJSON.message);
+                    }else
+                        alert('您已参加活动，请继续浏览后续内容!');
+                }
+            });
+        });
+    }
+
+    /**
+     * 监听动画事件
+     */
+    function listenAniEvent(){
+
+    }
 
     var BOX_SUPPORT = 1;
     var BOX_NONSUPPORT = 2;

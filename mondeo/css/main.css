@@ -524,6 +524,7 @@ background: url("../images/img-request.png") center no-repeat; background-size: 
 .fourth-page .dialogue > div:first-child { float: left; text-align: right; }
 .fourth-page .dialogue > div:last-child { float: right; text-align: left; }
 .fourth-page .dialogue:after {content:'';width: 0;height: 0;clear: both; }
+.fourth-page .dialogue img { width: .91rem; }
 .left-dialogue,.right-dialogue { width: 100%; height: 1.95rem;  background-position: .28rem .28rem, center;  background-repeat: no-repeat;  background-size: .29rem .28rem,98% 98%;overflow: hidden; }
 .left-dialogue {  background-image: url(../images/icon-start.png),url(../images/img-left-pop.png);  }
 .right-dialogue {  background-image: url(../images/icon-start.png),url(../images/img-right-pop.png); }
@@ -538,10 +539,11 @@ background: url("../images/img-request.png") center no-repeat; background-size: 
  6.0    fifth page
 ***************************************************************************************************/
 .fifth-page .trumpet {position: absolute; top:3rem; left: .27rem;  width: 1.76rem; }
-.fifth-page .introduce {position: absolute; top:3rem; right: .1rem;  width: 4.37rem; }
-.fifth-page .small-people-1 {position: absolute; bottom:2.5rem; right:.1rem; width: 2.57rem; }
-.fifth-page .callUpon {position: absolute;bottom: 1.5rem; right: .26rem;  width: 2.27rem; }
-.fifth-page .small-people-2 {position: absolute; bottom: .8rem; right: .26rem;  width: .48rem; }
+.fifth-page .words { position:  absolute; right: .15rem; top:2.96rem; width: 4.37rem; text-align: right; }
+.fifth-page .introduce { width:100%; }
+.fifth-page .small-people-1 { width: 2.57rem; }
+.fifth-page .callUpon { width: 2.27rem; }
+.fifth-page .small-people-2 { width: .48rem; }
 .fifth-page .superman { position: absolute; left: 0;bottom: 1rem; width: 4rem; }
 /**************************************************************************************************
  7.0    sixth page
@@ -635,3 +637,7 @@ background: url("../images/img-request.png") center no-repeat; background-size: 
 .especially div { float: left; width: .6rem; height:.33rem; line-height: .33rem; border: 1px #07496a solid; text-align: center; }
 .especially:after { content:'';width: 0;height: 0;clear: both; }
 .datasRow:after { content:'';width: 0;height: 0;clear: both; }
+
+/****************************************************************************************************************
+ 11.0 common animation
+*****************************************************************************************************************/

@@ -30,6 +30,15 @@
     <script type="text/javascript" src="../public/scripts/iscroll.js"></script>
     <!-- TweenLite.min.js-->
     <script type="text/javascript" src="../public/plugins/greensock-js/src/minified/TweenLite.min.js"></script>
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?84d0fb0cf6aaacaaf1e5fa3588193ce8";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
 </head>
 <body ontouchmove="event.preventDefault();">
 <!--屏幕兼容代码-->
@@ -62,6 +71,7 @@
             <div><span>我想说</span><textarea name="comment"></textarea></div>
             <div><span>姓&nbsp;&nbsp;名</span><input class="long-input" name="name"/></div>
             <div><span>电&nbsp;&nbsp;话</span><input class="long-input" name="mobile"/></div>
+            <input type="hidden" name="state" />
             <a id="submit-support" href="javascript:void(0);"></a>
         </form>
         <img class="pop-car" src="images/icon-car-1.png">
@@ -202,11 +212,13 @@
             <div class="page fifth-page">
                 <img class="title" src="images/temp/img-title.png">
                 <img class="topic-banner" src="images/img-p5-banner.png">
-                <img class="trumpet" src="images/img-trumpet.png">
-                <img class="introduce" src="images/img-p5-w1.png">
-                <img class="small-people-1" src="images/img-s-p-3.png">
-                <img class="callUpon" src="images/img-p5-w2.png">
-                <img class="small-people-2" src="images/img-s-p-2.png">
+                <img class="trumpet animated infinite pulse" src="images/img-trumpet.png">
+                <div class="words">
+                    <img class="introduce" src="images/img-p5-w1.png"><br>
+                    <img class="small-people-1" src="images/img-s-p-3.png"><br>
+                    <img class="callUpon" src="images/img-p5-w2.png"><br>
+                    <img class="small-people-2" src="images/img-s-p-2.png">
+                </div>
                 <img class="superman" src="images/temp/superman.gif">
                 <img class="bottom-line" src="images/temp/img-bottom.png">
                 <img class="bottom-arrow" src="images/temp/icon-arrow.png">
@@ -290,21 +302,21 @@
                     <img src="images/img-p9-w.png">
                 </div>
                 <div class="liveData">
-                    <span>人气数 ：</span><span id="liveNum" style="margin-right: 20px;">123232</span><span class="d"></span><span style="margin-left: 20px;">在线人数 ：</span><span id="onlineNum">31231231</span>
+                    <span>人气数 ：</span><span id="lives" style="margin-right: 20px;">123232</span><span class="d"></span><span style="margin-left: 20px;">在线人数 ：</span><span id="audiences">31231231</span>
                 </div>
                 <div class="live"></div>
                 <div class="carDatas">
                     <div class="datasRow">
                         <div><img src="images/icon-oil.png"><label>油&nbsp;&nbsp;耗</label>：</div>
-                        <div class="especially"><span>3环：</span><div></div></div>
-                        <div class="especially"><span>4环：</span><div></div></div>
-                        <div class="especially"><span>5环：</span><div></div></div>
+                        <div class="especially"><span>3环：</span><div id="used_gasoline"></div></div>
+                        <div class="especially"><span>4环：</span><div id="used_gasonline_tera"></div></div>
+                        <div class="especially"><span>5环：</span><div id="used_gasonline_penta"></div></div>
                     </div>
                     <div class="datasRow" style="margin-top: .1rem;">
                         <div><img src="images/icon-turns.png"><label>圈&nbsp;&nbsp;数</label>：</div>
-                        <div class="especially"><span>3环：</span><div>30L</div></div>
-                        <div class="especially"><span>4环：</span><div></div></div>
-                        <div class="especially"><span>5环：</span><div></div></div>
+                        <div class="especially"><span>3环：</span><div id="tricyclic_turns">30L</div></div>
+                        <div class="especially"><span>4环：</span><div id="tetracyclic_turns"></div></div>
+                        <div class="especially"><span>5环：</span><div id="pentacyclic_turns"></div></div>
                     </div>
                     <!--<table>-->
                         <!--<tr>-->
@@ -330,99 +342,101 @@
     </div>
 </div>
 </body>
-<script>
- var FIRST_PAGE = 0;
- var SECOND_PAGE = 1;
- var THIRD_PAGE = 2;
- var FOURTH_PAGE = 3;
- var FIFTH_PAGE = 4;
- var SIXTH_PAGE = 5;
- var SEVENTH_PAGE = 6;
- var EIGHTH_PAGE = 7;
- var NINTH_PAGE = 8;
+<!--<script>-->
+ <!--var FIRST_PAGE = 0;-->
+ <!--var SECOND_PAGE = 1;-->
+ <!--var THIRD_PAGE = 2;-->
+ <!--var FOURTH_PAGE = 3;-->
+ <!--var FIFTH_PAGE = 4;-->
+ <!--var SIXTH_PAGE = 5;-->
+ <!--var SEVENTH_PAGE = 6;-->
+ <!--var EIGHTH_PAGE = 7;-->
+ <!--var NINTH_PAGE = 8;-->
 
- var current_page_index = 0;
- var mswiper = null;
- var myScroll = null;
-    window.onload = function(){
+ <!--var current_page_index = 0;-->
+ <!--var mswiper = null;-->
+ <!--var myScroll = null;-->
+    <!--window.onload = function(){-->
 
-        mswiper = new Swiper('#mainPage',{
-            initialSlide:NINTH_PAGE,
-            direction : 'vertical',
-            loop: false,
-            onInit: function(swiper){
-                if(swiper.activeIndex == FIRST_PAGE)
-                    swiper.lockSwipeToPrev();
-            },
-            onSlideChangeStart: handlerChangeStart
-        });
-    }
+        <!--mswiper = new Swiper('#mainPage',{-->
+            <!--initialSlide:FIFTH_PAGE,-->
+            <!--direction : 'vertical',-->
+            <!--loop: false,-->
+            <!--onInit: function(swiper){-->
+                <!--if(swiper.activeIndex == FIRST_PAGE)-->
+                    <!--swiper.lockSwipeToPrev();-->
+            <!--},-->
+            <!--onSlideChangeStart: handlerChangeStart-->
+        <!--});-->
+    <!--}-->
 
- function handlerChangeStart(swiper){
+ <!--function handlerChangeStart(swiper){-->
 
-     current_page_index = swiper.activeIndex;
+     <!--current_page_index = swiper.activeIndex;-->
 
-     switch (swiper.activeIndex){
-         case FIRST_PAGE:
-             swiper.lockSwipeToPrev();
-             break;
-         case SIXTH_PAGE:
-             swiper.unlockSwipeToPrev();
-             swiper.lockSwipeToNext();
-             break;
-         case SEVENTH_PAGE:
-         case EIGHTH_PAGE:
-         case NINTH_PAGE:
-             swiper.lockSwipeToPrev();
-             swiper.lockSwipeToNext();
-             break;
-         default:
-             swiper.unlockSwipeToNext();
-             swiper.unlockSwipeToPrev();
-             break;
-     }
- }
+     <!--switch (swiper.activeIndex){-->
+         <!--case FIRST_PAGE:-->
+             <!--swiper.lockSwipeToPrev();-->
+             <!--break;-->
+         <!--case SIXTH_PAGE:-->
+             <!--swiper.unlockSwipeToPrev();-->
+             <!--swiper.lockSwipeToNext();-->
+             <!--break;-->
+         <!--case SEVENTH_PAGE:-->
+         <!--case EIGHTH_PAGE:-->
+         <!--case NINTH_PAGE:-->
+             <!--swiper.lockSwipeToPrev();-->
+             <!--swiper.lockSwipeToNext();-->
+             <!--break;-->
+         <!--default:-->
+             <!--swiper.unlockSwipeToNext();-->
+             <!--swiper.unlockSwipeToPrev();-->
+             <!--break;-->
+     <!--}-->
+ <!--}-->
 
- $('#btn-select').click(function(e){
-   mswiper.unlockSwipeToNext();
-   mswiper.slideTo(SEVENTH_PAGE);
-});
+ <!--$('#btn-select').click(function(e){-->
+   <!--mswiper.unlockSwipeToNext();-->
+   <!--mswiper.slideTo(SEVENTH_PAGE);-->
+<!--});-->
 
- $('#btn-join').click(function(e){
-     mswiper.unlockSwipeToNext();
-     mswiper.slideTo(EIGHTH_PAGE);
- });
+ <!--$('#btn-join').click(function(e){-->
+     <!--mswiper.unlockSwipeToNext();-->
+     <!--mswiper.slideTo(EIGHTH_PAGE);-->
+ <!--});-->
 
- $('#btn-live').click(function(e){
-     mswiper.unlockSwipeToNext();
-     mswiper.slideTo(NINTH_PAGE);
- });
+ <!--$('#btn-live').click(function(e){-->
+     <!--mswiper.unlockSwipeToNext();-->
+     <!--mswiper.slideTo(NINTH_PAGE);-->
+ <!--});-->
 
- $('.btn-back').click(function(e){
-     mswiper.unlockSwipeToPrev();
-     mswiper.slideTo(SIXTH_PAGE);
-});
+ <!--$('.btn-back').click(function(e){-->
+     <!--mswiper.unlockSwipeToPrev();-->
+     <!--mswiper.slideTo(SIXTH_PAGE);-->
+<!--});-->
 
-$('.btn-rule').click(function(e){
-    if(current_page_index == SEVENTH_PAGE){
-        $('#pop-select').show();
-        $('.pop-rule').show();
-    }else if(current_page_index == EIGHTH_PAGE){
-        $('#pop-join').show();
-        $('.pop-rule').show();
-    }
+<!--$('.btn-rule').click(function(e){-->
+    <!--if(current_page_index == SEVENTH_PAGE){-->
+        <!--$('#pop-join').hide();-->
+        <!--$('#pop-select').show();-->
+        <!--$('.pop-rule').show();-->
+    <!--}else if(current_page_index == EIGHTH_PAGE){-->
+        <!--$('#pop-select').hide();-->
+        <!--$('#pop-join').show();-->
+        <!--$('.pop-rule').show();-->
+    <!--}-->
 
-    if(myScroll == null)
-        myScroll = new IScroll('#wrapper', { mouseWheel: true });
-});
+    <!--if(myScroll == null)-->
+        <!--myScroll = new IScroll('#wrapper', { mouseWheel: true });-->
+<!--});-->
 
-$('.close').click(function(e){
-    $('.pop').hide();
-});
-</script>
+<!--$('.close').click(function(e){-->
+    <!--$('.pop').hide();-->
+<!--});-->
+<!--</script>-->
 <script type="text/javascript" src="../public/scripts/utils/httpUtil.js"></script>
 <script type="text/javascript" src="../public/scripts/utils/validateUtil.js"></script>
-<!--<script type="text/javascript" src="js/main_bak.js"></script>-->
+<script type="text/javascript" src="js/main.js"></script>
 <!-- 微信分享api -->
 <!--<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>-->
 <!--<script type="text/javascript" src="js/wx_share.js"></script>-->
