@@ -315,9 +315,9 @@ animation: smallCarAni .6s step-start infinite;
 }
 
 .pop-submit > div { height: 7.56rem; background: url(../images/bg-submit.png) center no-repeat;  background-size: cover; }
-.pop-submit > div .attitude {position: relative; width: 3.02rem; height:2.15rem; margin:0 auto; padding-top: .25rem;
+.pop-submit > div .attitude {position: relative; width: 3.02rem; height:2.15rem; margin:0 auto; padding-top: .2rem;
 background: url("../images/img-pop-support.png") left top no-repeat; background-size: 100% 1.53rem; }
-.pop-submit > div .attitude > img { position: absolute; bottom:0; right: 0; width: .9rem; }
+.pop-submit > div .attitude > img { position: absolute; bottom:0; right: -.2rem; width: .9rem; }
 #selectForm { width:4.3rem; margin: 0 auto; }
 #selectForm > div { width: 100%; overflow: hidden; }
 #selectForm > div > span { float: left; color: #07496a; font-size: .22rem; line-height: .62rem; }
@@ -328,7 +328,10 @@ background: url("../images/img-pop-support.png") left top no-repeat; background-
 #submit-support { display: block; width: 1.98rem; height: .85rem; background: url(../images/btn-7.png) center center no-repeat; background-size: cover;
 margin-top: .26rem; margin-left: 35%; }
 .pop-rule > div { height: 8.25rem;  background: url(../images/bg-rule.png) center no-repeat;  background-size: cover; }
-.pop-rule > div > img:first-child {  width: 5.31rem; margin-top: .3rem; }
+.pop-rule  .pop-title {display:inline-block; position: relative;  width: 5.31rem; height:1.48rem; margin: .3rem auto 0 auto; background: url("../images/img-rule-w.png") center no-repeat;
+background-size: 100% 100%; }
+.pop-rule  .pop-title > img { position: absolute; width: .98rem; top: 0; right: 1rem;}
+
 .pop-rule .pop-detail {
     width: 4.9rem;
     height: 4.7rem;
@@ -502,7 +505,7 @@ margin-top: .26rem; margin-left: 35%; }
 
 .p2-hi { position:relative; height:1.15rem; margin-bottom: .2rem;}
 .p2-hi > img:first-child { position:absolute; left: .65rem;  width: 1.21rem; }
-.p2-hi > img:last-child { position:absolute; width: .72rem; right:.4rem; bottom: -.2rem; }
+.p2-hi > img:last-child { position:absolute; width: .72rem; right:.35rem; bottom: -.2rem; }
 
 /**************************************************************************************************
  4.0    third page

@@ -72,63 +72,63 @@
         /**
          * 获取网页评论
          */
-        http.ajaxRequest({
-            type:'GET',
-            uri:'h5/getComments?flag='+flag,
-            success:function(json){
-                var comments = json.data.data;
-                var dom = $('#commentSwiper').find('.swiper-wrapper');
-                var htmlStr = '';
-                for(var i =0; i < comments.length; i++){
-                    var comment = comments[i];
-                    htmlStr += '<div class="swiper-slide swiper-no-swiping">';
-                    htmlStr += '<p style="font-weight: bolder">' + comment.name+'&nbsp;:</p>';
-                    htmlStr += '<p><span class="topic">#新蒙迪欧HEV#</span>'+ comment.comment +'</p>';
-                    htmlStr += '</div>';
-                }
-                $(dom).html(htmlStr);
-            },
-            error:function(e){
-                if(e.responseJSON){
-                    alert(e.responseJSON.message);
-                }else
-                    alert('您已参加活动，请继续浏览后续内容!');
-            }
-        });
+        //http.ajaxRequest({
+        //    type:'GET',
+        //    uri:'h5/getComments?flag='+flag,
+        //    success:function(json){
+        //        var comments = json.data.data;
+        //        var dom = $('#commentSwiper').find('.swiper-wrapper');
+        //        var htmlStr = '';
+        //        for(var i =0; i < comments.length; i++){
+        //            var comment = comments[i];
+        //            htmlStr += '<div class="swiper-slide swiper-no-swiping">';
+        //            htmlStr += '<p style="font-weight: bolder">' + comment.name+'&nbsp;:</p>';
+        //            htmlStr += '<p><span class="topic">#新蒙迪欧HEV#</span>'+ comment.comment +'</p>';
+        //            htmlStr += '</div>';
+        //        }
+        //        $(dom).html(htmlStr);
+        //    },
+        //    error:function(e){
+        //        if(e.responseJSON){
+        //            alert(e.responseJSON.message);
+        //        }else
+        //            alert('您已参加活动，请继续浏览后续内容!');
+        //    }
+        //});
 
         /**
          * 初始化页面数据
          */
-        http.ajaxRequest({type:'GET',uri:'h5/getInitDatas?flag='+flag,success:function(json){
-            var data = json.data;
-            if(data){
-                store.lives = data.lives;
-                store.audiences = data.audiences;
-                store.tricyclic_turns = data.tricyclic_turns;
-                store.tetracyclic_turns = data.tetracyclic_turns;
-                store.pentacyclic_turns = data.pentacyclic_turns;
-                store.used_gasoline = data.used_gasoline;
-                store.used_gasonline_tera  = data.used_gasonline_tera;
-                store.used_gasonline_penta = data.used_gasonline_penta;
-                store.used_time_tri = data.used_time_tri;
-                store.support = data.support;
-                store.nonsupport = data.nonsupport;
-
-                $('#lives').html(store.lives);
-                $('#audiences').html(store.audiences);
-
-                $('#tricyclic_turns').html(store.tricyclic_turns + '圈');
-                $('#tetracyclic_turns').html(store.tetracyclic_turns + '圈');
-                $('#pentacyclic_turns').html(store.pentacyclic_turns + '圈');
-
-                $('#used_gasoline').html(store.used_gasoline + 'L');
-                $('#used_gasonline_tera').html(store.used_gasonline_tera + 'L');
-                $('#used_gasonline_penta').html(store.used_gasonline_penta + 'L');
-
-                $('#support-num').html(store.support);
-                $('#nonsupport-num').html(store.nonsupport);
-            }
-        }});
+        //http.ajaxRequest({type:'GET',uri:'h5/getInitDatas?flag='+flag,success:function(json){
+        //    var data = json.data;
+        //    if(data){
+        //        store.lives = data.lives;
+        //        store.audiences = data.audiences;
+        //        store.tricyclic_turns = data.tricyclic_turns;
+        //        store.tetracyclic_turns = data.tetracyclic_turns;
+        //        store.pentacyclic_turns = data.pentacyclic_turns;
+        //        store.used_gasoline = data.used_gasoline;
+        //        store.used_gasonline_tera  = data.used_gasonline_tera;
+        //        store.used_gasonline_penta = data.used_gasonline_penta;
+        //        store.used_time_tri = data.used_time_tri;
+        //        store.support = data.support;
+        //        store.nonsupport = data.nonsupport;
+        //
+        //        $('#lives').html(store.lives);
+        //        $('#audiences').html(store.audiences);
+        //
+        //        $('#tricyclic_turns').html(store.tricyclic_turns + '圈');
+        //        $('#tetracyclic_turns').html(store.tetracyclic_turns + '圈');
+        //        $('#pentacyclic_turns').html(store.pentacyclic_turns + '圈');
+        //
+        //        $('#used_gasoline').html(store.used_gasoline + 'L');
+        //        $('#used_gasonline_tera').html(store.used_gasonline_tera + 'L');
+        //        $('#used_gasonline_penta').html(store.used_gasonline_penta + 'L');
+        //
+        //        $('#support-num').html(store.support);
+        //        $('#nonsupport-num').html(store.nonsupport);
+        //    }
+        //}});
     });
 
     /**
@@ -355,18 +355,26 @@
 
             if(current_page_index == SEVENTH_PAGE){
                 $('#pop-join').hide();
-                $('#pop-select').show()
+                $('#pop-select').show();
+                $('.pop-title').css('width','5.31rem').css('height','1.65rem').css('background-image','url(images/img-rule-w.png)');
+                $('.pop-title img').css('top',0);
+                $('.pop-title img').css('right','1rem');
 
             }else if(current_page_index == EIGHTH_PAGE){
 
                 $('#pop-select').hide();
                 $('#pop-join').show();
+                $('.pop-title').css('width','4.3rem').css('height','1.48rem').css('background-image','url(images/img-rule-w1.png)');
+                $('.pop-title img').css('top','-.2rem');
+                $('.pop-title img').css('right','.4rem');
             }
 
             $('.pop-rule').show();
             $('.pop-content').addClass('animated bounceIn');
             if(ruleScroller == null)
                 ruleScroller = new IScroll('#wrapper', { mouseWheel: true });
+            else
+                ruleScroller.refresh();
         });
 
         //关闭所以弹窗
