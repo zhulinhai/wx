@@ -1,0 +1,99 @@
+@import "common";
+.banner {
+  width: 100%;
+  height: 673px;
+  background: #171d59 url("../img/01/1-banner.jpg") no-repeat center 0;
+}
+.div1 {
+  width: 100%;
+  height: 136px;
+  background: #232932 url("../img/01/1-arrowUp.png") no-repeat center bottom;
+  .content{
+    display: block;
+    margin: 0 auto;
+    padding-top: 46px;
+    width: 480px;
+    height: 44px;
+    input {
+      @include display-inline();
+      width: 340px;
+      height: 44px;
+      line-height: 44px;
+    }
+    .startWork {
+      @include display-inline();
+      width: 124px;
+      height: 44px;
+      line-height: 44px;
+      color: white;
+      font-size: 16px;
+      text-align: center;
+      background-color: #2451cc;
+    }
+  }
+}
+.contentFrame {
+  width: 1200px;
+  height: 640px;
+  margin: 30px auto 20px;
+  .item {
+    float: left;
+    width: 360px;
+    height: 320px;
+    margin: 0 20px;
+    text-align: center;
+    .imgFrame {
+      display: block;
+      width: 70px;
+      height: 70px;
+      margin: 30px auto 0;
+      background: url("../img/01/1-itemBg.png") no-repeat center;
+      img {
+        margin: 15px auto;
+      }
+    }
+    .title {
+      margin-top: 30px;
+      font-size: 24px;
+      font-weight: bold;
+      text-align: center;
+      color: black;
+    }
+    .detail {
+      margin-top: 20px;
+      font-size: 14px;
+      line-height: 24px;
+      color: #909091;
+      text-align: left;
+    }
+    .link {
+      margin-top: 20px;
+      height: 20px;
+      line-height: 20px;
+      color: #909091;
+      text-align: center;
+      font-size: 10px;
+      span {
+        display: inline-block;
+        width: 8px;
+        height: 8px;
+        margin-left: 5px;
+        background: url("../img/01/1-arrowDetail.png") no-repeat center;
+      }
+    }
+  }
+  .item:hover {
+    .imgFrame {
+      background: url("../img/01/1-itemBg-hover.png") no-repeat center;
+    }
+    .title {
+      color: #1E2A82;
+    }
+    .link {
+      color: #1E2A82;
+      span {
+        background: url("../img/01/1-arrowDetail-hover.png") no-repeat center;
+      }
+    }
+  }
+}

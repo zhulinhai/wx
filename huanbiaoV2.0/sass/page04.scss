@@ -1,0 +1,183 @@
+@import "common";
+.topDiv {
+  width: 100%;
+  height: 86px;
+  background: #171d59 url("../img/14/14-topBg.jpg") no-repeat center 0;
+  .content {
+    display: block;
+    margin: 0 auto;
+    width: 1200px;
+    height: 100%;
+    .leftDiv {
+      float: left;
+      width: 500px;
+      height: 86px;
+      line-height: 86px;
+      color: white;
+    }
+    .rightDiv {
+      float: right;
+      width: 500px;
+      height: 86px;
+      .dropdown {
+        float: right;
+        width: 120px;
+        margin-top: 28px;
+        margin-right: 10px;
+        .dropdown-toggle {
+          width: 120px;
+          text-align: left;
+          background:#EFF0F1 url("../img/14/14-arrow.png") no-repeat 100px center;
+          border: none;
+        }
+      }
+      .btnSearch {
+        float: right;
+        width: 40px;
+        height: 30px;
+        margin-top: 28px;
+        background: #EFF0F1 url("../img/01/1-search.png") no-repeat center;
+        background-size: 20px auto;
+      }
+      input {
+        float: right;
+        width: 220px;
+        height: 30px;
+        line-height: 30px;
+        text-indent: 5px;
+        margin-top: 28px;
+        font-size: 14px;
+        color: #7F8081;
+        background-color: #EFF0F1;
+      }
+    }
+  }
+}
+.menuDiv {
+  width: 100%;
+  height: 180px;
+  background-color: #EDEEEF;
+  .content {
+    display: block;
+    margin: 0 auto;
+    width: 1200px;
+    height: 180px;
+    .item {
+      float: left;
+      width: 120px;
+      height: 180px;
+      margin: 0 60px;
+      text-align: center;
+      .imgFrame {
+        display: block;
+        width: 70px;
+        height: 70px;
+        margin: 30px auto 0;
+        background: url("../img/01/1-itemBg.png") no-repeat center;
+        img {
+          margin: 18px auto;
+        }
+      }
+      .title {
+        margin-top: 20px;
+        font-size: 24px;
+        text-align: center;
+        color: black;
+      }
+    }
+    .item:hover {
+      .imgFrame {
+        background: url("../img/01/1-itemBg-hover.png") no-repeat center;
+      }
+      .title {
+        color: #1E2A82;
+      }
+      .link {
+        color: #1E2A82;
+        span {
+          background: url("../img/01/1-arrowDetail-hover.png") no-repeat center;
+        }
+      }
+    }
+  }
+}
+
+.msgDiv {
+  display: block;
+  margin: 30px auto 0;
+  width: 1200px;
+  background-color: #EDEEEF;
+  border: 1px solid #E3E3E4;
+  .titleFrame {
+    width: 100%;
+    height: 55px;
+    border-bottom: 2px solid #1E2A82;
+    .title {
+      float: left;
+      color: #1E2A82;
+      font-size: 20px;
+      font-weight: bold;
+      margin-left: 10px;
+      height: 55px;
+      line-height: 55px;
+      img {
+        margin-right: 10px;
+        vertical-align: middle;
+      }
+    }
+    .state {
+      float: left;
+      margin-top: 16px;
+      margin-left: 20px;
+      width: 88px;
+      height: 22px;
+      line-height: 22px;
+      text-align: center;
+      color: white;
+      background-color: #1E2A82;
+    }
+    .more {
+      float: right;
+      color: #2c3890;
+      height: 55px;
+      line-height: 55px;
+      font-size: 16px;
+      margin-right: 20px;
+      img {
+        margin-left: 5px;
+        vertical-align: middle;
+      }
+    }
+  }
+  .item {
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+    width: 270px;
+    height: 130px;
+    margin: 20px 12px;
+    border-right: 1px dotted #7b7c7d;
+    vertical-align: top;
+    .title {
+      width: 275px;
+      height: 40px;
+      line-height: 40px;
+      font-size: 16px;
+      color: #232323;
+      text-indent: 20px;
+      background: url("../img/04/04-arrowRight-normal.png") no-repeat 0 center;
+    }
+    .detail {
+      font-size: 12px;
+      line-height: 20px;
+      margin: 0 20px;
+      color: #7b7c7d;
+    }
+  }
+  .item:hover {
+    .title {
+      color: #1E2A82;
+      background: url("../img/04/04-arrowRight-hover.png") no-repeat 0 center;
+    }
+  }
+}
