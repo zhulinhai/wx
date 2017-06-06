@@ -232,7 +232,7 @@
             onInit: function(swiper){
                 if(swiper.activeIndex == FIRST_PAGE){
                     swiper.lockSwipeToPrev();
-                    //swiper.lockSwipeToNext();
+                    swiper.lockSwipeToNext();
                 }
             },
             onSlideChangeStart: handlerChangeStart
