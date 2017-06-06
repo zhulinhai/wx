@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>易车 · 老司机周刊</title>
+    <link rel="stylesheet" href="../public/css/reset-h5.css">
+    <link rel="stylesheet" href="../public/css/animate.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/self-scroll.css">
+    <!--<link rel="stylesheet" href="css/pace.css">-->
+    <!-- videojs css-->
+    <link rel="stylesheet" href="../public/plugins/videojs/5.8.8/video-js.css" >
+    <!-- socket.io client -->
+    <script type="text/javascript" src="http://node.bjczxda.com/socket.io/socket.io.js"></script>
+    <!-- 预加载插件 -->
+    <script type="text/javascript" src="../public/scripts/pace.js"></script>
+    <!-- css3免前缀插件 -->
+    <script type="text/javascript" src="../public/scripts/prefixfree.min.js"></script>
+    <script type="text/javascript" src="../public/scripts/jquery-1.12.1.min.js"></script>
+    <!-- hammer:html5手势插件 -->
+    <script type="text/javascript" src="../public/scripts/hammer.js"></script>
+    <script type="text/javascript" src="../public/scripts/jquery.hammer.js"></script>
+    <!-- videojs -->
+    <script type="text/javascript" src="../public/plugins/videojs/5.8.8/video.min.js"></script>
+    <!-- Swiper -->
+    <link rel="stylesheet" href="../public/plugins/Swiper-3.4.2/dist/css/swiper.min.css">
+    <script type="text/javascript" src="../public/plugins/Swiper-3.4.2/dist/js/swiper.jquery.min.js"></script>
+    <!-- iscroll -->
+    <script type="text/javascript" src="../public/scripts/iscroll.js"></script>
+    <!-- TweenLite.min.js-->
+    <script type="text/javascript" src="../public/plugins/greensock-js/src/minified/TweenLite.min.js"></script>
+    <script type="text/javascript" src="../public/plugins/greensock-js/src/minified/TimelineLite.min.js"></script>
+    <script type="text/javascript" src="../public/plugins/greensock-js/src/uncompressed/plugins/CSSPlugin.js"></script>
+
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?84d0fb0cf6aaacaaf1e5fa3588193ce8";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+</head>
+<body ontouchmove="event.preventDefault();">
+<!--屏幕兼容代码-->
+<script type="text/javascript">
+
+    (function() {
+        // deicePixelRatio ：设备像素
+        var scale = 1 / devicePixelRatio;
+        if(navigator.userAgent.indexOf('iPhone')!=-1){
+            //设置meta 压缩界面 模拟设备的高分辨率
+            document.querySelector('meta[name="viewport"]').setAttribute('content', 'initial-scale=' + scale + ', maximum-scale=' + scale + ', minimum-scale=' + scale + ', user-scalable=no');
+        }
+        var deviceWidth = document.documentElement.clientWidth > 1300 ? 1300 : document.documentElement.clientWidth;
+        //按照640像素下字体为100px的标准来，得到一个字体缩放比例值 6.4
+        document.documentElement.style.fontSize = (deviceWidth / 6.4) + 'px'; //320 fontSize = 50px
+    })();
+</script>
+<div class="loading">
+    <div class="content">
+        <!--<img class="cloud cloudAni" src="images/img-cloud.png">-->
+        <img class="superman vibrateAni" src="images/superman.png">
+    </div>
+    <p class="percent">80%</p>
+</div>
+<div class="pop pop-submit" style="display: none;">
+    <div class="pop-content">
+        <a class="close" href="javascript:void(0);"></a>
+        <div style="width: 0;height: .15rem;"></div>
+        <div class="attitude">
+            <img src="images/img-s-p-2.gif">
+        </div>
+        <form id="selectForm">
+            <div><span>我想说</span><textarea name="comment"></textarea></div>
+            <div><span>姓&nbsp;&nbsp;名</span><input class="long-input" name="name"/></div>
+            <div><span>电&nbsp;&nbsp;话</span><input class="long-input" name="mobile"/></div>
+            <input type="hidden" name="state" />
+            <a id="submit-support" href="javascript:void(0);"></a>
+        </form>
+        <img class="pop-car" src="images/icon-car-1.png">
+    </div>
+</div>
+<div class="pop pop-rule" style="display: none;">
+    <div class="pop-content">
+        <div class="pop-title">
+            <img src="images/img-s-p-9.gif">
+        </div>
+        <a class="close" href="javascript:void(0);"></a>
+        <div id="wrapper" class="pop-detail">
+            <div id="scroller">
+                <div id="pop-select" class="scroller">
+                    <p><span class="item">活动介绍</span><span style="color: #b62530;">：</span>易车网3位大咖联袂挑战，驾驶新蒙迪欧24小时不间断，跑穿北京3、4、5环！一箱油挑战1214+公里，能否挑战成功？等你一票！</p>
+                    <p><span class="item">参与方式</span><span style="color: #b62530;">：</span>点击页面“挑战成功”或者’挑战失败“按钮（二选一）说出你的理由，填写个人真实姓名和电话即可参与。</p>
+                    <p><span class="item">活动时间</span><span style="color: #b62530;">：</span>2017.06.12-2017.06.17</p>
+                    <p><span class="item">奖品设置</span><span style="color: #b62530;">：</span>100元京东卡*50张</p>
+                    <p><span class="item">抽奖机制</span><span style="color: #b62530;">：</span>活动结束后的30个工作日内，易车工作人员会<span style="color: #b62530">在后台留资网友中，随机抽取出50名网友，进行奖品发放。</span></p>
+                    <p><span class="item">活动细则</span><span style="color: #b62530;">：</span></p>
+                    <div class="detailed-rule">
+                        <p>1.活动范围：全国（不包括港澳台）</p>
+                        <p>2.活动结束后的30个工作日内，易车工作人员会与获奖者电话联系核实信息，请获奖者用户保持手机畅通，逾期联系不上视为自动放弃，后期将不做任何形式的补偿</p>
+                        <p>3. 活动要求留存真实联系方式，每个用户仅有1次获奖机会，如因本人提交信息有误，导致无法参与或者未能获奖，活动主办方将不予承担责任。</p>
+                        <p>4、本活动最终解释权归易车所有。</p>
+                    </div>
+                </div>
+                <div id="pop-join" class="scroller" style="display: none;">
+                    <p><span class="item">活动介绍</span><span style="color: #b62530;">：</span>2017.06.17-2017.06.18，在北京3、4、5环参与挑战任务，共同验证结果</p>
+                    <p><span class="item">参与方式</span><span style="color: #b62530;">：</span>点击页面“我要挑战”按钮，进入留资页面，填写个人真实姓名和电话即可参与。</p>
+                    <p><span class="item">参与资格</span><span style="color: #b62530;">：</span>拥有2年及以上实际驾龄。</p>
+                    <p><span class="item">优先条件</span><span style="color: #b62530;">：</span>新蒙迪欧、迈腾、帕萨特、雅阁、天籁、凯美瑞、A4L 车主优先</p>
+                    <p><span class="item">招募名额</span><span style="color: #b62530;">：</span>24人（按照报名顺序进行筛选）</p>
+                    <p><span class="item">招募时间</span><span style="color: #b62530;">：</span>即日起</p>
+                    <p><span class="item">招募区域</span><span style="color: #b62530;">：</span>北京</p>
+                    <p><span class="item">活动费用</span><span style="color: #b62530;">：</span>免费</p>
+                    <p><span class="item">奖品设置</span><span style="color: #b62530;">：</span>成功参与不仅可以获得500元油卡，还能拿到首届易车认证的“流言终结者”专属徽标及荣誉证书。</p>
+                    <p><span class="item">活动细则</span><span style="color: #b62530;">：</span></p>
+                    <div class="detailed-rule">
+                        <p>1.活动范围：全国（不包括港澳台）</p>
+                        <p>2.活动结束后的30个工作日内，易车工作人员会与获奖者电话联系核实信息，请获奖者用户保持手机畅通，逾期联系不上视为自动放弃，后期将不做任何形式的补偿</p>
+                        <p>3. 活动要求留存真实联系方式，每个用户仅有1次获奖机会，如因本人提交信息有误，导致无法参与或者未能获奖，活动主办方将不予承担责任。</p>
+                        <p>4、本活动最终解释权归易车所有。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <img class="pop-car" src="images/icon-car-1.png">
+    </div>
+</div>
+<div id="mainPage" class="swiper-container">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide">
+            <div class="page first-page">
+                <img class="title" src="images/temp/img-title.png">
+                <img class="slide" src="images/temp/img-slide.png">
+                <img class="superman" src="images/superman-p1.gif">
+                <div class="aside">
+                    <img id="aside-1" src="images/temp/img-aside-1.png">
+                    <img id="aside-2" src="images/temp/img-aside-2.png">
+                    <img id="aside-3" src="images/temp/img-aside-3.png">
+                    <img id="aside-4" src="images/temp/img-aside-4.png">
+                </div>
+                <div class="older">
+                    <img src="images/temp/img-old-driver.png">
+                    <img id="fp-car" class="car" src="images/temp/icon-car.png">
+                </div>
+                <img class="bottom-line" src="images/temp/img-bottom.png">
+                <img class="bottom-arrow" src="images/temp/icon-arrow.png">
+            </div>
+        </div>
+        <div class="swiper-slide">
+            <div class="page second-page">
+                <img class="title" src="images/temp/img-title.png">
+                <img class="topic-banner" src="images/img-p2-banner.png">
+                <div class="p2-middle">
+                    <div>
+                        <p id="olderDriverAside">
+                            <span>跟我走，去三环！！</span><br>
+                            <span>High起来，去四环！</span><br>
+                            <span>起飞咯！五环哈哈哈~</span>
+                        </p>
+                        <img id="olderDriver" src="images/img-s-p-7.gif">
+                    </div>
+                    <div>
+                        <div class="p2-hi">
+                            <img id="hi" src="images/img-hi.png"><img id="young" src="images/img-s-p-8.gif">
+                        </div>
+                        <p id="youngAside">
+                            <span>老司机，</span><br>
+                            <span>咱们去干啥？要买个瓜么？</span><br>
+                            <span>&nbsp;</span>
+                        </p>
+                    </div>
+                </div>
+                <div></div>
+                <img class="bottom-line" src="images/temp/img-bottom.png">
+                <img class="bottom-arrow" src="images/temp/icon-arrow.png">
+            </div>
+        </div>
+        <div class="swiper-slide">
+            <div class="page third-page">
+                <img class="title" src="images/temp/img-title.png">
+                <img class="topic-banner" src="images/img-p3-banner.png">
+                <div class="request">
+                    <img src="images/img-s-p-6.gif">
+                </div>
+                <div class="book"></div>
+                <div class="explain">
+                    <div class="car"></div>
+                    <div class="line"></div>
+                    <ul>
+                        <li><img style="width: .35rem; vertical-align: middle;margin-right: .1rem;" src="images/icon-light.png"><span style="vertical-align: middle;">将刹车、减速、停车怠速时多余动能收集转化为电能存储到电池中。</span></li>
+                        <li><img style="width: .35rem; vertical-align: middle;margin-right: .1rem;" src="images/icon-light.png"><span style="vertical-align: middle;">不仅跑的远，节油又环保，告别憋尿好心情好。</span></li>
+                    </ul>
+                </div>
+                <img class="bottom-line" src="images/temp/img-bottom.png">
+                <img class="bottom-arrow" src="images/temp/icon-arrow.png">
+            </div>
+        </div>
+        <div class="swiper-slide">
+            <div class="page fourth-page">
+                <img class="title" src="images/temp/img-title.png">
+                <img class="topic-banner" src="images/img-p4-banner.png">
+                <img id="victory" class="animated infinite wobble" src="images/icon-victory.png">
+                <div class="dialogue">
+                    <div><div class="left-dialogue"><p>美系不行，油老虎！我只知道日系混动大法好！</p></div><img id="leftGif" src="images/img-s-p-4.png"></div>
+                    <div><div><div class="right-dialogue"><p>native!</p><p>混动出的早就好？</p></div><img id="rightGif" src="images/img-s-p-5.png"></div>
+                    </div>
+                </div>
+                <div class="banner">
+                    <img src="images/img-p5-ww.png">
+                    <img id="p4-car" src="images/icon-car-1.png">
+                </div>
+                <img class="bottom-line" src="images/temp/img-bottom.png">
+                <img class="bottom-arrow" src="images/temp/icon-arrow.png">
+            </div>
+        </div>
+        <div class="swiper-slide">
+            <div class="page fifth-page">
+                <img class="title" src="images/temp/img-title.png">
+                <img class="topic-banner" src="images/img-p5-banner.png">
+                <img class="trumpet animated infinite pulse" src="images/img-trumpet.png">
+                <div class="words">
+                    <img class="introduce" src="images/img-p5-w1.png"><br>
+                    <img class="small-people-1" src="images/img-s-p-3.png"><br>
+                    <img class="callUpon" src="images/img-p5-w2.png"><br>
+                    <img class="small-people-2" src="images/img-s-p-5.gif">
+                </div>
+                <img class="superman" src="images/temp/superman.gif">
+                <img class="bottom-line" src="images/temp/img-bottom.png">
+                <img class="bottom-arrow" src="images/temp/icon-arrow.png">
+            </div>
+        </div>
+        <div class="swiper-slide">
+            <div class="page sixth-page">
+                <img class="title" src="images/temp/img-title.png">
+                <img class="topic-banner" src="images/img-p6-banner.png">
+                <img class="terminator" src="images/img-p6-w2.png">
+                <img class="superman" src="images/temp/superman.gif">
+                <div class="buttonGroup">
+                    <a id="btn-select" href="javascript:void(0);"></a>
+                    <a id="btn-join" href="javascript:void(0);"></a>
+                    <a id="btn-live" href="javascript:void(0);"></a>
+                </div>
+            </div>
+        </div>
+        <div class="swiper-slide">
+            <div class="page seventh-page">
+                <img class="title" src="images/temp/img-title.png">
+                <div class="banner">
+                    <img id="p7-w" src="images/img-p7-w1.png">
+                    <img id="p7-s-p" src="images/img-s-p-3.gif">
+                </div>
+                <div class="vs">
+                    <img id="leftHand" src="images/img-left-hand.png">
+                    <img id="vs" src="images/img-vs.png">
+                    <img id="rightHand" src="images/img-right-hand.png">
+                </div>
+                <div class="buttonGroup">
+                    <div><p id="support-num">123123</p><a id="btn-support" href="javascript:void(0);"></a></div>
+                    <div><p id="nonsupport-num">3213213</p><a id="btn-nonsupport" href="javascript:void(0);"></a></div>
+                </div>
+                <div class="kol">
+                    <div id="kolSwiper" class="swiper-container">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide swiper-no-swiping">
+                                <img class="portrait" src="images/img-portrait.png">
+                                <div><p><span class="kol-name">初晓敏</span><span class="emphasis">汽车达人</span></p><p><span class="topic">#新蒙迪欧HEV#</span>挑战一定成功！打算打算大所大所大所大多打算打算大所多打算打</p></div>
+                            </div>
+                            <div class="swiper-slide swiper-no-swiping">
+                                <img class="portrait" src="images/img-portrait.png">
+                                <div><p><span class="kol-name">王大力</span><span class="emphasis">汽车达人</span></p><p><span class="topic">#新蒙迪欧HEV#</span>挑战一定成功！打算打算大所大所大所大多打算打算大所多打算打</p></div>
+                            </div>
+                            <div class="swiper-slide swiper-no-swiping">
+                                <img class="portrait" src="images/img-portrait.png">
+                                <div><p><span class="kol-name">包奕凡</span><span class="emphasis">汽车达人</span></p><p><span class="topic">#新蒙迪欧HEV#</span>挑战一定成功！打算打算大所大所大所大多打算打算大所多打算打</p></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div id="commentSwiper" class="swiper-container">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <p style="font-weight: bolder">皮卡丘 ：</p>
+                                    <p><span class="topic">#新蒙迪欧HEV#</span> 棒棒哒，期待直播的精彩表现哦！打算打算大所大所大所大多打算打算大所多</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <img class="line" src="images/img-p7-line.png">
+                </div>
+                <a class="btn-back" href="javascript:void(0);"></a>
+                <a class="btn-rule" href="javascript:void(0);"></a>
+            </div>
+        </div>
+        <div class="swiper-slide">
+            <div class="page eighth-page">
+                <img class="title" src="images/temp/img-title.png">
+                <img class="wantYou" src="images/img-want-you.png">
+                <div class="banner">
+                    <img src="images/img-p8-w.png">
+                    <p>搞事者具备：胆子大、车技牛、爱挑战</p>
+                    <p><span style="color: #b62530">500元油卡</span>等你抢~</p>
+                </div>
+                <form id="joinForm">
+                    <div><input class="normal-input" name="name" placeholder="姓名"><input class="normal-input" name="mobile" placeholder="电话"></div>
+                    <a id="submit-join" href="javascript:void(0);"></a>
+                </form>
+                <img id="p8-car" src="images/icon-car-1.png">
+                <a class="btn-back" href="javascript:void(0);"></a>
+                <a class="btn-rule" href="javascript:void(0);"></a>
+            </div>
+        </div>
+        <div class="swiper-slide">
+            <div class="page ninth-page">
+                <img class="title" src="images/temp/img-title.png">
+                <div class="banner">
+                    <img src="images/img-p9-w.png">
+                    <img src="images/img-s-p-4.gif">
+                </div>
+                <div class="liveData">
+                    <span>人气数 ：</span><span id="lives" style="margin-right: 20px;">123232</span><span class="d"></span><span style="margin-left: 20px;">在线人数 ：</span><span id="audiences">31231231</span>
+                </div>
+                <div class="live">
+                    <video id="my-player" class="video-js vjs-big-play-centered" webkit-playsinline playsinline autoplay="true">
+                    </video>
+                </div>
+                <div class="carDatas">
+                    <div class="datasRow">
+                        <div><img src="images/icon-oil.png"><label>油&nbsp;&nbsp;耗</label>：</div>
+                        <div class="especially"><span>3环：</span><div id="used_gasoline"></div></div>
+                        <div class="especially"><span>4环：</span><div id="used_gasonline_tera"></div></div>
+                        <div class="especially"><span>5环：</span><div id="used_gasonline_penta"></div></div>
+                    </div>
+                    <div class="datasRow" style="margin-top: .1rem;">
+                        <div><img src="images/icon-turns.png"><label>圈&nbsp;&nbsp;数</label>：</div>
+                        <div class="especially"><span>3环：</span><div id="tricyclic_turns">30L</div></div>
+                        <div class="especially"><span>4环：</span><div id="tetracyclic_turns"></div></div>
+                        <div class="especially"><span>5环：</span><div id="pentacyclic_turns"></div></div>
+                    </div>
+                    <p>注： 本数据1小时更新1次</p>
+                </div>
+                <a class="btn-back" href="javascript:void(0);"></a>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script type="text/javascript" src="../public/scripts/utils/httpUtil.js"></script>
+<script type="text/javascript" src="../public/scripts/utils/validateUtil.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+</html>

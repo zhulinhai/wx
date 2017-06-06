@@ -1,20 +1,10 @@
-/**
-*loading页
-*/
-.loading { position:absolute; width: 100%; height: 100%; z-index: 1000; background-color: white; overflow: hidden; }
-.loading .content {position: relative; margin:40% auto 0 auto; width: 2.4rem; height:2.4rem; }
-.loading .content > img { position:absolute;left: 0; top: 0; width: 100%; animation: normalRotate linear 3s infinite; }
-.loading .content > div { position: absolute; top: 35%; width: 100%; text-align: center; }
-.loading .content > div p { font-size: .22rem; line-height: 150%; color: black; }
-.loading .content > div p:last-child { font-size: .26rem; line-height: 100%;}
-
 #logo {  position: absolute; top:.17rem;left: .18rem;  width: 1.3rem; z-index:10; }
 .slideDown { position: absolute; bottom:.3rem;left: 50%; width: .2rem; margin-left: -.1rem; animation: slideAni 1.5s infinite ease-in-out;}
 
 @keyframes slideAni {
-    0%,30% {opacity: 0;transform: translate(0,10px);}
+    0%,30% {opacity: 0;transform: translate(0,-8px);}
     60% {opacity: 1;transform: translate(0,0);}
-    100% {opacity: 0;transform: translate(0,-8px);}
+    100% {opacity: 0;transform: translate(0,-10px);}
 }
 
 #mainSwiper { position:relative; width: 100%;height: 100% }
@@ -37,7 +27,7 @@
 .pop-title { margin-top:.48rem; font-size: .52rem; font-weight: bolder; text-align: center; }
 .success { color: #b70001;}
 .fail { color: #808080; }
-.pop-car { margin-top:.32rem; width: 4rem;}
+
 .pop-form { width: 4rem; margin: .18rem auto 0 auto; font-size: .22rem; }
 .pop-form > div { width: 100%; text-align: left;}
 .pop-form > div:nth-child(n + 2) { margin-top: .2rem;}
@@ -46,8 +36,6 @@
 .pop-form > div > textarea { padding: 0; }
 .btn-submit { margin: .15rem auto 0 auto;}
 
-.close { position: relative; overflow: hidden; width: 3.6rem; height: .97rem; margin: .5rem auto 0 auto;}
-.close > div { position:absolute; top: 50%; width: 1.32rem; height: 0; border-top:1px solid white; }
 .left-line { left: 0;}
 .right-line { right: 0; }
 .btn-close { position: absolute; z-index: 1; display: block; left:1.31rem; width: .97rem; height: .97rem; }
@@ -57,7 +45,7 @@
 .btn-share { margin: .96rem auto 0 auto; }
 
 #rule-content { width: 5rem;  height: 4.5rem;  overflow: hidden;  margin: .3rem auto 0 auto; }
-#scroller { width: 100%; height: 12rem; }
+
 /**
 *首页样式
 */
@@ -225,6 +213,7 @@
     }
 }
 
+.delay_h1s{  animation-delay: .5s;  }
 .delay_1s{  animation-delay: 1s;  }
 .delay_1-5s{  animation-delay: 1.5s;  }
 .delay_2s{  animation-delay: 2s;  }
@@ -234,3 +223,476 @@
 .delay_4s{  animation-delay: 4s;  }
 .delay_4-5s{  animation-delay: 4.5s;  }
 .delay_5s{  animation-delay: 5s;  }
+
+#mainPage {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+#mainPage .swiper-slide{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: url(../images/bg.jpg) center center no-repeat;
+    background-size: cover;
+}
+
+#mainPage .page{  position: relative;  width: 100%;  height: 100%; overflow: hidden; }
+#mainPage .page .title{  position: absolute; top: .1rem; width: 6.26rem; left: .07rem; }
+#mainPage .page .bottom-line{  position: absolute;  bottom: .6rem;  width: 100%;  }
+#mainPage .page .bottom-arrow{  position: absolute;  bottom: .15rem;  left: 50%;  margin-left: -.1rem;  width: .19rem;  animation: slideAni 1.5s infinite ease-in-out;  }
+#mainPage .page .btn-back,#mainPage .page .btn-rule {position: absolute; display: block; bottom:.22rem; width: 1.21rem; height: .41rem; }
+#mainPage .page .btn-back { left: .22rem; background: url("../images/btn-back.png") center no-repeat; background-size: cover; }
+#mainPage .page .btn-rule { right: .22rem; background: url("../images/btn-rule.png") center no-repeat; background-size: cover; }
+#mainPage .page .topic-banner { position:absolute; top:1.74rem; left:.075rem; width:6.25rem; }
+
+.normal-input {
+    padding-left: 10px;
+    width: 2.42rem;
+    height: .44rem;
+    line-height: .44rem;
+    background: url(../images/img-input-normal.png) center no-repeat;
+    background-size: cover;
+    color: black;
+    font-size: .22rem;
+}
+
+.long-input {
+    padding-left: 10px;
+    width: 3.48rem;
+    height: .62rem;
+    line-height: .62rem;
+    background: url(../images/img-input-long.png) center no-repeat;
+    background-size: cover;
+    color: black;
+    font-size: .22rem;
+}
+
+textarea {
+    padding-top: 10px;
+    padding-left: 10px;
+    width: 3.52rem;
+    height: 1.73rem;
+    line-height: 120%;
+    background: url(../images/img-textarea.png) center no-repeat;
+    background-size: cover;
+    color: black;
+    font-size: .22rem;
+}
+
+input::-webkit-input-placeholder{
+    color: #07496a;
+    font-weight: bold;
+}
+
+.pop { position: absolute; left:0; top:0; width: 100%; height: 100%; background-color: white; z-index: 1000; }
+.pop .close {
+    display: block;
+    position: absolute;
+    right: .3rem;
+    top: .3rem;
+    width: .26rem;
+    height: .25rem;
+    background: url("../images/icon-close.png") center no-repeat;
+    background-size: cover;
+    z-index: 1;
+}
+
+.pop .pop-car { position: absolute; width: 1.05rem; left: 50%; margin-left: -.6rem; bottom: -.3rem;
+animation: smallCarAni .6s step-start infinite;
+}
+@keyframes smallCarAni {
+    0% { transform: translateY(0);}
+    50% { transform: translateY(-2px);}
+    100% { transform: translateY(2px);}
+}
+.pop-rule > div, .pop-submit > div {
+    position: relative;
+    width: 5.44rem;
+    margin: .65rem auto 0 auto;
+    text-align: center;
+}
+
+.pop-submit > div { height: 7.56rem; background: url(../images/bg-submit.png) center no-repeat;  background-size: cover; }
+.pop-submit > div .attitude {position: relative; width: 3.02rem; height:2.15rem; margin:0 auto; padding-top: .2rem;
+background: url("../images/img-pop-support.png") left top no-repeat; background-size: 2.36rem 1.53rem; }
+.pop-submit > div .attitude > img { position: absolute; bottom:0; right: .3rem; width: .9rem; }
+#selectForm { width:4.3rem; margin: 0 auto; }
+#selectForm > div { width: 100%; overflow: hidden; }
+#selectForm > div > span { float: left; color: #07496a; font-size: .22rem; line-height: .62rem; }
+#selectForm > div > input, #selectForm > div > textarea { float: right; }
+#selectForm > div:after { content:'';width: 0;height: 0;clear: both; }
+#selectForm > div:nth-child(n+2) { margin-top: .1rem; }
+.pop-submit .pop-car { margin-left: -.3rem; bottom: -.2rem; }
+#submit-support { display: block; width: 1.98rem; height: .85rem; background: url(../images/btn-7.png) center center no-repeat; background-size: cover;
+margin-top: .26rem; margin-left: 35%; }
+.pop-rule > div { height: 8.25rem;  background: url(../images/bg-rule.png) center no-repeat;  background-size: cover; }
+.pop-rule  .pop-title {display:inline-block; position: relative;  width: 5.31rem; height:1.48rem; margin: .3rem auto 0 auto; background: url("../images/img-rule-w.png") center no-repeat;
+background-size: 100% 100%; }
+.pop-rule  .pop-title > img { position: absolute; width: .98rem; top: 0; right: 1rem;}
+
+.pop-rule .pop-detail {
+    width: 4.9rem;
+    height: 4.7rem;
+    margin: .62rem auto 0 auto;
+    overflow: hidden;
+}
+
+#scroller { width: 100%; }
+.detailed-rule { width: 100%; }
+.scroller > p,.detailed-rule > p { font-size: .22rem; color: #07496a; line-height: 150%; text-align: justify;}
+.scroller > p:nth-child(n + 2) { margin-top: .45rem; }
+.detailed-rule > p { margin-top: .2rem; }
+.scroller .item { color: white; background: url("../images/img-emphasis.png") center no-repeat; background-size: cover; padding-left: .05rem; padding-right: .05rem; }
+
+/**************************************************************************************************
+ 1.0    loading page
+***************************************************************************************************/
+
+.loading { position:absolute; width: 100%; height: 100%; z-index: 1000; background-color: white; overflow: hidden; }
+.loading .content { position: relative; width: 3.06rem; height: 2.67rem; margin: 3rem auto 0 auto;}
+.loading .content .cloud {position: absolute; top:0; left: 0; width: 100%;}
+.loading .superman {position:  absolute; width: 1.56rem; z-index: 1; left: 50%;  margin-left: -.78rem;  top: .6rem;}
+.loading .percent{ width: 100%; margin-top: .5rem; text-align: center;font-size: .22rem; line-height: 200%; color: black; }
+
+.vibrateAni {
+    animation-name: vibrateAni ;
+    animation-duration: .4s;
+    animation-timing-function: steps(1,start);
+    animation-iteration-count: infinite;
+    animation-direction:alternate;
+}
+
+@keyframes vibrateAni {
+    0% { transform: translate(0,0);}
+    50% { transform: translate(-2px,2px);}
+    100% { transform: translate(2px,-2px);}
+}
+.cloudAni {
+    animation-name: cloudAni ;
+    animation-duration: .4s;
+    animation-timing-function: steps(1,start);
+    animation-iteration-count: infinite;
+    animation-direction:alternate;
+}
+
+@keyframes cloudAni {
+    0% { transform: translate(0,0);}
+    50% { transform: translate(-10px,10px);}
+    100% { transform: translate(10px,-10px);}
+}
+
+/**************************************************************************************************
+ 2.0    first page
+***************************************************************************************************/
+.first-page {
+    animation: flashAni .4s step-start infinite;
+    background: url(../images/temp/flash-1.jpg) center center no-repeat;
+    background-size: cover;
+}
+
+
+.first-page .slide{
+    position: absolute;
+    top: 2.3rem;
+    left: .1rem;
+    width: 1.94rem;
+    z-index: 1;
+}
+
+.first-page .flash{
+   position: absolute;
+    top:1.6rem;
+    left: 0;
+    width: 100%;
+    height: 10.26rem;
+    /*animation: flashAni .5s linear infinite;*/
+    /*background: url(../images/temp/flash-1.jpg) center center no-repeat;*/
+    /*background-size: cover;*/
+}
+
+@keyframes flashAni {
+    0% { background-image: url(../images/temp/flash-1.jpg);}
+    50% { background-image: url(../images/temp/flash-2.jpg);}
+    100% { background-image: url(../images/temp/flash-3.jpg);}
+}
+
+.first-page .superman{
+    position: absolute;
+    top: 3rem;
+    left: 2rem;
+    width: 2.74rem;
+}
+.first-page .older{
+    position: absolute;
+    bottom: .95rem;
+    left: 50%;
+    margin-left: -2.05rem;
+    width: 4.11rem;
+    height: 1.91rem;
+}
+
+.first-page .older > img {
+    width: 100%;
+}
+
+.first-page .older .car {
+    position: absolute;
+    right: .3rem;
+    bottom: .5rem;
+    width: .81rem;
+}
+
+.carFadeOutRight {
+  animation-name: carFadeOutRight;
+  animation-timing-function: ease;
+  animation-fill-mode: backwards;
+}
+
+@keyframes carFadeOutRight {
+    0% { opacity: 1; transform: translate(0);}
+    100%{ opacity: 0; transform: translate(200%);}
+}
+
+.first-page .aside{
+    position: absolute;
+    top:1.9rem;
+    right: .3rem;
+    width: 2.1rem;
+    height: 2.4rem;
+}
+
+.first-page .aside >img {
+    position: absolute;
+    right: 0;
+}
+.first-page .aside >img:nth-child(1){
+    display: block;
+    width: 1.94rem;
+}
+
+.first-page .aside >img:nth-child(2){
+    display: block;
+    top: 1.4rem;
+    width: .38rem;
+}
+
+.first-page .aside >img:nth-child(3){
+    display: block;
+    top: 1.8rem;
+    right: .2rem;
+    width: .35rem;
+}
+
+.first-page .aside >img:nth-child(4){
+    display: block;
+    right: .4rem;
+    bottom: 0rem;
+    width: .27rem;
+}
+
+/**************************************************************************************************
+ 3.0    second page
+***************************************************************************************************/
+.p2-middle { width: 6.2rem; overflow: hidden; margin: 2.81rem auto;}
+.p2-middle > div:first-child { float: left; }
+.p2-middle > div:last-child { float: right; }
+.p2-middle > div:first-child > p {  border-left:.1rem #07496a solid; color: #07496a; font-size: .22rem; padding-left: 20px; }
+.p2-middle > div:first-child > img { width: 2.71rem; }
+.p2-middle > div:last-child > p {   border-right:.1rem #07496a solid; color: #07496a; font-size: .22rem; padding-right: 20px; }
+.p2-middle:after { content:'';width: 0;height: 0;clear: both; }
+
+.p2-hi { position:relative; height:1.15rem; margin-bottom: .2rem;}
+.p2-hi > img:first-child { position:absolute; left: .65rem;  width: 1.21rem; }
+.p2-hi > img:last-child { position:absolute; width: .72rem; right:.35rem; bottom: -.2rem; }
+
+/**************************************************************************************************
+ 4.0    third page
+***************************************************************************************************/
+.third-page .request { position:absolute; top:2.74rem; right:.2rem; width: 2.38rem; height: 1.54rem;
+background: url("../images/img-request.png") center no-repeat; background-size: 100% 100%; }
+.third-page .request > img {  position: absolute;  width: .58rem;  right: .2rem;  top: .45rem; }
+.third-page .book { position:absolute; top:3rem; left:1rem; width: 3.48rem; height: 4.39rem;
+    background: url("../images/img-book.png") center no-repeat; background-size: 100% 100%; }
+.third-page .explain { width: 5.9rem; margin: 7.1rem auto 0 auto; }
+.third-page .explain .car { width: 1.05rem; height: .7rem; background: url("../images/icon-car-1.png") center no-repeat; background-size: 100% 100%; }
+.third-page .explain .line { width: 100%; height: 8px; background: url("../images/img-line.png") center no-repeat; background-size: 100% 100%; }
+.third-page .explain > ul {  list-style:none; width: 100%; margin-top: .1rem; }
+.third-page .explain > ul li { font-size: .14rem; color: #07496a; line-height: 120%; text-align: left; padding-left:.5rem; text-indent:-.5rem; }
+/**************************************************************************************************
+ 5.0    fourth page
+***************************************************************************************************/
+#victory { position: absolute; top:1.78rem; right: .5rem; width: .49rem;}
+.fourth-page .dialogue { margin:3rem auto 0 auto; width: 5.14rem; overflow: hidden; }
+.fourth-page .dialogue > div { width:2.31rem; }
+.fourth-page .dialogue > div:first-child { float: left; text-align: right; }
+.fourth-page .dialogue > div:last-child { float: right; text-align: left; }
+.fourth-page .dialogue:after {content:'';width: 0;height: 0;clear: both; }
+.fourth-page .dialogue img { width: .91rem; }
+.left-dialogue,.right-dialogue { width: 100%; height: 1.95rem;  background-position: .28rem .28rem, center;  background-repeat: no-repeat;  background-size: .29rem .28rem,98% 98%;overflow: hidden; }
+.left-dialogue {  background-image: url(../images/icon-start.png),url(../images/img-left-pop.png);  }
+.right-dialogue {  background-image: url(../images/icon-start.png),url(../images/img-right-pop.png); }
+.left-dialogue > p { margin-top:.6rem; padding-left:.3rem; padding-right: .3rem; font-size: .18rem; color:#07496a; text-align: justify; }
+.right-dialogue > p { padding-left:.3rem; padding-right: .3rem; font-size: .18rem; text-align: left; color:#07496a;}
+.right-dialogue > p:first-child { margin-top:.7rem; color:#b62530; }
+
+.fourth-page .banner {position:relative; margin:.5rem auto 0 auto; width: 5.25rem; height: 1.27rem; background: url("../images/img-p5-w.png") center no-repeat; background-size: cover; text-align: center; }
+.fourth-page .banner > img:first-child { margin-top: .25rem; width:4.67rem; }
+.fourth-page .banner > img:last-child { position: absolute; bottom:-.35rem; left:50%; margin-left:-.5rem; width:1.05rem; }
+/**************************************************************************************************
+ 6.0    fifth page
+***************************************************************************************************/
+.fifth-page .trumpet {position: absolute; top:3rem; left: .27rem;  width: 1.76rem; }
+.fifth-page .words { position:  absolute; right: .15rem; top:2.96rem; width: 4.37rem; text-align: right; }
+.fifth-page .introduce { width:100%; }
+.fifth-page .small-people-1 { width: 2.57rem; }
+.fifth-page .callUpon { width: 2.27rem; }
+.fifth-page .small-people-2 { width: .48rem; }
+.fifth-page .superman { position: absolute; left: 0;bottom: 1rem; width: 4rem; }
+/**************************************************************************************************
+ 7.0    sixth page
+***************************************************************************************************/
+.sixth-page { text-align: center;}
+.sixth-page .terminator{position:absolute; width: 4.09rem; top: 2.9rem;left: 1.5rem; }
+.sixth-page .superman { position: absolute; width: 2.5rem;  left: .4rem;  bottom: 4.2rem; }
+.sixth-page .buttonGroup { position: absolute; left:.275rem;  bottom:.5rem; width: 5.85rem; overflow: hidden;}
+.sixth-page .buttonGroup a { display: block;}
+.sixth-page .buttonGroup a:nth-child(1){float: left;  width: 2.82rem; height: 1.33rem; background: url(../images/btn-1.png) center center no-repeat; background-size: cover; }
+.sixth-page .buttonGroup a:nth-child(2){float: right;  width: 2.82rem; height: 1.33rem; background: url(../images/btn-2.png) center center no-repeat; background-size: cover;}
+.sixth-page .buttonGroup a:nth-child(3){float: right; width: 100%; height: 1.68rem; margin-top:.46rem; background: url(../images/btn-3.png) center center no-repeat; background-size: cover; }
+.sixth-page .buttonGroup:after {  content:'';width: 0;height: 0;clear: both;  }
+
+/**************************************************************************************************
+ 8.0    seventh page
+***************************************************************************************************/
+.seventh-page { }
+.seventh-page .banner { position:relative; width: 5.92rem; height:1.26rem; overflow: hidden; margin: 1.86rem auto 0 auto; }
+.seventh-page .banner > img:first-child { position: absolute; left: 0; top:0; width: 100%; }
+.seventh-page .banner > img:last-child { position: absolute; right: .8rem; top:0; width: .61rem; }
+.seventh-page .vs { position: relative; width: 100%; overflow: hidden; text-align: center; margin-top: .15rem; }
+.seventh-page .vs img:nth-child(1) { float: left; width: 2.11rem;}
+.seventh-page .vs img:nth-child(2) { width: 1.65rem; }
+.seventh-page .vs img:nth-child(3) {float: right; width: 2.11rem; }
+.seventh-page .vs :after {  content:'';width: 0;height: 0;clear: both;  }
+.seventh-page .buttonGroup { margin:0 auto; width: 5rem; overflow: hidden;}
+.seventh-page .buttonGroup > div { width: 1.9rem;}
+.seventh-page .buttonGroup > div:first-child { float: left;}
+.seventh-page .buttonGroup > div:last-child { float: right;}
+#support-num,#nonsupport-num { width: 100%; text-align: center; font-size: .22rem; line-height: 200%; }
+#support-num { color: #b62530; }
+#nonsupport-num { color: #07496a; }
+#btn-support,#btn-nonsupport { display: block; width: 100%; height: .89rem; }
+#btn-support { background: url(../images/btn-4.png) center center no-repeat; background-size: cover; }
+#btn-nonsupport { background: url(../images/btn-5.png) center center no-repeat; background-size: cover; }
+.seventh-page .buttonGroup:after {  content:'';width: 0;height: 0;clear: both;  }
+.seventh-page .kol {position: relative; width:5.84rem; height: 3.24rem; margin: .2rem auto 0 auto; background: url("../images/img-p7-frame.png") center no-repeat; background-size: cover; }
+.seventh-page .kol > div { width: 100%; height: 50%; }
+.kol-name { font-weight:bolder; }
+.emphasis {margin-left: 5px; padding-left:5px; padding-right:5px;  color:white; font-weight:bold; background: url(../images/img-emphasis.png) center no-repeat; background-size: .94rem .27rem;}
+.topic { color:#b62530; margin-right: .2rem; }
+.seventh-page .kol > div:first-child :after { content:'';width: 0;height: 0;clear: both; }
+.seventh-page .kol .line { position: absolute; top:50%; margin-top:-.14rem;left:.2rem; width: 5.44rem;}
+#kolSwiper { width: 100%; height: 50%; }
+#kolSwiper img { float: left; margin-top:.39rem; margin-left:.35rem; width: .7rem; }
+#kolSwiper .swiper-slide > div { float: left; margin-top:.39rem; margin-left:.1rem; width:4.3rem; height: .7rem; }
+#kolSwiper p, #commentSwiper p { width:100%; font-size: .22rem; color:#07496a; line-height: 150%; }
+#commentSwiper { margin-top:.35rem; margin-left:.35rem; width: 5.4rem;}
+#commentSwiper .swiper-slide,#kolSwiper .swiper-slide { background:none; }
+/****************************************************************************************************************
+ 9.0 eighth-page
+*****************************************************************************************************************/
+.eighth-page { animation: p8Ani .4s step-start infinite;  background: url(../images/bg-p8.jpg) center center no-repeat;  background-size: cover;  text-align: center; }
+.wantYou { margin-top: 1.9rem; width: 2.05rem; }
+.eighth-page .banner { width: 4.04rem; margin: 0 auto; }
+.eighth-page .banner > img:first-child { width: 100%; }
+.eighth-page .banner p { width: 100%; font-size: .22rem; color: #07496a; text-align: center; line-height: 150%; }
+#joinForm > div { width: 5.1rem; margin: .30rem auto 0 auto; overflow: hidden; }
+#joinForm > div > input:first-child {float: left;}
+#joinForm > div > input:last-child {float: right;}
+#joinForm > div:after{ content:'';width: 0;height: 0;clear: both;  }
+#submit-join { display: block; width: 1.98rem; height: .85rem; background: url(../images/btn-6.png) center center no-repeat; background-size: cover; margin: .26rem auto 0 auto; }
+#p8-car { width: 1.05rem; margin-top: .53rem; }
+@keyframes p8Ani {
+    0% { background-image: url(../images/bg-p8.jpg);}
+    25% { background-image: url(../images/bg-p8-2.jpg);}
+    75% { background-image: url(../images/bg-p8-3.jpg);}
+    100% { background-image: url(../images/bg-p8.jpg);}
+}
+/****************************************************************************************************************
+ 10.0 ninth-page
+*****************************************************************************************************************/
+.ninth-page { background: url(../images/bg-p9.jpg) center center no-repeat;  background-size: cover;  text-align: center; }
+.ninth-page .banner {position: relative; width: 6rem; margin: 1.8rem auto 0 auto; }
+.ninth-page .banner > img:first-child { width: 100%; }
+.ninth-page .banner > img:last-child { position:absolute; top:0; right:.3rem; width: .61rem; }
+.ninth-page .liveData { position: relative;  width: 100%; margin-top: .2rem;  font-size: .22rem; color: #07496a; text-align: center; }
+.ninth-page .liveData .d { display: inline-block; width: 0; height: .15rem; border-left: 1px #07496a solid; vertical-align: middle;  }
+.ninth-page .live { width: 100%; height: 3.6rem; background-color: black;}
+.ninth-page .carDatas { width: 5.4rem; margin: .32rem auto 0 auto; }
+.ninth-page .carDatas > table { width: 100%; }
+.ninth-page .carDatas > table img { width: .19rem; vertical-align: middle; }
+.ninth-page .carDatas > table span { font-size:.22rem; color:#07496a; vertical-align: middle; }
+.ninth-page .carDatas .data { display: inline-block; width: .6rem; border: 1px #07496a solid; height:.33rem; line-height: .33rem; vertical-align: middle; font-size: .22rem; color: #07496a; }
+.ninth-page .carDatas > p { text-align: right; font-size: .22rem; color: #848586; margin-top: .28rem; }
+
+.datasRow { width: 100%; height: .4rem; }
+.datasRow > div { float:left; width: 25%; font-size: .22rem; color: #07496a; text-align: left; line-height: .4rem; height: 100%; }
+.datasRow label { margin-left:.15rem; vertical-align: middle;}
+.datasRow img { width: .19rem; vertical-align: middle; }
+.especially span { float: left; }
+.especially div { float: left; width: .6rem; height:.33rem; line-height: .33rem; border: 1px #07496a solid; text-align: center; }
+.especially:after { content:'';width: 0;height: 0;clear: both; }
+.datasRow:after { content:'';width: 0;height: 0;clear: both; }
+
+/****************************************************************************************************************
+ 11.0 common animation
+*****************************************************************************************************************/
+
+.duration_h1s{
+    animation-duration: .5s;
+}
+
+.zoomIn_quick {
+    animation-name: zoomIn;
+    animation-duration: .5s;
+}
+
+.supermanFlyOut {
+    animation: supermanFlyOut 1s ease;
+    animation-fill-mode: both;
+}
+
+@keyframes supermanFlyOut {
+    0% { opacity: 1; transform: none;}
+    100% { opacity: 0; transform:translate(100%,-100%); }
+}
+
+.supermanFlyIn {
+    animation: supermanFlyIn .5s ease;
+    animation-fill-mode: both;
+}
+
+@keyframes supermanFlyIn {
+    0% { opacity: 0; transform: translate(-100%,100%);}
+    100% { opacity: 1; transform:none; }
+}
+
+.carDisappearRight{
+    animation-name: carDisappearRight;
+    animation-duration: 1s;
+    animation-fill-mode: backwards;
+}
+
+@keyframes carDisappearRight {
+    0% { opacity: 1; transform: none;}
+    100% { opacity: 0; transform:translate(5.9rem,0); }
+}
+
+.bookRotateInLeft {
+    animation-name: bookRotateInLeft;
+}
+@keyframes bookRotateInLeft {
+    0% { opacity: 0; transform: rotateZ(-360deg) scale(.5); transform-origin:center center;}
+    100% { opacity: 1; transform:rotateZ(0deg) scale(1); transform-origin:center center; }
+}
