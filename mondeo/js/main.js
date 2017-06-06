@@ -157,9 +157,9 @@
                 clearInterval(loadInterval);
                 loadInterval = -1;
                 $('.loading .superman').removeClass('vibrateAni').addClass('supermanFlyOut');
-                $('.cloud').removeClass('cloudAni');
-                var $cloud = $('.cloud');
-                TweenLite.to($cloud,1,{ opacity :0 });
+                //$('.cloud').removeClass('cloudAni');
+                //var $cloud = $('.cloud');
+                //TweenLite.to($cloud,1,{ opacity :0 });
                 $('.loading').addClass('animated delay_1s fadeOut').one(animationEnd,function(){
                     $(this).hide();
                     firstPageAni();
@@ -175,11 +175,11 @@
             preload: 'auto'
         });
 
-        player.src('http://pili-live-hls.yunmfang.com/ford/mondeo.m3u8');
+        //player.src('http://pili-live-hls.yunmfang.com/ford/mondeo.m3u8');
 
         player.on('error',function(){
-            alert('视频源失效');
-            player.src('http://vedio.yunmfang.com/K6015-480p-16-9.mp4');
+            //alert('视频源失效');
+            //player.src('http://vedio.yunmfang.com/K6015-480p-16-9.mp4');
         });
 
         player.on('ended',function(){
@@ -230,8 +230,9 @@
             direction : 'vertical',
             loop: false,
             onInit: function(swiper){
-                if(swiper.activeIndex == FIFTH_PAGE){
+                if(swiper.activeIndex == FIRST_PAGE){
                     swiper.lockSwipeToPrev();
+                    swiper.lockSwipeToNext();
                 }
             },
             onSlideChangeStart: handlerChangeStart
@@ -250,6 +251,15 @@
             case FIRST_PAGE:
                 firstPageAni();
                 swiper.lockSwipeToPrev();
+                break;
+            case SECOND_PAGE:
+                secondPageAni();
+                break;
+            case THIRD_PAGE:
+                thirdPageAni();
+                break;
+            case FOURTH_PAGE:
+                fourthPageAni();
                 break;
             case SIXTH_PAGE:
                 swiper.unlockSwipeToPrev();
@@ -490,24 +500,70 @@
         $('.first-page .superman').addClass('supermanFlyIn').one(animationEnd,function(){
             $(this).removeClass('supermanFlyIn');
         });
-        $('#aside-1').addClass('animated delay_2-5s bounceIn').one(animationEnd,function(){
-            $(this).removeClass('animated delay_2-5s bounceIn');
-        });
-        $('#aside-2').addClass('animated delay_2s bounceIn').one(animationEnd,function(){
+        $('#aside-1').addClass('animated delay_2s duration_h1s bounceIn').one(animationEnd,function(){
             $(this).removeClass('animated delay_2s bounceIn');
         });
-        $('#aside-3').addClass('animated delay_1-5s bounceIn').one(animationEnd,function(){
+        $('#aside-2').addClass('animated delay_1-5s duration_h1s bounceIn').one(animationEnd,function(){
             $(this).removeClass('animated delay_1-5s bounceIn');
         });
-        $('#aside-4').addClass('animated delay_1s bounceIn').one(animationEnd,function(){
+        $('#aside-3').addClass('animated delay_1s duration_h1s bounceIn').one(animationEnd,function(){
             $(this).removeClass('animated delay_1s bounceIn');
         });
-        $('.older').addClass('animated delay_3-5s bounceIn').one(animationEnd,function(){
-            $(this).removeClass('animated delay_3-5s bounceIn');
+        $('#aside-4').addClass('animated delay_h1s duration_h1s bounceIn').one(animationEnd,function(){
+            $(this).removeClass('animated delay_h1s bounceIn');
         });
-        $('#fp-car').addClass('animated delay_4-5s carFadeOutRight').one(animationEnd,function(){
-            $(this).removeClass('animated delay_4-5s carFadeOutRight');
+        $('.older').addClass('animated delay_2-5s bounceIn').one(animationEnd,function(){
+            $(this).removeClass('animated delay_2-5s bounceIn');
         });
+        $('#fp-car').addClass('animated delay_3s carFadeOutRight').one(animationEnd,function(){
+            $(this).removeClass('animated delay_3s carFadeOutRight');
+        });
+    }
+
+    function secondPageAni(){
+        $('#olderDriver').addClass('animated slideInLeft').one(animationEnd,function(){
+            $(this).removeClass('animated slideInLeft');
+        });
+        $('#olderDriverAside').addClass('animated delay_h1s fadeIn').one(animationEnd,function(){
+            $(this).removeClass('animated delay_h1s fadeIn');
+        });
+        $('.p2-hi').addClass('animated delay_1s bounceIn').one(animationEnd,function(){
+            $(this).removeClass('animated delay_1s bounceIn');
+        });
+        $('#youngAside').addClass('animated delay_1-5s fadeIn').one(animationEnd,function(){
+            $(this).removeClass('animated delay_1-5s fadeIn');
+        });
+    }
+
+    function thirdPageAni(){
+        $('.explain .car').addClass('animated carDisappearRight').one(animationEnd,function(){
+            $(this).removeClass('animated carDisappearRight');});
+        $('.third-page .book').addClass('animated delay_h1s bookRotateInLeft').one(animationEnd,function(){
+            $(this).removeClass('animated delay_h1s bookRotateInLeft');});
+        $('.third-page  .request').addClass('animated delay_1-5s bounceIn').one(animationEnd,function(){
+            $(this).removeClass('animated delay_1-5s bounceIn');});
+    }
+
+    function fourthPageAni(){
+        var tl = new TimelineLite();
+        var $lg = $('#leftGif');
+        var $rg = $('#rightGif');
+        tl.from($lg,.5,{x:-300,opacity:0}).from($rg,.5,{x:300,opacity:0});
+        $('.left-dialogue').addClass('animated delay_h1s bounceIn').one(animationEnd,function(){
+            $(this).removeClass('animated delay_h1s bounceIn');
+        });
+        $('.right-dialogue').addClass('animated delay_1-5s bounceIn').one(animationEnd,function(){
+            $(this).removeClass('animated delay_1-5s bounceIn');
+        });
+
+        $('.fourth-page .banner').addClass('animated delay_2s fadeIn').one(animationEnd,function(){
+            $(this).removeClass('animated delay_2s fadeIn');
+        });
+
+        $('#p4-car').addClass('animated delay_2-5s fadeInLeft').one(animationEnd,function(){
+            $(this).removeClass('animated delay_2-5s fadeInLeft');
+        });
+
     }
 
     /**

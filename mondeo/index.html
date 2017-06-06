@@ -30,6 +30,7 @@
     <script type="text/javascript" src="../public/scripts/iscroll.js"></script>
     <!-- TweenLite.min.js-->
     <script type="text/javascript" src="../public/plugins/greensock-js/src/minified/TweenLite.min.js"></script>
+    <script type="text/javascript" src="../public/plugins/greensock-js/src/minified/TimelineLite.min.js"></script>
     <script type="text/javascript" src="../public/plugins/greensock-js/src/uncompressed/plugins/CSSPlugin.js"></script>
 
     <script>
@@ -60,7 +61,7 @@
 </script>
 <div class="loading">
     <div class="content">
-        <img class="cloud cloudAni" src="images/img-cloud.png">
+        <!--<img class="cloud cloudAni" src="images/img-cloud.png">-->
         <img class="superman vibrateAni" src="images/superman.png">
     </div>
     <p class="percent">80%</p>
@@ -154,18 +155,18 @@
                 <img class="topic-banner" src="images/img-p2-banner.png">
                 <div class="p2-middle">
                     <div>
-                        <p>
+                        <p id="olderDriverAside">
                             <span>跟我走，去三环！！</span><br>
                             <span>High起来，去四环！</span><br>
                             <span>起飞咯！五环哈哈哈~</span>
                         </p>
-                        <img src="images/img-s-p-7.gif">
+                        <img id="olderDriver" src="images/img-s-p-7.gif">
                     </div>
                     <div>
                         <div class="p2-hi">
-                            <img src="images/img-hi.png"><img src="images/img-s-p-8.gif">
+                            <img id="hi" src="images/img-hi.png"><img id="young" src="images/img-s-p-8.gif">
                         </div>
-                        <p>
+                        <p id="youngAside">
                             <span>老司机，</span><br>
                             <span>咱们去干啥？要买个瓜么？</span><br>
                             <span>&nbsp;</span>
@@ -203,8 +204,8 @@
                 <img class="topic-banner" src="images/img-p4-banner.png">
                 <img id="victory" class="animated infinite wobble" src="images/icon-victory.png">
                  <div class="dialogue">
-                     <div><div class="left-dialogue"><p>美系不行，油老虎！我只知道日系混动大法好！</p></div><img src="images/img-s-p-4.png"></div>
-                     <div><div><div class="right-dialogue"><p>native!</p><p>混动出的早就好？</p></div><img src="images/img-s-p-5.png"></div>
+                     <div><div class="left-dialogue"><p>美系不行，油老虎！我只知道日系混动大法好！</p></div><img id="leftGif" src="images/img-s-p-4.png"></div>
+                     <div><div><div class="right-dialogue"><p>native!</p><p>混动出的早就好？</p></div><img id="rightGif" src="images/img-s-p-5.png"></div>
                      </div>
                  </div>
                 <div class="banner">

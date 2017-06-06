@@ -648,6 +648,11 @@ background: url("../images/img-request.png") center no-repeat; background-size: 
 /****************************************************************************************************************
  11.0 common animation
 *****************************************************************************************************************/
+
+.duration_h1s{
+    animation-duration: .5s;
+}
+
 .zoomIn_quick {
     animation-name: zoomIn;
     animation-duration: .5s;
@@ -664,11 +669,30 @@ background: url("../images/img-request.png") center no-repeat; background-size: 
 }
 
 .supermanFlyIn {
-    animation: supermanFlyIn 1s ease;
+    animation: supermanFlyIn .5s ease;
     animation-fill-mode: both;
 }
 
 @keyframes supermanFlyIn {
     0% { opacity: 0; transform: translate(-100%,100%);}
     100% { opacity: 1; transform:none; }
+}
+
+.carDisappearRight{
+    animation-name: carDisappearRight;
+    animation-duration: 1s;
+    animation-fill-mode: backwards;
+}
+
+@keyframes carDisappearRight {
+    0% { opacity: 1; transform: none;}
+    100% { opacity: 0; transform:translate(5.9rem,0); }
+}
+
+.bookRotateInLeft {
+    animation-name: bookRotateInLeft;
+}
+@keyframes bookRotateInLeft {
+    0% { opacity: 0; transform: rotateZ(-360deg) scale(.5); transform-origin:center center;}
+    100% { opacity: 1; transform:rotateZ(0deg) scale(1); transform-origin:center center; }
 }
