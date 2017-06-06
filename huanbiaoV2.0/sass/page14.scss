@@ -1,0 +1,217 @@
+@import "common";
+@import "bootstrap.min";
+.topDiv {
+  width: 100%;
+  height: 86px;
+  background: #171d59 url("../img/14/14-topBg.jpg") no-repeat center 0;
+  .content {
+    display: block;
+    margin: 0 auto;
+    width: 1200px;
+    height: 100%;
+    .leftDiv {
+      float: left;
+      width: 500px;
+      height: 86px;
+      line-height: 86px;
+      color: white;
+    }
+    .rightDiv {
+      float: right;
+      width: 500px;
+      height: 86px;
+      .dropdown {
+        float: right;
+        width: 120px;
+        margin-top: 28px;
+        margin-right: 10px;
+        .dropdown-toggle {
+          width: 120px;
+          text-align: left;
+          background:#EFF0F1 url("../img/14/14-arrow.png") no-repeat 100px center;
+          border: none;
+        }
+      }
+      .btnSearch {
+        float: right;
+        width: 40px;
+        height: 30px;
+        margin-top: 28px;
+        background: #EFF0F1 url("../img/01/1-search.png") no-repeat center;
+        background-size: 20px auto;
+      }
+      input {
+        float: right;
+        width: 220px;
+        height: 30px;
+        line-height: 30px;
+        text-indent: 5px;
+        margin-top: 28px;
+        font-size: 14px;
+        color: #7F8081;
+        background-color: #EFF0F1;
+      }
+    }
+  }
+}
+
+.menuDiv {
+  width: 100%;
+  height: 180px;
+  background-color: #EDEEEF;
+  .content {
+    display: block;
+    margin: 0 auto;
+    width: 840px;
+    height: 180px;
+    .item {
+      float: left;
+      width: 120px;
+      height: 180px;
+      margin: 0 80px;
+      text-align: center;
+      .imgFrame {
+        display: block;
+        width: 70px;
+        height: 70px;
+        margin: 30px auto 0;
+        background: url("../img/01/1-itemBg.png") no-repeat center;
+        img {
+          margin: 13px auto;
+        }
+      }
+      .title {
+        margin-top: 20px;
+        font-size: 24px;
+        text-align: center;
+        color: black;
+      }
+    }
+    .item:hover {
+      .imgFrame {
+        background: url("../img/01/1-itemBg-hover.png") no-repeat center;
+      }
+      .title {
+        color: #1E2A82;
+      }
+      .link {
+        color: #1E2A82;
+        span {
+          background: url("../img/01/1-arrowDetail-hover.png") no-repeat center;
+        }
+      }
+    }
+  }
+}
+
+.contentFrame {
+  display: block;
+  margin: 0 auto 30px;
+  width: 1200px;
+  .item {
+    width: 100%;
+    height: 448px;
+    background-color: #EDEEEF;
+    vertical-align: top;
+    margin-top: 30px;
+    border: 1px solid #E3E3E4;
+    .titleFrame {
+      width: 100%;
+      height: 55px;
+      border-bottom: 2px solid #1E2A82;
+      .title {
+        float: left;
+        color: #1E2A82;
+        font-size: 20px;
+        font-weight: bold;
+        margin-left: 20px;
+        height: 55px;
+        line-height: 55px;
+        img {
+          margin-right: 10px;
+        }
+      }
+      .state {
+        float: left;
+        margin-top: 16px;
+        margin-left: 20px;
+        width: 88px;
+        height: 22px;
+        line-height: 22px;
+        text-align: center;
+        color: white;
+        background-color: #1E2A82;
+      }
+      .rightManage {
+        float: right;
+        color: #1E2A82;
+        height: 55px;
+        line-height: 55px;
+        font-size: 16px;
+        margin-right: 20px;
+        img {
+          margin-right: 10px;
+        }
+      }
+    }
+    .infoDiv {
+      margin: 20px;
+      width: 1160px;
+      height: 312px;
+      table {
+        font-size: 14px;
+        border: 1px solid #E3E3E4;
+        .tr1,.tr2,.tr3, .tr5 { height: 40px;}
+        .tr4 { height: 60px; }
+        .tr6 { height: 120px; }
+        tr, td, th {border:1px solid #E3E3E4;}
+        th {
+          margin-left: 15px;
+          color: #636465;
+        }
+        .th1 {
+          width: 120px;
+          font-size: 14px;
+          line-height: 40px;
+          text-align: right;
+          vertical-align: top;
+        }
+        .th2 {
+          width: 460px;
+          vertical-align: top;
+          p {
+            margin: 10px;
+            line-height: 20px;
+          }
+        }
+      }
+    }
+  }
+}
+
+nav {
+  width: 100%;
+  height: 34px;
+  text-align: center;
+  margin-bottom: 50px;
+  .pagination {
+    *display:inline;
+    *zoom:1;
+    margin-top: 0;
+    text-align: center;
+    a {
+      color: #626364;
+      margin: 5px;
+      background-color: #EDEEEF;
+    }
+    a:hover {
+      color: white;
+      background-color: #1E2A82;
+    }
+    .active {
+      color: white;
+      background-color: #1E2A82;
+    }
+  }
+
+}
