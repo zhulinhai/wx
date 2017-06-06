@@ -72,63 +72,63 @@
         /**
          * 获取网页评论
          */
-        //http.ajaxRequest({
-        //    type:'GET',
-        //    uri:'h5/getComments?flag='+flag,
-        //    success:function(json){
-        //        var comments = json.data.data;
-        //        var dom = $('#commentSwiper').find('.swiper-wrapper');
-        //        var htmlStr = '';
-        //        for(var i =0; i < comments.length; i++){
-        //            var comment = comments[i];
-        //            htmlStr += '<div class="swiper-slide swiper-no-swiping">';
-        //            htmlStr += '<p style="font-weight: bolder">' + comment.name+'&nbsp;:</p>';
-        //            htmlStr += '<p><span class="topic">#新蒙迪欧HEV#</span>'+ comment.comment +'</p>';
-        //            htmlStr += '</div>';
-        //        }
-        //        $(dom).html(htmlStr);
-        //    },
-        //    error:function(e){
-        //        if(e.responseJSON){
-        //            alert(e.responseJSON.message);
-        //        }else
-        //            alert('您已参加活动，请继续浏览后续内容!');
-        //    }
-        //});
+        http.ajaxRequest({
+            type:'GET',
+            uri:'h5/getComments?flag='+flag,
+            success:function(json){
+                var comments = json.data.data;
+                var dom = $('#commentSwiper').find('.swiper-wrapper');
+                var htmlStr = '';
+                for(var i =0; i < comments.length; i++){
+                    var comment = comments[i];
+                    htmlStr += '<div class="swiper-slide swiper-no-swiping">';
+                    htmlStr += '<p style="font-weight: bolder">' + comment.name+'&nbsp;:</p>';
+                    htmlStr += '<p><span class="topic">#新蒙迪欧HEV#</span>'+ comment.comment +'</p>';
+                    htmlStr += '</div>';
+                }
+                $(dom).html(htmlStr);
+            },
+            error:function(e){
+                if(e.responseJSON){
+                    alert(e.responseJSON.message);
+                }else
+                    alert('您已参加活动，请继续浏览后续内容!');
+            }
+        });
 
         /**
          * 初始化页面数据
          */
-        //http.ajaxRequest({type:'GET',uri:'h5/getInitDatas?flag='+flag,success:function(json){
-        //    var data = json.data;
-        //    if(data){
-        //        store.lives = data.lives;
-        //        store.audiences = data.audiences;
-        //        store.tricyclic_turns = data.tricyclic_turns;
-        //        store.tetracyclic_turns = data.tetracyclic_turns;
-        //        store.pentacyclic_turns = data.pentacyclic_turns;
-        //        store.used_gasoline = data.used_gasoline;
-        //        store.used_gasonline_tera  = data.used_gasonline_tera;
-        //        store.used_gasonline_penta = data.used_gasonline_penta;
-        //        store.used_time_tri = data.used_time_tri;
-        //        store.support = data.support;
-        //        store.nonsupport = data.nonsupport;
-        //
-        //        $('#lives').html(store.lives);
-        //        $('#audiences').html(store.audiences);
-        //
-        //        $('#tricyclic_turns').html(store.tricyclic_turns + '圈');
-        //        $('#tetracyclic_turns').html(store.tetracyclic_turns + '圈');
-        //        $('#pentacyclic_turns').html(store.pentacyclic_turns + '圈');
-        //
-        //        $('#used_gasoline').html(store.used_gasoline + 'L');
-        //        $('#used_gasonline_tera').html(store.used_gasonline_tera + 'L');
-        //        $('#used_gasonline_penta').html(store.used_gasonline_penta + 'L');
-        //
-        //        $('#support-num').html(store.support);
-        //        $('#nonsupport-num').html(store.nonsupport);
-        //    }
-        //}});
+        http.ajaxRequest({type:'GET',uri:'h5/getInitDatas?flag='+flag,success:function(json){
+            var data = json.data;
+            if(data){
+                store.lives = data.lives;
+                store.audiences = data.audiences;
+                store.tricyclic_turns = data.tricyclic_turns;
+                store.tetracyclic_turns = data.tetracyclic_turns;
+                store.pentacyclic_turns = data.pentacyclic_turns;
+                store.used_gasoline = data.used_gasoline;
+                store.used_gasonline_tera  = data.used_gasonline_tera;
+                store.used_gasonline_penta = data.used_gasonline_penta;
+                store.used_time_tri = data.used_time_tri;
+                store.support = data.support;
+                store.nonsupport = data.nonsupport;
+
+                $('#lives').html(store.lives);
+                $('#audiences').html(store.audiences);
+
+                $('#tricyclic_turns').html(store.tricyclic_turns + '圈');
+                $('#tetracyclic_turns').html(store.tetracyclic_turns + '圈');
+                $('#pentacyclic_turns').html(store.pentacyclic_turns + '圈');
+
+                $('#used_gasoline').html(store.used_gasoline + 'L');
+                $('#used_gasonline_tera').html(store.used_gasonline_tera + 'L');
+                $('#used_gasonline_penta').html(store.used_gasonline_penta + 'L');
+
+                $('#support-num').html(store.support);
+                $('#nonsupport-num').html(store.nonsupport);
+            }
+        }});
     });
 
     /**
@@ -196,7 +196,7 @@
         //listen the channel broadcast
         socket.on('live_channel_'+flag , function(data){
             console.log(data);
-
+            data = data.props;
             store.lives = !data.lives ? store.lives :data.lives;
             store.audiences = !data.audiences ?store.audiences : data.audiences;
 
@@ -232,7 +232,7 @@
             onInit: function(swiper){
                 if(swiper.activeIndex == FIRST_PAGE){
                     swiper.lockSwipeToPrev();
-                    swiper.lockSwipeToNext();
+                    //swiper.lockSwipeToNext();
                 }
             },
             onSlideChangeStart: handlerChangeStart
@@ -294,12 +294,12 @@
                 //swiper.lockSwipeToNext();
                 break;
             case EIGHTH_PAGE:
-                $('.wantYou').addClass('animated delay_1s zoomIn_quick').one(animationEnd,function(){
-                    $(this).removeClass('animated delay_1s zoomIn_quick');
+                $('.wantYou').addClass('animated zoomIn_quick').one(animationEnd,function(){
+                    $(this).removeClass('animated zoomIn_quick');
                     startPulse();
                 });
-                $('.eighth-page .banner').addClass('animated delay_1-5s fadeIn').one(animationEnd,function(){
-                    $(this).removeClass('animated delay_3-5s fadeIn');});
+                $('.eighth-page .banner').addClass('animated delay_h1s fadeIn').one(animationEnd,function(){
+                    $(this).removeClass('animated delay_h1s fadeIn');});
                 //swiper.lockSwipeToPrev();
                 //swiper.lockSwipeToNext();
                 break;
@@ -522,26 +522,26 @@
 
     function secondPageAni(){
         $('#olderDriver').addClass('animated slideInLeft').one(animationEnd,function(){
-            $(this).removeClass('animated slideInLeft');
-        });
+            $(this).removeClass('animated slideInLeft');});
         $('#olderDriverAside').addClass('animated delay_h1s fadeIn').one(animationEnd,function(){
-            $(this).removeClass('animated delay_h1s fadeIn');
-        });
+            $(this).removeClass('animated delay_h1s fadeIn');});
         $('.p2-hi').addClass('animated delay_1s bounceIn').one(animationEnd,function(){
-            $(this).removeClass('animated delay_1s bounceIn');
-        });
+            $(this).removeClass('animated delay_1s bounceIn');});
         $('#youngAside').addClass('animated delay_1-5s fadeIn').one(animationEnd,function(){
-            $(this).removeClass('animated delay_1-5s fadeIn');
-        });
+            $(this).removeClass('animated delay_1-5s fadeIn');});
     }
 
     function thirdPageAni(){
-        $('.explain .car').addClass('animated carDisappearRight').one(animationEnd,function(){
-            $(this).removeClass('animated carDisappearRight');});
+        $('.third-page  .request').addClass('animated bounceIn').one(animationEnd,function(){
+            $(this).removeClass('animated bounceIn');});
         $('.third-page .book').addClass('animated delay_h1s bookRotateInLeft').one(animationEnd,function(){
             $(this).removeClass('animated delay_h1s bookRotateInLeft');});
-        $('.third-page  .request').addClass('animated delay_1-5s bounceIn').one(animationEnd,function(){
-            $(this).removeClass('animated delay_1-5s bounceIn');});
+        $('.explain').addClass('animated delay_1s fadeIn').one(animationEnd,function(){
+            $(this).removeClass('animated delay_1s fadeIn');
+        });
+        $('.explain .car').addClass('animated delay_2s carDisappearRight').one(animationEnd,function(){
+            $(this).removeClass('animated delay_2s carDisappearRight');});
+
     }
 
     function fourthPageAni(){
@@ -552,16 +552,16 @@
         $('.left-dialogue').addClass('animated delay_h1s bounceIn').one(animationEnd,function(){
             $(this).removeClass('animated delay_h1s bounceIn');
         });
-        $('.right-dialogue').addClass('animated delay_1-5s bounceIn').one(animationEnd,function(){
-            $(this).removeClass('animated delay_1-5s bounceIn');
+        $('.right-dialogue').addClass('animated delay_1s bounceIn').one(animationEnd,function(){
+            $(this).removeClass('animated delay_1s bounceIn');
         });
 
-        $('.fourth-page .banner').addClass('animated delay_2s fadeIn').one(animationEnd,function(){
-            $(this).removeClass('animated delay_2s fadeIn');
+        $('.fourth-page .banner').addClass('animated delay_1-5s fadeIn').one(animationEnd,function(){
+            $(this).removeClass('animated delay_1-5s fadeIn');
         });
 
-        $('#p4-car').addClass('animated delay_2-5s fadeInLeft').one(animationEnd,function(){
-            $(this).removeClass('animated delay_2-5s fadeInLeft');
+        $('#p4-car').addClass('animated delay_2s fadeInLeft').one(animationEnd,function(){
+            $(this).removeClass('animated delay_2s fadeInLeft');
         });
 
     }
