@@ -85,7 +85,7 @@ input::-webkit-input-placeholder{
 }
 
 .pop .pop-car { position: absolute; width: 1.05rem; left: 50%; margin-left: -.6rem; bottom: -.3rem;
-animation: smallCarAni .6s step-start infinite;
+    animation: smallCarAni .6s step-start infinite;
 }
 @keyframes smallCarAni {
     0% { transform: translateY(0);}
@@ -101,7 +101,7 @@ animation: smallCarAni .6s step-start infinite;
 
 .pop-submit > div { height: 7.56rem; background: url(../images/bg-submit.png) center no-repeat;  background-size: cover; }
 .pop-submit > div .attitude {position: relative; width: 3.02rem; height:2.15rem; margin:0 auto; padding-top: .2rem;
-background: url("../images/img-pop-support.png") left top no-repeat; background-size: 2.36rem 1.53rem; }
+    background: url("../images/img-pop-support.png") left top no-repeat; background-size: 2.36rem 1.53rem; }
 .pop-submit > div .attitude > img { position: absolute; bottom:0; right: .3rem; width: .9rem; }
 #selectForm { width:4.3rem; margin: 0 auto; }
 #selectForm > div { width: 100%; overflow: hidden; }
@@ -111,10 +111,10 @@ background: url("../images/img-pop-support.png") left top no-repeat; background-
 #selectForm > div:nth-child(n+2) { margin-top: .1rem; }
 .pop-submit .pop-car { margin-left: -.3rem; bottom: -.2rem; }
 #submit-support { display: block; width: 1.98rem; height: .85rem; background: url(../images/btn-7.png) center center no-repeat; background-size: cover;
-margin-top: .26rem; margin-left: 35%; }
+    margin-top: .26rem; margin-left: 35%; }
 .pop-rule > div { height: 8.25rem;  background: url(../images/bg-rule.png) center no-repeat;  background-size: cover; }
 .pop-rule  .pop-title {display:inline-block; position: relative;  width: 5.31rem; height:1.48rem; margin: .3rem auto 0 auto; background: url("../images/img-rule-w.png") center no-repeat;
-background-size: 100% 100%; }
+    background-size: 100% 100%; }
 .pop-rule  .pop-title > img { position: absolute; width: .98rem; top: 0; right: 1rem;}
 
 .pop-rule .pop-detail {
@@ -187,7 +187,7 @@ background-size: 100% 100%; }
 }
 
 .first-page .flash{
-   position: absolute;
+    position: absolute;
     top:1.6rem;
     left: 0;
     width: 100%;
@@ -230,9 +230,9 @@ background-size: 100% 100%; }
 }
 
 .carFadeOutRight {
-  animation-name: carFadeOutRight;
-  animation-timing-function: ease;
-  animation-fill-mode: backwards;
+    animation-name: carFadeOutRight;
+    animation-timing-function: ease;
+    animation-fill-mode: backwards;
 }
 
 @keyframes carFadeOutRight {
@@ -303,7 +303,7 @@ background-size: 100% 100%; }
  4.0    third page
 ***************************************************************************************************/
 .third-page .request { position:absolute; top:2.74rem; right:.2rem; width: 2.38rem; height: 1.54rem;
-background: url("../images/img-request.png") center no-repeat; background-size: 100% 100%; }
+    background: url("../images/img-request.png") center no-repeat; background-size: 100% 100%; }
 .third-page .request > img {  position: absolute;  width: .58rem;  right: .2rem;  top: .45rem; }
 .third-page .book { position:absolute; top:3.3rem; left:1rem; width: 3.48rem; height: 4.39rem;
     background: url("../images/img-book.png") center no-repeat; background-size: 100% 100%; }
@@ -343,7 +343,7 @@ background: url("../images/img-request.png") center no-repeat; background-size: 
 .fifth-page .introduce { width:100%; }
 .fifth-page .small-people-1 { width: 2.57rem; margin-top: .1rem; margin-bottom: .1rem; }
 .fifth-page .callUpon { width: 2.27rem; }
-.fifth-page .small-people-2 { width: .48rem; margin-top: .15rem; }
+.fifth-page .small-people-2 { width: .6rem; margin-top: .1rem; }
 .fifth-page .superman { position: absolute; left: .3rem;  bottom: 1.3rem;  width: 2.9rem; }
 /**************************************************************************************************
  7.0    sixth page
@@ -491,4 +491,10 @@ background: url("../images/img-request.png") center no-repeat; background-size: 
 @keyframes bookRotateInLeft {
     0% { opacity: 0; transform: rotateZ(-360deg) scale(.5); transform-origin:center center;}
     100% { opacity: 1; transform:rotateZ(0deg) scale(1); transform-origin:center center; }
+}
+
+@keyframes slideAni {
+    0%,30% {opacity: 0;transform: translate(0,-8px);}
+    60% {opacity: 1;transform: translate(0,0);}
+    100% {opacity: 0;transform: translate(0,-10px);}
 }
