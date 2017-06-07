@@ -198,16 +198,16 @@
         socket.on('live_channel_'+flag , function(data){
             console.log(data);
             data = data.props;
-            store.lives = !data.lives ? store.lives :data.lives;
-            store.audiences = !data.audiences ?store.audiences : data.audiences;
+            store.lives = parseInt(data.lives)== NaN ? store.lives :data.lives;
+            store.audiences = parseInt(data.audiences)== NaN ?store.audiences : data.audiences;
 
-            store.tricyclic_turns = !data.tricyclic_turns ? store.tricyclic_turns : data.tricyclic_turns;
-            store.tetracyclic_turns = !data.tetracyclic_turns ? store.tetracyclic_turns : data.tetracyclic_turns;
-            store.pentacyclic_turns = !data.pentacyclic_turns ? store.pentacyclic_turns : data.pentacyclic_turns;
+            store.tricyclic_turns = parseInt(data.tricyclic_turns)== NaN ? store.tricyclic_turns : data.tricyclic_turns;
+            store.tetracyclic_turns = parseInt(data.tetracyclic_turns)== NaN ? store.tetracyclic_turns : data.tetracyclic_turns;
+            store.pentacyclic_turns = parseInt(data.pentacyclic_turns)== NaN ? store.pentacyclic_turns : data.pentacyclic_turns;
 
-            store.used_gasoline = !data.used_gasoline ? store.used_gasoline : data.used_gasoline;
-            store.used_gasonline_tera  = !data.used_gasonline_tera ? store.used_gasonline_tera : data.used_gasonline_tera;
-            store.used_gasonline_penta = !data.used_gasonline_penta ? store.used_gasonline_penta : data.used_gasonline_penta;
+            store.used_gasoline = parseInt(data.used_gasoline)== NaN ? store.used_gasoline : data.used_gasoline;
+            store.used_gasonline_tera  = parseInt(data.used_gasonline_tera)== NaN ? store.used_gasonline_tera : data.used_gasonline_tera;
+            store.used_gasonline_penta = parseInt(data.used_gasonline_penta)== NaN ? store.used_gasonline_penta : data.used_gasonline_penta;
 
             $('#lives').html(store.lives);
             $('#audiences').html(store.audiences);
