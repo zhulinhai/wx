@@ -275,13 +275,13 @@
             case SEVENTH_PAGE:
                 if(!commentSwiper)
                     commentSwiper = new Swiper('#commentSwiper',{
-                        direction:'vertical',
+                        direction:'horizontal',
                         autoplay :AUTO_PLAY_SPEED,
                         loop:true,
                     });
                 if(!kolSwiper)
                     kolSwiper = new Swiper('#kolSwiper',{
-                        direction:'vertical',
+                        direction:'horizontal',
                         autoplay :AUTO_PLAY_SPEED_KOL,
                         loop:true,
                     });
