@@ -69,7 +69,7 @@
 <div class="pop pop-submit" style="display: none;">
     <div class="pop-content">
         <a class="close" href="javascript:void(0);"></a>
-        <div style="width: 0;height: .15rem;"></div>
+        <div style="width: 0;height: .25rem;"></div>
         <div class="attitude">
             <img src="images/gif-pop-submit.gif">
         </div>
@@ -93,7 +93,7 @@
             <div id="scroller">
                 <div id="pop-select" class="scroller">
                     <p><span class="item">活动介绍</span><span style="color: #b62530;">：</span>易车网3位大咖联袂挑战，驾驶新蒙迪欧24小时不间断，跑穿北京3、4、5环！一箱油挑战1214+公里，能否挑战成功？等你一票！</p>
-                    <p><span class="item">参与方式</span><span style="color: #b62530;">：</span>点击页面“挑战成功”或者’挑战失败“按钮（二选一）说出你的理由，填写个人真实姓名和电话即可参与。</p>
+                    <p><span class="item">参与方式</span><span style="color: #b62530;">：</span>点击页面“挑战成功”或者’挑战失败“按钮（二选一）说出你的理由(限制30个字以内)，填写个人真实姓名和电话即可参与。</p>
                     <p><span class="item">活动时间</span><span style="color: #b62530;">：</span>2017.06.12-2017.06.17</p>
                     <p><span class="item">奖品设置</span><span style="color: #b62530;">：</span>100元京东卡*50张</p>
                     <p><span class="item">抽奖机制</span><span style="color: #b62530;">：</span>活动结束后的30个工作日内，易车工作人员会<span style="color: #b62530">在后台留资网友中，随机抽取出50名网友，进行奖品发放。</span></p>
@@ -208,13 +208,14 @@
                 <img class="topic-banner" src="images/img-p4-banner.png">
                 <img id="victory" class="animated infinite wobble" src="images/icon-victory.png">
                  <div class="dialogue">
-                     <div><div class="left-dialogue"><p>美系不行，油老虎！我只知道日系混动大法好！</p></div><img id="leftGif" src="images/img-s-p-4.png"></div>
-                     <div><div><div class="right-dialogue"><p>native!</p><p>混动出的早就好？</p></div><img id="rightGif" src="images/img-s-p-5.png"></div>
+                     <div><div class="left-dialogue"><p>美系不行，油老虎！我只知道日系混动大法好！</p></div><img id="leftGif" src="images/gif-p4-1.gif"></div>
+                     <div><div><div class="right-dialogue"><p>native!</p><p>混动出的早就好？</p></div><img id="rightGif" src="images/gif-p4-2.gif"></div>
                      </div>
                  </div>
                 <div class="banner">
-                    <img src="images/img-p5-ww.png">
-                    <img id="p4-car" src="images/icon-car-1.png">
+                    <!--<img src="images/img-p5-ww.png">-->
+                    <!--<img id="p4-car" src="images/icon-car-1.png">-->
+                    <img class="banner-content" src="images/img-p5-w.png">
                     <img class="superman" src="images/superman-p1.gif">
                 </div>
                 <img class="bottom-line" src="images/temp/img-bottom.png">
@@ -329,7 +330,8 @@
                     <span>人气数 ：</span><span id="lives" style="margin-right: 20px;">123232</span><span class="d"></span><span style="margin-left: 20px;">在线人数 ：</span><span id="audiences">31231231</span>
                 </div>
                 <div class="live">
-                    <video id="my-player" class="video-js vjs-big-play-centered" webkit-playsinline playsinline autoplay="true">
+                    <img id="unlive" style="display: none;width: 100%;height: 100%;" src="images/bg-unlive.jpg">
+                    <video id="my-player" class="video-js vjs-big-play-centered" webkit-playsinline playsinline poster="images/bg-live.jpg">
                     </video>
                 </div>
                 <div class="carDatas">
@@ -353,102 +355,10 @@
     </div>
 </div>
 </body>
-<!--<script>-->
- <!--var FIRST_PAGE = 0;-->
- <!--var SECOND_PAGE = 1;-->
- <!--var THIRD_PAGE = 2;-->
- <!--var FOURTH_PAGE = 3;-->
- <!--var FIFTH_PAGE = 4;-->
- <!--var SIXTH_PAGE = 5;-->
- <!--var SEVENTH_PAGE = 6;-->
- <!--var EIGHTH_PAGE = 7;-->
- <!--var NINTH_PAGE = 8;-->
-
- <!--var current_page_index = 0;-->
- <!--var mswiper = null;-->
- <!--var myScroll = null;-->
-    <!--window.onload = function(){-->
-
-        <!--mswiper = new Swiper('#mainPage',{-->
-            <!--initialSlide:FIFTH_PAGE,-->
-            <!--direction : 'vertical',-->
-            <!--loop: false,-->
-            <!--onInit: function(swiper){-->
-                <!--if(swiper.activeIndex == FIRST_PAGE)-->
-                    <!--swiper.lockSwipeToPrev();-->
-            <!--},-->
-            <!--onSlideChangeStart: handlerChangeStart-->
-        <!--});-->
-    <!--}-->
-
- <!--function handlerChangeStart(swiper){-->
-
-     <!--current_page_index = swiper.activeIndex;-->
-
-     <!--switch (swiper.activeIndex){-->
-         <!--case FIRST_PAGE:-->
-             <!--swiper.lockSwipeToPrev();-->
-             <!--break;-->
-         <!--case SIXTH_PAGE:-->
-             <!--swiper.unlockSwipeToPrev();-->
-             <!--swiper.lockSwipeToNext();-->
-             <!--break;-->
-         <!--case SEVENTH_PAGE:-->
-         <!--case EIGHTH_PAGE:-->
-         <!--case NINTH_PAGE:-->
-             <!--swiper.lockSwipeToPrev();-->
-             <!--swiper.lockSwipeToNext();-->
-             <!--break;-->
-         <!--default:-->
-             <!--swiper.unlockSwipeToNext();-->
-             <!--swiper.unlockSwipeToPrev();-->
-             <!--break;-->
-     <!--}-->
- <!--}-->
-
- <!--$('#btn-select').click(function(e){-->
-   <!--mswiper.unlockSwipeToNext();-->
-   <!--mswiper.slideTo(SEVENTH_PAGE);-->
-<!--});-->
-
- <!--$('#btn-join').click(function(e){-->
-     <!--mswiper.unlockSwipeToNext();-->
-     <!--mswiper.slideTo(EIGHTH_PAGE);-->
- <!--});-->
-
- <!--$('#btn-live').click(function(e){-->
-     <!--mswiper.unlockSwipeToNext();-->
-     <!--mswiper.slideTo(NINTH_PAGE);-->
- <!--});-->
-
- <!--$('.btn-back').click(function(e){-->
-     <!--mswiper.unlockSwipeToPrev();-->
-     <!--mswiper.slideTo(SIXTH_PAGE);-->
-<!--});-->
-
-<!--$('.btn-rule').click(function(e){-->
-    <!--if(current_page_index == SEVENTH_PAGE){-->
-        <!--$('#pop-join').hide();-->
-        <!--$('#pop-select').show();-->
-        <!--$('.pop-rule').show();-->
-    <!--}else if(current_page_index == EIGHTH_PAGE){-->
-        <!--$('#pop-select').hide();-->
-        <!--$('#pop-join').show();-->
-        <!--$('.pop-rule').show();-->
-    <!--}-->
-
-    <!--if(myScroll == null)-->
-        <!--myScroll = new IScroll('#wrapper', { mouseWheel: true });-->
-<!--});-->
-
-<!--$('.close').click(function(e){-->
-    <!--$('.pop').hide();-->
-<!--});-->
-<!--</script>-->
 <script type="text/javascript" src="../public/scripts/utils/httpUtil.js"></script>
 <script type="text/javascript" src="../public/scripts/utils/validateUtil.js"></script>
 <script type="text/javascript" src="js/main.js"></script>
 <!-- 微信分享api -->
-<!--<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>-->
-<!--<script type="text/javascript" src="js/wx_share.js"></script>-->
+<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript" src="js/wx_share.js"></script>
 </html>

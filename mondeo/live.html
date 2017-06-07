@@ -34,7 +34,7 @@
     })();
 </script>
 <div id="v" style="width: 5.6rem; height: 3.15rem;margin: 0 auto;">
-    <video id="my-player" class="video-js vjs-big-play-centered" webkit-playsinline playsinline autoplay="true"></video>
+    <video id="my-player" class="video-js vjs-big-play-centered" webkit-playsinline playsinline autoplay="true" poster="images/bg-live.jpg"></video>
 </div>
 </body>
 <script>
@@ -51,7 +51,7 @@
             preload: 'auto'
         });
 
-        player.src('http://pili-live-hls.yunmfang.com/ford/mondeo.m3u8');
+//        player.src('http://pili-live-hls.yunmfang.com/ford/mondeo.m3u8');
 
         player.on('error',function(){
             alert('视频源失效');

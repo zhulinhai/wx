@@ -49,6 +49,9 @@
         <div>
             <label>总耗时：</label><input type="text" id="used_time_tri" name="used_time_tri" />
         </div>
+        <div>
+            <label>活动状态：</label><input type="radio" name="active_state" value="0" checked="checked" />未开始<input type="radio" name="active_state" value="1" />进行中<input type="radio" name="active_state" value="2" />已结束
+        </div>
         <!--<div>-->
             <!--<label>四环总耗时：</label><input type="text" id="used_time_tera" name="used_time_tera" />-->
         <!--</div>-->
@@ -96,6 +99,9 @@
             $('#used_gasonline_tera').val(data.used_gasonline_tera);
             $('#used_gasonline_penta').val(data.used_gasonline_penta);
 
+            var state = parseInt(data.active_state);
+            var doms = $('input[type="radio"]');
+            $(doms[state]).attr('checked','checked');
         }});
 
         $.getJSON("datas/data.json",function(data){
@@ -176,6 +182,10 @@
                 $('#used_gasoline').val(data.used_gasoline);
                 $('#used_gasonline_tera').val(data.used_gasonline_tera);
                 $('#used_gasonline_penta').val(data.used_gasonline_penta);
+
+                var state = parseInt(data.active_state);
+                var doms = $('input[type="radio"]');
+                $(doms[state]).attr('checked','checked');
                 alert('重置蒙迪欧挑战数据成功');
             }});
         }
