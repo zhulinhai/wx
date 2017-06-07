@@ -127,6 +127,8 @@
 
                 $('#support-num').html(store.support);
                 $('#nonsupport-num').html(store.nonsupport);
+
+                store.active_state = parseInt(data.active_state);
             }
         }});
     });
@@ -175,16 +177,15 @@
             preload: 'auto'
         });
 
-        //player.src('http://pili-live-hls.yunmfang.com/ford/mondeo.m3u8');
-
         player.on('error',function(){
-            //alert('视频源失效');
-            //player.src('http://vedio.yunmfang.com/K6015-480p-16-9.mp4');
+            alert('直播信号中断，请稍后再试');
         });
 
         player.on('ended',function(){
-            alert('play ended!');
+            alert('直播已结束');
         });
+
+        changeVideo(store.active_state);
 
         clickEventBind();
 
@@ -219,6 +220,8 @@
             $('#used_gasonline_tera').html(store.used_gasonline_tera + 'L');
             $('#used_gasonline_penta').html(store.used_gasonline_penta + 'L');
 
+            store.active_state = parseInt(data.active_state);
+            changeVideo(store.active_state);
         });
 
         /**
@@ -232,52 +235,53 @@
             onInit: function(swiper){
                 if(swiper.activeIndex == FIRST_PAGE){
                     swiper.lockSwipeToPrev();
-                    //swiper.lockSwipeToNext();
+                    swiper.lockSwipeToNext();
                 }
             },
             onSlideChangeStart: handlerChangeStart
         });
     });
 
-    var AUTO_PLAY_SPEED = 2000;
-    var AUTO_PLAY_SPEED_KOL = 3000;
+    var AUTO_PLAY_SPEED = 5000;
+    var AUTO_PLAY_SPEED_KOL = 5000;
     var kolSwiper = null;
+
 
     function handlerChangeStart(swiper){
 
         current_page_index = swiper.activeIndex;
+        swiper.lockSwipeToPrev();
+        swiper.lockSwipeToNext();
 
         switch (swiper.activeIndex){
             case FIRST_PAGE:
                 firstPageAni();
-                swiper.lockSwipeToPrev();
                 break;
             case SECOND_PAGE:
                 secondPageAni();
-                swiper.unlockSwipeToPrev();
+                //swiper.unlockSwipeToPrev();
                 break;
             case THIRD_PAGE:
                 thirdPageAni();
-                swiper.unlockSwipeToPrev();
+                //swiper.unlockSwipeToPrev();
                 break;
             case FOURTH_PAGE:
                 fourthPageAni();
-                swiper.unlockSwipeToPrev();
+                //swiper.unlockSwipeToPrev();
                 break;
             case SIXTH_PAGE:
                 swiper.unlockSwipeToPrev();
-                swiper.lockSwipeToNext();
                 break;
             case SEVENTH_PAGE:
                 if(!commentSwiper)
                     commentSwiper = new Swiper('#commentSwiper',{
-                        direction:'horizontal',
+                        direction:'vertical',
                         autoplay :AUTO_PLAY_SPEED,
                         loop:true,
                     });
                 if(!kolSwiper)
                     kolSwiper = new Swiper('#kolSwiper',{
-                        direction:'horizontal',
+                        direction:'vertical',
                         autoplay :AUTO_PLAY_SPEED_KOL,
                         loop:true,
                     });
@@ -520,6 +524,7 @@
         });
         $('#fp-car').addClass('animated delay_3s carFadeOutRight').one(animationEnd,function(){
             $(this).removeClass('animated delay_3s carFadeOutRight');
+            mainSwiper.unlockSwipeToNext();
         });
     }
 
@@ -535,7 +540,10 @@
         $('.p2-bottom').addClass('animated delay_2s fadeIn').one(animationEnd,function(){
             $(this).removeClass('animated delay_2s fadeIn');});
         $('.p2-bottom .aside').addClass('animated delay_2-5s bounceIn').one(animationEnd,function(){
-            $(this).removeClass('animated delay_2-5s bounceIn');});
+            $(this).removeClass('animated delay_2-5s bounceIn');
+            mainSwiper.unlockSwipeToPrev();
+            mainSwiper.unlockSwipeToNext();
+        });
 
     }
 
@@ -550,7 +558,10 @@
             $(this).removeClass('animated delay_1s fadeIn');
         });
         $('.explain .car').addClass('animated delay_2s carDisappearRight').one(animationEnd,function(){
-            $(this).removeClass('animated delay_2s carDisappearRight');});
+            $(this).removeClass('animated delay_2s carDisappearRight');
+            mainSwiper.unlockSwipeToPrev();
+            mainSwiper.unlockSwipeToNext();
+        });
     }
 
     function fourthPageAni(){
@@ -567,15 +578,29 @@
 
         $('.fourth-page .banner').addClass('animated delay_1-5s fadeIn').one(animationEnd,function(){
             $(this).removeClass('animated delay_1-5s fadeIn');
+            mainSwiper.unlockSwipeToPrev();
+            mainSwiper.unlockSwipeToNext();
         });
 
-        $('#p4-car').addClass('animated delay_2s fadeInLeft').one(animationEnd,function(){
-            $(this).removeClass('animated delay_2s fadeInLeft');
-        });
-        $('.fourth-page .superman').addClass('animated delay_2s fadeIn').one(animationEnd,function(){
-            $(this).removeClass('animated delay_2s fadeIn');
-        });
+        //$('#p4-car').addClass('animated delay_2s fadeInLeft').one(animationEnd,function(){
+        //    $(this).removeClass('animated delay_2s fadeInLeft');
+        //});
+        //$('.fourth-page .superman').addClass('animated delay_2s fadeIn').one(animationEnd,function(){
+        //    $(this).removeClass('animated delay_2s fadeIn');
+        //});
 
+    }
+
+    function changeVideo(state){
+
+        if(state == 0){
+            $('#unlive').show();
+            $('#my-player').hide();
+        }else if(state == 1) {
+            $('#unlive').hide();
+            $('#my-player').show();
+            player.src('http://pili-live-hls.yunmfang.com/ford/mondeo.m3u8');
+        }
     }
 
     /**
