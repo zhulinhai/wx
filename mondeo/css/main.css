@@ -495,7 +495,7 @@ background-size: 100% 100%; }
 /**************************************************************************************************
  3.0    second page
 ***************************************************************************************************/
-.p2-middle { width: 6.2rem; overflow: hidden; margin: 2.81rem auto;}
+.p2-middle { width: 6.2rem; overflow: hidden; margin: 2.81rem auto 0 auto;}
 .p2-middle > div:first-child { float: left; }
 .p2-middle > div:last-child { float: right; }
 .p2-middle > div:first-child > p {  border-left:.1rem #07496a solid; color: #07496a; font-size: .22rem; padding-left: 20px; }
@@ -507,6 +507,13 @@ background-size: 100% 100%; }
 .p2-hi > img:first-child { position:absolute; left: .65rem;  width: 1.21rem; }
 .p2-hi > img:last-child { position:absolute; width: .72rem; right:.35rem; bottom: -.2rem; }
 
+.p2-bottom {position: relative; width: 6.25rem; height: 4.2rem; margin:0 auto; background: url("../images/superman-p2.gif") center no-repeat; background-size: cover; }
+.p2-bottom .aside { position: absolute; top: .45rem; right: 0rem;  width: 2rem; height: 1.58rem;
+    background-image: url("../images/img-s-p-8.png") , url("../images/img-p2-w.png");
+    background-position: 86% 35% ,center;
+    background-repeat: no-repeat,no-repeat;
+    background-size: .38rem .43rem,100% 100%;
+}
 /**************************************************************************************************
  4.0    third page
 ***************************************************************************************************/
@@ -515,6 +522,7 @@ background: url("../images/img-request.png") center no-repeat; background-size: 
 .third-page .request > img {  position: absolute;  width: .58rem;  right: .2rem;  top: .45rem; }
 .third-page .book { position:absolute; top:3rem; left:1rem; width: 3.48rem; height: 4.39rem;
     background: url("../images/img-book.png") center no-repeat; background-size: 100% 100%; }
+.third-page .book .superman { position: absolute; width: 1.02rem; right: .5rem; bottom: 1rem; }
 .third-page .explain { width: 5.9rem; margin: 7.1rem auto 0 auto; }
 .third-page .explain .car { width: 1.05rem; height: .7rem; background: url("../images/icon-car-1.png") center no-repeat; background-size: 100% 100%; }
 .third-page .explain .line { width: 100%; height: 8px; background: url("../images/img-line.png") center no-repeat; background-size: 100% 100%; }
@@ -537,9 +545,10 @@ background: url("../images/img-request.png") center no-repeat; background-size: 
 .right-dialogue > p { padding-left:.3rem; padding-right: .3rem; font-size: .18rem; text-align: left; color:#07496a;}
 .right-dialogue > p:first-child { margin-top:.7rem; color:#b62530; }
 
-.fourth-page .banner {position:relative; margin:.5rem auto 0 auto; width: 5.25rem; height: 1.27rem; background: url("../images/img-p5-w.png") center no-repeat; background-size: cover; text-align: center; }
+.fourth-page .banner {position:relative; margin-top:.5rem; margin-left: .9rem; width: 5.25rem; height: 1.27rem; background: url("../images/img-p5-w.png") center no-repeat; background-size: cover; text-align: center; }
 .fourth-page .banner > img:first-child { margin-top: .25rem; width:4.67rem; }
-.fourth-page .banner > img:last-child { position: absolute; bottom:-.35rem; left:50%; margin-left:-.5rem; width:1.05rem; }
+#p4-car { position: absolute; bottom:-.35rem; left:50%; margin-left:-.5rem; width:1.05rem; }
+.fourth-page .banner .superman { position: absolute; left: -.8rem;  top: -.8rem; width:1.2rem; }
 /**************************************************************************************************
  6.0    fifth page
 ***************************************************************************************************/
@@ -549,13 +558,13 @@ background: url("../images/img-request.png") center no-repeat; background-size: 
 .fifth-page .small-people-1 { width: 2.57rem; }
 .fifth-page .callUpon { width: 2.27rem; }
 .fifth-page .small-people-2 { width: .48rem; }
-.fifth-page .superman { position: absolute; left: 0;bottom: 1rem; width: 4rem; }
+.fifth-page .superman { position: absolute; left: .3rem;  bottom: 1.3rem;  width: 2.9rem; }
 /**************************************************************************************************
  7.0    sixth page
 ***************************************************************************************************/
 .sixth-page { text-align: center;}
 .sixth-page .terminator{position:absolute; width: 4.09rem; top: 2.9rem;left: 1.5rem; }
-.sixth-page .superman { position: absolute; width: 2.5rem;  left: .4rem;  bottom: 4.2rem; }
+.sixth-page .superman { position: absolute; width: 1.3rem; left: .8rem; bottom: 4rem; }
 .sixth-page .buttonGroup { position: absolute; left:.275rem;  bottom:.5rem; width: 5.85rem; overflow: hidden;}
 .sixth-page .buttonGroup a { display: block;}
 .sixth-page .buttonGroup a:nth-child(1){float: left;  width: 2.82rem; height: 1.33rem; background: url(../images/btn-1.png) center center no-repeat; background-size: cover; }
@@ -604,8 +613,9 @@ background: url("../images/img-request.png") center no-repeat; background-size: 
 *****************************************************************************************************************/
 .eighth-page { animation: p8Ani .4s step-start infinite;  background: url(../images/bg-p8.jpg) center center no-repeat;  background-size: cover;  text-align: center; }
 .wantYou { margin-top: 1.9rem; width: 2.05rem; }
-.eighth-page .banner { width: 4.04rem; margin: 0 auto; }
+.eighth-page .banner { position:relative; width: 4.04rem; margin: 0 auto; }
 .eighth-page .banner > img:first-child { width: 100%; }
+#p8-people { position: absolute; top: -.1rem; right: 0; width: .87rem; }
 .eighth-page .banner p { width: 100%; font-size: .22rem; color: #07496a; text-align: center; line-height: 150%; }
 #joinForm > div { width: 5.1rem; margin: .30rem auto 0 auto; overflow: hidden; }
 #joinForm > div > input:first-child {float: left;}

@@ -232,7 +232,7 @@
             onInit: function(swiper){
                 if(swiper.activeIndex == FIRST_PAGE){
                     swiper.lockSwipeToPrev();
-                    swiper.lockSwipeToNext();
+                    //swiper.lockSwipeToNext();
                 }
             },
             onSlideChangeStart: handlerChangeStart
@@ -254,12 +254,15 @@
                 break;
             case SECOND_PAGE:
                 secondPageAni();
+                swiper.unlockSwipeToPrev();
                 break;
             case THIRD_PAGE:
                 thirdPageAni();
+                swiper.unlockSwipeToPrev();
                 break;
             case FOURTH_PAGE:
                 fourthPageAni();
+                swiper.unlockSwipeToPrev();
                 break;
             case SIXTH_PAGE:
                 swiper.unlockSwipeToPrev();
@@ -529,6 +532,11 @@
             $(this).removeClass('animated delay_1s bounceIn');});
         $('#youngAside').addClass('animated delay_1-5s fadeIn').one(animationEnd,function(){
             $(this).removeClass('animated delay_1-5s fadeIn');});
+        $('.p2-bottom').addClass('animated delay_2s fadeIn').one(animationEnd,function(){
+            $(this).removeClass('animated delay_2s fadeIn');});
+        $('.p2-bottom .aside').addClass('animated delay_2-5s bounceIn').one(animationEnd,function(){
+            $(this).removeClass('animated delay_2-5s bounceIn');});
+
     }
 
     function thirdPageAni(){
@@ -536,12 +544,13 @@
             $(this).removeClass('animated bounceIn');});
         $('.third-page .book').addClass('animated delay_h1s bookRotateInLeft').one(animationEnd,function(){
             $(this).removeClass('animated delay_h1s bookRotateInLeft');});
+        $('.third-page .book .superman').addClass('animated delay_1-5s zoomIn').one(animationEnd,function(){
+            $(this).removeClass('animated delay_1-5s zoomIn');});
         $('.explain').addClass('animated delay_1s fadeIn').one(animationEnd,function(){
             $(this).removeClass('animated delay_1s fadeIn');
         });
         $('.explain .car').addClass('animated delay_2s carDisappearRight').one(animationEnd,function(){
             $(this).removeClass('animated delay_2s carDisappearRight');});
-
     }
 
     function fourthPageAni(){
@@ -562,6 +571,9 @@
 
         $('#p4-car').addClass('animated delay_2s fadeInLeft').one(animationEnd,function(){
             $(this).removeClass('animated delay_2s fadeInLeft');
+        });
+        $('.fourth-page .superman').addClass('animated delay_2s fadeIn').one(animationEnd,function(){
+            $(this).removeClass('animated delay_2s fadeIn');
         });
 
     }
