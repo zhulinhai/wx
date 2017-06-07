@@ -5775,6 +5775,7 @@ button.close {
         margin-right: 10px; }
         .topDiv .content .rightDiv .dropdown .dropdown-toggle {
           width: 120px;
+          height: 30px;
           text-align: left;
           background: #EFF0F1 url("../img/14/14-arrow.png") no-repeat 100px center;
           border: none; }
@@ -5839,7 +5840,7 @@ button.close {
   width: 1200px; }
   .contentFrame .item {
     width: 100%;
-    height: 448px;
+    height: 360px;
     background-color: #EDEEEF;
     vertical-align: top;
     margin-top: 30px;
@@ -5868,6 +5869,13 @@ button.close {
         text-align: center;
         color: white;
         background-color: #1E2A82; }
+      .contentFrame .item .titleFrame .deadLine {
+        float: left;
+        width: 200px;
+        margin-left: 10px;
+        line-height: 55px;
+        font-size: 14px;
+        color: #1E2A82; }
       .contentFrame .item .titleFrame .rightManage {
         float: right;
         color: #1E2A82;
@@ -5883,18 +5891,18 @@ button.close {
       height: 312px; }
       .contentFrame .item .infoDiv table {
         font-size: 14px;
+        color: #7b7c7d;
         border: 1px solid #E3E3E4; }
         .contentFrame .item .infoDiv table .tr1, .contentFrame .item .infoDiv table .tr2, .contentFrame .item .infoDiv table .tr3, .contentFrame .item .infoDiv table .tr5 {
-          height: 40px; }
+          height: 30px; }
         .contentFrame .item .infoDiv table .tr4 {
-          height: 60px; }
+          height: 40px; }
         .contentFrame .item .infoDiv table .tr6 {
-          height: 120px; }
+          height: 60px; }
         .contentFrame .item .infoDiv table tr, .contentFrame .item .infoDiv table td, .contentFrame .item .infoDiv table th {
           border: 1px solid #E3E3E4; }
         .contentFrame .item .infoDiv table th {
-          margin-left: 15px;
-          color: #636465; }
+          margin-left: 15px; }
         .contentFrame .item .infoDiv table .th1 {
           width: 120px;
           font-size: 14px;
@@ -5908,25 +5916,26 @@ button.close {
             margin: 10px;
             line-height: 20px; }
 
-nav {
+.dot {
+  display: block;
+  margin: 0 auto 50px;
   width: 100%;
   height: 34px;
-  text-align: center;
-  margin-bottom: 50px; }
-  nav .pagination {
-    *display: inline;
-    *zoom: 1;
-    margin-top: 0;
-    text-align: center; }
-    nav .pagination a {
-      color: #626364;
-      margin: 5px;
-      background-color: #EDEEEF; }
-    nav .pagination a:hover {
-      color: white;
-      background-color: #1E2A82; }
-    nav .pagination .active {
-      color: white;
-      background-color: #1E2A82; }
+  text-align: center; }
+  .dot a {
+    display: inline-block;
+    width: 36px;
+    height: 36px;
+    line-height: 38px;
+    border: 1px solid #E3E3E4;
+    color: #626364;
+    margin: 5px;
+    background-color: #EDEEEF; }
+  .dot a:hover {
+    color: white;
+    background-color: #1E2A82; }
+  .dot .active {
+    color: white;
+    background-color: #1E2A82; }
 
 /*# sourceMappingURL=page14.css.map */
