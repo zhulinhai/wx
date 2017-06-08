@@ -19,7 +19,8 @@
         used_time_tri:0, // 已挑战时间
         support:0, //支持挑战成功人数
         nonsupport:0, //不支持人数
-        active_state:0 // 活动状态 0：活动前期 1：活动中期（直播） 2：活动后期（直播结束）
+        active_state:0, // 活动状态 0：活动前期 1：活动中期（直播） 2：活动后期（直播结束）
+        current_time: 0
     };
 
     /**
@@ -151,32 +152,31 @@
                 $('#nonsupport-num').html(store.nonsupport);
 
                 //console.log(dateStringToMillisecond(data.current_time));
-                var currentTime = dateStringToMillisecond(data.current_time);
-                for(var i = 0; i < liveSchedule.length; i++){
-                    if(liveSchedule[i].time > currentTime){
-                        currentIndex = i;
-
-                        $('#lives').html(liveSchedule[currentIndex - 1].count);
-                        $('#audiences').html(audienceSchedule[currentIndex - 1].count);
-                        currentIndex++;
-                        loopInterval = liveSchedule[i].time - currentTime;
-
-                        scheduleInterval = setInterval(function(){
-                            if(currentIndex < liveSchedule.length){
-                                if(loopInterval < 50 * 60 * 1000) loopInterval = 50 * 60 * 1000;
-                                $('#lives').html(liveSchedule[currentIndex].count);
-                                $('#audiences').html(audienceSchedule[currentIndex].count);
-                                currentIndex ++;
-                            }else {
-                                $('#lives').html(liveSchedule[currentIndex - 1].count);
-                                $('#audiences').html(audienceSchedule[currentIndex - 1].count);
-                                clearInterval(scheduleInterval);
-                                scheduleInterval = null;
-                            }
-                        },loopInterval);
-                        break;
-                    }
-                }
+                store.current_time = dateStringToMillisecond(data.current_time);
+                //for(var i = 0; i < liveSchedule.length; i++){
+                //    if(liveSchedule[i].time > currentTime){
+                //        currentIndex = !i ? 0 : i -1;
+                //        $('#lives').html(liveSchedule[currentIndex].count);
+                //        $('#audiences').html(audienceSchedule[currentIndex].count);
+                //
+                //        loopInterval = liveSchedule[i].time - currentTime;
+                //
+                //        scheduleInterval = setInterval(function(){
+                //            if(currentIndex < liveSchedule.length){
+                //                currentIndex ++;
+                //                if(loopInterval < 50 * 60 * 1000) loopInterval = 50 * 60 * 1000;
+                //                $('#lives').html(liveSchedule[currentIndex].count);
+                //                $('#audiences').html(audienceSchedule[currentIndex].count);
+                //            }else {
+                //                $('#lives').html(liveSchedule[currentIndex - 1].count);
+                //                $('#audiences').html(audienceSchedule[currentIndex - 1].count);
+                //                clearInterval(scheduleInterval);
+                //                scheduleInterval = null;
+                //            }
+                //        },loopInterval);
+                //        break;
+                //    }
+                //}
 
                 store.active_state = parseInt(data.active_state);
             }
