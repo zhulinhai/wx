@@ -724,7 +724,6 @@
 
             $('#lives').html(liveSchedule[!currentIndex ? 0:currentIndex -1 ].count);
             $('#audiences').html(audienceSchedule[!currentIndex ? 0:currentIndex -1].count);
-            currentIndex ++;
 
             setTimeout(function(){
                 loopInterval = 5 * 60 * 1000;
