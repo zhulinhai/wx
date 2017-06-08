@@ -299,7 +299,7 @@
                 $('.sixth-page .terminator').addClass('animated bounceIn').one(animationEnd,function(){
                     $(this).removeClass('animated bounceIn');
                 });
-                $('.sixth-page .superman').addClass('supermanFlyIn delay_1s').one(animationEnd,function(){
+                $('.sixth-page .superman').addClass('supermanFlyIn delay_h1s').one(animationEnd,function(){
                     $(this).removeClass('supermanFlyIn delay_h1s');
                 });
                 swiper.unlockSwipeToPrev();
