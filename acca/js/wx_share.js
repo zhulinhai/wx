@@ -13,7 +13,7 @@
                 return alert(rt.message);
             }
 
-            var title ='ACCA'; // 分享标题
+            var title ='ACCA培训基地'; // 分享标题
             var link ='http://wx.bjczxda.com/acca/index.html';
             var desc = '湖北省上海财经大学唯一培训基地'; // 分享描述
             var imgUrl = 'http://wx.bjczxda.com/acca/img/zqlogo.jpg';
