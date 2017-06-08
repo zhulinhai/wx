@@ -67,7 +67,7 @@
     }
     var loadInterval = null;
 
-    var currentIndex = 0;
+    var currentIndex = -1;
 
     var scheduleInterval = null;
 
@@ -189,8 +189,8 @@
                 //var $cloud = $('.cloud');
                 //TweenLite.to($cloud,1,{ opacity :0 });
                 $('.loading').addClass('animated delay_1s fadeOut').one(animationEnd,function(){
-                    $(this).hide();
                     firstPageAni();
+                    $(this).hide();
                 });
             },1000);
 
@@ -539,23 +539,23 @@
         $('.first-page .superman').addClass('supermanFlyIn').one(animationEnd,function(){
             $(this).removeClass('supermanFlyIn');
         });
-        $('#aside-1').addClass('animated delay_2s duration_h1s bounceIn').one(animationEnd,function(){
-            $(this).removeClass('animated delay_2s bounceIn');
-        });
-        $('#aside-2').addClass('animated delay_1-5s duration_h1s bounceIn').one(animationEnd,function(){
-            $(this).removeClass('animated delay_1-5s bounceIn');
-        });
-        $('#aside-3').addClass('animated delay_1s duration_h1s bounceIn').one(animationEnd,function(){
-            $(this).removeClass('animated delay_1s bounceIn');
-        });
-        $('#aside-4').addClass('animated delay_h1s duration_h1s bounceIn').one(animationEnd,function(){
-            $(this).removeClass('animated delay_h1s bounceIn');
-        });
-        $('.older').addClass('animated delay_2-5s bounceIn').one(animationEnd,function(){
+        $('#aside-1').addClass('animated delay_2-5s duration_h1s bounceIn').one(animationEnd,function(){
             $(this).removeClass('animated delay_2-5s bounceIn');
         });
-        $('#fp-car').addClass('animated delay_3s carFadeOutRight').one(animationEnd,function(){
-            $(this).removeClass('animated delay_3s carFadeOutRight');
+        $('#aside-2').addClass('animated delay_2s duration_h1s bounceIn').one(animationEnd,function(){
+            $(this).removeClass('animated delay_2s bounceIn');
+        });
+        $('#aside-3').addClass('animated delay_1-5s duration_h1s bounceIn').one(animationEnd,function(){
+            $(this).removeClass('animated delay_1-5s bounceIn');
+        });
+        $('#aside-4').addClass('animated delay_1s duration_h1s bounceIn').one(animationEnd,function(){
+            $(this).removeClass('animated delay_1s bounceIn');
+        });
+        $('.older').addClass('animated delay_3s bounceIn').one(animationEnd,function(){
+            $(this).removeClass('animated delay_3s bounceIn');
+        });
+        $('#fp-car').addClass('animated delay_3-5s carFadeOutRight').one(animationEnd,function(){
+            $(this).removeClass('animated delay_3-5s carFadeOutRight');
             mainSwiper.unlockSwipeToNext();
         });
     }
@@ -683,7 +683,7 @@
         return date.getTime();
     }
 
-    // 对Date的扩展，将 Date 转化为指定格式的String
+// 对Date的扩展，将 Date 转化为指定格式的String
 // 月(M)、日(d)、小时(h)、分(m)、秒(s)、季度(q) 可以用 1-2 个占位符，
 // 年(y)可以用 1-4 个占位符，毫秒(S)只能用 1 个占位符(是 1-3 位的数字)
 // 例子：
@@ -710,14 +710,31 @@
         for(var i = 0; i < liveSchedule.length; i++){
             if(liveSchedule[i].time > store.current_time){
                 currentIndex = i;
-                $('#lives').html(liveSchedule[!currentIndex ? 0 : currentIndex - 1].count);
-                $('#audiences').html(audienceSchedule[!currentIndex ? 0 : currentIndex - 1].count);
-
                 loopInterval = liveSchedule[i].time - store.current_time;
+                break;
+            }
+        }
+
+        if(currentIndex < 0){
+
+            currentIndex = 0;
+            loopInterval = liveSchedule[0].time - store.current_time;
+
+        }else {
+
+            $('#lives').html(liveSchedule[!currentIndex ? 0:currentIndex -1 ].count);
+            $('#audiences').html(audienceSchedule[!currentIndex ? 0:currentIndex -1].count);
+            currentIndex ++;
+
+            setTimeout(function(){
+                loopInterval = 5 * 60 * 1000;
+                $('#lives').html(liveSchedule[currentIndex].count);
+                $('#audiences').html(audienceSchedule[currentIndex].count);
+                console.log('当前时间:' + new Date().Format('yyyy-MM-dd hh:mm:ss') + ' 人气数：' + liveSchedule[currentIndex].count + ' 同时在线人气数：'+ audienceSchedule[currentIndex].count);
+                currentIndex ++;
 
                 scheduleInterval = setInterval(function(){
                     if(currentIndex < liveSchedule.length){
-                        if(loopInterval < 50 * 60 * 1000) loopInterval = 50 * 60 * 1000;
                         $('#lives').html(liveSchedule[currentIndex].count);
                         $('#audiences').html(audienceSchedule[currentIndex].count);
                         console.log('当前时间:' + new Date().Format('yyyy-MM-dd hh:mm:ss') + ' 人气数：' + liveSchedule[currentIndex].count + ' 同时在线人气数：'+ audienceSchedule[currentIndex].count);
@@ -729,8 +746,8 @@
                         scheduleInterval = null;
                     }
                 },loopInterval);
-                break;
-            }
+
+            },loopInterval);
         }
     }
 })($)

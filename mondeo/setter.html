@@ -31,12 +31,12 @@
     <p style="color: red">蒙迪欧直播跑圈数据</p>
     <form>
         <div>
-           <label>三环：</label><input type="text" id="tricyclic_turns" name="tricyclic_turns"/>
+           <label>三环圈数：</label><input type="text" id="tricyclic_turns" name="tricyclic_turns"/>
         </div>
         <div>
-            <label>四环：</label><input type="text" id="tetracyclic_turns" name="tetracyclic_turns" />
+            <label>四环圈数：</label><input type="text" id="tetracyclic_turns" name="tetracyclic_turns" />
         </div>
-            <label>五环：</label><input type="text" id="pentacyclic_turns" name="pentacyclic_turns" />
+            <label>五环圈数：</label><input type="text" id="pentacyclic_turns" name="pentacyclic_turns" />
         <div>
             <label>三环已使用油量：</label><input type="text" id="used_gasoline" name="used_gasoline" />
         </div>
@@ -46,7 +46,7 @@
         <div>
             <label>五环已使用油量：</label><input type="text" id="used_gasonline_penta" name="used_gasonline_penta" />
         </div>
-        <div>
+        <div style="display: none;">
             <label>总耗时：</label><input type="text" id="used_time_tri" name="used_time_tri" />
         </div>
         <div>
@@ -59,11 +59,11 @@
             <!--<label>五环总耗时：</label><input type="text" id="used_time_penta" name="used_time_penta" />-->
         <!--</div>-->
     </form>
-    <div>
+    <div style="margin-top: 60px;">
      <input type="button" id="submit" value="提交挑战数据" /><input type="button" id="resetMondeoProps" value="重置挑战数据" />
     </div>
 </div>
-<div>
+<div style="display: none;">
     <div class="table_row marginTop"><p><img style="width:.45rem;" name="img_province"><span>省份</span></p>
         <select id="province" name="province" data-action="changeProvince"><option>请选择</option></select>
     </div>
@@ -83,8 +83,57 @@
     var cities;
     var dealers;
 
+    var liveSchedule = null;
+    var audienceSchedule = null;
+
+    /**
+     *
+     * @param str YYYY-MM-DD HH:mm:ss
+     */
+    function dateStringToMillisecond(str){
+        str = str.replace(/-/g,"/");
+        var date = new Date(str);
+        return date.getTime();
+    }
+
+    // 对Date的扩展，将 Date 转化为指定格式的String
+    // 月(M)、日(d)、小时(h)、分(m)、秒(s)、季度(q) 可以用 1-2 个占位符，
+    // 年(y)可以用 1-4 个占位符，毫秒(S)只能用 1 个占位符(是 1-3 位的数字)
+    // 例子：
+    // (new Date()).Format("yyyy-MM-dd hh:mm:ss.S") ==> 2006-07-02 08:09:04.423
+    // (new Date()).Format("yyyy-M-d h:m:s.S")      ==> 2006-7-2 8:9:4.18
+    Date.prototype.Format = function (fmt) { //author: meizz
+        var o = {
+            "M+": this.getMonth() + 1, //月份
+            "d+": this.getDate(), //日
+            "h+": this.getHours(), //小时
+            "m+": this.getMinutes(), //分
+            "s+": this.getSeconds(), //秒
+            "q+": Math.floor((this.getMonth() + 3) / 3), //季度
+            "S": this.getMilliseconds() //毫秒
+        };
+        if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+        for (var k in o)
+            if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+        return fmt;
+    }
+
     window.onload = function(){
         http = new Http(host);
+
+        $.getJSON("datas/live.json",function(data){
+            liveSchedule = data.lives;
+            audienceSchedule = data.audiences;
+            for(var i = 0; i < liveSchedule.length; i++){
+                var temp = liveSchedule[i];
+                temp.time = dateStringToMillisecond('2017-06-08 '+ temp.time);
+            }
+            for(var i = 0; i < audienceSchedule.length; i++){
+                var temp = audienceSchedule[i];
+                temp.time = dateStringToMillisecond('2017-06-08 '+ temp.time);
+            }
+        });
+
         http.ajaxRequest({type:'GET',uri:'h5/getInitDatas?flag=MONDEO_20170501',success:function(json){
             var data = json.data;
             $('#lives').html(data.lives ? data.lives : 0);
@@ -102,16 +151,62 @@
             var state = parseInt(data.active_state);
             var doms = $('input[type="radio"]');
             $(doms[state]).attr('checked','checked');
+
+//            if(state == 1)
+                schedule(dateStringToMillisecond(data.current_time));
         }});
 
-        $.getJSON("datas/data.json",function(data){
-            provinces = data.province;
-            cities = data.city;
-            dealers = data.dealer;
-            for(var i = 0; i < provinces.length; i ++)
-                $('#province').append('<option>'+provinces[i].p+'</option>');
-        });
+
     }
+    var loopInterval = 0;
+    var currentIndex = -1;
+    var scheduleInterval = null;
+
+    function schedule(current_time){
+
+        for(var i = 0; i < liveSchedule.length; i++){
+            if(liveSchedule[i].time > current_time){
+                currentIndex = i;
+                loopInterval = liveSchedule[i].time - current_time;
+                break;
+            }
+        }
+
+        if(currentIndex < 0){
+
+            currentIndex = 0;
+            loopInterval = liveSchedule[0].time - current_time;
+
+        }else {
+
+            $('#lives').html(liveSchedule[!currentIndex ? 0:currentIndex -1 ].count);
+            $('#audiences').html(audienceSchedule[!currentIndex ? 0:currentIndex -1].count);
+
+            setTimeout(function(){
+                loopInterval = 5 * 60 * 1000;
+                $('#lives').html(liveSchedule[currentIndex].count);
+                $('#audiences').html(audienceSchedule[currentIndex].count);
+                console.log('当前时间:' + new Date().Format('yyyy-MM-dd hh:mm:ss') + ' 人气数：' + liveSchedule[currentIndex].count + ' 同时在线人气数：'+ audienceSchedule[currentIndex].count);
+                currentIndex ++;
+
+                scheduleInterval = setInterval(function(){
+                    if(currentIndex < liveSchedule.length){
+                        $('#lives').html(liveSchedule[currentIndex].count);
+                        $('#audiences').html(audienceSchedule[currentIndex].count);
+                        console.log('当前时间:' + new Date().Format('yyyy-MM-dd hh:mm:ss') + ' 人气数：' + liveSchedule[currentIndex].count + ' 同时在线人气数：'+ audienceSchedule[currentIndex].count);
+                        currentIndex ++;
+                    }else {
+                        $('#lives').html(liveSchedule[currentIndex - 1].count);
+                        $('#audiences').html(audienceSchedule[currentIndex - 1].count);
+                        clearInterval(scheduleInterval);
+                        scheduleInterval = null;
+                    }
+                },loopInterval);
+
+            },loopInterval);
+        }
+    }
+
 
     $('#province').on('change',function(e){
         $('#city').empty();
