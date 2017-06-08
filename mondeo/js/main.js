@@ -255,7 +255,7 @@
          * @type {Swiper|Window.Swiper}
          */
         mainSwiper = new Swiper('#mainPage',{
-            initialSlide:NINTH_PAGE,
+            initialSlide:FIRST_PAGE,
             direction : 'vertical',
             loop: false,
             onInit: function(swiper){
