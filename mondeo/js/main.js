@@ -51,6 +51,9 @@
     var ruleScroller = null;
 
 
+    var liveSchedule = null;
+    var audienceSchedule = null;
+
     /**
      * 忽略部分ajax请求
      * @type {{ajax: {ignoreURLs: *[]}}}
@@ -63,11 +66,30 @@
     }
     var loadInterval = null;
 
+    var currentIndex = 0;
+
+    var scheduleInterval = null;
+
+    var loopInterval = 0;
+
     Pace.once('start',function(){
         loadInterval = setInterval(function(){
             var load = $('.pace-progress').attr('data-progress-text');
             $('.percent').html(load);
         },100);
+
+        $.getJSON("datas/live.json",function(data){
+            liveSchedule = data.lives;
+            audienceSchedule = data.audiences;
+           for(var i = 0; i < liveSchedule.length; i++){
+               var temp = liveSchedule[i];
+               temp.time = dateStringToMillisecond('2017-06-08 '+ temp.time);
+           }
+            for(var i = 0; i < audienceSchedule.length; i++){
+                var temp = audienceSchedule[i];
+                temp.time = dateStringToMillisecond('2017-06-08 '+ temp.time);
+            }
+        });
 
         /**
          * 获取网页评论
@@ -127,6 +149,34 @@
 
                 $('#support-num').html(store.support);
                 $('#nonsupport-num').html(store.nonsupport);
+
+                //console.log(dateStringToMillisecond(data.current_time));
+                var currentTime = dateStringToMillisecond(data.current_time);
+                for(var i = 0; i < liveSchedule.length; i++){
+                    if(liveSchedule[i].time > currentTime){
+                        currentIndex = i;
+
+                        $('#lives').html(liveSchedule[currentIndex - 1].count);
+                        $('#audiences').html(audienceSchedule[currentIndex - 1].count);
+                        currentIndex++;
+                        loopInterval = liveSchedule[i].time - currentTime;
+
+                        scheduleInterval = setInterval(function(){
+                            if(currentIndex < liveSchedule.length){
+                                if(loopInterval < 50 * 60 * 1000) loopInterval = 50 * 60 * 1000;
+                                $('#lives').html(liveSchedule[currentIndex].count);
+                                $('#audiences').html(audienceSchedule[currentIndex].count);
+                                currentIndex ++;
+                            }else {
+                                $('#lives').html(liveSchedule[currentIndex - 1].count);
+                                $('#audiences').html(audienceSchedule[currentIndex - 1].count);
+                                clearInterval(scheduleInterval);
+                                scheduleInterval = null;
+                            }
+                        },loopInterval);
+                        break;
+                    }
+                }
 
                 store.active_state = parseInt(data.active_state);
             }
@@ -896,5 +946,19 @@
                 }
             });
         });
+    }
+
+    /******************************************************************************
+     * 日期帮助函数
+     ******************************************************************************/
+
+    /**
+     *
+     * @param str YYYY-MM-DD HH:mm:ss
+     */
+    function dateStringToMillisecond(str){
+        str = str.replace(/-/g,"/");
+        var date = new Date(str);
+        return date.getTime();
     }
 })($)
