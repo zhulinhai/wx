@@ -13,7 +13,7 @@
                 return alert(rt.message);
             }
 
-            var title ='易车·易车老司机周刊'; // 分享标题
+            var title ='易车·老司机周刊'; // 分享标题
             var link ='http://wx.bjczxda.com/mondeo/index.html';
             var desc = '易车老司机 亲授“憋尿神功”。'; // 分享描述
             var imgUrl = 'http://wx.bjczxda.com/mondeo/images/share.jpg';
