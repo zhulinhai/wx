@@ -6,6 +6,7 @@
     <title>易车 · 老司机周刊</title>
     <link rel="stylesheet" href="../public/css/reset-h5.css">
     <link rel="stylesheet" href="../public/css/animate.css">
+    <link rel="stylesheet" href="css/rotatePhone.css">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/self-scroll.css">
     <!--<link rel="stylesheet" href="css/pace.css">-->
@@ -59,6 +60,14 @@
         document.documentElement.style.fontSize = (deviceWidth / 6.4) + 'px'; //320 fontSize = 50px
     })();
 </script>
+<!-- 横屏提示 -->
+<div id="orientLayer">
+    <div class="contentFrame">
+        <img class="phone rotatePhoneAnimation" src="images/img_rotatePhone.png"/>
+        <p class="tipTitle">为了更好的体验，请使用竖屏浏览</p>
+    </div>
+</div>
+
 <div class="loading">
     <div class="content">
         <!--<img class="cloud cloudAni" src="images/img-cloud.png">-->
