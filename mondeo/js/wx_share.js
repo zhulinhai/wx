@@ -103,10 +103,10 @@
         error:function(error){
             var eObj = error.responseJSON;
 
-            if(eObj)
-                alert(eObj.message);
-            else
-                alert('WeChat share request: Server Error!');
+            //if(eObj)
+            //    alert(eObj.message);
+            //else
+            //    alert('WeChat share request: Server Error!');
         }
     });
 })(jQuery);

@@ -153,7 +153,7 @@
 
                 //console.log(dateStringToMillisecond(data.current_time));
                 store.current_time = dateStringToMillisecond(data.current_time);
-                schedule();
+                //schedule();
                 store.active_state = parseInt(data.active_state);
             }
         }});
@@ -185,6 +185,7 @@
                 clearInterval(loadInterval);
                 loadInterval = -1;
                 $('.loading .superman').removeClass('vibrateAni').addClass('supermanFlyOut');
+                $('.percent').hide();
                 //$('.cloud').removeClass('cloudAni');
                 //var $cloud = $('.cloud');
                 //TweenLite.to($cloud,1,{ opacity :0 });
