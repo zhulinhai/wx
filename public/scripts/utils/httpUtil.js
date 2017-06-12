@@ -43,10 +43,11 @@ function Http(h){
                     if(error && typeof error == 'function')
                         error(e);
                     else{
-                      if(e.responseJSON){
+                      if(e.responseJSON) {
                           alert(e.responseJSON.message);
-                      }else
-                         alert('Server Error!');
+                      }
+                      //}else
+                      //   alert('Server Error!');
                     }
                 }
             });

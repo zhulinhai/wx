@@ -341,9 +341,9 @@ input::-webkit-input-placeholder{
 .fifth-page .trumpet {position: absolute; top:3rem; left: .27rem;  width: 1.76rem; }
 .fifth-page .words { position:  absolute; right: .15rem; top:2.96rem; width: 4.37rem; text-align: right; }
 .fifth-page .introduce { width:100%; }
-.fifth-page .small-people-1 { width: 2.57rem; margin-top: .1rem; margin-bottom: .1rem; }
+.fifth-page .small-people-1 { width: 2.57rem; margin-top: .05rem; margin-bottom: .05rem; }
 .fifth-page .callUpon { width: 2.27rem; }
-.fifth-page .small-people-2 { width: .6rem; margin-top: .03rem; }
+.fifth-page .small-people-2 { width: .6rem; margin-top: 0rem; }
 .fifth-page .superman { position: absolute; left: .3rem;  bottom: 1.3rem;  width: 2.9rem; }
 /**************************************************************************************************
  7.0    sixth page
