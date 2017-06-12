@@ -483,6 +483,7 @@
                         $('#support-num').html(store.support);
                         $('#nonsupport-num').html(store.nonsupport);
                         alert('提交成功');
+                        $('.pop-submit').hide();
                     }
                 },
                 error:function(e){
