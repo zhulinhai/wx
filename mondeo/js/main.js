@@ -84,11 +84,11 @@
             audienceSchedule = data.audiences;
            for(var i = 0; i < liveSchedule.length; i++){
                var temp = liveSchedule[i];
-               temp.time = dateStringToMillisecond('2017-06-08 '+ temp.time);
+               temp.time = dateStringToMillisecond('2017-06-12 '+ temp.time);
            }
             for(var i = 0; i < audienceSchedule.length; i++){
                 var temp = audienceSchedule[i];
-                temp.time = dateStringToMillisecond('2017-06-08 '+ temp.time);
+                temp.time = dateStringToMillisecond('2017-06-12 '+ temp.time);
             }
         });
 
@@ -153,7 +153,7 @@
 
                 //console.log(dateStringToMillisecond(data.current_time));
                 store.current_time = dateStringToMillisecond(data.current_time);
-                //schedule();
+                schedule();
                 store.active_state = parseInt(data.active_state);
             }
         }});
