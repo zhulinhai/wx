@@ -81,15 +81,15 @@
 
         $.getJSON("datas/live.json",function(data){
             liveSchedule = data.lives;
-            audienceSchedule = data.audiences;
+            //audienceSchedule = data.audiences;
            for(var i = 0; i < liveSchedule.length; i++){
                var temp = liveSchedule[i];
                temp.time = dateStringToMillisecond('2017-06-12 '+ temp.time);
            }
-            for(var i = 0; i < audienceSchedule.length; i++){
-                var temp = audienceSchedule[i];
-                temp.time = dateStringToMillisecond('2017-06-12 '+ temp.time);
-            }
+            //for(var i = 0; i < audienceSchedule.length; i++){
+            //    var temp = audienceSchedule[i];
+            //    temp.time = dateStringToMillisecond('2017-06-12 '+ temp.time);
+            //}
         });
 
         /**
@@ -137,8 +137,8 @@
                 store.support = data.support;
                 store.nonsupport = data.nonsupport;
 
-                $('#lives').html(store.lives);
-                $('#audiences').html(store.audiences);
+                //$('#lives').html(store.lives);
+                //$('#audiences').html(store.audiences);
 
                 $('#tricyclic_turns').html(store.tricyclic_turns + '圈');
                 $('#tetracyclic_turns').html(store.tetracyclic_turns + '圈');
@@ -236,8 +236,8 @@
             store.used_gasonline_tera  = parseInt(data.used_gasonline_tera)== NaN ? store.used_gasonline_tera : data.used_gasonline_tera;
             store.used_gasonline_penta = parseInt(data.used_gasonline_penta)== NaN ? store.used_gasonline_penta : data.used_gasonline_penta;
 
-            $('#lives').html(store.lives);
-            $('#audiences').html(store.audiences);
+            //$('#lives').html(store.lives);
+            //$('#audiences').html(store.audiences);
 
             $('#tricyclic_turns').html(store.tricyclic_turns + '圈');
             $('#tetracyclic_turns').html(store.tetracyclic_turns + '圈');
@@ -725,24 +725,24 @@
         }else {
 
             $('#lives').html(liveSchedule[!currentIndex ? 0:currentIndex -1 ].count);
-            $('#audiences').html(audienceSchedule[!currentIndex ? 0:currentIndex -1].count);
+            //$('#audiences').html(audienceSchedule[!currentIndex ? 0:currentIndex -1].count);
 
             setTimeout(function(){
                 loopInterval = 5 * 60 * 1000;
                 $('#lives').html(liveSchedule[currentIndex].count);
-                $('#audiences').html(audienceSchedule[currentIndex].count);
-                console.log('当前时间:' + new Date().Format('yyyy-MM-dd hh:mm:ss') + ' 人气数：' + liveSchedule[currentIndex].count + ' 同时在线人气数：'+ audienceSchedule[currentIndex].count);
+                //$('#audiences').html(audienceSchedule[currentIndex].count);
+                console.log('当前时间:' + new Date().Format('yyyy-MM-dd hh:mm:ss') + ' 人气数：' + liveSchedule[currentIndex].count);
                 currentIndex ++;
 
                 scheduleInterval = setInterval(function(){
                     if(currentIndex < liveSchedule.length){
                         $('#lives').html(liveSchedule[currentIndex].count);
-                        $('#audiences').html(audienceSchedule[currentIndex].count);
-                        console.log('当前时间:' + new Date().Format('yyyy-MM-dd hh:mm:ss') + ' 人气数：' + liveSchedule[currentIndex].count + ' 同时在线人气数：'+ audienceSchedule[currentIndex].count);
+                        //$('#audiences').html(audienceSchedule[currentIndex].count);
+                        console.log('当前时间:' + new Date().Format('yyyy-MM-dd hh:mm:ss') + ' 人气数：' + liveSchedule[currentIndex].count );
                         currentIndex ++;
                     }else {
                         $('#lives').html(liveSchedule[currentIndex - 1].count);
-                        $('#audiences').html(audienceSchedule[currentIndex - 1].count);
+                        //$('#audiences').html(audienceSchedule[currentIndex - 1].count);
                         clearInterval(scheduleInterval);
                         scheduleInterval = null;
                     }
