@@ -84,7 +84,7 @@
             //audienceSchedule = data.audiences;
            for(var i = 0; i < liveSchedule.length; i++){
                var temp = liveSchedule[i];
-               temp.time = dateStringToMillisecond('2017-06-12 '+ temp.time);
+               temp.time = dateStringToMillisecond(temp.time);
            }
             //for(var i = 0; i < audienceSchedule.length; i++){
             //    var temp = audienceSchedule[i];
@@ -728,7 +728,7 @@
             //$('#audiences').html(audienceSchedule[!currentIndex ? 0:currentIndex -1].count);
 
             setTimeout(function(){
-                loopInterval = 5 * 60 * 1000;
+                loopInterval = 10 * 60 * 1000;
                 $('#lives').html(liveSchedule[currentIndex].count);
                 //$('#audiences').html(audienceSchedule[currentIndex].count);
                 console.log('当前时间:' + new Date().Format('yyyy-MM-dd hh:mm:ss') + ' 人气数：' + liveSchedule[currentIndex].count);
