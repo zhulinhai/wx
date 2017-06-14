@@ -162,41 +162,36 @@
 
         for(var i = 0; i < liveSchedule.length; i++){
             if(liveSchedule[i].time > current_time){
-                currentIndex = i;
+                currentIndex = !i ? currentIndex : i;
                 loopInterval = liveSchedule[i].time - current_time;
                 break;
             }
         }
 
-        if(currentIndex < 0){
-
+        if(currentIndex < 0) //未开始
             currentIndex = 0;
-            loopInterval = liveSchedule[0].time - current_time;
+        else //活动已开始
+            $('#lives').html(liveSchedule[currentIndex -1 ].count);
 
-        }else {
+        setTimeout(function(){
+            loopInterval = 10 * 60 * 1000;
+            $('#lives').html(liveSchedule[currentIndex].count);
+            console.log('当前时间:' + new Date().Format('yyyy-MM-dd hh:mm:ss') + ' 人气数：' + liveSchedule[currentIndex].count);
+            currentIndex ++;
 
-            $('#lives').html(liveSchedule[!currentIndex ? 0:currentIndex -1 ].count);
-
-            setTimeout(function(){
-                loopInterval = 10 * 60 * 1000;
-                $('#lives').html(liveSchedule[currentIndex].count);
-                console.log('当前时间:' + new Date().Format('yyyy-MM-dd hh:mm:ss') + ' 人气数：' + liveSchedule[currentIndex].count);
-                currentIndex ++;
-
-                scheduleInterval = setInterval(function(){
-                    if(currentIndex < liveSchedule.length){
-                        $('#lives').html(liveSchedule[currentIndex].count);
-                        console.log('当前时间:' + new Date().Format('yyyy-MM-dd hh:mm:ss') + ' 人气数：' + liveSchedule[currentIndex].count);
-                        currentIndex ++;
-                    }else {
-                        $('#lives').html(liveSchedule[currentIndex - 1].count);
-                        clearInterval(scheduleInterval);
-                        scheduleInterval = null;
-                    }
-                },loopInterval);
-
+            scheduleInterval = setInterval(function(){
+                if(currentIndex < liveSchedule.length){
+                    $('#lives').html(liveSchedule[currentIndex].count);
+                    console.log('当前时间:' + new Date().Format('yyyy-MM-dd hh:mm:ss') + ' 人气数：' + liveSchedule[currentIndex].count);
+                    currentIndex ++;
+                }else {
+                    $('#lives').html(liveSchedule[currentIndex - 1].count);
+                    clearInterval(scheduleInterval);
+                    scheduleInterval = null;
+                }
             },loopInterval);
-        }
+
+        },loopInterval);
     }
 
 
