@@ -711,7 +711,7 @@
 
         for(var i = 0; i < liveSchedule.length; i++){
             if(liveSchedule[i].time > store.current_time){
-                currentIndex = i;
+                currentIndex = !i ? currentIndex : i;
                 loopInterval = liveSchedule[i].time - store.current_time;
                 break;
             }
