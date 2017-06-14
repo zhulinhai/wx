@@ -731,14 +731,14 @@
                 loopInterval = 10 * 60 * 1000;
                 $('#lives').html(liveSchedule[currentIndex].count);
                 //$('#audiences').html(audienceSchedule[currentIndex].count);
-                console.log('当前时间:' + new Date().Format('yyyy-MM-dd hh:mm:ss') + ' 人气数：' + liveSchedule[currentIndex].count);
+                //console.log('当前时间:' + new Date().Format('yyyy-MM-dd hh:mm:ss') + ' 人气数：' + liveSchedule[currentIndex].count);
                 currentIndex ++;
 
                 scheduleInterval = setInterval(function(){
                     if(currentIndex < liveSchedule.length){
                         $('#lives').html(liveSchedule[currentIndex].count);
                         //$('#audiences').html(audienceSchedule[currentIndex].count);
-                        console.log('当前时间:' + new Date().Format('yyyy-MM-dd hh:mm:ss') + ' 人气数：' + liveSchedule[currentIndex].count );
+                        //console.log('当前时间:' + new Date().Format('yyyy-MM-dd hh:mm:ss') + ' 人气数：' + liveSchedule[currentIndex].count );
                         currentIndex ++;
                     }else {
                         $('#lives').html(liveSchedule[currentIndex - 1].count);
