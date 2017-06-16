@@ -148,9 +148,11 @@
             var state = parseInt(data.active_state);
             var doms = $('input[type="radio"]');
             $(doms[state]).attr('checked','checked');
-
-//            if(state == 1)
-                schedule(dateStringToMillisecond(data.current_time));
+            schedule(dateStringToMillisecond(data.current_time));
+            if(state == 2 && scheduleInterval){
+                clearInterval(scheduleInterval);
+                scheduleInterval = null;
+            }
         }});
 
 
