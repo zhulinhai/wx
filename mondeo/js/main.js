@@ -140,21 +140,28 @@
                 //$('#lives').html(store.lives);
                 //$('#audiences').html(store.audiences);
 
-                $('#tricyclic_turns').html(store.tricyclic_turns + '圈');
-                $('#tetracyclic_turns').html(store.tetracyclic_turns + '圈');
-                $('#pentacyclic_turns').html(store.pentacyclic_turns + '圈');
+                $('#tricyclic_turns').html(store.tricyclic_turns);
+                $('#tetracyclic_turns').html(store.tetracyclic_turns);
+                $('#pentacyclic_turns').html(store.pentacyclic_turns);
 
-                $('#used_gasoline').html(store.used_gasoline + 'L');
-                $('#used_gasonline_tera').html(store.used_gasonline_tera + 'L');
-                $('#used_gasonline_penta').html(store.used_gasonline_penta + 'L');
+                $('#used_gasoline').html(store.used_gasoline);
+                $('#used_gasonline_tera').html(store.used_gasonline_tera);
+                $('#used_gasonline_penta').html(store.used_gasonline_penta);
 
                 $('#support-num').html(store.support);
                 $('#nonsupport-num').html(store.nonsupport);
-
-                //console.log(dateStringToMillisecond(data.current_time));
-                store.current_time = dateStringToMillisecond(data.current_time);
-                schedule();
                 store.active_state = parseInt(data.active_state);
+                //console.log(dateStringToMillisecond(data.current_time));
+
+                var maxCount = parseInt(liveSchedule[liveSchedule.length - 1].count);
+                store.lives = parseInt(store.lives);
+
+                if(store.lives != NaN && store.lives > maxCount){
+                    $('#lives').html(store.lives);
+                }else{
+                    store.current_time = dateStringToMillisecond(data.current_time);
+                    schedule();
+                }
             }
         }});
     });
@@ -226,7 +233,7 @@
             console.log(data);
             data = data.props;
             store.lives = parseInt(data.lives)== NaN ? store.lives :data.lives;
-            store.audiences = parseInt(data.audiences)== NaN ?store.audiences : data.audiences;
+            //store.audiences = parseInt(data.audiences)== NaN ?store.audiences : data.audiences;
 
             store.tricyclic_turns = parseInt(data.tricyclic_turns)== NaN ? store.tricyclic_turns : data.tricyclic_turns;
             store.tetracyclic_turns = parseInt(data.tetracyclic_turns)== NaN ? store.tetracyclic_turns : data.tetracyclic_turns;
@@ -236,18 +243,25 @@
             store.used_gasonline_tera  = parseInt(data.used_gasonline_tera)== NaN ? store.used_gasonline_tera : data.used_gasonline_tera;
             store.used_gasonline_penta = parseInt(data.used_gasonline_penta)== NaN ? store.used_gasonline_penta : data.used_gasonline_penta;
 
-            //$('#lives').html(store.lives);
             //$('#audiences').html(store.audiences);
 
-            $('#tricyclic_turns').html(store.tricyclic_turns + '圈');
-            $('#tetracyclic_turns').html(store.tetracyclic_turns + '圈');
-            $('#pentacyclic_turns').html(store.pentacyclic_turns + '圈');
+            $('#tricyclic_turns').html(store.tricyclic_turns);
+            $('#tetracyclic_turns').html(store.tetracyclic_turns);
+            $('#pentacyclic_turns').html(store.pentacyclic_turns);
 
-            $('#used_gasoline').html(store.used_gasoline + 'L');
-            $('#used_gasonline_tera').html(store.used_gasonline_tera + 'L');
-            $('#used_gasonline_penta').html(store.used_gasonline_penta + 'L');
+            $('#used_gasoline').html(store.used_gasoline);
+            $('#used_gasonline_tera').html(store.used_gasonline_tera);
+            $('#used_gasonline_penta').html(store.used_gasonline_penta);
 
             store.active_state = parseInt(data.active_state);
+
+            if(store.active_state == 2){ //直播已结束
+                if(scheduleInterval){
+                    clearInterval(scheduleInterval);
+                    scheduleInterval = null;
+                }
+                $('#lives').html(store.lives);
+            }
             changeVideo(store.active_state);
         });
 
@@ -638,7 +652,7 @@
             $('#unlive').attr('src','images/bg-endLive.jpg');
             $('#unlive').show();
             $('#my-player').hide();
-            player.stop();
+            player.pause();
         }
     }
 
