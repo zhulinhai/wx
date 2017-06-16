@@ -270,7 +270,7 @@
          * @type {Swiper|Window.Swiper}
          */
         mainSwiper = new Swiper('#mainPage',{
-            initialSlide:FIRST_PAGE,
+            initialSlide:FIFTH_PAGE,
             direction : 'vertical',
             loop: false,
             onInit: function(swiper){
@@ -396,6 +396,8 @@
         $('.btn-back').click(function(e){
             mainSwiper.unlockSwipeToPrev();
             mainSwiper.slideTo(SIXTH_PAGE);
+            if(current_page_index == SIXTH_PAGE)
+                stopPulse();
         });
 
         $('#btn-support').click(function(e){

@@ -31,6 +31,17 @@
 #mainPage .page .btn-back { left: .22rem; background: url("../images/btn-back.png") center no-repeat; background-size: cover; }
 #mainPage .page .btn-rule { right: .22rem; background: url("../images/btn-rule.png") center no-repeat; background-size: cover; }
 #mainPage .page .topic-banner { position:absolute; top:1.74rem; left:.075rem; width:6.25rem; }
+#mainPage .page .btn-bbs {
+     position: absolute;
+    display: block; bottom:.22rem; padding-left: .15rem; padding-right: .15rem;  height: .41rem; right: .22rem;
+     background-color: #B52430;
+     color: white;
+    font-size: .22rem;
+    line-height: .41rem;
+    text-align: center;
+    border-radius: 5px;
+    /*background: url("../images/btn-rule.png") center no-repeat; background-size: cover;*/
+}
 
 .normal-input {
     padding-left: 10px;
