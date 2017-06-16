@@ -153,7 +153,7 @@
 
                 //console.log(dateStringToMillisecond(data.current_time));
                 store.current_time = dateStringToMillisecond(data.current_time);
-                //schedule();
+                schedule();
                 store.active_state = parseInt(data.active_state);
             }
         }});
@@ -634,6 +634,10 @@
             $('#unlive').hide();
             $('#my-player').show();
             player.src('http://pili-live-hls.yunmfang.com/ford/mondeo.m3u8');
+        }else if(state==2){
+            $('#unlive').attr('src','images/bg-endLive.jpg');
+            $('#unlive').show();
+            $('#my-player').hide();
         }
     }
 
