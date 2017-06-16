@@ -9,13 +9,11 @@
     <script type="text/javascript" src="../public/scripts/utils/commentUtil.js"></script>
 </head>
 <style>
-    label { font-size: 16px;}
-    .clear{  clear: both;  }
-    .row label{ float: left; }
+
     .row div:nth-child(2) { float: left; text-align: left;border-bottom: 1px solid black;height: 17px; width: 150px;}
     form div { margin-top: 10px; }
-    form label {  font-size: 18px;  }
-    form input[type=text] {
+    form label,.row label {  font-size: 18px;  }
+    form input[type=text] ,.row input[type=text]{
         width: 150px;
         font-size: 18px;
         line-height: 150%;
@@ -24,15 +22,14 @@
 <body>
 <div>
     <p style="color: red">蒙迪欧直播数据</p>
-    <div class="row">
-       <label>人气数:</label><div id="lives"></div>
-        <div class="clear"></div>
-    </div>
     <!--<div class="row">-->
-        <!--<label>同时在线人数:</label><div id="audiences"></div>-->
+       <!--<label>人气数:</label><div id="lives"></div>-->
         <!--<div class="clear"></div>-->
     <!--</div>-->
-    <!--<input type="button" id="resetRedis" value="清空直播人气数据"/>-->
+    <div class="row">
+        <label>人气数：</label><input type="text" id="lives" name="lives" disabled/>
+    </div>
+    <input type="button" style="margin-top: 30px;margin-right: 20px;" id="updateLives" value="添加人气数" disabled><input type="button" id="resetRedis" value="清空直播人气数据"/>
 </div>
 <div>
     <p style="color: red">蒙迪欧直播跑圈数据</p>
@@ -135,8 +132,8 @@
 
         http.ajaxRequest({type:'GET',uri:'h5/getInitDatas?flag=MONDEO_20170501',success:function(json){
             var data = json.data;
-            $('#lives').html(data.lives ? data.lives : 0);
-            $('#audiences').html(data.audiences ? data.audiences : 0);
+            $('#lives').val(data.lives ? data.lives : 0);
+//            $('#audiences').html(data.audiences ? data.audiences : 0);
             $('#used_time_tri').val(data.used_time_tri);
 //            $('#used_time_tera').val(data.used_time_tera);
 //            $('#used_time_penta').val(data.used_time_penta);
@@ -178,13 +175,13 @@
 
         setTimeout(function(){
             loopInterval = 10 * 60 * 1000;
-            $('#lives').html(liveSchedule[currentIndex].count);
+            $('#lives').val(liveSchedule[currentIndex].count);
             console.log('当前时间:' + new Date().Format('yyyy-MM-dd hh:mm:ss') + ' 人气数：' + liveSchedule[currentIndex].count);
             currentIndex ++;
 
             scheduleInterval = setInterval(function(){
                 if(currentIndex < liveSchedule.length){
-                    $('#lives').html(liveSchedule[currentIndex].count);
+                    $('#lives').val(liveSchedule[currentIndex].count);
                     console.log('当前时间:' + new Date().Format('yyyy-MM-dd hh:mm:ss') + ' 人气数：' + liveSchedule[currentIndex].count);
                     currentIndex ++;
                 }else {
@@ -222,6 +219,8 @@
 
         }
     });
+
+    $('#updateLives').click();
 
     $('#resetRedis').on('click',function(e){
         var flag = confirm("是否清空蒙迪欧直播人气数，同时在线人数?");

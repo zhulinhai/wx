@@ -638,6 +638,7 @@
             $('#unlive').attr('src','images/bg-endLive.jpg');
             $('#unlive').show();
             $('#my-player').hide();
+            player.stop();
         }
     }
 
