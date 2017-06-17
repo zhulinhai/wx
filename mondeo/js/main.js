@@ -394,12 +394,13 @@
         });
 
         $('.btn-back').click(function(e){
-            mainSwiper.unlockSwipeToPrev();
-            mainSwiper.slideTo(SIXTH_PAGE);
             if(current_page_index == SIXTH_PAGE)
                 stopPulse();
             else if(current_page_index == NINTH_PAGE)
-               player.pause();
+                player.pause();
+            mainSwiper.unlockSwipeToPrev();
+            mainSwiper.slideTo(SIXTH_PAGE);
+
         });
 
         $('#btn-support').click(function(e){
