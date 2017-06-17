@@ -398,6 +398,8 @@
             mainSwiper.slideTo(SIXTH_PAGE);
             if(current_page_index == SIXTH_PAGE)
                 stopPulse();
+            else if(current_page_index == NINTH_PAGE)
+               player.pause();
         });
 
         $('#btn-support').click(function(e){
