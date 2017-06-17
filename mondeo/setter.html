@@ -53,11 +53,11 @@
         <div>
             <label>五环已使用油量：</label><input type="text" id="used_gasonline_penta" name="used_gasonline_penta" />
         </div>
-        <div style="display: none;">
-            <label>总耗时：</label><input type="text" id="used_time_tri" name="used_time_tri" />
-        </div>
+        <!--<div style="display: none;">-->
+            <!--<label>总耗时：</label><input type="text" id="used_time_tri" name="used_time_tri" />-->
+        <!--</div>-->
         <div>
-            <label>活动状态：</label><input type="radio" name="active_state" value="0" checked="checked" />未开始<input type="radio" name="active_state" value="1" />进行中<input type="radio" name="active_state" value="2" />已结束
+            <label>活动状态：</label><input type="radio" name="active_state" value="0"/>未开始<input type="radio" name="active_state" value="1" />进行中<input type="radio" name="active_state" value="2" />已结束
         </div>
     </form>
     <div style="margin-top: 30px;">
@@ -247,24 +247,26 @@
 
     $('#submit').on('click',function(e){
         var params = $('form').serialize();
-        var flag = confirm("确认录入数据无误，点击“确定”按钮提交数据!");
-        if(flag) {
-            http.ajaxRequest({
-                type: 'GET', uri: 'h5/updateMondeoProps?' + params + '&flag=MONDEO_20170501', success: function (json) {
-                    var data = json.data;
-                    $('#used_time_tri').val(data.used_time_tri);
-                    //            $('#used_time_tera').val(data.used_time_tera);
-                    //            $('#used_time_penta').val(data.used_time_penta);
-                    $('#tricyclic_turns').val(data.tricyclic_turns);
-                    $('#tetracyclic_turns').val(data.tetracyclic_turns);
-                    $('#pentacyclic_turns').val(data.pentacyclic_turns);
-                    $('#used_gasoline').val(data.used_gasoline);
-                    $('#used_gasonline_tera').val(data.used_gasonline_tera);
-                    $('#used_gasonline_penta').val(data.used_gasonline_penta);
-                    alert('设置数据成功');
-                }
-            });
-        }
+        alert(params);
+//        var flag = confirm("确认录入数据无误，点击“确定”按钮提交数据!");
+
+//        if(flag) {
+//            http.ajaxRequest({
+//                type: 'GET', uri: 'h5/updateMondeoProps?' + params + '&flag=MONDEO_20170501', success: function (json) {
+//                    var data = json.data;
+//                    $('#used_time_tri').val(data.used_time_tri);
+//                    //            $('#used_time_tera').val(data.used_time_tera);
+//                    //            $('#used_time_penta').val(data.used_time_penta);
+//                    $('#tricyclic_turns').val(data.tricyclic_turns);
+//                    $('#tetracyclic_turns').val(data.tetracyclic_turns);
+//                    $('#pentacyclic_turns').val(data.pentacyclic_turns);
+//                    $('#used_gasoline').val(data.used_gasoline);
+//                    $('#used_gasonline_tera').val(data.used_gasonline_tera);
+//                    $('#used_gasonline_penta').val(data.used_gasonline_penta);
+//                    alert('设置数据成功');
+//                }
+//            });
+//        }
     });
 
     $('#resetMondeoProps').on('click',function(e){

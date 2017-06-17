@@ -642,14 +642,15 @@
     }
 
     function changeVideo(state){
-
         if(state == 0){
             $('#unlive').show();
             $('#my-player').hide();
         }else if(state == 1) {
-            $('#unlive').hide();
-            $('#my-player').show();
-            player.src('http://pili-live-hls.yunmfang.com/ford/mondeo.m3u8');
+            if(player.paused()){
+                $('#unlive').hide();
+                $('#my-player').show();
+                player.src('http://pili-live-hls.yunmfang.com/ford/mondeo.m3u8');
+            }
         }else if(state==2){
             $('#unlive').attr('src','images/bg-endLive.jpg');
             $('#unlive').show();
