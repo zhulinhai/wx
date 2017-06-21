@@ -1,0 +1,151 @@
+@import "bootstrap.min";
+@import "common";
+p {
+  margin: 0;
+}
+
+.contentFrame {
+  display: block;
+  margin: 0 auto 30px;
+  width: 1200px;
+  height: 670px;
+
+  .leftFrame {
+    float: left;
+    width: 212px;
+    height: 670px;
+    background-color: #F6F7F8;
+    border: 1px solid #D6D7D8;
+    img {
+      width: 172px;
+      margin: 20px;
+    }
+  }
+  .rightFrame {
+    float: right;
+    width: 965px;
+    height: 670px;
+    background-color: #F6F7F8;
+    border: 1px solid #D6D7D8;
+    .itemFrame {
+      width: 100%;
+      height: 70px;
+      border-bottom: 2px solid #1E2A82;
+      .item {
+        float: left;
+        width: 120px;
+        height: 70px;
+        line-height: 70px;
+        font-size: 20px;
+        font-weight: bold;
+        color: #646465;
+        text-align: center;
+        border-left: none;
+      }
+      .item1 {
+        margin-left: 20px;
+      }
+      .hover {
+        color: #1E2A82 ;
+      }
+    }
+    .topFrame {
+      width: 905px;
+      margin-left: 20px;
+      height: 50px;
+      margin-top: 20px;
+      overflow: hidden;
+      .tFrame {
+        float: left;
+        width: 400px;
+        margin-left: 20px;
+        a {
+          color: #646465;
+        }
+        .name {
+          font-size: 20px;
+          line-height: 48px;
+        }
+        .sex {
+          margin-left: 20px;
+          font-size: 16px;
+          line-height: 48px;
+        }
+        .userLink {
+          margin-left: 20px;
+          font-size: 14px;
+          line-height: 48px;
+        }
+
+      }
+      .tagFrame {
+        float: right;
+        width: 288px;
+        height: 48px;
+        .item {
+          float: right;
+          width: 80px;
+          height: 30px;
+          line-height: 30px;
+          margin-top: 9px;
+          margin-left: 10px;
+          text-align: center;
+          background-color: #EFF0F1;
+          color: #646465;
+          img {
+            margin-right: 5px;
+            margin-top: 6px;
+            vertical-align: top;
+          }
+        }
+        .hover {
+          color: white;
+          background-color: #1E2A82;
+        }
+      }
+    }
+
+    .cFrame {
+      margin-left: 40px;
+      margin-right: 20px;
+      width: 885px;
+      font-size: 14px;
+      padding-top: 10px;
+      margin-bottom: 20px;
+      background-color: #EFF0F1;
+      .p2 {
+        line-height: 30px;
+        text-align: left;
+        color: #646465;
+        margin-left: 20px;
+        a {
+          background-color: #F6F7F8;
+          padding: 3px 10px;
+          margin-right: 10px;
+          color: #646465;
+        }
+      }
+      .subItems {
+        text-align: center;
+        margin: 20px;
+        height: 80px;
+        .item {
+          float: left;
+          padding: 10px 20px;
+          line-height: 20px;
+          color: #646465;
+          border-right: 1px solid #646465;
+        }
+      }
+    }
+    .infoFrame {
+      p {
+        margin-left: 40px;
+        line-height: 30px;
+        color: #646465;
+        font-size: 14px;
+      }
+
+    }
+  }
+}

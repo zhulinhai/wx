@@ -1,0 +1,174 @@
+@import "common";
+
+.contentFrame {
+  display: block;
+  margin: 0 auto 30px;
+  width: 1200px;
+  background-color: #F6F7F8;
+  border: 1px solid #E3E3E4;
+  .topFrame {
+    width: 100%;
+    color: #1E2A82;
+    height: 70px;
+    line-height: 70px;
+    border-bottom: 2px solid #1E2A82;
+    .titleLeft {
+      float: left;
+      width: 240px;
+      margin-top: 20px;
+      margin-left: 20px;
+      height: 30px;
+      line-height: 30px;
+      img {
+        float: left;
+        margin-right: 10px;
+        vertical-align: top;
+      }
+      a {
+        float: left;
+        font-size: 24px;
+        font-weight: bold;
+        color: #1E2A82;
+        height: 30px;
+        line-height: 30px;
+      }
+    }
+    .similar {
+      float: right;
+      margin-top: 20px;
+      margin-right: 20px;
+      height: 30px;
+      line-height: 30px;
+      color: #1E2A82;
+    }
+  }
+
+  .infoFrame {
+    width: 1200px;
+    height: 600px;
+    .leftFrame {
+      float: left;
+      margin-top: 30px;
+      width: 340px;
+      p {
+        text-align: right;
+        height: 48px;
+        line-height: 48px
+      }
+      .p2 {
+        margin-top: 10px;
+        height: 90px;
+        line-height: 20px;
+      }
+      .p3 {
+        margin-top: 35px;
+      }
+    }
+
+    .rightFrame {
+      float: right;
+      width: 840px;
+      margin-top: 30px;
+      input, select {
+        -webkit-appearance: none;
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;  /*Firefox3.5+*/
+        -webkit-box-sizing: border-box; /*Safari3.2+*/
+        width: 535px;
+        height: 30px;
+        line-height: 30px;
+        border: none;
+        margin-top: 9px;
+        margin-bottom: 9px;
+        margin-left: 0;
+        padding-left: 10px;
+        font-size: 14px;
+        color: #646465;
+        background-color: #EFF0F1;
+      }
+      select {
+        background: #EFF0F1 url("../img/19/19-arrowDown.png") no-repeat 515px center;
+      }
+      textarea {
+        width: 535px;
+        font-size: 14px;
+        color: #646465;
+        background-color: #EFF0F1;
+        border: none;
+        overflow: auto;
+        height: 124px;
+        text-indent: 10px;
+        line-height: 30px;
+        margin-top: 10px;
+      }
+
+      .questionFrame {
+        width: 535px;
+        margin-top: 10px;
+        background-color: #EFF0F1;
+        .textarea1 {
+          width: 100%;
+          height: 90px;
+          margin-top: 0;
+        }
+        img {
+          width: 100%;
+        }
+        .bottomCount {
+          width: 515px;
+          height: 30px;
+          font-size: 14px;
+          line-height: 30px;
+          margin-left: 10px;
+          color: #646465;
+          background-color: #EFF0F1;
+          border-top: 1px solid #DEDFE0;
+          .left {
+            float: left;
+            width: 100px;
+            height: 30px;
+            line-height: 30px;
+            text-align: left;
+          }
+          .right {
+            float: right;
+            width: 100px;
+            height: 30px;
+            line-height: 30px;
+            text-align: right;
+          }
+        }
+
+      }
+
+      .btnFrame {
+        height: 60px;
+        margin-top: 30px;
+        .btnOk {
+          float: left;
+          margin-left: 120px;
+          width: 110px;
+          height: 30px;
+          line-height: 30px;
+          color: white;
+          text-align: center;
+          background-color: #1E2A82;
+        }
+        .btnBack {
+          float: left;
+          width: 110px;
+          height: 30px;
+          line-height: 30px;
+          color: white;
+          margin-left: 30px;
+          text-align: center;
+          background-color: #000;
+
+        }
+      }
+
+    }
+
+  }
+
+}

@@ -1,0 +1,214 @@
+@import "common";
+
+.contentFrame {
+  display: block;
+  margin: 0 auto 30px;
+  width: 1200px;
+  background-color: #F6F7F8;
+  border: 1px solid #E3E3E4;
+  .topFrame {
+    width: 100%;
+    color: #1E2A82;
+    height: 70px;
+    line-height: 70px;
+    border-bottom: 2px solid #1E2A82;
+    .titleLeft {
+      float: left;
+      width: 240px;
+      margin-top: 20px;
+      margin-left: 20px;
+      height: 30px;
+      line-height: 30px;
+      img {
+        display: inline-block;
+        *display: inline;
+        *zoom: 1;
+        margin-right: 10px;
+        vertical-align: top;
+      }
+      a {
+        display: inline-block;
+        *display: inline;
+        *zoom: 1;
+        font-size: 24px;
+        font-weight: bold;
+        color: #1E2A82;
+        height: 30px;
+        line-height: 30px;
+      }
+    }
+    .similar {
+      float: right;
+      margin-top: 20px;
+      margin-right: 20px;
+      height: 30px;
+      line-height: 30px;
+      color: #1E2A82;
+    }
+  }
+
+  .infoFrame {
+    display: block;
+    margin: 20px auto;
+    width: 535px;
+    .titleFrame {
+      width: 100%;
+      height: 30px;
+      line-height: 30px;
+      font-size: 14px;
+      color: #646465;
+      .left {
+        float: left;
+        text-align: left;
+        width: 180px;
+      }
+      .right {
+        float: right;
+        text-align: right;
+        width: 180px;
+      }
+
+    }
+    textarea {
+      display: block;
+      margin: 0 auto;
+      width: 535px;
+      height: 90px;
+      line-height: 30px;
+      text-indent: 10px;
+      border: none;
+      font-size: 14px;
+      color: #646465;
+      overflow: auto;
+      background-color: #E5E6E7;
+    }
+
+    .answerFrame {
+      margin-top: 30px;
+      .div1 {
+        width: 100%;
+        height: 35px;
+        .left {
+          float: left;
+          height: 30px;
+          line-height: 30px;
+          font-size: 18px;
+          font-weight: bold;
+          text-align: left;
+          color: #646465;
+          border-bottom: 3px solid #1E2A82;
+        }
+        .answer {
+          float: right;
+          width: 120px;
+          height: 30px;
+          line-height: 30px;
+          text-align: center;
+          color: white;
+          background-color: #1E2A82;
+        }
+
+      }
+      .div2 {
+        width: 100%;
+        height: 30px;
+        line-height: 30px;
+        margin-top: 10px;
+        font-size: 14px;
+        color: #646465;
+        border-bottom: 1px solid #EFF0F1;
+        .left {
+          float: left;
+        }
+        .name {
+          float: right;
+        }
+      }
+      .content {
+        color: #646465;
+        font-size: 14px;
+        line-height: 30px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+      }
+      .barFrame {
+        color: #646465;
+        height: 30px;
+        font-size: 14px;
+        margin-bottom: 20px;
+        border-bottom: 1px solid #EFF0F1;
+        .leftBar {
+          float: left;
+          a {
+            margin-right: 20px;
+          }
+          img {
+            margin-right: 5px;
+          }
+        }
+        .date {
+          float: right;
+          width: 200px;
+          text-align: right;
+        }
+      }
+    }
+
+    .questionFrame {
+      width: 535px;
+      margin-top: 10px;
+      background-color: #E5E6E7;
+      .bottomCount {
+        width: 515px;
+        height: 30px;
+        font-size: 14px;
+        line-height: 30px;
+        margin-left: 10px;
+        color: #646465;
+        background-color: #E5E6E7;
+        border-top: 1px solid #DEDFE0;
+        .left {
+          float: left;
+          width: 100px;
+          height: 30px;
+          line-height: 30px;
+          text-align: left;
+        }
+        .right {
+          float: right;
+          width: 100px;
+          height: 30px;
+          line-height: 30px;
+          text-align: right;
+        }
+      }
+    }
+
+    .btnFrame {
+      height: 60px;
+      margin-top: 30px;
+      .btnSubmit {
+        float: left;
+        margin-left: 120px;
+        width: 110px;
+        height: 30px;
+        line-height: 30px;
+        color: white;
+        text-align: center;
+        background-color: #1E2A82;
+      }
+      .btnCancel {
+        float: left;
+        width: 110px;
+        height: 30px;
+        line-height: 30px;
+        color: white;
+        margin-left: 30px;
+        text-align: center;
+        background-color: #000;
+
+      }
+    }
+  }
+
+}

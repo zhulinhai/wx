@@ -1,0 +1,69 @@
+@import "bootstrap.min";
+@import "common";
+p {
+  margin: 0;
+}
+
+.contentFrame {
+  display: block;
+  margin: 0 auto 30px;
+  width: 1200px;
+  background-color: #F6F7F8;
+  border: 1px solid #D6D7D8;
+  .title {
+    font-size: 20px;
+    line-height: 20px;
+    padding-top: 30px;
+    color: #1E2A82;
+    text-align: center;
+  }
+  .subTitle {
+    font-size: 14px;
+    line-height: 30px;
+    text-align: center;
+    margin: 10px 20px 20px;
+    border-bottom: 1px solid #EFF0F1;
+    color: #646465;
+  }
+  .p1 {
+    text-indent: 28px;
+    font-size: 14px;
+    line-height: 24px;
+    margin: 10px 20px;
+    color: #646465;
+  }
+  .company, .date {
+    text-align: right;
+    font-size: 14px;
+    line-height: 24px;
+    margin: 20px 20px 10px;
+    color: #646465;
+  }
+  .date {
+    margin-top: 10px;
+  }
+
+  .linkFile {
+    height: 52px;
+    line-height: 52px;
+    margin: 0 20px;
+    border-top: 1px solid #EFF0F1;
+    border-bottom: 1px solid #EFF0F1;
+    a {
+      color: #2753A4;
+    }
+  }
+  .postLinks {
+    height: 52px;
+    line-height: 52px;
+    margin: 0 20px;
+    .postPrev {
+      float: left;
+      color: #646465;
+    }
+    .postNext {
+      float: right;
+      color: #646465;
+    }
+  }
+}

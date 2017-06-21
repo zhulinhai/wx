@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>寰标协同云平台</title>
+    <link rel="stylesheet" href="../sass/page11.css">
+</head>
+<body>
+    <div class="header">
+        <div class="leftDiv"><img class="logo" src="../img/01/logo.png" /><div class="item">服务</div><div class="item">帮助</div></div>
+        <div class="rightDiv">
+            <div id="headMenu" class="menu">
+                <div id="headDiv">
+                    <img class="headImg" src="../img/01/1-headImg.png">
+                    <p class="userName">张宁宁<img class="arrow" src="../img/01/1-arrow.png"></p>
+                </div>
+                <div id="subMenu" class="subMenu" style="display: none">
+                    <div class="item item1"><p>账号设置</p></div>
+                    <div class="line"></div>
+                    <div class="item item2"><p>角色管理</p></div>
+                    <div class="line"></div>
+                    <div class="item item3"><p>退出登录</p></div>
+                </div>
+            </div>
+            <span class="msgCount">9</span>
+            <input>
+        </div>
+    </div>
+    <div class="menuDiv">
+        <div id="sortMenu" class="menu">
+            <a class="item">首页</a>
+            <a class="item">标准分类检索</a>
+            <a class="item">高级检索/专业检索</a>
+            <a class="item hover">标准有效性查询</a>
+            <a class="item">标准体系管理</a>
+            <a class="item">标准收藏夹</a>
+
+            <div id="btnSearch-2" class="btnSearch"></div>
+            <input placeholder="在1,633,498项标准中检索" />
+        </div>
+    </div>
+    <div class="navigation"><img src="../img/01/home.png" /><a>首页</a><a>></a><a>标准检索</a><a>></a><a>受控文件</a></div>
+    <div class="contentFrame">
+        <div class="leftFrame">
+            <p class="titleFrame"><img src="../img/11/11-export.png" />导出</p>
+            <div class="divMenu">标准目录</div>
+            <div class="itemMenu">
+                <a id="itemNormal" class="item hover"><span></span>标准目录</a><a id="itemCompany" class="item"><span></span>企业体系</a>
+            </div>
+            <div class="item-tree" id="treeView"></div>
+        </div>
+        <div class="rightFrame">
+            <p class="titleFrame"><img src="../img/11/11-file.png" />受控文件</p>
+            <table border="1">
+                <tr>
+                    <th class="t1">标准编号</th>
+                    <th class="t2">标准名称</th>
+                    <th class="t3">实施日期</th>
+                    <th class="t4">替换信息</th>
+                    <th class="t5"></th>
+                </tr>
+                <tr>
+                    <td class="td1">GB/T24001-2016</td>
+                    <td class="td2">环境管理体系要求使用指南</td>
+                    <td>2016-10-13</td>
+                    <td></td>
+                    <td class="td5"><a href="#">查看</a></td>
+                </tr>
+                <tr>
+                    <td class="td1">Q/HN-2-51A0.12.001-2016</td>
+                    <td class="td2">环保监督管理标准</td>
+                    <td>2016-10-13</td>
+                    <td></td>
+                    <td class="td5"><a href="#">查看</a></td>
+                </tr>
+                <tr>
+                    <td class="td1">Q/HN-2-51A0.12.001-2016</td>
+                    <td class="td2">环保监督管理标准</td>
+                    <td>2016-10-13</td>
+                    <td></td>
+                    <td class="td5"><a href="#">查看</a></td>
+                </tr>
+                <tr>
+                    <td class="td1">Q/HN-2-51A0.12.001-2016</td>
+                    <td class="td2">环保监督管理标准</td>
+                    <td>2016-10-13</td>
+                    <td></td>
+                    <td class="td5"><a href="#">查看</a></td>
+                </tr>
+                <tr>
+                    <td class="td1">Q/HN-2-51A0.12.001-2016</td>
+                    <td class="td2">环保监督管理标准</td>
+                    <td>2016-10-13</td>
+                    <td></td>
+                    <td class="td5"><a href="#">查看</a></td>
+                </tr>
+                <tr>
+                    <td class="td1">Q/HN-2-51A0.12.001-2016</td>
+                    <td class="td2">环保监督管理标准</td>
+                    <td>2016-10-13</td>
+                    <td></td>
+                    <td class="td5"><a href="#">查看</a></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="footer">版权所有：北京寰标伟业科技发展有限公司</div>
+    <script src="../js/jquery-1.10.1.min.js"></script>
+    <script src="../js/bootstrap-treeview.min.js"></script>
+    <script type="text/javascript">
+        var treeData = [
+            {
+                text: '黄台电厂',
+                href: '#parent1',
+                tags: ['4'],
+                nodes: [
+                    {
+                        text: '外部标准',
+                        href: '#child1',
+                        tags: ['2'],
+                        nodes: [
+                            {
+                                text: 'test 1',
+                                href: '#grandchild1',
+                                tags: ['0']
+                            },
+                            {
+                                text: 'test 2',
+                                href: '#grandchild2',
+                                tags: ['0']
+                            }
+                        ]
+                    },
+                    {
+                        text: '企业标准',
+                        href: '#child2',
+                        tags: ['1'],
+                        nodes: [
+                            {
+                                text: 'test 1',
+                                href: '#grandchild1',
+                                tags: ['0']
+                            }
+                        ]
+                    }
+                ]
+            }
+        ];
+
+        function initTree() {
+            $('#treeView').treeview({
+                color: "#1E2A82",
+                expandIcon: 'icon-add',
+                collapseIcon: 'icon-minus',
+                selectedBackColor: '#E5E6E7',
+                selectedColor: '#1E2A82',
+                data: treeData
+            });
+        }
+
+        /*项目入口*/
+        $(function () {
+            initTree();
+        });
+    </script>
+</body>
+</html>

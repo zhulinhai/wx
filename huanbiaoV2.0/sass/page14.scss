@@ -1,5 +1,10 @@
 @import "common";
 @import "bootstrap.min";
+.banner {
+  width: 100%;
+  height: 460px;
+  background: #1d1d1d url("../img/14/14-banner.jpg") no-repeat center 0;
+}
 .topDiv {
   width: 100%;
   height: 86px;
@@ -112,9 +117,9 @@
   .item {
     width: 100%;
     height: 360px;
-    background-color: #EDEEEF;
     vertical-align: top;
     margin-top: 30px;
+    background-color: #F6F7F8;
     border: 1px solid #E3E3E4;
     .titleFrame {
       width: 100%;

@@ -1,0 +1,89 @@
+@import "common";
+.contentFrame {
+  display: block;
+  margin: 0 auto 30px;
+  width: 1200px;
+  height: 850px;
+  .leftDiv {
+    float: left;
+    width: 300px;
+    height: 850px;
+    background-color: #F6F7F8;
+    border: 1px solid #E3E3E4;
+    .topFrame {
+      height: 70px;
+      border-bottom: 2px solid #1E2A82;
+      .item {
+        float: left;
+        width: 120px;
+        height: 36px;
+        line-height: 36px;
+        font-weight: bold;
+        font-size: 20px;
+        text-align: center;
+        margin-top: 20px;
+        margin-left: 20px;
+        color: #000;
+      }
+      .hover {
+        color: #1E2A82;
+      }
+    }
+    .infoFrame {
+      margin: 20px;
+      height: 740px;
+      p {
+        height: 30px;
+        line-height: 30px;
+        font-size: 14px;
+        color: #646465;
+        img {
+          margin-left: 5px;
+          vertical-align: middle;
+        }
+      }
+      .p1 {
+        text-indent: 14px;
+      }
+      .p2 {
+        text-indent: 28px;
+      }
+    }
+
+  }
+  .rightDiv {
+    float: right;
+    width: 880px;
+    height: 850px;
+    background-color: #F6F7F8;
+    border: 1px solid #E3E3E4;
+    .wordFrame {
+      margin-top: 20px;
+      width: 880px;
+      height: 750px;
+      img {
+        width: 100%;
+      }
+    }
+    .btnFrame {
+      width: 880px;
+      height: 60px;
+      .btnSave, .btnSubmit {
+        float: left;
+        width: 120px;
+        height: 36px;
+        line-height: 36px;
+        margin-top: 15px;
+        text-align: center;
+        margin-left: 300px;
+        color: white;
+        background-color: #1E2A82;
+      }
+      .btnSubmit {
+        background-color: #000;
+        margin-left: 40px;
+      }
+    }
+
+  }
+}

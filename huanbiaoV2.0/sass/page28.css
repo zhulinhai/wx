@@ -1,0 +1,409 @@
+@charset "UTF-8";
+* {
+  margin: 0;
+  padding: 0; }
+
+body, html {
+  width: 100%;
+  min-width: 1200px;
+  background-color: #FFFFFF;
+  font-family: "Microsoft YaHei UI", "微软雅黑", "宋体", sans-serif; }
+
+input {
+  -webkit-appearance: none;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  /*Firefox3.5+*/
+  -webkit-box-sizing: border-box;
+  /*Safari3.2+*/
+  border: none;
+  font-size: 16px;
+  margin-left: 5px;
+  padding-left: 10px; }
+
+input::-ms-clear {
+  display: none; }
+
+.header {
+  width: 100%;
+  height: 60px;
+  background-color: white; }
+  .header .leftDiv {
+    float: left; }
+    .header .leftDiv .logo {
+      float: left;
+      margin: 10px 70px 10px 20px; }
+    .header .leftDiv .item {
+      float: left;
+      width: 100px;
+      font-size: 22px;
+      height: 60px;
+      line-height: 60px;
+      text-align: center;
+      cursor: pointer;
+      color: #5D5E5F; }
+    .header .leftDiv .hover {
+      color: white;
+      background-color: #2753A4; }
+  .header .rightDiv {
+    float: right;
+    height: 60px; }
+    .header .rightDiv input {
+      float: right;
+      width: 190px;
+      height: 32px;
+      margin-top: 14px;
+      border-radius: 3px;
+      border: 1px solid #A7AAB1;
+      background: url("../img/01/1-search.png") no-repeat 160px center; }
+    .header .rightDiv .msgCount {
+      position: absolute;
+      right: 95px;
+      margin-top: 5px;
+      width: 20px;
+      height: 20px;
+      color: white;
+      text-align: center;
+      line-height: 20px;
+      border-radius: 20px;
+      font-size: 10px;
+      background-color: #EA6247; }
+    .header .rightDiv .menu {
+      float: right;
+      height: 100%;
+      background-color: white;
+      padding-left: 30px; }
+      .header .rightDiv .menu .headImg {
+        display: inline-block;
+        *display: inline;
+        *zoom: 1;
+        margin-left: 10px;
+        vertical-align: middle; }
+      .header .rightDiv .menu .userName {
+        display: inline-block;
+        *display: inline;
+        *zoom: 1;
+        width: 100px;
+        height: 60px;
+        line-height: 60px;
+        text-indent: 20px;
+        color: #757677; }
+        .header .rightDiv .menu .userName .arrow {
+          margin-left: 10px; }
+      .header .rightDiv .menu .subMenu {
+        position: absolute;
+        left: 50%;
+        top: 100px;
+        margin-left: 330px;
+        width: 170px;
+        background-color: #EFF0F1;
+        z-index: 2; }
+        .header .rightDiv .menu .subMenu .item {
+          display: block;
+          text-align: center;
+          width: 100%;
+          font-size: 16px;
+          height: 60px;
+          line-height: 60px; }
+          .header .rightDiv .menu .subMenu .item p {
+            text-align: center; }
+        .header .rightDiv .menu .subMenu .line {
+          width: 150px;
+          height: 1px;
+          margin-left: 10px;
+          background-color: #636465; }
+        .header .rightDiv .menu .subMenu .item:hover {
+          background-color: #2753A4; }
+          .header .rightDiv .menu .subMenu .item:hover p {
+            color: white; }
+
+.topDiv {
+  width: 100%;
+  height: 86px;
+  background: #171d59 url("../img/14/14-topBg.jpg") no-repeat center 0; }
+  .topDiv .content {
+    display: block;
+    margin: 0 auto;
+    width: 1200px;
+    height: 100%; }
+    .topDiv .content .leftDiv {
+      float: left;
+      width: 500px;
+      height: 86px;
+      line-height: 86px;
+      color: white; }
+    .topDiv .content .rightDiv {
+      float: right;
+      width: 500px;
+      height: 86px; }
+      .topDiv .content .rightDiv .dropdown {
+        float: right;
+        width: 120px;
+        margin-top: 28px;
+        margin-right: 10px; }
+        .topDiv .content .rightDiv .dropdown .dropdown-toggle {
+          width: 120px;
+          text-align: left;
+          background: #EFF0F1 url("../img/14/14-arrow.png") no-repeat 100px center;
+          border: none; }
+      .topDiv .content .rightDiv .btnSearch {
+        float: right;
+        width: 40px;
+        height: 30px;
+        margin-top: 28px;
+        background: #EFF0F1 url("../img/01/1-search.png") no-repeat center;
+        background-size: 20px auto; }
+      .topDiv .content .rightDiv input {
+        float: right;
+        width: 220px;
+        height: 30px;
+        line-height: 30px;
+        text-indent: 5px;
+        margin-top: 28px;
+        font-size: 14px;
+        color: #7F8081;
+        background-color: #EFF0F1; }
+
+.navigation {
+  display: block;
+  margin: 0 auto;
+  width: 1200px;
+  height: 48px;
+  line-height: 48px; }
+  .navigation img {
+    float: left;
+    margin-top: 17px;
+    margin-right: 5px; }
+  .navigation a {
+    color: #808182;
+    margin-right: 3px;
+    font-size: 12px; }
+
+.footer {
+  width: 100%;
+  height: 30px;
+  font-size: 12px;
+  line-height: 30px;
+  text-align: center;
+  color: #A3A4A5; }
+
+a:link {
+  text-decoration: none;
+  color: #000; }
+
+/* 没访问过的链接样式 */
+a:visited {
+  text-decoration: none;
+  color: #000; }
+
+/* 访问过的链接样式 */
+a:hover {
+  text-decoration: none;
+  color: #000; }
+
+/* 鼠标进入链接区域的链接样式 */
+a:active {
+  text-decoration: none;
+  color: #000; }
+
+/* 点击链接时的链接样式 */
+.contentFrame {
+  display: block;
+  margin: 0 auto 30px;
+  width: 1200px;
+  height: 1160px; }
+  .contentFrame .titleFrame {
+    font-size: 24px;
+    color: #1E2A82;
+    height: 70px;
+    line-height: 70px;
+    text-indent: 20px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    border-bottom: 2px solid #1E2A82; }
+  .contentFrame .leftFrame {
+    float: left;
+    width: 320px; }
+    .contentFrame .leftFrame table {
+      margin-left: 10px;
+      width: 300px; }
+      .contentFrame .leftFrame table span {
+        display: inline-block;
+        *display: inline;
+        *zoom: 1;
+        width: 10px;
+        height: 10px;
+        margin-right: 5px;
+        margin-left: 5px;
+        border: 1px solid #646465;
+        background-color: white; }
+      .contentFrame .leftFrame table tr {
+        border-bottom: 1px solid #E3E4E5; }
+      .contentFrame .leftFrame table td {
+        border-bottom: 1px solid #E3E4E5;
+        line-height: 35px;
+        height: 35px;
+        font-size: 14px;
+        color: #646465; }
+      .contentFrame .leftFrame table .td1 {
+        width: 20px; }
+      .contentFrame .leftFrame table .td2 {
+        width: 195px;
+        margin-left: 20px; }
+    .contentFrame .leftFrame tr:hover td {
+      color: #1E2A82; }
+      .contentFrame .leftFrame tr:hover td span {
+        border: 1px solid #1E2A82;
+        background-color: #1E2A82; }
+    .contentFrame .leftFrame .topFrame {
+      height: 428px;
+      background-color: #F6F7F8;
+      border: 1px solid #E3E3E4; }
+    .contentFrame .leftFrame .bottomDiv {
+      height: 670px;
+      background-color: #F6F7F8;
+      border: 1px solid #E3E3E4;
+      margin-top: 20px; }
+      .contentFrame .leftFrame .bottomDiv table td {
+        padding: 5px 0; }
+      .contentFrame .leftFrame .bottomDiv table .td1 {
+        vertical-align: top;
+        line-height: 24px; }
+      .contentFrame .leftFrame .bottomDiv table .td2 {
+        line-height: 24px; }
+  .contentFrame .rightFrame {
+    float: right;
+    width: 870px;
+    padding-bottom: 22px;
+    background-color: #F6F7F8;
+    border: 1px solid #E3E3E4; }
+    .contentFrame .rightFrame .topFrame {
+      height: 70px;
+      line-height: 70px;
+      border-bottom: 2px solid #1E2A82; }
+      .contentFrame .rightFrame .topFrame .div1 {
+        margin: 20px 10px;
+        height: 35px; }
+        .contentFrame .rightFrame .topFrame .div1 input {
+          float: left;
+          width: 700px;
+          height: 35px;
+          line-height: 35px;
+          margin-left: 0;
+          border: none;
+          font-size: 16px;
+          background-color: #EFF0F1; }
+        .contentFrame .rightFrame .topFrame .div1 .btnSearch {
+          float: right;
+          width: 120px;
+          height: 35px;
+          color: white;
+          line-height: 35px;
+          text-align: center;
+          font-size: 16px;
+          background-color: #1E2A82; }
+    .contentFrame .rightFrame .hotTags {
+      margin: 0 20px;
+      height: 40px;
+      line-height: 40px;
+      color: #646465; }
+      .contentFrame .rightFrame .hotTags a {
+        height: 20px;
+        line-height: 20px;
+        margin-left: 10px;
+        color: #1E2A82; }
+    .contentFrame .rightFrame .mainFrame .title1 {
+      display: block;
+      margin: 0 auto;
+      width: 850px;
+      height: 58px;
+      border-bottom: 1px solid #EFF0F1; }
+      .contentFrame .rightFrame .mainFrame .title1 img {
+        float: left;
+        margin-right: 5px;
+        margin-top: 20px; }
+      .contentFrame .rightFrame .mainFrame .title1 label {
+        float: left;
+        font-size: 15px;
+        margin-top: 15px;
+        line-height: 30px;
+        text-align: left;
+        color: #636465; }
+      .contentFrame .rightFrame .mainFrame .title1 .rightTicks {
+        float: right;
+        font-size: 14px;
+        margin-top: 15px;
+        line-height: 30px;
+        color: #D55463; }
+    .contentFrame .rightFrame .mainFrame .item {
+      display: block;
+      margin: 10px auto;
+      width: 850px;
+      border-bottom: 1px solid #EFF0F1; }
+      .contentFrame .rightFrame .mainFrame .item p {
+        font-size: 16px;
+        font-weight: bold;
+        line-height: 30px;
+        color: #1E2A82; }
+      .contentFrame .rightFrame .mainFrame .item table {
+        margin-left: 10px;
+        width: 830px;
+        height: 190px; }
+        .contentFrame .rightFrame .mainFrame .item table td {
+          border: none;
+          line-height: 24px;
+          font-size: 14px;
+          color: #646465;
+          margin: 5px 0; }
+        .contentFrame .rightFrame .mainFrame .item table .td1 {
+          width: 100px;
+          color: #1E2A82;
+          vertical-align: top; }
+        .contentFrame .rightFrame .mainFrame .item table .td2 {
+          margin-left: 20px;
+          color: #646465; }
+    .contentFrame .rightFrame .mainFrame .btnFrame {
+      display: block;
+      margin: 10px auto 20px;
+      width: 830px;
+      height: 30px; }
+      .contentFrame .rightFrame .mainFrame .btnFrame .btn-1 {
+        float: right;
+        width: 120px;
+        height: 30px;
+        line-height: 30px;
+        font-size: 14px;
+        text-align: center;
+        background-color: #000;
+        color: white;
+        border-radius: 0; }
+      .contentFrame .rightFrame .mainFrame .btnFrame .btnDetail {
+        margin-right: 20px; }
+      .contentFrame .rightFrame .mainFrame .btnFrame .hover {
+        background-color: #1E2A82; }
+    .contentFrame .rightFrame .mainFrame .dot {
+      float: right;
+      min-width: 300px;
+      margin-top: 10px;
+      height: 34px;
+      text-align: center; }
+      .contentFrame .rightFrame .mainFrame .dot a {
+        display: inline-block;
+        *display: inline;
+        *zoom: 1;
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        vertical-align: top;
+        text-align: center;
+        color: #626364;
+        background-color: #F6F7F8;
+        border: 1px solid #D6D7D8; }
+      .contentFrame .rightFrame .mainFrame .dot a:hover {
+        color: white;
+        background-color: #1E2A82; }
+      .contentFrame .rightFrame .mainFrame .dot .active {
+        color: white;
+        background-color: #1E2A82; }
+
+/*# sourceMappingURL=page28.css.map */

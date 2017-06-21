@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>寰标协同云平台</title>
+    <link rel="stylesheet" href="../sass/page05.css">
+</head>
+<body>
+    <div class="header">
+        <div class="leftDiv"><img class="logo" src="../img/01/logo.png" /><div class="item">服务</div><div class="item">帮助</div></div>
+        <div class="rightDiv">
+            <div id="headMenu" class="menu">
+                <div id="headDiv">
+                    <img class="headImg" src="../img/01/1-headImg.png">
+                    <p class="userName">张宁宁<img class="arrow" src="../img/01/1-arrow.png"></p>
+                </div>
+                <div id="subMenu" class="subMenu" style="display: none">
+                    <div class="item item1"><p>账号设置</p></div>
+                    <div class="line"></div>
+                    <div class="item item2"><p>角色管理</p></div>
+                    <div class="line"></div>
+                    <div class="item item3"><p>退出登录</p></div>
+                </div>
+            </div>
+            <span class="msgCount">9</span>
+            <input>
+        </div>
+    </div>
+    <div class="topDiv">
+        <div class="content">
+            <div class="leftDiv"><marquee>●&nbsp;欢迎光临寰标云平台</marquee></div>
+        </div>
+    </div>
+    <div class="navigation"><img src="../img/01/home.png" /><a>首页</a><a>></a><a>通知</a></div>
+    <div class="contentFrame">
+        <div class="tabFrame">
+            <div class="tabUnRead"><img src="../img/05/5-msg.png">未读</div><a href="javascript:showNoMsg();"><div class="tabRead"><img src="../img/05/5-msgopen.png">已读</div></a>
+            <p id="checkAll" class="checkAll"><span></span>全部标记为已读</p>
+        </div>
+        <div id="noMsg" class="noMsgFrame" style="display: none">
+            <img src="../img/05/5-noneMsg.png" />
+            <p class="msgTip">没有新消息</p>
+        </div>
+        <div id="msgItems" class="itemFrame" style="display: block">
+            <div class="item">
+                <div class="titleFrame">
+                    <p class="title"><span></span>系统通知</p>
+                    <p class="detail">xx将任务xx分配给您，请尽快前往处理</p>
+                </div>
+                <p class="date">05-01 15:35</p>
+            </div>
+            <div class="item">
+                <div class="titleFrame">
+                    <p class="title"><span></span>系统通知</p>
+                    <p class="detail">xx将任务xx分配给您，请尽快前往处理</p>
+                </div>
+                <p class="date">05-01 15:35</p>
+            </div>
+            <div class="item">
+                <div class="titleFrame">
+                    <p class="title"><span></span>系统通知</p>
+                    <p class="detail">xx将任务xx分配给您，请尽快前往处理</p>
+                </div>
+                <p class="date">05-01 15:35</p>
+            </div>
+            <div class="item">
+                <div class="titleFrame">
+                    <p class="title"><span></span>系统通知</p>
+                    <p class="detail">xx将任务xx分配给您，请尽快前往处理</p>
+                </div>
+                <p class="date">05-01 15:35</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">版权所有：北京寰标伟业科技发展有限公司</div>
+    <script type="text/javascript">
+        function showNoMsg() {
+            document.getElementById('msgItems').style.display = 'none';
+            document.getElementById('noMsg').style.display = 'block';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,509 @@
+@charset "UTF-8";
+@import url(bootstrap.min.css);
+* {
+  margin: 0;
+  padding: 0; }
+
+body, html {
+  width: 100%;
+  min-width: 1200px;
+  background-color: #FFFFFF;
+  font-family: "Microsoft YaHei UI", "微软雅黑", "宋体", sans-serif; }
+
+input {
+  -webkit-appearance: none;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  /*Firefox3.5+*/
+  -webkit-box-sizing: border-box;
+  /*Safari3.2+*/
+  border: none;
+  font-size: 16px;
+  margin-left: 5px;
+  padding-left: 10px; }
+
+input::-ms-clear {
+  display: none; }
+
+.header {
+  width: 100%;
+  height: 60px;
+  background-color: white; }
+  .header .leftDiv {
+    float: left; }
+    .header .leftDiv .logo {
+      float: left;
+      margin: 10px 70px 10px 20px; }
+    .header .leftDiv .item {
+      float: left;
+      width: 100px;
+      font-size: 22px;
+      height: 60px;
+      line-height: 60px;
+      text-align: center;
+      cursor: pointer;
+      color: #5D5E5F; }
+    .header .leftDiv .hover {
+      color: white;
+      background-color: #2753A4; }
+  .header .rightDiv {
+    float: right;
+    height: 60px; }
+    .header .rightDiv input {
+      float: right;
+      width: 190px;
+      height: 32px;
+      margin-top: 14px;
+      border-radius: 3px;
+      border: 1px solid #A7AAB1;
+      background: url("../img/01/1-search.png") no-repeat 160px center; }
+    .header .rightDiv .msgCount {
+      position: absolute;
+      right: 95px;
+      margin-top: 5px;
+      width: 20px;
+      height: 20px;
+      color: white;
+      text-align: center;
+      line-height: 20px;
+      border-radius: 20px;
+      font-size: 10px;
+      background-color: #EA6247; }
+    .header .rightDiv .menu {
+      float: right;
+      height: 100%;
+      background-color: white;
+      padding-left: 30px; }
+      .header .rightDiv .menu .headImg {
+        display: inline-block;
+        *display: inline;
+        *zoom: 1;
+        margin-left: 10px;
+        vertical-align: middle; }
+      .header .rightDiv .menu .userName {
+        display: inline-block;
+        *display: inline;
+        *zoom: 1;
+        width: 100px;
+        height: 60px;
+        line-height: 60px;
+        text-indent: 20px;
+        color: #757677; }
+        .header .rightDiv .menu .userName .arrow {
+          margin-left: 10px; }
+      .header .rightDiv .menu .subMenu {
+        position: absolute;
+        left: 50%;
+        top: 100px;
+        margin-left: 330px;
+        width: 170px;
+        background-color: #EFF0F1;
+        z-index: 2; }
+        .header .rightDiv .menu .subMenu .item {
+          display: block;
+          text-align: center;
+          width: 100%;
+          font-size: 16px;
+          height: 60px;
+          line-height: 60px; }
+          .header .rightDiv .menu .subMenu .item p {
+            text-align: center; }
+        .header .rightDiv .menu .subMenu .line {
+          width: 150px;
+          height: 1px;
+          margin-left: 10px;
+          background-color: #636465; }
+        .header .rightDiv .menu .subMenu .item:hover {
+          background-color: #2753A4; }
+          .header .rightDiv .menu .subMenu .item:hover p {
+            color: white; }
+
+.topDiv {
+  width: 100%;
+  height: 86px;
+  background: #171d59 url("../img/14/14-topBg.jpg") no-repeat center 0; }
+  .topDiv .content {
+    display: block;
+    margin: 0 auto;
+    width: 1200px;
+    height: 100%; }
+    .topDiv .content .leftDiv {
+      float: left;
+      width: 500px;
+      height: 86px;
+      line-height: 86px;
+      color: white; }
+    .topDiv .content .rightDiv {
+      float: right;
+      width: 500px;
+      height: 86px; }
+      .topDiv .content .rightDiv .dropdown {
+        float: right;
+        width: 120px;
+        margin-top: 28px;
+        margin-right: 10px; }
+        .topDiv .content .rightDiv .dropdown .dropdown-toggle {
+          width: 120px;
+          text-align: left;
+          background: #EFF0F1 url("../img/14/14-arrow.png") no-repeat 100px center;
+          border: none; }
+      .topDiv .content .rightDiv .btnSearch {
+        float: right;
+        width: 40px;
+        height: 30px;
+        margin-top: 28px;
+        background: #EFF0F1 url("../img/01/1-search.png") no-repeat center;
+        background-size: 20px auto; }
+      .topDiv .content .rightDiv input {
+        float: right;
+        width: 220px;
+        height: 30px;
+        line-height: 30px;
+        text-indent: 5px;
+        margin-top: 28px;
+        font-size: 14px;
+        color: #7F8081;
+        background-color: #EFF0F1; }
+
+.navigation {
+  display: block;
+  margin: 0 auto;
+  width: 1200px;
+  height: 48px;
+  line-height: 48px; }
+  .navigation img {
+    float: left;
+    margin-top: 17px;
+    margin-right: 5px; }
+  .navigation a {
+    color: #808182;
+    margin-right: 3px;
+    font-size: 12px; }
+
+.footer {
+  width: 100%;
+  height: 30px;
+  font-size: 12px;
+  line-height: 30px;
+  text-align: center;
+  color: #A3A4A5; }
+
+a:link {
+  text-decoration: none;
+  color: #000; }
+
+/* 没访问过的链接样式 */
+a:visited {
+  text-decoration: none;
+  color: #000; }
+
+/* 访问过的链接样式 */
+a:hover {
+  text-decoration: none;
+  color: #000; }
+
+/* 鼠标进入链接区域的链接样式 */
+a:active {
+  text-decoration: none;
+  color: #000; }
+
+/* 点击链接时的链接样式 */
+p {
+  padding: 0;
+  margin: 0; }
+
+.menuDiv {
+  width: 100%;
+  height: 86px;
+  background: #171d59 url("../img/14/14-topBg.jpg") no-repeat center 0; }
+  .menuDiv .menu {
+    display: block;
+    width: 1200px;
+    height: 136px;
+    margin: 0 auto; }
+    .menuDiv .menu a {
+      float: left;
+      padding: 0 20px;
+      font-size: 16px;
+      height: 86px;
+      color: white;
+      line-height: 86px;
+      cursor: pointer; }
+    .menuDiv .menu .hover {
+      color: white;
+      background-color: #000; }
+  .menuDiv .btnSearch {
+    float: right;
+    width: 40px;
+    height: 30px;
+    margin-top: 25px;
+    background: #F6F7F8 url("../img/01/1-search.png") no-repeat center;
+    background-size: 20px auto; }
+  .menuDiv input {
+    float: right;
+    margin: 25px 0;
+    width: 220px;
+    height: 30px;
+    line-height: 30px;
+    text-indent: 5px;
+    font-size: 12px;
+    color: #7F8081;
+    background-color: #F6F7F8; }
+
+.contentFrame {
+  display: block;
+  width: 1200px;
+  height: 940px;
+  margin: 0 auto 30px; }
+  .contentFrame .leftDiv {
+    float: left;
+    width: 300px;
+    height: 940px;
+    background-color: #F6F7F8;
+    border: 1px solid #D6D7D8; }
+    .contentFrame .leftDiv .titleFrame {
+      height: 70px;
+      line-height: 70px;
+      border-bottom: 2px solid #1E2A82;
+      color: #1E2A82;
+      font-size: 20px;
+      font-weight: bold; }
+      .contentFrame .leftDiv .titleFrame img {
+        display: inline-block;
+        *display: inline;
+        *zoom: 1;
+        vertical-align: top;
+        margin-top: 24px;
+        margin-left: 20px;
+        margin-right: 10px; }
+    .contentFrame .leftDiv p {
+      float: left;
+      width: 125px;
+      line-height: 55px;
+      height: 55px;
+      font-size: 18px;
+      text-align: right;
+      vertical-align: top;
+      color: #626364; }
+    .contentFrame .leftDiv .searchItem {
+      margin-top: 10px; }
+      .contentFrame .leftDiv .searchItem .item {
+        float: left;
+        margin-top: 10px;
+        width: 100%;
+        height: 30px; }
+        .contentFrame .leftDiv .searchItem .item label {
+          float: left;
+          margin-left: 10px;
+          height: 30px;
+          line-height: 36px;
+          font-size: 14px;
+          font-weight: normal; }
+        .contentFrame .leftDiv .searchItem .item input, .contentFrame .leftDiv .searchItem .item select {
+          float: right;
+          -webkit-appearance: none;
+          box-sizing: border-box;
+          -moz-box-sizing: border-box;
+          /*Firefox3.5+*/
+          -webkit-box-sizing: border-box;
+          /*Safari3.2+*/
+          background-color: #E5E6E7;
+          border: none;
+          width: 190px;
+          height: 30px;
+          line-height: 30px;
+          font-size: 12px;
+          text-indent: 2px;
+          margin-right: 10px; }
+        .contentFrame .leftDiv .searchItem .item .input-short {
+          width: 80px;
+          *width: 75px; }
+        .contentFrame .leftDiv .searchItem .item select {
+          *width: 200px;
+          line-height: 30px;
+          background: #EFF1F0 url("../img/08/08-arrowDown.png") no-repeat 180px center; }
+        .contentFrame .leftDiv .searchItem .item .zhi {
+          float: right; }
+        .contentFrame .leftDiv .searchItem .item span {
+          height: 36px;
+          line-height: 36px; }
+      .contentFrame .leftDiv .searchItem .item-tree {
+        margin-left: 98px;
+        width: 190px;
+        height: 120px;
+        *height: 160px;
+        background-color: #E5E6E7;
+        overflow: hidden; }
+        .contentFrame .leftDiv .searchItem .item-tree .list-group {
+          border: none; }
+          .contentFrame .leftDiv .searchItem .item-tree .list-group li {
+            background-color: #E5E6E7; }
+        .contentFrame .leftDiv .searchItem .item-tree .icon-add {
+          display: inline-block;
+          width: 16px;
+          height: 36px;
+          vertical-align: top;
+          background: url("../img/08/08-add.png") no-repeat center; }
+        .contentFrame .leftDiv .searchItem .item-tree .icon-minus {
+          display: inline-block;
+          width: 16px;
+          height: 36px;
+          vertical-align: top;
+          background: url("../img/08/08-sub-hover.png") no-repeat center; }
+      .contentFrame .leftDiv .searchItem .red {
+        width: 280px;
+        margin-right: 10px;
+        font-size: 14px;
+        height: 20px;
+        line-height: 20px;
+        text-align: right;
+        color: #D2363F; }
+      .contentFrame .leftDiv .searchItem .bottom-choices {
+        float: left;
+        height: 10px;
+        margin: 15px 10px; }
+        .contentFrame .leftDiv .searchItem .bottom-choices .all, .contentFrame .leftDiv .searchItem .bottom-choices .anyOne {
+          float: left;
+          width: 100px; }
+          .contentFrame .leftDiv .searchItem .bottom-choices .all span, .contentFrame .leftDiv .searchItem .bottom-choices .anyOne span {
+            display: inline-block;
+            *display: inline;
+            *zoom: 1;
+            width: 10px;
+            height: 10px;
+            vertical-align: middle;
+            margin-right: 5px;
+            background-color: #F6F7F8;
+            border: 1px solid #232932; }
+        .contentFrame .leftDiv .searchItem .bottom-choices .anyOne {
+          margin-left: 75px;
+          text-align: right; }
+        .contentFrame .leftDiv .searchItem .bottom-choices .active {
+          color: #1E2A82; }
+          .contentFrame .leftDiv .searchItem .bottom-choices .active span {
+            background-color: #1E2A82;
+            border: 1px solid #1E2A82; }
+      .contentFrame .leftDiv .searchItem .bottom-btns {
+        float: left;
+        width: 100%; }
+        .contentFrame .leftDiv .searchItem .bottom-btns .search, .contentFrame .leftDiv .searchItem .bottom-btns .reset {
+          display: inline-block;
+          *display: inline;
+          *zoom: 1;
+          width: 120px;
+          height: 36px;
+          line-height: 36px;
+          margin-left: 10px;
+          text-align: center;
+          font-size: 14px;
+          color: white;
+          background-color: #1E2A82; }
+        .contentFrame .leftDiv .searchItem .bottom-btns .reset {
+          margin-left: 40px;
+          background-color: #232932; }
+  .contentFrame .rightDiv {
+    float: right;
+    width: 880px;
+    height: 940px;
+    background-color: #F6F7F8;
+    border: 1px solid #D6D7D8; }
+    .contentFrame .rightDiv .titleFrame {
+      height: 70px;
+      line-height: 70px;
+      border-bottom: 2px solid #1E2A82; }
+      .contentFrame .rightDiv .titleFrame label {
+        float: left;
+        margin-left: 20px;
+        height: 70px;
+        line-height: 70px; }
+      .contentFrame .rightDiv .titleFrame .dropdown {
+        float: left;
+        margin-left: 10px; }
+        .contentFrame .rightDiv .titleFrame .dropdown button {
+          width: 100px;
+          padding-right: 20px;
+          border: none;
+          background: #EFF1F0 url("../img/08/08-arrowDown.png") no-repeat 80px center; }
+      .contentFrame .rightDiv .titleFrame .button-group {
+        float: right;
+        height: 70px;
+        margin-right: 10px; }
+        .contentFrame .rightDiv .titleFrame .button-group div {
+          float: right;
+          width: 50px;
+          height: 40px;
+          margin-top: 15px; }
+        .contentFrame .rightDiv .titleFrame .button-group .btn-Refresh {
+          background: url("../img/08/08-refresh.png") no-repeat center; }
+        .contentFrame .rightDiv .titleFrame .button-group .btn-Refresh:hover {
+          background: url("../img/08/08-refresh-hover.png") no-repeat center; }
+        .contentFrame .rightDiv .titleFrame .button-group .btn-DownR {
+          background: url("../img/08/08-downR.png") no-repeat center; }
+        .contentFrame .rightDiv .titleFrame .button-group .btn-DownR:hover {
+          background: url("../img/08/08-downR-hover.png") no-repeat center; }
+        .contentFrame .rightDiv .titleFrame .button-group .btn-DownM {
+          background: url("../img/08/08-downM.png") no-repeat center; }
+        .contentFrame .rightDiv .titleFrame .button-group .btn-DownM:hover {
+          background: url("../img/08/08-downM-hover.png") no-repeat center; }
+    .contentFrame .rightDiv table {
+      width: 860px;
+      margin-left: 10px;
+      margin-bottom: 30px;
+      font-size: 12px;
+      border: 1px solid #F1F2F3; }
+      .contentFrame .rightDiv table tr, .contentFrame .rightDiv table td, .contentFrame .rightDiv table th {
+        border: 1px solid #F1F2F3;
+        height: 50px;
+        line-height: 50px; }
+      .contentFrame .rightDiv table th {
+        text-align: center;
+        margin-left: 5px;
+        color: #000;
+        font-size: 14px; }
+      .contentFrame .rightDiv table td {
+        text-align: center;
+        color: #808081; }
+        .contentFrame .rightDiv table td span {
+          display: inline-block;
+          *display: inline;
+          *zoom: 1;
+          width: 10px;
+          height: 10px;
+          margin-right: 5px;
+          margin-left: 5px;
+          border: 1px solid #646465;
+          background-color: #F6F7F8; }
+      .contentFrame .rightDiv table .td1 {
+        text-align: left; }
+      .contentFrame .rightDiv table .td6 span {
+        background-color: #F6F7F8; }
+      .contentFrame .rightDiv table tr:hover td {
+        color: #1E2A82; }
+        .contentFrame .rightDiv table tr:hover td span {
+          border: 1px solid #1E2A82;
+          background-color: #1E2A82; }
+    .contentFrame .rightDiv .dot {
+      float: right;
+      min-width: 300px;
+      height: 34px;
+      text-align: center; }
+      .contentFrame .rightDiv .dot a {
+        display: inline-block;
+        *display: inline;
+        *zoom: 1;
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        vertical-align: top;
+        text-align: center;
+        color: #626364;
+        background-color: #F6F7F8;
+        border: 1px solid #D6D7D8; }
+      .contentFrame .rightDiv .dot a:hover {
+        color: white;
+        background-color: #1E2A82; }
+      .contentFrame .rightDiv .dot .active {
+        color: white;
+        background-color: #1E2A82; }
+
+/*# sourceMappingURL=page08.css.map */

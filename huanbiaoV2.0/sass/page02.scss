@@ -1,0 +1,526 @@
+@import "bootstrap.min";
+@import "common";
+p {
+  margin: 0;
+}
+
+.contentFrame {
+  display: block;
+  margin: 0 auto 30px;
+  width: 1200px;
+  height: 730px;
+  background-color: #F6F7F8;
+  border: 1px solid #D6D7D8;
+  .titleFrame {
+    width: 100%;
+    height: 75px;
+    border-bottom: 2px solid #1E2A82;
+    .info {
+      display: block;
+      margin: 0 auto;
+      width: 750px;
+      height: 75px;
+      a {
+        float: left;
+        height: 75px;
+        line-height: 75px;
+        font-size: 20px;
+        font-weight: bold;
+        text-align: center;
+        color: #636465;
+        margin-right: 170px;
+        span {
+          float: left;
+          width: 26px;
+          height: 26px;
+          line-height: 26px;
+          font-size: 16px;
+          text-align: center;
+          vertical-align: top;
+          margin-top: 24px;
+          background-color: #636465;
+          border-radius: 26px;
+          margin-right: 10px;
+          color: white;
+        }
+      }
+      .a1 {
+        margin-right: 0;
+      }
+      .hover {
+        color: #1E2A82;
+        span {
+          background-color: #1E2A82;
+        }
+      }
+    }
+  }
+  .section-1 {
+    display: block;
+    margin: 60px auto 0;
+    width: 540px;
+    height: 540px;
+    p {
+      float: left;
+      width: 125px;
+      line-height: 55px;
+      height: 55px;
+      font-size: 18px;
+      text-align: right;
+      vertical-align: top;
+      color: #626364;
+    }
+    .phoneDiv {
+      width: 540px;
+      height: 55px;
+      .phoneNum {
+        float: right;
+        background-color: #E5E6E7;
+        width: 380px;
+        height: 55px;
+        line-height: 55px;
+        font-size: 16px;
+        text-indent: 10px;
+      }
+    }
+    .phoneCodeDiv {
+      width: 540px;
+      height: 55px;
+      margin-top: 30px;
+      .code {
+        float: right;
+        background-color: #E5E6E7;
+        width: 250px;
+        height: 55px;
+        line-height: 55px;
+        text-indent: 10px;
+        font-size: 16px;
+        margin-right: 10px;
+      }
+      .btnPhoneCode {
+        float: right;
+        width: 120px;
+        height: 55px;
+        line-height: 55px;
+        text-align: center;
+        color: white;
+        font-size: 16px;
+        background-color: #1E2670;
+        vertical-align: top;
+      }
+    }
+
+    .btnLogin {
+      width: 250px;
+      height: 55px;
+      line-height: 55px;
+      margin-top: 50px;
+      margin-left: 160px;
+      font-size: 18px;
+      color: white;
+      text-align: center;
+      background-color: #1E2670;
+    }
+  }
+  .privacy {
+    text-align: center;
+    font-size: 16px;
+    height: 20px;
+    line-height: 20px;
+    color: #626364;
+    a {
+      color: #1E2670;
+      text-decoration: underline;
+    }
+  }
+  .section-2 {
+    display: block;
+    margin: 60px auto 0;
+    width: 540px;
+    height: 540px;
+    p {
+      float: left;
+      width: 125px;
+      line-height: 55px;
+      height: 55px;
+      font-size: 18px;
+      text-align: right;
+      vertical-align: top;
+      color: #626364;
+    }
+    .phoneDiv {
+      width: 540px;
+      height: 55px;
+      margin-top: 30px;
+      input {
+        float: right;
+        background-color: #E5E6E7;
+        width: 380px;
+        height: 55px;
+        line-height: 55px;
+        font-size: 16px;
+        text-indent: 10px;
+      }
+      .phoneNum {
+        float: right;
+        width: 380px;
+        height: 55px;
+        line-height: 55px;
+        font-size: 18px;
+        text-align: left;
+      }
+    }
+    .btnOk {
+      width: 250px;
+      height: 55px;
+      line-height: 55px;
+      margin-top: 50px;
+      margin-left: 160px;
+      font-size: 18px;
+      color: white;
+      text-align: center;
+      background-color: #1E2670;
+    }
+  }
+  .section-3 {
+    display: block;
+    margin: 60px auto 0;
+    width: 540px;
+    height: 540px;
+    .tip {
+      padding-top: 80px;
+      font-size: 36px;
+      color: #1E2670;
+      font-weight: bold;
+      text-align: center;
+    }
+    .btnBack {
+      display: block;
+      width: 250px;
+      height: 55px;
+      line-height: 55px;
+      margin: 120px auto 0;
+      font-size: 18px;
+      color: white;
+      text-align: center;
+      background-color: #1E2670;
+    }
+  }
+}
+
+.contentFrame-2 {
+  display: block;
+  margin: 0 auto 30px;
+  width: 1200px;
+  height: 730px;
+  background-color: #F6F7F8;
+  border: 1px solid #D6D7D8;
+  .titleFrame {
+    width: 100%;
+    height: 75px;
+    border-bottom: 2px solid #1E2A82;
+    .info {
+      display: block;
+      margin: 0 auto;
+      width: 1200px;
+      height: 75px;
+      a {
+        float: left;
+        height: 75px;
+        line-height: 75px;
+        font-size: 20px;
+        font-weight: bold;
+        text-align: center;
+        color: #636465;
+        margin: 0 90px;
+        span {
+          float: left;
+          width: 26px;
+          height: 26px;
+          line-height: 26px;
+          font-size: 16px;
+          text-align: center;
+          vertical-align: top;
+          margin-top: 24px;
+          background-color: #636465;
+          border-radius: 26px;
+          margin-right: 10px;
+          color: white;
+        }
+      }
+      .a1 {
+        margin-right: 0;
+      }
+      .hover {
+        color: #1E2A82;
+        span {
+          background-color: #1E2A82;
+        }
+      }
+    }
+  }
+  .section-4 {
+    display: block;
+    margin: 60px auto 0;
+    width: 1200px;
+    height: 540px;
+    p {
+      float: left;
+      width: 125px;
+      line-height: 55px;
+      height: 55px;
+      font-size: 18px;
+      text-align: right;
+      vertical-align: top;
+      color: #626364;
+    }
+    .phoneDiv {
+      width: 540px;
+      height: 55px;
+      .phoneNum {
+        float: right;
+        background-color: #E5E6E7;
+        width: 380px;
+        height: 55px;
+        line-height: 55px;
+        font-size: 16px;
+        text-indent: 10px;
+      }
+    }
+    .phoneCodeDiv {
+      width: 540px;
+      height: 55px;
+      margin-top: 30px;
+      .code {
+        float: right;
+        background-color: #E5E6E7;
+        width: 250px;
+        height: 55px;
+        line-height: 55px;
+        text-indent: 10px;
+        margin-right: 10px;
+        font-size: 16px;
+      }
+      .btnPhoneCode {
+        float: right;
+        width: 120px;
+        height: 55px;
+        line-height: 55px;
+        text-align: center;
+        color: white;
+        font-size: 16px;
+        background-color: #1E2670;
+        vertical-align: top;
+      }
+    }
+
+    .btnLogin {
+      width: 250px;
+      height: 55px;
+      line-height: 55px;
+      margin-top: 50px;
+      margin-left: 160px;
+      font-size: 18px;
+      color: white;
+      text-align: center;
+      background-color: #1E2670;
+    }
+  }
+  .section-4 {
+    display: block;
+    margin: 60px auto 0;
+    width: 540px;
+    height: 540px;
+    p {
+      float: left;
+      width: 125px;
+      line-height: 55px;
+      height: 55px;
+      font-size: 18px;
+      text-align: right;
+      vertical-align: top;
+      color: #626364;
+    }
+    .phoneDiv {
+      width: 540px;
+      height: 55px;
+      margin-top: 30px;
+      input {
+        float: right;
+        background-color: #E5E6E7;
+        width: 380px;
+        height: 55px;
+        line-height: 55px;
+        font-size: 16px;
+        text-indent: 10px;
+      }
+      .phoneNum {
+        float: right;
+        width: 380px;
+        height: 55px;
+        line-height: 55px;
+        font-size: 18px;
+        text-align: left;
+      }
+    }
+    .btnOk {
+      width: 250px;
+      height: 55px;
+      line-height: 55px;
+      margin-top: 50px;
+      margin-left: 160px;
+      font-size: 18px;
+      color: white;
+      text-align: center;
+      background-color: #1E2670;
+    }
+  }
+  .section-5 {
+    display: block;
+    margin: 60px auto 0;
+    width: 540px;
+    height: 540px;
+    p {
+      float: left;
+      width: 125px;
+      line-height: 55px;
+      height: 55px;
+      font-size: 18px;
+      text-align: right;
+      vertical-align: top;
+      color: #626364;
+    }
+    .phoneDiv {
+      width: 540px;
+      height: 55px;
+      margin-top: 30px;
+      input {
+        float: right;
+        background-color: #E5E6E7;
+        width: 380px;
+        height: 55px;
+        line-height: 55px;
+        font-size: 16px;
+        text-indent: 10px;
+      }
+      .phoneNum {
+        float: right;
+        width: 380px;
+        height: 55px;
+        line-height: 55px;
+        font-size: 18px;
+        text-align: left;
+      }
+    }
+    .phoneCodeDiv {
+      width: 540px;
+      height: 55px;
+      margin-top: 30px;
+      .code {
+        float: left;
+        background-color: #E5E6E7;
+        width: 250px;
+        height: 55px;
+        line-height: 55px;
+        text-indent: 10px;
+        margin-left: 35px;
+        font-size: 16px;
+      }
+      .btnPhoneCode {
+        float: right;
+        width: 120px;
+        height: 55px;
+        line-height: 55px;
+        text-align: center;
+        color: white;
+        font-size: 16px;
+        background-color: #1E2670;
+        vertical-align: top;
+      }
+    }
+    .btnOk {
+      width: 250px;
+      height: 55px;
+      line-height: 55px;
+      margin-top: 50px;
+      margin-left: 160px;
+      font-size: 18px;
+      color: white;
+      text-align: center;
+      background-color: #1E2670;
+    }
+  }
+  .section-6 {
+    display: block;
+    margin: 60px auto 0;
+    width: 540px;
+    height: 540px;
+    p {
+      float: left;
+      width: 125px;
+      line-height: 55px;
+      height: 55px;
+      font-size: 18px;
+      text-align: right;
+      vertical-align: top;
+      color: #626364;
+    }
+    .phoneDiv {
+      width: 540px;
+      height: 55px;
+      margin-top: 30px;
+      input {
+        float: right;
+        background-color: #E5E6E7;
+        width: 380px;
+        height: 55px;
+        line-height: 55px;
+        font-size: 16px;
+        text-indent: 10px;
+      }
+      .phoneNum {
+        float: right;
+        width: 380px;
+        height: 55px;
+        line-height: 55px;
+        font-size: 18px;
+        text-align: left;
+      }
+    }
+    .btnOk {
+      width: 250px;
+      height: 55px;
+      line-height: 55px;
+      margin-top: 50px;
+      margin-left: 160px;
+      font-size: 18px;
+      color: white;
+      text-align: center;
+      background-color: #1E2670;
+    }
+  }
+  .section-7 {
+    display: block;
+    margin: 60px auto 0;
+    width: 540px;
+    height: 540px;
+    .tip {
+      padding-top: 80px;
+      font-size: 36px;
+      color: #1E2670;
+      font-weight: bold;
+      text-align: center;
+    }
+    .btnBack {
+      display: block;
+      width: 250px;
+      height: 55px;
+      line-height: 55px;
+      margin: 120px auto 0;
+      font-size: 18px;
+      color: white;
+      text-align: center;
+      background-color: #1E2670;
+    }
+  }
+}

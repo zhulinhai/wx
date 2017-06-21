@@ -1,0 +1,84 @@
+@import "page18";
+
+@mixin opacity() {
+  filter:alpha(opacity=50); /* IE */
+  -moz-opacity:0.5; /* 老版Mozilla */
+  -khtml-opacity:0.5; /* 老版Safari */
+  opacity: 0.5; /* 支持opacity的浏览器*/
+}
+
+.tipDialog {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  .bgCover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    @include opacity();
+  }
+  .contentFrame {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -320px;
+    margin-top: -161px;
+    width: 640px;
+    height: 322px;
+    background-color: white;
+    z-index: 20;
+    .title {
+      font-size: 24px;
+      font-weight: bold;
+      margin: 10px 20px 30px;
+      height: 40px;
+      line-height: 40px;
+      color: #646465;
+      border-bottom: 1px solid #EFF0F1;
+    }
+    .content {
+      width: 100%;
+      height: 120px;
+      line-height: 120px;
+      font-size: 18px;
+      text-align: center;
+      a {
+        margin-left: 20px;
+        color: #646465;
+        img {
+          margin-right: 5px;
+        }
+      }
+      .hover {
+        color: #1E2A82;
+      }
+    }
+    .btnFrame {
+      margin-top: 30px;
+      width: 620px;
+      height: 38px;
+      .btnCancel, .btnAdd {
+        float: left;
+        width: 120px;
+        height: 38px;
+        line-height: 38px;
+        text-align: center;
+        margin-left: 20px;
+        color: white;
+        vertical-align: top;
+        background-color: #000;
+      }
+      .btnAdd {
+        margin-left: 200px;
+        background-color: #1E2A82;
+      }
+    }
+
+  }
+}

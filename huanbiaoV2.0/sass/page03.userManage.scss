@@ -1,0 +1,219 @@
+@import "bootstrap.min";
+@import "common";
+p {
+  margin: 0;
+}
+
+.contentFrame {
+  display: block;
+  margin: 0 auto 30px;
+  width: 1200px;
+  .titleFrame {
+    width: 1200px;
+    font-size: 22px;
+    font-weight: bold;
+    height: 75px;
+    line-height: 75px;
+    color: #1E2A82;
+    border-bottom: 2px solid #1E2A82;
+    img {
+      float: left;
+      margin-left: 20px;
+      margin-right: 12px;
+      vertical-align: top;
+      margin-top: 25px;
+    }
+  }
+  table {
+    width: 1160px;
+    margin: 20px;
+    text-align: center;
+    font-size: 12px;
+    border: 1px solid #1E2A82;
+    .tr1,.tr2,.tr3, .tr5 { height: 36px;}
+    .tr4 { height: 68px; }
+    .tr6 { height: 124px; }
+    tr, td, th {border:1px solid #F1F2F3; text-align: center; height: 36px;line-height: 36px;}
+    th {
+      margin-left: 5px;
+      color: #636465;
+    }
+    .th1 {
+      width: 85px;
+      font-size: 12px;
+      text-align: right;
+    }
+    .th2 {
+      width: 135px;
+      p {
+        margin: 5px;
+      }
+    }
+    .t7 {
+      a {
+        margin: 10px;
+        color: #1E2A82;
+      }
+    }
+  }
+  input {
+    text-indent: 5px;
+  }
+  .roleManage {
+    background-color: #F6F7F8;
+    border: 1px solid #D6D7D8;
+    padding-bottom: 20px;
+    .inputFrame {
+      margin-left: 20px;
+      margin-top: 20px;
+      width: 1160px;
+      height: 60px;
+      line-height: 60px;
+      p {
+        float: left;
+        width: 80px;
+        height: 60px;
+        line-height: 60px;
+        font-size: 16px;
+        margin-left: 0;
+      }
+      input, .dropdown {
+        float: left;
+        width: 145px;
+        height: 32px;
+        line-height: 32px;
+        margin-top: 14px;
+        margin-left: 0;
+        font-size: 14px;
+        color: #7F8081;
+        background-color: #EFF0F1;
+      }
+      .dropdown {
+        .dropdown-toggle {
+          height: 32px;
+          margin: 0;
+          border: none;
+          color: #7F8081;
+        }
+      }
+      .btn {
+        width: 145px;
+        height: 32px;
+        margin-top: 0;
+        background: #EFF0F1 url("../img/14/14-arrow.png") no-repeat 120px center;
+      }
+      .p2 {
+        margin-left: 30px;
+      }
+
+      .rightDiv {
+        float: right;
+        .btnQuery, .btnNew {
+          float: right;
+          width: 120px;
+          height: 32px;
+          margin-top: 14px;
+          color: white;
+          text-align: center;
+          line-height: 32px;
+          margin-left: 20px;
+          font-size: 14px;
+          background-color: #1E2A82;
+        }
+      }
+    }
+  }
+  .userManage {
+    margin-top: 20px;
+    background-color: #F6F7F8;
+    border: 1px solid #D6D7D8;
+    padding-bottom: 20px;
+    .inputFrame {
+      margin-left: 20px;
+      margin-top: 20px;
+      width: 1160px;
+      height: 120px;
+      line-height: 50px;
+      .leftDiv {
+        float: left;
+        width: 800px;
+        p {
+          display: inline-block;
+          *display:inline;
+          *zoom:1;
+          width: 50px;
+          height: 50px;
+          line-height: 50px;
+          font-size: 16px;
+          margin-left: 55px;
+          margin-top: 5px;
+          vertical-align: top;
+        }
+        .p3 {
+          width: 80px;
+          text-align: right;
+          margin-left: 20px;
+          padding-right: 10px;
+        }
+        input, .dropdown {
+          display: inline-block;
+          *display:inline;
+          *zoom:1;
+          width: 145px;
+          height: 32px;
+          line-height: 32px;
+          margin-top: 14px;
+          margin-left: 0;
+          padding-left: 0;
+          font-size: 14px;
+          color: #7F8081;
+          margin-right: 20px;
+          background-color: #EFF0F1;
+        }
+        .input2 {
+          width: 420px;
+        }
+        .dropdown {
+          margin-left: 6px;
+          background-color: #EFF0F1;
+          .dropdown-toggle {
+            height: 32px;
+            background-color: #EFF0F1;
+            border: none;
+            color: #7F8081;
+          }
+        }
+        .btn {
+          margin-top: 0;
+          width: 145px;
+          height: 32px;
+          vertical-align: top;
+          background: #EFF0F1 url("../img/14/14-arrow.png") no-repeat 120px center;
+        }
+        .p2 {
+          margin-left: 30px;
+        }
+      }
+
+      .rightDiv {
+        float: right;
+        margin-top: 34px;
+        .btnQuery, .btnNew {
+          float: right;
+          width: 120px;
+          height: 32px;
+          margin-top: 14px;
+          color: white;
+          text-align: center;
+          line-height: 32px;
+          margin-left: 20px;
+          font-size: 14px;
+          background-color: #1E2A82;
+        }
+        .btnQuery {
+          margin-left: 0;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,73 @@
+@import "bootstrap.min";
+@import "common";
+
+.contentFrame {
+  display: block;
+  margin: 0 auto 30px;
+  width: 1200px;
+  background-color: #F6F7F8;
+  border: 1px solid #E3E3E4;
+  padding-bottom: 30px;
+  .topFrame {
+    height: 70px;
+    line-height: 70px;
+    border-bottom: 2px solid #1E2A82;
+    .leftFrame {
+      float: left;
+      margin-left: 20px;
+      a {
+        float: left;
+        height: 30px;
+        line-height: 30px;
+        color: #1E2A82;
+        font-size: 20px;
+        font-weight: bold;
+        margin-top: 20px;
+        margin-right: 10px;
+      }
+      .item {
+        float: left;
+        width: 80px;
+        height: 30px;
+        line-height: 30px;
+        margin-top: 20px;
+        font-size: 16px;
+        color: #646465;
+        text-align: center;
+        border: 1px solid #646465;
+        border-left: 0;
+      }
+      .item1 {
+        border-left: 1px solid #646465;
+      }
+      .hover {
+        color: white;
+        background-color: #1E2A82;
+        border: 1px solid #1E2A82;
+      }
+
+    }
+    .btnAsk {
+      float: right;
+      margin-top: 20px;
+      margin-right: 20px;
+      text-align: center;
+      width: 80px;
+      height: 30px;
+      line-height: 30px;
+      font-size: 14px;
+      color: white;
+      background-color: #1E2A82;
+    }
+  }
+
+  table {
+    margin-left: 20px;
+    margin-top: 20px;
+    width: 1160px;
+    font-size: 12px;
+    border: 1px solid #F1F2F3;
+    tr, td, th {border:1px solid #F1F2F3;text-align: center;height: 36px;line-height: 36px;}
+  }
+
+}

@@ -1,0 +1,384 @@
+@charset "UTF-8";
+* {
+  margin: 0;
+  padding: 0; }
+
+body, html {
+  width: 100%;
+  min-width: 1200px;
+  background-color: #FFFFFF;
+  font-family: "Microsoft YaHei UI", "微软雅黑", "宋体", sans-serif; }
+
+input {
+  -webkit-appearance: none;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  /*Firefox3.5+*/
+  -webkit-box-sizing: border-box;
+  /*Safari3.2+*/
+  border: none;
+  font-size: 16px;
+  margin-left: 5px;
+  padding-left: 10px; }
+
+input::-ms-clear {
+  display: none; }
+
+.header {
+  width: 100%;
+  height: 60px;
+  background-color: white; }
+  .header .leftDiv {
+    float: left; }
+    .header .leftDiv .logo {
+      float: left;
+      margin: 10px 70px 10px 20px; }
+    .header .leftDiv .item {
+      float: left;
+      width: 100px;
+      font-size: 22px;
+      height: 60px;
+      line-height: 60px;
+      text-align: center;
+      cursor: pointer;
+      color: #5D5E5F; }
+    .header .leftDiv .hover {
+      color: white;
+      background-color: #2753A4; }
+  .header .rightDiv {
+    float: right;
+    height: 60px; }
+    .header .rightDiv input {
+      float: right;
+      width: 190px;
+      height: 32px;
+      margin-top: 14px;
+      border-radius: 3px;
+      border: 1px solid #A7AAB1;
+      background: url("../img/01/1-search.png") no-repeat 160px center; }
+    .header .rightDiv .msgCount {
+      position: absolute;
+      right: 95px;
+      margin-top: 5px;
+      width: 20px;
+      height: 20px;
+      color: white;
+      text-align: center;
+      line-height: 20px;
+      border-radius: 20px;
+      font-size: 10px;
+      background-color: #EA6247; }
+    .header .rightDiv .menu {
+      float: right;
+      height: 100%;
+      background-color: white;
+      padding-left: 30px; }
+      .header .rightDiv .menu .headImg {
+        display: inline-block;
+        *display: inline;
+        *zoom: 1;
+        margin-left: 10px;
+        vertical-align: middle; }
+      .header .rightDiv .menu .userName {
+        display: inline-block;
+        *display: inline;
+        *zoom: 1;
+        width: 100px;
+        height: 60px;
+        line-height: 60px;
+        text-indent: 20px;
+        color: #757677; }
+        .header .rightDiv .menu .userName .arrow {
+          margin-left: 10px; }
+      .header .rightDiv .menu .subMenu {
+        position: absolute;
+        left: 50%;
+        top: 100px;
+        margin-left: 330px;
+        width: 170px;
+        background-color: #EFF0F1;
+        z-index: 2; }
+        .header .rightDiv .menu .subMenu .item {
+          display: block;
+          text-align: center;
+          width: 100%;
+          font-size: 16px;
+          height: 60px;
+          line-height: 60px; }
+          .header .rightDiv .menu .subMenu .item p {
+            text-align: center; }
+        .header .rightDiv .menu .subMenu .line {
+          width: 150px;
+          height: 1px;
+          margin-left: 10px;
+          background-color: #636465; }
+        .header .rightDiv .menu .subMenu .item:hover {
+          background-color: #2753A4; }
+          .header .rightDiv .menu .subMenu .item:hover p {
+            color: white; }
+
+.topDiv {
+  width: 100%;
+  height: 86px;
+  background: #171d59 url("../img/14/14-topBg.jpg") no-repeat center 0; }
+  .topDiv .content {
+    display: block;
+    margin: 0 auto;
+    width: 1200px;
+    height: 100%; }
+    .topDiv .content .leftDiv {
+      float: left;
+      width: 500px;
+      height: 86px;
+      line-height: 86px;
+      color: white; }
+    .topDiv .content .rightDiv {
+      float: right;
+      width: 500px;
+      height: 86px; }
+      .topDiv .content .rightDiv .dropdown {
+        float: right;
+        width: 120px;
+        margin-top: 28px;
+        margin-right: 10px; }
+        .topDiv .content .rightDiv .dropdown .dropdown-toggle {
+          width: 120px;
+          text-align: left;
+          background: #EFF0F1 url("../img/14/14-arrow.png") no-repeat 100px center;
+          border: none; }
+      .topDiv .content .rightDiv .btnSearch {
+        float: right;
+        width: 40px;
+        height: 30px;
+        margin-top: 28px;
+        background: #EFF0F1 url("../img/01/1-search.png") no-repeat center;
+        background-size: 20px auto; }
+      .topDiv .content .rightDiv input {
+        float: right;
+        width: 220px;
+        height: 30px;
+        line-height: 30px;
+        text-indent: 5px;
+        margin-top: 28px;
+        font-size: 14px;
+        color: #7F8081;
+        background-color: #EFF0F1; }
+
+.navigation {
+  display: block;
+  margin: 0 auto;
+  width: 1200px;
+  height: 48px;
+  line-height: 48px; }
+  .navigation img {
+    float: left;
+    margin-top: 17px;
+    margin-right: 5px; }
+  .navigation a {
+    color: #808182;
+    margin-right: 3px;
+    font-size: 12px; }
+
+.footer {
+  width: 100%;
+  height: 30px;
+  font-size: 12px;
+  line-height: 30px;
+  text-align: center;
+  color: #A3A4A5; }
+
+a:link {
+  text-decoration: none;
+  color: #000; }
+
+/* 没访问过的链接样式 */
+a:visited {
+  text-decoration: none;
+  color: #000; }
+
+/* 访问过的链接样式 */
+a:hover {
+  text-decoration: none;
+  color: #000; }
+
+/* 鼠标进入链接区域的链接样式 */
+a:active {
+  text-decoration: none;
+  color: #000; }
+
+/* 点击链接时的链接样式 */
+.contentFrame {
+  display: block;
+  margin: 0 auto 30px;
+  width: 1200px;
+  background-color: #F6F7F8;
+  border: 1px solid #E3E3E4; }
+  .contentFrame .topFrame {
+    width: 100%;
+    color: #1E2A82;
+    height: 70px;
+    line-height: 70px;
+    border-bottom: 2px solid #1E2A82; }
+    .contentFrame .topFrame .titleLeft {
+      float: left;
+      width: 240px;
+      margin-top: 20px;
+      margin-left: 20px;
+      height: 30px;
+      line-height: 30px; }
+      .contentFrame .topFrame .titleLeft img {
+        display: inline-block;
+        *display: inline;
+        *zoom: 1;
+        margin-right: 10px;
+        vertical-align: top; }
+      .contentFrame .topFrame .titleLeft a {
+        display: inline-block;
+        *display: inline;
+        *zoom: 1;
+        font-size: 24px;
+        font-weight: bold;
+        color: #1E2A82;
+        height: 30px;
+        line-height: 30px; }
+    .contentFrame .topFrame .similar {
+      float: right;
+      margin-top: 20px;
+      margin-right: 20px;
+      height: 30px;
+      line-height: 30px;
+      color: #1E2A82; }
+  .contentFrame .infoFrame {
+    display: block;
+    margin: 20px auto;
+    width: 535px; }
+    .contentFrame .infoFrame .titleFrame {
+      width: 100%;
+      height: 30px;
+      line-height: 30px;
+      font-size: 14px;
+      color: #646465; }
+      .contentFrame .infoFrame .titleFrame .left {
+        float: left;
+        text-align: left;
+        width: 180px; }
+      .contentFrame .infoFrame .titleFrame .right {
+        float: right;
+        text-align: right;
+        width: 180px; }
+    .contentFrame .infoFrame textarea {
+      display: block;
+      margin: 0 auto;
+      width: 535px;
+      height: 90px;
+      line-height: 30px;
+      text-indent: 10px;
+      border: none;
+      font-size: 14px;
+      color: #646465;
+      overflow: auto;
+      background-color: #E5E6E7; }
+    .contentFrame .infoFrame .answerFrame {
+      margin-top: 30px; }
+      .contentFrame .infoFrame .answerFrame .div1 {
+        width: 100%;
+        height: 35px; }
+        .contentFrame .infoFrame .answerFrame .div1 .left {
+          float: left;
+          height: 30px;
+          line-height: 30px;
+          font-size: 18px;
+          font-weight: bold;
+          text-align: left;
+          color: #646465;
+          border-bottom: 3px solid #1E2A82; }
+        .contentFrame .infoFrame .answerFrame .div1 .answer {
+          float: right;
+          width: 120px;
+          height: 30px;
+          line-height: 30px;
+          text-align: center;
+          color: white;
+          background-color: #1E2A82; }
+      .contentFrame .infoFrame .answerFrame .div2 {
+        width: 100%;
+        height: 30px;
+        line-height: 30px;
+        margin-top: 10px;
+        font-size: 14px;
+        color: #646465;
+        border-bottom: 1px solid #EFF0F1; }
+        .contentFrame .infoFrame .answerFrame .div2 .left {
+          float: left; }
+        .contentFrame .infoFrame .answerFrame .div2 .name {
+          float: right; }
+      .contentFrame .infoFrame .answerFrame .content {
+        color: #646465;
+        font-size: 14px;
+        line-height: 30px;
+        margin-top: 20px;
+        margin-bottom: 20px; }
+      .contentFrame .infoFrame .answerFrame .barFrame {
+        color: #646465;
+        height: 30px;
+        font-size: 14px;
+        margin-bottom: 20px;
+        border-bottom: 1px solid #EFF0F1; }
+        .contentFrame .infoFrame .answerFrame .barFrame .leftBar {
+          float: left; }
+          .contentFrame .infoFrame .answerFrame .barFrame .leftBar a {
+            margin-right: 20px; }
+          .contentFrame .infoFrame .answerFrame .barFrame .leftBar img {
+            margin-right: 5px; }
+        .contentFrame .infoFrame .answerFrame .barFrame .date {
+          float: right;
+          width: 200px;
+          text-align: right; }
+    .contentFrame .infoFrame .questionFrame {
+      width: 535px;
+      margin-top: 10px;
+      background-color: #E5E6E7; }
+      .contentFrame .infoFrame .questionFrame .bottomCount {
+        width: 515px;
+        height: 30px;
+        font-size: 14px;
+        line-height: 30px;
+        margin-left: 10px;
+        color: #646465;
+        background-color: #E5E6E7;
+        border-top: 1px solid #DEDFE0; }
+        .contentFrame .infoFrame .questionFrame .bottomCount .left {
+          float: left;
+          width: 100px;
+          height: 30px;
+          line-height: 30px;
+          text-align: left; }
+        .contentFrame .infoFrame .questionFrame .bottomCount .right {
+          float: right;
+          width: 100px;
+          height: 30px;
+          line-height: 30px;
+          text-align: right; }
+    .contentFrame .infoFrame .btnFrame {
+      height: 60px;
+      margin-top: 30px; }
+      .contentFrame .infoFrame .btnFrame .btnSubmit {
+        float: left;
+        margin-left: 120px;
+        width: 110px;
+        height: 30px;
+        line-height: 30px;
+        color: white;
+        text-align: center;
+        background-color: #1E2A82; }
+      .contentFrame .infoFrame .btnFrame .btnCancel {
+        float: left;
+        width: 110px;
+        height: 30px;
+        line-height: 30px;
+        color: white;
+        margin-left: 30px;
+        text-align: center;
+        background-color: #000; }
+
+/*# sourceMappingURL=page26.css.map */

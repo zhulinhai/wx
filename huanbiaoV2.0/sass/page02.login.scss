@@ -1,0 +1,134 @@
+@import "bootstrap.min";
+@import "common";
+p {
+  margin: 0;
+}
+
+.contentFrame {
+  display: block;
+  margin: 0 auto 30px;
+  width: 1200px;
+  height: 530px;
+  background-color: #F6F7F8;
+  border: 1px solid #D6D7D8;
+  .titleFrame {
+    width: 100%;
+    height: 75px;
+    border-bottom: 2px solid #1E2A82;
+    .title {
+      float: left;
+      color: #1E2A82;
+      font-size: 24px;
+      font-weight: bold;
+      margin-left: 20px;
+      height: 75px;
+      line-height: 75px;
+      img {
+        display: inline-block;
+        *display: inline;
+        *zoom: 1;
+        vertical-align: top;
+        margin-right: 10px;
+        margin-top: 25px;
+      }
+    }
+    .state {
+      float: left;
+      margin-top: 16px;
+      margin-left: 20px;
+      width: 88px;
+      height: 22px;
+      line-height: 22px;
+      text-align: center;
+      color: white;
+      background-color: #1E2A82;
+    }
+    .more {
+      float: right;
+      color: #2c3890;
+      height: 55px;
+      line-height: 55px;
+      font-size: 16px;
+      margin-right: 20px;
+      img {
+        margin-left: 5px;
+        vertical-align: middle;
+      }
+    }
+  }
+  .leftFrame {
+    float: left;
+    width: 500px;
+    height: 273px;
+    margin-top: 50px;
+    margin-left: 30px;
+    .phoneDiv, .passwordDiv {
+      margin-left: 30px;
+      width: 500px;
+      height: 52px;
+    }
+    .phoneDiv {
+      background: #E5E6E7 url("../img/03/3-phone.png") no-repeat 20px center;
+    }
+    .passwordDiv {
+      margin-top: 30px;
+      background: #E5E6E7 url("../img/03/3-lock.png") no-repeat 20px center;
+    }
+    .phoneNum, .password {
+      background-color: transparent;
+      margin-left: 60px;
+      width: 420px;
+      height: 32px;
+      font-size: 16px;
+      margin-top: 10px;
+      border-left: 1px solid #333;
+    }
+    .pwdTipDiv {
+      width: 500px;
+      height: 20px;
+      line-height: 20px;
+      font-size: 14px;
+      margin: 20px 30px;
+      .remember {
+        float: left;
+        color: #626364;
+        img {
+          vertical-align: top;
+          margin-right: 5px;
+        }
+      }
+      .forgetPwd {
+        float: right;
+        color: #1E2670;
+      }
+    }
+    .btnLogin {
+      width: 500px;
+      height: 52px;
+      line-height: 52px;
+      font-size: 18px;
+      color: white;
+      text-align: center;
+      margin-left: 30px;
+      background-color: #1E2670;
+      margin-top: 50px;
+    }
+  }
+  .rightFrame {
+    float: right;
+    width: 415px;
+    height: 273px;
+    margin-top: 30px;
+    margin-right: 30px;
+    img {
+      display: block;
+      margin: 20px auto;
+    }
+    p {
+      color: #626364;
+      font-size: 16px;
+      text-align: center;
+      line-height: 30px;
+    }
+  }
+}

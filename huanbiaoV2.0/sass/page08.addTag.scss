@@ -1,0 +1,133 @@
+@import "page08.detail";
+
+@mixin opacity() {
+  filter:alpha(opacity=50); /* IE */
+  -moz-opacity:0.5; /* 老版Mozilla */
+  -khtml-opacity:0.5; /* 老版Safari */
+  opacity: 0.5; /* 支持opacity的浏览器*/
+}
+
+.addTagDialog {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  .bgCover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    @include opacity();
+  }
+  .tagDialog {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -600px;
+    margin-top: -214px;
+    width: 1200px;
+    height: 428px;
+    background-color: white;
+    z-index: 20;
+    .title {
+      font-size: 18px;
+      margin-left: 20px;
+      margin-top: 20px;
+      height: 30px;
+      line-height: 30px;
+      color: #646465;
+    }
+    .divFrame {
+      display: block;
+      margin: 0 auto;
+      width: 1160px;
+      height: 38px;
+      .input {
+        float: left;
+        width: 1020px;
+        height: 38px;
+        line-height: 38px;
+        margin-top: 0;
+        margin-left: 0;
+        font-size: 18px;
+        border: none;
+        background-color: #EFF0F1;
+        vertical-align: top;
+      }
+      .btnClear {
+        float: right;
+        width: 120px;
+        height: 38px;
+        line-height: 38px;
+        text-align: center;
+        color: white;
+        background-color: #1E2A82;
+        vertical-align: top;
+      }
+    }
+    .tagTip {
+      width: 1160px;
+      margin-left: 20px;
+      font-size: 12px;
+      height: 40px;
+      line-height: 40px;
+      color: #CD001B;
+    }
+
+    .areaFrame {
+      display: block;
+      margin: 0 auto;
+      width: 1160px;
+      background-color: #EFF0F1;
+      textarea {
+        width: 1138px;
+        height: 120px;
+        padding: 10px;
+        line-height: 20px;
+        font-size: 16px;
+        border: 1px solid #EFF0F1;
+        background-color: white;
+      }
+      .tags {
+        display: block;
+        margin-left: 10px;
+        height: 30px;
+        line-height: 30px;
+        font-size: 14px;
+        color: #646465;
+        a {
+          font-size: 12px;
+          margin-left: 10px;
+          height: 24px;
+          line-height: 24px;
+          color: #1E2A82;
+        }
+
+      }
+    }
+    .btnFrame {
+      margin-top: 30px;
+      width: 1180px;
+      height: 38px;
+      .btnCancel, .btnAddTag {
+        float: right;
+        width: 120px;
+        height: 38px;
+        line-height: 38px;
+        text-align: center;
+        margin-left: 20px;
+        color: white;
+        vertical-align: top;
+        background-color: #646465;
+      }
+      .btnAddTag {
+        background-color: #1E2A82;
+      }
+    }
+
+  }
+}
