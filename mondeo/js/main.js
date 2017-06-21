@@ -67,7 +67,7 @@
     }
     var loadInterval = null;
 
-    var currentIndex = 0;
+    var currentIndex = -1;
 
     var scheduleInterval = null;
 
@@ -81,15 +81,15 @@
 
         $.getJSON("datas/live.json",function(data){
             liveSchedule = data.lives;
-            audienceSchedule = data.audiences;
+            //audienceSchedule = data.audiences;
            for(var i = 0; i < liveSchedule.length; i++){
                var temp = liveSchedule[i];
-               temp.time = dateStringToMillisecond('2017-06-08 '+ temp.time);
+               temp.time = dateStringToMillisecond(temp.time);
            }
-            for(var i = 0; i < audienceSchedule.length; i++){
-                var temp = audienceSchedule[i];
-                temp.time = dateStringToMillisecond('2017-06-08 '+ temp.time);
-            }
+            //for(var i = 0; i < audienceSchedule.length; i++){
+            //    var temp = audienceSchedule[i];
+            //    temp.time = dateStringToMillisecond('2017-06-12 '+ temp.time);
+            //}
         });
 
         /**
@@ -137,24 +137,31 @@
                 store.support = data.support;
                 store.nonsupport = data.nonsupport;
 
-                $('#lives').html(store.lives);
-                $('#audiences').html(store.audiences);
+                //$('#lives').html(store.lives);
+                //$('#audiences').html(store.audiences);
 
-                $('#tricyclic_turns').html(store.tricyclic_turns + '圈');
-                $('#tetracyclic_turns').html(store.tetracyclic_turns + '圈');
-                $('#pentacyclic_turns').html(store.pentacyclic_turns + '圈');
+                $('#tricyclic_turns').html(store.tricyclic_turns);
+                $('#tetracyclic_turns').html(store.tetracyclic_turns);
+                $('#pentacyclic_turns').html(store.pentacyclic_turns);
 
-                $('#used_gasoline').html(store.used_gasoline + 'L');
-                $('#used_gasonline_tera').html(store.used_gasonline_tera + 'L');
-                $('#used_gasonline_penta').html(store.used_gasonline_penta + 'L');
+                $('#used_gasoline').html(store.used_gasoline);
+                $('#used_gasonline_tera').html(store.used_gasonline_tera);
+                $('#used_gasonline_penta').html(store.used_gasonline_penta);
 
                 $('#support-num').html(store.support);
                 $('#nonsupport-num').html(store.nonsupport);
-
-                //console.log(dateStringToMillisecond(data.current_time));
-                store.current_time = dateStringToMillisecond(data.current_time);
-                //schedule();
                 store.active_state = parseInt(data.active_state);
+                //console.log(dateStringToMillisecond(data.current_time));
+
+                var maxCount = parseInt(liveSchedule[liveSchedule.length - 1].count);
+                store.lives = parseInt(store.lives);
+
+                if(store.lives != NaN && store.lives > maxCount){
+                    $('#lives').html(store.lives);
+                }else{
+                    store.current_time = dateStringToMillisecond(data.current_time);
+                    schedule();
+                }
             }
         }});
     });
@@ -185,12 +192,13 @@
                 clearInterval(loadInterval);
                 loadInterval = -1;
                 $('.loading .superman').removeClass('vibrateAni').addClass('supermanFlyOut');
+                $('.percent').hide();
                 //$('.cloud').removeClass('cloudAni');
                 //var $cloud = $('.cloud');
                 //TweenLite.to($cloud,1,{ opacity :0 });
                 $('.loading').addClass('animated delay_1s fadeOut').one(animationEnd,function(){
-                    $(this).hide();
                     firstPageAni();
+                    $(this).hide();
                 });
             },1000);
 
@@ -225,7 +233,7 @@
             console.log(data);
             data = data.props;
             store.lives = parseInt(data.lives)== NaN ? store.lives :data.lives;
-            store.audiences = parseInt(data.audiences)== NaN ?store.audiences : data.audiences;
+            //store.audiences = parseInt(data.audiences)== NaN ?store.audiences : data.audiences;
 
             store.tricyclic_turns = parseInt(data.tricyclic_turns)== NaN ? store.tricyclic_turns : data.tricyclic_turns;
             store.tetracyclic_turns = parseInt(data.tetracyclic_turns)== NaN ? store.tetracyclic_turns : data.tetracyclic_turns;
@@ -235,18 +243,25 @@
             store.used_gasonline_tera  = parseInt(data.used_gasonline_tera)== NaN ? store.used_gasonline_tera : data.used_gasonline_tera;
             store.used_gasonline_penta = parseInt(data.used_gasonline_penta)== NaN ? store.used_gasonline_penta : data.used_gasonline_penta;
 
-            $('#lives').html(store.lives);
-            $('#audiences').html(store.audiences);
+            //$('#audiences').html(store.audiences);
 
-            $('#tricyclic_turns').html(store.tricyclic_turns + '圈');
-            $('#tetracyclic_turns').html(store.tetracyclic_turns + '圈');
-            $('#pentacyclic_turns').html(store.pentacyclic_turns + '圈');
+            $('#tricyclic_turns').html(store.tricyclic_turns);
+            $('#tetracyclic_turns').html(store.tetracyclic_turns);
+            $('#pentacyclic_turns').html(store.pentacyclic_turns);
 
-            $('#used_gasoline').html(store.used_gasoline + 'L');
-            $('#used_gasonline_tera').html(store.used_gasonline_tera + 'L');
-            $('#used_gasonline_penta').html(store.used_gasonline_penta + 'L');
+            $('#used_gasoline').html(store.used_gasoline);
+            $('#used_gasonline_tera').html(store.used_gasonline_tera);
+            $('#used_gasonline_penta').html(store.used_gasonline_penta);
 
             store.active_state = parseInt(data.active_state);
+
+            if(store.active_state == 2){ //直播已结束
+                if(scheduleInterval){
+                    clearInterval(scheduleInterval);
+                    scheduleInterval = null;
+                }
+                $('#lives').html(store.lives);
+            }
             changeVideo(store.active_state);
         });
 
@@ -379,8 +394,13 @@
         });
 
         $('.btn-back').click(function(e){
+            if(current_page_index == SIXTH_PAGE)
+                stopPulse();
+            else if(current_page_index == NINTH_PAGE)
+                player.pause();
             mainSwiper.unlockSwipeToPrev();
             mainSwiper.slideTo(SIXTH_PAGE);
+
         });
 
         $('#btn-support').click(function(e){
@@ -483,6 +503,7 @@
                         $('#support-num').html(store.support);
                         $('#nonsupport-num').html(store.nonsupport);
                         alert('提交成功');
+                        $('.pop-submit').hide();
                     }
                 },
                 error:function(e){
@@ -539,23 +560,23 @@
         $('.first-page .superman').addClass('supermanFlyIn').one(animationEnd,function(){
             $(this).removeClass('supermanFlyIn');
         });
-        $('#aside-1').addClass('animated delay_2s duration_h1s bounceIn').one(animationEnd,function(){
-            $(this).removeClass('animated delay_2s bounceIn');
-        });
-        $('#aside-2').addClass('animated delay_1-5s duration_h1s bounceIn').one(animationEnd,function(){
-            $(this).removeClass('animated delay_1-5s bounceIn');
-        });
-        $('#aside-3').addClass('animated delay_1s duration_h1s bounceIn').one(animationEnd,function(){
-            $(this).removeClass('animated delay_1s bounceIn');
-        });
-        $('#aside-4').addClass('animated delay_h1s duration_h1s bounceIn').one(animationEnd,function(){
-            $(this).removeClass('animated delay_h1s bounceIn');
-        });
-        $('.older').addClass('animated delay_2-5s bounceIn').one(animationEnd,function(){
+        $('#aside-1').addClass('animated delay_2-5s duration_h1s bounceIn').one(animationEnd,function(){
             $(this).removeClass('animated delay_2-5s bounceIn');
         });
-        $('#fp-car').addClass('animated delay_3s carFadeOutRight').one(animationEnd,function(){
-            $(this).removeClass('animated delay_3s carFadeOutRight');
+        $('#aside-2').addClass('animated delay_2s duration_h1s bounceIn').one(animationEnd,function(){
+            $(this).removeClass('animated delay_2s bounceIn');
+        });
+        $('#aside-3').addClass('animated delay_1-5s duration_h1s bounceIn').one(animationEnd,function(){
+            $(this).removeClass('animated delay_1-5s bounceIn');
+        });
+        $('#aside-4').addClass('animated delay_1s duration_h1s bounceIn').one(animationEnd,function(){
+            $(this).removeClass('animated delay_1s bounceIn');
+        });
+        $('.older').addClass('animated delay_3s bounceIn').one(animationEnd,function(){
+            $(this).removeClass('animated delay_3s bounceIn');
+        });
+        $('#fp-car').addClass('animated delay_3-5s carFadeOutRight').one(animationEnd,function(){
+            $(this).removeClass('animated delay_3-5s carFadeOutRight');
             mainSwiper.unlockSwipeToNext();
         });
     }
@@ -624,14 +645,20 @@
     }
 
     function changeVideo(state){
-
         if(state == 0){
             $('#unlive').show();
             $('#my-player').hide();
         }else if(state == 1) {
-            $('#unlive').hide();
-            $('#my-player').show();
-            player.src('http://pili-live-hls.yunmfang.com/ford/mondeo.m3u8');
+            if(player.paused()){
+                $('#unlive').hide();
+                $('#my-player').show();
+                player.src('http://pili-live-hls.yunmfang.com/ford/mondeo.m3u8');
+            }
+        }else if(state==2){
+            $('#unlive').attr('src','images/bg-endLive.jpg');
+            $('#unlive').show();
+            $('#my-player').hide();
+            player.pause();
         }
     }
 
@@ -683,7 +710,7 @@
         return date.getTime();
     }
 
-    // 对Date的扩展，将 Date 转化为指定格式的String
+// 对Date的扩展，将 Date 转化为指定格式的String
 // 月(M)、日(d)、小时(h)、分(m)、秒(s)、季度(q) 可以用 1-2 个占位符，
 // 年(y)可以用 1-4 个占位符，毫秒(S)只能用 1 个占位符(是 1-3 位的数字)
 // 例子：
@@ -709,28 +736,35 @@
 
         for(var i = 0; i < liveSchedule.length; i++){
             if(liveSchedule[i].time > store.current_time){
-                currentIndex = i;
-                $('#lives').html(liveSchedule[!currentIndex ? 0 : currentIndex - 1].count);
-                $('#audiences').html(audienceSchedule[!currentIndex ? 0 : currentIndex - 1].count);
-
+                currentIndex = !i ? currentIndex : i;
                 loopInterval = liveSchedule[i].time - store.current_time;
-
-                scheduleInterval = setInterval(function(){
-                    if(currentIndex < liveSchedule.length){
-                        if(loopInterval < 50 * 60 * 1000) loopInterval = 50 * 60 * 1000;
-                        $('#lives').html(liveSchedule[currentIndex].count);
-                        $('#audiences').html(audienceSchedule[currentIndex].count);
-                        console.log('当前时间:' + new Date().Format('yyyy-MM-dd hh:mm:ss') + ' 人气数：' + liveSchedule[currentIndex].count + ' 同时在线人气数：'+ audienceSchedule[currentIndex].count);
-                        currentIndex ++;
-                    }else {
-                        $('#lives').html(liveSchedule[currentIndex - 1].count);
-                        $('#audiences').html(audienceSchedule[currentIndex - 1].count);
-                        clearInterval(scheduleInterval);
-                        scheduleInterval = null;
-                    }
-                },loopInterval);
                 break;
             }
         }
+
+        if(currentIndex < 0) //未开始
+            currentIndex = 0;
+        else //活动已开始
+            $('#lives').html(liveSchedule[currentIndex -1 ].count);
+
+        setTimeout(function(){
+            loopInterval = 10 * 60 * 1000;
+            $('#lives').html(liveSchedule[currentIndex].count);
+            //console.log('当前时间:' + new Date().Format('yyyy-MM-dd hh:mm:ss') + ' 人气数：' + liveSchedule[currentIndex].count);
+            currentIndex ++;
+
+            scheduleInterval = setInterval(function(){
+                if(currentIndex < liveSchedule.length){
+                    $('#lives').html(liveSchedule[currentIndex].count);
+                    //console.log('当前时间:' + new Date().Format('yyyy-MM-dd hh:mm:ss') + ' 人气数：' + liveSchedule[currentIndex].count);
+                    currentIndex ++;
+                }else {
+                    $('#lives').html(liveSchedule[currentIndex - 1].count);
+                    clearInterval(scheduleInterval);
+                    scheduleInterval = null;
+                }
+            },loopInterval);
+
+        },loopInterval);
     }
 })($)

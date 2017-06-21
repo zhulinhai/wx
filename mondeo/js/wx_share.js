@@ -13,9 +13,9 @@
                 return alert(rt.message);
             }
 
-            var title ='易车·老司机周刊'; // 分享标题
+            var title ='易车老司机又要搞大事情了'; // 分享标题
             var link ='http://wx.bjczxda.com/mondeo/index.html';
-            var desc = '易车老司机 亲授“憋尿神功”。'; // 分享描述
+            var desc = '猛戳上车'; // 分享描述
             var imgUrl = 'http://wx.bjczxda.com/mondeo/images/share.jpg';
 
             var wx_appId = rt.data.appId;
@@ -103,10 +103,10 @@
         error:function(error){
             var eObj = error.responseJSON;
 
-            if(eObj)
-                alert(eObj.message);
-            else
-                alert('WeChat share request: Server Error!');
+            //if(eObj)
+            //    alert(eObj.message);
+            //else
+            //    alert('WeChat share request: Server Error!');
         }
     });
 })(jQuery);
