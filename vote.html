@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>刷票小工具</title>
+    <style>
+        html,body{
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        #record{
+            width: inherit;
+            height: 80%;
+            border: 1px solid darkred;
+            overflow-x:hidden;
+            overflow-y: scroll;
+        }
+        #record p { width: 100%; text-align: left; font-size: 14px; color: black; padding: 0; margin-top:0; margin-bottom: 5px;}
+    </style>
+</head>
+<body>
+<div style="width: 90%; height: 80%;  margin: 10px auto; overflow: hidden;">
+    <input id="start" type="button" value="开始刷票"/><input id="stop" type="button" value="停止刷票"/>
+    <div id="record">
+    </div>
+</div>
+</body>
+<script src="public/scripts/jquery-1.12.1.min.js"></script>
+<script>
+    var timeOutObj = null;
+    var run = true;
+
+    $('#start').click(function(e){
+        run = true;
+        vote();
+    });
+
+    $('#stop').click(function(e){
+        run = false;
+    });
+
+    function vote(){
+        var time = Math.random() * 3 * 60 * 1000;
+        if(run){
+            $.ajax({
+                type:'GET',
+                url:'http://localhost:9090/api/wx/vote',
+                success:function(ret){
+                    $('#record').append('<p><span>'+ ret.data.time +'&nbsp;&nbsp;</span>'+ret.data.msg+'</p>');
+                },
+                error:function(error){
+                    $('#record').append('<p>服务器错误</p>');
+                }
+            });
+            setTimeout(vote,time);
+        }
+    }
+</script>
+</html>
