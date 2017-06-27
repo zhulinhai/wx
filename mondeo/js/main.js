@@ -148,8 +148,8 @@
                 $('#used_gasonline_tera').html(store.used_gasonline_tera);
                 $('#used_gasonline_penta').html(store.used_gasonline_penta);
 
-                $('#support-num').html(store.support);
-                $('#nonsupport-num').html(store.nonsupport);
+                //$('#support-num').html(store.support);
+                //$('#nonsupport-num').html(store.nonsupport);
                 store.active_state = parseInt(data.active_state);
                 //console.log(dateStringToMillisecond(data.current_time));
 
@@ -500,8 +500,8 @@
                         window.mobile = $('input[name="mobile"]').val();
                         store.support = data.support;
                         store.nonsupport = data.nonsupport;
-                        $('#support-num').html(store.support);
-                        $('#nonsupport-num').html(store.nonsupport);
+                        //$('#support-num').html(store.support);
+                        //$('#nonsupport-num').html(store.nonsupport);
                         alert('提交成功');
                         $('.pop-submit').hide();
                     }
