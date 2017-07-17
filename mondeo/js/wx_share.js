@@ -2,7 +2,7 @@
  * Created by luhao on 2016/12/29.
  */
 (function ($){
-    var isRecord = false;
+
     var param = 'url='+encodeURIComponent(location.href);
     $.ajax({
         type:'GET',
