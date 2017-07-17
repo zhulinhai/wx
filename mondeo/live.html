@@ -25,13 +25,12 @@
 <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 <script type="text/javascript" src="js/wx_share.js"></script>
 <script>
-    var isRecord = false;
-    function test(){
-        if(!isRecord){
+    $('#record').click(function () {
+        if (!isRecord) {
             isRecord = true;
             wx.startRecord();
             $('#record').val('正在录音');
-        }else {
+        } else {
             isRecord = false
             $('#record').val('开始录音');
             wx.stopRecord({
@@ -39,11 +38,11 @@
                     var localId = res.localId;
                     alert(localId);
                 },
-                error:function(){
+                error: function () {
                     alert('error');
                 }
             });
         }
-    }
+    });
 </script>
 </html>

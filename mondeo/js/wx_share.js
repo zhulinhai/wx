@@ -27,28 +27,6 @@
                         'stopRecord'
                     ]
                 });
-
-                wx.ready(function () {
-                    $('#record').click(function () {
-                        if (!isRecord) {
-                            isRecord = true;
-                            wx.startRecord();
-                            $('#record').val('正在录音');
-                        } else {
-                            isRecord = false
-                            $('#record').val('开始录音');
-                            wx.stopRecord({
-                                success: function (res) {
-                                    var localId = res.localId;
-                                    alert(localId);
-                                },
-                                error: function () {
-                                    alert('error');
-                                }
-                            });
-                        }
-                    })
-                });
             }
         },
         error:function(error){
