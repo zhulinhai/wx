@@ -39,7 +39,7 @@
             wx.stopRecord({
                 success: function (res) {
                     voiceId = res.localId;
-                    alert(localId);
+                    alert(voiceId);
                 },
                 error: function () {
                     alert('error');
@@ -53,7 +53,7 @@
             return;
         }
         wx.translateVoice({
-            localId: 'voiceId',
+            localId: voiceId,
             success: function (res) {
                 if(res.hasOwnProperty('translateResult'))
                     alert(res.translateResult); // 语音识别的结果
