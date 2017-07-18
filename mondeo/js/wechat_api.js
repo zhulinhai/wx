@@ -26,7 +26,8 @@
                 signature: wx_signature,
                 jsApiList: [
                     'startRecord',
-                    'stopRecord'
+                    'stopRecord',
+                    'translateVoice'
                 ]
             });
 

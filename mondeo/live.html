@@ -21,11 +21,13 @@
 </head>
 <body ontouchmove="event.preventDefault();">
 <input id="record" type="button" value="开始录音"/>
+<input id="translate" type="button" value="语音识别"/>
 </body>
 <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 <script type="text/javascript" src="js/wechat_api.js"></script>
 <script>
     var isRecord = false;
+    var voiceId = null;
     $('#record').click(function () {
         if (!isRecord) {
             isRecord = true;
@@ -36,7 +38,7 @@
             $('#record').val('开始录音');
             wx.stopRecord({
                 success: function (res) {
-                    var localId = res.localId;
+                    voiceId = res.localId;
                     alert(localId);
                 },
                 error: function () {
@@ -44,6 +46,21 @@
                 }
             });
         }
+    });
+    $('#translate').click(function(){
+        if(voiceId == null){
+            alert('请录制一段语音');
+            return;
+        }
+        wx.translateVoice({
+            localId: 'voiceId',
+            success: function (res) {
+                if(res.hasOwnProperty('translateResult'))
+                    alert(res.translateResult); // 语音识别的结果
+                else
+                    alert('无法识别语音');
+            }
+        });
     });
 </script>
 </html>
