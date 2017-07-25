@@ -1,5 +1,5 @@
 /**
- * Created by luhao on 2017/7/18.
+ * Created by luhao on 2016/12/29.
  */
 (function ($){
     var param = 'url='+encodeURIComponent(location.href);
@@ -13,7 +13,7 @@
                 return alert(rt.message);
             }
 
-            var title ='语音识别demo'; // 分享标题
+            var title ='语音demo'; // 分享标题
             var link ='http://wx.bjczxda.com/mondeo/live.html';
 
             var wx_appId = rt.data.appId;
@@ -31,16 +31,12 @@
                     'onMenuShareTimeline',
                     'onMenuShareAppMessage',
                     'onMenuShareQQ',
-                    'onMenuShareWeibo',
-
-                    'startRecord',
-                    'stopRecord',
-                    'translateVoice'
+                    'onMenuShareWeibo'
+                    // 所有要调用的 API 都要加到这个列表中
                 ]
             });
 
             wx.ready(function () {
-
                 // 在这里调用 API
                 wx.onMenuShareTimeline({
                     title:title, // 分享标题
@@ -48,6 +44,11 @@
                     desc: desc, // 分享描述
                     imgUrl:imgUrl, // 分享图标
                     success: function () {
+                        if(window.mobile){
+                        // 用户确认分享后执行的回调函数
+                            $.get("http://api.bjczxda.com/api/h5/updateWXShareStatus?flag=MONDEO_20170501&mobile="+window.mobile, function(result){
+                            });
+                        }
                     },
                     cancel: function () {
                         // 用户取消分享后执行的回调函数
@@ -94,10 +95,16 @@
                         // 用户取消分享后执行的回调函数
                     }
                 });
+
             });
         },
         error:function(error){
-            alert('http请求失败');
+            var eObj = error.responseJSON;
+
+            //if(eObj)
+            //    alert(eObj.message);
+            //else
+            //    alert('WeChat share request: Server Error!');
         }
     });
 })(jQuery);
