@@ -19,7 +19,7 @@
             var wx_signature = rt.data.signature;
 
             wx.config({
-                debug: true,
+                debug: false,
                 appId: wx_appId,
                 timestamp: wx_timestamp,
                 nonceStr: wx_nonceStr,
