@@ -1,0 +1,1295 @@
+* {padding: 0;margin: 0}
+
+#container {
+    position: absolute;
+    top: 0;left: 0;
+    font-family: "Helvetica", "Microsoft YaHei", sans-serif;
+    width: 16rem;
+    height: 100%;
+    -webkit-perspective-origin: center;
+    -moz-perspective-origin: center;
+    perspective-origin: center;
+    background-color: #1B1E1F;
+    overflow: hidden;
+}
+
+#container .swiper-wrapper{
+    width: 100%;
+    height: 100%;
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+}
+
+#container .section {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: white;
+    z-index: 9;
+}
+
+#loadingDialog, #menuListDialog {
+    position: fixed;
+    top: 0;left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #1B1E1F;
+}
+
+#loadingDialog {
+    z-index: 20;
+}
+
+#loadingDialog .loading-clear, .loading-fill {
+    position: absolute;
+    top: 50%;left: 50%;
+    margin-left: -1.15rem;
+    margin-top: -2.05rem;
+    width: 2.3rem;
+    height: 2.05rem;
+}
+
+#loadingDialog .loading-fill {
+    height: 0;
+    background: url("../img/loading-fill.png") no-repeat;
+    background-size: 2.3rem 2.05rem;
+}
+
+#loadingDialog .loading-percent {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    color: #c7c8c9;
+    width: 100%;
+    height: 1.2rem;
+    line-height: 1.2rem;
+    font-size: 0.8rem;
+    text-align: center;
+}
+
+#loadingDialog .loading-bottom {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    margin-left: -1.4rem;
+    width: 2.8rem;
+    height: 1rem;
+}
+
+#guideDialog, #tipDialog {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #1C1D1F;
+    z-index: 12;
+}
+
+#tipDialog {
+    background-color: rgba(0,0,0, 0.6);
+    z-index: 9;
+}
+
+#guideDialog .switch {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -2.4rem;
+    margin-top: 2rem;
+    width: 4.8rem;
+    height: 4.8rem;
+    background: url("../img/on-off.png") no-repeat 0 0;
+    background-size: 200% auto;
+}
+
+#guideDialog .hand {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -0.3rem;
+    margin-top: 5.2rem;
+    width: 0.9rem;
+    display: none;
+}
+
+#guideDialog .msgContent {
+    position: absolute;
+    top: 2.4rem;
+    left: 1rem;
+    width: 14rem;
+    height: 7.5rem;
+    font-size: 0.7rem;
+    overflow: hidden;
+}
+
+#guideDialog .msg1 {
+    width: 11rem;
+    height: 1.75rem;
+}
+
+#guideDialog .msg2 {
+    margin-top: 1rem;
+    width: 11rem;
+    height: 1.75rem;
+}
+
+#guideDialog .msg3 {
+    float: right;
+    margin-top: 1rem;
+    width: 10rem;
+    height: 1.75rem;
+}
+
+#guideDialog .headImg {
+    float: left;
+    width: 1.75rem;
+}
+
+#guideDialog .headImg1 {
+    float: right;
+    width: 1.75rem;
+}
+
+#guideDialog .info {
+    float: left;
+    color: black;
+    text-align: left;
+    width: 7rem;
+    height: 1.75rem;
+    padding-left: 1rem;
+    line-height: 1.75rem;
+    margin-left: 0.5rem;
+    background: url("../img/dialogBg1.png") no-repeat 0 0;
+    background-size: 7rem 100%;
+}
+
+#guideDialog .info1 {
+    float: left;
+    color: black;
+    text-align: center;
+    width:7.5rem;
+    height: 1.75rem;
+    line-height: 1.75rem;
+    margin-left: 0.5rem;
+    background: url("../img/dialogBg1.png") no-repeat 0 0;
+    background-size: 7.5rem 100%;
+}
+
+#guideDialog .info2 {
+    float: right;
+    height: 1.75rem;
+    line-height: 1.75rem;
+    margin-right: 0.5rem;
+    width: 6rem;
+    text-align: center;
+    background: url("../img/dialogBg.png") no-repeat 0 0;
+    background-size: 6rem 100%;
+}
+
+#tipDialog .hand1 {
+    position: absolute;
+    top: 1.5rem;
+    right: 0.8rem;
+    width: 0.9rem;
+    z-index: 12;
+}
+
+#tipDialog .hand2 {
+    position: absolute;
+    bottom: 4.3rem;
+    left: 50%;
+    margin-left: -1.8rem;
+    width: 0.9rem;
+}
+
+#tipDialog .tipSwipe {
+    position: absolute;
+    bottom: 5rem;
+    left: 50%;
+    margin-left: -2.55rem;
+    width: 5.1rem;
+    height: 0.65rem;
+}
+
+#tipDialog .tipShowMenu {
+    position: absolute;
+    top: 3.2rem;
+    right: 0.5rem;
+    color: white;
+    text-align: right;
+    width: 6rem;
+    font-size: 0.6rem;
+}
+
+#tipDialog .tipSwipePage {
+    position: absolute;
+    color: white;
+    font-size: 0.6rem;
+    bottom: 3.2rem;
+    width: 100%;
+    text-align: center;
+}
+
+
+.handAnimation {
+    animation:handTap 1s linear 0s alternate none infinite;
+    -webkit-animation:handTap 1s linear 0s alternate none infinite;
+}
+
+@keyframes handTap {
+    100% {transform: scale(0.8)}
+}
+
+@-webkit-keyframes handTap {
+    100% {-webkit-transform: scale(0.8);transform: scale(0.8)}
+}
+
+.hand2Animation {
+    animation:handSwipe 1s linear 0s alternate none infinite;
+    -webkit-animation:handSwipe 1s linear 0s alternate none infinite;
+}
+
+@keyframes handSwipe {
+    0% {margin-left: -2.4rem;}
+    100% {;margin-left: 1.8rem;}
+}
+
+@-webkit-keyframes handSwipe {
+    0% {margin-left: -2.4rem;}
+    100% {;margin-left: 1.8rem;}
+}
+
+#menuListDialog {
+    background-color: rgba(0,0,0,0.6);
+    z-index: 10;
+}
+
+#menuListDialog .menuList {
+    float: right;
+    width: 8.8rem;
+    height: 100%;
+    overflow: hidden;
+    margin-right:  -10rem;
+    background-color: #1B1E1F;
+}
+
+#menuListDialog .leftFrame {
+    float: left;
+    width: 7.2rem;
+    height: 100%;
+}
+
+#menuListDialog .menuList .logo {
+    margin-top: 0.8rem;
+    width: 4.9rem;
+}
+
+#menuListDialog .menuList .head {
+    margin: 0 0.5rem;
+    height: 2.5rem;
+    border-bottom: 0.05rem solid #303132;
+}
+
+#menuListDialog .menuList .itemFrame {
+    width: 100%;
+    overflow: scroll;
+}
+
+#menuListDialog .menuList .item {
+    margin: 0 0.5rem;
+    height: 2.4rem;
+    color: #7C7D7E;
+    border-bottom: 0.05rem solid #303132;
+}
+
+#menuListDialog .menuList .item .title {
+    float: left;
+    margin-top: 1.2rem;
+    margin-left: 0.2rem;
+    font-size: 0.7rem;
+}
+
+#menuListDialog .menuList .item .subTitle {
+    margin-left: 0.2rem;
+    font-size: 0.55rem;
+}
+
+#menuListDialog .menuList .menuBottom {
+    position: absolute;
+    margin-right:  -10rem;
+    right: 0; bottom: 0;
+    color: #7C7D7E;
+    width: 8.8rem;
+    height: 1.6rem;
+    text-align: center;
+    line-height: 1.6rem;
+    font-size: 0.6rem;
+}
+
+.subMenu {
+    position: absolute;
+    top: 2.25rem;
+    left: 0;
+    width: 7rem;
+    height: 0;
+    overflow: hidden;
+    box-shadow: 0.1rem 0.1rem 0.5rem #D3D4D5;
+    z-index: 10;
+}
+
+.subMenu .subItem {
+    width: 100%;
+    font-size: 0.7rem;
+    height: 2.25rem;
+    line-height: 2.25rem;
+    text-align: center;
+    background-color: #F3F4F5;
+    border-top: 0.05rem solid #E3E3E4;
+}
+
+.menu {
+    position: fixed;
+    top: 0.5rem;
+    right: 0.5rem;
+    width: 2rem;
+    height: 1.6rem;
+    -moz-transition: 0.3s;
+    -o-transition: 0.3s;
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+    z-index: 11;
+}
+
+.bar {
+    position: relative;
+    display: block;
+    margin: 0.25rem auto;
+    height: 0.125rem;
+    width: 1rem;
+    background-color: black;
+    border-radius: 0.125rem;
+    -moz-border-radius: 0.125rem;
+    -webkit-border-radius: 0.125rem;
+    -moz-transition: 0.4s;
+    -o-transition: 0.4s;
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
+}
+
+.barActive1 {
+    background-color: white;
+    -moz-transform: translateY(0.375rem) rotate(45deg);
+    -ms-transform: translateY(0.375rem) rotate(45deg);
+    -webkit-transform: translateY(0.375rem) rotate(45deg);
+    transform: translateY(0.375rem) rotate(45deg);
+}
+.barActive2 {
+    opacity: 0;
+}
+.barActive3 {
+    background-color: white;
+    -moz-transform: translateY(-0.375rem) rotate(-45deg);
+    -ms-transform: translateY(-0.375rem) rotate(-45deg);
+    -webkit-transform: translateY(-0.375rem) rotate(-45deg);
+    transform: translateY(-0.375rem) rotate(-45deg);
+}
+.barNormal2 {
+    opacity: 1;
+}
+.barNormal1, .barNormal3 {
+    -moz-transform: translateY(0) rotate(0deg);
+    -ms-transform: translateY(0) rotate(0deg);
+    -webkit-transform: translateY(0) rotate(0deg);
+    transform: translateY(0) rotate(0deg);
+}
+
+.headFrame {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 2.25rem;
+    background-color: #FFFFFF;
+    border-bottom: 0.05rem solid #EA3323;
+    z-index: 5;
+}
+
+.headFrame .dot {
+    float: left;
+    width: 0.2rem;
+    height: 2.25rem;
+    margin-left: 0.1rem;
+    background: url("../img/dot.png") no-repeat center;
+    background-size: 0.15rem auto;
+}
+
+.headFrame .titleDiv {
+    float: left;
+    width: 7rem;
+    height: 2.25rem;
+}
+
+.headFrame .titleDiv .title {
+    float: left;
+    margin-left: 0.5rem;
+    line-height: 2.25rem;
+    font-size: 0.7rem;
+}
+
+.headFrame .titleDiv .subTitle,.subItemTitle {
+    float: left;
+    margin-left: 0.2rem;
+    font-size: 0.7rem;
+    line-height: 2.25rem;
+}
+
+.headFrame .titleDiv-2 {
+    background: url("../img/arrowDown.png") no-repeat 5.6rem 1.05rem;
+    background-size: 0.3rem 0.15rem;
+}
+
+.headFrame .titleDiv-2 .subItemTitle {
+    color: #d40e19;
+    font-size: 0.7rem;
+}
+
+.page-1-1 {
+    background: #DCDADB url("../img/1-bg.jpg") no-repeat 0 bottom;
+    background-size: 100% auto;
+    -webkit-transform:rotateY(0deg) translateZ(19.3rem);
+    -moz-transform:rotateY(0deg) translateZ(19.3rem);
+    transform:rotateY(0deg) translateZ(19.3rem);
+}
+
+.page-1-1 .pageCover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 1;
+    z-index: 2;
+}
+
+.page-1-1 .light {
+    position: absolute;
+    top: 0;
+    left: 1rem;
+    width: 3.75rem;
+    height: 5.25rem;
+    z-index: 3;
+}
+
+.page-1-1 .lightOn {
+    position: absolute;
+    top: 4rem;
+    left: -0.9rem;
+    width: 8.75rem;
+    height: 0;
+    background: url("../img/1-lightOn.png") no-repeat;
+    background-size: 8.75rem auto;
+    z-index: 3;
+}
+
+.page-1-1 .logoRed {
+    position: absolute;
+    left: 50%; top: 50%;
+    margin-left: -1.2rem;
+    margin-top: -7rem;
+    width: 2.4rem;
+}
+
+.page-1-1 .title-1 {
+    display: block;
+    margin: 0 auto;
+    width: 4.75rem;
+}
+
+.page-1-1 .titleFrame {
+    position: absolute;
+    left: 50%; top: 50%;
+    margin-left: -3rem;
+    margin-top: -4.5rem;
+    width: 6rem;
+    height: 1.6rem;
+    border-bottom: 0.05rem solid #CDCCCC;
+}
+
+.page-1-1 .title-2 {
+    position: absolute;
+    left: 50%; top: 50%;
+    margin-left: -2rem;
+    margin-top: -2.5rem;
+    width: 4rem;
+}
+
+.page-1-1 .currentTime {
+    position: absolute;
+    bottom: 7.8rem;
+    width: 100%;
+    height: 3rem;
+    font-size: 2.4rem;
+    font-weight: bold;
+    line-height: 3rem;
+    color: white;
+    text-align: center;
+}
+
+.page-2-1 {
+    background: #f6f5f5 url("../img/bg-2.jpg") no-repeat 0 2.3rem;
+    background-size: 100% auto;
+    -webkit-transform:rotateY(45deg) translateZ(19.3rem);
+    -moz-transform:rotateY(45deg) translateZ(19.3rem);
+    transform:rotateY(45deg) translateZ(19.3rem);
+}
+
+.page-2-1 .contentFrame {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    z-index: 9;
+}
+
+.page-2-1 .contentFrame .item {
+    float: left;
+    width: 7.95rem;
+    height: 8rem;
+}
+
+.page-2-1 .contentFrame .item .mainImg {
+    display: block;
+    margin: 0.5rem auto;
+    width: 1.9rem;
+}
+
+.page-2-1 .contentFrame .item .mainTitle {
+    font-size: 0.7rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+.page-2-1 .contentFrame .item .subTitle {
+    margin: 0.5rem 0.2rem 0;
+    text-align: center;
+    font-size: 0.55rem;
+    color: #7D7E7F;
+}
+
+.page-3-1 {
+    -webkit-transform:rotateY(90deg) translateZ(19.3rem);
+    -moz-transform:rotateY(90deg) translateZ(19.3rem);
+    transform:rotateY(90deg) translateZ(19.3rem);
+    background-color: #f6f5f5;
+}
+
+.page-3-1 .headDiv {
+    width: 16rem;
+    height: 8rem;
+    margin-bottom: 0.5rem;
+}
+
+.page-3-1 .sub-container {
+    width: 16rem;
+    height: 8rem;
+}
+
+.page-3-1 .swiper-wrapper {
+    width: 16rem;
+    height: 8rem;
+}
+
+.page-3-1 .swiper-slide {
+    width: 16rem;
+    height: 8rem;
+    overflow: hidden;
+}
+
+.page-3-1 .swiper-slide img {
+    width: 16rem;
+    height: auto;
+}
+
+.page-3-1 .pagination {
+    position: absolute;
+    top: 7.6rem;
+    width: 100%;
+    height: 1.4rem;
+    text-align: center;
+    z-index: 10;
+}
+
+.page-3-1 .project-loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -0.8rem;
+    margin-top: -0.8rem;
+    width: 1.6rem;
+    height: 1.6rem;
+    z-index: 9;
+}
+
+.page-3-1 .contentFrame {
+    position: absolute;
+    top: 2.3rem;
+    left: 0;
+    width: 100%;
+    background-color: #f6f5f5;
+    overflow: scroll;
+    z-index: 9;
+}
+
+.page-3-1 .contentFrame .item {
+    display: inline-block;
+    vertical-align:top;
+    margin: 0.5rem 0 0.5rem 0.3rem;
+    width: 7.55rem;
+    height: 7rem;
+    text-align: left;
+    -webkit-box-shadow: 0.05rem 0.05rem 0.1rem;
+    box-shadow: 0.05rem 0.05rem 0.1rem;
+}
+
+.page-3-1 .contentFrame .item .imgFrame {
+    margin: 0.15rem;
+    width: 7.25rem;
+    height: 5.15rem;
+    overflow: hidden;
+}
+
+.page-3-1 .contentFrame .item .imgFrame img {
+    width: 7.25rem;
+    height: auto;
+}
+
+.page-3-1 .contentFrame .item .proName {
+    display: block;
+    margin: 0 auto;
+    width: 7.25rem;
+    color: black;
+    font-size: 0.6rem;
+    line-height: 1.2rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+
+.page-4-1 {
+    background: white url("../img/4-bg.jpg") no-repeat 0 2.3rem;
+    background-size: 200% auto;
+    overflow: hidden;
+    -webkit-transform:rotateY(135deg) translateZ(19.3rem);
+    -moz-transform:rotateY(135deg) translateZ(19.3rem);
+    transform:rotateY(135deg) translateZ(19.3rem);
+}
+
+.page-4-1 .titleFrame {
+    width: 100%;
+    height: 1.6rem;
+    margin-bottom: 0.5rem;
+}
+
+.page-4-1 .titleFrame .mainTitle {
+    float: left;
+    font-size: 0.7rem;
+    font-weight: bold;
+    width: 3rem;
+    height: 1.6rem;
+    line-height: 1.6rem;
+    text-align: center;
+    border-bottom: 0.05rem solid #D30000;
+}
+
+.page-4-1 .titleFrame .enTitle {
+    float: left;
+    font-size: 0.6rem;
+    color: #9B9D9E;
+    width: 11.8rem;
+    height: 1.6rem;
+    padding-left: 0.2rem;
+    line-height: 1.8rem;
+    border-bottom: 0.05rem solid #E3E3E4;
+}
+
+.page-4-1 .contentFrame {
+    position: absolute;
+    left: 50%;
+    margin-left: -7.5rem;
+    width: 15rem;
+    height: 16rem;
+    bottom: 0;
+}
+
+.page-4-1 .contentFrame .info {
+    color: #7D7E7F;
+    font-size: 0.6rem;
+    line-height: 0.8rem;
+    margin-top: 1rem;
+}
+
+.page-4-1 .contentFrame-1 {
+    left: 100%;
+    margin-left: 0;
+}
+
+.page-5-1 {
+    -webkit-transform:rotateY(180deg) translateZ(19.3rem);
+    -moz-transform:rotateY(180deg) translateZ(19.3rem);
+    transform:rotateY(180deg) translateZ(19.3rem);
+}
+
+.page-5-1 .contentFrame {
+    position: absolute;
+    top: 2.3rem;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    z-index: 9;
+}
+
+.page-5-1 .mainInfo {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 15rem;
+}
+
+.page-5-1 .contentFrame .map {
+    width: 100%;
+    background: url("../img/5-map.jpg") no-repeat center;
+    background-size: 100% auto;
+}
+
+.page-5-1 .contentFrame .companyInfo {
+    display: block;
+    margin: 0 auto;
+    width: 15rem;
+}
+
+.page-5-1 .contentFrame .city {
+    font-size: 0.8rem;
+    line-height: 1rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.3rem;
+}
+
+.page-5-1 .contentFrame .enCity {
+    font-size: 0.6rem;
+    margin-left: 0.3rem;
+}
+
+.page-5-1 .contentFrame .phoneOrE {
+    font-size: 0.6rem;
+    height: 0.8rem;
+    line-height: 0.8rem;
+    color: #7D7E7F;
+}
+
+.page-5-1 .contentFrame .phoneOrE span {
+    margin-left: 0.3rem;
+    margin-right: 0.5rem;
+}
+
+.page-5-1 .contentFrame .call {
+    float: right;
+    width: 1.25rem;
+    margin-right: 0.5rem;
+    margin-top: 0.7rem;
+}
+
+.page-5-1 .contentFrame .address {
+    margin-top: 0.5rem;
+    max-height: 2rem;
+    line-height: 1rem;
+    font-size: 0.6rem;
+    color: #7D7E7F;
+    border-top: 0.05rem solid #CCCDCE;
+}
+
+.page-5-1 .qrcode {
+    display: block;
+    margin: 0.3rem auto;
+    width: 5.4rem;
+}
+
+.page-6-1 {
+    -webkit-transform:rotateY(225deg) translateZ(19.3rem);
+    -moz-transform:rotateY(225deg) translateZ(19.3rem);
+    transform:rotateY(225deg) translateZ(19.3rem);
+}
+
+.page-6-1 .contentFrame {
+    position: absolute;
+    top: 2.3rem;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    z-index: 9;
+}
+
+.page-6-1 .banner {
+    width: 100%;
+    height: 6.1rem;
+    background: url("../img/6-head1.jpg") no-repeat;
+    background-size: 100% 6.1rem;
+}
+
+.page-6-1 .titleFrame {
+    padding-top: 1.5rem;
+    width: 6.8rem;
+    margin-left: 4.6rem;
+}
+
+.page-6-1 .title-1 {
+    display: block;
+    margin: 0 auto;
+    width: 5.9rem;
+    height: 1.4rem;
+}
+
+.page-6-1 .title-2 {
+    display: block;
+    margin: 0.2rem auto;
+    width: 6.8rem;
+    font-size: 0.5rem;
+    height: 1rem;
+    line-height: 1rem;
+    text-align: center;
+    color: white;
+    border-top: 0.05rem solid white;
+    border-bottom: 0.05rem solid white;
+}
+
+.page-6-1 .themeTitle {
+    padding-top: 1rem;
+    margin-bottom: 0.3rem;
+    text-align: center;
+    font-size: 1rem;
+    text-decoration: underline;
+}
+
+.page-6-1 .itemFrame {
+    width: 100%;
+    height: 7.8rem;
+}
+
+.page-6-1 .itemFrame .item {
+    display: inline-block;
+    width: 7.2rem;
+    height: 6.8rem;
+    margin: 0.5rem 0.2rem;
+    border: 0.05rem solid #F2F3F4;
+    vertical-align: top;
+}
+
+.page-6-1 .itemFrame .itemImg {
+    display: block;
+    margin: 0.3rem auto 0.2rem;
+    width: 2.5rem;
+}
+
+.page-6-1 .itemFrame .itemTitle {
+    text-align: center;
+    font-size: 0.7rem;
+    line-height: 1rem;
+    color: black;
+}
+
+.page-6-1 .itemFrame .info {
+    font-size: 0.5rem;
+    line-height: 0.6rem;
+    margin: 0.2rem;
+    color: #9E9FA0;
+}
+
+.page-6-1 .chooseFrame {
+    width: 100%;
+    height: 14.65rem;
+    background:#F2F3F4 url("../img/6-arrow.png") no-repeat center bottom;
+    background-size: 1.8rem 0.9rem;
+}
+
+.page-6-1 .chooseFrame .item {
+    display: inline-block;
+    width: 7.4rem;
+    height: 3rem;
+    margin-left: 0.3rem;
+    background-color: white;
+    vertical-align: top;
+    margin-top: 0.5rem;
+}
+
+.page-6-1 .chooseFrame .item .itemImg {
+    float: left;
+    width: 1.5rem;
+    margin: 0.75rem 0.5rem;
+}
+
+.page-6-1 .chooseFrame .item .itemTitle {
+    font-size: 0.65rem;
+    line-height: 1rem;
+    margin-top: 0.6rem;
+}
+
+.page-6-1 .chooseFrame .item .info {
+    font-size: 0.5rem;
+    line-height: 0.6rem;
+    color: #9E9FA0;
+}
+
+.page-6-1 .frame-3 {
+    width: 100%;
+    height: 12.75rem;
+}
+
+.page-6-1 .frame-3 .item {
+    display: inline-block;
+    vertical-align: top;
+    width: 7.4rem;
+    height: 4rem;
+    margin-top: 0.5rem;
+    margin-left: 0.25rem;
+}
+
+.page-6-1 .frame-3 .item .headTitle {
+    width: 100%;
+    color: white;
+    font-size: 0.7rem;
+    height: 1rem;
+    line-height: 1rem;
+}
+
+.page-6-1 .frame-3 .item .info {
+    margin: 0.2rem;
+    color: black;
+    font-size: 0.5rem;
+    line-height: 0.7rem;
+}
+
+.page-6-1 .frame-4 {
+    width: 100%;
+    height: 13rem;
+    background:#F2F3F4 url("../img/6-arrow.png") no-repeat center bottom;
+    background-size: 1.8rem 0.9rem;
+}
+
+.page-6-1 .frame-4 .item {
+    display: inline-block;
+    width: 7.4rem;
+    height: 3rem;
+    margin-left: 0.3rem;
+    background-color: white;
+    vertical-align: top;
+    margin-top: 0.5rem;
+}
+
+.page-6-1 .frame-4 .p-1 {
+    text-align: center;
+    font-size: 0.5rem;
+    color: #9E9FA0;
+    line-height: 0.7rem;
+}
+
+.page-6-1 .frame-4 .item .itemImg {
+    float: left;
+    width: 1.5rem;
+    margin: 0.75rem 0.5rem;
+}
+
+.page-6-1 .frame-4 .item .itemTitle {
+    font-size: 0.65rem;
+    line-height: 0.7rem;
+    margin-top: 0.75rem;
+}
+
+.page-6-1 .frame-4 .item span {
+    font-size: 0.5rem;
+    margin-right: 0.2rem;
+}
+
+.page-6-1 .item-1 {
+    display: inline-block;
+    margin-left: 0.25rem;
+    margin-top: 0.5rem;
+    vertical-align: top;
+    width: 4.7rem;
+    height: 7.5rem;
+    border: 0.05rem solid #CCCDCE;
+}
+
+.page-6-1 .item-1 img {
+    display: block;
+    margin: 0.5rem auto 0.3rem;
+    width: 2.1rem;
+}
+
+.page-6-1 .item-1 .p-11 {
+    text-align: center;
+    font-size: 0.8rem;
+    line-height: 1rem;
+}
+
+.page-6-1 .item-1 .p-12 {
+    text-align: center;
+    font-size: 0.5rem;
+    line-height: 0.7rem;
+    color: #9E9FA0;
+}
+
+.page-6-1 .item-2 {
+    display: inline-block;
+    width: 4.7rem;
+    height: 4.4rem;
+    margin-left: 0.25rem;
+    margin-top: 0.3rem;
+    vertical-align: top;
+    border: 0.05rem solid #CCCDCE;
+    overflow: hidden;
+}
+
+.page-6-1 .item-2 .caseImg {
+    display: block;
+    margin: 0.5rem auto 0.3rem;
+    width: 1.5rem;
+}
+
+.page-6-1 .item-2 p {
+    text-align: center;
+    line-height: 0.7rem;
+    font-size: 0.45rem;
+}
+
+.page-6-1 .bottom {
+    width: 100%;
+    height: 2rem;
+    text-align: center;
+    font-size: 0.6rem;
+    line-height: 0.8rem;
+    color: #9E9FA0;
+    background-color: black;
+}
+
+.page-7-1 {
+    -webkit-transform:rotateY(270deg) translateZ(19.3rem);
+    -moz-transform:rotateY(270deg) translateZ(19.3rem);
+    transform:rotateY(270deg) translateZ(19.3rem);
+}
+
+.page-7-1 .contentFrame {
+    position: absolute;
+    top: 2.3rem;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    z-index: 9;
+}
+
+.page-7-1 .contentFrame-1 {
+    width: 100%;
+    height: 8rem;
+    background: #F3DE4A url("../img/7-bannerBg.jpg") no-repeat right bottom;
+    background-size: 16rem auto;
+}
+
+.page-7-1 .contentFrame-1 .title-1 {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.page-7-1 .contentFrame-1 .p-1 {
+    width: 8.8rem;
+    height: 1rem;
+    line-height: 1rem;
+    color: #F3DE4A;
+    text-align: center;
+    font-size: 0.6rem;
+    background-color: black;
+    margin-bottom: 0.2rem;
+}
+
+.page-7-1 .contentFrame-1 .p-2 {
+    font-size: 0.6rem;
+    line-height: 0.8rem;
+}
+
+.page-7-1 .themeTitle {
+    padding-top: 1rem;
+    margin-bottom: 0.3rem;
+    text-align: center;
+    font-size: 1rem;
+    text-decoration: underline;
+}
+
+.page-7-1 .itemFrame {
+    width: 100%;
+    height: 19.5rem;
+}
+
+.page-7-1 .p-3 {
+    font-size: 0.5rem;
+    line-height: 0.7rem;
+    text-align: center;
+}
+
+.page-7-1 .itemFrame .item {
+    display: inline-block;
+    width: 7.2rem;
+    height: 6.7rem;
+    margin: 0.4rem 0.2rem;
+    border: 0.05rem solid #F2F3F4;
+    vertical-align: top;
+}
+
+.page-7-1 .itemFrame .itemImg {
+    display: block;
+    margin: 0.3rem auto 0.2rem;
+    width: 2.5rem;
+}
+
+.page-7-1 .itemFrame .itemTitle {
+    text-align: center;
+    font-size: 0.7rem;
+    color: black;
+}
+
+.page-7-1 .itemFrame .info {
+    font-size: 0.5rem;
+    line-height: 0.6rem;
+    margin: 0.2rem;
+    color: #9E9FA0;
+}
+
+.page-7-1 .chooseFrame {
+    width: 100%;
+    height: 13rem;
+    background:#F2F3F4 url("../img/6-arrow.png") no-repeat center bottom;
+    background-size: 1.8rem 0.9rem;
+}
+
+.page-7-1 .chooseFrame .item {
+    display: inline-block;
+    width: 7.4rem;
+    height: 3rem;
+    margin-left: 0.25rem;
+    background-color: white;
+    vertical-align: top;
+    margin-top: 0.5rem;
+}
+
+.page-7-1 .chooseFrame .item .itemImg {
+    float: left;
+    width: 1.5rem;
+    margin: 0.75rem 0.3rem;
+}
+
+.page-7-1 .chooseFrame .item .itemTitle {
+    font-size: 0.65rem;
+    line-height: 1rem;
+    margin-top: 0.5rem;
+}
+
+.page-7-1 .chooseFrame .item .info {
+    font-size: 0.5rem;
+    line-height: 0.6rem;
+    color: #9E9FA0;
+}
+
+.page-7-1 .item-2 {
+    display: inline-block;
+    width: 4.7rem;
+    height: 4.4rem;
+    margin-left: 0.25rem;
+    margin-top: 0.3rem;
+    vertical-align: top;
+    border: 0.05rem solid #CCCDCE;
+    overflow: hidden;
+}
+
+.page-7-1 .item-2 .caseImg {
+    display: block;
+    margin: 0.5rem auto 0.3rem;
+    width: 1.5rem;
+}
+
+.page-7-1 .item-2 p {
+    text-align: center;
+    line-height: 0.7rem;
+    font-size: 0.5rem;
+}
+
+.page-7-1 .bottom {
+    width: 100%;
+    height: 2rem;
+    text-align: center;
+    font-size: 0.6rem;
+    line-height: 0.8rem;
+    color: #9E9FA0;
+    background-color: black;
+}
+
+.page-8-1 {
+    -webkit-transform:rotateY(315deg) translateZ(19.3rem);
+    -moz-transform:rotateY(315deg) translateZ(19.3rem);
+    transform:rotateY(315deg) translateZ(19.3rem);
+}
+
+.page-8-1 .contentFrame {
+    position: absolute;
+    top: 2.3rem;
+    left: 0;
+    width: 100%;
+    background: white url("../img/8-bg.jpg") no-repeat;
+    background-size: 100% auto;
+    overflow: scroll;
+    z-index: 9;
+}
+
+.page-8-1 .contentFrame .itemFrame {
+    margin-top: 8.5rem;
+}
+
+.page-8-1 .contentFrame .item {
+    float: left;
+    vertical-align:top;
+    margin: 0.5rem 0 0.5rem 0.3rem;
+    width: 7.55rem;
+    height: 7rem;
+    text-align: left;
+    -webkit-box-shadow: 0.05rem 0.05rem 0.1rem;
+    box-shadow: 0.05rem 0.05rem 0.1rem;
+}
+
+.page-8-1 .contentFrame .item .imgFrame {
+    margin: 0.15rem;
+    width: 7.25rem;
+    height: 5.15rem;
+    overflow: hidden;
+}
+
+.page-8-1 .contentFrame .item .imgFrame img {
+    width: 7.25rem;
+    height: auto;
+}
+
+.page-8-1 .contentFrame .item .proName {
+    display: block;
+    margin: 0 auto;
+    width: 7.25rem;
+    color: black;
+    font-size: 0.6rem;
+    line-height: 1.2rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+
+a,a:hover{color: #7D7E7F;text-decoration:none;}

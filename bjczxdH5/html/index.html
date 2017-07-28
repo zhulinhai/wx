@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>长智信达</title>
+    <link rel="stylesheet" href="../css/swiper.min.css">
+    <link rel="stylesheet" href="../css/animate.min.css">
+    <link rel="stylesheet" href="../css/scrollbar.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/main.css">
+</head>
+<body>
+    <!-- 隐藏域 -->
+    <input type="hidden" name="appId" value="">
+    <input type="hidden" name="timestamp" value="">
+    <input type="hidden" name="nonceStr" value="">
+    <input type="hidden" name="signature" value="">
+
+    <!-- 加载页 -->
+    <div id="loadingDialog">
+        <img class="loading-clear" src="../img/loading-clear.png" />
+        <div id="loading-fill" class="loading-fill"></div>
+        <p id="loading-percent" class="loading-percent">0%</p>
+        <img class="loading-bottom" src="../img/loading-bottom.png" />
+    </div>
+    <!-- 菜单按钮 -->
+    <div class="menu">
+        <div id="bar1" class="bar"></div>
+        <div id="bar2" class="bar"></div>
+        <div id="bar3" class="bar"> </div>
+    </div>
+    <!-- 菜单列表 -->
+    <div id="menuListDialog" style="display: none">
+        <div class="leftFrame"></div>
+        <div class="menuList">
+            <div class="head"><img class="logo" src="../img/logo.png" /></div>
+            <div class="itemFrame">
+                <div class="item"><p class="title">首页<span class="subTitle">HOME</span></p></div>
+                <div class="item"><p class="title">服务范围<span class="subTitle">SERVICE</span></p></div>
+                <div class="item"><p class="title">案例作品<span class="subTitle">PROJECTS</span></p></div>
+                <div class="item"><p class="title">关于我们<span class="subTitle">ABOUT US</span></p></div>
+                <div class="item"><p class="title">联系我们<span class="subTitle">CONTACT</span></p></div>
+                <div class="item"><p class="title">微信运营<span class="subTitle">WEICHAT</span></p></div>
+                <div class="item"><p class="title">微博运营<span class="subTitle">WEIBO</span></p></div>
+                <div class="item"><p class="title">拍摄花絮<span class="subTitle">TRIVIA</span></p></div>
+            </div>
+            <p class="menuBottom">www.bjczxd.com</p>
+        </div>
+    </div>
+    <!-- 引导页面 -->
+    <div id="guideDialog" style="display: none;">
+        <div class="msgContent">
+            <div class="msg msg1" style="display: none"><img class="headImg" src="../img/head1.jpg" /><div class="info">咦,加载完了么?</div></div>
+            <div class="msg msg2" style="display: none"><img class="headImg" src="../img/head1.jpg" /><div class="info1">页面怎么还这么黑?</div></div>
+            <div class="msg msg3" style="display: none"><img class="headImg1" src="../img/head2.jpg" /><div class="info2">点击开关试试!</div></div>
+        </div>
+        <div class="switch" style="display: none"></div>
+        <img class="hand handAnimation" style="display: none" src="../img/hand.png" />
+    </div>
+    <!-- 提示页面 -->
+    <div id="tipDialog" style="display: none">
+        <img class="hand1 handAnimation" style="display: none" src="../img/hand.png" />
+        <div class="tipFrame" style="display: none">
+            <img class="tipSwipe" src="../img/tipSwipe.png" />
+            <img class="hand2 hand2Animation" src="../img/hand.png" />
+        </div>
+        <p class="tipShowMenu" style="display: none">点击显示菜单</p>
+        <p class="tipSwipePage" style="display: none">左右滑动切换页面</p>
+    </div>
+
+    <!-- 主要内容 -->
+    <div id="container" class="swiper-container">
+        <div id="wrapper" class="swiper-wrapper">
+            <div class="section page-1-1">
+                <div class="pageCover"></div>
+                <img class="light" src="../img/1-light.png" />
+                <div class="lightOn"></div>
+                <img class="logoRed" src="../img/1-logo-red.png" />
+                <div class="titleFrame"><img class="title-1" src="../img/1-title-1.png" /></div>
+                <img class="title-2" src="../img/1-title-2.png" />
+                <p class="currentTime">00:00</p>
+            </div>
+            <div class="section page-2-1">
+                <div class="headFrame">
+                    <div class="titleDiv"><p class="title">服务范围</p><p class="subTitle">SERVICE</p></div>
+                </div>
+                <div class="contentFrame">
+                    <div class="item" style="border-right: 0.05rem solid #EBECEC;border-bottom: 0.05rem solid #EBECEC;">
+                        <img class="mainImg" src="../img/2-brand.png">
+                        <p class="mainTitle">品牌咨询</p>
+                        <p class="subTitle">为企业制定符合商业生态竞争逻辑的品牌核心思想，为客户定制出清晰的规划和咨询服务。</p>
+                    </div>
+                    <div class="item" style="border-bottom: 0.05rem solid #EBECEC;">
+                        <img class="mainImg" src="../img/2-light.png">
+                        <p class="mainTitle">标志VI</p>
+                        <p class="subTitle">个性定制适应新时代商业发展的品牌理念和视觉系统。</p>
+                    </div>
+                    <div class="item" style="border-right: 0.05rem solid #EBECEC">
+                        <img class="mainImg" src="../img/2-web.png">
+                        <p class="mainTitle">网站建设</p>
+                        <p class="subTitle">提供高端定制互联网端服务。</p>
+                    </div>
+                    <div class="item">
+                        <img class="mainImg" src="../img/2-phone.png">
+                        <p class="mainTitle">H5/APP</p>
+                        <p class="subTitle">全面专属定制APP、微信周边、H5互动开发等。</p>
+                    </div>
+                </div>
+            </div>
+            <div class="section page-3-1">
+                <div class="headFrame">
+                    <div class="titleDiv titleDiv-2"><p class="title">案例作品</p><p class="dot"></p><p class="subItemTitle">全部</p>
+                    </div>
+                </div>
+                <div class="subMenu">
+                    <div class="subItem">全部</div>
+                    <div class="subItem">H5</div>
+                    <div class="subItem">网站</div>
+                    <div class="subItem">VI</div>
+                </div>
+                <img class="project-loading" src="../img/loading-spinning-bubbles.svg" />
+                <!-- 项目列表 -->
+                <div id="projectFrame" class="contentFrame">
+                    <div id="projectList">
+                        <div class="headDiv">
+                            <div class="sub-container">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide"><img src="../img/banner1.jpg"></div>
+                                    <div class="swiper-slide"><img src="../img/banner2.jpg"></div>
+                                    <div class="swiper-slide"><img src="../img/banner3.jpg"></div>
+                                </div>
+                                <div class="pagination"></div>
+                            </div>
+                        </div>
+                        <div id="itemsInfo"></div>
+                    </div>
+                    <div id="pullUp" style="display: none">
+                        <span class="pullUpIcon"></span><span class="pullUpLabel">上拉加载更多...</span>
+                    </div>
+                </div>
+            </div>
+            <div class="section page-4-1">
+                <div class="headFrame">
+                    <div class="titleDiv titleDiv-2"><p class="title">关于我们</p><p class="dot"></p><p class="subItemTitle">公司</p></div>
+                </div>
+                <div class="subMenu">
+                    <div class="subItem">公司介绍</div>
+                    <div class="subItem">团队介绍</div>
+                </div>
+                <div class="contentFrame contentFrame-0">
+                    <div class="titleFrame">
+                        <p class="mainTitle">公司介绍</p>
+                        <p class="enTitle">INTRODUCTION</p>
+                    </div>
+                    <p class="info">北京长智信达信息技术有限公司（简称长智信达），是一家新媒体品牌策划传播专业机构。</p>
+                    <p class="info">我们提倡新媒体整合的战略思维。主打品牌咨询策划方案、解决品牌线上活动推广、提供移动端解决方案。VI设计、网站以及互动游戏的独立开发与设计。微信公众号开发与运营、微商城设计与开发、H5/APP设计与开发。</p>
+                    <p class="info">目前，长智信达已形成覆盖华中、华北的两地产业格局，在北京设有市场服务中心，策划中心和设计中心。在武汉设有研发中心、数据中心和策略服务中心。</p>
+                    <p class="info">未来，长智信达伴您成长……</p>
+                </div>
+                <div class="contentFrame contentFrame-1">
+                    <div class="titleFrame">
+                        <p class="mainTitle">团队介绍</p>
+                        <p class="enTitle">TEAM</p>
+                    </div>
+                    <p class="info">长智信达是一家互联网创意公司，已经拥有了一只容纳包括博士硕士等二十余人的专业团队，团队目前包括技术开发人员、设计师、策划、文案等多种人员。都是来自国内知名互联网企业腾讯、易车、华为等公司。我们将以敏锐的洞察力、出色的团队协作才能、超强的沟通能力武装自己，像鲨鱼一样具有爆发的能力，出色完成每一个任务。</p>
+                </div>
+            </div>
+            <div class="section page-5-1">
+                <div class="headFrame">
+                    <div class="titleDiv"><p class="title">联系我们</p><span class="subTitle">CONTACT</span></div>
+                </div>
+                <!-- 联系信息 -->
+                <div id="linkInfo" class="contentFrame">
+                    <div class="map"></div>
+                    <div class="mainInfo">
+                        <div class="companyInfo">
+                            <a href="tel:13671343850"><img class="call" src="../img/call.png" /></a>
+                            <p class="city">北京<span class="enCity">BEI JING</span></p>
+                            <p class="phoneOrE">T:<span>13671343850</span>E:<span>yangbo@bjczxd.com</span></p>
+                            <div class="address">北京市海淀区中关村南大街12号天作国际中心裙楼A019</div>
+                        </div>
+                        <div class="companyInfo">
+                            <p class="city">武汉<span class="enCity">WU HAN</span></p>
+                            <p class="phoneOrE">T:<span>13671343850</span>E:<span>yangbo@bjczxd.com</span></p>
+                            <div class="address">湖北省武汉市洪山区珞瑜路10号群光中心13024</div>
+                        </div>
+                        <img class="qrcode" src="../img/qrcode.jpg" />
+                    </div>
+                </div>
+            </div>
+            <div class="section page-6-1">
+                <div class="headFrame">
+                    <div class="titleDiv"><p class="title">微信运营</p><span class="subTitle">WEICHAT</span></div>
+                </div>
+                <div id="wxFrame" class="contentFrame">
+                    <div>
+                        <div class="banner">
+                            <div class="titleFrame">
+                                <img class="title-1" src="../img/6-title-1.png" />
+                                <p class="title-2">再小的个体，也有自己的品牌</p>
+                            </div>
+                        </div>
+                        <div class="itemFrame">
+                            <div class="item" style="margin-left: 0.4rem">
+                                <img class="itemImg" src="../img/6-service.jpg" />
+                                <p class="itemTitle">服务号</p>
+                                <p class="info">给企业和组织提供更强大的业务服务与用户管理能力，帮助企业快速实现全新的公众号服务平台。</p>
+                            </div>
+                            <div class="item">
+                                <img class="itemImg" src="../img/6-date.jpg" />
+                                <p class="itemTitle">订阅号</p>
+                                <p class="info">为媒体和个人提供一种新的信息传播方式，构建与读者之间更好的沟通与管理模式。</p>
+                            </div>
+                        </div>
+                        <div class="chooseFrame">
+                            <p class="themeTitle">为什么选择运营微信公众号?</p>
+                            <div class="item">
+                                <img class="itemImg" src="../img/6-1.jpg" />
+                                <p class="itemTitle">多平台整合</p>
+                                <p class="info">传播速度快，传播链条长，受众多</p>
+                            </div>
+                            <div class="item">
+                                <img class="itemImg" src="../img/6-2.jpg" />
+                                <p class="itemTitle">移动社交平台</p>
+                                <p class="info">用户高度依赖，营销效果好。</p>
+                            </div>
+                            <div class="item">
+                                <img class="itemImg" src="../img/6-3.jpg" />
+                                <p class="itemTitle">闭环</p>
+                                <p class="info">一站式服务，效益转化率高</p>
+                            </div>
+                            <div class="item">
+                                <img class="itemImg" src="../img/6-4.jpg" />
+                                <p class="itemTitle">用户众多</p>
+                                <p class="info">6亿</p>
+                            </div>
+                            <div class="item">
+                                <img class="itemImg" src="../img/6-5.jpg" />
+                                <p class="itemTitle" style="line-height: 1.5rem">开放平台</p>
+                            </div>
+                        </div>
+                        <div class="frame-3">
+                            <p class="themeTitle">微信运营的四大难题</p>
+                            <div class="item" style="border: 0.05rem solid #DB6A5A;border-top: none;">
+                                <div class="headTitle" style="background-color: #DB6A5A"><span style="margin-left: 0.2rem">NO.1 专业</span></div>
+                                <p class="info">微信营销需要技术、策划、创意并行，专业属性强。没有专业团队，缺乏经验，运营没效果</p>
+                            </div>
+                            <div class="item" style="border: 0.05rem solid #6E8BDE;border-top: none;">
+                                <div class="headTitle" style="background-color: #6E8BDE"><span style="margin-left: 0.2rem">NO.2 技术</span></div>
+                                <p class="info">微信平台更新迭代快，实施技术难度高</p>
+                            </div>
+                            <div class="item" style="border: 0.05rem solid #95CD44;border-top: none;">
+                                <div class="headTitle" style="background-color: #95CD44;"><span style="margin-left: 0.2rem">NO.3 成本</span></div>
+                                <p class="info">构建专业微信营销团队，管理成本高</p>
+                            </div>
+                            <div class="item" style="border: 0.05rem solid #E5B942;border-top: none;">
+                                <div class="headTitle" style="background-color: #E5B942;"><span style="margin-left: 0.2rem">NO.4 资源</span></div>
+                                <p class="info">企业自身很难有丰富的移动营销推广资源</p>
+                            </div>
+                        </div>
+                        <div class="frame-4">
+                            <p class="themeTitle">我们如何帮您运营微信公众号？</p>
+                            <p class="p-1">整合微信端庞大用户群体与价值匹配</p>
+                            <p class="p-1">带领企业打破微信运营难关，以专注的企业信息化服务，</p>
+                            <p class="p-1">为企业客户提供一站式微信运营服务</p>
+                            <div class="item">
+                                <img class="itemImg" src="../img/6-6.jpg" />
+                                <p class="itemTitle">微信公众号定制</p>
+                                <p class="info" style="color: #9F55A1;"><span style="border: 0.05rem solid #9F55A1;">用户</span><span style="border: 0.05rem solid #9F55A1;">服务</span><span style="border: 0.05rem solid #9F55A1;">平台</span></p>
+                            </div>
+                            <div class="item">
+                                <img class="itemImg" src="../img/6-7.jpg" />
+                                <p class="itemTitle">微信公众号开发</p>
+                                <p class="info" style="color: #598CB1;"><span style="border: 0.05rem solid #598CB1;">后台</span><span style="border: 0.05rem solid #598CB1;">微站</span></p>
+                            </div>
+                            <div class="item">
+                                <img class="itemImg" src="../img/6-8.jpg" />
+                                <p class="itemTitle">微信公众号运营</p>
+                                <p class="info" style="color: #67B25D;"><span style="border: 0.05rem solid #67B25D;">内容</span><span style="border: 0.05rem solid #67B25D;">粉丝</span><span style="border: 0.05rem solid #67B25D;">互动</span></p>
+                            </div>
+                            <div class="item">
+                                <img class="itemImg" src="../img/6-9.jpg" />
+                                <p class="itemTitle">微信公众号推广</p>
+                                <p class="info" style="color: #FC3700;"><span style="border: 0.05rem solid #FC3700;">渠道</span><span style="border: 0.05rem solid #FC3700;">资源</span></p>
+                            </div>
+                        </div>
+                        <div style="margin-bottom: 1rem">
+                            <div class="item-1">
+                                <img src="../img/6-10.jpg" />
+                                <p class="p-11">技术</p>
+                                <p class="p-12">定制化微信平台以个性开发接口匹配企业的专属需求架设全流程的服务体系。</p>
+                            </div>
+                            <div class="item-1">
+                                <img src="../img/6-11.jpg" />
+                                <p class="p-11">内容</p>
+                                <p class="p-12">创意内容营销规划，坚持原创内容传播，根据企业微信号特性进行运营。</p>
+                            </div>
+                            <div class="item-1">
+                                <img src="../img/6-12.jpg" />
+                                <p class="p-11">资源</p>
+                                <p class="p-12">利用平台和资源加大流量导入。</p>
+                            </div>
+
+                            <p class="themeTitle">案例展示</p>
+                            <div class="item-2">
+                                <img class="caseImg" src="../img/6-case-1.jpg" />
+                                <p>微信号</p>
+                                <p>wandamoviepark</p>
+                            </div>
+                            <div class="item-2">
+                                <img class="caseImg" src="../img/6-case-2.jpg" />
+                                <p>微信号</p>
+                                <p>dongfengfx</p>
+                            </div>
+                            <div class="item-2">
+                                <img class="caseImg" src="../img/6-case-3.jpg" />
+                                <p>微信号</p>
+                                <p>beautyplus_mljf</p>
+                            </div>
+                            <div class="item-2">
+                                <img class="caseImg" src="../img/6-case-4.jpg" />
+                                <p>微信号</p>
+                                <p>wows-kzw</p>
+                            </div>
+                            <div class="item-2">
+                                <img class="caseImg" src="../img/6-case-5.jpg" />
+                                <p>微信号</p>
+                                <p>bt-ziyoufa</p>
+                            </div>
+                            <div class="item-2">
+                                <img class="caseImg" src="../img/6-case-6.jpg" />
+                                <p>微信号</p>
+                                <p>mianchiweishenghuo</p>
+                            </div>
+                        </div>
+                        <div class="bottom">
+                            <p style="padding-top: 0.2rem">北京长智信达有限公司</p>
+                            <p>专业 · 智慧 · 合作</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="section page-7-1">
+                <div class="headFrame">
+                    <div class="titleDiv"><p class="title">微博运营</p><span class="subTitle">WEIBO</span></div>
+                </div>
+                <div id="weiboFrame" class="contentFrame">
+                    <div>
+                        <!-- 头部图片 -->
+                        <div class="contentFrame-1">
+                            <div style="width: 10rem;padding-top: 0.5rem;margin-left: 0.6rem">
+                                <p class="title-1">微博运营</p>
+                                <p class="p-1">随时随地分享身边的新鲜事儿！</p>
+                                <p class="p-2">微博与微信的最大不同</p>
+                                <p class="p-2">就是微博是与陌生人交朋友，</p>
+                                <p class="p-2">每一位网友</p>
+                                <p class="p-2">都可以浏览您的信息成为潜在客户。</p>
+                            </div>
+                        </div>
+                        <div class="itemFrame">
+                            <p class="themeTitle">微博的特征，决定了它的重要性！</p>
+                            <p class="p-3">截止2015年9月，微博月活跃人数已达到2.12亿，拥有大学</p>
+                            <p class="p-3">以上高等学历的用户是微博的主力用户，占比高达76%。</p>
+
+                            <div class="item">
+                                <img class="itemImg" src="../img/7-1.jpg" />
+                                <p class="itemTitle">便捷性</p>
+                                <p class="info" >实时发布信息快速，信息传播的速度快。</p>
+                            </div>
+                            <div class="item">
+                                <img class="itemImg" src="../img/7-2.jpg" />
+                                <p class="itemTitle">粘性强</p>
+                                <p class="info" >用户可以根据自己的兴趣偏好。使得微型博客用户体验的粘性越来越强。</p>
+                            </div>
+                            <div class="item">
+                                <img class="itemImg" src="../img/7-3.jpg" />
+                                <p class="itemTitle">原创性</p>
+                                <p class="info" >内容短小精悍，这一点导致大量原创内容爆发性地被生产出来。</p>
+                            </div>
+                            <div class="item">
+                                <img class="itemImg" src="../img/7-4.jpg" />
+                                <p class="itemTitle">草根性</p>
+                                <p class="info" >人人都可以加入，人人都可以关注和被关注。</p>
+                            </div>
+                        </div>
+                        <div class="chooseFrame">
+                            <p class="themeTitle">我们如何帮您运营企业特色微博！</p>
+                            <p class="p-3">根据微博的特征和主要人群的阅读习惯结合企业的产品特</p>
+                            <p class="p-3">性，以“人为核心”提供专业化微博营销与运营服务</p>
+
+                            <div class="item">
+                                <img class="itemImg" src="../img/6-4.jpg" />
+                                <p class="itemTitle">用户</p>
+                                <p class="info">选对用户群体，作为一个突破口</p>
+                            </div>
+                            <div class="item">
+                                <img class="itemImg" src="../img/7-5.jpg" />
+                                <p class="itemTitle">团队</p>
+                                <p class="info">微博矩阵团队，专业专注</p>
+                            </div>
+                            <div class="item">
+                                <img class="itemImg" src="../img/7-6.jpg" />
+                                <p class="itemTitle">营销</p>
+                                <p class="info">情感、事件、活动，合适的才是最好的</p>
+                            </div>
+                            <div class="item">
+                                <img class="itemImg" src="../img/7-7.jpg" />
+                                <p class="itemTitle">内容</p>
+                                <p class="info">黄金时间推送，热点内容借势，产品内容扩散</p>
+                            </div>
+                        </div>
+                        <div style="margin-bottom: 1rem">
+                            <p class="themeTitle">案例展示</p>
+                            <div class="item-2">
+                                <img class="caseImg" src="../img/7-case-1.jpg" />
+                                <p>微博</p>
+                                <p>东风风行景逸</p>
+                            </div>
+                            <div class="item-2">
+                                <img class="caseImg" src="../img/7-case-2.jpg" />
+                                <p>微博</p>
+                                <p>去户外旅行</p>
+                            </div>
+                            <div class="item-2">
+                                <img class="caseImg" src="../img/7-case-3.jpg" />
+                                <p>微博</p>
+                                <p>万达电影主题乐园</p>
+                            </div>
+                            <div class="item-2">
+                                <img class="caseImg" src="../img/6-case-3.jpg" />
+                                <p>微博</p>
+                                <p>美丽加芬</p>
+                            </div>
+                            <div class="item-2">
+                                <img class="caseImg" src="../img/7-case-5.jpg" />
+                                <p>微博</p>
+                                <p>天下美食</p>
+                            </div>
+                            <div class="item-2">
+                                <img class="caseImg" src="../img/7-case-6.jpg" />
+                                <p>微博</p>
+                                <p>爱露蜜皮肤管理</p>
+                            </div>
+                        </div>
+                        <div class="bottom">
+                            <p style="padding-top: 0.2rem">北京长智信达有限公司</p>
+                            <p>专业 · 智慧 · 合作</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="section page-8-1">
+                <div class="headFrame">
+                    <div class="titleDiv"><p class="title">拍摄花絮</p><span class="subTitle">TRIVIA</span></div>
+                </div>
+                <div class="contentFrame">
+                    <div class="itemFrame">
+                        <a href="../case/k2.html"><div class='item'><div class='imgFrame'><img src="../img/k2-thumb.jpg" /></div><p class='proName'>东风锐达起亚新一代K2</p></div></a>
+                        <a href="../case/k60.html"><div class='item'><div class='imgFrame'><img src="../img/k60-thumb.jpg" /></div><p class='proName'>开瑞K60上市直播</p></div></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="orientLayer"><!-- 横屏提示 -->
+        <div class="contentFrame">
+            <img class="phone rotatePhoneAnimation" src="../img/rotatePhone.png" />
+            <p class="tipTitle">为了更好的体验，请使用竖屏浏览</p>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="../js/jquery-1.10.1.min.js"></script>
+    <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script type="text/javascript" src="../js/swiper.min.js"></script>
+    <script type="text/javascript" src="../js/toucher.js"></script>
+    <script type="text/javascript" src="../js/wxShare.js"></script>
+    <script type="text/javascript" src="../js/pace.min.js"></script>
+    <script type="text/javascript" src="../js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../js/rem.js"></script>
+    <script type="text/javascript" src="../js/main.js"></script>
+    <script type="text/javascript" src="../js/iscroll.js"></script>
+    <script type="text/javascript" src="../js/projectList.js"></script>
+    <script type="text/javascript">
+        paceOptions = {
+            elements: true
+        };
+        var isShowed = false;
+        var myInterval= setInterval(function(){
+            var progress = parseInt(document.querySelectorAll('.pace-progress')[0].getAttribute("data-progress"));
+            setLoadingPercent(progress);
+        },100);
+
+        function setLoadingPercent(progress) {
+            var height = 2.05 * progress /100;
+            document.getElementById('loading-percent').innerHTML=progress + '%';
+            document.getElementById('loading-fill').style.height = height + 'rem';
+        }
+
+        Pace.on('hide', function() {
+            clearInterval(myInterval);
+            myInterval = -1;
+            setLoadingPercent(100);
+            setTimeout(function(){
+                var loadingDialog = $('#loadingDialog');
+                loadingDialog.find('.loadingCar').addClass('animated zoomOut');
+                loadingDialog.fadeOut(700);
+                initSwiper();
+
+                wxScroll = new iScroll('wxFrame', {
+                    scrollbarClass: 'myScrollbar'
+                });
+                weiboScroll = new iScroll('weiboFrame', {
+                    scrollbarClass: 'myScrollbar'
+                });
+
+                var isFinished = $.cookie("tipFinished");
+                if (isFinished) {
+                    page1Animation();
+                } else  {
+                    firstInAnimation();
+                }
+            }, 1000);
+        });
+
+        function firstInAnimation(){
+//            var guideDialog = $('#guideDialog');
+//            guideDialog.show();
+//            $('.msg1').show().addClass('animated bounceInLeft');
+//            setTimeout(function(){
+//                $('.msg2').show().addClass('animated bounceInLeft');
+//            }, 800);
+//            setTimeout(function(){
+//                $('.msg3').show().addClass('animated bounceInRight');
+//                setTimeout(function(){
+//                    guideDialog.find('.switch').show().addClass('animated bounceInUp');
+//                    setTimeout(function() {
+//                        guideDialog.find('.hand').show();
+//                    }, 700);
+//                }, 700);
+//            }, 1600);
+//
+//            guideDialog.find('.switch').click(function(){
+//                $(this).css('background-position-x', '100%');
+//                setTimeout(function(){
+//                    guideDialog.fadeOut(700);
+//                    setTimeout(page1Animation, 700);
+//                    setTimeout(tipAnimation, 2000);
+//                    $.cookie("tipFinished", true);
+//                }, 300);
+//            });
+
+            setTimeout(page1Animation, 700);
+            setTimeout(tipAnimation, 2000);
+            $.cookie("tipFinished", true);
+        }
+
+        function initSwiper() {
+            var mainSwiper = new Swiper('.sub-container', {
+                direction: 'horizontal',
+                loop: true,
+                pagination: '.pagination',
+                centeredSlides: true,
+                autoplay: 3000,
+                onClick: function(swiper){
+                    if (swiper.activeIndex == 1) {
+                        window.location.href = "http://auto.bobo118.com/bmw.m.yiche.comV2/index.html";
+                    } else if (swiper.activeIndex == 2) {
+                        window.location.href = "http://auto.bobo118.com/VWwx/html/index.html";
+                    } else if (swiper.activeIndex == 3) {
+                        window.location.href = "http://auto.bobo118.com/yaris/#";
+                    }
+                }
+            });
+        }
+
+        function tipAnimation() {
+            var tipDialog = $('#tipDialog');
+            tipDialog.show();
+            tipDialog.find('.hand1').show();
+            tipDialog.find('.tipShowMenu').show();
+            setTimeout(showMenu, 700);
+            setTimeout(function(){
+                closeMenu(function(){
+                    setTimeout(function(){
+                        tipDialog.find('.tipFrame').show();
+                        tipDialog.find('.tipSwipePage').show();
+                        $('.menu').click(function(){
+                            tipDialog.fadeOut(300);
+                        });
+                    }, 700);
+                });
+            }, 2300);
+        }
+
+        function closeMenu(callBack) {
+            $('.menuBottom').animate({ 'marginRight': '-10rem' }, 300);
+                $('#bar1').removeClass('barActive1').addClass('barNormal1');
+                $('#bar2').removeClass('barActive2').addClass('barNormal2');
+                $('#bar3').removeClass('barActive3').addClass('barNormal3');
+
+                $('#menuListDialog').animate({
+                    'background-color': 'rgba(0,0,0,0)'
+                }, function(){
+                    $('#menuListDialog').hide();
+                    isShowed = false;
+                    callBack&&callBack();
+                });
+
+                $('.menuList').animate({
+                    'marginRight': '-10rem'
+                }, 300);
+        }
+
+        function showMenu(){
+            $('#menuListDialog').show().animate({
+                'background-color': 'rgba(0,0,0,0.6)'
+            }, function(){
+                $('#bar1').removeClass('barNormal1').addClass('barActive1');
+                $('#bar2').removeClass('barNormal2').addClass('barActive2');
+                $('#bar3').removeClass('barNormal3').addClass('barActive3');
+
+                $('.menuBottom').animate({
+                    'marginRight': '0'
+                }, 300);
+                $('.menuList').animate({
+                    'marginRight': '0'
+                }, 300, function(){
+                    isShowed = true;
+                });
+            });
+        }
+
+        function page1Animation() {
+            var page1 = $('.page-1-1');
+            page1.find('.lightOn').animate({
+                'height':'17.3rem'
+            }, 700);
+            page1.find('.pageCover').animate({
+                'opacity':'0'
+            }, 1000, function(){
+                $(this).fadeOut(0);
+            });
+        }
+    </script>
+</body>
+</html>
