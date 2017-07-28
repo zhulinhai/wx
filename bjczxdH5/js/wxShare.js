@@ -13,7 +13,7 @@
                 return alert(rt.message);
             }
 
-            var title ='没你不行，看一眼'; // 分享标题
+            var title ='北京长智信达'; // 分享标题
             var link ='http://wx.bjczxda.com/bjczxdH5/html/index.html';
             var desc = '长智信达，博采众长，新媒界'; // 分享描述
             var imgUrl = 'http://wx.bjczxda.com/bjczxdH5/img/shareLogo.jpg';
