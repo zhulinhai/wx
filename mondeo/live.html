@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <title>易车 · 老司机周刊</title>
+    <title>语音识别demo</title>
     <link rel="stylesheet" href="../public/css/reset-h5.css">
     <link rel="stylesheet" href="../public/css/animate.css">
-    <link rel="stylesheet" href="css/main.css">
     <!-- videojs css-->
     <link rel="stylesheet" href="../public/plugins/videojs/5.8.8/video-js.css" >
     <!-- 预加载插件 -->
@@ -16,51 +15,76 @@
     <!-- videojs -->
     <script type="text/javascript" src="../public/plugins/videojs/5.8.8/video.min.js"></script>
     <script type="text/javascript" src="../public/scripts/jquery-1.12.1.min.js"></script>
+    <style>
+        body,html { width: 100%; height: 100%; }
+        * { margin:0; padding: 0; }
+        body { background: url("images/01.jpg") no-repeat center; background-size: cover; }
+
+        input {
+            position: relative;
+            width: 184px;
+            line-height: 37px;
+            height: 37px;
+            color: #fe5241;
+            background: url("images/02.png") no-repeat left top;
+            background-size: 184px 37px;
+        }
+
+        .buttons {
+            margin-top: 300px;
+            width: 100%;
+            text-align: center;
+        }
+    </style>
 </head>
 <body ontouchmove="event.preventDefault();">
-<!--屏幕兼容代码-->
-<script type="text/javascript">
-
-    (function() {
-        // deicePixelRatio ：设备像素
-        var scale = 1 / devicePixelRatio;
-        if(navigator.userAgent.indexOf('iPhone')!=-1){
-            //设置meta 压缩界面 模拟设备的高分辨率
-            document.querySelector('meta[name="viewport"]').setAttribute('content', 'initial-scale=' + scale + ', maximum-scale=' + scale + ', minimum-scale=' + scale + ', user-scalable=no');
-        }
-        var deviceWidth = document.documentElement.clientWidth > 1300 ? 1300 : document.documentElement.clientWidth;
-        //按照640像素下字体为100px的标准来，得到一个字体缩放比例值 6.4
-        document.documentElement.style.fontSize = (deviceWidth / 6.4) + 'px'; //320 fontSize = 50px
-    })();
-</script>
-<div id="v" style="width: 5.6rem; height: 3.15rem;margin: 0 auto;">
-    <video id="my-player" class="video-js vjs-big-play-centered" webkit-playsinline playsinline autoplay="true" poster="images/bg-live.jpg"></video>
-</div>
+<div class="buttons"><input id="record" type="button" value="开始录音"/></div>
+<div style=" margin-top:20px;width: 100%;text-align: center;"><input id="translate" type="button" value="语音识别"/></div>
 </body>
 <script>
-    var player;
-
-    window.onload = function(){
-
-        $('#my-player').width($('#v').width()).height($('#v').height());
-
-        player = videojs('my-player',{
-            controls: true,
-            autoplay: true,
-            loop:true,
-            preload: 'auto'
+    $(document).ready(function(){
+        var mt = Math.round($('body').height() * 0.8);
+        $('.buttons').css('margin-top', mt + 'px');
+    });
+</script>
+<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript" src="js/wechat_api.js"></script>
+<script>
+    var isRecord = false;
+    var voiceId = null;
+    $('#record').click(function () {
+        if (!isRecord) {
+            isRecord = true;
+            wx.startRecord();
+            $('#record').val('停止录音');
+        } else {
+            isRecord = false
+            $('#record').val('开始录音');
+            wx.stopRecord({
+                success: function (res) {
+                    voiceId = res.localId;
+//                    alert(voiceId);
+                },
+                error: function () {
+                    alert('error');
+                }
+            });
+        }
+    });
+    $('#translate').click(function(){
+        if(voiceId == null){
+            alert('请录制一段语音');
+            return;
+        }
+        wx.translateVoice({
+            localId: voiceId,
+            success: function (res) {
+                if(res.hasOwnProperty('translateResult'))
+                    alert('您刚才说的是:'+ res.translateResult); // 语音识别的结果
+                else
+                    alert('无法识别语音');
+            }
         });
-
-        player.src('http://pili-live-hls.yunmfang.com/ford/mondeo.m3u8');
-
-        player.on('error',function(){
-            alert('视频源失效');
-        });
-
-        player.on('ended',function(){
-            alert('play ended!');
-        });
-    }
-
+    });
 </script>
 </html>

@@ -148,8 +148,8 @@
                 $('#used_gasonline_tera').html(store.used_gasonline_tera);
                 $('#used_gasonline_penta').html(store.used_gasonline_penta);
 
-                $('#support-num').html(store.support);
-                $('#nonsupport-num').html(store.nonsupport);
+                //$('#support-num').html(store.support);
+                //$('#nonsupport-num').html(store.nonsupport);
                 store.active_state = parseInt(data.active_state);
                 //console.log(dateStringToMillisecond(data.current_time));
 
@@ -404,17 +404,19 @@
         });
 
         $('#btn-support').click(function(e){
-            $('.attitude').css('background-image','url("images/img-pop-support.png")');
-            $('input[name="state"]').val(1);
-            $('.pop-submit').show();
-            $('.pop-content').addClass('animated bounceIn');
+             alert('活动已结束');
+            //$('.attitude').css('background-image','url("images/img-pop-support.png")');
+            //$('input[name="state"]').val(1);
+            //$('.pop-submit').show();
+            //$('.pop-content').addClass('animated bounceIn');
         });
 
         $('#btn-nonsupport').click(function(e){
-            $('.attitude').css('background-image','url("images/img-pop-nonsupport.png")');
-            $('input[name="state"]').val(2);
-            $('.pop-submit').show();
-            $('.pop-content').addClass('animated bounceIn');
+            //$('.attitude').css('background-image','url("images/img-pop-nonsupport.png")');
+            //$('input[name="state"]').val(2);
+            //$('.pop-submit').show();
+            //$('.pop-content').addClass('animated bounceIn');
+            alert('活动已结束');
         });
 
         /**
@@ -500,8 +502,8 @@
                         window.mobile = $('input[name="mobile"]').val();
                         store.support = data.support;
                         store.nonsupport = data.nonsupport;
-                        $('#support-num').html(store.support);
-                        $('#nonsupport-num').html(store.nonsupport);
+                        //$('#support-num').html(store.support);
+                        //$('#nonsupport-num').html(store.nonsupport);
                         alert('提交成功');
                         $('.pop-submit').hide();
                     }
@@ -519,40 +521,41 @@
          * 提交报名信息
          */
         $('#submit-join').hammer().bind('tap',function(e){
-            var params = $('#joinForm').serialize();
-            var name = $('#joinForm input[name="name"]').val();
-            var mobile = $('#joinForm input[name="mobile"]').val();
-
-            if(validate.isEmpty(name)){
-                alert('姓名不能为空');
-                return false;
-            }
-
-            if(validate.isEmpty(mobile)){
-                alert('手机号不能为空');
-                return false;
-            }
-            if(!validate.isMobile(mobile)){
-                alert('请输入手机号');
-                return false;
-            }
-            http.ajaxRequest({
-                type:'GET',
-                uri:'h5/storeProposer?' + params + '&flag='+flag,
-                success:function(json){
-                    window.mobile = $('#joinForm input[name="mobile"]').val();
-                    alert('报名成功！');
-                    $('#p8-car').addClass('animated fadeOutRight').one(animationEnd,function(){
-                        $(this).removeClass('animated fadeOutRight');
-                    });
-                },
-                error:function(e){
-                    if(e.responseJSON){
-                        alert(e.responseJSON.message);
-                    }else
-                        alert('您已参加活动，请继续浏览后续内容!');
-                }
-            });
+            alert('活动已结束');
+        //    var params = $('#joinForm').serialize();
+        //    var name = $('#joinForm input[name="name"]').val();
+        //    var mobile = $('#joinForm input[name="mobile"]').val();
+        //
+        //    if(validate.isEmpty(name)){
+        //        alert('姓名不能为空');
+        //        return false;
+        //    }
+        //
+        //    if(validate.isEmpty(mobile)){
+        //        alert('手机号不能为空');
+        //        return false;
+        //    }
+        //    if(!validate.isMobile(mobile)){
+        //        alert('请输入手机号');
+        //        return false;
+        //    }
+        //    http.ajaxRequest({
+        //        type:'GET',
+        //        uri:'h5/storeProposer?' + params + '&flag='+flag,
+        //        success:function(json){
+        //            window.mobile = $('#joinForm input[name="mobile"]').val();
+        //            alert('报名成功！');
+        //            $('#p8-car').addClass('animated fadeOutRight').one(animationEnd,function(){
+        //                $(this).removeClass('animated fadeOutRight');
+        //            });
+        //        },
+        //        error:function(e){
+        //            if(e.responseJSON){
+        //                alert(e.responseJSON.message);
+        //            }else
+        //                alert('您已参加活动，请继续浏览后续内容!');
+        //        }
+        //    });
         });
     }
 
