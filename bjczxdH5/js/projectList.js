@@ -21,7 +21,7 @@ function initLoadInfo(index) {
 
 function loadDataInfo(callBack) {
     $('.project-loading').show();
-    var url="http://www.bjczxd.com//wp-json/wp/v2/posts?filter[category_name]="+ filterList[checkIndex] +"&page=" + pageIndex;
+    var url="http://old.bjczxd.com//wp-json/wp/v2/posts?filter[category_name]="+ filterList[checkIndex] +"&page=" + pageIndex;
     $.ajax({
         type: "GET",
         url: url,
