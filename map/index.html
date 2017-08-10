@@ -50,7 +50,7 @@
 	}
 
 	function translateCallback(data){
-		if(data.status == BMap.BMAP_STATUS_SUCCESS){
+		if(data.status == BMAP_STATUS_SUCCESS){
 			 var marker = new BMap.Marker(data.points[0]);
 	        map.addOverlay(marker);
 	        var label = new BMap.Label("转换后的百度坐标（正确）",{offset:new BMap.Size(20,-10)});
