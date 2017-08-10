@@ -3,7 +3,6 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <title>百度地图</title>
 <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=A0a7d8fef86c56e63cc84be1cfa0a6b1"></script>
 <script type="text/javascript" src="../public/scripts/jquery-1.12.1.min.js"></script>
@@ -35,11 +34,10 @@
 		    success: function (res) {
 		        latitude = res.latitude; // 纬度，浮点数，范围为90 ~ -90
 		        longitude = res.longitude; // 经度，浮点数，范围为180 ~ -180。
-		        alert(res);
 		        points.push(new BMap.Point(longitude,latitude));
 		        convertor.translate(points, 1, 5, translateCallback);    
     		},
-    		error:function(data){
+    		fail:function(data){
     			alert(data);
     		}
 
