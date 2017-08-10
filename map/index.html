@@ -18,6 +18,7 @@
 </head>
 <body>
     <div id="map"></div>
+    <input type="button" name="" value="获取GPS坐标" onclick="getGPS();" />
 </body>
 <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 <script type="text/javascript" src="js/wechat_api.js"></script>
@@ -28,21 +29,25 @@
 	$(document).ready(function(){
 		map = new BMap.Map("map");
 		convertor = new BMap.Convertor();
-		
+
+	});
+
+	function getGPS(){
 		wx.getLocation({
 		    type: 'wgs84', // 默认为wgs84的gps坐标，如果要返回直接给openLocation用的火星坐标，可传入'gcj02'
 		    success: function (res) {
 		        latitude = res.latitude; // 纬度，浮点数，范围为90 ~ -90
 		        longitude = res.longitude; // 经度，浮点数，范围为180 ~ -180。
-		        points.push(new BMap.Point(longitude,latitude));
-		        convertor.translate(points, 1, 5, translateCallback);    
+		        alert('longitude:' + longitude + '||latitude:'+latitude);
+		        // points.push(new BMap.Point(longitude,latitude));
+		        // convertor.translate(points, 1, 5, translateCallback);    
     		},
     		fail:function(data){
-    			alert(data);
+    			alert('无法获取GPS坐标');
     		}
 
 		});
-	});
+	}
 
 	function translateCallback(data){
 		if(data.status == BMap.BMAP_STATUS_SUCCESS){
