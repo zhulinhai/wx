@@ -28,7 +28,19 @@
 	
 	$(document).ready(function(){
 		map = new BMap.Map("map");
+ 	var top_left_control = new BMap.ScaleControl({anchor: BMAP_ANCHOR_TOP_LEFT});// 左上角，添加比例尺
+    var top_left_navigation = new BMap.NavigationControl();  //左上角，添加默认缩放平移控件
+    var top_right_navigation = new BMap.NavigationControl({anchor: BMAP_ANCHOR_TOP_RIGHT, type: BMAP_NAVIGATION_CONTROL_SMALL}); 
+    //右上角，仅包含平移和缩放按钮
+    var marker = new BMap.Marker(new BMap.Point(114.363252,30.531465));
+    map.addOverlay(marker);
+    map.addControl(top_left_control);
+    map.addControl(top_left_navigation);
+    map.addControl(top_right_navigation);
 		convertor = new BMap.Convertor();
+		map.enableScrollWheelZoom(true);
+    map.setViewport(pArr);
+    map.setZoom(18);
 
 	});
 
