@@ -38,9 +38,9 @@
 		    success: function (res) {
 		        latitude = res.latitude; // 纬度，浮点数，范围为90 ~ -90
 		        longitude = res.longitude; // 经度，浮点数，范围为180 ~ -180。
-		        alert('longitude:' + longitude + '||latitude:'+latitude);
-		        // points.push(new BMap.Point(longitude,latitude));
-		        // convertor.translate(points, 1, 5, translateCallback);    
+		        // alert('longitude:' + longitude + '||latitude:'+latitude);
+		        points.push(new BMap.Point(longitude,latitude));
+		        convertor.translate(points, 1, 5, translateCallback);    
     		},
     		fail:function(data){
     			alert('无法获取GPS坐标');
@@ -56,6 +56,7 @@
 	        var label = new BMap.Label("转换后的百度坐标（正确）",{offset:new BMap.Size(20,-10)});
 	        marker.setLabel(label); //添加百度label
 	        map.setCenter(data.points[0]);
+	        points.shift();
 		}
 	}
 </script>
