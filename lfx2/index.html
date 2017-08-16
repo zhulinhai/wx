@@ -13,7 +13,10 @@
 <body>
 <div class="videos" id="parent">
    <input type="button" value="play video" onclick="play();" style="position: absolute;top: 0;left: 0;width: 100px;height: 50px;z-index: 100;background-color: white;" />
-   <video id="video_1" preload="auto" autoplay="autoplay" controls="false" webkit-playsinline="true" playsinline="true"
+   <video id="video_1" preload="auto" x5-video-player-fullscreen="true"
+          x5-video-player-type="h5"
+          x5-video-player-fullscreen="portraint" x-webkit-airplay="true"
+          webkit-playsinline="true" playsinline="true"
           src="http://vedio.yunmfang.com/%E9%99%86%E9%A3%8EX2.mp4">
     </video>
 </div>
@@ -51,9 +54,20 @@
             player.style.height = bodyH + 'px';
             player.style.left = (bodyW - scale * bodyH)/2 + 'px';
         }
-//		player.style.width = bodyW + 'px';
 
 	}
+
+	window.onresize = function () {
+
+        var w=750,h=1206;
+        var bodyW = document.body.clientWidth;
+        var bodyH = document.body.clientHeight;
+        var scale = w/h;
+        var width = bodyH * scale;
+
+        player.style.height = bodyH + 'px';
+//        player.style.left = width > bodyW ? ((bodyW - width) / 2 + 'px') : ((width - bodyW) / 2 + 'px');
+    }
 
 	function play(){
 		player.play();
