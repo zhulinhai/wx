@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,minimal-ui">
+<title>陆风X2</title>
+<link href="../public/css/reset-h5.css" rel="stylesheet">
+<link href="css/main.css?v=123213213" rel="stylesheet">
+<!-- css3免前缀插件 -->
+<script type="text/javascript" src="../public/scripts/prefixfree.min.js"></script>
+<script type="text/javascript" src="../public/scripts/jquery-1.12.1.min.js"></script>
+</head>
+<body>
+<div class="videos" id="parent">
+   <input type="button" value="play video" onclick="play();" style="position: absolute;top: 0;left: 0;width: 100px;height: 50px;z-index: 100;background-color: white;" />
+   <video id="video_1" preload="auto" autoplay="autoplay" webkit-playsinline="true" playsinline="true" 
+          src="http://vedio.yunmfang.com/%E9%99%86%E9%A3%8EX2.mp4" 
+          x-webkit-airplay="true" airplay="allow">
+    </video>
+</div>
+<!-- <div class="info">
+	<div class="message others">
+	 	<div class="avatar" data-author-id="lj">
+		  <img src="http://c1.mifile.cn/f/i/hd/2016051101/a-lj.png" alt="雷军"> 
+	   	</div> 
+	   	<div class="content"> <p class="author_name">雷军</p>  
+		  	<div class="bubble  bubble_default left"> 
+		  		<div class="bubble_cont"> 
+		  			<div class="plain"> 
+				      	<pre>我们刚刚发布了小米Max，先发几张美图和外观视频，你欣赏一下</pre> 
+					</div> 
+			 	</div> 
+			</div>  
+		</div> 
+    </div>
+</div> -->
+</body>
+<script type="text/javascript">
+	var player = null;
+	var STANDARD = 375;
+	window.onload = function(){
+		player = document.getElementById('video_1');
+		var w=750,h=1206;
+		var bodyW = document.body.clientWidth;
+		var bodyH = document.body.clientHeight;
+		var scale_w = bodyW/w;
+		var scale_h = bodyH/h;
+		var scale = 1;
+		if(scale_w > scale_h) scale = scale_h;
+		else scale = scale_w;
+		player.style.width = bodyW + 'px';
+		// player.style.height = bodyH + 'px';
+	}
+
+	function play(){
+		player.play();
+	}
+</script>
+<!-- 微信分享api -->
+<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<!-- <script type="text/javascript" src="js/wx_share.js"></script> -->
+</html>
