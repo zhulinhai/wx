@@ -2,6 +2,8 @@
 <html>
 <head>
 <meta charset="utf-8">
+<meta name="x5-fullscreen" content="true">
+<meta name="full-screen" content="yes">
 <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,minimal-ui">
 <title>陆风X2</title>
 <link href="../public/css/reset-h5.css" rel="stylesheet">
@@ -10,64 +12,94 @@
 <script type="text/javascript" src="../public/scripts/prefixfree.min.js"></script>
 <script type="text/javascript" src="../public/scripts/jquery-1.12.1.min.js"></script>
 </head>
-<body>
-<div class="videos" id="parent">
+<body ontouchmove="event.preventDefault();">
+<!--屏幕兼容代码-->
+<script type="text/javascript">
+
+    (function() {
+        // deicePixelRatio ：设备像素
+        var scale = 1 / devicePixelRatio;
+        if(navigator.userAgent.indexOf('iPhone')!=-1){
+            //设置meta 压缩界面 模拟设备的高分辨率
+            document.querySelector('meta[name="viewport"]').setAttribute('content', 'initial-scale=' + scale + ', maximum-scale=' + scale + ', minimum-scale=' + scale + ', user-scalable=no');
+        }
+        var deviceWidth = document.documentElement.clientWidth > 1300 ? 1300 : document.documentElement.clientWidth;
+        //按照640像素下字体为100px的标准来，得到一个字体缩放比例值 6.4
+        document.documentElement.style.fontSize = (deviceWidth / 6.4) + 'px'; //320 fontSize = 50px
+    })();
+</script>
+<div class="videos" id="parent" style="display: none;">
    <input type="button" value="play video" onclick="play();" style="position: absolute;top: 0;left: 0;width: 100px;height: 50px;z-index: 100;background-color: white;" />
-   <video id="video_1" preload="auto" x5-video-player-fullscreen="true"
+   <video id="video_1" preload="load" x5-video-player-fullscreen="true"
           x5-video-player-type="h5"
           x5-video-player-fullscreen="portraint" x-webkit-airplay="true"
           webkit-playsinline="true" playsinline="true"
           src="http://vedio.yunmfang.com/%E9%99%86%E9%A3%8EX2.mp4">
     </video>
 </div>
-<!-- <div class="info">
-	<div class="message others">
-	 	<div class="avatar" data-author-id="lj">
-		  <img src="http://c1.mifile.cn/f/i/hd/2016051101/a-lj.png" alt="雷军"> 
-	   	</div> 
-	   	<div class="content"> <p class="author_name">雷军</p>  
-		  	<div class="bubble  bubble_default left"> 
-		  		<div class="bubble_cont"> 
-		  			<div class="plain"> 
-				      	<pre>我们刚刚发布了小米Max，先发几张美图和外观视频，你欣赏一下</pre> 
-					</div> 
-			 	</div> 
-			</div>  
-		</div> 
-    </div>
-</div> -->
+<div class="info">
+	<img class="logo_I" src="images/logo_I.png" alt="logo-I" />
+	<img class="car" src="images/car.png" alt="car"/>
+	<div class="info_wrap">
+		<img class="logo_II" src="images/logo_II.png" alt="logo-II">
+		<div class="info_cont">
+			<form>
+			  <div class="form">
+			  	<div class="f_row"><div>姓&nbsp;&nbsp;名&nbsp;:</div><div><input type="text" name="name"></div></div>
+			  </div>
+			</form>
+		</div>
+	</div>
+</div>
 </body>
 <script type="text/javascript">
 	var player = null;
-	var STANDARD = 375;
+	var STANDARD_WIDTH = 750;
+	var STANDARD_HEIGHT = 1206;
+	var scale = STANDARD_WIDTH/STANDARD_HEIGHT;
+	var provinces,cities,dealers;
+
 	window.onload = function(){
 		player = document.getElementById('video_1');
-		var w=750,h=1206;
-		var bodyW = document.body.clientWidth;
-		var bodyH = document.body.clientHeight;
-		var scale = w/h;
-        var height = bodyW/scale;
-        if(height >= bodyH){
-            player.style.width = bodyW + 'px';
-            player.style.top = (bodyH-height) + 'px';
-        }else {
-            player.style.height = bodyH + 'px';
-            player.style.left = (bodyW - scale * bodyH)/2 + 'px';
-        }
-
+		player.addEventListener('ended',function(){
+			alert("video is in the end");
+		});
+		multipleDisplayAdapter();
+		initPageDatas();
 	}
 
-	window.onresize = function () {
 
-        var w=750,h=1206;
-        var bodyW = document.body.clientWidth;
-        var bodyH = document.body.clientHeight;
-        var scale = w/h;
-        var width = bodyH * scale;
+	function initPageDatas(){
+		//初始化经销商列表数据
+		//并初始化省份下拉列表
+		$.getJSON('data.json',function(json){
+			provinces = json.provinces;
+			cities = json.cities;
+			dealers = json.dealers;
+		});
+	}
 
-        player.style.height = bodyH + 'px';
-//        player.style.left = width > bodyW ? ((bodyW - width) / 2 + 'px') : ((width - bodyW) / 2 + 'px');
-    }
+	/**
+	 * [multipleDisplayAdapter description]
+	 * 基于iphone 6屏幕分辨率375 * 603 进行全屏适配算法
+	 * @return 
+	 */
+	function multipleDisplayAdapter(){
+		var videos = document.getElementsByTagName('video');
+		var bodyW = document.body.clientWidth;
+		var bodyH = document.body.clientHeight;
+	 	var height = bodyW/scale;
+		for(var i =0; i < videos.length; i++){
+			var video = videos[i];
+			if(height >= bodyH){
+	            video.style.width = bodyW + 'px';
+	            video.style.top = (bodyH-height) + 'px';
+	        }else {
+	            video.style.height = bodyH + 'px';
+	            video.style.left = (bodyW - scale * bodyH)/2 + 'px';
+	        }
+		}
+	}
 
 	function play(){
 		player.play();

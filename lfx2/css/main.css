@@ -5,10 +5,13 @@
  * @date    2017-08-15 10:28:52
  * @version $Id$
  */
+body {
+	background-color: black;
+}
+
 .videos { 
 	position: relative;
 	margin: 0 auto;
-    background: black;
     width: 100%;
 	height: 100%;
 	border: 0;
@@ -22,4 +25,94 @@
 	display: block;
 	margin: 0;
 	padding: 0;
+}
+
+
+.info {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	background: url('../images/bg_info.png') left top no-repeat;
+	background-size: 100% 100%;
+	overflow: hidden;
+}
+
+.info .logo_I{
+	margin-top: .22rem;
+	margin-left: .32rem;
+	width: 2.55rem;
+}
+
+.info .car{
+	display: block;
+	margin-left: 1.1rem;
+	margin-top:1.6rem;
+	width: 4.49rem;
+}
+
+.info .info_wrap {
+	margin-top: .1rem;
+	position: relative;
+	overflow: hidden;
+	width: 100%;
+}
+
+.info .info_wrap:after ,.info_cont .form .f_row:after{
+	display: block;
+	content: '';
+	width: 0;
+	height: 0;
+	clear: both;
+}
+
+.info .info_wrap .logo_II{
+	float: right;
+	margin-right: .25rem;
+	width: 1.58rem;
+}
+
+.info .info_wrap .info_cont{
+	float: right;
+	position: relative;
+	width: 100%;
+	overflow: hidden;
+}
+
+.info .info_wrap .info_cont .form{
+	width: 4.5rem;
+	margin: 0 auto;
+}
+
+.info_cont .form .f_row{
+	width: 100%;
+	height: .48rem;
+	overflow: hidden;
+	font-size: 2em;
+	color: white;
+} 
+
+.info_cont .form .f_row div{
+    height: 100%;
+	line-height: .48rem;
+}
+
+.info_cont .form .f_row div:first-child{
+	float: left;
+	width: 1.1rem;
+}
+
+.info_cont .form .f_row div:last-child{
+	float: left;
+	width: 3.4rem;
+}
+
+.info_cont .form input {
+	margin-top: -.04rem;
+	width: 3.38rem;
+	height: .46rem;
+	line-height: .46rem;
+	font-size: 1em;
+	color: white;
+	border: .01rem solid white;
+	background: transparent;
 }

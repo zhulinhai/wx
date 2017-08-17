@@ -16,9 +16,9 @@
                 return alert(rt.message);
             }
 
-            var title ='陆风X2'; // 分享标题
+            var title ='一个宅男和基友的**故事'; // 分享标题
             var link ='http://wx.bjczxda.com/lfx2/index.html';
-            var desc = '陆风X2'; // 分享描述
+            var desc = '感情深，一口闷；感情浓，玩出趣，GO刺激~'; // 分享描述
             var imgUrl = 'http://wx.bjczxda.com/lfx2/images/share.jpg';
 
             var wx_appId = rt.data.appId;
