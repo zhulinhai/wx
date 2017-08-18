@@ -57,7 +57,29 @@ body {
 	width: 100%;
 }
 
-.info .info_wrap:after ,.info_cont .form .f_row:after{
+.info .btn_gift {
+	position: absolute;
+	display: block;
+	/*overflow: hidden;*/
+	text-align: center;
+	right: .3rem;
+	bottom: .3rem;
+}
+
+.info .btn_gift img{
+	width: .7rem;
+}
+
+.info .btn_gift p{
+	font-size: 2em;
+	text-align: center;
+	color: white;
+	z-index:10;
+}
+
+
+
+.info .info_wrap:after ,.info_cont .form .f_row:after,.info_cont .form .location:after{
 	display: block;
 	content: '';
 	width: 0;
@@ -80,7 +102,11 @@ body {
 
 .info .info_wrap .info_cont .form{
 	width: 4.5rem;
-	margin: 0 auto;
+	margin: .28rem auto 0 auto;
+}
+
+.info_cont .form  a {
+	color: white;
 }
 
 .info_cont .form .f_row{
@@ -89,6 +115,7 @@ body {
 	overflow: hidden;
 	font-size: 2em;
 	color: white;
+	margin-bottom: .26rem;
 } 
 
 .info_cont .form .f_row div{
@@ -106,7 +133,43 @@ body {
 	width: 3.4rem;
 }
 
-.info_cont .form input {
+.info_cont .form .submit {
+	margin-bottom: 0 !important;
+	height: .6rem !important;
+}
+
+.info_cont .form .submit a {
+	display: block;
+	width: 2.3rem;
+	height: 100%;
+	line-height: .6rem;
+	background-color: #ca050f;
+	text-align: center;
+	border-radius: .05rem;
+}
+
+.info_cont .form .ischecked{
+	font-size: 1.25em;
+	height: .6rem !important;
+	margin-top: -.26rem;
+	margin-bottom: 0 !important;
+}
+
+.info_cont .form .ischecked div:last-child{
+	font-size: 1.25em;
+	line-height: .6rem;
+}
+
+.info_cont .form .ischecked div:last-child img{
+	width: .23rem;
+	margin-right: .5em;
+	vertical-align: middle;
+}
+
+.info_cont .form .location select:first-child{ float: left; }
+.info_cont .form .location select:last-child{ float: right; }
+
+.info_cont .form input, select{
 	margin-top: -.04rem;
 	width: 3.38rem;
 	height: .46rem;
@@ -114,5 +177,79 @@ body {
 	font-size: 1em;
 	color: white;
 	border: .01rem solid white;
-	background: transparent;
+	background-color: transparent;
+}
+
+.info_cont .form .s_select{
+	margin-top: 0;
+	width: 1.56rem;
+	background-position: 96% center;
+}
+
+.info_cont .form select {
+	padding-right: .3rem; 
+	background-image: url('../images/icon_arrow_down.png');
+	background-position: 98% center;
+	background-repeat: no-repeat;
+	background-size: .21rem .13rem;
+}
+
+
+
+.carAnimate {
+	animation: carLeftFadeIn .3s ease-in;
+	animation-fill-mode: both;
+}
+
+@keyframes carLeftFadeIn{
+	0% { transform: translate3d(-50%,-10%,0) scale(.8,.8); opacity: 0; }
+	100% { transform: none; opacity: 1; }
+}
+
+.fadeInAnimate {
+	animation: fadeIn .5s linear;
+	animation-fill-mode: both;
+}
+
+@keyframes fadeIn{
+	0% { opacity: 0; }
+	100% { opacity: 1; }
+}
+
+.giftAnimate {
+	animation: giftFadeInDown .5s ease-in 1s;
+	animation-fill-mode: both;
+}
+
+@keyframes giftFadeInDown{
+	0% { opacity: 0; transform: translate3d(0,-300%,0);}
+	100% { opacity: 1; transform: none; }
+}
+
+.giftShake {
+    animation: giftShake .5s linear 2;
+    animation-direction: alternate;
+	animation-fill-mode: both;
+	transform-origin: center bottom; 
+}
+
+@keyframes giftShake{
+	0% { transform: none; }
+	20% { transform: rotate(-15deg);}
+	40% { transform: rotate(0deg); }
+	60% { transform: rotate(15deg); }
+	80% { transform: rotate(0deg); }
+	100% { transform: rotate(-15deg); }
+}
+
+.delay_5h{
+	animation-delay: .5s;
+}
+
+.delay_1{
+	animation-delay: 1s;
+}
+
+.delay_1_5{
+	animation-delay: 1.5s;
 }

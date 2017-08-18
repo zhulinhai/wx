@@ -11,6 +11,8 @@
 <!-- css3免前缀插件 -->
 <script type="text/javascript" src="../public/scripts/prefixfree.min.js"></script>
 <script type="text/javascript" src="../public/scripts/jquery-1.12.1.min.js"></script>
+<script type="text/javascript" src="../public/scripts/utils/httpUtil.js"></script>
+<script type="text/javascript" src="../public/scripts/utils/validateUtil.js"></script>
 </head>
 <body ontouchmove="event.preventDefault();">
 <!--屏幕兼容代码-->
@@ -29,7 +31,7 @@
     })();
 </script>
 <div class="videos" id="parent" style="display: none;">
-   <input type="button" value="play video" onclick="play();" style="position: absolute;top: 0;left: 0;width: 100px;height: 50px;z-index: 100;background-color: white;" />
+  <!--  <input type="button" value="play video" onclick="play();" style="position: absolute;top: 0;left: 0;width: 100px;height: 50px;z-index: 100;background-color: white;" /> -->
    <video id="video_1" preload="load" x5-video-player-fullscreen="true"
           x5-video-player-type="h5"
           x5-video-player-fullscreen="portraint" x-webkit-airplay="true"
@@ -44,12 +46,47 @@
 		<img class="logo_II" src="images/logo_II.png" alt="logo-II">
 		<div class="info_cont">
 			<form>
+			  <input type="hidden" name="flag" value="LUFENG_X2" />
 			  <div class="form">
-			  	<div class="f_row"><div>姓&nbsp;&nbsp;名&nbsp;:</div><div><input type="text" name="name"></div></div>
+			  	<div class="f_row"><div>姓&nbsp;&nbsp;&nbsp;&nbsp;名&nbsp;:</div><div><input type="text" name="name"></div></div>
+			  	<div class="f_row"><div>电&nbsp;&nbsp;&nbsp;&nbsp;话&nbsp;:</div><div><input type="text" name="mobile"></div></div>
+			  	<div class="f_row location"><div>所在地&nbsp;:</div>
+			  		<div>
+			  			<select class="s_select" name="province">
+			  				<option value="省">省</option>
+			  			</select>
+			  			<select class="s_select" name="city">
+			  				<option value="市">市</option>
+			  			</select>
+			  		</div>
+	  			</div>
+			  	<div class="f_row"><div>经销商&nbsp;:</div>
+			  		<div>
+			  			<select name="dealer">
+			  				<option value="经销商">经销商</option>
+			  			</select>
+			  		</div>
+		  		</div>
+			  	<div class="f_row ischecked"><div></div>
+				  	<div>
+				  		<a id="btn_checked" href="javascript:void(0);">
+				  			<img src="images/icon_checked.png" alt="checked"><span>允许经销商联系试驾事宜</span>
+				  		</a>
+			  		</div>
+		  		</div>
+			  	<div class="f_row submit"><div></div>
+			  		<div>
+			  			<a id="btn_submit" href="javascript:void(0);" title="">提交</a>
+		  			</div>
+  				</div>
 			  </div>
 			</form>
 		</div>
 	</div>
+	<a class="btn_gift">
+		<img id="gift" src="images/btn_gift.png"/>
+		<p id="gift_w" class="">试驾有礼</p>
+	</a>
 </div>
 </body>
 <script type="text/javascript">
@@ -58,6 +95,10 @@
 	var STANDARD_HEIGHT = 1206;
 	var scale = STANDARD_WIDTH/STANDARD_HEIGHT;
 	var provinces,cities,dealers;
+    var host = 'http://api.bjczxda.com/api/';
+    var http = new Http(host);
+    var validate = new InputUtil();
+    window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
 
 	window.onload = function(){
 		player = document.getElementById('video_1');
@@ -66,6 +107,30 @@
 		});
 		multipleDisplayAdapter();
 		initPageDatas();
+		bindEvents();
+		infoPageAnimate();
+	}
+
+	//留资页动画
+	function infoPageAnimate(){
+		$('.car').addClass('carAnimate');
+		$('.logo_II').addClass('fadeInAnimate delay_5h');
+		$('.btn_gift').addClass('giftAnimate');
+		$('#gift_w').addClass('fadeInAnimate delay_1_5');
+		setTimeout(function(){
+			requestAnimationFrame(shakeAnimate);
+		},2000);
+	}
+
+	var start = 0;
+	//礼品盒摇动动画
+	function shakeAnimate(timestamp){
+		if(start==0 || Math.floor((timestamp - start)/1000) == 2) { 
+			console.log(start);
+			start = timestamp; 
+			$('#gift').toggleClass('giftShake');
+		}
+		requestAnimationFrame(shakeAnimate);
 	}
 
 
@@ -76,7 +141,119 @@
 			provinces = json.provinces;
 			cities = json.cities;
 			dealers = json.dealers;
+
+			$('select[name="province"]').empty();
+			var option = '<option value="省">省</option>';
+			for(var i = 0; i < provinces.length; i++){
+				var p = provinces[i];
+				option += '<option value="'+ p.province +'">'+ p.province +'</option>';
+			}
+			$('select[name="province"]').html(option);
 		});
+	}
+
+	function bindEvents(){
+		//省、市、经销商三级联动
+		$('select[name="province"]').on('change',function(){
+			var selected = $(this).val();
+			$('select[name="city"]').empty();
+            $('select[name="city"]').html('<option value"市">市</option>');
+            $('select[name="dealer"]').empty();
+            $('select[name="dealer"]').html('<option value"经销商">经销商</option>');
+			 if(selected !='省'){
+                  for(var i = 0; i < cities.length; i++){
+                  	   var city = cities[i];
+                      if(city.province == $(this).val())
+                          $('select[name="city"]').append('<option value="'+ city.city +'">'+ city.city +'</option>');
+                  }
+            }
+		});
+		//市、经销商二级联动
+		$('select[name="city"]').on('change',function(){
+			var selected = $(this).val();
+		 	
+		 	$('select[name="dealer"]').empty();
+		  	$('select[name="dealer"]').append('<option value"经销商">经销商</option>');
+			
+			if(selected !='市'){
+                  for(var i = 0; i < dealers.length; i++){
+                  	   var dealer = dealers[i];
+                      if(dealer.city == $(this).val())
+                          $('select[name="dealer"]').append('<option value="'+ dealer.dealer +'">'+ dealer.dealer +'</option>');
+                  }
+            }
+		});
+
+		$('#btn_checked').click(function(){
+			if(isChecked())
+				$($(this).find('img:first')).attr('src','images/icon_un_checked.png');
+			else
+				$($(this).find('img:first')).attr('src','images/icon_checked.png');
+		});
+
+		$('#btn_submit').click(function(){
+
+			var params = $('form:first').serialize();
+            var name = $('input[name="name"]').val();
+            var mobile = $('input[name="mobile"]').val();
+            var province = $('select[name="province"]').val();
+            var city = $('select[name="city"]').val();
+            var dealer = $('select[name="dealer"]').val();
+
+            if(validate.isEmpty(name)){
+                alert('姓名不能为空');
+                return false;
+            }
+            if(validate.isEmpty(mobile)){
+                alert('手机号不能为空');
+                return false;
+            }
+            if(!validate.isMobile(mobile)){
+                alert('请输入手机号');
+                return false;
+            }
+            if(province == '省'){
+                alert('请选择省');
+                return false;
+            }
+            if(city == '市'){
+                alert('请选择市');
+                return false;
+            }
+            if(dealer == '经销商'){
+                alert('请选择经销商');
+                return false;
+            }
+            // http.ajaxRequest({
+            //     type:'GET',
+            //     uri:'h5/storeComment?' + params + '&flag='+flag,
+            //     success:function(json){
+            //         var data = json.data;
+            //         if(data) {
+            //             window.mobile = $('input[name="mobile"]').val();
+            //             store.support = data.support;
+            //             store.nonsupport = data.nonsupport;
+            //             //$('#support-num').html(store.support);
+            //             //$('#nonsupport-num').html(store.nonsupport);
+            //             alert('提交成功');
+            //             $('.pop-submit').hide();
+            //         }
+            //     },
+            //     error:function(e){
+            //         if(e.responseJSON){
+            //             alert(e.responseJSON.message);
+            //         }else
+            //             alert('您已参加活动，请继续浏览后续内容!');
+            //     }
+            // });
+		});
+	}
+
+
+	//判断是否允许经销商联系
+	//true 允许， false 不允许
+	function isChecked(){
+		return $($('#btn_checked').find('img:first')).attr('src').indexOf('un') == -1;
 	}
 
 	/**
