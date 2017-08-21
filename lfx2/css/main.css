@@ -9,6 +9,16 @@ body {
 	background-color: black;
 }
 
+#loading {
+  position: absolute;
+  z-index: 1000;
+  left: 0;
+  top:0;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+}
+
 .videos { 
 	position: relative;
 	margin: 0 auto;
@@ -29,6 +39,7 @@ body {
 
 
 .info {
+	display: none;
 	position: relative;
 	width: 100%;
 	height: 100%;

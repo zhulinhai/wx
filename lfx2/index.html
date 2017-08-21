@@ -8,11 +8,14 @@
 <title>陆风X2</title>
 <link href="../public/css/reset-h5.css" rel="stylesheet">
 <link href="css/main.css?v=123213213" rel="stylesheet">
+<!-- 预加载插件 -->
+<script type="text/javascript" src="../public/scripts/pace.js"></script>
 <!-- css3免前缀插件 -->
 <script type="text/javascript" src="../public/scripts/prefixfree.min.js"></script>
 <script type="text/javascript" src="../public/scripts/jquery-1.12.1.min.js"></script>
 <script type="text/javascript" src="../public/scripts/utils/httpUtil.js"></script>
 <script type="text/javascript" src="../public/scripts/utils/validateUtil.js"></script>
+<script type="text/javascript" src="js/mmd.videoPlayer.min.js"></script>
 </head>
 <body ontouchmove="event.preventDefault();">
 <!--屏幕兼容代码-->
@@ -30,13 +33,26 @@
         document.documentElement.style.fontSize = (deviceWidth / 6.4) + 'px'; //320 fontSize = 50px
     })();
 </script>
-<div class="videos" id="parent" style="display: none;">
-  <!--  <input type="button" value="play video" onclick="play();" style="position: absolute;top: 0;left: 0;width: 100px;height: 50px;z-index: 100;background-color: white;" /> -->
-   <video id="video_1" preload="load" x5-video-player-fullscreen="true"
+<div id="loading">
+    <div class="percent"></div>
+    <input type="button" value="click to play" id="player">
+</div>
+<div class="videos" id="parent">
+<!--    <video id="video_1" preload="auto" x5-video-player-fullscreen="true"
           x5-video-player-type="h5"
-          x5-video-player-fullscreen="portraint" x-webkit-airplay="true"
-          webkit-playsinline="true" playsinline="true"
-          src="http://vedio.yunmfang.com/%E9%99%86%E9%A3%8EX2.mp4">
+          x5-video-player-fullscreen="portraint" 
+          x-webkit-airplay="true"
+          airplay="allow"
+          webkit-playsinline="true" 
+          playsinline="true"
+          src="http://vedio.yunmfang.com/lfx2_part2.mp4">
+    </video> -->
+       <video id="video_1" 
+          x-webkit-airplay="true"
+          airplay="allow"
+          webkit-playsinline="true" 
+          playsinline="true"
+          src="http://videooc.tc.qq.com/vcloud1022.tc.qq.com/1022_12b0dfe969e748bcb0b2fd67824808d6.f0.mp4?vkey=96B7D106FB7022A2ECD46C66172DC1954A5FA203F4CC0A7A6157DD1A0E1CACB46E965AA030926A1201D6DF03E68AC76B080E7D83C5E69AAC08FC99B6EF6584BD6DDB8945528DE4DB48ABA2B7A6163D8178A9A3BA80F2D526&sha=0&_d=0.8441714048929574">
     </video>
 </div>
 <div class="info">
@@ -100,16 +116,51 @@
     var validate = new InputUtil();
     window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
 
-	window.onload = function(){
-		player = document.getElementById('video_1');
-		player.addEventListener('ended',function(){
-			alert("video is in the end");
-		});
-		multipleDisplayAdapter();
-		initPageDatas();
+    Pace.once('start',function(){
+        
+        loadInterval = setInterval(function(){
+            var load = $('.pace-progress').attr('data-progress-text');
+            $('.percent').html(load);
+        },100);
+
+        initPageDatas();
+
+        var src = 'http://vedio.yunmfang.com/lfx2_part2.mp4';
+        player=new MMD.VideoPlayer(
+            document.getElementById('parent'),//video对象的父级div,这样有利于覆盖在video上方的内容对位,诸如loading,落地页等;
+            document.getElementById('video_1'),//video对象;
+            src,//video地址;
+            STANDARD_WIDTH,STANDARD_HEIGHT,//video原始宽高;
+            'auto',//内容对齐方式:auto[根据video比例进行判断,铺满全屏,或裁剪高度或裁剪宽度],width[宽度显示完全],height[高度显示完全]
+            true//竖屏/横屏:true/false;
+    );
+
+  //       player = document.getElementById('video_1');
+		// player.addEventListener('ended',function(){
+		// 	alert("video is in the end");
+		// });
+		// multipleDisplayAdapter();
 		bindEvents();
-		infoPageAnimate();
-	}
+    });
+
+    /**
+     * 完成加载
+     */
+    Pace.once('hide', function(e){
+    	$('#loading').hide();
+	     player.play();
+		// if(!videoUtil.isVideoCanAutoPlay){
+		// 	$('#player').click();
+		// }else{
+		// 	$('#loading').hide();
+		// 	player.play();
+		// }
+    });
+
+    
+	// window.onload = function(){
+		
+	// }
 
 	//留资页动画
 	function infoPageAnimate(){
@@ -153,6 +204,13 @@
 	}
 
 	function bindEvents(){
+		
+		$('#player').click(function(){
+			player.play();
+			$('#loading').hide();
+			// alert(videoUtil.isVideoCanAutoPlay);
+		});
+
 		//省、市、经销商三级联动
 		$('select[name="province"]').on('change',function(){
 			var selected = $(this).val();
@@ -199,6 +257,7 @@
             var province = $('select[name="province"]').val();
             var city = $('select[name="city"]').val();
             var dealer = $('select[name="dealer"]').val();
+            var allow = isChecked()? 1 : 0;
 
             if(validate.isEmpty(name)){
                 alert('姓名不能为空');
@@ -224,28 +283,26 @@
                 alert('请选择经销商');
                 return false;
             }
-            // http.ajaxRequest({
-            //     type:'GET',
-            //     uri:'h5/storeComment?' + params + '&flag='+flag,
-            //     success:function(json){
-            //         var data = json.data;
-            //         if(data) {
-            //             window.mobile = $('input[name="mobile"]').val();
-            //             store.support = data.support;
-            //             store.nonsupport = data.nonsupport;
-            //             //$('#support-num').html(store.support);
-            //             //$('#nonsupport-num').html(store.nonsupport);
-            //             alert('提交成功');
-            //             $('.pop-submit').hide();
-            //         }
-            //     },
-            //     error:function(e){
-            //         if(e.responseJSON){
-            //             alert(e.responseJSON.message);
-            //         }else
-            //             alert('您已参加活动，请继续浏览后续内容!');
-            //     }
-            // });
+
+            http.ajaxRequest({
+                type:'POST',
+                uri:'h5/insertLFX2?' + params + '&allow='+allow,
+                success:function(json){
+                    var data = json.data;
+                    if(json.success){
+                    	var winner = (parseInt(data.client_sex) == NaN || parseInt(data.client_sex) == 0)? false : true;
+                    	alert(winner ? '留资成功，你获得京东100元电子购物卡':'留资成功');
+                    }else{
+                    	alert('重复留资!');
+                    }
+                },
+                error:function(e){
+                    if(e.responseJSON){
+                        alert(e.responseJSON.message);
+                    }else
+                        alert('您已参加活动');
+                }
+            });
 		});
 	}
 
@@ -276,10 +333,6 @@
 	            video.style.left = (bodyW - scale * bodyH)/2 + 'px';
 	        }
 		}
-	}
-
-	function play(){
-		player.play();
 	}
 </script>
 <!-- 微信分享api -->

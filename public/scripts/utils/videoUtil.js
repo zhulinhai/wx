@@ -1,8 +1,8 @@
 /**
  * 
- * @authors skylu@bjczxd.com (you@example.org)
- * @date    2017-08-15 10:31:57
- * @version $Id$
+ * @authors skylu (you@example.org)
+ * @date    2017-08-21 15:52:06
+ * @version 1.0
  */
 var videoUtil = (function(){
 	function c() {
@@ -34,7 +34,7 @@ var videoUtil = (function(){
 	}
 	function y() {
 		var t = !1;
-		return c() && (l() || f()) && (t = "ios8" != p() || "iosOther" != p()), t
+		return c() && (l() || f()) && (t = "ios8" != p() || "iosOther" != p());
 	}
 
 	return {
