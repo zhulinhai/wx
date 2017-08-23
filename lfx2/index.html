@@ -60,15 +60,6 @@
      <a class="off_clock offClockAnimate"></a>
 </div>
 <div class="videos" id="parent">
-<!--    <video id="video_1" preload="auto" x5-video-player-fullscreen="true"
-          x5-video-player-type="h5"
-          x5-video-player-fullscreen="portraint" 
-          x-webkit-airplay="true"
-          airplay="allow"
-          webkit-playsinline="true" 
-          playsinline="true"
-          src="http://vedio.yunmfang.com/lfx2_part2.mp4">
-    </video> -->
        <video id="video_1" 
           x-webkit-airplay="true"
           airplay="allow"
@@ -186,6 +177,11 @@
 
 		iphone_unlock = document.getElementById('iphone_unlock');
 		// bgm = document.getElementById('bgm');
+		
+		var s = document.body.clientWidth/750;
+		$('.clock').width(88 * s);
+		$('.clock').css('margin-top',380 * s + 'px');
+		$('.clock').css('margin-left',339 * s + 'px');
 
 		bindEvents();
 
@@ -209,25 +205,11 @@
     		$('.off_clock').css('display','block');
     		$('.off_clock').click(function(){
     			$('#loading').hide();
-    			player.play();
+    			// player.play();
     			// bgm.play();
     		});
     	}
-    	// alert(player.isVideoCanAutoPlay);
-    	// $('#loading').hide();
-	    //  player.play();
-		// if(!videoUtil.isVideoCanAutoPlay){
-		// 	$('#player').click();
-		// }else{
-		// 	$('#loading').hide();
-		// 	player.play();
-		// }
     });
-
-    
-	// window.onload = function(){
-		
-	// }
 
 	//留资页动画
 	function infoPageAnimate(){
@@ -414,9 +396,13 @@
 			if(height >= bodyH){
 	            video.style.width = bodyW + 'px';
 	            video.style.top = (bodyH-height) + 'px';
+	            // var top = parseInt($('.clock').css('margin-top').substr(0,$('.clock').css('margin-top').length - 1));
+	            // $('.clock').css('margin-top',(top + (bodyH-height)) + 'px');
 	        }else {
 	            video.style.height = bodyH + 'px';
 	            video.style.left = (bodyW - scale * bodyH)/2 + 'px';
+	            // var left = parseInt($('.clock').css('margin-left').substr(0,$('.clock').css('margin-left').length - 1));
+	            // $('.clock').css('margin-left',(left + (bodyW - scale * bodyH)/2) + 'px');
 	        }
 		}
 	}
