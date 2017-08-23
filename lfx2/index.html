@@ -192,15 +192,12 @@
     Pace.once('hide', function(e){
 
     	if(player.isVideoCanAutoPlay){//可以自动播放
-    		$('#loading').hide();
-			player.play();
-    		// $('.percent').css('visibility','hidden');
-    		// $('.off_clock').css('display','block');
-    		// $('.off_clock').click(function(){
-    		// 	$('#loading').hide();
-    		// 	player.play();
-    		// });
-    	}else{//不能自动播放时
+    		$('.percent').css('visibility','hidden');
+    		setTimeout(function(){
+	    		$('#loading').hide();
+				player.play();
+			},1000);
+    	}else{//不能自动播放时  			
     		$('.percent').css('visibility','hidden');
     		$('.off_clock').css('display','block');
     		$('.off_clock').click(function(){
@@ -278,8 +275,8 @@
 
 		$('#shadow_1').click(function(){
 			if(!$('#video_2').is(':hidden')){
-				$('#video_2').hide();
 				$(this).hide();
+				$('#video_2').hide();
 				$('.info').show();
 				infoPageAnimate();
 			}
