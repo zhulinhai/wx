@@ -5,8 +5,9 @@
 <meta name="x5-fullscreen" content="true">
 <meta name="full-screen" content="yes">
 <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,minimal-ui">
-<title>陆风X2</title>
+<title>玩出趣  GO刺激</title>
 <link href="../public/css/reset-h5.css" rel="stylesheet">
+<link href="../public/css/rotatePhone.css" rel="stylesheet">
 <link href="css/main.css?v=123213213" rel="stylesheet">
 <!-- 预加载插件 -->
 <script type="text/javascript" src="../public/scripts/pace.js"></script>
@@ -16,6 +17,15 @@
 <script type="text/javascript" src="../public/scripts/utils/httpUtil.js"></script>
 <script type="text/javascript" src="../public/scripts/utils/validateUtil.js"></script>
 <script type="text/javascript" src="js/mmd.videoPlayer.min.js"></script>
+<script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "https://hm.baidu.com/hm.js?b6415100f005eb1fb797922121d64d60";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+</script>
 </head>
 <body ontouchmove="event.preventDefault();">
 <!--屏幕兼容代码-->
@@ -33,9 +43,19 @@
         document.documentElement.style.fontSize = (deviceWidth / 6.4) + 'px'; //320 fontSize = 50px
     })();
 </script>
+<!-- 横屏提示 -->
+<div id="orientLayer">
+    <div class="contentFrame">
+        <img class="phone rotatePhoneAnimation" src="../public/images/img_rotatePhone.png"/>
+        <p class="tipTitle">为了更好的体验，请使用竖屏浏览</p>
+    </div>
+</div>
 <div id="loading">
-    <div class="percent"></div>
-    <input type="button" value="click to play" id="player">
+     <div class="clock">
+     	<img class="clockShake" src="images/icon_clock.png"/>
+     	<div class="percent"></div>
+     </div>
+     <a class="off_clock offClockAnimate"></a>
 </div>
 <div class="videos" id="parent">
 <!--    <video id="video_1" preload="auto" x5-video-player-fullscreen="true"
@@ -52,8 +72,22 @@
           airplay="allow"
           webkit-playsinline="true" 
           playsinline="true"
-          src="http://videooc.tc.qq.com/vcloud1022.tc.qq.com/1022_12b0dfe969e748bcb0b2fd67824808d6.f0.mp4?vkey=96B7D106FB7022A2ECD46C66172DC1954A5FA203F4CC0A7A6157DD1A0E1CACB46E965AA030926A1201D6DF03E68AC76B080E7D83C5E69AAC08FC99B6EF6584BD6DDB8945528DE4DB48ABA2B7A6163D8178A9A3BA80F2D526&sha=0&_d=0.8441714048929574">
-    </video>
+          poster="images/bg_video1.png">
+      </video>
+      <video id="video_2" 
+          x-webkit-airplay="true"
+          airplay="allow"
+          webkit-playsinline="true" 
+          playsinline="true"
+          poster="images/bg_video2.png" 
+          src="media/video_2.mp4" 
+          style="display: none;"></video>
+      <div id="shadow">
+      	<img class="finger fingerMove" src="images/icon_finger.png">
+      </div>
+      <div id="shadow_1">
+         <img class="finger_1 offClockAnimate" lass="finger_click" src="images/icon_click.png">
+      </div>
 </div>
 <div class="info">
 	<img class="logo_I" src="images/logo_I.png" alt="logo-I" />
@@ -107,6 +141,7 @@
 </body>
 <script type="text/javascript">
 	var player = null;
+	var player_2 = null;
 	var STANDARD_WIDTH = 750;
 	var STANDARD_HEIGHT = 1206;
 	var scale = STANDARD_WIDTH/STANDARD_HEIGHT;
@@ -125,7 +160,8 @@
 
         initPageDatas();
 
-        var src = 'http://vedio.yunmfang.com/lfx2_part2.mp4';
+        // var src = 'http://vedio.yunmfang.com/lfx2_part2.mp4';
+        var src = 'media/video_1.mp4';
         player=new MMD.VideoPlayer(
             document.getElementById('parent'),//video对象的父级div,这样有利于覆盖在video上方的内容对位,诸如loading,落地页等;
             document.getElementById('video_1'),//video对象;
@@ -135,20 +171,46 @@
             true//竖屏/横屏:true/false;
     );
 
-  //       player = document.getElementById('video_1');
-		// player.addEventListener('ended',function(){
-		// 	alert("video is in the end");
-		// });
-		// multipleDisplayAdapter();
+        var a = document.getElementById('video_1');
+		a.addEventListener('ended',function(){
+			$('#shadow').show();
+		});
+
+		player_2 = document.getElementById('video_2');
+		player_2.addEventListener('ended',function(){
+			$('#shadow_1').show();
+		});
+
 		bindEvents();
+
+		multipleDisplayAdapter();
     });
 
     /**
      * 完成加载
      */
     Pace.once('hide', function(e){
-    	$('#loading').hide();
-	     player.play();
+
+    	if(player.isVideoCanAutoPlay){//可以自动播放
+    		$('#loading').hide();
+			player.play();
+    		// $('.percent').css('visibility','hidden');
+    		// $('.off_clock').css('display','block');
+    		// $('.off_clock').click(function(){
+    		// 	$('#loading').hide();
+    		// 	player.play();
+    		// });
+    	}else{//不能自动播放时
+    		$('.percent').css('visibility','hidden');
+    		$('.off_clock').css('display','block');
+    		$('.off_clock').click(function(){
+    			$('#loading').hide();
+    			player.play();
+    		});
+    	}
+    	// alert(player.isVideoCanAutoPlay);
+    	// $('#loading').hide();
+	    //  player.play();
 		// if(!videoUtil.isVideoCanAutoPlay){
 		// 	$('#player').click();
 		// }else{
@@ -204,6 +266,24 @@
 	}
 
 	function bindEvents(){
+
+		$('#shadow').on('touchstart',function(){
+			if(!$('#video_1').is(':hidden')){
+				$('#video_1').hide();
+				$(this).hide();
+				$('#video_2').show();
+				player_2.play();
+			}
+		});
+
+		$('#shadow_1').click(function(){
+			if(!$('#video_2').is(':hidden')){
+				$('#video_2').hide();
+				$(this).hide();
+				$('.info').show();
+				infoPageAnimate();
+			}
+		});
 		
 		$('#player').click(function(){
 			player.play();
@@ -337,5 +417,5 @@
 </script>
 <!-- 微信分享api -->
 <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
-<!-- <script type="text/javascript" src="js/wx_share.js"></script> -->
+<script type="text/javascript" src="js/wx_share.js"></script>
 </html>
