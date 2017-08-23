@@ -280,9 +280,9 @@
 		$('select[name="province"]').on('change',function(){
 			var selected = $(this).val();
 			$('select[name="city"]').empty();
-            $('select[name="city"]').html('<option value"市">市</option>');
+            $('select[name="city"]').html('<option value="市">市</option>');
             $('select[name="dealer"]').empty();
-            $('select[name="dealer"]').html('<option value"经销商">经销商</option>');
+            $('select[name="dealer"]').html('<option value="经销商">经销商</option>');
 			 if(selected !='省'){
                   for(var i = 0; i < cities.length; i++){
                   	   var city = cities[i];
@@ -296,7 +296,7 @@
 			var selected = $(this).val();
 		 	
 		 	$('select[name="dealer"]').empty();
-		  	$('select[name="dealer"]').append('<option value"经销商">经销商</option>');
+		  	$('select[name="dealer"]').append('<option value="经销商">经销商</option>');
 			
 			if(selected !='市'){
                   for(var i = 0; i < dealers.length; i++){
