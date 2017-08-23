@@ -28,6 +28,8 @@
 </script>
 </head>
 <body ontouchmove="event.preventDefault();">
+<!-- <audio id="bgm" preload="auto" src="media/trip.mp3"></audio> -->
+<audio id="iphone_unlock" preload="auto" src="media/iphone_unlock.mp3"></audio>
 <!--屏幕兼容代码-->
 <script type="text/javascript">
 
@@ -150,6 +152,7 @@
     var http = new Http(host);
     var validate = new InputUtil();
     window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+    var iphone_unlock,bgm;
 
     Pace.once('start',function(){
         
@@ -181,6 +184,9 @@
 			$('#shadow_1').show();
 		});
 
+		iphone_unlock = document.getElementById('iphone_unlock');
+		// bgm = document.getElementById('bgm');
+
 		bindEvents();
 
 		multipleDisplayAdapter();
@@ -196,6 +202,7 @@
     		setTimeout(function(){
 	    		$('#loading').hide();
 				player.play();
+				// bgm.play();
 			},1000);
     	}else{//不能自动播放时  			
     		$('.percent').css('visibility','hidden');
@@ -203,6 +210,7 @@
     		$('.off_clock').click(function(){
     			$('#loading').hide();
     			player.play();
+    			// bgm.play();
     		});
     	}
     	// alert(player.isVideoCanAutoPlay);
@@ -267,6 +275,7 @@
 		$('#shadow').on('touchstart',function(){
 			if(!$('#video_1').is(':hidden')){
 				$('#video_1').hide();
+				iphone_unlock.play();
 				$(this).hide();
 				$('#video_2').show();
 				player_2.play();
