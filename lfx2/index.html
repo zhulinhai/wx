@@ -198,15 +198,13 @@
     		setTimeout(function(){
 	    		$('#loading').hide();
 				player.play();
-				// bgm.play();
 			},1000);
     	}else{//不能自动播放时  			
     		$('.percent').css('visibility','hidden');
     		$('.off_clock').css('display','block');
     		$('.off_clock').click(function(){
     			$('#loading').hide();
-    			// player.play();
-    			// bgm.play();
+    			player.play();
     		});
     	}
     });
