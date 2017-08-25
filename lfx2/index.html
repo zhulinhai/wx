@@ -254,11 +254,12 @@
 
 		$('#shadow').on('touchstart',function(){
 			if(!$('#video_1').is(':hidden')){
-				$('#video_1').hide();
 				iphone_unlock.play();
 				$(this).hide();
+				$('#video_1').hide();
 				$('#video_2').show();
 				player_2.play();
+				
 			}
 		});
 
