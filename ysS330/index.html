@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>驭胜S330</title>
+    <link rel="stylesheet" href="../public/css/reset-h5.css">
+    <link rel="stylesheet" href="../public/css/animate.css">
+    <link rel="stylesheet" href="css/main.css">
+    <!-- 百度统计 -->
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?51c6e96875f7095f2c5ac78fcae99761";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+    <!-- end -->
+</head>
+<body ontouchmove="event.preventDefault();" >
+    <div id="loadingDialog">
+        <div class="content">
+            <div class="loading-clouds bgAnimation">
+                <figure>
+                    <img class="loading-email animated emailAnimation infinite" src="src/loading-email.png">
+                </figure>
+            </div>
+            <p id="loading-percent">0%</p>
+        </div>
+    </div>
+
+    <div id="orientLayer"><!-- 横屏提示 -->
+        <div class="contentFrame">
+            <img class="phone rotatePhoneAnimation" src="src/rotatePhone.png" />
+            <p class="tipTitle">为了更好的体验，请使用竖屏浏览</p>
+        </div>
+    </div>
+</body>
+<script data-main="js/main" src="./js/require.min.js"></script>
+</html>
