@@ -1,15 +1,9 @@
 /**
- * Created by zhulinhai on 17/8/28.
+ * Created by zhulinhai on 17/8/29.
  */
-require.config({
-    paths: {
-        'jquery': './lib/jquery-1.12.1.min'
-    }
-});
 
-require(['jquery'], function($){
-
-    const host = 'http://www.bjczxda.com/api';
+$(function ($) {
+    const host = 'http://www.bjczda.com/api';
     var name, mobile, province,city, dealer;
     name='祝先生';//trim($("input[name='realname']").val());
     mobile='18519002237';//trim($("input[name='mobile']").val());
@@ -34,14 +28,12 @@ require(['jquery'], function($){
     // }
     var flag = 'yss330';//trim($("input[name='flag']").val());
     var url = host + '/ysS330/luckyDraw?flag=' + flag +'&name='+ name +'&mobile=' + mobile + '&province='+ province + '&city=' + city + '&dealer=' + dealer;
-    console.log(url);
     $.ajax({
         type: "post",
         url: url,
         dataType: "jsonp",
         success: function(data){
             var response = eval('(data)');
-            console.log(response);
             if (response.success) {
                 var prize = parseInt(response.data.prize);
                 gamePlayer.isPrize = prize;
