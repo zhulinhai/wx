@@ -54,28 +54,28 @@ html {
 }
 
 .emailAnimation {
-  animation: animatedEmail 2s linear 0s normal none infinite;
+  animation: animatedEmail 5s linear 0s infinite alternate;
 }
 
 @keyframes animatedEmail {
-  from, 60%, 75%, 90%, to {
+  from, 25%, 50%, 75%, to {
     animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
   }
 
   0% {
-    transform: translate3d(0, -40px, 0);
+    transform: translate3d(0, -20px, 0);
   }
 
-  60% {
+  25% {
     transform: translate3d(0, 25px, 0);
   }
 
-  75% {
-    transform: translate3d(0, -10px, 0);
+  50% {
+    transform: translate3d(0, -15px, 0);
   }
 
-  90% {
-    transform: translate3d(0, 5px, 0);
+  75% {
+    transform: translate3d(0, 35px, 0);
   }
 
   to {

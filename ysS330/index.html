@@ -36,6 +36,32 @@
             <p class="tipTitle">为了更好的体验，请使用竖屏浏览</p>
         </div>
     </div>
+    <script type="text/javascript" src="js/lib/pace.js"></script>
+    <script type="text/javascript">
+        Pace.paceOptions = {
+            elements: true,
+            ajax: false,
+            restartOnRequestAfter: false
+        };
+
+        var curProgress = 0, myInterval = -1;
+        myInterval = setInterval(function(){
+            var progress = parseInt(document.querySelectorAll('.pace-progress')[0].getAttribute("data-progress"));
+            if (progress > curProgress) {
+                document.getElementById('loading-percent').innerHTML = progress + '%';
+                curProgress = progress;
+            }
+        },100);
+
+        Pace.once('start', function () {
+            console.log('start');
+        });
+
+        Pace.once('hide', function () {
+            document.getElementById('loading-percent').innerHTML = '100%';
+            clearInterval(myInterval);
+            myInterval = -1;
+        });
+    </script>
 </body>
-<script data-main="js/main" src="./js/require.min.js"></script>
 </html>
