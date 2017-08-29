@@ -19,7 +19,10 @@
     <!-- end -->
 </head>
 <body ontouchmove="event.preventDefault();" >
-    <div id="loadingDialog">
+    <div id="commitInfoDialog"><!-- 留资信息 -->
+
+    </div>
+    <div id="loadingDialog"><!-- loading页 -->
         <div class="content">
             <div class="loading-clouds bgAnimation">
                 <figure>
@@ -53,15 +56,14 @@
             }
         },100);
 
-        Pace.once('start', function () {
-            console.log('start');
-        });
-
-        Pace.once('hide', function () {
+        Pace.stop(function () {
             document.getElementById('loading-percent').innerHTML = '100%';
             clearInterval(myInterval);
             myInterval = -1;
         });
     </script>
+    <!--<script type="text/javascript" src="js/lib/jquery-1.12.1.min.js"></script>-->
+    <!--<script type="text/javascript" src="js/lib/commitInfo.js"></script>-->
+    <script data-main="js/main.js" src="js/require.min.js"></script>
 </body>
 </html>
