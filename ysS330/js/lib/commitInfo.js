@@ -2,8 +2,8 @@
  * Created by zhulinhai on 17/8/29.
  */
 
-$(function ($) {
-    const host = 'http://www.bjczda.com/api';
+$(function () {
+    const host = 'http://api.bjczxda.com/api';
     var name, mobile, province,city, dealer;
     name='祝先生';//trim($("input[name='realname']").val());
     mobile='18519002237';//trim($("input[name='mobile']").val());
@@ -28,6 +28,7 @@ $(function ($) {
     // }
     var flag = 'yss330';//trim($("input[name='flag']").val());
     var url = host + '/ysS330/luckyDraw?flag=' + flag +'&name='+ name +'&mobile=' + mobile + '&province='+ province + '&city=' + city + '&dealer=' + dealer;
+
     $.ajax({
         type: "post",
         url: url,
@@ -35,22 +36,7 @@ $(function ($) {
         success: function(data){
             var response = eval('(data)');
             if (response.success) {
-                var prize = parseInt(response.data.prize);
-                gamePlayer.isPrize = prize;
-                gamePlayer.isSubmitInfo = true;
-                gamePlayer.closeAniDialog($userInfoDialog);
-                setTimeout(function () {
-                    $tipResultDialog.find('.contentFrame').html(tipResultList[prize]);
-                    $tipResultDialog.fadeIn(300);
-                    /*点击分享好友*/
-                    $('.btnDiscover').click(function () {
-                        $('#shareDialog').fadeIn(300);
-                    });
-                    /*关闭结果提示框*/
-                    $('.closeResultDialog').click(function () {
-                        $('#tipResultDialog').fadeOut(300);
-                    });
-                }, 700);
+
             } else {
                 alert(response.message);
             }
