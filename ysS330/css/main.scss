@@ -54,7 +54,7 @@ html {
 }
 
 .emailAnimation {
-  animation: animatedEmail 5s linear 0s infinite alternate;
+  animation: animatedEmail 3s linear 0s infinite alternate;
 }
 
 @keyframes animatedEmail {
@@ -75,7 +75,7 @@ html {
   }
 
   75% {
-    transform: translate3d(0, 35px, 0);
+    transform: translate3d(0, 20px, 0);
   }
 
   to {
