@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>驭胜S330</title>
+    <link rel="stylesheet" href="../public/css/reset-h5.css">
+    <link rel="stylesheet" href="../public/css/animate.css">
+    <link rel="stylesheet" href="css/main.css">
+    <!-- 百度统计 -->
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?51c6e96875f7095f2c5ac78fcae99761";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+
+        //rem设置
+        (function(doc, win) {
+            var docEl = doc.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                recalc = function() {
+                    var clientWidth = docEl.clientWidth;
+                    if (!clientWidth) return;
+                    docEl.style.fontSize = 20 * (clientWidth / 320) + 'px';
+                };
+            win.addEventListener(resizeEvt, recalc, false);
+            doc.addEventListener('DOMContentLoaded', recalc, false);
+        })(document, window);
+    </script>
+    <!-- end -->
+</head>
+<body ontouchmove="event.preventDefault();" >
+
+    <!-- 留资信息 -->
+    <div class="submitInfo" id="commitInfoDialog" style="display: none">
+        <div class="contentFrame">
+            <div class="btnClose"></div>
+            <div class="infoDiv">
+                <input type="hidden" name="flag" value="yss330" />
+                <label>姓&nbsp;&nbsp;&nbsp;名：<input name="realname" id="realname" type="text" /></label>
+                <label>手&nbsp;&nbsp;&nbsp;机：<input name="mobile" id="mobile" type="tel" /></label>
+                <label>省&nbsp;&nbsp;&nbsp;份：<select name="province" id="province"><option>请选择</option></select></label>
+                <label>城&nbsp;&nbsp;&nbsp;市：<select name="city" id="city"><option>请选择</option></select></label>
+                <label>经销商：<select name="dealer" id="dealer" ><option>请选择</option></select></label>
+                <button id="btnSubmit">提交</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- loading页 -->
+    <div id="loadingDialog" style="display: none">
+        <div class="content">
+            <div class="loading-clouds bgAnimation">
+                <figure>
+                    <img class="loading-email animated emailAnimation infinite" src="src/loading-email.png">
+                </figure>
+            </div>
+            <p id="loading-percent">0%</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <video width="750px" height="1206px" controls src="src/email.mp4"></video>
+
+    </div>
+
+    <!-- 横屏提示 -->
+    <div id="orientLayer">
+        <div class="contentFrame">
+            <img class="phone rotatePhoneAnimation" src="src/rotatePhone.png" />
+            <p class="tipTitle">为了更好的体验，请使用竖屏浏览</p>
+        </div>
+    </div>
+
+    <!-- js 部分 -->
+    <script type="text/javascript" src="js/libs/pace.js"></script>
+    <script type="text/javascript">
+        Pace.paceOptions = {
+            elements: true,
+            ajax: false,
+            restartOnRequestAfter: false
+        };
+
+        var curProgress = 0, myInterval = -1;
+        myInterval = setInterval(function(){
+            var progress = parseInt(document.querySelectorAll('.pace-progress')[0].getAttribute("data-progress"));
+            if (progress > curProgress) {
+                document.getElementById('loading-percent').innerHTML = progress + '%';
+                curProgress = progress;
+            }
+        },100);
+
+        Pace.on('hide', function () {
+            document.getElementById('loading-percent').innerHTML = '100%';
+            clearInterval(myInterval);
+            myInterval = -1;
+        });
+    </script>
+    <script data-main="js/main.js" src="js/require.min.js"></script>
+</body>
+</html>

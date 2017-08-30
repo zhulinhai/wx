@@ -1,0 +1,84 @@
+@import "common";
+@import "commitInfo";
+
+html {
+  font-size: 20px;
+}
+#loadingDialog {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: #FCFCFC url("../src/loading-bg.jpg") no-repeat center;
+  background-size: cover;
+  .content {
+    position: absolute;
+    top: 50%;
+    margin-top: -434px;
+    width: 100%;
+    height: 868px;
+    .loading-clouds {
+      width: 100%;
+      height: 868px;
+      overflow: hidden;
+      background: url("../src/loading-clouds.png") repeat-x 0 top;
+      background-size: 300% auto;
+      figure>.loading-email {
+        position: absolute;
+        left: 50%;
+        margin-top: 260px;
+        margin-left: -90px;
+      }
+    }
+    #loading-percent {
+      line-height: 50px;
+      font-size: 48px;
+      text-align: center;
+      color: #4B98D4;
+    }
+  }
+
+}
+
+.bgAnimation {
+  animation:animatedBg 50s linear 0s normal none infinite;
+  -webkit-animation:animatedBg 50s linear 0s normal none infinite;
+}
+
+@keyframes animatedBg {
+  from { background-position: 0 0; }
+  to { background-position: 300% 0; }
+}
+
+@-webkit-keyframes animatedBg {
+  from { background-position: 0 0; }
+  to { background-position: 300% 0; }
+}
+
+.emailAnimation {
+  animation: animatedEmail 3s linear 0s infinite alternate;
+}
+
+@keyframes animatedEmail {
+  25%, 50%, 75% {
+    animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+  }
+  from {
+    transform: translate3d(0, -20px, 0);
+  }
+
+  25% {
+    transform: translate3d(0, 25px, 0);
+  }
+
+  50% {
+    transform: translate3d(0, -15px, 0);
+  }
+
+  75% {
+    transform: translate3d(0, 20px, 0);
+  }
+
+  to {
+    transform: none;
+  }
+}
