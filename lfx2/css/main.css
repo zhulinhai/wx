@@ -9,6 +9,19 @@ body {
 	background-color: black;
 }
 
+.btn_jump{
+	position: absolute;
+	display: block;
+	width: .63rem;
+	top: .2rem;
+	right: .2rem;
+	z-index: 100;
+}
+
+.btn_jump img{
+	width: 100%;
+}
+
 #loading {
   position: absolute;
   z-index: 1000;
@@ -57,13 +70,57 @@ body {
 	overflow: hidden;
  }
 
-.videos video {
+.videos .video {
 	position: absolute;
 	left: 0;
 	top:0;
 	display: block;
 	margin: 0;
 	padding: 0;
+}
+
+#video_3 {
+	position: absolute;
+	left: 0;
+	top:0;
+	width: 100%;
+	height: 100%;
+	z-index: 10;
+	background-color: #EBEBEB;
+}
+
+.chats_cont_wrapper {
+	width: 100%;
+	overflow: hidden;
+}
+
+.chats_cont, .chat_input_cont {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+
+.chats_cont .chats {
+  position: relative;
+  display: block;
+  width: 100%;
+}
+
+.chats_cont .btn_toInput{
+	position: absolute;
+	display: block;
+	width: 100%;
+	left: 0;
+}
+
+.btn_toInput .finger_1{
+	margin-left: 1.4rem;
+    width: .64rem;
+}
+
+.chat_input_cont img{
+	width: 100%;
 }
 
 #shadow {
