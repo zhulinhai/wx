@@ -1,16 +1,22 @@
 /**
- * Created by zhulinhai on 17/8/28.
+ * Created by zhulinhai on 17/8/29.
  */
+
 require.config({
+
     // RequireJS 通过一个相对的路径 baseUrl来加载所有代码。baseUrl通常被设置成data-main属性指定脚本的同级目录。
-    baseUrl: "js/libs",
+    baseUrl: "./",
+
     // 第三方脚本模块的别名,jquery比libs/jquery-1.11.1.min.js简洁明了；
     paths: {
-        "jquery": "./jquery-1.12.1.min"
+        "jquery": "./jquery-1.12.1.min.js"
     }
+
 });
 
+
 require(['helper','jquery'], function (helper, $) {
+    const host = 'http://api.bjczxda.com/api';
     let name, mobile, province,city, dealer;
     name='祝先生';//trim($("input[name='realname']").val());
     mobile='18519002237';//trim($("input[name='mobile']").val());
@@ -33,16 +39,15 @@ require(['helper','jquery'], function (helper, $) {
         alert("请选择经销商");
         return 0;
     }
-
     let flag = 'yss330';//trim($("input[name='flag']").val());
-    const host = 'http://api.bjczxda.com/api';
     let url = host + '/ysS330/luckyDraw?flag=' + flag +'&name='+ name +'&mobile=' + mobile + '&province='+ province + '&city=' + city + '&dealer=' + dealer;
+
     $.ajax({
         type: "get",
         url: url,
         dataType: "jsonp",
         success: function(data){
-            let response = eval('(data)');
+            var response = eval('(data)');
             if (response.success) {
 
             } else {
