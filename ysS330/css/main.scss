@@ -1,4 +1,5 @@
 @import "common";
+@import "commitInfo";
 
 html {
   font-size: 20px;
@@ -58,11 +59,10 @@ html {
 }
 
 @keyframes animatedEmail {
-  from, 25%, 50%, 75%, to {
+  25%, 50%, 75% {
     animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
   }
-
-  0% {
+  from {
     transform: translate3d(0, -20px, 0);
   }
 
