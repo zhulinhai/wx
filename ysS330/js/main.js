@@ -3,10 +3,11 @@
  */
 require.config({
     // RequireJS 通过一个相对的路径 baseUrl来加载所有代码。baseUrl通常被设置成data-main属性指定脚本的同级目录。
-    baseUrl: "js/libs",
+    baseUrl: "./js",
     // 第三方脚本模块的别名,jquery比libs/jquery-1.11.1.min.js简洁明了；
     paths: {
-        "jquery": "./jquery-1.12.1.min"
+        "jquery": "./libs/jquery-1.12.1.min",
+        "helper": './libs/helper'
     }
 });
 
@@ -38,9 +39,9 @@ require(['helper','jquery'], function (helper, $) {
     const host = 'http://api.bjczxda.com/api';
     let url = host + '/ysS330/luckyDraw?flag=' + flag +'&name='+ name +'&mobile=' + mobile + '&province='+ province + '&city=' + city + '&dealer=' + dealer;
     $.ajax({
-        type: "get",
+        type: "post",
         url: url,
-        dataType: "jsonp",
+        dataType: "json",
         success: function(data){
             let response = eval('(data)');
             if (response.success) {
