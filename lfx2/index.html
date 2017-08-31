@@ -14,6 +14,7 @@
 <!-- css3免前缀插件 -->
 <script type="text/javascript" src="../public/scripts/prefixfree.min.js"></script>
 <script type="text/javascript" src="../public/scripts/jquery-1.12.1.min.js"></script>
+<script type="text/javascript" src="../public/scripts/iscroll.js"></script>
 <script type="text/javascript" src="../public/scripts/utils/httpUtil.js"></script>
 <script type="text/javascript" src="../public/scripts/utils/validateUtil.js"></script>
 <script type="text/javascript" src="js/mmd.videoPlayer.min.js"></script>
@@ -52,6 +53,9 @@
         <p class="tipTitle">为了更好的体验，请使用竖屏浏览</p>
     </div>
 </div>
+<a class="btn_jump">
+	<img src="images/icon_jump.png">
+</a>
 <div id="loading">
      <div class="clock">
      	<img class="clockShake" src="images/icon_clock.png"/>
@@ -60,14 +64,14 @@
      <a class="off_clock offClockAnimate"></a>
 </div>
 <div class="videos" id="parent">
-       <video id="video_1" 
+       <video id="video_1" class="video"
           x-webkit-airplay="true"
           airplay="allow"
           webkit-playsinline="true" 
           playsinline="true"
           poster="images/bg_video1.png">
       </video>
-      <video id="video_2" 
+      <video id="video_2" class="video"
           x-webkit-airplay="true"
           airplay="allow"
           webkit-playsinline="true" 
@@ -75,11 +79,21 @@
           poster="images/bg_video2.png" 
           src="media/video_2.mp4" 
           style="display: none;"></video>
+      <div id="video_3" class="video" style="display: none;">
+        <div id="chats_cont_wrapper" class="chats_cont_wrapper">
+            <div class="chats_cont">
+	        	<img class="chats" src="images/img_chats.jpg">
+	        	<a class="btn_toInput" href="javascript:void(0);">
+	        		<img class="finger_1 offClockAnimate" lass="finger_click" src="images/icon_click.png">
+	    		</a>
+    		</div>
+        </div>
+        <div id="chat_input_cont" class="chat_input_cont">
+        	<img class="chat_input" src="images/img_input.png">
+        </div>
+      </div>
       <div id="shadow">
       	<img class="finger fingerMove" src="images/icon_finger.png">
-      </div>
-      <div id="shadow_1">
-         <img class="finger_1 offClockAnimate" lass="finger_click" src="images/icon_click.png">
       </div>
 </div>
 <div class="info">
@@ -154,8 +168,12 @@
 
         initPageDatas();
 
-        // var src = 'http://vedio.yunmfang.com/lfx2_part2.mp4';
-        var src = 'media/video_1.mp4';
+        var s = document.body.clientWidth/750;
+		$('.clock').width(88 * s);
+		$('.clock').css('margin-top',380 * s + 'px');
+		$('.clock').css('margin-left',339 * s + 'px');
+
+		var src = 'media/video_1.mp4';
         player=new MMD.VideoPlayer(
             document.getElementById('parent'),//video对象的父级div,这样有利于覆盖在video上方的内容对位,诸如loading,落地页等;
             document.getElementById('video_1'),//video对象;
@@ -163,35 +181,48 @@
             STANDARD_WIDTH,STANDARD_HEIGHT,//video原始宽高;
             'auto',//内容对齐方式:auto[根据video比例进行判断,铺满全屏,或裁剪高度或裁剪宽度],width[宽度显示完全],height[高度显示完全]
             true//竖屏/横屏:true/false;
-    );
-
-        var a = document.getElementById('video_1');
-		a.addEventListener('ended',function(){
-			$('#shadow').show();
-		});
-
-		player_2 = document.getElementById('video_2');
-		player_2.addEventListener('ended',function(){
-			$('#shadow_1').show();
-		});
-
-		iphone_unlock = document.getElementById('iphone_unlock');
-		// bgm = document.getElementById('bgm');
-		
-		var s = document.body.clientWidth/750;
-		$('.clock').width(88 * s);
-		$('.clock').css('margin-top',380 * s + 'px');
-		$('.clock').css('margin-left',339 * s + 'px');
-
-		bindEvents();
-
-		multipleDisplayAdapter();
+         );
     });
+
+    var chatsScroll;
+    var video_1;
 
     /**
      * 完成加载
      */
     Pace.once('hide', function(e){
+    	
+    	multipleDisplayAdapter();
+
+   
+        video_1 = document.getElementById('video_1');
+		video_1.addEventListener('ended',function(){
+			$('#shadow').show();
+		});
+
+		player_2 = document.getElementById('video_2');
+		player_2.addEventListener('ended',function(){
+			
+			$('#video_3').show();
+			$('#chats_cont_wrapper').height(($('#video_3').height() * 1115 ) / 1206 );
+			$('#chat_input_cont').height(($('#video_3').height() * 91 ) / 1206 );
+			var H = $('.chats').height();
+			var h = $('#chats_cont_wrapper').height();
+			var startY = H - h;
+			chatsScroll = new IScroll('#chats_cont_wrapper',{ bounce:false , tap:true, startY: -startY });
+		 	
+		 	var top = H * 0.982;
+			$('.btn_toInput').css('top',top + 'px');
+			 
+			 $('.btn_jump').hide();
+			 setTimeout(function(){
+			 	$('#video_2').hide()
+			},500);
+		});
+
+		iphone_unlock = document.getElementById('iphone_unlock');
+
+		bindEvents();
 
     	if(player.isVideoCanAutoPlay){//可以自动播放
     		$('.percent').css('visibility','hidden');
@@ -252,6 +283,20 @@
 
 	function bindEvents(){
 
+		$('.btn_jump').click(function(){
+			$(this).hide();
+			if(!$('#video_1').is(':hidden')){
+				video_1.pause();
+				$('#video_1').hide();
+			}
+			if(!$('#video_2').is(':hidden')){
+				player_2.pause();
+				$('#video_2').hide();
+			}
+			$('.info').show();
+			infoPageAnimate();
+		});
+
 		$('#shadow').on('touchstart',function(){
 			if(!$('#video_1').is(':hidden')){
 				iphone_unlock.play();
@@ -263,10 +308,10 @@
 			}
 		});
 
-		$('#shadow_1').click(function(){
-			if(!$('#video_2').is(':hidden')){
+		$('.btn_toInput').on('tap',function(){
+			if(!$('#video_3').is(':hidden')){
 				$(this).hide();
-				$('#video_2').hide();
+				$('#video_3').hide();
 				$('.info').show();
 				infoPageAnimate();
 			}
@@ -385,7 +430,7 @@
 	 * @return 
 	 */
 	function multipleDisplayAdapter(){
-		var videos = document.getElementsByTagName('video');
+		var videos = document.getElementsByClassName('video');
 		var bodyW = document.body.clientWidth;
 		var bodyH = document.body.clientHeight;
 	 	var height = bodyW/scale;
@@ -393,14 +438,12 @@
 			var video = videos[i];
 			if(height >= bodyH){
 	            video.style.width = bodyW + 'px';
+	            video.style.height = height + 'px';
 	            video.style.top = (bodyH-height) + 'px';
-	            // var top = parseInt($('.clock').css('margin-top').substr(0,$('.clock').css('margin-top').length - 1));
-	            // $('.clock').css('margin-top',(top + (bodyH-height)) + 'px');
 	        }else {
 	            video.style.height = bodyH + 'px';
+	            video.style.width = bodyH * scale + 'px';
 	            video.style.left = (bodyW - scale * bodyH)/2 + 'px';
-	            // var left = parseInt($('.clock').css('margin-left').substr(0,$('.clock').css('margin-left').length - 1));
-	            // $('.clock').css('margin-left',(left + (bodyW - scale * bodyH)/2) + 'px');
 	        }
 		}
 	}
