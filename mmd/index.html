@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="gbk"/>
+    <meta name="applicable-device" content="mobile"/>
+    <meta name="format-detection" content="telephone=no" />
+    <meta content="yes" name="mobile-web-app-capable">
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <link href="" rel="apple-touch-icon"/>
+    <link href="" rel="apple-touch-icon-precomposed"/>
+    <meta name="robots" content="all" />
+    <meta name="author" content="Tencent-TGideas"/>
+    <meta name="Copyright" content="Tencent"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,minimal-ui"/>
+    <meta name="Description" content="《使命召唤Online》是由动视暴雪研发,腾讯游戏独家代理,以久负盛名的《Call of Duty》系列为题材,集合了《Call of Duty》全系列最受欢迎的元素制作的第一人称视角射击游戏网游。" />
+    <meta name="Keywords" content="CODOL,COD,使命召唤,使命召唤Online,使命召唤OL,现代战争,现代战争OL,FPS,FPS网游,射击游戏,Call of Duty,Call of Duty Online,Call of Duty Online现代战争,黑色行动,普莱斯,幽灵,肥皂,ghost,CODOL视频,CODOL官网,CODOL游戏下载,韩寒,全民追杀,三个韩寒遭遇全民“追杀”,你选择”追杀“韩寒，还是与寒同战？,天赋是杀不死的" />
+    <title>天赋是杀不死的</title>
+    <!-- 重构：lyushine | 创建： 2017-5-22 |  团队博客：//tgideas.qq.com/ -->
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            /*text-align: center;*/
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color:#000;            
+        }
+        * {margin: 0; padding: 0;border: 0;}
+        .IIV::-webkit-media-controls-play-button,
+        .IIV::-webkit-media-controls-start-playback-button {
+            opacity: 0;
+            pointer-events: none;
+            width: 5px;
+        }
+        .ctext{width: 84px; height:72px;
+        background:url(//game.gtimg.cn/images/codo/act/a20170523hh/fe.png?20170525) no-repeat;-webkit-background-size: cover;background-size: cover;-webkit-animation: scale .3s ease-in-out infinite; position: absolute; left:50%; margin-left: -42px; bottom:100px;z-index: 9999;  background-size: 155px 72px;}
+        .wrap{height:100%;}
+        .p{position: absolute; left:0; top:0; width: 100%; height:100%; transition: opacity .5s ease-in-out .1s; opacity:0;}
+        .p2{background-color:#000; height:100%; position: relative; opacity:0; transition: opacity .5s ease-in-out .1s;}
+
+        .cur{opacity:1; z-index:2;}
+
+        .slider{position:absolute; left:0; right:0; top:0; width:100%;}
+        .btn-player{position:absolute; top:0; left:0; width: 100%; height:60%; text-indent: -200%; overflow: hidden; z-index: 9;}
+        .btn-player span{background:url(//game.gtimg.cn/images/codo/act/a20170523hh/player.png?20170525) no-repeat; width:62px; height:62px; position: absolute; left:50%; margin-left: -32px; top:203px; background-size: cover; animation:flash 3s ease-in-out infinite forwards;}
+        .btn-replayer{position: absolute; top:60%; left:0; width: 50%; text-indent: -200%; overflow: hidden; height:40%; z-index: 9;}
+        .btn-landing{position: absolute; top:60%; left:50%; width: 50%; text-indent: -200%; overflow: hidden; height:40%; z-index: 9;}
+        .gotoup{position:absolute; right:20px; top:40px;background:url(//game.gtimg.cn/images/codo/act/a20170523hh/fe.png?20170525) no-repeat -100px -30px; width: 26px; height:27px; text-indent: -200%; overflow: hidden;z-index: 9999; background-size: 155px 72px;}
+        #audio1{background:url(//game.gtimg.cn/images/codo/act/a20170523hh/fe.png?20170525) no-repeat -100px 0; background-size: 155px 72px; position: absolute; right:20px; top:10px; z-index: 999; width: 26px; height:27px; display: none;}
+        #audio1.on{background:url(//game.gtimg.cn/images/codo/act/a20170523hh/fe.png?20170525) no-repeat -130px 0; background-size: 155px 72px;}
+        @keyframes flash {
+          from, 50%, to {
+            opacity: 1;
+          }
+
+          25%, 75% {
+            opacity: 0;
+          }
+        }
+    .swiper-container {
+        width: 100%;
+        height: 100%;
+        background: #000;
+    }
+    .swiper-slide {
+        font-size: 18px;
+        color:#fff;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        padding: 40px 60px;
+    }
+    .parallax-bg {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 130%;
+        height: 100%;
+        -webkit-background-size: cover;
+        background-size: cover;
+        background-position: center;
+    }
+    .swiper-slide .title {
+        font-size: 41px;
+        font-weight: 300;
+    }
+    .swiper-slide .subtitle {
+        font-size: 21px;
+    }
+    .swiper-slide .text {
+        font-size: 14px;
+        max-width: 400px;
+        line-height: 1.3;
+    }
+    .swiper-slide img{position: absolute; left:0; top:0; width: 100%;}
+    .t1{background:url(//game.gtimg.cn/images/codo/act/a20170523hh/bg_t1.png?20170525) no-repeat; width: 217px; height:50px; background-size: cover; position: absolute; left:35px; top:320px;}
+    .t2{background:url(//game.gtimg.cn/images/codo/act/a20170523hh/bg_t2.png?20170525) no-repeat; width: 85px; height:27px; background-size: cover; position: absolute; left:35px; top:340px;}
+    .t3{background:url(//game.gtimg.cn/images/codo/act/a20170523hh/bg_t3.png?20170525) no-repeat; width: 102px; height:31px; background-size: cover; position: absolute; left:35px; top:340px;}
+    .t4{background:url(//game.gtimg.cn/images/codo/act/a20170523hh/bg_t4.png?20170525) no-repeat; width: 90px; height:27px; background-size: cover; position: absolute; left:35px; top:340px;}
+    .bgs{position: absolute; left:0; right:0; top:325px; width: 100%; z-index: 999; pointer-events:none; -webkit-pointer-events:none}
+.swiper-container{margin-left:auto;margin-right:auto;position:relative;overflow:hidden;z-index:1}.swiper-container-no-flexbox .swiper-slide{float:left}.swiper-container-vertical>.swiper-wrapper{-webkit-box-orient:vertical;-moz-box-orient:vertical;-ms-flex-direction:column;-webkit-flex-direction:column;flex-direction:column}.swiper-wrapper{position:relative;width:100%;height:100%;z-index:1;display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex;-webkit-transition-property:-webkit-transform;-moz-transition-property:-moz-transform;-o-transition-property:-o-transform;-ms-transition-property:-ms-transform;transition-property:transform;-webkit-box-sizing:content-box;-moz-box-sizing:content-box;box-sizing:content-box}.swiper-container-android .swiper-slide,.swiper-wrapper{-webkit-transform:translate3d(0,0,0);-moz-transform:translate3d(0,0,0);-o-transform:translate(0,0);-ms-transform:translate3d(0,0,0);transform:translate3d(0,0,0)}.swiper-container-multirow>.swiper-wrapper{-webkit-box-lines:multiple;-moz-box-lines:multiple;-ms-flex-wrap:wrap;-webkit-flex-wrap:wrap;flex-wrap:wrap}.swiper-container-free-mode>.swiper-wrapper{-webkit-transition-timing-function:ease-out;-moz-transition-timing-function:ease-out;-ms-transition-timing-function:ease-out;-o-transition-timing-function:ease-out;transition-timing-function:ease-out;margin:0 auto}.swiper-slide{-webkit-flex-shrink:0;-ms-flex:0 0 auto;flex-shrink:0;width:100%;height:100%;position:relative}.swiper-container-autoheight,.swiper-container-autoheight .swiper-slide{height:auto}.swiper-container-autoheight .swiper-wrapper{-webkit-box-align:start;-ms-flex-align:start;-webkit-align-items:flex-start;align-items:flex-start;-webkit-transition-property:-webkit-transform,height;-moz-transition-property:-moz-transform;-o-transition-property:-o-transform;-ms-transition-property:-ms-transform;transition-property:transform,height}.swiper-container .swiper-notification{position:absolute;left:0;top:0;pointer-events:none;opacity:0;z-index:-1000}.swiper-wp8-horizontal{-ms-touch-action:pan-y;touch-action:pan-y}.swiper-wp8-vertical{-ms-touch-action:pan-x;touch-action:pan-x}.swiper-button-next,.swiper-button-prev{position:absolute;top:50%;width:27px;height:44px;margin-top:-22px;z-index:10;cursor:pointer;-moz-background-size:27px 44px;-webkit-background-size:27px 44px;background-size:27px 44px;background-position:center;background-repeat:no-repeat}.swiper-button-next.swiper-button-disabled,.swiper-button-prev.swiper-button-disabled{opacity:.35;cursor:auto;pointer-events:none}.swiper-button-prev,.swiper-container-rtl .swiper-button-next{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z'%20fill%3D'%23007aff'%2F%3E%3C%2Fsvg%3E");left:10px;right:auto}.swiper-button-prev.swiper-button-black,.swiper-container-rtl .swiper-button-next.swiper-button-black{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z'%20fill%3D'%23000000'%2F%3E%3C%2Fsvg%3E")}.swiper-button-prev.swiper-button-white,.swiper-container-rtl .swiper-button-next.swiper-button-white{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z'%20fill%3D'%23ffffff'%2F%3E%3C%2Fsvg%3E")}.swiper-button-next,.swiper-container-rtl .swiper-button-prev{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M27%2C22L27%2C22L5%2C44l-2.1-2.1L22.8%2C22L2.9%2C2.1L5%2C0L27%2C22L27%2C22z'%20fill%3D'%23007aff'%2F%3E%3C%2Fsvg%3E");right:10px;left:auto}.swiper-button-next.swiper-button-black,.swiper-container-rtl .swiper-button-prev.swiper-button-black{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M27%2C22L27%2C22L5%2C44l-2.1-2.1L22.8%2C22L2.9%2C2.1L5%2C0L27%2C22L27%2C22z'%20fill%3D'%23000000'%2F%3E%3C%2Fsvg%3E")}.swiper-button-next.swiper-button-white,.swiper-container-rtl .swiper-button-prev.swiper-button-white{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M27%2C22L27%2C22L5%2C44l-2.1-2.1L22.8%2C22L2.9%2C2.1L5%2C0L27%2C22L27%2C22z'%20fill%3D'%23ffffff'%2F%3E%3C%2Fsvg%3E")}.swiper-pagination{position:absolute;text-align:center;-webkit-transition:.3s;-moz-transition:.3s;-o-transition:.3s;transition:.3s;-webkit-transform:translate3d(0,0,0);-ms-transform:translate3d(0,0,0);-o-transform:translate3d(0,0,0);transform:translate3d(0,0,0);z-index:10}.swiper-pagination.swiper-pagination-hidden{opacity:0}.swiper-container-horizontal>.swiper-pagination-bullets,.swiper-pagination-custom,.swiper-pagination-fraction{bottom:10px;left:0;width:100%}.swiper-pagination-bullet{width:8px;height:8px;display:inline-block;border-radius:100%;background:#000;opacity:.2}button.swiper-pagination-bullet{border:none;margin:0;padding:0;box-shadow:none;-moz-appearance:none;-ms-appearance:none;-webkit-appearance:none;appearance:none}.swiper-pagination-clickable .swiper-pagination-bullet{cursor:pointer}.swiper-pagination-white .swiper-pagination-bullet{background:#fff}.swiper-pagination-bullet-active{opacity:1;background:#007aff}.swiper-pagination-white .swiper-pagination-bullet-active{background:#fff}.swiper-pagination-black .swiper-pagination-bullet-active{background:#000}.swiper-container-vertical>.swiper-pagination-bullets{right:10px;top:50%;-webkit-transform:translate3d(0,-50%,0);-moz-transform:translate3d(0,-50%,0);-o-transform:translate(0,-50%);-ms-transform:translate3d(0,-50%,0);transform:translate3d(0,-50%,0)}.swiper-container-vertical>.swiper-pagination-bullets .swiper-pagination-bullet{margin:5px 0;display:block}.swiper-container-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet{margin:0 5px}.swiper-pagination-progress{background:rgba(0,0,0,.25);position:absolute}.swiper-pagination-progress .swiper-pagination-progressbar{background:#007aff;position:absolute;left:0;top:0;width:100%;height:100%;-webkit-transform:scale(0);-ms-transform:scale(0);-o-transform:scale(0);transform:scale(0);-webkit-transform-origin:left top;-moz-transform-origin:left top;-ms-transform-origin:left top;-o-transform-origin:left top;transform-origin:left top}.swiper-container-rtl .swiper-pagination-progress .swiper-pagination-progressbar{-webkit-transform-origin:right top;-moz-transform-origin:right top;-ms-transform-origin:right top;-o-transform-origin:right top;transform-origin:right top}.swiper-container-horizontal>.swiper-pagination-progress{width:100%;height:4px;left:0;top:0}.swiper-container-vertical>.swiper-pagination-progress{width:4px;height:100%;left:0;top:0}.swiper-pagination-progress.swiper-pagination-white{background:rgba(255,255,255,.5)}.swiper-pagination-progress.swiper-pagination-white .swiper-pagination-progressbar{background:#fff}.swiper-pagination-progress.swiper-pagination-black .swiper-pagination-progressbar{background:#000}.swiper-container-3d{-webkit-perspective:1200px;-moz-perspective:1200px;-o-perspective:1200px;perspective:1200px}.swiper-container-3d .swiper-cube-shadow,.swiper-container-3d .swiper-slide,.swiper-container-3d .swiper-slide-shadow-bottom,.swiper-container-3d .swiper-slide-shadow-left,.swiper-container-3d .swiper-slide-shadow-right,.swiper-container-3d .swiper-slide-shadow-top,.swiper-container-3d .swiper-wrapper{-webkit-transform-style:preserve-3d;-moz-transform-style:preserve-3d;-ms-transform-style:preserve-3d;transform-style:preserve-3d}.swiper-container-3d .swiper-slide-shadow-bottom,.swiper-container-3d .swiper-slide-shadow-left,.swiper-container-3d .swiper-slide-shadow-right,.swiper-container-3d .swiper-slide-shadow-top{position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none;z-index:10}.swiper-container-3d .swiper-slide-shadow-left{background-image:-webkit-gradient(linear,left top,right top,from(rgba(0,0,0,.5)),to(rgba(0,0,0,0)));background-image:-webkit-linear-gradient(right,rgba(0,0,0,.5),rgba(0,0,0,0));background-image:-moz-linear-gradient(right,rgba(0,0,0,.5),rgba(0,0,0,0));background-image:-o-linear-gradient(right,rgba(0,0,0,.5),rgba(0,0,0,0));background-image:linear-gradient(to left,rgba(0,0,0,.5),rgba(0,0,0,0))}.swiper-container-3d .swiper-slide-shadow-right{background-image:-webkit-gradient(linear,right top,left top,from(rgba(0,0,0,.5)),to(rgba(0,0,0,0)));background-image:-webkit-linear-gradient(left,rgba(0,0,0,.5),rgba(0,0,0,0));background-image:-moz-linear-gradient(left,rgba(0,0,0,.5),rgba(0,0,0,0));background-image:-o-linear-gradient(left,rgba(0,0,0,.5),rgba(0,0,0,0));background-image:linear-gradient(to right,rgba(0,0,0,.5),rgba(0,0,0,0))}.swiper-container-3d .swiper-slide-shadow-top{background-image:-webkit-gradient(linear,left top,left bottom,from(rgba(0,0,0,.5)),to(rgba(0,0,0,0)));background-image:-webkit-linear-gradient(bottom,rgba(0,0,0,.5),rgba(0,0,0,0));background-image:-moz-linear-gradient(bottom,rgba(0,0,0,.5),rgba(0,0,0,0));background-image:-o-linear-gradient(bottom,rgba(0,0,0,.5),rgba(0,0,0,0));background-image:linear-gradient(to top,rgba(0,0,0,.5),rgba(0,0,0,0))}.swiper-container-3d .swiper-slide-shadow-bottom{background-image:-webkit-gradient(linear,left bottom,left top,from(rgba(0,0,0,.5)),to(rgba(0,0,0,0)));background-image:-webkit-linear-gradient(top,rgba(0,0,0,.5),rgba(0,0,0,0));background-image:-moz-linear-gradient(top,rgba(0,0,0,.5),rgba(0,0,0,0));background-image:-o-linear-gradient(top,rgba(0,0,0,.5),rgba(0,0,0,0));background-image:linear-gradient(to bottom,rgba(0,0,0,.5),rgba(0,0,0,0))}.swiper-container-coverflow .swiper-wrapper,.swiper-container-flip .swiper-wrapper{-ms-perspective:1200px}.swiper-container-cube,.swiper-container-flip{overflow:visible}.swiper-container-cube .swiper-slide,.swiper-container-flip .swiper-slide{pointer-events:none;-webkit-backface-visibility:hidden;-moz-backface-visibility:hidden;-ms-backface-visibility:hidden;backface-visibility:hidden;z-index:1}.swiper-container-cube .swiper-slide .swiper-slide,.swiper-container-flip .swiper-slide .swiper-slide{pointer-events:none}.swiper-container-cube .swiper-slide-active,.swiper-container-cube .swiper-slide-active .swiper-slide-active,.swiper-container-flip .swiper-slide-active,.swiper-container-flip .swiper-slide-active .swiper-slide-active{pointer-events:auto}.swiper-container-cube .swiper-slide-shadow-bottom,.swiper-container-cube .swiper-slide-shadow-left,.swiper-container-cube .swiper-slide-shadow-right,.swiper-container-cube .swiper-slide-shadow-top,.swiper-container-flip .swiper-slide-shadow-bottom,.swiper-container-flip .swiper-slide-shadow-left,.swiper-container-flip .swiper-slide-shadow-right,.swiper-container-flip .swiper-slide-shadow-top{z-index:0;-webkit-backface-visibility:hidden;-moz-backface-visibility:hidden;-ms-backface-visibility:hidden;backface-visibility:hidden}.swiper-container-cube .swiper-slide{visibility:hidden;-webkit-transform-origin:0 0;-moz-transform-origin:0 0;-ms-transform-origin:0 0;transform-origin:0 0;width:100%;height:100%}.swiper-container-cube.swiper-container-rtl .swiper-slide{-webkit-transform-origin:100% 0;-moz-transform-origin:100% 0;-ms-transform-origin:100% 0;transform-origin:100% 0}.swiper-container-cube .swiper-slide-active,.swiper-container-cube .swiper-slide-next,.swiper-container-cube .swiper-slide-next+.swiper-slide,.swiper-container-cube .swiper-slide-prev{pointer-events:auto;visibility:visible}.swiper-container-cube .swiper-cube-shadow{position:absolute;left:0;bottom:0;width:100%;height:100%;background:#000;opacity:.6;-webkit-filter:blur(50px);filter:blur(50px);z-index:0}.swiper-container-fade.swiper-container-free-mode .swiper-slide{-webkit-transition-timing-function:ease-out;-moz-transition-timing-function:ease-out;-ms-transition-timing-function:ease-out;-o-transition-timing-function:ease-out;transition-timing-function:ease-out}.swiper-container-fade .swiper-slide{pointer-events:none;-webkit-transition-property:opacity;-moz-transition-property:opacity;-o-transition-property:opacity;transition-property:opacity}.swiper-container-fade .swiper-slide .swiper-slide{pointer-events:none}.swiper-container-fade .swiper-slide-active,.swiper-container-fade .swiper-slide-active .swiper-slide-active{pointer-events:auto}.swiper-zoom-container{width:100%;height:100%;display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex;-webkit-box-pack:center;-moz-box-pack:center;-ms-flex-pack:center;-webkit-justify-content:center;justify-content:center;-webkit-box-align:center;-moz-box-align:center;-ms-flex-align:center;-webkit-align-items:center;align-items:center;text-align:center}.swiper-zoom-container>canvas,.swiper-zoom-container>img,.swiper-zoom-container>svg{max-width:100%;max-height:100%;object-fit:contain}.swiper-scrollbar{border-radius:10px;position:relative;-ms-touch-action:none;background:rgba(0,0,0,.1)}.swiper-container-horizontal>.swiper-scrollbar{position:absolute;left:1%;bottom:3px;z-index:50;height:5px;width:98%}.swiper-container-vertical>.swiper-scrollbar{position:absolute;right:3px;top:1%;z-index:50;width:5px;height:98%}.swiper-scrollbar-drag{height:100%;width:100%;position:relative;background:rgba(0,0,0,.5);border-radius:10px;left:0;top:0}.swiper-scrollbar-cursor-drag{cursor:move}.swiper-lazy-preloader{width:42px;height:42px;position:absolute;left:50%;top:50%;margin-left:-21px;margin-top:-21px;z-index:10;-webkit-transform-origin:50%;-moz-transform-origin:50%;transform-origin:50%;-webkit-animation:swiper-preloader-spin 1s steps(12,end) infinite;-moz-animation:swiper-preloader-spin 1s steps(12,end) infinite;animation:swiper-preloader-spin 1s steps(12,end) infinite}.swiper-lazy-preloader:after{display:block;content:"";width:100%;height:100%;background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg%20viewBox%3D'0%200%20120%20120'%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20xmlns%3Axlink%3D'http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink'%3E%3Cdefs%3E%3Cline%20id%3D'l'%20x1%3D'60'%20x2%3D'60'%20y1%3D'7'%20y2%3D'27'%20stroke%3D'%236c6c6c'%20stroke-width%3D'11'%20stroke-linecap%3D'round'%2F%3E%3C%2Fdefs%3E%3Cg%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.27'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.27'%20transform%3D'rotate(30%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.27'%20transform%3D'rotate(60%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.27'%20transform%3D'rotate(90%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.27'%20transform%3D'rotate(120%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.27'%20transform%3D'rotate(150%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.37'%20transform%3D'rotate(180%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.46'%20transform%3D'rotate(210%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.56'%20transform%3D'rotate(240%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.66'%20transform%3D'rotate(270%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.75'%20transform%3D'rotate(300%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.85'%20transform%3D'rotate(330%2060%2C60)'%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");background-position:50%;-webkit-background-size:100%;background-size:100%;background-repeat:no-repeat}.swiper-lazy-preloader-white:after{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg%20viewBox%3D'0%200%20120%20120'%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20xmlns%3Axlink%3D'http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink'%3E%3Cdefs%3E%3Cline%20id%3D'l'%20x1%3D'60'%20x2%3D'60'%20y1%3D'7'%20y2%3D'27'%20stroke%3D'%23fff'%20stroke-width%3D'11'%20stroke-linecap%3D'round'%2F%3E%3C%2Fdefs%3E%3Cg%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.27'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.27'%20transform%3D'rotate(30%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.27'%20transform%3D'rotate(60%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.27'%20transform%3D'rotate(90%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.27'%20transform%3D'rotate(120%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.27'%20transform%3D'rotate(150%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.37'%20transform%3D'rotate(180%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.46'%20transform%3D'rotate(210%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.56'%20transform%3D'rotate(240%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.66'%20transform%3D'rotate(270%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.75'%20transform%3D'rotate(300%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.85'%20transform%3D'rotate(330%2060%2C60)'%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E")}@-webkit-keyframes swiper-preloader-spin{100%{-webkit-transform:rotate(360deg)}}@keyframes swiper-preloader-spin{100%{transform:rotate(360deg)}}
+
+    </style>
+    <script src="//ossweb-img.qq.com/images/js/PTT/ping_tcss_tgideas_https_min.js"></script>
+    <script>
+    //此段代码不能放到外链JS中,
+    var setSite={ //设置网站属性
+     siteType:"a20170523hh", //必填项:"os"代表是官网,如果不是,则填写actName例如a20160701xxx
+     pageType:"index", //必填项:本页面的定位；按照页面含义填写例如main||list||detail||download||share||page1||pageN
+     pageName:"首页", //必填项:页面中文名
+     osact:0, //选填项:是否是官网专题(在官网运营的专题)boolean；默认是0；可以在链接上加入参数osact=1来灵活设置
+     ingame:0, //选填项:是否投放在游戏APP内boolean；默认是0；可以在链接上加入参数ingame=1来灵活设置
+     stayTime:0 //选填项:是否需要统计停留时长boolean；默认是0
+    }
+    if(typeof(pgvMain)=='function')pgvMain();//千万不能忘记！ 
+    </script>
+</head>
+<body>
+<div class="wrap">
+    <div class="p cur"  id="parent">
+        <div style="position: absolute;">
+            <video id="video" style="display:none;" poster="//game.gtimg.cn/images/codo/act/a20170523hh/poster.jpg?20170525"></video>
+        </div>
+    </div>
+    <div class="p p2" id="p2">
+        <div class="swiper-container">
+            <img src="//game.gtimg.cn/images/codo/act/a20170523hh/txt.png?20170525" alt="" class="bgs">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img src="//game.gtimg.cn/images/codo/act/a20170523hh/bg1.jpg?20170525" alt="">
+                    <div class="title t1" data-swiper-parallax="-100"></div>
+                </div>
+                <div class="swiper-slide">
+                    <img src="//game.gtimg.cn/images/codo/act/a20170523hh/bg2.jpg?20170525" alt="">
+                    <div class="title t2" data-swiper-parallax="-100"></div>
+                </div>
+                <div class="swiper-slide">
+                    <img src="//game.gtimg.cn/images/codo/act/a20170523hh/bg3.jpg?20170525" alt="">
+                    <div class="title t3" data-swiper-parallax="-100"></div>
+                </div>
+                <div class="swiper-slide">
+                    <img src="//game.gtimg.cn/images/codo/act/a20170523hh/bg4.jpg?20170525" alt="">
+                    <div class="title t4" data-swiper-parallax="-100"></div>
+                </div>
+            </div>
+            <!-- Add Pagination -->
+        </div>
+        <a href="//codol.qq.com/act/a20170518tvc/index.html" class="btn-player" ontouchend="PTTSendClick('btn','player','播放按钮')"><span></span></a>
+        <a href="javascript:resetVideo();" class="btn-replayer" ontouchend="PTTSendClick('btn','replay','重拨')">追杀韩寒</a>
+        <a href="//codol.qq.com/act/a20170518packs/index.html" class="btn-landing" ontouchend="PTTSendClick('btn','goto','与韩同战')">与韩同战</a>
+    </div>
+    <span id="audio1" class="on"></span>
+    <span class="gotoup" id="gotoup">跳过</span>
+    <p class="ctext" id="hit" ontouchend="PTTSendClick('txt','finger','提示')"></p>
+</div>
+<script src="//ossweb-img.qq.com/images/js/PTT/ping_tcss_tgideas_https_min.js"></script>
+<script src="//ossweb-img.qq.com/images/spiderMediaData/codo_new/mediaURLData.js"></script>
+<script src="mmd.videoPlayer.min.js"></script>
+
+<script>
+    var _d = Math.random();
+    var src=    mediaURLData[1260]+'&_d='+_d;
+    //PTTSendClick('loader','video','链接替换成功');
+    var w=750,h=1334;
+    var video=new MMD.VideoPlayer(
+            document.getElementById('parent'),//video对象的父级div,这样有利于覆盖在video上方的内容对位,诸如loading,落地页等;
+            document.getElementById('video'),//video对象;
+            src,//video地址;
+            w,h,//video原始宽高;
+            'auto',//内容对齐方式:auto[根据video比例进行判断,铺满全屏,或裁剪高度或裁剪宽度],width[宽度显示完全],height[高度显示完全]
+            true//竖屏/横屏:true/false;
+    );
+    var timer;
+
+    // var sliderUrl = ["//game.gtimg.cn/images/codo/act/a20170523hh/p21.jpg?20170525?2","//game.gtimg.cn/images/codo/act/a20170523hh/p22.jpg?20170525?2","//game.gtimg.cn/images/codo/act/a20170523hh/p23.jpg?20170525?2","//game.gtimg.cn/images/codo/act/a20170523hh/p24.jpg?20170525?3"];
+    // var sIndex    = 0;
+    // var domSlider = document.getElementById("slider");
+    
+    /*
+    * 用来判断video是否支持自动播放;
+    * true:直接调用play方法播放video;
+    * false:需要通过按钮点击来触发play方法;
+    * */
+    video.isVideoCanAutoPlay;
+    /*
+    * video播放方法,里面做兼容处理,在IOS9(包括9)以上的系统,微信/手Q能自动播放;
+    * */
+    //video.play();
+    console.log('video.isVideoCanAutoPlay:',video.isVideoCanAutoPlay);
+    var btn=document.getElementById('hit');
+    var domVideo = document.getElementById("video");
+    if(video.isVideoCanAutoPlay)
+    {
+        btn.style.display='none';
+        video.play();
+        document.getElementById("audio1").style.display = "block";
+        
+        timer = setInterval(function(){
+            if(domVideo.currentTime>109){
+                endVideo();
+                clearTimeout(timer);
+            }
+
+        },100);
+        PTTSendClick('loader','autoplayer','自动播放');
+    }
+    else
+    {
+        btn.style.display='block';
+        btn.addEventListener('click',function(e)
+        {
+            btn.style.display='none';
+            video.play();
+            document.getElementById("audio1").style.display = "block";
+            timer = setInterval(function(){
+                if(domVideo.currentTime>109){
+                    clearTimeout(timer);
+                    endVideo();
+                }
+
+            },100);
+            PTTSendClick('loader','fingerplayer','手动点击播放');
+        });
+    }
+    document.getElementById("gotoup").onclick = function(){
+        PTTSendClick('link','gotoup','跳过视频');
+       clearTimeout(timer);
+        endVideo();
+    }
+    document.getElementById("audio1").onclick = function(){
+        if(document.getElementById("audio1").className == "on"){
+            document.getElementById("video").muted = true;
+            document.getElementById("audio1").className = " ";
+            PTTSendClick('link','audio_close','静音');
+        }else{
+            document.getElementById("video").muted = false;
+            document.getElementById("audio1").className = "on";
+            PTTSendClick('link','audio_open','开音');
+        }
+    };
+    function endVideo(){
+        domVideo.pause();
+        document.getElementById("p2").className = "p p2 cur";
+        document.getElementById("parent").className = "p";
+
+        document.getElementById("audio1").style.display="none";
+        document.getElementById("hit").style.display="none";
+        document.getElementById("gotoup").style.display="none";
+        // sliderTimer = setInterval(function(){
+        //     domSlider.setAttribute("src",sliderUrl[sIndex]);
+        //     sIndex++;
+        //     if(sIndex >3) sIndex=0;
+        // },3000);
+        PTTSendClick('loader','playend','播放完毕')
+    }
+    function resetVideo(){
+        domVideo.currentTime = 0;
+        document.getElementById("gotoup").style.display="block";
+        document.getElementById("audio1").style.display="block";
+        document.getElementById("p2").className = "p p2";
+        document.getElementById("parent").className = "p cur";
+        video.play();
+        timer = setInterval(function(){
+            if(domVideo.currentTime>109){
+                clearTimeout(timer);
+                endVideo();
+            }
+
+        },100);
+        clearTimeout(sliderTimer);
+
+    }
+</script>
+<script src="//game.gtimg.cn/images/js/TGMobileShare/TGMobileShare.min.js"></script>
+<script src="//game.gtimg.cn/images/js/motion/pc-prompt.min.js"></script>
+<script>
+TGMobileShare({
+    shareTitle:'三个韩寒遭遇全民“追杀”?!',
+    shareDesc:'你选择”追杀“韩寒，还是与寒同战？',
+    shareImgUrl:'http://game.gtimg.cn/images/codo/act/a20170523hh/share1.jpg?20170525',
+    shareLink:'http://codol.qq.com/act/a20170523hh/index.html',
+    actName:'a20170523hh'
+});
+// window.PCPrompt = new mo.PCPrompt({
+//     url:'//codol.qq.com/act/a20170523hh/index.html',
+//     title:'三个韩寒遭遇全民“追杀”?!',
+//     description:'你选择”追杀“韩寒，还是与寒同战？',
+//     preview:'',
+//     prefix:'pc'
+// });
+</script>
+<script src="//pub.idqqimg.com/qqmobile/qqapi.js?_bid=152"></script>
+<script>
+     if(window.mqq){
+               var data = {
+                      "share_url": "//codol.qq.com/act/a20170518packs/index.html",
+                      "title": "三个韩寒遭遇全民“追杀”",
+                      "desc": "你选择”追杀“韩寒，还是与寒同战？",
+                      "image_url": "//game.gtimg.cn/images/codo/act/a20170518packs/share.jpg?20170525"
+               };
+               window.mqq.data.setShareInfo(data);
+     }
+</script>
+<script>
+var _mtac = {};
+(function() {
+    var mta = document.createElement("script");
+    mta.src = "http://pingjs.qq.com/h5/stats.js?v2.0.2";
+    mta.setAttribute("name", "MTAH5");
+    mta.setAttribute("sid", "500459699");
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(mta, s);
+})();
+</script>
+
+</body>
+</html>

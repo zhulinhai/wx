@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="x5-fullscreen" content="true">
 <meta name="full-screen" content="yes">
-<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,minimal-ui">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
 <title>玩出趣  GO刺激</title>
 <link href="../public/css/reset-h5.css" rel="stylesheet">
 <link href="../public/css/rotatePhone.css" rel="stylesheet">
@@ -17,7 +17,6 @@
 <script type="text/javascript" src="../public/scripts/iscroll.js"></script>
 <script type="text/javascript" src="../public/scripts/utils/httpUtil.js"></script>
 <script type="text/javascript" src="../public/scripts/utils/validateUtil.js"></script>
-<script type="text/javascript" src="js/mmd.videoPlayer.min.js"></script>
 <script>
 	var _hmt = _hmt || [];
 	(function() {
@@ -46,13 +45,6 @@
         document.documentElement.style.fontSize = (deviceWidth / 6.4) + 'px'; //320 fontSize = 50px
     })();
 </script>
-<!-- 横屏提示 -->
-<div id="orientLayer">
-    <div class="contentFrame">
-        <img class="phone rotatePhoneAnimation" src="../public/images/img_rotatePhone.png"/>
-        <p class="tipTitle">为了更好的体验，请使用竖屏浏览</p>
-    </div>
-</div>
 <a class="btn_jump">
 	<img src="images/icon_jump.png">
 </a>
@@ -63,392 +55,29 @@
      </div>
      <a class="off_clock offClockAnimate"></a>
 </div>
-<div class="videos" id="parent">
-       <video id="video_1" class="video"
+<div class="videos" id="parent"> 
+       <video id="video_1" 
+          poster="images/bg_video1.png"
+          style="width: 100%;" 
           x-webkit-airplay="true"
           airplay="allow"
           webkit-playsinline="true" 
           playsinline="true"
-          poster="images/bg_video1.png">
-      </video>
-      <video id="video_2" class="video"
+          x5-video-player-type="h5"
+          src="http://vedio.yunmfang.com/video_2.mp4">
+       </video>
+       <video id="video_2" class="video"
           x-webkit-airplay="true"
           airplay="allow"
           webkit-playsinline="true" 
           playsinline="true"
-          poster="images/bg_video2.png" 
+          poster="http://vedio.yunmfang.com/video_2.mp4" 
           src="media/video_2.mp4" 
           style="display: none;"></video>
-      <div id="video_3" class="video" style="display: none;">
-        <div id="chats_cont_wrapper" class="chats_cont_wrapper">
-            <div class="chats_cont">
-	        	<img class="chats" src="images/img_chats.jpg">
-	        	<a class="btn_toInput" href="javascript:void(0);">
-	        		<img class="finger_1 offClockAnimate" lass="finger_click" src="images/icon_click.png">
-	    		</a>
-    		</div>
-        </div>
-        <div id="chat_input_cont" class="chat_input_cont">
-        	<img class="chat_input" src="images/img_input.png">
-        </div>
-      </div>
-      <div id="shadow">
-      	<img class="finger fingerMove" src="images/icon_finger.png">
-      </div>
-</div>
-<div class="info">
-	<img class="logo_I" src="images/logo_I.png" alt="logo-I" />
-	<img class="car" src="images/car.png" alt="car"/>
-	<div class="info_wrap">
-		<img class="logo_II" src="images/logo_II.png" alt="logo-II">
-		<div class="info_cont">
-			<form>
-			  <input type="hidden" name="flag" value="LUFENG_X2" />
-			  <div class="form">
-			  	<div class="f_row"><div>姓&nbsp;&nbsp;&nbsp;&nbsp;名&nbsp;:</div><div><input type="text" name="name"></div></div>
-			  	<div class="f_row"><div>电&nbsp;&nbsp;&nbsp;&nbsp;话&nbsp;:</div><div><input type="text" name="mobile"></div></div>
-			  	<div class="f_row location"><div>所在地&nbsp;:</div>
-			  		<div>
-			  			<select class="s_select" name="province">
-			  				<option value="省">省</option>
-			  			</select>
-			  			<select class="s_select" name="city">
-			  				<option value="市">市</option>
-			  			</select>
-			  		</div>
-	  			</div>
-			  	<div class="f_row"><div>经销商&nbsp;:</div>
-			  		<div>
-			  			<select name="dealer">
-			  				<option value="经销商">经销商</option>
-			  			</select>
-			  		</div>
-		  		</div>
-			  	<div class="f_row ischecked"><div></div>
-				  	<div>
-				  		<a id="btn_checked" href="javascript:void(0);">
-				  			<img src="images/icon_checked.png" alt="checked"><span>允许经销商联系试驾事宜</span>
-				  		</a>
-			  		</div>
-		  		</div>
-			  	<div class="f_row submit"><div></div>
-			  		<div>
-			  			<a id="btn_submit" href="javascript:void(0);" title="">试驾有礼</a>
-		  			</div>
-  				</div>
-			  </div>
-			</form>
-		</div>
-	</div>
-	<a class="btn_gift">
-		<img id="gift" src="images/icon_rule.png"/>
-		<p id="gift_w" class="">活动规则</p>
-	</a>
 </div>
 </body>
-<script type="text/javascript">
-	var player = null;
-	var player_2 = null;
-	var STANDARD_WIDTH = 750;
-	var STANDARD_HEIGHT = 1206;
-	var scale = STANDARD_WIDTH/STANDARD_HEIGHT;
-	var provinces,cities,dealers;
-    var host = 'http://api.bjczxda.com/api/';
-    var http = new Http(host);
-    var validate = new InputUtil();
-    window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
-    var iphone_unlock,bgm;
-
-    Pace.once('start',function(){
-        
-        loadInterval = setInterval(function(){
-            var load = $('.pace-progress').attr('data-progress-text');
-            $('.percent').html(load);
-        },100);
-
-        initPageDatas();
-
-        var s = document.body.clientWidth/750;
-		$('.clock').width(88 * s);
-		$('.clock').css('margin-top',380 * s + 'px');
-		$('.clock').css('margin-left',339 * s + 'px');
-
-		var src = 'media/video_1.mp4';
-        player=new MMD.VideoPlayer(
-            document.getElementById('parent'),//video对象的父级div,这样有利于覆盖在video上方的内容对位,诸如loading,落地页等;
-            document.getElementById('video_1'),//video对象;
-            src,//video地址;
-            STANDARD_WIDTH,STANDARD_HEIGHT,//video原始宽高;
-            'auto',//内容对齐方式:auto[根据video比例进行判断,铺满全屏,或裁剪高度或裁剪宽度],width[宽度显示完全],height[高度显示完全]
-            true//竖屏/横屏:true/false;
-         );
-    });
-
-    var chatsScroll;
-    var video_1;
-
-    /**
-     * 完成加载
-     */
-    Pace.once('hide', function(e){
-    	
-    	multipleDisplayAdapter();
-
-   
-        video_1 = document.getElementById('video_1');
-		video_1.addEventListener('ended',function(){
-			$('#shadow').show();
-		});
-
-		player_2 = document.getElementById('video_2');
-		player_2.addEventListener('ended',function(){
-			
-			$('#video_3').show();
-			$('#chats_cont_wrapper').height(($('#video_3').height() * 1115 ) / 1206 );
-			$('#chat_input_cont').height(($('#video_3').height() * 91 ) / 1206 );
-			var H = $('.chats').height();
-			var h = $('#chats_cont_wrapper').height();
-			var startY = H - h;
-			chatsScroll = new IScroll('#chats_cont_wrapper',{ bounce:false , tap:true, startY: -startY });
-		 	
-		 	var top = H * 0.982;
-			$('.btn_toInput').css('top',top + 'px');
-			 
-			 $('.btn_jump').hide();
-			 setTimeout(function(){
-			 	$('#video_2').hide()
-			},500);
-		});
-
-		iphone_unlock = document.getElementById('iphone_unlock');
-
-		bindEvents();
-
-    	if(player.isVideoCanAutoPlay){//可以自动播放
-    		$('.percent').css('visibility','hidden');
-    		setTimeout(function(){
-	    		$('#loading').hide();
-				player.play();
-			},1000);
-    	}else{//不能自动播放时  			
-    		$('.percent').css('visibility','hidden');
-    		$('.off_clock').css('display','block');
-    		$('.off_clock').click(function(){
-    			$('#loading').hide();
-    			player.play();
-    		});
-    	}
-    });
-
-	//留资页动画
-	function infoPageAnimate(){
-		$('.car').addClass('carAnimate');
-		$('.logo_II').addClass('fadeInAnimate delay_5h');
-		$('.btn_gift').addClass('giftAnimate');
-		$('#gift_w').addClass('fadeInAnimate delay_1_5');
-		setTimeout(function(){
-			requestAnimationFrame(shakeAnimate);
-		},2000);
-	}
-
-	var start = 0;
-	//礼品盒摇动动画
-	function shakeAnimate(timestamp){
-		if(start==0 || Math.floor((timestamp - start)/1000) == 2) { 
-			console.log(start);
-			start = timestamp; 
-			$('#gift').toggleClass('giftShake');
-		}
-		requestAnimationFrame(shakeAnimate);
-	}
-
-
-	function initPageDatas(){
-		//初始化经销商列表数据
-		//并初始化省份下拉列表
-		$.getJSON('data.json',function(json){
-			provinces = json.provinces;
-			cities = json.cities;
-			dealers = json.dealers;
-
-			$('select[name="province"]').empty();
-			var option = '<option value="省">省</option>';
-			for(var i = 0; i < provinces.length; i++){
-				var p = provinces[i];
-				option += '<option value="'+ p.province +'">'+ p.province +'</option>';
-			}
-			$('select[name="province"]').html(option);
-		});
-	}
-
-	function bindEvents(){
-
-		$('.btn_jump').click(function(){
-			$(this).hide();
-			if(!$('#video_1').is(':hidden')){
-				video_1.pause();
-				$('#video_1').hide();
-			}
-			if(!$('#video_2').is(':hidden')){
-				player_2.pause();
-				$('#video_2').hide();
-			}
-			$('.info').show();
-			infoPageAnimate();
-		});
-
-		$('#shadow').on('touchstart',function(){
-			if(!$('#video_1').is(':hidden')){
-				iphone_unlock.play();
-				$(this).hide();
-				$('#video_1').hide();
-				$('#video_2').show();
-				player_2.play();
-				
-			}
-		});
-
-		$('.btn_toInput').on('tap',function(){
-			if(!$('#video_3').is(':hidden')){
-				$(this).hide();
-				$('#video_3').hide();
-				$('.info').show();
-				infoPageAnimate();
-			}
-		});
-		
-		$('#player').click(function(){
-			player.play();
-			$('#loading').hide();
-		});
-
-		//省、市、经销商三级联动
-		$('select[name="province"]').on('change',function(){
-			var selected = $(this).val();
-			$('select[name="city"]').empty();
-            $('select[name="city"]').html('<option value="市">市</option>');
-            $('select[name="dealer"]').empty();
-            $('select[name="dealer"]').html('<option value="经销商">经销商</option>');
-			 if(selected !='省'){
-                  for(var i = 0; i < cities.length; i++){
-                  	   var city = cities[i];
-                      if(city.province == $(this).val())
-                          $('select[name="city"]').append('<option value="'+ city.city +'">'+ city.city +'</option>');
-                  }
-            }
-		});
-		//市、经销商二级联动
-		$('select[name="city"]').on('change',function(){
-			var selected = $(this).val();
-		 	
-		 	$('select[name="dealer"]').empty();
-		  	$('select[name="dealer"]').append('<option value="经销商">经销商</option>');
-			
-			if(selected !='市'){
-                  for(var i = 0; i < dealers.length; i++){
-                  	   var dealer = dealers[i];
-                      if(dealer.city == $(this).val())
-                          $('select[name="dealer"]').append('<option value="'+ dealer.dealer +'">'+ dealer.dealer +'</option>');
-                  }
-            }
-		});
-
-		$('#btn_checked').click(function(){
-			if(isChecked())
-				$($(this).find('img:first')).attr('src','images/icon_un_checked.png');
-			else
-				$($(this).find('img:first')).attr('src','images/icon_checked.png');
-		});
-
-		$('#btn_submit').click(function(){
-
-			var params = $('form:first').serialize();
-            var name = $('input[name="name"]').val();
-            var mobile = $('input[name="mobile"]').val();
-            var province = $('select[name="province"]').val();
-            var city = $('select[name="city"]').val();
-            var dealer = $('select[name="dealer"]').val();
-            var allow = isChecked()? 1 : 0;
-
-            if(validate.isEmpty(name)){
-                alert('姓名不能为空');
-                return false;
-            }
-            if(validate.isEmpty(mobile)){
-                alert('手机号不能为空');
-                return false;
-            }
-            if(!validate.isMobile(mobile)){
-                alert('请输入手机号');
-                return false;
-            }
-            if(province == '省'){
-                alert('请选择省');
-                return false;
-            }
-            if(city == '市'){
-                alert('请选择市');
-                return false;
-            }
-            if(dealer == '经销商'){
-                alert('请选择经销商');
-                return false;
-            }
-
-            http.ajaxRequest({
-                type:'POST',
-                uri:'h5/insertLFX2?' + params + '&allow='+allow,
-                success:function(json){
-                    var data = json.data;
-                    if(json.success){
-                    	var winner = (parseInt(data.client_sex) == NaN || parseInt(data.client_sex) == 0)? false : true;
-                    	alert(winner ? '留资成功，你获得100元京东电子购物卡':'留资成功');
-                    }else{
-                    	alert('重复留资!');
-                    }
-                },
-                error:function(e){
-                    if(e.responseJSON){
-                        alert(e.responseJSON.message);
-                    }else
-                        alert('您已参加活动');
-                }
-            });
-		});
-	}
-
-
-	//判断是否允许经销商联系
-	//true 允许， false 不允许
-	function isChecked(){
-		return $($('#btn_checked').find('img:first')).attr('src').indexOf('un') == -1;
-	}
-
-	/**
-	 * [multipleDisplayAdapter description]
-	 * 基于iphone 6屏幕分辨率375 * 603 进行全屏适配算法
-	 * @return 
-	 */
-	function multipleDisplayAdapter(){
-		var videos = document.getElementsByClassName('video');
-		var bodyW = document.body.clientWidth;
-		var bodyH = document.body.clientHeight;
-	 	var height = bodyW/scale;
-		for(var i =0; i < videos.length; i++){
-			var video = videos[i];
-			if(height >= bodyH){
-	            video.style.width = bodyW + 'px';
-	            video.style.height = height + 'px';
-	            video.style.top = (bodyH-height) + 'px';
-	        }else {
-	            video.style.height = bodyH + 'px';
-	            video.style.width = bodyH * scale + 'px';
-	            video.style.left = (bodyW - scale * bodyH)/2 + 'px';
-	        }
-		}
-	}
-</script>
 <!-- 微信分享api -->
 <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 <script type="text/javascript" src="js/wx_share.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
 </html>
