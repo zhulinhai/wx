@@ -2,14 +2,6 @@
  * Created by zhulinhai on 17/8/29.
  */
 
-require.config({
-    baseUrl: "./js/libs",
-    paths: {
-        "jquery": "./jquery-1.12.1.min",
-        "helper": './helper'
-    }
-});
-
 define(['helper', 'jquery'], function (helper, $) {
     const host = 'http://api.bjczxda.com/api';
     let commit = {};
