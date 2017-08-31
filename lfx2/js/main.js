@@ -40,7 +40,6 @@
 			}
 			$('select[name="province"]').html(option);
 		});
-
         
     });
 
@@ -54,15 +53,10 @@
     	
     	if(isVideoCanAutoPlay()){//可以自动播放
     		$('.percent').css('visibility','hidden');
-   //  		setTimeout(function(){
-	  //   		$('#loading').hide();
-			// 	player_1.play();
-			// },1000);
-			$('.off_clock').css('display','block');
-    		$('.off_clock').click(function(){
-    			$('#loading').hide();
-    			player_1.play();
-    		});
+    		setTimeout(function(){
+	    		$('#loading').hide();
+				videoAutoPlay('video_1');
+			},1000);
     	}else{//不能自动播放时  			
     		$('.percent').css('visibility','hidden');
     		$('.off_clock').css('display','block');
@@ -78,13 +72,19 @@
 	   player_1 = document.getElementById('video_1');
        player_2 = document.getElementById('video_2');	
 
-		//也可以在这个事件触发后播放一次然后暂停（这样以后视频会处于加载状态，为后面的流畅播放做准备）
-		document.addEventListener("WeixinJSBridgeReady", function (){ 
-			alert(111);
-		    player_1.play();
-		    player_1.pause();
-		}, false);
     }
+
+
+	function videoAutoPlay(id){
+	    var video = document.getElementById(id);
+	    video.play();
+	    document.addEventListener("WeixinJSBridgeReady", function () {
+	            video.play();
+	            // video.pause();
+	    }, false);
+	}
+
+
 
 
 	/**

@@ -80,4 +80,14 @@
 <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 <script type="text/javascript" src="js/wx_share.js"></script>
 <script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript">
+	window.onload = function(){
+		//也可以在这个事件触发后播放一次然后暂停（这样以后视频会处于加载状态，为后面的流畅播放做准备）
+		document.addEventListener("WeixinJSBridgeReady", function (){ 
+		    var video = document.getElementById('video_1');
+		    video.play();
+		    video.pause();
+		}, false);
+	}
+</script>
 </html>
