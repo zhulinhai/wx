@@ -6,6 +6,7 @@
  */
 (function ($){
     var param = 'url='+encodeURIComponent(location.href);
+    var iv;
     $.ajax({
         type:'GET',
         url:'http://api.bjczxda.com/api/wx/signature?'+ param,
@@ -95,6 +96,14 @@
                         // 用户取消分享后执行的回调函数
                     }
                 });
+                // document.getElementById('video_1').play();
+                iv = setInterval(function(){
+                   if(!$('#loading').is(':hidden')){
+                      clearInterval(iv);
+                      iv = -1;
+                      document.getElementById('video_1').play();
+                   } 
+                },10);
 
             });
         },
