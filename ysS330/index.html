@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="x5-fullscreen" content="true">
+    <meta name="full-screen" content="yes">
     <title>驭胜S330</title>
     <link rel="stylesheet" href="../public/css/reset-h5.css">
     <link rel="stylesheet" href="../public/css/animate.css">
@@ -50,7 +52,7 @@
     </div>
 
     <!-- loading页 -->
-    <div id="loadingDialog" style="display: none">
+    <div id="loadingDialog" style="display: block">
         <div class="content">
             <div class="loading-clouds bgAnimation">
                 <figure>
@@ -61,9 +63,15 @@
         </div>
     </div>
 
-    <div class="container">
-        <video width="750px" height="1206px" controls src="src/email.mp4"></video>
-
+    <div id="videoContainer" class="container">
+        <video id="video_1" class="video"
+               x-webkit-airplay="true"
+               airplay="allow"
+               webkit-playsinline="true"
+               playsinline="true"
+               poster="src/placeHolder-1.jpg">
+        </video>
+        <div id="btnClick">点击一下</div>
     </div>
 
     <!-- 横屏提示 -->
@@ -75,28 +83,25 @@
     </div>
 
     <!-- js 部分 -->
-    <script type="text/javascript" src="js/libs/pace.js"></script>
+    <script type="text/javascript" src="http://wx.bjczxda.com/public/scripts/pace.js"></script>
     <script type="text/javascript">
         Pace.paceOptions = {
             elements: true,
-            ajax: false,
+            ajax: true,
             restartOnRequestAfter: false
         };
 
-        var curProgress = 0, myInterval = -1;
-        myInterval = setInterval(function(){
-            var progress = parseInt(document.querySelectorAll('.pace-progress')[0].getAttribute("data-progress"));
-            if (progress > curProgress) {
-                document.getElementById('loading-percent').innerHTML = progress + '%';
-                curProgress = progress;
-            }
-        },100);
-
-        Pace.on('hide', function () {
-            document.getElementById('loading-percent').innerHTML = '100%';
-            clearInterval(myInterval);
-            myInterval = -1;
+        let curProgress = 0, myInterval = -1;
+        Pace.once('start', function () {
+            myInterval = setInterval(function(){
+                const progress = parseInt(document.querySelectorAll('.pace-progress')[0].getAttribute("data-progress"));
+                if (progress > curProgress) {
+                    document.getElementById('loading-percent').innerHTML = progress + '%';
+                    curProgress = progress;
+                }
+            },1000);
         });
+
     </script>
     <script data-main="js/main.js" src="js/require.min.js"></script>
 </body>
