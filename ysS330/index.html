@@ -65,11 +65,11 @@
 
     <div id="videoContainer" class="container">
         <video id="video_1" class="video"
-               x-webkit-airplay="true"
-               airplay="allow"
-               webkit-playsinline="true"
-               playsinline="true"
-               poster="src/placeHolder-1.jpg">
+           x-webkit-airplay="allow"
+           airplay="allow"
+           webkit-playsinline="true"
+           playsinline="true"
+           poster="src/placeHolder-1.jpg">
         </video>
         <div id="btnClick">点击一下</div>
     </div>
@@ -83,26 +83,18 @@
     </div>
 
     <!-- js 部分 -->
-    <script type="text/javascript" src="http://wx.bjczxda.com/public/scripts/pace.js"></script>
-    <script type="text/javascript">
-        Pace.paceOptions = {
-            elements: true,
-            ajax: true,
-            restartOnRequestAfter: false
-        };
+    <script type="text/javascript" src="../public/scripts/jquery-1.12.1.min.js"></script>
+    <script type="text/javascript" src="../public/scripts/pace.js"></script>
+    <script type="text/javascript" src="./js/mmd.videoPlayer.min.js"></script>
+    <script type="text/javascript" src="./js/main.js"></script>
+    <script type="text/javascript" src="./js/loading.js"></script>
 
-        let curProgress = 0, myInterval = -1;
-        Pace.once('start', function () {
-            myInterval = setInterval(function(){
-                const progress = parseInt(document.querySelectorAll('.pace-progress')[0].getAttribute("data-progress"));
-                if (progress > curProgress) {
-                    document.getElementById('loading-percent').innerHTML = progress + '%';
-                    curProgress = progress;
-                }
-            },1000);
-        });
+    <!-- 提交信息 -->
+    <script type="text/javascript" src="./js/helper.js"></script>
+    <script type="text/javascript" src="./js/commitInfo.js"></script>
 
-    </script>
-    <script data-main="js/main.js" src="js/require.min.js"></script>
+    <!-- 微信分享 -->
+    <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script type="text/javascript" src="./js/wx_share.js"></script>
 </body>
 </html>

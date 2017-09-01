@@ -2,12 +2,10 @@
  * Created by zhulinhai on 17/8/29.
  */
 
-define(['helper', 'jquery'], function (helper, $) {
-    const host = 'http://api.bjczxda.com/api';
-    let commit = {};
-    let flag, name, mobile, province, city, dealer;
-    commit.bindInfo = function () {
-        $.get("./js/libs/data.json",function(data,status){
+let commitInfoHandler = {
+    host : 'http://api.bjczxda.com/api',
+    bindInfo: function () {
+        $.get("./js/libs/data.json", function (data, status) {
             if (status == 'success') {
                 const $province = $('#province'),
                     $city = $('#city'),
@@ -16,34 +14,34 @@ define(['helper', 'jquery'], function (helper, $) {
                     cities = data.city,
                     dealers = data.dealer;
 
-                $province.change(function(){
+                $province.change(function () {
                     $city.empty().html('<option>请选择</option>');
                     $dealer.empty().html('<option>请选择</option>');
 
-                    if($province.val() != '请选择'){
-                        for(let j = 0; j < data.city.length; j++)
-                            if(cities[j].p == $('#province').val())
-                                $city.append('<option>'+cities[j].c+'</option>');
+                    if ($province.val() != '请选择') {
+                        for (let j = 0; j < data.city.length; j++)
+                            if (cities[j].p == $('#province').val())
+                                $city.append('<option>' + cities[j].c + '</option>');
                     }
                 });
 
-                $city.change(function(){
+                $city.change(function () {
                     $dealer.empty().html('<option>请选择</option>');
-                    if($city.val() != '请选择'){
-                        for(let j = 0; j < dealers.length; j++)
-                            if(dealers[j].d == $city.val())
-                                $dealer.append('<option>'+dealers[j].c +'</option>');
+                    if ($city.val() != '请选择') {
+                        for (let j = 0; j < dealers.length; j++)
+                            if (dealers[j].d == $city.val())
+                                $dealer.append('<option>' + dealers[j].c + '</option>');
                     }
                 });
 
-                for(let i = 0; i < provinces.length; i ++) $province.append('<option>'+provinces[i].p+'</option>');
+                for (let i = 0; i < provinces.length; i++) $province.append('<option>' + provinces[i].p + '</option>');
             }
         });
         $('#btnSubmit').click(this.submitInfo);
+    },
 
-    };
-
-    commit.submitInfo = function () {
+    submitInfo : function () {
+        let flag, name, mobile, province, city, dealer;
         flag = helper.trim($("input[name='flag']").val());
         name = helper.trim($("input[name='realname']").val());
         mobile = helper.trim($("input[name='mobile']").val());
@@ -86,7 +84,5 @@ define(['helper', 'jquery'], function (helper, $) {
                 alert("加载超时,请检查网络连接");
             }
         });
-    };
-
-    return commit;
-});
+    }
+};
