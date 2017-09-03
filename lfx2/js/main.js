@@ -62,13 +62,17 @@ Pace.once('hide', function(e){
         $('.percent').css('visibility','hidden');
         setTimeout(function(){
             $('#loading').hide();
+            if(/Android [4-6]/.test(navigator.appVersion))
+                $('.fixed').css('display','block');
+            else
+              $('#video_1').attr('poster','images/bg_video1.png');
             "object" == typeof WeixinJSBridge ? WeixinJSBridge.invoke("WeixinJSBridgeReady", {}, function(i) {
                 player.play();
             }) : document.addEventListener("WeixinJSBridgeReady", function(i) {
                 player.play();
             }, false);
-            if(/Android [4-6]/.test(navigator.appVersion))
-                $('.fixed').css('display','block');
+
+
         },1000);
     }else{//不能自动播放时
         $('.percent').css('visibility','hidden');
@@ -150,6 +154,8 @@ function bindEvents(){
             player.src =srcs[currentVideo];
             if(/Android [4-6]/.test(navigator.appVersion))
                 $('.fixed').css('display','block');
+            else
+                $('#video_1').attr('poster','images/bg_video2.png');
             player.play();
         }
     });
