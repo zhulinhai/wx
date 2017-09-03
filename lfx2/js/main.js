@@ -62,6 +62,11 @@ Pace.once('hide', function(e){
         $('.percent').css('visibility','hidden');
         setTimeout(function(){
             $('#loading').hide();
+            "object" == typeof WeixinJSBridge ? WeixinJSBridge.invoke("WeixinJSBridgeReady", {}, function(i) {
+                player.play();
+            }) : document.addEventListener("WeixinJSBridgeReady", function(i) {
+                player.play();
+            }, false);
             if(/Android [4-6]/.test(navigator.appVersion))
                 $('.fixed').css('display','block');
         },1000);
@@ -70,8 +75,7 @@ Pace.once('hide', function(e){
         $('.off_clock').css('display','block');
         $('.off_clock').click(function(){
             $('#loading').hide();
-            if(/Android [4-6]/.test(navigator.appVersion))
-                $('.fixed').css('display','block');
+            $('.fixed').css('display','block');
             player.play();
 
         });

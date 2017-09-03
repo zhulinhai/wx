@@ -96,15 +96,6 @@
                         // 用户取消分享后执行的回调函数
                     }
                 });
-                // document.getElementById('video_1').play();
-                iv = setInterval(function(){
-                   if(!$('#loading').is(':hidden')){
-                      clearInterval(iv);
-                      iv = -1;
-                      document.getElementById('video_1').play();
-                   } 
-                },10);
-
             });
         },
         error:function(error){
