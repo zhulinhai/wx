@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="x5-fullscreen" content="true">
+<meta name="full-screen" content="yes">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+<title>玩出趣  GO刺激</title>
+<link href="../public/css/reset-h5.css" rel="stylesheet">
+<link href="../public/css/rotatePhone.css" rel="stylesheet">
+<link href="css/main.css?v=123213213" rel="stylesheet">
+<!-- 预加载插件 -->
+<script type="text/javascript" src="../public/scripts/pace.js"></script>
+<!-- css3免前缀插件 -->
+<script type="text/javascript" src="../public/scripts/prefixfree.min.js"></script>
+<script type="text/javascript" src="../public/scripts/jquery-1.12.1.min.js"></script>
+<script type="text/javascript" src="../public/scripts/iscroll.js"></script>
+<script type="text/javascript" src="../public/scripts/utils/httpUtil.js"></script>
+<script type="text/javascript" src="../public/scripts/utils/validateUtil.js"></script>
+<script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "https://hm.baidu.com/hm.js?b6415100f005eb1fb797922121d64d60";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+</script>
+</head>
+<body ontouchmove="event.preventDefault();">
+<!-- <audio id="bgm" preload="auto" src="media/trip.mp3"></audio> -->
+<audio id="iphone_unlock" preload="auto" src="media/iphone_unlock.mp3"></audio>
+<!--屏幕兼容代码-->
+<script type="text/javascript">
+
+    (function() {
+        // deicePixelRatio ：设备像素
+        var scale = 1 / devicePixelRatio;
+        if(navigator.userAgent.indexOf('iPhone')!=-1){
+            //设置meta 压缩界面 模拟设备的高分辨率
+            document.querySelector('meta[name="viewport"]').setAttribute('content', 'initial-scale=' + scale + ', maximum-scale=' + scale + ', minimum-scale=' + scale + ', user-scalable=no');
+        }
+        var deviceWidth = document.documentElement.clientWidth > 1300 ? 1300 : document.documentElement.clientWidth;
+        //按照640像素下字体为100px的标准来，得到一个字体缩放比例值 6.4
+        document.documentElement.style.fontSize = (deviceWidth / 6.4) + 'px'; //320 fontSize = 50px
+    })();
+</script>
+<a class="btn_jump">
+	<img src="images/icon_jump.png">
+</a>
+<div class="wrapper">
+	<div id="loading" class="resize">
+	     <div class="clock">
+	     	<img class="clockShake" src="images/icon_clock.png"/>
+	     	<div class="percent"></div>
+	     </div>
+	     <a class="off_clock offClockAnimate"></a>
+   </div>
+   <div id="parent" class="videos resize">
+   	    <video id="video_1" 
+          x-webkit-airplay="true"
+          airplay="allow"
+          webkit-playsinline="true" 
+          playsinline="true"
+          x5-video-player-type="h5"
+          src="http://vedio.yunmfang.com/video_2.mp4">
+       </video>
+       <video id="video_2"
+          x-webkit-airplay="true"
+          airplay="allow"
+          webkit-playsinline="true" 
+          playsinline="true"
+          x5-video-player-type="h5"
+          poster="images/bg_video2.png" 
+          src="http://vedio.yunmfang.com/video_2.mp4" 
+          style="display: none;"></video>
+      <div id="shadow">
+      	<img class="finger fingerMove" src="images/icon_finger.png">
+      </div>
+      <div id="video_3" style="display: none;">
+        <div id="chats_cont_wrapper" class="chats_cont_wrapper">
+            <div class="chats_cont">
+	        	<img class="chats" src="images/img_chats.jpg">
+	        	<a class="btn_toInput" href="javascript:void(0);">
+	        		<img class="finger_1 offClockAnimate" lass="finger_click" src="images/icon_click.png">
+	    		</a>
+    		</div>
+        </div>
+        <div id="chat_input_cont" class="chat_input_cont">
+        	<img class="chat_input" src="images/img_input.png">
+        </div>
+      </div>
+   </div>
+</div>
+<div class="info">
+	<img class="logo_I" src="images/logo_I.png" alt="logo-I" />
+	<img class="car" src="images/car.png" alt="car"/>
+	<div class="info_wrap">
+		<img class="logo_II" src="images/logo_II.png" alt="logo-II">
+		<div class="info_cont">
+			<form>
+			  <input type="hidden" name="flag" value="LUFENG_X2" />
+			  <div class="form">
+			  	<div class="f_row"><div>姓&nbsp;&nbsp;&nbsp;&nbsp;名&nbsp;:</div><div><input type="text" name="name"></div></div>
+			  	<div class="f_row"><div>电&nbsp;&nbsp;&nbsp;&nbsp;话&nbsp;:</div><div><input type="text" name="mobile"></div></div>
+			  	<div class="f_row location"><div>所在地&nbsp;:</div>
+			  		<div>
+			  			<select class="s_select" name="province">
+			  				<option value="省">省</option>
+			  			</select>
+			  			<select class="s_select" name="city">
+			  				<option value="市">市</option>
+			  			</select>
+			  		</div>
+	  			</div>
+			  	<div class="f_row"><div>经销商&nbsp;:</div>
+			  		<div>
+			  			<select name="dealer">
+			  				<option value="经销商">经销商</option>
+			  			</select>
+			  		</div>
+		  		</div>
+			  	<!-- <div class="f_row ischecked"><div></div>
+				  	<div>
+				  		<a id="btn_checked" href="javascript:void(0);">
+				  			<img src="images/icon_checked.png" alt="checked"><span>允许经销商联系试驾事宜</span>
+				  		</a>
+			  		</div>
+		  		</div> -->
+			  	<div class="f_row submit"><div></div>
+			  		<div>
+			  			<a id="btn_submit" href="javascript:void(0);" title="">试驾有礼</a>
+		  			</div>
+  				</div>
+			  </div>
+			</form>
+		</div>
+	</div>
+	<!-- <a class="btn_gift">
+		<img id="gift" src="images/icon_rule.png"/>
+		<p id="gift_w" class="">活动规则</p>
+	</a> -->
+</div>
+</body>
+<!-- 微信分享api -->
+<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript" src="js/wx_share.js"></script>
+<script type="text/javascript" src="js/_main.js?code=12332132"></script>
+</html>
