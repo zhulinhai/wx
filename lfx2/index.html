@@ -28,7 +28,13 @@
     </script>
 </head>
 <body ontouchmove="event.preventDefault();">
-<!-- <audio id="bgm" preload="auto" src="media/trip.mp3"></audio> -->
+<!-- 横屏提示 -->
+<div id="orientLayer">
+    <div class="contentFrame">
+        <img class="phone rotatePhoneAnimation" src="images/img_rotatePhone.png"/>
+        <p class="tipTitle">为了更好的体验，请使用竖屏浏览</p>
+    </div>
+</div>
 <audio id="iphone_unlock" preload="auto" src="media/iphone_unlock.mp3"></audio>
 <!--屏幕兼容代码-->
 <script type="text/javascript">
