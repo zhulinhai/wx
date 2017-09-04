@@ -107,5 +107,17 @@
     <!-- 微信分享 -->
     <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
     <script type="text/javascript" src="./js/wx_share.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $(window).resize(function(){
+                var windowWidth=$(window).innerWidth();
+                var windowHeight=$(window).innerHeight();
+                $('.c-h5').css({
+                    width:windowWidth,
+                    height:windowHeight
+                })
+            })
+        })
+    </script>
 </body>
 </html>
