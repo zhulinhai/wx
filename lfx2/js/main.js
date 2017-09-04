@@ -14,7 +14,7 @@ var host = 'http://api.bjczxda.com/api/';
 var http = new Http(host);
 var validate = new InputUtil();
 var currentVideo = 0; // 0第一段视频 1 第二段视频
-var srcs = ['http://vedio.yunmfang.com/video_1.mp4','http://vedio.yunmfang.com/video_2.mp4'];
+var srcs = ['http://vedio.yunmfang.com/video_1.mp4','media/video_2.mp4'];
 
 //经销商数据
 var provinces,cities,dealers;
