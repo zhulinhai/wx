@@ -62,11 +62,33 @@ let gamePlayer = {
     }
 };
 
-(function () {
+$(function () {
     gamePlayer.init();
     let player1 = gamePlayer.createPlayer('videoContainer', 'video_1', 'src/launch.mp4', '#btnClick');
     document.getElementById('video_1').addEventListener('ended',function(){
-        $('#videoContainer').hide();
+        // $('#videoContainer').hide();
     });
 
-})();
+    //获取video
+    var oLiveVideo=document.getElementById("video_1");
+    //获取canvas画布
+    var oLiveCanvas=document.getElementById("canvas");
+    //设置画布
+    var oLiveCanvas2D=oLiveCanvas.getContext('2d');
+    //设置setinterval定时器
+    var bLiveVideoTimer=null;
+    //监听播放
+    oLiveVideo.addEventListener('play',function() {
+        bLiveVideoTimer=setInterval(function() {
+            oLiveCanvas2D.drawImage(oLiveVideo,0,0, oLiveVideo.style.width, oLiveVideo.style.height);
+        },20);
+    },false);
+    //监听暂停
+    oLiveVideo.addEventListener('pause',function() {
+        clearInterval(bLiveVideoTimer);
+    },false);
+    //监听结束
+    oLiveVideo.addEventListener('ended',function() {
+        clearInterval(bLiveVideoTimer);
+    },false);
+});
