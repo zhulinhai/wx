@@ -126,10 +126,12 @@
 	display: block;
 	width: 100%;
 	left: 0;
+	overflow: hidden;
 }
 
 .btn_toInput .finger_1{
 	margin-left: 1.4rem;
+	margin-top: 2.02rem;
     width: .64rem;
 }
 

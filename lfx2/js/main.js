@@ -57,7 +57,7 @@ Pace.once('start',function(){
 Pace.once('hide', function(e){
 
     initPage();
-
+    
     if(isVideoCanAutoPlay()){//可以自动播放
         $('.percent').css('visibility','hidden');
         setTimeout(function(){
@@ -356,11 +356,12 @@ function showChats(){
 
     $('#chats_cont_wrapper').height((ch * 1115 ) / 1206 );
     $('#chat_input_cont').height((ch * 91 ) / 1206 );
-    var H = 5127 * ( $('#parent').width() / 750 );
+    var H = 5215 * ( $('#parent').width() / 750 );
     var h = $('#chats_cont_wrapper').height();
     var startY = H - h;
     console.log(startY);
-    var top = H * 0.982;
+    $('.btn_toInput').height($('#chats_cont_wrapper').height()* (337/1115) );
+    var top = H *  (5215 - 337) / 5215  ;
     $('.btn_toInput').css('top',top + 'px');
     $('#video_3').show();
     chatsScroll = new IScroll('#chats_cont_wrapper',{ bounce:false , tap:true, startY: -startY });
