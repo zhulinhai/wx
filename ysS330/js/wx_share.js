@@ -106,5 +106,9 @@ let wxHandler = {
             }
         });
     }
-
 };
+
+(function () {
+    wxHandler.initWxConf();
+})();
+

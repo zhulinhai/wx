@@ -2,6 +2,8 @@
  * Created by zhulinhai on 17/8/29.
  */
 
+import {helper} from 'helper';
+
 let commitInfoHandler = {
     host : 'http://api.bjczxda.com/api',
     bindInfo: function () {

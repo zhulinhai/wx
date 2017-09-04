@@ -6,15 +6,11 @@ paceOptions = {
     elements: true,
     restartOnRequestAfter: false
 };
-const STANDARD_WIDTH = 750;
-const STANDARD_HEIGHT = 1206;
-const scale = STANDARD_WIDTH/STANDARD_HEIGHT;
 
 let loadingHandler = {
     curProgress: 0,
     myInterval: -1,
     startInterval: function () {
-        gamePlayer.init();
         loadingHandler.myInterval = setInterval(function(){
             let progress = parseInt(document.querySelectorAll('.pace-progress')[0].getAttribute("data-progress"));
             loadingHandler.setLoadingPercent(progress);
@@ -32,7 +28,6 @@ let loadingHandler = {
         this.curProgress = progress;
     },
     changeLoadingToPage1: function () {
-
         $('#loadingDialog').fadeOut(300);
         setTimeout(function () {
             loadingHandler.playPage1Ani();
