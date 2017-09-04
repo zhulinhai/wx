@@ -254,8 +254,9 @@ function bindEvents(){
             success:function(json){
                 var data = json.data;
                 if(json.success){
-                    var winner = (parseInt(data.client_sex) == NaN || parseInt(data.client_sex) == 0)? false : true;
-                    alert(winner ? '留资成功，你获得100元京东电子购物卡':'留资成功');
+                    //var winner = (parseInt(data.client_sex) == NaN || parseInt(data.client_sex) == 0)? false : true;
+                    //alert(winner ? '留资成功，你获得100元京东电子购物卡':'留资成功');
+                    alert( '报名试驾成功');
                 }else{
                     alert('重复留资!');
                 }
