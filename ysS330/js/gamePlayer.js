@@ -65,7 +65,8 @@ let gamePlayer = {
 (function () {
     gamePlayer.init();
     let player1 = gamePlayer.createPlayer('videoContainer', 'video_1', 'src/launch.mp4', '#btnClick');
-    document.getElementById('video_1').addEventListener('stop', function () {
-       console.log('end');
+    document.getElementById('video_1').addEventListener('ended',function(){
+        $('#videoContainer').hide();
     });
+
 })();
