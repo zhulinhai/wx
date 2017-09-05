@@ -15,10 +15,6 @@ let loadingHandler = {
             let progress = parseInt(document.querySelectorAll('.pace-progress')[0].getAttribute("data-progress"));
             loadingHandler.setLoadingPercent(progress);
         },100);
-
-        window.onresize = function(){
-            gamePlayer.resizeVideo();
-        }
     },
     clearInterval: function () {
         clearInterval(loadingHandler.myInterval);
@@ -38,6 +34,7 @@ let loadingHandler = {
         }, 300);
     },
     playPage1Ani: function () {
+        let myScroll = new IScroll('#wrapper', { mouseWheel: true, click: true, bounce: false, momentum: false });
         let player1 = gamePlayer.createPlayer('videoContainer', 'video_1', 'src/launch.mp4');
         document.getElementById('video_1').addEventListener('ended',function(){
             $('#videoContainer').hide();
@@ -48,6 +45,7 @@ let loadingHandler = {
 loadingHandler.startInterval();
 
 Pace.on('hide', function() {
+    gamePlayer.resizeVideo();
     loadingHandler.clearInterval();
     loadingHandler.setLoadingPercent(100);
     setTimeout(function(){
