@@ -68,7 +68,7 @@
         }
     </style>
 </head>
-<body ontouchmove="event.preventDefault();" >
+<body ontouchmove="event.preventDefault();" onload="javascript:loaded();">
 
     <!-- 留资信息 -->
     <div class="submitInfo" id="commitInfoDialog" style="display: none">
@@ -194,8 +194,6 @@
             passive: false
         } : false);
 
-
-        $(loaded);
     </script>
 </body>
 </html>
