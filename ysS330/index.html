@@ -7,6 +7,7 @@
     <title>驭胜S330</title>
     <link rel="stylesheet" href="../public/css/reset-h5.css">
     <link rel="stylesheet" href="../public/css/animate.css">
+    <link rel="stylesheet" href="../public/plugins/Swiper-3.4.2/dist/css/swiper.min.css">
     <link rel="stylesheet" href="css/main.css">
     <!-- 百度统计 -->
     <script>
@@ -32,6 +33,40 @@
         })(document, window);
     </script>
     <!-- end -->
+    <style>
+
+        #wrapper {
+            position: absolute;
+            z-index: 1;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #ccc;
+            overflow: hidden;
+        }
+
+        #scroller {
+            position: absolute;
+            z-index: 1;
+            -webkit-tap-highlight-color: rgba(0,0,0,0);
+            width: 100%;
+            -webkit-transform: translateZ(0);
+            -moz-transform: translateZ(0);
+            -ms-transform: translateZ(0);
+            -o-transform: translateZ(0);
+            transform: translateZ(0);
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            -webkit-text-size-adjust: none;
+            -moz-text-size-adjust: none;
+            -ms-text-size-adjust: none;
+            -o-text-size-adjust: none;
+            text-size-adjust: none;
+        }
+    </style>
 </head>
 <body ontouchmove="event.preventDefault();" >
 
@@ -79,10 +114,36 @@
         <div id="btnClick">点击一下</div>
     </div>
 
-    <div class="main-container">
-        <div class="slide">1</div>
-        <div class="slide">2</div>
-        <div class="slide">3</div>
+    <div id="wrapper">
+        <div id="scroller">
+            <img width="100%" src="src/content.png">
+            <video id="video_2" class="video"
+                   x-webkit-airplay="allow"
+                   airplay="allow"
+                   webkit-playsinline="true"
+                   playsinline="true"
+                   preload="auto"
+                   controls
+                   loop="true"
+                   src="src/stage_1.mp4"
+                   x5-video-player-type="h5"
+                   x5-video-player-fullscreen="true"
+                   poster="src/placeHolder-1.jpg">
+            </video>
+            <video id="video_3" class="video"
+                   x-webkit-airplay="allow"
+                   airplay="allow"
+                   webkit-playsinline="true"
+                   playsinline="true"
+                   preload="auto"
+                   controls
+                   loop="true"
+                   src="src/stage_2.mp4"
+                   x5-video-player-type="h5"
+                   x5-video-player-fullscreen="true"
+                   poster="src/placeHolder-1.jpg">
+            </video>
+        </div>
     </div>
 
     <!-- 横屏提示 -->
@@ -107,17 +168,34 @@
     <!-- 微信分享 -->
     <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
     <script type="text/javascript" src="./js/wx_share.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function(){
-            $(window).resize(function(){
-                var windowWidth=$(window).innerWidth();
-                var windowHeight=$(window).innerHeight();
-                $('.c-h5').css({
-                    width:windowWidth,
-                    height:windowHeight
-                })
-            })
-        })
+    <script type="text/javascript" src="./js/iscroll.js"></script>
+    <script>
+        var myScroll;
+
+        function loaded () {
+            myScroll = new IScroll('#wrapper', { mouseWheel: true, click: true });
+        }
+
+        function isPassive() {
+            var supportsPassiveOption = false;
+            try {
+                addEventListener("test", null, Object.defineProperty({}, 'passive', {
+                    get: function () {
+                        supportsPassiveOption = true;
+                    }
+                }));
+            } catch(e) {}
+            return supportsPassiveOption;
+        }
+
+
+        document.addEventListener('touchmove', function (e) { e.preventDefault(); }, isPassive() ? {
+            capture: false,
+            passive: false
+        } : false);
+
+
+        $(loaded);
     </script>
 </body>
 </html>

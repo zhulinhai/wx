@@ -172,7 +172,8 @@ select {
   width: 100%;
   height: 100%;
   border: 0;
-  overflow: hidden; }
+  overflow: hidden;
+  z-index: 10; }
   #videoContainer .video {
     position: absolute;
     left: 0;
