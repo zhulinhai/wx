@@ -15,6 +15,10 @@ let loadingHandler = {
             let progress = parseInt(document.querySelectorAll('.pace-progress')[0].getAttribute("data-progress"));
             loadingHandler.setLoadingPercent(progress);
         },100);
+
+        window.onresize = function(){
+            gamePlayer.resizeVideo();
+        }
     },
     clearInterval: function () {
         clearInterval(loadingHandler.myInterval);
@@ -34,7 +38,11 @@ let loadingHandler = {
         }, 300);
     },
     playPage1Ani: function () {
-
+        let player1 = gamePlayer.createPlayer('videoContainer', 'video_1', 'src/launch.mp4');
+        document.getElementById('video_1').addEventListener('ended',function(){
+            $('#videoContainer').hide();
+        });
+        gamePlayer.playNow(player1, '#btnClick');
     }
 };
 loadingHandler.startInterval();
