@@ -38,6 +38,8 @@ let loadingHandler = {
         let player1 = gamePlayer.createPlayer('videoContainer', 'video_1', 'src/launch.mp4');
         document.getElementById('video_1').addEventListener('ended',function(){
             $('#videoContainer').hide();
+            player1.style.display = 'none';
+            alert("video end");
         });
         gamePlayer.playNow(player1, '#btnClick');
     }
