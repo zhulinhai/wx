@@ -7,9 +7,14 @@ paceOptions = {
     restartOnRequestAfter: false
 };
 
+const STANDARD_WIDTH = 750;
+const STANDARD_HEIGHT = 1206;
+const scale = STANDARD_WIDTH/STANDARD_HEIGHT;
 let loadingHandler = {
     curProgress: 0,
     myInterval: -1,
+    launchDiv: null,
+    myScroll: null,
     startInterval: function () {
         loadingHandler.myInterval = setInterval(function(){
             let progress = parseInt(document.querySelectorAll('.pace-progress')[0].getAttribute("data-progress"));
@@ -17,8 +22,9 @@ let loadingHandler = {
         },100);
     },
     clearInterval: function () {
-        clearInterval(loadingHandler.myInterval);
-        loadingHandler.myInterval = -1;
+        clearInterval(this.myInterval);
+        this.myInterval = -1;
+        this.setLoadingPercent(100);
     },
     setLoadingPercent: function (progress) {
         if (progress < this.curProgress) {
@@ -34,24 +40,47 @@ let loadingHandler = {
         }, 300);
     },
     playPage1Ani: function () {
-        let myScroll = new IScroll('#wrapper', { mouseWheel: true, click: true, bounce: false, momentum: false });
-        let player1 = gamePlayer.createPlayer('videoContainer', 'video_1', 'src/launch.mp4');
-        document.getElementById('video_1').addEventListener('ended',function(){
-            $('#videoContainer').hide();
-            player1.style.display = 'none';
-            alert("video end");
+        this.launchDiv.addClass('launchAnimation');
+        setTimeout(function () {
+            $('.finger').show().addClass('fingerAnimation');
+            $('#launchDialog').click(function () {
+                $('#launchDialog').fadeOut(300);
+            });
+        }, 1500);
+    },
+    playPage2Ani: function () {
+        this.myScroll = new IScroll('#wrapper', { mouseWheel: true, click: true, bounce: false, momentum: false });
+
+    },
+    fixElSize: function (el) {
+        const bodyW = document.body.clientWidth;
+        const bodyH = document.body.clientHeight;
+        let wRate = bodyW/STANDARD_WIDTH,
+            hRate = bodyH/STANDARD_HEIGHT;
+        let scaleRate = Math.max(wRate, hRate);
+        el.css({
+            'transform': 'scale(' + scaleRate + ')',
+            '-webkit-transform': 'scale(' + scaleRate + ')'
         });
-        gamePlayer.playNow(player1, '#btnClick');
+
+    },
+    initElements: function () {
+        <!-- fix launchDiv size -->
+        this.launchDiv = $('#launchDialog').find('.launchDiv');
+        this.fixElSize(this.launchDiv);
     }
 };
-loadingHandler.startInterval();
 
 Pace.on('hide', function() {
-    gamePlayer.resizeVideo();
     loadingHandler.clearInterval();
-    loadingHandler.setLoadingPercent(100);
+    loadingHandler.initElements();
     setTimeout(function(){
         loadingHandler.changeLoadingToPage1();
     }, 1000);
 });
+
+(function () {
+    loadingHandler.startInterval();
+})();
+
 // end pace加载
