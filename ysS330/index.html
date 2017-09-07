@@ -26,7 +26,7 @@
                 recalc = function() {
                     var clientWidth = docEl.clientWidth;
                     if (!clientWidth) return;
-                    docEl.style.fontSize = 20 * (clientWidth / 320) + 'px';
+                    docEl.style.fontSize = 20 * (clientWidth / 375) + 'px';
                 };
             win.addEventListener(resizeEvt, recalc, false);
             doc.addEventListener('DOMContentLoaded', recalc, false);
@@ -50,6 +50,7 @@
             z-index: 1;
             -webkit-tap-highlight-color: rgba(0,0,0,0);
             width: 100%;
+            background-color: white;
             -webkit-transform: translateZ(0);
             -moz-transform: translateZ(0);
             -ms-transform: translateZ(0);
@@ -68,7 +69,7 @@
         }
     </style>
 </head>
-<body ontouchmove="event.preventDefault();" onload="javascript:loaded();">
+<body ontouchmove="event.preventDefault();">
 
     <!-- 留资信息 -->
     <div class="submitInfo" id="commitInfoDialog" style="display: none">
@@ -102,17 +103,77 @@
         <div class="launchDiv"></div>
         <div class="finger"></div>
     </div>
-
     <div id="wrapper">
         <div id="scroller">
-            <img width="100%" src="src/content.png">
+            <div class="section section-1">
+                <div class="titleFrame">
+                    <img src="src/2-1-title.jpg" class="title">
+                    <img class="sun" src="src/2-sun.png">
+                </div>
+                <div class="content">
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                </div>
+                <div class="bottom">
+                    <div class="cloud"></div>
+                    <div class="cloud"></div>
+                    <img class="car" src="src/2-1-car.png">
+                </div>
+            </div>
+            <div class="section section-2">
+                <div class="titleFrame">
+                    <img src="src/2-2-title.jpg" alt="" class="title">
+                </div>
+                <div class="topDiv">
+                    <img src="src/2-2-mountain.png" alt="" class="mountain">
+                </div>
+                <video loop controls webkit-playsinline="true" playsinline="true" x5-video-player-type="h5" src="src/ximalaya.mp4"></video>
+                <div class="content">
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                </div>
+            </div>
+            <div class="section section-3">
+                <div class="titleFrame">
+                    <img src="src/2-3-title.jpg" alt="" class="title">
+                </div>
+                <div class="topDiv">
+                </div>
+                <video loop controls webkit-playsinline="true" playsinline="true" x5-video-player-type="h5" src="src/zhuifeiji.mp4"></video>
+                <div class="content">
+
+                </div>
+            </div>
+            <div class="section">
+                <div class="titleFrame">
+                    <img src="src/2-4-title.jpg" alt="" class="title">
+                </div>
+                <div class="topDiv">
+                </div>
+                <video loop controls webkit-playsinline="true" playsinline="true" x5-video-player-type="h5" src="src/dance.mp4"></video>
+                <div class="content">
+
+                </div>
+            </div>
+            <div class="section">
+                <div class="topDiv">
+                </div>
+                <div class="content">
+
+                </div>
+            </div>
         </div>
     </div>
+    <a href="javascript:clickToggle();"><div id="audioPlayer" class="rotateRingAni"></div></a>
+    <audio id="clickSound" autoplay="autoplay" style="position: absolute;z-index: -1;opacity: 0" loop="loop"><source src="src/bg.mp3"></audio>
 
     <!-- 横屏提示 -->
     <div id="orientLayer">
         <div class="contentFrame">
-            <img class="phone rotatePhoneAnimation" src="src/rotatePhone.png" />
+            <img class="phone rotatePhoneAnimation" src="src/rotatePhone.png">
             <p class="tipTitle">为了更好的体验，请使用竖屏浏览</p>
         </div>
     </div>
@@ -120,9 +181,8 @@
     <!-- js 部分 -->
     <script type="text/javascript" src="../public/scripts/jquery-1.12.1.min.js"></script>
     <script type="text/javascript" src="../public/scripts/pace.js"></script>
-    <script type="text/javascript" src="./js/mmd.videoPlayer.min.js"></script>
+    <script type="text/javascript" src="./js/iscroll.js"></script>
     <script type="text/javascript" src="./js/loading.js"></script>
-    <!--<script type="text/javascript" src="./js/gamePlayer.js"></script>-->
 
     <!-- 提交信息 -->
     <script type="text/javascript" src="./js/helper.js"></script>
@@ -131,32 +191,6 @@
     <!-- 微信分享 -->
     <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
     <script type="text/javascript" src="./js/wx_share.js"></script>
-    <script type="text/javascript" src="./js/iscroll.js"></script>
-    <script>
-        var myScroll;
-
-        function loaded () {
-            myScroll = new IScroll('#wrapper', { mouseWheel: true, click: true, bounce: false, momentum: false });
-        }
-
-        function isPassive() {
-            var supportsPassiveOption = false;
-            try {
-                addEventListener("test", null, Object.defineProperty({}, 'passive', {
-                    get: function () {
-                        supportsPassiveOption = true;
-                    }
-                }));
-            } catch(e) {}
-            return supportsPassiveOption;
-        }
-
-
-        document.addEventListener('touchmove', function (e) { e.preventDefault(); }, isPassive() ? {
-            capture: false,
-            passive: false
-        } : false);
-
-    </script>
+    <script type="text/javascript" src="./js/musicPlayer.js"></script>
 </body>
 </html>

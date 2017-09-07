@@ -45,11 +45,11 @@ let loadingHandler = {
             $('.finger').show().addClass('fingerAnimation');
             $('#launchDialog').click(function () {
                 $('#launchDialog').fadeOut(300);
+                loadingHandler.playPage2Ani();
             });
-        }, 1500);
+        }, 2000);
     },
     playPage2Ani: function () {
-        this.myScroll = new IScroll('#wrapper', { mouseWheel: true, click: true, bounce: false, momentum: false });
 
     },
     fixElSize: function (el) {
@@ -68,6 +68,8 @@ let loadingHandler = {
         <!-- fix launchDiv size -->
         this.launchDiv = $('#launchDialog').find('.launchDiv');
         this.fixElSize(this.launchDiv);
+        $('video').css({'width': document.body.clientWidth, 'height': document.body.clientWidth * STANDARD_HEIGHT/STANDARD_WIDTH });
+        this.myScroll = new IScroll('#wrapper', { mouseWheel: true, click: true, bounce: false, momentum: false });
     }
 };
 
