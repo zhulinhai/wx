@@ -26,7 +26,7 @@
         position: absolute;
         left: 50%;
         margin-top: 260px;
-        margin-left: -90px;
+        margin-left: -62px;
       }
     }
     #loading-percent {
@@ -79,27 +79,52 @@
 
 #audioPlayer {
   position: absolute;
-  top: 0.5rem;
-  right: 0.5rem;
-  width: 1rem;
-  height: 1rem;
+  top: 0.75rem;
+  right: 0.75rem;
+  width: 1.5rem;
+  height: 1.5rem;
   background: url("../src/audio.png") no-repeat;
   background-size: 200% auto;
   z-index: 10;
 }
 
-.section-1 {
+.section {
   width: 100%;
   height: auto;
+  .titleFrame {
+    width: 100%;
+    .title {
+      float: left;
+      margin-top: 0.75rem;
+      width: auto;
+      height: 1.9rem;
+    }
+  }
+  .topDiv {
+    width: 100%;
+    height: 6.7rem;
+    background-size: 100% auto;
+  }
+  .content {
+    margin-top: 0.75rem;
+    height: 4.75rem;
+    list-style-type: none;
+    li {
+      width: 100%;
+      height: 1rem;
+      background: url("../src/2-titles.png") no-repeat;
+      background-size: 100% 1400%;
+    }
+  }
+}
+
+.section-1 {
   .titleFrame {
     height: 3.3rem;
     background: url("../src/2-cloud.png") no-repeat right bottom;
     background-size: 1.5rem auto;
     .title {
-      float: left;
       margin-top: 1.2rem;
-      width: 6.8rem;
-      height: 1.85rem;
     }
     .sun {
       float: right;
@@ -110,21 +135,16 @@
 
   }
   .content {
-    margin-top: 0.75rem;
-    height: 4.75rem;
-    p {
-      width: 100%;
-      height: 1rem;
-      background: url("../src/2-titles.png") no-repeat;
-      background-size: 100% 1400%;
+    li:nth-child(1) {
+      background-position-y: 0;
     }
-    p:nth-child(2){
+    li:nth-child(2){
       background-position-y: 7.7%;
     }
-    p:nth-child(3){
+    li:nth-child(3){
       background-position-y: 15.4%;
     }
-    p:nth-child(4){
+    li:nth-child(4){
       background-position-y: 23.1%;
     }
   }
@@ -144,21 +164,10 @@
 }
 
 .section-2 {
-  margin-top: 1rem;
-  width: 100%;
-  height: auto;
   .titleFrame {
     height: 4rem;
-    .title {
-      float: left;
-      margin-top: 0.75rem;
-      width: 11rem;
-      height: 1.8rem;
-    }
-
   }
   .topDiv {
-    width: 100%;
     height: 5.15rem;
     background: url("../src/2-2-headBg.jpg") no-repeat;
     background-size: 100% auto;
@@ -171,27 +180,180 @@
     }
   }
   .content {
-    margin-top: 0.75rem;
-    height: 4.75rem;
-    p {
-      width: 100%;
-      height: 1rem;
-      background: url("../src/2-titles.png") no-repeat 0 30.8%;
-      background-size: 100% 1400%;
+    height: 3.75rem;
+    li:nth-child(1) {
+      background-position-y: 30.8%;
     }
-    p:nth-child(2){
+    li:nth-child(2){
       background-position-y: 38.5%;
     }
-    p:nth-child(3){
+    li:nth-child(3){
       background-position-y: 46.2%;
     }
   }
 }
 
+.section-3 {
+  .titleFrame {
+    height: 3rem;
+    .sun {
+      float: right;
+      margin-top: 0.25rem;
+      margin-right: 1.5rem;
+      width: 2.7rem;
+    }
+  }
+  .topDiv {
+    background: url("../src/2-3-right.jpg") no-repeat right center;
+    .title-left {
+      float: left;
+      margin-top: 0.4rem;
+      width: 8.65rem;
+      height: 5.85rem;
+    }
+  }
+  .content {
+    li:nth-child(1) {
+      background-position-y: 53.9%;
+    }
+    li:nth-child(2){
+      background-position-y: 61.6%;
+    }
+    li:nth-child(3){
+      background-position-y: 69.3%;
+    }
+    li:nth-child(4){
+      background-position-y: 77%;
+    }
+   }
+}
 
+.section-4 {
+  .titleFrame {
+    height: 3.4rem;
+    .title {
+      margin-top: 1.3rem;
+    }
+    .moon {
+      float: right;
+      height: 100%;
+      margin-right: 1.8rem;
+    }
+  }
+  .topDiv {
+    .title-left {
+      float: left;
+      width: auto;
+      height: 5rem;
+      margin-top: 1.5rem;
+      margin-left: 0.8rem;
+    }
+    .star {
+      float: right;
+      width: 10.75rem;
+      height: 5.5rem;
+      margin-top: 1rem;
+      margin-right: 1.3rem;
+      background: url('../src/2-4-right.jpg') no-repeat;
+      background-size: cover;
+    }
+  }
+  .content {
+    height: 3.75rem;
+    li:nth-child(1) {
+      background-position-y: 84.7%;
+    }
+    li:nth-child(2){
+      background-position-y: 92.4%;
+    }
+    li:nth-child(3){
+      background-position-y: 100%;
+    }
+  }
+}
+
+.section-5 {
+  .topDiv {
+    height: 8.75rem;
+    background: url("../src/2-5-bg.jpg") no-repeat 0 0.5rem;
+    background-size: 100% auto;
+    .clouds {
+      position: absolute;
+      width: 100%;
+      height: 8.75rem;
+      z-index: 1;
+      li {
+        width: 100%;
+        height: 1.55rem;
+        background: url("../src/2-cloud.png") no-repeat 0 center;
+      }
+      li:nth-child(1) {
+        background-size: 1rem auto;
+        background-position-x: 50%;
+      }
+      li:nth-child(2){
+        height: 2.5rem;
+        background-size: 1.2rem auto;
+        background-position-x: 0;
+      }
+      li:nth-child(3){
+        background-size: 0.75rem auto;
+        background-position-x: 96%;
+      }
+
+    }
+    .car {
+      position: absolute;
+      left: 50%;
+      margin-left: -6.5rem;
+      margin-top: 2.2rem;
+      width: 13rem;
+      height: 6.6rem;
+      z-index: 3;
+    }
+  }
+  .content {
+    width: 11.7rem;
+    height: 4.75rem;
+    margin: 0.75rem auto;
+    li {
+      width: 100%;
+      height: 1.55rem;
+      background: url("../src/2-5-title.png") no-repeat;
+      background-size: 100% 300%;
+    }
+    li:nth-child(1) {
+      background-position-y: 0;
+    }
+    li:nth-child(2){
+      background-position-y: 50%;
+    }
+    li:nth-child(3){
+      background-position-y: 100%;
+    }
+  }
+}
 
 
 // CSS3动画
+/*
+* 云朵动画
+*/
+.cloudAni {
+  -webkit-animation: cloudMove 3s infinite linear;
+  animation: cloudMove 3s infinite linear;
+}
+
+@-webkit-keyframes cloudMove {
+  from {-moz-transform: rotate(0deg);transform: rotate(0deg);}
+  to {-moz-transform: rotate(360deg);transform: rotate(360deg);}
+}
+
+@keyframes cloudMove {
+  from {-moz-transform: rotate(0deg);transform: rotate(0deg);}
+  to {-moz-transform: rotate(360deg);transform: rotate(360deg);}
+}
+
 /*
 * 旋转音乐播放器
 */
@@ -216,6 +378,9 @@
   to {transform: rotate(360deg);}
 }
 
+/*
+* 手指动效
+*/
 .fingerAnimation {
   animation: animatedFinger 1s ease infinite alternate;
   -webkit-animation: animatedFinger 1s ease infinite alternate;
@@ -232,16 +397,19 @@
 
 @-webkit-keyframes animatedFinger {
   from {
-    -webkit-transform: scale(1);
+    -webkit-transform: scale(1);transform: scale(1);
   }
   to {
-    -webkit-transform: scale(0.8);
+    -webkit-transform: scale(0.8);transform: scale(0.8);
   }
 }
 
+/*
+* loading后，启动页动画
+*/
 .launchAnimation {
-  animation: animatedLaunch 1.5s steps(29) forwards;
-  -webkit-animation: animatedLaunch 1.5s steps(29) forwards;
+  animation: animatedLaunch 3s steps(29) forwards;
+  -webkit-animation: animatedLaunch 3s steps(29) forwards;
 }
 
 @keyframes animatedLaunch {
@@ -268,13 +436,13 @@
 }
 
 @keyframes animatedBg {
-  from { background-position: 0 0; }
-  to { background-position: 300% 0; }
+  from { background-position-x: 0; }
+  to { background-position-x: 300%; }
 }
 
 @-webkit-keyframes animatedBg {
-  from { background-position: 0 0; }
-  to { background-position: 300% 0; }
+  from { background-position-x: 0; }
+  to { background-position-x: 300%; }
 }
 
 .emailAnimation {

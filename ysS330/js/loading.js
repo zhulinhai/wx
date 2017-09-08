@@ -15,6 +15,7 @@ let loadingHandler = {
     myInterval: -1,
     launchDiv: null,
     myScroll: null,
+    musicPlayer: null,
     startInterval: function () {
         loadingHandler.myInterval = setInterval(function(){
             let progress = parseInt(document.querySelectorAll('.pace-progress')[0].getAttribute("data-progress"));
@@ -47,7 +48,7 @@ let loadingHandler = {
                 $('#launchDialog').fadeOut(300);
                 loadingHandler.playPage2Ani();
             });
-        }, 2000);
+        }, 3000);
     },
     playPage2Ani: function () {
 
@@ -69,7 +70,8 @@ let loadingHandler = {
         this.launchDiv = $('#launchDialog').find('.launchDiv');
         this.fixElSize(this.launchDiv);
         $('video').css({'width': document.body.clientWidth, 'height': document.body.clientWidth * STANDARD_HEIGHT/STANDARD_WIDTH });
-        this.myScroll = new IScroll('#wrapper', { mouseWheel: true, click: true, bounce: false, momentum: false });
+        this.myScroll = new IScroll('#wrapper', { mouseWheel: true, click: true, disablePointer: true, bounce: false, momentum: false });
+        this.musicPlayer= document.getElementById('clickSound');
     }
 };
 
@@ -81,8 +83,32 @@ Pace.on('hide', function() {
     }, 1000);
 });
 
+function clickToggle(){
+    let music = loadingHandler.musicPlayer;
+    if (music.paused){
+        music.play();
+        $('#audioPlayer').css('background-position-x', 0).addClass('rotateRingAni');
+    } else {
+        music.pause();
+        $('#audioPlayer').css('background-position-x', '100%').removeClass('rotateRingAni');
+    }
+}
+
 (function () {
     loadingHandler.startInterval();
+
+    /*
+     * 禁止浏览器触摸事件
+     * */
+    document.addEventListener('touchmove', function(event){
+        // 判断默认行为是否可以被禁用
+        if (event.cancelable) {
+            // 判断默认行为是否已经被禁用
+            if (!event.defaultPrevented) {
+                event.preventDefault();
+            }
+        }
+    }, false);
 })();
 
 // end pace加载
