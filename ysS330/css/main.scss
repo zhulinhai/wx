@@ -1,12 +1,13 @@
 @import "common";
 @import "commitInfo";
 
+html {
+  user-select: none;
+}
 
 // loading dialog
 #loadingDialog {
-  position: fixed;
-  width: 100%;
-  height: 100%;
+  @include dialog();
   background: #FCFCFC url("../src/loading-bg.jpg") no-repeat center;
   background-size: cover;
   z-index: 100;
@@ -38,43 +39,39 @@
   }
 }
 
+@mixin fingerCommon() {
+  width: 3.2rem;
+  height: 3.2rem;
+  transform-origin: center;
+  -webkit-transform-origin: center;
+  background: url("../src/finger.png") no-repeat center;
+  background-size: 128px auto;
+  display: none;
+  pointer-events:none;
+  z-index: 3;
+}
+
 #launchDialog {
-  position: absolute;
-  margin: 0 auto;
-  width: 100%;
-  height: 100%;
-  border: 0;
-  overflow: hidden;
-  background-color: #fff;
-  z-index: 10;
-  .launchDiv {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-top: -603px;
-    margin-left: -375px;
-    width: 750px;
-    height: 1206px;
-    transform-origin: center;
-    -webkit-transform-origin: center;
-    background: url("../src/launch.jpg") no-repeat;
-    background-size: 3000% 1206px;
-    z-index: -1;
-  }
+  @include dialog();
   .finger {
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 128px;
-    height: 128px;
     margin-top: -32px;
-    transform-origin: center;
-    -webkit-transform-origin: center;
-    background: url("../src/finger.png") no-repeat center;
-    background-size: cover;
-    display: none;
-    z-index: 3;
+    @include fingerCommon();
   }
+}
+
+.downTip {
+  position: fixed;
+  left: 50%;
+  width: 1.6rem;
+  margin-left: - 0.8rem;
+  bottom: 2rem;
+  animation-duration: 2s;
+  animation-fill-mode: both;
+  animation-iteration-count: infinite;
+  z-index: 3;
 }
 
 #audioPlayer {
@@ -300,7 +297,6 @@
         background-size: 0.75rem auto;
         background-position-x: 96%;
       }
-
     }
     .car {
       position: absolute;
@@ -310,6 +306,13 @@
       width: 13rem;
       height: 6.6rem;
       z-index: 3;
+    }
+    .finger {
+      @include fingerCommon();
+      position: absolute;
+      left: 50%;
+      margin-left: 1rem;
+      margin-top: 5.2rem;
     }
   }
   .content {
@@ -334,8 +337,31 @@
   }
 }
 
+#carInfoDialog {
+  @include dialog();
+  background: #fff url("../src/3-topBg.jpg") no-repeat;
+  background-size: 100% auto;
+  z-index: 20;
+}
 
 // CSS3动画
+@keyframes fadeInDown {
+  from {
+    opacity: 1;
+    transform: none;
+  }
+
+  to {
+    opacity: 0;
+    transform: translate3d(0, 100%, 0);
+  }
+}
+
+.fadeInDown {
+  animation-name: fadeInDown;
+}
+
+
 /*
 * 云朵动画
 */

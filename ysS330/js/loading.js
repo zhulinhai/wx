@@ -13,14 +13,21 @@ const scale = STANDARD_WIDTH/STANDARD_HEIGHT;
 let loadingHandler = {
     curProgress: 0,
     myInterval: -1,
-    launchDiv: null,
+    launchCanvas: null,
     myScroll: null,
     musicPlayer: null,
+    isSpriteLoaded: false,
+    spriteImage: null,
     startInterval: function () {
         loadingHandler.myInterval = setInterval(function(){
             let progress = parseInt(document.querySelectorAll('.pace-progress')[0].getAttribute("data-progress"));
             loadingHandler.setLoadingPercent(progress);
         },100);
+        this.spriteImage = new Image();
+        this.spriteImage.onload = function () {
+            loadingHandler.isSpriteLoaded = true;
+        };
+        this.spriteImage.src = 'src/launch.jpg';
     },
     clearInterval: function () {
         clearInterval(this.myInterval);
@@ -35,23 +42,55 @@ let loadingHandler = {
         this.curProgress = progress;
     },
     changeLoadingToPage1: function () {
-        $('#loadingDialog').fadeOut(300);
-        setTimeout(function () {
-            loadingHandler.playPage1Ani();
-        }, 300);
+        $('#loadingDialog').hide();
+        loadingHandler.playPage1Ani();
+    },
+    playLaunchAni: function () {
+        let clientWidth = document.body.clientWidth;
+        let clientHeight = document.body.clientHeight;
+        let launchCanvas = document.getElementById('launchCanvas');
+        launchCanvas.width = clientWidth;
+        launchCanvas.height = clientHeight;
+        let launchCtx = launchCanvas.getContext('2d');
+        let spriteCanvas = document.createElement('canvas');
+        spriteCanvas.width = STANDARD_WIDTH;
+        spriteCanvas.height = STANDARD_HEIGHT;
+        let sprite;
+
+        if (this.isSpriteLoaded) {
+            sprite = new Sprite(spriteCanvas, {
+                sprite: this.spriteImage,
+                loop: false,
+                numberOfFrames: 30,
+                ticksPerFrame: 2
+            });
+            spriteAnimate();
+
+            function spriteAnimate() {
+                requestAnimationFrame(spriteAnimate);
+                sprite.render();
+                sprite.update();
+                launchCtx.drawImage(spriteCanvas, 0,0, clientWidth, clientHeight);
+            }
+        }
+
     },
     playPage1Ani: function () {
-        this.launchDiv.addClass('launchAnimation');
+        this.playLaunchAni();
+
+        // this.launchDiv.addClass('launchAnimation');
         setTimeout(function () {
             $('.finger').show().addClass('fingerAnimation');
             $('#launchDialog').click(function () {
                 $('#launchDialog').fadeOut(300);
                 loadingHandler.playPage2Ani();
             });
-        }, 3000);
+        }, 1600);
     },
     playPage2Ani: function () {
-
+        $('#car-2').click(function () {
+            $('#carInfoDialog').show();
+        });
     },
     fixElSize: function (el) {
         const bodyW = document.body.clientWidth;
@@ -67,21 +106,13 @@ let loadingHandler = {
     },
     initElements: function () {
         <!-- fix launchDiv size -->
-        this.launchDiv = $('#launchDialog').find('.launchDiv');
-        this.fixElSize(this.launchDiv);
+        // this.launchCanvas = document.getElementById('launchDiv');
+        // this.fixElSize(this.launchCanvas);
         $('video').css({'width': document.body.clientWidth, 'height': document.body.clientWidth * STANDARD_HEIGHT/STANDARD_WIDTH });
-        this.myScroll = new IScroll('#wrapper', { mouseWheel: true, click: true, disablePointer: true, bounce: false, momentum: false });
+        this.myScroll = new IScroll('#wrapper', { mouseWheel: true, click: true, disablePointer: true, bounce: true, momentum: false });
         this.musicPlayer= document.getElementById('clickSound');
     }
 };
-
-Pace.on('hide', function() {
-    loadingHandler.clearInterval();
-    loadingHandler.initElements();
-    setTimeout(function(){
-        loadingHandler.changeLoadingToPage1();
-    }, 1000);
-});
 
 function clickToggle(){
     let music = loadingHandler.musicPlayer;
@@ -93,6 +124,18 @@ function clickToggle(){
         $('#audioPlayer').css('background-position-x', '100%').removeClass('rotateRingAni');
     }
 }
+
+function closeCommitDialog() {
+    $('#commitDialog').hide();
+}
+
+Pace.on('hide', function() {
+    loadingHandler.clearInterval();
+    loadingHandler.initElements();
+    setTimeout(function(){
+        loadingHandler.changeLoadingToPage1();
+    }, 1000);
+});
 
 (function () {
     loadingHandler.startInterval();

@@ -5,8 +5,8 @@
     <meta name="x5-fullscreen" content="true">
     <meta name="full-screen" content="yes">
     <title>驭胜S330</title>
-    <link rel="stylesheet" href="../public/css/reset-h5.css">
-    <link rel="stylesheet" href="../public/css/animate.css">
+    <link rel="stylesheet" href="http://wx.bjczxda.com/public/css/reset-h5.css">
+    <link rel="stylesheet" href="http://wx.bjczxda.com/public/css/animate.css">
     <link rel="stylesheet" href="css/main.css">
     <!-- 百度统计 -->
     <script>
@@ -69,23 +69,6 @@
     </style>
 </head>
 <body ontouchmove="event.preventDefault();">
-
-    <!-- 留资信息 -->
-    <div class="submitInfo" id="commitInfoDialog" style="display: none">
-        <div class="contentFrame">
-            <div class="btnClose"></div>
-            <div class="infoDiv">
-                <input type="hidden" name="flag" value="yss330" />
-                <label>姓&nbsp;&nbsp;&nbsp;名：<input name="realname" id="realname" type="text" /></label>
-                <label>手&nbsp;&nbsp;&nbsp;机：<input name="mobile" id="mobile" type="tel" /></label>
-                <label>省&nbsp;&nbsp;&nbsp;份：<select name="province" id="province"><option>请选择</option></select></label>
-                <label>城&nbsp;&nbsp;&nbsp;市：<select name="city" id="city"><option>请选择</option></select></label>
-                <label>经销商：<select name="dealer" id="dealer" ><option>请选择</option></select></label>
-                <button id="btnSubmit">提交</button>
-            </div>
-        </div>
-    </div>
-
     <!-- loading页 -->
     <div id="loadingDialog" style="display: block">
         <div class="content">
@@ -98,11 +81,13 @@
         </div>
     </div>
 
+    <!-- 收到信件页面 -->
     <div id="launchDialog">
-        <div class="launchDiv"></div>
+        <canvas id="launchCanvas"></canvas>
         <div class="finger"></div>
     </div>
 
+    <!-- 内容控制页面 -->
     <div id="wrapper">
         <div id="scroller">
             <div class="section section-1">
@@ -129,7 +114,9 @@
                 <div class="topDiv">
                     <img src="src/2-2-mountain.png" alt="" class="mountain">
                 </div>
-                <video loop controls webkit-playsinline="true" playsinline="true" poster="src/placeHolder-1.jpg" src="src/ximalaya.mp4"></video>
+                <div class="videoFrame" style="width: 100%;">
+                    <img style="width: 100%" src="src/placeHolder-1.jpg">
+                </div>
                 <ul class="content">
                     <li></li>
                     <li></li>
@@ -144,7 +131,9 @@
                 <div class="topDiv">
                     <img src="src/2-3-left.jpg" alt="" class="title-left">
                 </div>
-                <video loop controls webkit-playsinline="true" playsinline="true" poster="src/placeHolder-2.jpg" src="src/zhuifeiji.mp4"></video>
+                <div class="videoFrame" style="width: 100%;">
+                    <img style="width: 100%" src="src/placeHolder-2.jpg">
+                </div>
                 <ul class="content">
                     <li></li>
                     <li></li>
@@ -161,7 +150,9 @@
                     <img src="src/2-4-left.jpg" alt="" class="title-left">
                     <div class="star"></div>
                 </div>
-                <video loop controls webkit-playsinline="true" playsinline="true" poster="src/placeHolder-3.jpg" src="src/dance.mp4"></video>
+                <div class="videoFrame" style="width: 100%;">
+                    <img style="width: 100%" src="src/placeHolder-3.jpg">
+                </div>
                 <ul class="content">
                     <li></li>
                     <li></li>
@@ -175,7 +166,8 @@
                         <li></li>
                         <li></li>
                     </ul>
-                    <img src="src/2-5-car.png" alt="" class="car">
+                    <img id="car-2" src="src/2-5-car.png" alt="" class="car">
+                    <div class="finger fingerAnimation"></div>
                 </div>
                 <ul class="content">
                     <li></li>
@@ -185,6 +177,33 @@
             </div>
         </div>
     </div>
+    <img class="downTip fadeInDown" src="src/downTip.svg" >
+
+    <!-- 车型详情展示页 -->
+    <div class="carInfoDialog" id="carInfoDialog" style="display: none">
+        <div class="content">
+            <div class="menu"></div>
+        </div>
+        <div class="btnDrive">预约试驾</div>
+    </div>
+
+    <!-- 留资信息 -->
+    <div class="commitDialog" id="commitDialog" style="display: none">
+        <div class="contentFrame">
+            <div class="closeDiv"><a href="javascript:closeCommitDialog();"><img class="close" src="src/4-close.png"></a></div>
+            <div class="infoDiv">
+                <input type="hidden" name="flag" value="yss330" />
+                <label>姓&nbsp;&nbsp;&nbsp;名：<input name="realname" id="realname" type="text" /></label>
+                <label>手&nbsp;&nbsp;&nbsp;机：<input name="mobile" id="mobile" type="tel" /></label>
+                <label>省&nbsp;&nbsp;&nbsp;份：<select name="province" id="province"><option>请选择</option></select></label>
+                <label>城&nbsp;&nbsp;&nbsp;市：<select name="city" id="city"><option>请选择</option></select></label>
+                <label>经销商：<select name="dealer" id="dealer" ><option>请选择</option></select></label>
+                <button id="btnSubmit">提交</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 音乐控制 -->
     <a href="javascript:clickToggle();"><div id="audioPlayer" class="rotateRingAni"></div></a>
     <audio id="clickSound" autoplay="autoplay" style="position: absolute;z-index: -1;opacity: 0" loop="loop"><source src="src/bg.mp3"></audio>
 
@@ -197,9 +216,10 @@
     </div>
 
     <!-- js 部分 -->
-    <script type="text/javascript" src="../public/scripts/jquery-1.12.1.min.js"></script>
-    <script type="text/javascript" src="../public/scripts/pace.js"></script>
+    <script type="text/javascript" src="http://wx.bjczxda.com/public/scripts/jquery-1.12.1.min.js"></script>
+    <script type="text/javascript" src="http://wx.bjczxda.com/public/scripts/pace.js"></script>
     <script type="text/javascript" src="./js/iscroll.js"></script>
+    <script type="text/javascript" src="./js/Sprite.js"></script>
     <script type="text/javascript" src="./js/loading.js"></script>
 
     <!-- 提交信息 -->

@@ -95,51 +95,69 @@ select {
   background: transparent url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAAJCAMAAADepFZYAAAAOVBMVEUAAABFJwdFJwdFJwdFJwdFJwdFJwdFJwdFJwdFJwdFJwdFJwdFJwdFJwdFJwdFJwdFJwdFJwdFJwcIUp7IAAAAEnRSTlMA++6mD9+EOfHnxrmad11EIheCwoUqAAAAQklEQVQI103MSQ7AIAxDUacE6NzC/Q+LFQLibaK/iHFvJNUEaKxDVCCLh2TQ45VgLosTXTkY+w/38fXFlDi+CGqnAR/UA5PZbQIAAAAAAElFTkSuQmCC") no-repeat 8.5rem center;
   background-size: 0.5rem 0.3rem; }
 
-#commitInfoDialog {
+#commitDialog {
   position: fixed;
-  top: 0;
-  left: 0;
+  margin: 0 auto;
   width: 100%;
   height: 100%;
+  border: 0;
+  overflow: hidden;
+  background-color: #fff;
+  z-index: 10;
   z-index: 11; }
-  #commitInfoDialog .contentFrame {
+  #commitDialog .contentFrame {
     position: absolute;
     left: 50%;
     top: 50%;
-    margin-left: -6.5rem;
-    margin-top: -9rem;
-    width: 13rem;
-    height: 18rem; }
-    #commitInfoDialog .contentFrame .closeDiv {
+    margin-left: -8.3rem;
+    margin-top: -9.4rem;
+    width: 16.6rem;
+    height: 18.8rem;
+    background: url("../src/4-bg.png") no-repeat;
+    background-size: 100% auto; }
+    #commitDialog .contentFrame .closeDiv {
       width: 100%;
-      height: 2rem; }
-      #commitInfoDialog .contentFrame .closeDiv .close {
+      height: 3rem; }
+      #commitDialog .contentFrame .closeDiv .close {
         float: right;
-        margin-right: 0.5rem;
-        margin-top: 0.5rem;
-        width: 0.8rem;
-        height: 0.8rem; }
-    #commitInfoDialog .contentFrame .infoDiv label {
+        margin-right: 1rem;
+        margin-top: 1rem;
+        width: 1.5rem;
+        height: 1.5rem; }
+    #commitDialog .contentFrame .infoDiv {
       display: block;
-      width: 100%;
-      line-height: 1.2rem;
-      font-size: 0.65rem;
-      margin-top: 0.5rem; }
-    #commitInfoDialog .contentFrame .infoDiv #btnSubmit {
-      color: white;
-      width: 9.5rem;
-      text-align: center;
-      font-size: 0.65rem;
-      height: 1.8rem;
-      line-height: 1.8rem;
-      margin-top: 0.8rem;
-      margin-left: 3.5rem;
-      background-color: #1ab97f; }
+      margin: 2rem auto 0;
+      width: 14rem; }
+      #commitDialog .contentFrame .infoDiv label {
+        display: block;
+        width: 100%;
+        line-height: 1.2rem;
+        font-size: 0.65rem;
+        margin-top: 0.5rem; }
+      #commitDialog .contentFrame .infoDiv #btnSubmit {
+        display: block;
+        margin: 0.8rem auto 0;
+        color: white;
+        width: 5.75rem;
+        text-align: center;
+        font-size: 0.65rem;
+        height: 2.2rem;
+        line-height: 2.2rem;
+        background: url("../src/4-btnBg.png") no-repeat;
+        background-size: 5.75rem 2.2rem; }
+
+html {
+  user-select: none; }
 
 #loadingDialog {
   position: fixed;
+  margin: 0 auto;
   width: 100%;
   height: 100%;
+  border: 0;
+  overflow: hidden;
+  background-color: #fff;
+  z-index: 10;
   background: #FCFCFC url("../src/loading-bg.jpg") no-repeat center;
   background-size: cover;
   z-index: 100; }
@@ -167,7 +185,7 @@ select {
       color: #4B98D4; }
 
 #launchDialog {
-  position: absolute;
+  position: fixed;
   margin: 0 auto;
   width: 100%;
   height: 100%;
@@ -175,32 +193,31 @@ select {
   overflow: hidden;
   background-color: #fff;
   z-index: 10; }
-  #launchDialog .launchDiv {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-top: -603px;
-    margin-left: -375px;
-    width: 750px;
-    height: 1206px;
-    transform-origin: center;
-    -webkit-transform-origin: center;
-    background: url("../src/launch.jpg") no-repeat;
-    background-size: 3000% 1206px;
-    z-index: -1; }
   #launchDialog .finger {
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 128px;
-    height: 128px;
     margin-top: -32px;
+    width: 3.2rem;
+    height: 3.2rem;
     transform-origin: center;
     -webkit-transform-origin: center;
     background: url("../src/finger.png") no-repeat center;
-    background-size: cover;
+    background-size: 128px auto;
     display: none;
+    pointer-events: none;
     z-index: 3; }
+
+.downTip {
+  position: fixed;
+  left: 50%;
+  width: 1.6rem;
+  margin-left: -0.8rem;
+  bottom: 2rem;
+  animation-duration: 2s;
+  animation-fill-mode: both;
+  animation-iteration-count: infinite;
+  z-index: 3; }
 
 #audioPlayer {
   position: absolute;
@@ -373,6 +390,20 @@ select {
     width: 13rem;
     height: 6.6rem;
     z-index: 3; }
+  .section-5 .topDiv .finger {
+    width: 3.2rem;
+    height: 3.2rem;
+    transform-origin: center;
+    -webkit-transform-origin: center;
+    background: url("../src/finger.png") no-repeat center;
+    background-size: 128px auto;
+    display: none;
+    pointer-events: none;
+    z-index: 3;
+    position: absolute;
+    left: 50%;
+    margin-left: 1rem;
+    margin-top: 5.2rem; }
 .section-5 .content {
   width: 11.7rem;
   height: 4.75rem;
@@ -388,6 +419,29 @@ select {
     background-position-y: 50%; }
   .section-5 .content li:nth-child(3) {
     background-position-y: 100%; }
+
+#carInfoDialog {
+  position: fixed;
+  margin: 0 auto;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  overflow: hidden;
+  background-color: #fff;
+  z-index: 10;
+  background: #fff url("../src/3-topBg.jpg") no-repeat;
+  background-size: 100% auto;
+  z-index: 20; }
+
+@keyframes fadeInDown {
+  from {
+    opacity: 1;
+    transform: none; }
+  to {
+    opacity: 0;
+    transform: translate3d(0, 100%, 0); } }
+.fadeInDown {
+  animation-name: fadeInDown; }
 
 /*
 * 云朵动画
