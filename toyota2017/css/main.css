@@ -1,0 +1,336 @@
+@charset "UTF-8";
+/**
+ * 
+ * @authors Your Name (you@example.org)
+ * @date    2017-09-12 13:58:18
+ * @version $Id$
+ */
+.wrapper {
+	position: relative;
+	width: 100%;
+	height: 49.38rem;
+	background:url('../images/bg.jpg') left top no-repeat;
+	background-size: 100% 100%;
+	overflow: hidden; 
+}
+
+.wrapper .part1 {
+	position: relative;
+	width: 100%;
+	height: 32.4rem;
+	overflow: hidden;
+}
+
+.wrapper .part1 img,
+.wrapper .part2 img,
+.wrapper .part3 img 
+{ position: absolute; }
+
+.font {
+	display: none;
+	position: absolute;
+	width: .53rem;
+	left: 50%;
+	margin-left: -.265rem; 
+	animation: next 1.5s linear infinite alternate
+}
+
+.ganen {
+	width: 5.02rem;
+	top:.97rem;
+	right: .42rem;
+}
+.newFirend {
+	opacity: 0;
+	width: 1.63rem;
+	top:7.37rem;
+	left: .79rem;
+}
+.tip1 {
+	opacity: 0;
+	width: 4.17rem;
+	top:7.92rem;
+	right: .54rem;
+}
+.family {
+	opacity: 0;
+	width: 1.72rem;
+	top:9.43rem;
+	left: 1.04rem;
+}
+.carola {
+	opacity: 0;
+	width: 3.86rem;
+	top:10.24rem;
+	right: .94rem;
+}
+.tip2 {
+	opacity: 0;
+	width: 4.17rem;
+	top: 12.07rem;
+	left: .54rem;
+    z-index: 1;
+}
+.building { 
+	opacity: 0;
+	width: 4.15rem;
+	top: 12.1rem;
+    right: .53rem;
+}
+.crown {
+	opacity: 0;
+	width: 3.08rem;
+	top:13.87rem;
+	left: .5rem;
+	z-index: 1;
+}
+.tip3 {
+	opacity: 0;
+	width: 4.17rem;
+	top: 15.45rem;
+	right: .55rem;
+}
+.trees {
+	opacity: 0;
+	width: 5.21rem;
+	top: 16.05rem;
+    left: .68rem;
+}
+.rv4 {
+	opacity: 0;
+	width: 2.89rem;
+	top: 17.5rem;
+	right: .4rem;
+}
+.oldFirend {
+	opacity: 0;
+	width: 1.63rem;
+	top:18.87rem;
+	left: .8rem;
+}
+.tip4 {
+	opacity: 0;
+	width: 4.17rem;
+	top:20.3rem;
+	right: .86rem;
+}
+.lobster {
+	opacity: 0;
+	width: 2.79rem;
+	top:21.48rem;
+	left: .21rem;
+}
+.tip5 {
+	opacity: 0;
+	width: 4.17rem;
+	top:23.59rem;
+	left: 1.01rem;
+}
+.oil {
+	opacity: 0;
+	width: 2.97rem;
+	top:24.39rem;
+	right: 0;
+	z-index: 1;
+}
+.tip6 {
+	opacity: 0;
+	width: 4.17rem;
+	top:26.82rem;
+	left: .65rem;
+	z-index: 1;
+}
+.mountain {
+	opacity: 0;
+	width: 5.3rem;
+	top: 26rem;
+    right: .3rem;
+}
+.carola2 {
+	opacity: 0;
+	width: 2.8rem;
+	top:28.74rem;
+	left: .49rem;
+	z-index: 1;
+}
+
+
+.wrapper .part2 {
+	position: relative;
+	width: 100%;
+	height: 8.42rem;
+}
+
+.cheap{
+	display: none;
+	width: 3.67rem;
+	top:.54rem;
+	left: .56rem;
+}
+
+.rv42 {
+	opacity: 0;
+	width: 2.71rem;
+	top:1.86rem;
+	left: .72rem;
+}
+
+.carola3{
+	opacity: 0;
+	width: 2.84rem;
+	top:2.33rem;
+	left: 2.24rem;
+	z-index: 1;
+}
+
+.giftBox{
+	display: none;
+	width: 2.27rem;
+	top:1.26rem;
+	right: .75rem;
+}
+
+.info{
+	position: absolute;
+	width: 3.42rem;
+	height: 0rem;
+	top:4.36rem;
+	left: .56rem;
+	overflow: hidden;
+	transition: height 1s 1s;
+}
+
+.info img{
+	width: 100%;
+}
+
+.wrapper .part3{
+	position: relative;
+	width: 100%;
+	height: 8.56rem;
+} 
+
+.privilege{
+	display: none;
+	width: 3.61rem;
+	top:.53rem;
+	left: .56rem;
+}
+
+.gifts{
+	display: none;
+	width: 5.58rem;
+	top:.97rem;
+	right: 0;
+}
+
+
+.info2{
+	position: absolute;
+	width: 3.1rem;
+	height: 0rem;
+	top:4.7rem;
+	left: .56rem;
+	overflow: hidden;
+	transition: height 1s .5s;
+}
+
+.info2 img{
+	width: 100%;
+}
+
+.btn {
+	position: absolute;
+	left: .56rem;
+	display: block;
+	width: 6.38rem;
+	height: 1.02rem;
+	background: url('../images/gotit.png') center center no-repeat;
+	background-size: 2.19rem .5rem;
+	border-radius: 5px;
+}
+
+.btn_cheap {
+	display: none;
+	top: 5.93rem;
+	border: 3px solid white;
+}
+
+.btn_privilege {
+	display: none;
+	top: 6.26rem;
+	background-color: #f6a427;
+}
+
+.delay__5{
+	animation-delay: .5s;
+}
+
+.delay_1{
+	animation-delay: 1s;
+}
+
+.delay_1_5{
+	animation-delay: 1.5s;
+}
+
+.delay_2{
+	animation-delay: 2s;
+}
+
+.crownCrush {
+	animation-name: crownCrush;
+}
+
+@keyframes crownCrush {
+  0% { opacity: 0; transform: translate3d(30%, -30%, 0) scale(.7); }
+  100% { opacity: 1; transform: none; }
+}
+
+.rv4Crush {
+	animation-name: rv4Crush;
+}
+
+@keyframes rv4Crush {
+  0% { opacity: 0; transform: translate3d(-30%, -30%, 0) scale(.7); }
+  100% { opacity: 1; transform: none; }
+}
+
+.mountainBig{
+	animation-name: mountainBig;
+	transform-origin: center bottom; 
+}
+
+@keyframes mountainBig {
+  0% { opacity: 0; transform: scale(.7); }
+  100% { opacity: 1; transform: none; }
+}
+
+.rv42Crush{
+	animation-name: rv42Crush;
+}
+
+@keyframes rv42Crush {
+  0% { opacity: 0; transform: translate3d(20%, -20%, 0) scale(.8); }
+  100% { opacity: 1; transform: none; }
+}
+
+.carola3Crush{
+	animation-name: carola3Crush;
+}
+
+@keyframes carola3Crush {
+  0% { opacity: 0; transform: translate3d(20%, -20%, 0) scale(.8); }
+  100% { opacity: 1; transform: none; }
+}
+
+@keyframes next{
+  0% {
+    transform: translateY(0);
+    -webkit-transform: translateY(0);
+  }
+  100% {
+    transform: translateY(20px);
+    -webkit-transform: translateY(20px);
+  }
+}
