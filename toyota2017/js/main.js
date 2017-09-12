@@ -30,36 +30,36 @@ function startInit(){
 		var sh = $(window).scrollTop();
 		
         if((sh + h) > s1_offset && section_1){
-			console.log('scroll: '+ sh + ' s1_offset:' + s1_offset);
+			// console.log('scroll: '+ sh + ' s1_offset:' + s1_offset);
 			section_1 = false;
 			$('.building').addClass('animated fadeIn');
 			$('.tip2').addClass('animated delay__5 fadeInLeft');
 			$('.crown').addClass('animated delay__5 crownCrush');
 		}else if((sh + h) > s2_offset && section_2){
-			console.log('scroll: '+ sh + ' s2_offset:' + s2_offset);
+			// console.log('scroll: '+ sh + ' s2_offset:' + s2_offset);
 			section_2 = false;
 			$('.rv4').addClass('animated rv4Crush');
 			$('.trees').addClass('animated fadeIn');
 			$('.tip3').addClass('animated delay__5 fadeInRight');
 		}else if((sh + h) > s3_offset && section_3){
-			console.log('scroll: '+ sh + ' s3_offset:' + s3_offset);
+			// console.log('scroll: '+ sh + ' s3_offset:' + s3_offset);
 			section_3 = false;
 			$('.lobster').addClass('animated fadeInRight');
 			$('.oldFirend').addClass('animated delay__5 fadeInLeft');
 			$('.tip4').addClass('animated delay__5 fadeInRight');
 		}else if((sh + h) > s4_offset && section_4){
-			console.log('scroll: '+ sh + ' s4_offset:' + s4_offset);
+			// console.log('scroll: '+ sh + ' s4_offset:' + s4_offset);
 			section_4 = false;
 			$('.oil').addClass('animated fadeInLeft');
 			$('.tip5').addClass('animated delay__5 fadeInRight');
 		}else if((sh + h) > s5_offset && section_5){
-			console.log('scroll: '+ sh + ' s5_offset:' + s5_offset);
+			// console.log('scroll: '+ sh + ' s5_offset:' + s5_offset);
 			section_5 = false;
 			$('.carola2').addClass('animated crownCrush');
 			$('.mountain').addClass('animated mountainBig');
 			$('.tip6').addClass('animated delay__5 fadeInLeft');
 		}else if((sh + h) > s6_offset && section_6){
-			console.log('scroll: '+ sh + ' s6_offset:' + s6_offset);
+			// console.log('scroll: '+ sh + ' s6_offset:' + s6_offset);
 			section_6 = false;
 			$('.rv42').addClass('animated rv42Crush');
 			$('.carola3').addClass('animated carola3Crush');
@@ -71,7 +71,7 @@ function startInit(){
 				$('.btn_cheap').removeClass('delay__5 zoomIn').addClass('infinite pulse')
 			});
 		}else if((sh + h) > s7_offset && section_7){
-			console.log('scroll: '+ sh + ' s7_offset:' + s7_offset);
+			// console.log('scroll: '+ sh + ' s7_offset:' + s7_offset);
 			section_7 = false;
 			$('.gifts').show().addClass('animated bounceIn');
 			$('.privilege').show().addClass('animated delay__5 bounceIn');
