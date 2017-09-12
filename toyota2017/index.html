@@ -14,6 +14,7 @@
 <link href="css/reset-h5.css" rel="stylesheet">
 <link href="css/animate.css" rel="stylesheet">
 <link href="css/main.css" rel="stylesheet">
+<link href="css/rotatePhone.css" rel="stylesheet">
 </head>
 <body>
  <!--屏幕兼容代码-->
@@ -30,6 +31,14 @@
         document.documentElement.style.fontSize = (deviceWidth / 7.5) + 'px'; //375 fontSize = 50px
     })();
 </script>
+<!-- 横屏提示 -->
+<div id="orientLayer">
+    <div class="contentFrame">
+        <img class="phone rotatePhoneAnimation" src="images/img_rotatePhone.png"/>
+        <p class="tipTitle">为了更好的体验，请使用竖屏浏览</p>
+    </div>
+</div>
+
 <div class="wrapper">
  <div class="part1">
     <!-- <img class="font" src="images/font.png"> -->
