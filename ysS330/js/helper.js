@@ -1,4 +1,4 @@
-let helper = {
+var helper = {
     getCookie: function getCookie(c_name) {
         if (document.cookie.length>0)
         {
@@ -15,19 +15,19 @@ let helper = {
     },
     setCookie: function setCookie(c_name,value,expiredays)
     {
-        let exdate=new Date();
+        var exdate=new Date();
         exdate.setDate(exdate.getDate()+expiredays);
         document.cookie=c_name+ "=" +escape(value)+
             ((expiredays==null) ? "" : ";expires="+exdate.toGMTString());
     },
     require: function request(paras){
-        let url = location.search;
-        let paraString = url.substring(url.indexOf("?")+1,url.length).split("&");
-        let paraObj = {};
+        var url = location.search;
+        var paraString = url.substring(url.indexOf("?")+1,url.length).split("&");
+        var paraObj = {};
         for (i=0; j=paraString[i]; i++){
             paraObj[j.substring(0,j.indexOf("=")).toLowerCase()] = j.substring(j.indexOf("=")+1,j.length);
         }
-        let returnValue = paraObj[paras.toLowerCase()];
+        var returnValue = paraObj[paras.toLowerCase()];
         if(typeof(returnValue)=="undefined"){
             return "";
         }else{

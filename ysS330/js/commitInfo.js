@@ -2,7 +2,7 @@
  * Created by zhulinhai on 17/8/29.
  */
 
-let commitInfoHandler = {
+var commitInfoHandler = {
     host : 'http://api.bjczxda.com/api',
     bindInfo: function () {
         $.get("./js/libs/data.json", function (data, status) {
@@ -10,7 +10,7 @@ let commitInfoHandler = {
                 const $province = $('#province'),
                     $city = $('#city'),
                     $dealer = $('#dealer');
-                let provinces = data.province,
+                var provinces = data.province,
                     cities = data.city,
                     dealers = data.dealer;
 
@@ -19,7 +19,7 @@ let commitInfoHandler = {
                     $dealer.empty().html('<option>请选择</option>');
 
                     if ($province.val() != '请选择') {
-                        for (let j = 0; j < data.city.length; j++)
+                        for (var j = 0; j < data.city.length; j++)
                             if (cities[j].p == $('#province').val())
                                 $city.append('<option>' + cities[j].c + '</option>');
                     }
@@ -28,20 +28,20 @@ let commitInfoHandler = {
                 $city.change(function () {
                     $dealer.empty().html('<option>请选择</option>');
                     if ($city.val() != '请选择') {
-                        for (let j = 0; j < dealers.length; j++)
+                        for (var j = 0; j < dealers.length; j++)
                             if (dealers[j].d == $city.val())
                                 $dealer.append('<option>' + dealers[j].c + '</option>');
                     }
                 });
 
-                for (let i = 0; i < provinces.length; i++) $province.append('<option>' + provinces[i].p + '</option>');
+                for (var i = 0; i < provinces.length; i++) $province.append('<option>' + provinces[i].p + '</option>');
             }
         });
         $('#btnSubmit').click(this.submitInfo);
     },
 
     submitInfo : function () {
-        let flag, name, mobile, province, city, dealer;
+        var flag, name, mobile, province, city, dealer;
         flag = helper.trim($("input[name='flag']").val());
         name = helper.trim($("input[name='realname']").val());
         mobile = helper.trim($("input[name='mobile']").val());
@@ -66,13 +66,13 @@ let commitInfoHandler = {
             return 0;
         }
 
-        let url = host + '/ysS330/luckyDraw?flag=' + flag + '&name=' + name + '&mobile=' + mobile + '&province=' + province + '&city=' + city + '&dealer=' + dealer;
+        var url = host + '/ysS330/luckyDraw?flag=' + flag + '&name=' + name + '&mobile=' + mobile + '&province=' + province + '&city=' + city + '&dealer=' + dealer;
         $.ajax({
             type: "post",
             url: url,
             dataType: "json",
             success: function (data) {
-                let response = eval('(data)');
+                var response = eval('(data)');
                 console.log(response);
                 if (response.success) {
 

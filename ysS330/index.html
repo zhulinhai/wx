@@ -32,41 +32,6 @@
         })(document, window);
     </script>
     <!-- end -->
-    <style>
-
-        #wrapper {
-            position: absolute;
-            z-index: 1;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #ccc;
-            overflow: hidden;
-        }
-
-        #scroller {
-            position: absolute;
-            z-index: 1;
-            -webkit-tap-highlight-color: rgba(0,0,0,0);
-            width: 100%;
-            background-color: white;
-            -webkit-transform: translateZ(0);
-            -moz-transform: translateZ(0);
-            -ms-transform: translateZ(0);
-            -o-transform: translateZ(0);
-            transform: translateZ(0);
-            -webkit-touch-callout: none;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-            -webkit-text-size-adjust: none;
-            -moz-text-size-adjust: none;
-            -ms-text-size-adjust: none;
-            -o-text-size-adjust: none;
-            text-size-adjust: none;
-        }
-    </style>
 </head>
 <body ontouchmove="event.preventDefault();">
     <!-- loading页 -->
@@ -74,7 +39,7 @@
         <div class="content">
             <div class="loading-clouds bgAnimation">
                 <figure>
-                    <img class="loading-email animated emailAnimation infinite" src="src/loading-email.jpg">
+                    <img class="loading-email animated emailAnimation infinite" src="data:image/jpeg;base64,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">
                 </figure>
             </div>
             <p id="loading-percent">0%</p>
@@ -91,48 +56,50 @@
     <div id="wrapper">
         <div id="scroller">
             <div class="section section-1">
-                <div class="titleFrame">
+                <div class="titleFrame" style="display: none">
                     <img src="src/2-1-title.jpg" class="title">
                     <img class="sun" src="src/2-sun.png">
                 </div>
-                <ul class="content">
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
+                <ul class="content" style="display: none">
+                    <li class="animated fadeInUp"></li>
+                    <li class="animated fadeInUp"></li>
+                    <li class="animated fadeInUp"></li>
+                    <li class="animated fadeInUp"></li>
                 </ul>
-                <div class="bottom">
+                <div class="bottom" style="display: none">
                     <div class="cloud"></div>
                     <div class="cloud"></div>
-                    <img class="car" src="src/2-1-car.png">
+                    <img class="car" style="display: none" src="src/2-1-car.png">
                 </div>
             </div>
             <div class="section section-2">
-                <div class="titleFrame">
+                <div class="titleFrame" style="display: none">
                     <img src="src/2-2-title.jpg" alt="" class="title">
                 </div>
-                <div class="topDiv">
+                <div class="topDiv" style="display: none">
                     <img src="src/2-2-mountain.png" alt="" class="mountain">
                 </div>
                 <div class="videoFrame" style="width: 100%;">
-                    <img style="width: 100%" src="src/placeHolder-1.jpg">
+                    <img src="src/placeHolder-1.jpg" style="display: none" width="100%">
+                    <canvas id="ximalayaCanvas" style="display: none"></canvas>
                 </div>
-                <ul class="content">
-                    <li></li>
-                    <li></li>
-                    <li></li>
+                <ul class="content" style="display: none">
+                    <li class="animated fadeInUp"></li>
+                    <li class="animated fadeInUp"></li>
+                    <li class="animated fadeInUp"></li>
                 </ul>
             </div>
             <div class="section section-3">
-                <div class="titleFrame">
+                <div class="titleFrame" style="display: none">
                     <img src="src/2-3-title.jpg" alt="" class="title">
                     <img class="sun" src="src/2-sun.png">
                 </div>
-                <div class="topDiv">
+                <div class="topDiv" style="display: none">
                     <img src="src/2-3-left.jpg" alt="" class="title-left">
                 </div>
                 <div class="videoFrame" style="width: 100%;">
-                    <img style="width: 100%" src="src/placeHolder-2.jpg">
+                    <img src="src/placeHolder-2.jpg" style="display: none" width="100%">
+                    <canvas id="zhuifeijiCanvas" style="display: none"></canvas>
                 </div>
                 <ul class="content">
                     <li></li>
@@ -142,16 +109,17 @@
                 </ul>
             </div>
             <div class="section section-4">
-                <div class="titleFrame">
+                <div class="titleFrame" style="display: none">
                     <img src="src/2-4-title.jpg" alt="" class="title">
                     <img class="moon" src="src/2-4-moon.jpg">
                 </div>
-                <div class="topDiv">
+                <div class="topDiv" style="display: none">
                     <img src="src/2-4-left.jpg" alt="" class="title-left">
                     <div class="star"></div>
                 </div>
                 <div class="videoFrame" style="width: 100%;">
-                    <img style="width: 100%" src="src/placeHolder-3.jpg">
+                    <img src="src/placeHolder-3.jpg" style="display: none" width="100%">
+                    <canvas id="danceCanvas" style="display: none"></canvas>
                 </div>
                 <ul class="content">
                     <li></li>
@@ -160,7 +128,7 @@
                 </ul>
             </div>
             <div class="section section-5">
-                <div class="topDiv">
+                <div class="topDiv" style="display: none">
                     <ul class="clouds">
                         <li></li>
                         <li></li>
@@ -169,7 +137,7 @@
                     <img id="car-2" src="src/2-5-car.png" alt="" class="car">
                     <div class="finger fingerAnimation"></div>
                 </div>
-                <ul class="content">
+                <ul class="content" style="display: none">
                     <li></li>
                     <li></li>
                     <li></li>
@@ -177,7 +145,7 @@
             </div>
         </div>
     </div>
-    <img class="downTip fadeInDown" src="src/downTip.svg" >
+    <img id="downTip" class="downTip animated flash infinite" style="display: none" src="src/downTip.svg" >
 
     <!-- 车型详情展示页 -->
     <div class="carInfoDialog" id="carInfoDialog" style="display: none">
@@ -219,7 +187,8 @@
     <script type="text/javascript" src="http://wx.bjczxda.com/public/scripts/jquery-1.12.1.min.js"></script>
     <script type="text/javascript" src="http://wx.bjczxda.com/public/scripts/pace.js"></script>
     <script type="text/javascript" src="./js/iscroll.js"></script>
-    <script type="text/javascript" src="./js/Sprite.js"></script>
+    <script type="text/javascript" src="./js/iscroll-probe.js"></script>
+    <script type="text/javascript" src="./js/section.js"></script>
     <script type="text/javascript" src="./js/loading.js"></script>
 
     <!-- 提交信息 -->

@@ -14,7 +14,7 @@ var _extends = Object.assign || function (target) {
 };
 
 function Sprite(canvas, opts) {
-    let defaults = {
+    var defaults = {
         loop: false,  // 是否循环播放
         frameIndex: 0,  // 当前第几帧
         startFrameIndex: 0, // 其实渲染位置
@@ -27,7 +27,7 @@ function Sprite(canvas, opts) {
         sprite: undefined  // 图片 image 对象
     };
 
-    let params = opts || {};
+    var params = opts || {};
     this.canvas = canvas;
     this.ctx = canvas.getContext('2d');
     this.options = _extends({}, defaults, params);
