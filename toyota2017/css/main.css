@@ -36,6 +36,7 @@
 }
 
 .ganen {
+	opacity: 0;
 	width: 5.02rem;
 	top:.97rem;
 	right: .42rem;
@@ -197,7 +198,7 @@
 	top:4.36rem;
 	left: .56rem;
 	overflow: hidden;
-	transition: height 1s 1s;
+	transition: height 1s .5s;
 }
 
 .info img{
