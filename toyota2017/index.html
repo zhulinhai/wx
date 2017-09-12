@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="x5-fullscreen" content="true">
+<meta name="full-screen" content="yes">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+<title>一汽丰田</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<style type="text/css" media="screen">
+  	.stage {
+  		width: 800px;
+  		height: 100px;
+  		border: 1px solid gray;
+  		margin: 80px auto;
+  		perspective: 1000px;
+  	}
+
+    .stage .container {
+    	position: relative;
+    	width: 200px;
+    	height: 100%;
+    	margin: 0 auto;
+    	transition: transform 1s;
+    	transform-style:preserve-3d;
+    }
+
+  	.stage .item {
+  		position: absolute;
+  		width: 100%;
+  		height: 100%;
+  		left: 0;
+  		top:0;
+  	}
+
+  	#i_1{
+  		background-color: red;
+  		transform: rotateY(0deg) translateZ(193.2px);
+  	}
+  	#i_2 {
+  		background-color: yellow;
+  		transform: rotateY(120deg) translateZ(193.2px);
+  	}
+  	#i_3 {
+  		background-color: blue;
+  		transform: rotateY(240deg) translateZ(193.2px);
+  	}
+</style>
+</head>
+<body>
+ <!--屏幕兼容代码-->
+<script type="text/javascript">
+    (function() {
+        // deicePixelRatio ：设备像素
+        var scale = 1 / devicePixelRatio;
+        if(navigator.userAgent.indexOf('iPhone')!=-1){
+            //设置meta 压缩界面 模拟设备的高分辨率
+            document.querySelector('meta[name="viewport"]').setAttribute('content', 'initial-scale=' + scale + ', maximum-scale=' + scale + ', minimum-scale=' + scale + ', user-scalable=no');
+        }
+        var deviceWidth = document.documentElement.clientWidth > 1300 ? 1300 : document.documentElement.clientWidth;
+        //按照640像素下字体为100px的标准来，得到一个字体缩放比例值 6.4
+        document.documentElement.style.fontSize = (deviceWidth / 6.4) + 'px'; //320 fontSize = 50px
+    })();
+</script>
+     <div class="stage">
+        <div id="container" class="container">
+	     	 <div id="i_1" class="item"></div>
+	     	 <div id="i_2" class="item"></div>
+	     	 <div id="i_3" class="item"></div>
+     	 </div>
+     </div>
+</body>
+<script type="text/javascript">
+	var container = document.getElementById('container');
+	var rotate = 0;
+	container.addEventListener('click',function(e){
+		rotate -= 120;
+		container.style.transform = 'rotateY('+rotate+'deg) translateZ(0)';
+	});
+	// document.getElementById('i_1').addEventListener('click',function(e){
+	// 	alert('i_1');
+	// });
+	// document.getElementById('i_2').addEventListener('click',function(e){
+	// 	alert('i_2');
+	// });
+	// document.getElementById('i_3').addEventListener('click',function(e){
+	// 	alert('i_3');
+	// });
+</script>
+</html>
