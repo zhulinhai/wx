@@ -5,7 +5,7 @@
 var commitInfoHandler = {
     host : 'http://api.bjczxda.com/api',
     bindInfo: function () {
-        $.get("./js/libs/data.json", function (data, status) {
+        $.get("./js/data.json", function (data, status) {
             if (status == 'success') {
                 const $province = $('#province'),
                     $city = $('#city'),

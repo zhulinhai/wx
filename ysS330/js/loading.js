@@ -53,6 +53,11 @@ var loadingHandler = {
         }
     },
     startInterval: function () {
+        this.myInterval = setInterval(function(){
+            var progress = parseInt(document.querySelectorAll('.pace-progress')[0].getAttribute("data-progress"));
+            loadingHandler.setLoadingPercent(progress);
+        },100);
+
         this.loadImages(30, 'src/launch/launch_0', function (images) {
             loadingHandler.launchImages = images;
             loadingHandler.isSpriteLoaded = true;
@@ -72,11 +77,6 @@ var loadingHandler = {
             loadingHandler.danceImages = images;
             loadingHandler.isDanceLoaded = true;
         });
-
-        this.myInterval = setInterval(function(){
-            var progress = parseInt(document.querySelectorAll('.pace-progress')[0].getAttribute("data-progress"));
-            loadingHandler.setLoadingPercent(progress);
-        },100);
     },
     clearInterval: function () {
         clearInterval(this.myInterval);
@@ -99,7 +99,6 @@ var loadingHandler = {
         spriteAnimate();
 
         function spriteAnimate() {
-
             if (index >= imageList.length) {
                 if (loop) {
                     index = 0;
@@ -160,21 +159,21 @@ var loadingHandler = {
     playPage1Ani: function () {
         $('#launchDialog').hide();
         /* 音乐播放状态  当前浏览器不支持自动播放 */
-        if (loadingHandler.musicPlayer.paused && !loadingHandler.isUserClicked) {
-            clickToggle();
-        }
+        if (loadingHandler.musicPlayer.paused && !loadingHandler.isUserClicked) { clickToggle(); }
+        $('#car-2').click(function () { loadingHandler.playPage2Ani(); });
 
-        $('#car-2').click(function () {
-            loadingHandler.playPage2Ani();
-        });
-
-        this.myScroll = new IScroll('#wrapper', { preventDefault: false, mouseWheel: true, click: true, disablePointer: false, bounce: true, momentum: false, probeType: 3});
+        this.myScroll = new IScroll('#wrapper', { preventDefault: true, mouseWheel: true, click: true, disablePointer: true, bounce: false, momentum: false, probeType: 2 });
         this.myScroll.on('scroll', updatePosition);
         playSection1Ani();
     },
     playPage2Ani: function () {
         $('#carInfoDialog').show();
-
+        initCarInfo();
+        $('#btnDrive').click(loadingHandler.playPage3Ani);
+    },
+    playPage3Ani: function () {
+        commitInfoHandler.bindInfo();
+        $('#commitDialog').show();
     },
     initElements: function () {
         this.musicPlayer= document.getElementById('clickSound');
@@ -189,7 +188,7 @@ Pace.once('hide', function() {
     loadingHandler.initElements();
 
     var checkInterval = setInterval(function(){
-        if (loadingHandler.isSpriteLoaded) {
+        if (loadingHandler.isSpriteLoaded && loadingHandler.isXimalayaLoaded && loadingHandler.isZfjLoaded && loadingHandler.isDanceLoaded ) {
             clearInterval(checkInterval);
             checkInterval = -1;
             loadingHandler.playLaunchAni();

@@ -4,20 +4,17 @@ input, select {
   -moz-box-sizing: border-box;  /*Firefox3.5+*/
   -webkit-box-sizing: border-box; /*Safari3.2+*/
   float: right;
-  width: 9.5rem;
+  width: 10.7rem;
   height: 1.2rem;
   line-height: 1.2rem;
   padding-right: 1rem;
-  margin-left: 0.5rem;
   color: #3E260C;
   font-size: 0.65rem;
-  border: 1px solid #5A5A5B;
   border-radius: inherit;
   background-color: transparent;
-  text-indent: 0.5rem;
 }
 select {
-  background: transparent url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAAJCAMAAADepFZYAAAAOVBMVEUAAABFJwdFJwdFJwdFJwdFJwdFJwdFJwdFJwdFJwdFJwdFJwdFJwdFJwdFJwdFJwdFJwdFJwdFJwcIUp7IAAAAEnRSTlMA++6mD9+EOfHnxrmad11EIheCwoUqAAAAQklEQVQI103MSQ7AIAxDUacE6NzC/Q+LFQLibaK/iHFvJNUEaKxDVCCLh2TQ45VgLosTXTkY+w/38fXFlDi+CGqnAR/UA5PZbQIAAAAAAElFTkSuQmCC") no-repeat 8.5rem center;
+  background: transparent url("../src/4-arrowDown.png") no-repeat 10rem center;
   background-size: 0.5rem 0.3rem;
 }
 
@@ -34,6 +31,7 @@ select {
 
 #commitDialog {
   @include dialog();
+  background-color: rgba(0,0,0,0.6);
   z-index: 11;
   .contentFrame {
     position: absolute;
@@ -56,16 +54,42 @@ select {
         height: 1.5rem;
       }
     }
+    .car {
+      position: absolute;
+      left: 50%;
+      width: 7rem;
+      margin-left: -1rem;
+      margin-top: 2rem;
+      z-index: 1;
+    }
     .infoDiv {
       display: block;
-      margin: 2rem auto 0;
+      margin: 3.5rem auto 0;
       width: 14rem;
-      label {
+      .item {
+        margin-top: 0.8rem;
+        width: 100%;
+        height: 1.3rem;
+      }
+      label,.l2 {
         display: block;
         width: 100%;
         line-height: 1.2rem;
         font-size: 0.65rem;
-        margin-top: 0.5rem;
+        border: 1px solid #5A5A5B;
+        text-indent: 0.5rem;
+      }
+      .l2 {
+        float: left;
+        width: 6.8rem;
+        select {
+          width: 3.5rem;
+          background: transparent url("../src/4-arrowDown.png") no-repeat 2.8rem center;
+          background-size: 0.5rem 0.3rem;
+        }
+      }
+      .l2:nth-child(2) {
+        float: right;
       }
       #btnSubmit {
         display: block;
