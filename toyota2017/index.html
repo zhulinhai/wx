@@ -2,53 +2,18 @@
 <html>
 <head>
 <meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<meta name="x5-fullscreen" content="true">
-<meta name="full-screen" content="yes">
 <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
 <title>一汽丰田</title>
-<meta name="description" content="">
-<meta name="keywords" content="">
-<link href="" rel="stylesheet">
-<style type="text/css" media="screen">
-  	.stage {
-  		width: 800px;
-  		height: 100px;
-  		border: 1px solid gray;
-  		margin: 80px auto;
-  		perspective: 1000px;
-  	}
-
-    .stage .container {
-    	position: relative;
-    	width: 200px;
-    	height: 100%;
-    	margin: 0 auto;
-    	transition: transform 1s;
-    	transform-style:preserve-3d;
-    }
-
-  	.stage .item {
-  		position: absolute;
-  		width: 100%;
-  		height: 100%;
-  		left: 0;
-  		top:0;
-  	}
-
-  	#i_1{
-  		background-color: red;
-  		transform: rotateY(0deg) translateZ(193.2px);
-  	}
-  	#i_2 {
-  		background-color: yellow;
-  		transform: rotateY(120deg) translateZ(193.2px);
-  	}
-  	#i_3 {
-  		background-color: blue;
-  		transform: rotateY(240deg) translateZ(193.2px);
-  	}
-</style>
+<meta name="wxm:timeline_title" content="感恩有你为伴，新朋老友都有礼">
+<meta name="wxm:appmessage_title" content="感恩有你为伴，新朋老友都有礼">
+<meta name="wxm:appmessage_desc" content="豪礼任性送，惊喜嗨翻天">
+<!-- 分享缩略图，必须为绝对路径，且图片链接必须为http协议（由于安卓微信客户端无法获取https的分享图片，仅此处需要强制http协议）-->
+<meta name="wxm:img_url" content="http://wx.bjczxda.com/toyota2017/images/thumb.jpg">
+<!-- 分享链接-->
+<meta name="wxm:link" content="http://wx.bjczxda.com/toyota2017/index.html">
+<link href="css/reset-h5.css" rel="stylesheet">
+<link href="css/animate.css" rel="stylesheet">
+<link href="css/main.css" rel="stylesheet">
 </head>
 <body>
  <!--屏幕兼容代码-->
@@ -58,36 +23,56 @@
         var scale = 1 / devicePixelRatio;
         if(navigator.userAgent.indexOf('iPhone')!=-1){
             //设置meta 压缩界面 模拟设备的高分辨率
-            document.querySelector('meta[name="viewport"]').setAttribute('content', 'initial-scale=' + scale + ', maximum-scale=' + scale + ', minimum-scale=' + scale + ', user-scalable=no');
+            // document.querySelector('meta[name="viewport"]').setAttribute('content', 'initial-scale=' + scale + ', maximum-scale=' + scale + ', minimum-scale=' + scale + ', user-scalable=no');
         }
         var deviceWidth = document.documentElement.clientWidth > 1300 ? 1300 : document.documentElement.clientWidth;
-        //按照640像素下字体为100px的标准来，得到一个字体缩放比例值 6.4
-        document.documentElement.style.fontSize = (deviceWidth / 6.4) + 'px'; //320 fontSize = 50px
+        //按照750像素下字体为100px的标准来，得到一个字体缩放比例值 7.5
+        document.documentElement.style.fontSize = (deviceWidth / 7.5) + 'px'; //375 fontSize = 50px
     })();
 </script>
-     <div class="stage">
-        <div id="container" class="container">
-	     	 <div id="i_1" class="item"></div>
-	     	 <div id="i_2" class="item"></div>
-	     	 <div id="i_3" class="item"></div>
-     	 </div>
-     </div>
+<div class="wrapper">
+ <div class="part1">
+    <!-- <img class="font" src="images/font.png"> -->
+	<img class="ganen" src="images/ganen.png" alt="感恩有你">
+	<img class="newFirend" src="images/newFirend.png" alt="知遇新朋">
+	<img class="tip1" src="images/tip1.png" alt="感谢选择">
+	<img class="family" src="images/family.png" alt="家人">
+	<img class="carola" src="images/carola.png" alt="卡罗拉">
+	<img class="tip2" src="images/tip2.png" alt="感谢相遇">
+	<img class="crown" src="images/crown.png" alt="皇冠">
+	<img class="building" src="images/building.png" alt="大楼">
+	<img class="tip3" src="images/tip3.png" alt="感谢信赖">
+	<img class="trees" src="images/trees.png" alt="树木">
+	<img class="rv4" src="images/rv4.png" alt="RV4">
+	<img class="oldFirend" src="images/oldFirend.png" alt="信念老友">
+	<img class="tip4" src="images/tip4.png" alt="感恩相伴">
+	<img class="lobster" src="images/lobster.png" alt="大龙虾">
+	<img class="tip5" src="images/tip5.png" alt="感谢青睐">
+	<img class="oil" src="images/oil.png" alt="机油">
+	<img class="tip6" src="images/tip6.png" alt="感谢同路">
+	<img class="mountain" src="images/mountain.png" alt="山峰">
+	<img class="carola2" src="images/carola2.png" alt="卡罗拉2">
+ </div>
+ <div class="part2">
+ 	<img class="cheap" src="images/cheap.png" alt="特惠日">
+ 	<img class="rv42" src="images/rv42.png" alt="RV42">
+ 	<img class="carola3" src="images/carola3.png" alt="卡罗拉3">
+ 	<img class="giftBox" src="images/giftBox.png" alt="礼盒">
+ 	<div class="info">
+ 		<img src="images/info.png" alt="说明">
+ 	</div>
+ 	<a class="btn btn_cheap" href="javascript:void(0);"></a>
+ </div>
+ <div class="part3">
+ 	<img class="privilege" src="images/privilege.png" alt="特权日">
+ 	<img class="gifts" src="images/gifts.png" alt="礼物">
+ 	<div class="info2">
+ 		<img src="images/info2.png" alt="说明2">
+ 	</div>
+ 	<a class="btn btn_privilege" href="javascript:void(0);"></a>
+ </div>
+</div>
 </body>
-<script type="text/javascript">
-	var container = document.getElementById('container');
-	var rotate = 0;
-	container.addEventListener('click',function(e){
-		rotate -= 120;
-		container.style.transform = 'rotateY('+rotate+'deg) translateZ(0)';
-	});
-	// document.getElementById('i_1').addEventListener('click',function(e){
-	// 	alert('i_1');
-	// });
-	// document.getElementById('i_2').addEventListener('click',function(e){
-	// 	alert('i_2');
-	// });
-	// document.getElementById('i_3').addEventListener('click',function(e){
-	// 	alert('i_3');
-	// });
-</script>
+<script type="text/javascript" src="js/wxmoment.min.js"></script>
+<script type="text/javascript" src="js/main.js?v=12321323"></script>
 </html>
