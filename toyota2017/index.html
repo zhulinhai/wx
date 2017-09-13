@@ -4,17 +4,16 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
 <title>一汽丰田</title>
-<meta name="wxm:timeline_title" content="分享到朋友圈的标题">
-<meta name="wxm:appmessage_title" content="分享给好友的标题">
-<meta name="wxm:appmessage_desc" content="分享给好友的详情">
+<meta name="wxm:timeline_title" content="感恩有你为伴，新朋老友都有礼">
+<meta name="wxm:appmessage_title" content="感恩有你为伴，新朋老友都有礼">
+<meta name="wxm:appmessage_desc" content="豪礼任性送，惊喜嗨翻天">
 <!-- 分享缩略图，必须为绝对路径，且图片链接必须为http协议（由于安卓微信客户端无法获取https的分享图片，仅此处需要强制http协议）-->
-<meta name="wxm:img_url" content="">
+<meta name="wxm:img_url" content="http://wx.bjczxda.com/toyota2017/images/thumb.jpg">
 <!-- 分享链接-->
-<meta name="wxm:link" content="">
+<meta name="wxm:link" content="http://wx.bjczxda.com/toyota2017/index.html">
 <link href="css/reset-h5.css" rel="stylesheet">
 <link href="css/animate.css" rel="stylesheet">
 <link href="css/main.css" rel="stylesheet">
-<link href="css/rotatePhone.css" rel="stylesheet">
 </head>
 <body>
  <!--屏幕兼容代码-->
@@ -24,21 +23,13 @@
         var scale = 1 / devicePixelRatio;
         if(navigator.userAgent.indexOf('iPhone')!=-1){
             //设置meta 压缩界面 模拟设备的高分辨率
-            document.querySelector('meta[name="viewport"]').setAttribute('content', 'initial-scale=' + scale + ', maximum-scale=' + scale + ', minimum-scale=' + scale + ', user-scalable=no');
+            // document.querySelector('meta[name="viewport"]').setAttribute('content', 'initial-scale=' + scale + ', maximum-scale=' + scale + ', minimum-scale=' + scale + ', user-scalable=no');
         }
         var deviceWidth = document.documentElement.clientWidth > 1300 ? 1300 : document.documentElement.clientWidth;
         //按照750像素下字体为100px的标准来，得到一个字体缩放比例值 7.5
         document.documentElement.style.fontSize = (deviceWidth / 7.5) + 'px'; //375 fontSize = 50px
     })();
 </script>
-<!-- 横屏提示 -->
-<div id="orientLayer">
-    <div class="contentFrame">
-        <img class="phone rotatePhoneAnimation" src="images/img_rotatePhone.png"/>
-        <p class="tipTitle">为了更好的体验，请使用竖屏浏览</p>
-    </div>
-</div>
-
 <div class="wrapper">
  <div class="part1">
     <!-- <img class="font" src="images/font.png"> -->

@@ -1,8 +1,7 @@
 $(document).ready(function(e){
 	//横屏提示
-	// new WxMoment.OrientationTip(); 
+	new WxMoment.OrientationTip(); 
 	startInit();
-	// $('.font').css('top', window.innerHeight * .95 + 'px').show();
 });
 
 var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
