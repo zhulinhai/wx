@@ -4,6 +4,7 @@
 //pace加载页面
 paceOptions = {
     elements: true,
+    ajax: false,
     restartOnRequestAfter: false
 };
 
@@ -15,6 +16,7 @@ var loadingHandler = {
     myInterval: -1,
     launchCanvas: null,
     myScroll: null,
+    actScroll: null,
     musicPlayer: null,
     isSpriteLoaded: false,
     isXimalayaLoaded: false,
@@ -57,23 +59,22 @@ var loadingHandler = {
             var progress = parseInt(document.querySelectorAll('.pace-progress')[0].getAttribute("data-progress"));
             loadingHandler.setLoadingPercent(progress);
         },100);
-
         this.loadImages(30, 'src/launch/launch_0', function (images) {
             loadingHandler.launchImages = images;
             loadingHandler.isSpriteLoaded = true;
         });
 
-        this.loadImages(103, 'src/ximalaya/ximalaya_00', function (images) {
+        this.loadImages(52, 'src/ximalaya/ximalaya_00', function (images) {
             loadingHandler.ximalaImages = images;
             loadingHandler.isXimalayaLoaded = true;
         });
 
-        this.loadImages(158, 'src/zhuifeiji/zhuifeiji_00', function (images) {
+        this.loadImages(63, 'src/zhuifeiji/zhuifeiji_00', function (images) {
             loadingHandler.zfjImages = images;
             loadingHandler.isZfjLoaded = true;
         });
 
-        this.loadImages(59, 'src/dance/dance_00', function (images) {
+        this.loadImages(30, 'src/dance/dance_00', function (images) {
             loadingHandler.danceImages = images;
             loadingHandler.isDanceLoaded = true;
         });
@@ -96,7 +97,6 @@ var loadingHandler = {
         var canvas = document.createElement('canvas');
         canvas.width = w;
         canvas.height = h;
-        spriteAnimate();
 
         function spriteAnimate() {
             if (index >= imageList.length) {
@@ -112,12 +112,12 @@ var loadingHandler = {
                 if (lastDate) {
                     var differ = dateNow.getTime() - lastDate.getTime();
                     /* 24帧 每秒 防止屏幕性能时间短，快速播放完 */
-                    if (differ < 1000/24) {
+                    if (differ < 1000/ 24) {
                         requestAnimationFrame(spriteAnimate);
                         return;
                     }
                 }
-                /*启用离屏渲染*/ // ctx.drawImage(imageList[index], 0,0, w, h);
+                /*启用离屏渲染*/ //
                 canvas.getContext('2d').drawImage(imageList[index], 0,0, w, h);
                 ctx.drawImage(canvas, topX? topX:0, topY?topY:0, w, h);
                 index ++;
@@ -125,6 +125,7 @@ var loadingHandler = {
                 requestAnimationFrame(spriteAnimate);
             }
         }
+        requestAnimationFrame(spriteAnimate);
     },
     playGif: function (el, images) {
         var c = document.getElementById(el);
@@ -134,6 +135,7 @@ var loadingHandler = {
         loadingHandler.drawImages(images, ctx, c.width, c.height, null, true);
     },
     playLaunchAni: function () {
+        $('#launchDialog').show();
         $('#loadingDialog').hide();
 
         var c = document.getElementById('launchCanvas');
@@ -149,31 +151,27 @@ var loadingHandler = {
             topX = -(c.width - this.vWidth) /2;
         }
         var launchCtx = c.getContext('2d');
-        if (loadingHandler.isSpriteLoaded && loadingHandler.launchImages) {
-            loadingHandler.drawImages(loadingHandler.launchImages, launchCtx, c.width, c.height, function () {
-                $('.finger').show().addClass('fingerAnimation');
-                $('#launchDialog').click(loadingHandler.playPage1Ani);
-            }, false, topX, topY);
-        }
+        loadingHandler.drawImages(loadingHandler.launchImages, launchCtx, c.width, c.height, function () {
+            $('#launchFinger').show().addClass('fingerAnimation');
+            $('#launchDialog').click(loadingHandler.playPage1Ani);
+        }, false, topX, topY);
+
     },
     playPage1Ani: function () {
+        $('#wrapper').show();
         $('#launchDialog').hide();
         /* 音乐播放状态  当前浏览器不支持自动播放 */
         if (loadingHandler.musicPlayer.paused && !loadingHandler.isUserClicked) { clickToggle(); }
         $('#car-2').click(function () { loadingHandler.playPage2Ani(); });
 
-        this.myScroll = new IScroll('#wrapper', { preventDefault: true, mouseWheel: true, click: true, disablePointer: true, bounce: false, momentum: false, probeType: 2 });
+        this.myScroll = new IScroll('#wrapper', { preventDefault: true, mouseWheel: true, click: true, disablePointer: false, bounce: false, momentum: false, probeType: 3 });
         this.myScroll.on('scroll', updatePosition);
         playSection1Ani();
     },
     playPage2Ani: function () {
+        $('#wrapper').hide();
         $('#carInfoDialog').show();
         initCarInfo();
-        $('#btnDrive').click(loadingHandler.playPage3Ani);
-    },
-    playPage3Ani: function () {
-        commitInfoHandler.bindInfo();
-        $('#commitDialog').show();
     },
     initElements: function () {
         this.musicPlayer= document.getElementById('clickSound');
@@ -186,7 +184,6 @@ var loadingHandler = {
 Pace.once('hide', function() {
     loadingHandler.clearInterval();
     loadingHandler.initElements();
-
     var checkInterval = setInterval(function(){
         if (loadingHandler.isSpriteLoaded && loadingHandler.isXimalayaLoaded && loadingHandler.isZfjLoaded && loadingHandler.isDanceLoaded ) {
             clearInterval(checkInterval);
@@ -208,8 +205,25 @@ function clickToggle(){
     }
 }
 
+function showCommitDialog() {
+    commitInfoHandler.bindInfo();
+    $('#commitDialog').show();
+}
+
 function closeCommitDialog() {
     $('#commitDialog').hide();
+}
+
+function submitUserInfo() {
+    commitInfoHandler.submitInfo();
+}
+
+function showActRuleDialog() {
+    $('#actRuleDialog').show();
+}
+
+function closeActRuleDialog() {
+    $('#actRuleDialog').hide();
 }
 
 (function () {
@@ -219,13 +233,13 @@ function closeCommitDialog() {
      * 禁止浏览器触摸事件
      * */
     document.addEventListener('touchmove', function(event){
-        // 判断默认行为是否可以被禁用
-        if (event.cancelable) {
-            // 判断默认行为是否已经被禁用
-            if (!event.defaultPrevented) {
-                event.preventDefault();
-            }
-        }
+        // // 判断默认行为是否可以被禁用
+        // if (event.cancelable) {
+        //     // 判断默认行为是否已经被禁用
+        //     if (!event.defaultPrevented) {
+        //         event.preventDefault();
+        //     }
+        // }
     }, false);
 })();
 

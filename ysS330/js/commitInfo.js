@@ -37,9 +37,7 @@ var commitInfoHandler = {
                 for (var i = 0; i < provinces.length; i++) $province.append('<option>' + provinces[i].p + '</option>');
             }
         });
-        $('#btnSubmit').click(this.submitInfo);
     },
-
     submitInfo : function () {
         var flag, name, mobile, province, city, dealer;
         flag = helper.trim($("input[name='flag']").val());

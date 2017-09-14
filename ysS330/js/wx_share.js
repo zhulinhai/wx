@@ -1,9 +1,9 @@
 /**
  * Created by zlh on 2016/12/29.
  */
-let wxHandler = {
+var wxHandler = {
     initWxConf: function () {
-        let param = 'url='+encodeURIComponent(location.href);
+        var param = 'url='+encodeURIComponent(location.href);
         $.ajax({
             type:'GET',
             url:'http://api.bobo119.com/api/wx/signature?'+ param,
@@ -13,15 +13,15 @@ let wxHandler = {
                     return alert(rt.message);
                 }
 
-                const title ='传说中的宋元盖世宝藏已出，速速来揭秘'; // 分享标题
-                const link ='http://wx.bjczxda.com/bydsy2017/index.html';
-                const desc = '集齐3把钥匙即可开启宋元盖世宝藏，有机会抢先体验比亚迪宋元盖世升级版~'; // 分享描述
-                const imgUrl = 'http://wx.bjczxda.com/bydsy2017/src/shareLogo.jpg';
+                const title ='去喜马拉雅山的那些事'; // 分享标题
+                const link ='http://wx.bjczxda.com/ysS330/index.html';
+                const desc = '青春不止北上广，驭胜S330带你别young之旅'; // 分享描述
+                const imgUrl = 'http://wx.bjczxda.com/ysS330/src/shareLogo.jpg';
 
-                let wx_appId = rt.data.appId;
-                let wx_timestamp = rt.data.timestamp;
-                let wx_nonceStr = rt.data.nonceStr;
-                let wx_signature = rt.data.signature;
+                var wx_appId = rt.data.appId;
+                var wx_timestamp = rt.data.timestamp;
+                var wx_nonceStr = rt.data.nonceStr;
+                var wx_signature = rt.data.signature;
 
                 wx.config({
                     debug: false,
@@ -97,7 +97,7 @@ let wxHandler = {
                 });
             },
             error:function(error){
-                let eObj = error.responseJSON;
+                var eObj = error.responseJSON;
 
                 if(eObj)
                     alert(eObj.message);

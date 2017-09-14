@@ -1,5 +1,6 @@
 @import "common";
 @import "commitInfo";
+@import "swiper.min";
 
 html {
   font-size: 20px;
@@ -83,7 +84,7 @@ html {
 }
 
 #audioPlayer {
-  position: absolute;
+  position: fixed;
   top: 0.75rem;
   right: 0.75rem;
   width: 1.5rem;
@@ -99,7 +100,6 @@ html {
   left: 0;
   width: 100%;
   height: 100%;
-  background: #ccc;
   overflow: hidden;
 }
 
@@ -366,26 +366,16 @@ html {
       position: absolute;
       width: 100%;
       height: 8.75rem;
-      display: none;
       z-index: 1;
-      li {
-        width: 100%;
-        height: 1.55rem;
-        display: none;
-        background: url("../src/2-cloud.png") no-repeat 0 center;
+      .cloud {
+        width: 0.95rem;
+        height: 0.6rem;
       }
-      li:nth-child(1) {
-        background-size: 1rem auto;
-        background-position-x: 50%;
+      .cloud:nth-child(1) {
       }
-      li:nth-child(2){
-        height: 2.5rem;
-        background-size: 1.2rem auto;
-        background-position-x: 0;
+      .cloud:nth-child(2){
       }
-      li:nth-child(3){
-        background-size: 0.75rem auto;
-        background-position-x: 96%;
+      .cloud:nth-child(3){
       }
     }
     .car {
@@ -431,57 +421,200 @@ html {
 
 #carInfoDialog {
   @include dialog();
-  background: #fff url("../src/3-topBg.jpg") no-repeat;
+  background: #fff url("../src/3-bg.jpg") no-repeat 0 top;
   background-size: 100% auto;
-  z-index: 20;
+  z-index: 9;
+  .topBg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+  }
   .content {
+    position: absolute;
+    width: 100%;
+    height: 15rem;
+    padding-bottom: 3rem;
+    bottom: 0;
+    z-index: 2;
     #menuDiv {
-      width: 100%;
-      height: 1.35rem;
+      display: block;
+      margin: 0 auto 0.5rem;
+      width: 15rem;
+      height: 1.5rem;
       .item {
         display: inline-block;
-        float: right;
-        width: 4.1rem;
-        height: 1.35rem;
-      }
-      .item1 {
-        margin-right: -0.4rem;
+        float: left;
+        width: 5rem;
+        height: 1.5rem;
+        line-height: 1.5rem;
+        text-align: center;
+        font-size: 0.8rem;
+        color: #000;
         background: url("../src/3-btnBg-normal.png") no-repeat;
         background-size: 100% auto;
+        span {
+          font-size: 0.5rem;
+          margin-left: 0.2rem;
+        }
       }
-      .item2 {
-        margin-right: -0.4rem;
-        background: url("../src/3-btnBg-normal.png") no-repeat;
+      .itemHover {
+        color: #fff;
+        background: url("../src/3-btnBg-hover.png") no-repeat;
         background-size: 100% auto;
       }
-      .item3 {
-        width: 4.45rem;
-        background: url("../src/3-btnBg-normal.png") no-repeat;
-        background-size: 100% auto;
+      .item:nth-child(3) {
+        margin-right: 0;
       }
     }
 
     #mainContainer {
-      position: absolute;
-      width: 100%;
-      height: 14.3rem;
-      bottom: 0;
+      display: block;
+      margin: 0 auto;
+      width: 16rem;
+      height: 13rem;
       overflow: hidden;
-      border: 1px solid #B72E22;
-      transform: skew(-30deg);
-      -webkit-transform: skew(-30deg);
-      -moz-transform: skew(-30deg);
-      .main-container {
-        width: 100%;
-        height: 14.2rem;
-        transform: skew(30deg);
-        -webkit-transform: skew(30deg);
-        -moz-transform: skew(30deg);
-        img {
-          width: 100%;
+      .skewDiv {
+        position: absolute;
+        transform: skew(-40deg);
+        width: 18rem;
+        left: 50%;
+        margin-left: -9rem;
+        overflow: hidden;
+        .main-container {
+          width: 16rem;
+          margin-left: 1rem;
+          transform: skew(40deg);
+          overflow: hidden;
+          img {
+            width: 100%;
+          }
+        }
+      }
+      .pagination {
+        margin: 8rem 0 0.3rem;
+        .swiper-pagination-bullet {
+          background: #c8c8c8;
+        }
+        .swiper-pagination-bullet-active {
+          background: #f13819;
+        }
+      }
+      .arrowRight {
+        position: absolute;
+        right: 0.5rem;
+        margin-top: 5.2rem;
+        width: 2.5rem;
+        height: 2.5rem;
+        background: url("../src/3-arrowRight.png") no-repeat center bottom;
+        background-size: 1rem auto;
+        z-index: 2;
+      }
+      .bottom-container {
+        display: block;
+        margin: 0 auto;
+        width: 15.5rem;
+        height: 4rem;
+        overflow: hidden;
+        .swiper-slide {
+          width: 4.3rem;
+          height: 4rem;
+          line-height: 0.9rem;
+          font-size: 0.7rem;
         }
       }
     }
+  }
+  .btnDrive {
+    position: absolute;
+    right: 0.5rem;
+    bottom: 0.5rem;
+    width: 2.3rem;
+    height: 2.3rem;
+    border-radius: 2.3rem;
+    background: url("../src/3-dateDrive.png") no-repeat center;
+    background-size: 100% auto;
+    -webkit-animation: nucleus 3s infinite ease-in-out;
+    animation: nucleus 3s infinite ease-in-out;
+    z-index: 3;
+  }
+  .btnRule {
+    @extend .btnDrive;
+    background: url("../src/3-actRule.png") no-repeat center;
+    background-size: 100% auto;
+    right: 3.5rem;
+
+  }
+}
+
+.actRuleDialog {
+  @include dialog();
+  background-color: rgba(0,0,0,0.6);
+  z-index: 11;
+  .contentFrame {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -8.3rem;
+    margin-top: -9.4rem;
+    width: 16.6rem;
+    height: 18.8rem;
+    overflow: scroll;
+    .closeDiv {
+      position: fixed;
+      width: 16.7rem;
+      left: 50%;
+      margin-left: -8.3rem;
+      height: 3rem;
+      margin-top: 0;
+      z-index: 1;
+      .close {
+        float: right;
+        margin-right: 1rem;
+        margin-top: 1rem;
+        width: 1.5rem;
+        height: 1.5rem;
+      }
+    }
+    img {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+    }
+    .topDiv {
+      width: 100%;
+      height: 5.8rem;
+      background: url("../src/4-actRuleTop.png") no-repeat;
+      background-size: 100% auto;
+    }
+  }
+}
+
+/**
+ * 光晕效果
+ */
+@keyframes nucleus {
+  0% {
+    box-shadow: 0 0 0 transparent;
+  }
+  50% {
+    box-shadow: 0 0 0.5rem #f13819;
+  }
+  100% {
+    box-shadow: 0 0 0 transparent;
+  }
+}
+
+@-webkit-keyframes nucleus {
+  0% {
+    box-shadow: 0 0 0 transparent;
+  }
+  50% {
+    box-shadow: 0 0 0.5rem #f13819;
+  }
+  100% {
+    box-shadow: 0 0 0 transparent;
   }
 }
 
