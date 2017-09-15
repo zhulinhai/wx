@@ -32,7 +32,7 @@ select {
 #commitDialog {
   @include dialog();
   background-color: rgba(0,0,0,0.6);
-  z-index: 11;
+  z-index: 12;
   .contentFrame {
     position: absolute;
     left: 50%;

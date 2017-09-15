@@ -59,30 +59,10 @@ var loadingHandler = {
             var progress = parseInt(document.querySelectorAll('.pace-progress')[0].getAttribute("data-progress"));
             loadingHandler.setLoadingPercent(progress);
         },100);
-        this.loadImages(30, 'src/launch/launch_0', function (images) {
-            loadingHandler.launchImages = images;
-            loadingHandler.isSpriteLoaded = true;
-        });
-
-        this.loadImages(52, 'src/ximalaya/ximalaya_00', function (images) {
-            loadingHandler.ximalaImages = images;
-            loadingHandler.isXimalayaLoaded = true;
-        });
-
-        this.loadImages(63, 'src/zhuifeiji/zhuifeiji_00', function (images) {
-            loadingHandler.zfjImages = images;
-            loadingHandler.isZfjLoaded = true;
-        });
-
-        this.loadImages(30, 'src/dance/dance_00', function (images) {
-            loadingHandler.danceImages = images;
-            loadingHandler.isDanceLoaded = true;
-        });
     },
     clearInterval: function () {
         clearInterval(this.myInterval);
         this.myInterval = -1;
-        this.setLoadingPercent(100);
     },
     setLoadingPercent: function (progress) {
         if (progress < this.curProgress) {
@@ -93,8 +73,10 @@ var loadingHandler = {
     },
     drawImages: function (imageList, ctx, w, h , callBack, loop , topX, topY) {
         var index = 0;
-        var lastDate = null;
+        var differ = 0;
+        var lastDate = new Date();
         var canvas = document.createElement('canvas');
+        var canvasCtx = canvas.getContext('2d');
         canvas.width = w;
         canvas.height = h;
 
@@ -102,26 +84,30 @@ var loadingHandler = {
             if (index >= imageList.length) {
                 if (loop) {
                     index = 0;
-                    lastDate = null;
+                    lastDate = new Date();
                     requestAnimationFrame(spriteAnimate);
                 } else {
                     callBack&&callBack();
                 }
             } else {
                 var dateNow = new Date();
-                if (lastDate) {
-                    var differ = dateNow.getTime() - lastDate.getTime();
-                    /* 24帧 每秒 防止屏幕性能时间短，快速播放完 */
-                    if (differ < 1000/ 24) {
-                        requestAnimationFrame(spriteAnimate);
-                        return;
-                    }
+                differ = dateNow.getTime() - lastDate.getTime();
+                /* 24帧 每秒 防止屏幕性能时间短，快速播放完 */
+                if (differ < 1000/ 15) {
+                    requestAnimationFrame(spriteAnimate);
+                    return;
                 }
-                /*启用离屏渲染*/ //
-                canvas.getContext('2d').drawImage(imageList[index], 0,0, w, h);
-                ctx.drawImage(canvas, topX? topX:0, topY?topY:0, w, h);
-                index ++;
                 lastDate = dateNow;
+                /*启用离屏渲染*/ //
+                canvasCtx.save();
+                canvasCtx.clearRect(0,0,w,h);
+                canvasCtx.drawImage(imageList[index ++], 0,0, w, h);
+                canvasCtx.restore();
+
+                ctx.save();
+                ctx.clearRect(topX? topX:0, topY?topY:0,w,h);
+                ctx.drawImage(canvas, topX? topX:0, topY?topY:0, w, h);
+                canvasCtx.restore();
                 requestAnimationFrame(spriteAnimate);
             }
         }
@@ -164,9 +150,18 @@ var loadingHandler = {
         if (loadingHandler.musicPlayer.paused && !loadingHandler.isUserClicked) { clickToggle(); }
         $('#car-2').click(function () { loadingHandler.playPage2Ani(); });
 
-        this.myScroll = new IScroll('#wrapper', { preventDefault: true, mouseWheel: true, click: true, disablePointer: false, bounce: false, momentum: false, probeType: 3 });
+        this.myScroll = new IScroll('#wrapper', {
+            preventDefault: true,
+            fixedScrollBar: true,
+            mouseWheel: true,
+            click: true,
+            disablePointer: false,
+            bounce: true,
+            momentum: false,
+            probeType: 2
+        });
         this.myScroll.on('scroll', updatePosition);
-        playSection1Ani();
+        playSection1Ani(0);
     },
     playPage2Ani: function () {
         $('#wrapper').hide();
@@ -184,10 +179,30 @@ var loadingHandler = {
 Pace.once('hide', function() {
     loadingHandler.clearInterval();
     loadingHandler.initElements();
+    loadingHandler.loadImages(30, 'src/launch/launch_0', function (images) {
+        loadingHandler.launchImages = images;
+        loadingHandler.isSpriteLoaded = true;
+    });
+
+    loadingHandler.loadImages(44, 'src/ximalaya/ximalaya_00', function (images) {
+        loadingHandler.ximalaImages = images;
+        loadingHandler.isXimalayaLoaded = true;
+    });
+
+    loadingHandler.loadImages(63, 'src/zhuifeiji/zhuifeiji_00', function (images) {
+        loadingHandler.zfjImages = images;
+        loadingHandler.isZfjLoaded = true;
+    });
+
+    loadingHandler.loadImages(30, 'src/dance/dance_00', function (images) {
+        loadingHandler.danceImages = images;
+        loadingHandler.isDanceLoaded = true;
+    });
     var checkInterval = setInterval(function(){
         if (loadingHandler.isSpriteLoaded && loadingHandler.isXimalayaLoaded && loadingHandler.isZfjLoaded && loadingHandler.isDanceLoaded ) {
             clearInterval(checkInterval);
             checkInterval = -1;
+            loadingHandler.setLoadingPercent(100);
             loadingHandler.playLaunchAni();
         }
     },100);
@@ -224,6 +239,20 @@ function showActRuleDialog() {
 
 function closeActRuleDialog() {
     $('#actRuleDialog').hide();
+}
+
+function showTipDialog(isPrize) {
+    closeCommitDialog();
+
+    var $tipDialog = $('#tipResultDialog');
+    if (isPrize) {
+        $tipDialog.find('.contentFrame').css({'background':'url("src/4-success.png") no-repeat', 'background-size':'cover'});
+    }
+    $tipDialog.show();
+}
+
+function closeTipDialog() {
+    $('#tipResultDialog').hide();
 }
 
 (function () {

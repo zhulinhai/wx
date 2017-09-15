@@ -64,16 +64,16 @@ var commitInfoHandler = {
             return 0;
         }
 
-        var url = host + '/ysS330/luckyDraw?flag=' + flag + '&name=' + name + '&mobile=' + mobile + '&province=' + province + '&city=' + city + '&dealer=' + dealer;
+        var url = this.host + '/ysS330/luckyDraw?flag=' + flag + '&name=' + name + '&mobile=' + mobile + '&province=' + province + '&city=' + city + '&dealer=' + dealer;
         $.ajax({
             type: "post",
             url: url,
             dataType: "json",
             success: function (data) {
                 var response = eval('(data)');
-                console.log(response);
                 if (response.success) {
-
+                    console.log(response);
+                    showTipDialog(response.data.prize);
                 } else {
                     alert(response.message);
                 }

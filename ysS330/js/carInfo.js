@@ -43,11 +43,7 @@ function initSwipers() {
     mainSwiper = new Swiper ('.main-container', {
         direction: 'horizontal',
         pagination : '.pagination',
-        loop: false,
-        effect : 'fade',
-        fade: {
-            crossFade: true
-        }
+        loop: false
     });
     bottomSwiper = new Swiper('.bottom-container', {
         direction: 'horizontal',

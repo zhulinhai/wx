@@ -59,9 +59,10 @@
     <div id="wrapper" style="display:none">
         <div id="scroller">
             <div class="section section-1">
-                <div class="titleFrame cloud1Ani" style="display: none">
+                <div class="titleFrame" style="display: none">
                     <img src="src/2-1-title.jpg" class="title animated fadeInUp">
                     <img class="sun animated rotateInDownRight" src="src/2-sun.png">
+                    <img class="cloud animated fadeInRight" src="src/2-cloud.png">
                 </div>
                 <ul class="content" style="display: none">
                     <li class="animated fadeInUp"></li>
@@ -70,21 +71,28 @@
                     <li class="animated fadeInUp"></li>
                 </ul>
                 <div class="bottom" style="display: none">
-                    <div class="cloud"></div>
-                    <div class="cloud"></div>
+                    <img class="cloud animated fadeInRight" src="src/2-cloud.png">
+                    <img class="cloud animated fadeInRight" src="src/2-cloud.png">
                     <img class="car" style="display: none" src="src/2-1-car.png">
                 </div>
             </div>
             <div class="section section-2">
                 <div class="titleFrame" style="display: none">
-                    <img src="src/2-2-title.jpg" alt="" class="title animated fadeInUp">
-                    <div class="snowDiv"><img class="snow" src="src/2-snow.png"></div>
+                    <img src="src/2-2-title.jpg" alt="" class="title animated fadeInLeft">
+                    <div class="snowDiv">
+                        <img class="snow animated rotateInDownRight" src="src/2-snow.png">
+                        <img class="snow animated rotateInDownRight" src="src/2-snow.png">
+                        <img class="snow animated rotateInDownRight" src="src/2-snow.png">
+                        <img class="snow animated rotateInDownRight" src="src/2-snow.png">
+                    </div>
                 </div>
                 <div class="topDiv animated fadeInUp" style="display: none">
-                    <img src="src/2-2-mountain.png" alt="" class="mountain animated shake infinite">
+                    <div class="mountainDiv">
+                        <img src="src/2-2-mountain.png" alt="" class="mountain animated shake infinite">
+                    </div>
                 </div>
                 <div class="videoFrame" style="width: 100%;">
-                    <img id="placeHolder-1" style="display: none" src="src/ximalaya/ximalaya_0052.jpg">
+                    <img id="placeHolder-1" style="display: none" src="src/ximalaya/ximalaya_0044.jpg">
                     <canvas id="ximalayaCanvas" style="display: none"></canvas>
                 </div>
                 <ul class="content" style="display: none">
@@ -99,8 +107,10 @@
                     <img class="sun animated rotateInDownRight" src="src/2-sun.png">
                 </div>
                 <div class="topDiv" style="display: none">
-                    <img src="src/2-3-left.jpg" alt="" class="title-left animated fadeInUp">
-                    <img src="src/2-3-right.jpg" alt="" class="rightDiv animated shake infinite">
+                    <img src="src/2-3-left.jpg" alt="" class="title-left animated fadeInLeft">
+                    <div class="rightDiv">
+                        <img src="src/2-3-right.jpg" alt="" class="animated shakeUpDown infinite">
+                    </div>
                 </div>
                 <div class="videoFrame" style="width: 100%;">
                     <img id="placeHolder-2" style="display: none" src="src/zhuifeiji/zhuifeiji_0061.jpg">
@@ -116,11 +126,13 @@
             <div class="section section-4">
                 <div class="titleFrame" style="display: none">
                     <img src="src/2-4-title.jpg" alt="" class="title animated fadeInUp">
-                    <img class="moon animated fadeInRight" src="src/2-4-moon.jpg">
+                    <img class="moon animated rotateInDownRight" src="src/2-4-moon.jpg">
                 </div>
                 <div class="topDiv" style="display: none">
                     <img src="src/2-4-left.jpg" alt="" class="title-left">
-                    <div class="star animated shake infinite"></div>
+                    <div class="starDiv">
+                        <div class="star animated shake infinite"></div>
+                    </div>
                 </div>
                 <div class="videoFrame" style="width: 100%;">
                     <img id="placeHolder-3" style="display: none" src="src/dance/dance_0030.jpg">
@@ -135,9 +147,9 @@
             <div class="section section-5">
                 <div class="topDiv animated fadeInUp" style="display: none">
                     <div class="clouds">
-                        <img src="src/2-cloud.png" alt="" class="cloud">
-                        <img src="src/2-cloud.png" alt="" class="cloud">
-                        <img src="src/2-cloud.png" alt="" class="cloud">
+                        <img src="src/2-cloud.png" alt="" class="cloud animated fadeInUp">
+                        <img src="src/2-cloud.png" alt="" class="cloud animated fadeInUp">
+                        <img src="src/2-cloud.png" alt="" class="cloud animated fadeInUp">
                     </div>
                     <img id="car-2" src="src/2-5-car.png" alt="" class="car animated fadeInLeftBig">
                     <div id="infoFinger" style="display: none" class="finger fingerAnimation"></div>
@@ -206,6 +218,13 @@
                 <div class="topDiv"></div>
                 <img src="src/4-actRuleBottom.jpg">
             </div>
+        </div>
+    </div>
+
+    <!-- 中奖结果展示页 -->
+    <div class="tipResultDialog" id="tipResultDialog" style="display: none">
+        <div class="contentFrame">
+            <div class="closeDiv"><a href="javascript:closeTipDialog();"><img class="close" src="src/4-close-2.png"></a></div>
         </div>
     </div>
 

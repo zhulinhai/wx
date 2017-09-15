@@ -102,7 +102,7 @@ select {
   background-color: #fff;
   z-index: 10;
   background-color: rgba(0, 0, 0, 0.6);
-  z-index: 11; }
+  z-index: 12; }
   #commitDialog .contentFrame {
     position: absolute;
     left: 50%;
@@ -611,7 +611,7 @@ html {
     position: absolute;
     top: 50%;
     left: 50%;
-    margin-top: -32px;
+    margin-top: -0.8rem;
     width: 3.2rem;
     height: 3.2rem;
     transform-origin: center;
@@ -703,11 +703,16 @@ html {
 .section-1 {
   height: 12rem; }
   .section-1 .titleFrame {
-    height: 3.3rem;
-    background: url("../src/2-cloud.png") no-repeat 110% bottom;
-    background-size: 1rem auto; }
+    height: 3.3rem; }
     .section-1 .titleFrame .title {
       margin-top: 1.2rem; }
+    .section-1 .titleFrame .cloud {
+      position: absolute;
+      right: 0;
+      margin-top: 2.3rem;
+      margin-right: 0.5rem;
+      width: 1rem;
+      height: auto; }
     .section-1 .titleFrame .sun {
       float: right;
       margin-top: 0.25rem;
@@ -733,15 +738,17 @@ html {
     background-size: 100%; }
     .section-1 .bottom .cloud {
       position: absolute;
-      width: 100%;
-      height: 0.7rem;
-      background: url("../src/2-cloud.png") no-repeat 76% center;
-      background-size: 0.75rem auto;
+      left: 50%;
+      margin-left: 4rem;
+      width: 0.95rem;
+      height: 0.6rem;
+      animation-duration: 5s;
       z-index: 2; }
     .section-1 .bottom .cloud:nth-child(2) {
-      animation-delay: 0s;
-      margin-top: 1rem;
-      background-position-x: 5%; }
+      left: 1rem;
+      margin-left: 0;
+      animation-delay: 1s;
+      margin-top: 1rem; }
     .section-1 .bottom .car {
       position: absolute;
       left: 50%;
@@ -758,21 +765,45 @@ html {
     .section-2 .titleFrame .snowDiv {
       float: right;
       width: 5rem;
-      height: 4rem; }
+      height: 4rem;
+      overflow: hidden; }
       .section-2 .titleFrame .snowDiv .snow {
-        float: right;
-        width: 1rem; }
+        position: absolute; }
+      .section-2 .titleFrame .snowDiv .snow:nth-child(1) {
+        width: 1.5rem;
+        right: 1rem;
+        animation-delay: 0.7s; }
+      .section-2 .titleFrame .snowDiv .snow:nth-child(2) {
+        right: 3rem;
+        margin-top: 1rem;
+        width: 0.8rem;
+        animation-delay: 1.2s; }
+      .section-2 .titleFrame .snowDiv .snow:nth-child(3) {
+        right: 2.5rem;
+        margin-top: 2.5rem;
+        width: 0.5rem;
+        animation-delay: 1.7s; }
+      .section-2 .titleFrame .snowDiv .snow:nth-child(4) {
+        right: 4rem;
+        margin-top: 3.2rem;
+        width: 0.4rem;
+        animation-delay: 2s; }
   .section-2 .topDiv {
     height: 5.15rem;
     background: url("../src/2-2-headBg.jpg") no-repeat;
     background-size: 100% auto; }
-    .section-2 .topDiv .mountain {
+    .section-2 .topDiv .mountainDiv {
       float: right;
-      width: 10.6rem;
+      width: 9rem;
       height: 4.2rem;
       margin-top: 0.25rem;
       margin-right: 2.65rem;
-      animation-duration: 30s; }
+      overflow: hidden; }
+      .section-2 .topDiv .mountainDiv .mountain {
+        margin-left: -0.8rem;
+        width: 10.6rem;
+        height: 4.2rem;
+        animation-duration: 30s; }
   .section-2 .content {
     height: 3.75rem; }
     .section-2 .content li:nth-child(1) {
@@ -803,8 +834,15 @@ html {
       height: 5.85rem; }
     .section-3 .topDiv .rightDiv {
       float: right;
-      height: 6.75rem;
-      animation-duration: 30s; }
+      width: 8rem;
+      height: 5.5rem;
+      margin-right: 1rem;
+      margin-top: 1rem;
+      overflow: hidden; }
+      .section-3 .topDiv .rightDiv img {
+        width: 8rem;
+        height: auto;
+        animation-duration: 30s; }
   .section-3 .content li:nth-child(1) {
     background-position-y: 53.9%; }
   .section-3 .content li:nth-child(2) {
@@ -833,15 +871,20 @@ html {
     height: 5rem;
     margin-top: 1.5rem;
     margin-left: 0.8rem; }
-  .section-4 .topDiv .star {
+  .section-4 .topDiv .starDiv {
     float: right;
-    width: 10.75rem;
+    width: 8rem;
     height: 5.5rem;
     margin-top: 1rem;
     margin-right: 1.3rem;
-    background: url("../src/2-4-right.jpg") no-repeat;
-    background-size: cover;
-    animation-duration: 30s; }
+    overflow: hidden; }
+    .section-4 .topDiv .starDiv .star {
+      width: 10.6rem;
+      margin-left: -0.8rem;
+      height: 5.5rem;
+      background: url("../src/2-4-right.jpg") no-repeat;
+      background-size: cover;
+      animation-duration: 30s; }
   .section-4 .content {
     height: 3.75rem; }
     .section-4 .content li:nth-child(1) {
@@ -865,8 +908,22 @@ html {
       height: 8.75rem;
       z-index: 1; }
       .section-5 .topDiv .clouds .cloud {
+        position: absolute;
         width: 0.95rem;
-        height: 0.6rem; }
+        height: 0.6rem;
+        animation-duration: 5s; }
+      .section-5 .topDiv .clouds .cloud:nth-child(1) {
+        left: 50%;
+        margin-left: -0.5rem;
+        animation-delay: 0.7s; }
+      .section-5 .topDiv .clouds .cloud:nth-child(2) {
+        left: -0.2rem;
+        margin-top: 3rem;
+        animation-delay: 1.2s; }
+      .section-5 .topDiv .clouds .cloud:nth-child(3) {
+        right: 1rem;
+        margin-top: 5.5rem;
+        animation-delay: 1.7s; }
     .section-5 .topDiv .car {
       position: absolute;
       left: 50%;
@@ -887,8 +944,8 @@ html {
       z-index: 3;
       position: absolute;
       left: 50%;
-      margin-left: 1rem;
-      margin-top: 5.2rem; }
+      margin-left: -2.4rem;
+      margin-top: 6rem; }
   .section-5 .content {
     width: 11.7rem;
     height: 4.75rem;
@@ -1020,7 +1077,7 @@ html {
     background-size: 100% auto;
     right: 3.5rem; }
 
-.actRuleDialog {
+#actRuleDialog {
   position: fixed;
   margin: 0 auto;
   width: 100%;
@@ -1030,17 +1087,17 @@ html {
   background-color: #fff;
   z-index: 10;
   background-color: rgba(0, 0, 0, 0.6);
-  z-index: 11; }
-  .actRuleDialog .contentFrame {
+  z-index: 12; }
+  #actRuleDialog .contentFrame {
     position: absolute;
     left: 50%;
     top: 50%;
     margin-left: -8.3rem;
-    margin-top: -9.4rem;
+    margin-top: -11rem;
     width: 16.6rem;
-    height: 18.8rem;
+    height: 22rem;
     overflow: scroll; }
-    .actRuleDialog .contentFrame .closeDiv {
+    #actRuleDialog .contentFrame .closeDiv {
       position: fixed;
       width: 16.7rem;
       left: 50%;
@@ -1048,21 +1105,57 @@ html {
       height: 3rem;
       margin-top: 0;
       z-index: 1; }
-      .actRuleDialog .contentFrame .closeDiv .close {
+      #actRuleDialog .contentFrame .closeDiv .close {
         float: right;
         margin-right: 1rem;
         margin-top: 1rem;
         width: 1.5rem;
         height: 1.5rem; }
-    .actRuleDialog .contentFrame img {
+    #actRuleDialog .contentFrame img {
       margin: 0;
       padding: 0;
       width: 100%; }
-    .actRuleDialog .contentFrame .topDiv {
+    #actRuleDialog .contentFrame .topDiv {
       width: 100%;
       height: 5.8rem;
       background: url("../src/4-actRuleTop.png") no-repeat;
       background-size: 100% auto; }
+
+#tipResultDialog {
+  position: fixed;
+  margin: 0 auto;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  overflow: hidden;
+  background-color: #fff;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 12; }
+  #tipResultDialog .contentFrame {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -7.6rem;
+    margin-top: -7.2rem;
+    width: 15.2rem;
+    height: 14.4rem;
+    background: url("../src/4-dateSuccess.png") no-repeat;
+    background-size: cover; }
+    #tipResultDialog .contentFrame .closeDiv {
+      position: fixed;
+      width: 16.7rem;
+      left: 50%;
+      margin-left: -8.3rem;
+      height: 3rem;
+      margin-top: 0;
+      z-index: 1; }
+      #tipResultDialog .contentFrame .closeDiv .close {
+        float: right;
+        margin-right: 1rem;
+        margin-top: 1rem;
+        width: 1.5rem;
+        height: 1.5rem; }
 
 /**
  * 光晕效果
@@ -1091,19 +1184,6 @@ html {
 .fadeInDown {
   animation-name: fadeInDown; }
 
-/*
-* 云朵动画
-*/
-.cloud1Ani {
-  -webkit-animation: cloud1Move 20s ease 1s infinite;
-  animation: cloud1Move 20s ease 1s infinite; }
-
-@-webkit-keyframes cloud1Move {
-  to {
-    background-position-x: 70%; } }
-@keyframes cloud1Move {
-  to {
-    background-position-x: 70%; } }
 .cloudAni {
   -webkit-animation: cloudMove 3s infinite linear;
   animation: cloudMove 3s infinite linear; }
@@ -1221,5 +1301,14 @@ html {
     -webkit-transform: translate3d(0, 20px, 0); }
   to {
     -webkit-transform: none; } }
+@keyframes animatedShakeUpDown {
+  from, to {
+    transform: translate3d(0, 0, 0); }
+  10%, 30%, 50%, 70%, 90% {
+    transform: translate3d(0, -10px, 0); }
+  20%, 40%, 60%, 80% {
+    transform: translate3d(0, 10px, 0); } }
+.shakeUpDown {
+  animation-name: animatedShakeUpDown; }
 
 /*# sourceMappingURL=main.css.map */
