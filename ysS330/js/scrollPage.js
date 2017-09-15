@@ -101,6 +101,7 @@ function playSection1Ani(y) {
     }, 5500);
     setTimeout(function () {
         $placeHolder1.show();
+        $downTip.show();
         isAniSection1 = false;
     }, 6200);
 }

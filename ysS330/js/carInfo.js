@@ -43,7 +43,9 @@ function initSwipers() {
     mainSwiper = new Swiper ('.main-container', {
         direction: 'horizontal',
         pagination : '.pagination',
-        loop: false
+        loop: false,
+        observer:true,//修改swiper自己或子元素时，自动初始化swiper
+        observeParents:true
     });
     bottomSwiper = new Swiper('.bottom-container', {
         direction: 'horizontal',

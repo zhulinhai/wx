@@ -107,7 +107,7 @@ var loadingHandler = {
                 ctx.save();
                 ctx.clearRect(topX? topX:0, topY?topY:0,w,h);
                 ctx.drawImage(canvas, topX? topX:0, topY?topY:0, w, h);
-                canvasCtx.restore();
+                ctx.restore();
                 requestAnimationFrame(spriteAnimate);
             }
         }
@@ -164,6 +164,7 @@ var loadingHandler = {
         playSection1Ani(0);
     },
     playPage2Ani: function () {
+        $('#jumpVideo').hide();
         $('#wrapper').hide();
         $('#carInfoDialog').show();
         initCarInfo();
@@ -253,6 +254,11 @@ function showTipDialog(isPrize) {
 
 function closeTipDialog() {
     $('#tipResultDialog').hide();
+}
+
+function jumpVideo() {
+    $('#launchDialog').hide();
+    loadingHandler.playPage2Ani();
 }
 
 (function () {

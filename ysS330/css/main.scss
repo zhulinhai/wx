@@ -94,6 +94,17 @@ html {
   z-index: 11;
 }
 
+#jumpVideo {
+  position: fixed;
+  top: 3rem;
+  right: 0.75rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  background: url("../src/jump.png") no-repeat;
+  background-size: cover;
+  z-index: 11;
+}
+
 #wrapper {
   position: absolute;
   z-index: 1;
