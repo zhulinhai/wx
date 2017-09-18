@@ -80,8 +80,8 @@ input, select {
   /*Safari3.2+*/
   float: right;
   width: 10.7rem;
-  height: 1.2rem;
-  line-height: 1.2rem;
+  height: 1.3rem;
+  line-height: 1.3rem;
   padding-right: 1rem;
   color: #3E260C;
   font-size: 0.65rem;
@@ -141,7 +141,7 @@ select {
       #commitDialog .contentFrame .infoDiv label, #commitDialog .contentFrame .infoDiv .l2 {
         display: block;
         width: 100%;
-        line-height: 1.2rem;
+        line-height: 1.3rem;
         font-size: 0.65rem;
         text-indent: 0.5rem; }
       #commitDialog .contentFrame .infoDiv .l2 {
@@ -1185,9 +1185,7 @@ html {
   0% {
     box-shadow: 0 0 0 transparent; }
   50% {
-    box-shadow: 0 0 0.5rem #f13819;
-    -webkit-transform: scale(0.9);
-    transform: scale(0.9); }
+    box-shadow: 0 0 0.5rem #f13819; }
   100% {
     box-shadow: 0 0 0 transparent; } }
 @-webkit-keyframes nucleus {
