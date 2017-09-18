@@ -29,6 +29,8 @@ var loadingHandler = {
     danceImages: null,
     vWidth: 0,
     vHeight: 0,
+    backCanvas: null,
+    backCanvasCtx: null,
     loadImages: function (max_num, prePath, callBack) {
         var loadedNumbers = 0;
         var images = new Array(max_num);
@@ -71,14 +73,24 @@ var loadingHandler = {
         document.getElementById('loading-percent').innerHTML = progress + '%';
         this.curProgress = progress;
     },
+    getPixelRatio: function (context) {
+        var backingStore = context.backingStorePixelRatio ||
+            context.webkitBackingStorePixelRatio ||
+            context.mozBackingStorePixelRatio ||
+            context.msBackingStorePixelRatio ||
+            context.oBackingStorePixelRatio ||
+            context.backingStorePixelRatio || 1;
+        return (window.devicePixelRatio || 1) / backingStore;
+    },
     drawImages: function (imageList, ctx, w, h , callBack, loop , topX, topY) {
         var index = 0;
         var differ = 0;
         var lastDate = new Date();
-        var canvas = document.createElement('canvas');
-        var canvasCtx = canvas.getContext('2d');
-        canvas.width = w;
-        canvas.height = h;
+        this.backCanvas.width = w;
+        this.backCanvas.height = h;
+
+        var canvas = this.backCanvas;
+        var canvasCtx = this.backCanvasCtx;
 
         function spriteAnimate() {
             if (index >= imageList.length) {
@@ -93,21 +105,14 @@ var loadingHandler = {
                 var dateNow = new Date();
                 differ = dateNow.getTime() - lastDate.getTime();
                 /* 24帧 每秒 防止屏幕性能时间短，快速播放完 */
-                if (differ < 1000/ 15) {
+                if (differ < 1000/ 10) {
                     requestAnimationFrame(spriteAnimate);
                     return;
                 }
                 lastDate = dateNow;
                 /*启用离屏渲染*/ //
-                canvasCtx.save();
-                canvasCtx.clearRect(0,0,w,h);
-                canvasCtx.drawImage(imageList[index ++], 0,0, w, h);
-                canvasCtx.restore();
-
-                ctx.save();
-                ctx.clearRect(topX? topX:0, topY?topY:0,w,h);
+                canvasCtx.drawImage(imageList[index ++], 0,0,canvas.width,canvas.height);
                 ctx.drawImage(canvas, topX? topX:0, topY?topY:0, w, h);
-                ctx.restore();
                 requestAnimationFrame(spriteAnimate);
             }
         }
@@ -118,6 +123,14 @@ var loadingHandler = {
         c.width = this.vWidth;
         c.height = this.vHeight;
         var ctx = c.getContext('2d');
+        var ratio = this.getPixelRatio(ctx);
+        if (ratio > 1) {
+            // canvas循环，使用高倍像素，会导致黑屏或闪退，当前给定值
+            c.style.height = c.height + 'px';
+            c.style.width = c.width + 'px';
+            c.width *= 1.5;
+            c.height *= 1.5;
+        }
         loadingHandler.drawImages(images, ctx, c.width, c.height, null, true);
     },
     playLaunchAni: function () {
@@ -125,6 +138,7 @@ var loadingHandler = {
         $('#loadingDialog').hide();
 
         var c = document.getElementById('launchCanvas');
+        var launchCtx = c.getContext('2d');
         var topX = 0, topY = 0;
         var ch = document.body.clientHeight;
         if (this.vHeight > ch) {
@@ -136,7 +150,15 @@ var loadingHandler = {
             c.height = ch;
             topX = -(c.width - this.vWidth) /2;
         }
-        var launchCtx = c.getContext('2d');
+
+        var ratio = this.getPixelRatio(launchCtx);
+        if (ratio > 1) {
+            c.style.height = c.height + 'px';
+            c.style.width = c.width + 'px';
+            c.width *= ratio;
+            c.height *= ratio;
+        }
+
         loadingHandler.drawImages(loadingHandler.launchImages, launchCtx, c.width, c.height, function () {
             $('#launchFinger').show().addClass('fingerAnimation');
             $('#launchDialog').click(loadingHandler.playPage1Ani);
@@ -170,6 +192,8 @@ var loadingHandler = {
         initCarInfo();
     },
     initElements: function () {
+        this.backCanvas = document.createElement('canvas');
+        this.backCanvasCtx = this.backCanvas.getContext('2d');
         this.musicPlayer= document.getElementById('clickSound');
         this.vWidth = document.body.clientWidth;
         this.vHeight = document.body.clientWidth /STANDARD_WIDTH * STANDARD_HEIGHT;
@@ -180,22 +204,22 @@ var loadingHandler = {
 Pace.once('hide', function() {
     loadingHandler.clearInterval();
     loadingHandler.initElements();
-    loadingHandler.loadImages(30, 'src/launch/launch_0', function (images) {
+    loadingHandler.loadImages(23, 'src/launch_2/launch_0', function (images) {
         loadingHandler.launchImages = images;
         loadingHandler.isSpriteLoaded = true;
     });
 
-    loadingHandler.loadImages(44, 'src/ximalaya/ximalaya_00', function (images) {
+    loadingHandler.loadImages(35, 'src/ximalaya_2/ximalaya_00', function (images) {
         loadingHandler.ximalaImages = images;
         loadingHandler.isXimalayaLoaded = true;
     });
 
-    loadingHandler.loadImages(63, 'src/zhuifeiji/zhuifeiji_00', function (images) {
+    loadingHandler.loadImages(35, 'src/zhuifeiji_2/zhuifeiji_00', function (images) {
         loadingHandler.zfjImages = images;
         loadingHandler.isZfjLoaded = true;
     });
 
-    loadingHandler.loadImages(30, 'src/dance/dance_00', function (images) {
+    loadingHandler.loadImages(16, 'src/dance_2/dance_00', function (images) {
         loadingHandler.danceImages = images;
         loadingHandler.isDanceLoaded = true;
     });

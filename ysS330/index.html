@@ -7,7 +7,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="x5-fullscreen" content="true">
     <meta name="full-screen" content="yes">
-    <title>驭胜S330</title>
+    <title>驭胜S330 青春不止北上广</title>
     <link rel="stylesheet" href="http://wx.bjczxda.com/public/css/reset-h5.css">
     <link rel="stylesheet" href="http://wx.bjczxda.com/public/css/animate.css">
     <link rel="stylesheet" href="css/main.css">
@@ -92,7 +92,7 @@
                     </div>
                 </div>
                 <div class="videoFrame" style="width: 100%;">
-                    <img id="placeHolder-1" style="display: none" src="src/ximalaya/ximalaya_0044.jpg">
+                    <img id="placeHolder-1" style="display: none" src="src/ximalaya_2/ximalaya_0035.jpg">
                     <canvas id="ximalayaCanvas" style="display: none"></canvas>
                 </div>
                 <ul class="content" style="display: none">
@@ -113,7 +113,7 @@
                     </div>
                 </div>
                 <div class="videoFrame" style="width: 100%;">
-                    <img id="placeHolder-2" style="display: none" src="src/zhuifeiji/zhuifeiji_0061.jpg">
+                    <img id="placeHolder-2" style="display: none" src="src/zhuifeiji_2/zhuifeiji_0035.jpg">
                     <canvas id="zhuifeijiCanvas" style="display: none"></canvas>
                 </div>
                 <ul class="content" style="display: none">
@@ -135,7 +135,7 @@
                     </div>
                 </div>
                 <div class="videoFrame" style="width: 100%;">
-                    <img id="placeHolder-3" style="display: none" src="src/dance/dance_0030.jpg">
+                    <img id="placeHolder-3" style="display: none" src="src/dance_2/dance_0016.jpg">
                     <canvas id="danceCanvas" style="display: none"></canvas>
                 </div>
                 <ul class="content" style="display: none">
@@ -205,19 +205,18 @@
                     <label class="l2">城&nbsp;&nbsp;&nbsp;市：<select name="city" id="city"><option>请选择</option></select></label>
                 </div>
                 <div class="item"><label>经销商：<select name="dealer" id="dealer" ><option>请选择</option></select></label></div>
-                <a href="javascript:submitUserInfo();"><div id="btnSubmit">预约试驾</div></a>
+                <a href="javascript:submitUserInfo();"><div id="btnSubmit">试驾有礼</div></a>
+                <p class="tip">好礼相送，更有机会成为首席体验师</p>
             </div>
         </div>
     </div>
 
     <!-- 活动规则 -->
     <div class="actRuleDialog" id="actRuleDialog" style="display: none">
-        <div id="actRuleWrapper" class="contentFrame">
-            <div class="container">
-                <div class="closeDiv"><a href="javascript:closeActRuleDialog();"><img class="close" src="src/4-close.png"></a></div>
-                <div class="topDiv"></div>
-                <img src="src/4-actRuleBottom.jpg">
-            </div>
+        <div class="contentFrame">
+            <div class="closeDiv"><a href="javascript:closeActRuleDialog();"><img class="close" src="src/4-close.png"></a></div>
+            <div class="topDiv"></div>
+            <div class="bottomDiv"></div>
         </div>
     </div>
 
@@ -245,9 +244,10 @@
     <!-- js 部分 -->
     <script type="text/javascript" src="http://wx.bjczxda.com/public/scripts/jquery-1.12.1.min.js"></script>
     <script type="text/javascript" src="http://wx.bjczxda.com/public/scripts/pace.js"></script>
+    <!--<script type="text/javascript" src="./js/hidpi-canvas-polyfill-master/hidpi-canvas.min.js"></script>-->
     <script type="text/javascript" src="./js/iscroll-probe.js"></script>
-    <script type="text/javascript" src="./js/scrollPage.js"></script>
-    <script type="text/javascript" src="./js/loading.js"></script>
+    <script type="text/javascript" src="./js/scrollPage.js?v1.0.0"></script>
+    <script type="text/javascript" src="./js/loading.js?v1.0.0"></script>
 
     <!-- 提交信息 -->
     <script type="text/javascript" src="./js/helper.js"></script>

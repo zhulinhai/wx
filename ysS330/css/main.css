@@ -111,7 +111,7 @@ select {
     margin-top: -9.4rem;
     width: 16.6rem;
     height: 18.8rem;
-    background: url("../src/4-bg.png") no-repeat;
+    background: url("../src/4-bg2.png") no-repeat;
     background-size: 100% auto; }
     #commitDialog .contentFrame .closeDiv {
       width: 100%;
@@ -134,7 +134,7 @@ select {
       margin: 3.5rem auto 0;
       width: 14rem; }
       #commitDialog .contentFrame .infoDiv .item {
-        margin-top: 0.8rem;
+        margin-top: 0.5rem;
         width: 100%;
         height: 1.3rem; }
       #commitDialog .contentFrame .infoDiv label, #commitDialog .contentFrame .infoDiv .l2 {
@@ -164,6 +164,12 @@ select {
         line-height: 2.2rem;
         background: url("../src/4-btnBg.png") no-repeat;
         background-size: 5.75rem 2.2rem; }
+      #commitDialog .contentFrame .infoDiv .tip {
+        line-height: 1rem;
+        margin-top: 0.5rem;
+        color: #008dfd;
+        font-size: 0.6rem;
+        text-align: center; }
 
 /**
  * Swiper 3.1.0
@@ -1129,7 +1135,12 @@ html {
       width: 100%;
       height: 5.8rem;
       background: url("../src/4-actRuleTop.png") no-repeat;
-      background-size: 100% auto; }
+      background-size: 100% 5.8rem; }
+    #actRuleDialog .contentFrame .bottomDiv {
+      width: 100%;
+      height: 96.75rem;
+      background: url("../src/4-actRuleBottom.jpg") no-repeat;
+      background-size: 100% 96.75rem; }
 
 #tipResultDialog {
   position: fixed;
