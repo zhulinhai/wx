@@ -67,11 +67,11 @@ function updateMenuState(index) {
         }
         selectedMenu = index;
         $(menuItems[selectedMenu]).addClass('itemHover');
-        updateSwiperes(selectedMenu);
+        updateSwipers(selectedMenu);
     }
 }
 
-function updateSwiperes(index) {
+function updateSwipers(index) {
     var slides = [], bSlides = [];
     for (var i = 0; i< allList[index].length; i++) {
         slides[i] = '<div class="swiper-slide"><img src="src/info/' + allList[index][i] + '" /></div>'
