@@ -1080,16 +1080,16 @@ html {
     position: absolute;
     right: 0.5rem;
     bottom: 0.5rem;
-    width: 2.3rem;
-    height: 2.3rem;
-    border-radius: 2.3rem;
-    background: url("../src/3-dateDrive.png") no-repeat center;
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 0.25rem;
+    background: url("../src/3-dateDrive-2.png") no-repeat center;
     background-size: 100% auto;
-    -webkit-animation: nucleus 3s infinite ease-in-out;
-    animation: nucleus 3s infinite ease-in-out;
+    -webkit-animation: nucleus 1s infinite ease alternate;
+    animation: nucleus 1s infinite ease alternate;
     z-index: 3; }
   #carInfoDialog .btnRule {
-    background: url("../src/3-actRule.png") no-repeat center;
+    background: url("../src/3-actRule-2.png") no-repeat center;
     background-size: 100% auto;
     right: 3.5rem; }
 
@@ -1182,19 +1182,10 @@ html {
  * 光晕效果
  */
 @keyframes nucleus {
-  0% {
-    box-shadow: 0 0 0 transparent; }
-  50% {
-    box-shadow: 0 0 0.5rem #f13819; }
-  100% {
-    box-shadow: 0 0 0 transparent; } }
-@-webkit-keyframes nucleus {
-  0% {
-    box-shadow: 0 0 0 transparent; }
-  50% {
-    box-shadow: 0 0 0.5rem #f13819; }
-  100% {
-    box-shadow: 0 0 0 transparent; } }
+  from {
+    box-shadow: 0 0 0 5px rgba(95, 145, 226, 0); }
+  to {
+    box-shadow: 0 0 0 5px rgba(95, 145, 226, 0.3); } }
 @keyframes fadeInDown {
   from {
     opacity: 1;
