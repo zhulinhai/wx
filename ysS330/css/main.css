@@ -1160,9 +1160,7 @@ html {
     margin-left: -7.6rem;
     margin-top: -7.2rem;
     width: 15.2rem;
-    height: 14.4rem;
-    background: url("../src/4-dateSuccess.png") no-repeat;
-    background-size: cover; }
+    height: 14.4rem; }
     #tipResultDialog .contentFrame .closeDiv {
       position: fixed;
       width: 16.7rem;

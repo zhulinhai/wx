@@ -72,8 +72,7 @@ var commitInfoHandler = {
             success: function (data) {
                 var response = eval('(data)');
                 if (response.success) {
-                    console.log(response);
-                    showTipDialog(response.data.prize);
+                    showTipDialog(response.data.prize === 1);
                 } else {
                     alert(response.message);
                 }

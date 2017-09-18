@@ -270,9 +270,11 @@ function showTipDialog(isPrize) {
     closeCommitDialog();
 
     var $tipDialog = $('#tipResultDialog');
+    var imgUrl = 'src/4-dateSuccess.png';
     if (isPrize) {
-        $tipDialog.find('.contentFrame').css({'background':'url("src/4-success.png") no-repeat', 'background-size':'cover'});
+        imgUrl = 'src/4-success.png';
     }
+    $tipDialog.find('.contentFrame').css({'background':'url("' + imgUrl + '") no-repeat', 'background-size':'cover'});
     $tipDialog.show();
 }
 
