@@ -72,9 +72,6 @@ select {
         height: 1.3rem;
         border: 1px solid #5A5A5B;
       }
-      .item2 {
-        border: none;
-      }
       label,.l2 {
         display: block;
         width: 100%;
@@ -85,7 +82,6 @@ select {
       .l2 {
         float: left;
         width: 6.8rem;
-        border: 1px solid #5A5A5B;
         select {
           width: 3.5rem;
           background: transparent url("../src/4-arrowDown.png") no-repeat 2.8rem center;
