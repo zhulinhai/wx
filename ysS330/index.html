@@ -10,7 +10,7 @@
     <title>驭胜S330 青春不止北上广</title>
     <link rel="stylesheet" href="http://wx.bjczxda.com/public/css/reset-h5.css">
     <link rel="stylesheet" href="http://wx.bjczxda.com/public/css/animate.css">
-    <link rel="stylesheet" href="css/main.css?v1.0.0">
+    <link rel="stylesheet" href="css/main.css?v1.0.2">
     <!-- 百度统计 -->
     <script>
         var _hmt = _hmt || [];
@@ -164,8 +164,32 @@
     </div>
     <img id="downTip" class="downTip animated flash infinite" style="display: none" src="src/downTip.svg" >
 
+    <!-- 留资信息 -->
+    <div class="commitDialog" id="commitDialog" style="display: none">
+        <div class="contentFrame">
+            <div class="infoDiv">
+                <p><strong>活动介绍</strong>：报名申请江铃驭胜S330车型首席体验官招募，所有申请网友均有被选中<span>7天免费长测</span>的机会。</p>
+                <p>7天免费长测网友发表作品，还有机会成为首席体验官获<span>半价购置S330</span>和<span>一个月酒店免费入住权</span>，更有<span>千元购物卡、加油卡</span>等着你！</p>
+                <p>限前200名报名申请者奖励<span>100元京东卡</span>哟，玩的6不如省的6，快来报名体验吧~</p>
+                <input type="hidden" name="flag" value="yss330" />
+                <div class="item"><label>姓&nbsp;&nbsp;&nbsp;名：<input name="realname" id="realname" type="text" /></label></div>
+                <div class="item"><label>手&nbsp;&nbsp;&nbsp;机：<input name="mobile" id="mobile" type="tel" /></label></div>
+                <div class="item item2"><label class="l2">省&nbsp;&nbsp;&nbsp;份：<select name="province" id="province"><option>请选择</option></select></label>
+                    <label class="l2">城&nbsp;&nbsp;&nbsp;市：<select name="city" id="city"><option>请选择</option></select></label>
+                </div>
+                <div class="item"><label>经销商：<select name="dealer" id="dealer" ><option>请选择</option></select></label></div>
+                <a href="javascript:submitUserInfo();"><div id="btnSubmit"></div></a>
+            </div>
+            <div class="btnDiv">
+                <a href="javascript:showCarInfoDialog();"><div class="btnCar"></div></a>
+                <a href="javascript:showActRuleDialog();"><div class="btnRule"></div></a>
+            </div>
+        </div>
+    </div>
+
     <!-- 车型详情展示页 -->
     <div class="carInfoDialog" id="carInfoDialog" style="display: none">
+        <div class="closeDiv"><a href="javascript:closeCarInfoDialog();"><img class="close" src="src/5-close.png"></a></div>
         <div class="content">
             <!-- 导航菜单栏 -->
             <div id="menuDiv">
@@ -186,27 +210,6 @@
                 <div class="bottom-container">
                     <div class="swiper-wrapper"></div>
                 </div>
-            </div>
-        </div>
-        <a href="javascript:showCommitDialog();"><div id="btnDrive" class="btnDrive"></div></a>
-        <a href="javascript:showActRuleDialog();"><div id="actRule" class="btnRule"></div></a>
-    </div>
-
-    <!-- 留资信息 -->
-    <div class="commitDialog" id="commitDialog" style="display: none">
-        <div class="contentFrame">
-            <img class="car" src="src/2-5-car.png" >
-            <div class="closeDiv"><a href="javascript:closeCommitDialog();"><img class="close" src="src/4-close.png"></a></div>
-            <div class="infoDiv">
-                <input type="hidden" name="flag" value="yss330" />
-                <div class="item"><label>姓&nbsp;&nbsp;&nbsp;名：<input name="realname" id="realname" type="text" /></label></div>
-                <div class="item"><label>手&nbsp;&nbsp;&nbsp;机：<input name="mobile" id="mobile" type="tel" /></label></div>
-                <div class="item item2"><label class="l2">省&nbsp;&nbsp;&nbsp;份：<select name="province" id="province"><option>请选择</option></select></label>
-                    <label class="l2">城&nbsp;&nbsp;&nbsp;市：<select name="city" id="city"><option>请选择</option></select></label>
-                </div>
-                <div class="item"><label>经销商：<select name="dealer" id="dealer" ><option>请选择</option></select></label></div>
-                <a href="javascript:submitUserInfo();"><div id="btnSubmit">试驾有礼</div></a>
-                <p class="tip">好礼相送，更有机会成为首席体验师</p>
             </div>
         </div>
     </div>
@@ -247,13 +250,13 @@
     <!--<script type="text/javascript" src="./js/hidpi-canvas-polyfill-master/hidpi-canvas.min.js"></script>-->
     <script type="text/javascript" src="./js/iscroll-probe.js"></script>
     <script type="text/javascript" src="./js/scrollPage.js?v1.0.0"></script>
-    <script type="text/javascript" src="./js/loading.js?v1.0.1"></script>
+    <script type="text/javascript" src="./js/loading.js?v1.0.2"></script>
 
     <!-- 提交信息 -->
     <script type="text/javascript" src="./js/helper.js"></script>
     <script type="text/javascript" src="./js/commitInfo.js?v1.0.0"></script>
     <script type="text/javascript" src="./js/swiper.min.js"></script>
-    <script type="text/javascript" src="./js/carInfo.js"></script>
+    <script type="text/javascript" src="./js/carInfo.js?v1.0.2"></script>
 
     <!-- 微信分享 -->
     <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>

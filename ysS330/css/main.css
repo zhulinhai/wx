@@ -79,9 +79,9 @@ input, select {
   -webkit-box-sizing: border-box;
   /*Safari3.2+*/
   float: right;
-  width: 10.7rem;
-  height: 1.3rem;
-  line-height: 1.3rem;
+  width: 10.6rem;
+  height: 1.2rem;
+  line-height: 1.2rem;
   padding-right: 1rem;
   color: #3E260C;
   font-size: 0.65rem;
@@ -89,7 +89,7 @@ input, select {
   background-color: transparent; }
 
 select {
-  background: transparent url("../src/4-arrowDown.png") no-repeat 10rem center;
+  background: transparent url("../src/4-arrowDown.png") no-repeat 9.9rem center;
   background-size: 0.5rem 0.3rem; }
 
 #commitDialog {
@@ -101,75 +101,75 @@ select {
   overflow: hidden;
   background-color: #fff;
   z-index: 10;
-  background-color: rgba(0, 0, 0, 0.6);
-  z-index: 12; }
+  background: url("../src/3-bg-2.jpg") no-repeat;
+  background-size: 100% auto; }
   #commitDialog .contentFrame {
     position: absolute;
     left: 50%;
-    top: 50%;
     margin-left: -8.3rem;
-    margin-top: -9.4rem;
     width: 16.6rem;
-    height: 18.8rem;
-    background: url("../src/4-bg2.png") no-repeat;
-    background-size: 100% auto; }
-    #commitDialog .contentFrame .closeDiv {
-      width: 100%;
-      height: 3rem; }
-      #commitDialog .contentFrame .closeDiv .close {
-        float: right;
-        margin-right: 1rem;
-        margin-top: 1rem;
-        width: 1.5rem;
-        height: 1.5rem; }
-    #commitDialog .contentFrame .car {
-      position: absolute;
-      left: 50%;
-      width: 7rem;
-      margin-left: -1rem;
-      margin-top: 2rem;
-      z-index: 1; }
+    height: 21rem;
+    bottom: 0.5rem; }
     #commitDialog .contentFrame .infoDiv {
       display: block;
-      margin: 3.5rem auto 0;
-      width: 14rem; }
+      margin: 0 auto;
+      width: 16.2rem;
+      height: 17.6rem;
+      background: url("../src/5-infoBorder.png") no-repeat;
+      background-size: 100% auto; }
+      #commitDialog .contentFrame .infoDiv p {
+        line-height: 0.7rem;
+        margin: 0 0.5rem;
+        font-size: 0.5rem; }
+        #commitDialog .contentFrame .infoDiv p strong, #commitDialog .contentFrame .infoDiv p span {
+          color: #ff6b04; }
+      #commitDialog .contentFrame .infoDiv p:nth-child(1) {
+        padding-top: 3rem; }
       #commitDialog .contentFrame .infoDiv .item {
-        margin-top: 0.5rem;
-        width: 100%;
-        height: 1.3rem;
-        border: 1px solid #5A5A5B; }
+        margin: 0.5rem auto 0;
+        width: 14rem;
+        height: 1.2rem;
+        border: 1px solid #ababab; }
+      #commitDialog .contentFrame .infoDiv .item:nth-child(1) {
+        margin-top: 0.5rem; }
       #commitDialog .contentFrame .infoDiv label, #commitDialog .contentFrame .infoDiv .l2 {
         display: block;
         width: 100%;
-        line-height: 1.3rem;
+        line-height: 1.2rem;
         font-size: 0.65rem;
         text-indent: 0.5rem; }
       #commitDialog .contentFrame .infoDiv .l2 {
         float: left;
         width: 6.8rem; }
         #commitDialog .contentFrame .infoDiv .l2 select {
-          width: 3.5rem;
-          background: transparent url("../src/4-arrowDown.png") no-repeat 2.8rem center;
+          width: 3.4rem;
+          background: transparent url("../src/4-arrowDown.png") no-repeat 2.7rem center;
           background-size: 0.5rem 0.3rem; }
       #commitDialog .contentFrame .infoDiv .l2:nth-child(2) {
         float: right; }
       #commitDialog .contentFrame .infoDiv #btnSubmit {
         display: block;
-        margin: 0.8rem auto 0;
-        color: white;
-        width: 5.75rem;
-        text-align: center;
-        font-size: 0.65rem;
-        height: 2.2rem;
-        line-height: 2.2rem;
-        background: url("../src/4-btnBg.png") no-repeat;
-        background-size: 5.75rem 2.2rem; }
-      #commitDialog .contentFrame .infoDiv .tip {
-        line-height: 1rem;
-        margin-top: 0.5rem;
-        color: #008dfd;
-        font-size: 0.6rem;
-        text-align: center; }
+        margin: 0.6rem auto 0;
+        width: 5.3rem;
+        height: 1.5rem;
+        background: url("../src/5-btnSubmit.png") no-repeat;
+        background-size: 5.3rem 1.5rem; }
+    #commitDialog .contentFrame .btnDiv {
+      display: block;
+      margin: 0.8rem auto 0;
+      width: 13.2rem;
+      height: 1.6rem; }
+      #commitDialog .contentFrame .btnDiv .btn, #commitDialog .contentFrame .btnDiv .btnCar, #commitDialog .contentFrame .btnDiv .btnRule {
+        width: 5.9rem;
+        height: 1.55rem; }
+      #commitDialog .contentFrame .btnDiv .btnCar {
+        float: left;
+        background: url("../src/5-btnCar.png") no-repeat;
+        background-size: cover; }
+      #commitDialog .contentFrame .btnDiv .btnRule {
+        float: right;
+        background: url("../src/5-btnRule.png") no-repeat;
+        background-size: cover; }
 
 /**
  * Swiper 3.1.0
@@ -989,25 +989,36 @@ html {
   overflow: hidden;
   background-color: #fff;
   z-index: 10;
-  background: #fff url("../src/3-bg.jpg") no-repeat 0 top;
-  background-size: 100% auto;
-  z-index: 9; }
-  #carInfoDialog .topBg {
+  background-color: rgba(255, 255, 255, 0.95);
+  z-index: 12; }
+  #carInfoDialog .closeDiv {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
+    width: 17.9rem;
+    height: 1.5rem;
+    left: 50%;
+    top: 50%;
+    margin-left: -8.95rem;
+    margin-top: -11.4rem;
     z-index: 1; }
+    #carInfoDialog .closeDiv .close {
+      float: right;
+      margin-right: 0.4rem;
+      width: 1.5rem;
+      height: 1.5rem; }
   #carInfoDialog .content {
     position: absolute;
-    width: 100%;
-    height: 15rem;
-    padding-bottom: 2rem;
-    bottom: 0;
+    width: 17.9rem;
+    height: 18.3rem;
+    left: 50%;
+    top: 50%;
+    margin-left: -8.95rem;
+    margin-top: -9.15rem;
+    background: url("../src/5-carInfoBorder.png") no-repeat;
+    background-size: 100% auto;
     z-index: 2; }
     #carInfoDialog .content #menuDiv {
       display: block;
-      margin: 0 auto 0.5rem;
+      margin: 1rem auto 0.5rem;
       width: 15rem;
       height: 1.5rem; }
       #carInfoDialog .content #menuDiv .item {
@@ -1034,7 +1045,7 @@ html {
       display: block;
       margin: 0 auto;
       width: 16rem;
-      height: 13rem;
+      height: 15rem;
       overflow: hidden; }
       #carInfoDialog .content #mainContainer .skewDiv {
         position: absolute;
@@ -1051,47 +1062,31 @@ html {
           #carInfoDialog .content #mainContainer .skewDiv .main-container img {
             width: 100%; }
       #carInfoDialog .content #mainContainer .pagination {
-        margin: 8rem 0 0.3rem; }
+        margin: 8.2rem 0 0.3rem; }
         #carInfoDialog .content #mainContainer .pagination .swiper-pagination-bullet {
           background: #c8c8c8; }
         #carInfoDialog .content #mainContainer .pagination .swiper-pagination-bullet-active {
           background: #f13819; }
       #carInfoDialog .content #mainContainer .arrowRight {
         position: absolute;
-        right: 0.5rem;
+        right: 1rem;
         margin-top: 5.2rem;
         width: 2.5rem;
         height: 2.5rem;
-        background: url("../src/3-arrowRight.png") no-repeat center bottom;
+        background: url("../src/3-arrowRight.png") no-repeat right bottom;
         background-size: 1rem auto;
         z-index: 2; }
       #carInfoDialog .content #mainContainer .bottom-container {
         display: block;
         margin: 0 auto;
         width: 15.5rem;
-        height: 4rem;
+        height: 4.4rem;
         overflow: hidden; }
         #carInfoDialog .content #mainContainer .bottom-container .swiper-slide {
           width: 4.3rem;
-          height: 4rem;
-          line-height: 0.9rem;
+          height: 4.4rem;
+          line-height: 1.1rem;
           font-size: 0.7rem; }
-  #carInfoDialog .btnDrive, #carInfoDialog .btnRule {
-    position: absolute;
-    right: 0.5rem;
-    bottom: 0.5rem;
-    width: 2.25rem;
-    height: 2.25rem;
-    border-radius: 0.25rem;
-    background: url("../src/3-dateDrive-2.png") no-repeat center;
-    background-size: 100% auto;
-    -webkit-animation: nucleus 1s infinite ease alternate;
-    animation: nucleus 1s infinite ease alternate;
-    z-index: 3; }
-  #carInfoDialog .btnRule {
-    background: url("../src/3-actRule-2.png") no-repeat center;
-    background-size: 100% auto;
-    right: 3.5rem; }
 
 #actRuleDialog {
   position: fixed;
@@ -1176,6 +1171,10 @@ html {
         width: 1.5rem;
         height: 1.5rem; }
 
+@media all and (min-height: 300px) and (max-height: 480px) {
+  #commitDialog .contentFrame {
+    transform-origin: center bottom;
+    transform: scale(0.8); } }
 /**
  * 光晕效果
  */

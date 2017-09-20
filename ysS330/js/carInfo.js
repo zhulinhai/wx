@@ -50,6 +50,8 @@ function initSwipers() {
     bottomSwiper = new Swiper('.bottom-container', {
         direction: 'horizontal',
         loop: false,
+        observer:true,//修改swiper自己或子元素时，自动初始化swiper
+        observeParents:true,
         effect : 'fade',
         fade: {
             crossFade: true

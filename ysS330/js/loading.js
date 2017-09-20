@@ -188,8 +188,8 @@ var loadingHandler = {
     playPage2Ani: function () {
         $('#jumpVideo').hide();
         $('#wrapper').hide();
-        $('#carInfoDialog').show();
-        initCarInfo();
+        showCommitDialog();
+        // $('#carInfoDialog').show();
     },
     initElements: function () {
         this.backCanvas = document.createElement('canvas');
@@ -198,6 +198,7 @@ var loadingHandler = {
         this.vWidth = document.body.clientWidth;
         this.vHeight = document.body.clientWidth /STANDARD_WIDTH * STANDARD_HEIGHT;
         $('.videoFrame').height( this.vHeight );
+        initCarInfo();
     }
 };
 
@@ -245,14 +246,22 @@ function clickToggle(){
     }
 }
 
+function showCarInfoDialog() {
+    $('#carInfoDialog').show();
+}
+
+function closeCarInfoDialog() {
+    $('#carInfoDialog').hide();
+}
+
 function showCommitDialog() {
     commitInfoHandler.bindInfo();
     $('#commitDialog').show();
 }
 
-function closeCommitDialog() {
-    $('#commitDialog').hide();
-}
+// function closeCommitDialog() {
+//     $('#commitDialog').hide();
+// }
 
 function submitUserInfo() {
     commitInfoHandler.submitInfo();
@@ -267,7 +276,7 @@ function closeActRuleDialog() {
 }
 
 function showTipDialog(isPrize) {
-    closeCommitDialog();
+    // closeCommitDialog();
 
     var $tipDialog = $('#tipResultDialog');
     var imgUrl = 'src/4-dateSuccess.png';
