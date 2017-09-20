@@ -694,12 +694,11 @@ html {
     }
   }
 }
-@media all and (min-height:300px) and (max-height:480px){
-  #commitDialog .contentFrame {
-    transform-origin: center bottom;
-    transform: scale(0.8);
-  }
-}
+//@media all and (min-height:300px) and (max-height:480px){
+//  #commitDialog .contentFrame {
+//    padding-bottom: 2rem;
+//  }
+//}
 
 /**
  * 光晕效果
@@ -773,8 +772,8 @@ html {
 * 手指动效
 */
 .fingerAnimation {
-  animation: animatedFinger 1s ease infinite alternate;
-  -webkit-animation: animatedFinger 1s ease infinite alternate;
+  animation: animatedFinger 1s ease-in-out infinite alternate;
+  -webkit-animation: animatedFinger 1s ease-in-out infinite alternate;
 }
 
 @keyframes animatedFinger {

@@ -170,9 +170,8 @@ var loadingHandler = {
         $('#launchDialog').hide();
         /* 音乐播放状态  当前浏览器不支持自动播放 */
         if (loadingHandler.musicPlayer.paused && !loadingHandler.isUserClicked) { clickToggle(); }
-        $('#car-2').click(function () { loadingHandler.playPage2Ani(); });
 
-        this.myScroll = new IScroll('#wrapper', {
+        loadingHandler.myScroll = new IScroll('#wrapper', {
             preventDefault: true,
             fixedScrollBar: true,
             mouseWheel: true,
@@ -182,10 +181,15 @@ var loadingHandler = {
             momentum: false,
             probeType: 2
         });
-        this.myScroll.on('scroll', updatePosition);
+        loadingHandler.myScroll.on('scroll', updatePosition);
         playSection1Ani(0);
     },
     playPage2Ani: function () {
+        if (loadingHandler.myScroll) {
+            loadingHandler.myScroll.destroy();
+            loadingHandler.myScroll = null;
+        }
+        $downTip.hide();
         $('#jumpVideo').hide();
         $('#wrapper').hide();
         showCommitDialog();
@@ -198,6 +202,8 @@ var loadingHandler = {
         this.vWidth = document.body.clientWidth;
         this.vHeight = document.body.clientWidth /STANDARD_WIDTH * STANDARD_HEIGHT;
         $('.videoFrame').height( this.vHeight );
+        var $dialogContent = $('#commitDialog').find('.contentFrame');
+        $dialogContent.height(Math.max($dialogContent.height(), document.body.clientHeight  - 9 * 20 * (this.vWidth / 375)));
         initCarInfo();
     }
 };
@@ -255,8 +261,8 @@ function closeCarInfoDialog() {
 }
 
 function showCommitDialog() {
-    commitInfoHandler.bindInfo();
     $('#commitDialog').show();
+    commitInfoHandler.bindInfo();
 }
 
 // function closeCommitDialog() {
@@ -296,8 +302,23 @@ function jumpVideo() {
     loadingHandler.playPage2Ani();
 }
 
+function clickCar() {
+    loadingHandler.playPage2Ani();
+}
+
 (function () {
     loadingHandler.startInterval();
+
+    //解决在android手机下软键盘遮住输入框的问题
+    if(/Android [4-6]/.test(navigator.appVersion)) {
+        window.addEventListener("resize", function() {
+            if(document.activeElement.tagName=="INPUT" || document.activeElement.tagName=="TEXTAREA") {
+                window.setTimeout(function() {
+                    document.activeElement.scrollIntoViewIfNeeded();
+                },0);
+            }
+        })
+    }
 
     /*
      * 禁止浏览器触摸事件
