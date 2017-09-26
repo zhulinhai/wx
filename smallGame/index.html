@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="x5-fullscreen" content="true">
+    <meta name="full-screen" content="yes">
+    <title>为十一疯狂打CALL</title>
+    <link rel="stylesheet" href="css/main.css">
+    <script type="text/javascript">
+        //rem设置
+        (function(doc, win) {
+            var docEl = doc.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                recalc = function() {
+                    var clientWidth = docEl.clientWidth;
+                    if (!clientWidth) return;
+                    docEl.style.fontSize = 20 * (clientWidth / 375) + 'px';
+                };
+            win.addEventListener(resizeEvt, recalc, false);
+            doc.addEventListener('DOMContentLoaded', recalc, false);
+        })(document, window);
+    </script>
+</head>
+<body>
+    <div class="stage">
+        <div class="header">
+            <img class="logo" src="images/logo.png" alt="">
+            <div class="clockFrame"><label>30S</label><img class="clock" src="images/clock.png"></div>
+        </div>
+        <div class="content">
+            <img class="title" src="images/1-title.png" >
+            <div class="canvasBox">
+                <canvas id="gameCanvas"></canvas>
+            </div>
+            <img class="btnHelp" src="images/1-btnHelp.png" />
+        </div>
+    </div>
+
+    <script type="text/javascript" src="js/jquery-1.12.1.min.js"></script>
+    <script type="text/javascript" src="js/gamePlayer.js"></script>
+</body>
+</html>
