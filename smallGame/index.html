@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
     <meta name="format-detection" content="telephone=no">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -27,7 +28,7 @@
     <div class="stage">
         <div class="header">
             <img class="logo" src="images/logo.png" alt="">
-            <div class="clockFrame"><label>30S</label><img class="clock" src="images/clock.png"></div>
+            <div class="clockFrame"><label class="time">30S'</label><img class="clock animated shake" src="images/clock.png"></div>
         </div>
         <div class="content">
             <img class="title" src="images/1-title.png" >
@@ -39,6 +40,7 @@
     </div>
 
     <script type="text/javascript" src="js/jquery-1.12.1.min.js"></script>
+    <script type="text/javascript" src="js/dragCanvasImg.js"></script>
     <script type="text/javascript" src="js/gamePlayer.js"></script>
 </body>
 </html>

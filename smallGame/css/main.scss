@@ -26,6 +26,10 @@ body {
       float: right;
       margin-top: 1rem;
       margin-right: 0.5rem;
+      .time {
+        float: left;
+        vertical-align: top;
+      }
       .clock {
         width: 1.9rem;
         height: 2.05rem;
@@ -55,4 +59,27 @@ body {
       height: 2.65rem;
     }
   }
+}
+
+.animated {
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
+
+@keyframes shake {
+  from, to {
+    transform: translate3d(0, 0, 0);
+  }
+
+  10%, 30%, 50%, 70%, 90% {
+    transform: translate3d(-10px, 0, 0);
+  }
+
+  20%, 40%, 60%, 80% {
+    transform: translate3d(10px, 0, 0);
+  }
+}
+
+.shake {
+  animation-name: shake;
 }
