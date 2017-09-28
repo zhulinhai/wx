@@ -22,25 +22,96 @@
             win.addEventListener(resizeEvt, recalc, false);
             doc.addEventListener('DOMContentLoaded', recalc, false);
         })(document, window);
+
+        (function () {
+            /*
+             * 禁止浏览器触摸事件
+             * */
+            document.addEventListener('touchmove', function(event){
+                // 判断默认行为是否可以被禁用
+                if (event.cancelable) {
+                    // 判断默认行为是否已经被禁用
+                    if (!event.defaultPrevented) {
+                        event.preventDefault();
+                    }
+                }
+            }, false);
+        })();
     </script>
 </head>
 <body>
-    <div class="stage">
+    <div class="tipDialog" id="tipSuccessDialog" style="display: none">
+        <div class="content">
+            <img src="./images/dialog/success.png" alt="" class="success">
+            <img src="./images/dialog/title-success.png" alt="" class="title">
+            <a href="javascript:jumpNext();"><div class="btnNext"></div></a>
+        </div>
+    </div>
+    <div class="tipDialog" id="tipFailDialog" style="display: none">
+        <div class="content">
+            <img src="./images/dialog/fail.png" alt="" class="fail">
+            <img src="./images/dialog/title-fail.png" alt="" class="title">
+            <a href="javascript:replayGame()"><div class="btnReplay"></div></a>
+        </div>
+    </div>
+    <div class="scene" style="display: block">
         <div class="header">
-            <img class="logo" src="images/logo.png" alt="">
+            <img class="title" src="images/1-title.png" >
             <div class="clockFrame"><label class="time">30S'</label><img class="clock animated shake" src="images/clock.png"></div>
         </div>
         <div class="content">
-            <img class="title" src="images/1-title.png" >
             <div class="canvasBox">
                 <canvas id="gameCanvas"></canvas>
             </div>
+        </div>
+        <div class="bottom">
             <img class="btnHelp" src="images/1-btnHelp.png" />
         </div>
     </div>
 
     <script type="text/javascript" src="js/jquery-1.12.1.min.js"></script>
-    <script type="text/javascript" src="js/dragCanvasImg.js"></script>
+    <script type="text/javascript" src="js/tool.js"></script>
     <script type="text/javascript" src="js/gamePlayer.js"></script>
+    <script type="text/javascript" src="js/overlayPlayer.js"></script>
+    <script type="text/javascript">
+        var imageList = ["images/scene2/car-1.png", "images/1-road.png","images/1-hammer.png","images/1-car.png","images/1-carBack.png", "images/1-boom.png","images/1-car-destroy.png"];
+        var currentScene = 1;
+        window.onload = function () {
+            loadImages(imageList, function () {
+                gamePlayer.startGame();
+            });
+        };
+
+        function loadImages(sources,callback){
+            var loadedImages = 0;
+            var numImages = sources.length;
+            for (var src in sources) {
+                var image = new Image();
+                image.onload = function(){
+                    var per=parseInt(loadedImages/numImages *100);
+                    if (++loadedImages >= numImages) {
+                        callback&&callback();
+                    }
+                };
+                image.src = sources[src];
+            }
+        }
+
+        function replayGame() {
+            $('.tipDialog').hide();
+            if (currentScene == 1) {
+                gamePlayer.restartGame();
+            }
+            scene1();
+        }
+        
+        function jumpNext() {
+            $('.tipDialog').hide();
+            if (currentScene == 1) {
+                overlayPlayer.init();
+                overlayPlayer.startGame();
+            }
+        }
+    </script>
 </body>
 </html>

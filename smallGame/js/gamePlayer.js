@@ -5,11 +5,11 @@ var carImg = null,
     carDestroyImg = null,
     hammerImg = null,
     boomImg = null,
+    roadImg = null,
     scaleRate = 1,
     gameCanvas = null,
     gameCtx = null;
 var gamePlayer = {
-    imageList: null,
     gameInterval: -1,
     timerInterval: -1,
     carPosX: 0,
@@ -21,71 +21,63 @@ var gamePlayer = {
     hammerRect: null,
     carRect: null,
     init: function () {
-        this.imageList = ["images/1-hammer.png","images/1-car.png","images/1-carBack.png", "images/1-boom.png","images/1-car-destroy.png"];
-        this.loadImages(this.imageList, this.startGame);
+        this.fixSize();
     },
-    getPixelRatio: function (context) {
-        var backingStore = context.backingStorePixelRatio ||
-            context.webkitBackingStorePixelRatio ||
-            context.mozBackingStorePixelRatio ||
-            context.msBackingStorePixelRatio ||
-            context.oBackingStorePixelRatio ||
-            context.backingStorePixelRatio || 1;
-        return (window.devicePixelRatio || 1) / backingStore;
+    fixSize: function () {
+        $('.canvasBox').height($('.scene').height() - 9 * 20 * document.documentElement.clientWidth / 375);
     },
-    loadImages: function(sources,callback){
-        var loadedImages = 0;
-        var numImages = sources.length;
-        for (var src in sources) {
-            var image = new Image();
-            image.onload = function(){
-                var per=parseInt(loadedImages/numImages *100);
-                gamePlayer.updatePercent(per);
-                if (++loadedImages >= numImages) {
-                    callback&&callback();
-                }
-            };
-            image.src = sources[src];
-        }
+    restartGame: function () {
+        gamePlayer.isDragHammer = false;
+        gamePlayer.isGameOver = false;
+        $('.time').html("30S'");
+        gamePlayer.startGame();
     },
-    updatePercent: function (percent) {
-        // 更新页面进度
+    destroy: function () {
+        clearInterval(gamePlayer.gameInterval);
+        gamePlayer.gameInterval = -1;
+        clearInterval(gamePlayer.timerInterval);
+        gamePlayer.timerInterval = -1;
+        gameCanvas.removeEventListener(STA_EN,start,false);
+        gameCanvas.removeEventListener(MV_EV,move,false);
+        gameCanvas.removeEventListener(END_EV,end,false);
     },
     startGame: function () {
         carImg = new Image();
         carImg.src = 'images/1-car.png';
-
         carDestroyImg = new Image();
         carDestroyImg.src = 'images/1-car-destroy.png';
-
         hammerImg = new Image();
         hammerImg.src = 'images/1-hammer.png';
-
         boomImg = new Image();
         boomImg.src = 'images/1-boom.png';
+        roadImg = new Image();
+        roadImg.src = 'images/1-road.png';
 
         var $canvasBox = $('.canvasBox');
         var canvas = document.getElementById('gameCanvas');
         canvas.width = $canvasBox.width();
         canvas.height = $canvasBox.height();
         var ctx = canvas.getContext('2d');
-        var ratio = gamePlayer.getPixelRatio(ctx);
-        if (ratio > 1) {
-            canvas.style.height = canvas.height + 'px';
-            canvas.style.width = canvas.width + 'px';
-            canvas.width *= ratio;
-            canvas.height *= ratio;
-        }
+        var ratio = toolHelper.getPixelRatio(ctx);
+        canvas.style.height = canvas.height + 'px';
+        canvas.style.width = canvas.width + 'px';
+        canvas.width *= ratio;
+        canvas.height *= ratio;
 
         scaleRate = canvas.width / 710;
         gamePlayer.hammerPosY =  - hammerImg.height * scaleRate/2;
         gamePlayer.gameInterval = setInterval(function () {
             ctx.clearRect(0,0, canvas.width, canvas.height);
             if (!gamePlayer.isGameOver) {
+                gamePlayer.drawRoad(ctx, canvas.width, canvas.height);
                 gamePlayer.drawCar(ctx, canvas.width, canvas.height);
                 gamePlayer.drawHammer(ctx, canvas.width, canvas.height);
             } else {
-                gamePlayer.stopGame(ctx, canvas.width, canvas.height);
+                gamePlayer.destroy();
+                clearInterval(gamePlayer.gameInterval);
+                gamePlayer.gameInterval = -1;
+                clearInterval(gamePlayer.timerInterval);
+                gamePlayer.timerInterval = -1;
             }
         }, 30);
 
@@ -93,13 +85,9 @@ var gamePlayer = {
         gamePlayer.timerInterval = setInterval(function () {
             if (--count < 0) {
                 gamePlayer.isGameOver = true;
-                clearInterval(gamePlayer.gameInterval);
-                gamePlayer.gameInterval = -1;
-                gamePlayer.gameInterval = -1;
-
-                clearInterval(gamePlayer.timerInterval);
-                gamePlayer.timerInterval = -1;
+                gamePlayer.destroy();
                 // 游戏时间结束
+                $('#tipFailDialog').show();
             } else {
                 // 更新时间
                 $('.time').html(count +"S'");
@@ -113,18 +101,18 @@ var gamePlayer = {
         canvas.addEventListener(END_EV,end,false);
     },
     stopGame: function (ctx, maxW, maxH) {
-        clearInterval(gamePlayer.gameInterval);
-        gamePlayer.gameInterval = -1;
-
-        clearInterval(gamePlayer.timerInterval);
-        gamePlayer.timerInterval = -1;
-
-        var roadH = 194;
-        var carPosY = maxH - (roadH + carDestroyImg.height) * scaleRate;
+        var carPosY = maxH - (roadImg.height + carDestroyImg.height) * scaleRate;
         ctx.clearRect(0,0, maxW, maxH);
+        gamePlayer.drawRoad(ctx, maxW, maxH);
         ctx.drawImage(carDestroyImg, gamePlayer.carPosX, carPosY, carDestroyImg.width * scaleRate, carDestroyImg.height * scaleRate);
-        ctx.drawImage(hammerImg, gamePlayer.hammerPosX, -carDestroyImg.height/2 * scaleRate, hammerImg.width * scaleRate, hammerImg.height * scaleRate);
+
+        // 计算压到车子的锤子状态
+        var hammerH = hammerImg.height * scaleRate;
+        var hammerTop =  - (carDestroyImg.height/2 + roadImg.height)* scaleRate - (hammerH - maxH);
+        ctx.drawImage(hammerImg, gamePlayer.hammerPosX,  hammerTop, hammerImg.width * scaleRate, hammerImg.height * scaleRate);
         ctx.drawImage(boomImg, gamePlayer.carPosX - boomImg.width * scaleRate/4, carPosY - boomImg.height * scaleRate/2, boomImg.width * scaleRate, boomImg.height * scaleRate);
+
+        gamePlayer.destroy();
     },
     drawCar: function (ctx, maxW, maxH) {
         if (gamePlayer.isBackWard) {
@@ -142,9 +130,8 @@ var gamePlayer = {
             carImg.src = 'images/1-car.png';
             gamePlayer.isBackWard = false;
         }
-        var top = maxH - (194 + carImg.height) * scaleRate;
+        var top = maxH - (roadImg.height + carImg.height) * scaleRate;
         ctx.drawImage(carImg, gamePlayer.carPosX, top, imgW, imgH);
-        ctx.restore();//恢复状态
         gamePlayer.carRect = {'top': top, 'left': gamePlayer.carPosX, 'w': imgW, 'h': imgH};
     },
     drawHammer: function (ctx, maxW, maxH) {
@@ -160,16 +147,23 @@ var gamePlayer = {
         ctx.drawImage(hammerImg, gamePlayer.hammerPosX, gamePlayer.hammerPosY, imgW, imgH);
         gamePlayer.hammerRect = {'top': gamePlayer.hammerPosY, 'left': gamePlayer.hammerPosX, 'w': imgW, 'h': imgH};
     },
+    drawRoad: function (ctx, maxW, maxH) {
+        var imgW = roadImg.width * scaleRate;
+        var imgH = roadImg.height * scaleRate;
+        ctx.drawImage(roadImg, 0, maxH - imgH, maxW, imgH);
+    },
     hitCheck: function (offY) {
-        var hammerH = gamePlayer.hammerPosY + gamePlayer.hammerRect.h;
+        var hammerH = gamePlayer.hammerPosY + offY + gamePlayer.hammerRect.h;
         if (hammerH > gamePlayer.carRect.top) {
             if ( gamePlayer.hammerPosX > gamePlayer.carRect.left && gamePlayer.hammerPosX < (gamePlayer.carRect.left + gamePlayer.carRect.w)) {
                 gamePlayer.stopGame(gameCtx, gameCanvas.width, gameCanvas.height);
+                setTimeout(function () {
+                    $('#tipSuccessDialog').show();
+                }, 200);
             }
         } else {
             gamePlayer.hammerPosY += offY;
             gamePlayer.hammerPosY = Math.min(gamePlayer.carRect.top, gamePlayer.hammerPosY);
-
         }
 
     },
@@ -179,11 +173,8 @@ var gamePlayer = {
         if (x > rect.left && x < (rect.left + rect.w) && y > rect.top && y < (rect.top + rect.h)) {
             bStart = 1;
             gamePlayer.isDragHammer = true;
-            console.log('x:' + x + ' y:' + y);
-
         }
     }
-    
 };
 gamePlayer.init();
 
@@ -198,11 +189,9 @@ var beginX,beginY,startX = 0,startY = 0;
 function start(ev){
     ev.preventDefault();
     var touches = ev.touches;
-    var poi=windowToCanvas(gameCanvas,ev.clientX || ev.pageX || touches[0].clientX,ev.clientY || ev.pageY || touches[0].clientY);
+    var poi= toolHelper.windowToCanvas(gameCanvas,ev.clientX || ev.pageX || touches[0].clientX,ev.clientY || ev.pageY || touches[0].clientY);
     beginX = poi.x;
     beginY = poi.y;
-    // console.log('beginX:' + beginX + ' beginY:' + beginY);
-    // console.log('rectHammer: top:' + gamePlayer.hammerRect.top + ' left:' + gamePlayer.hammerRect.left + ' w:' + gamePlayer.hammerRect.w + ' h:' + gamePlayer.hammerRect.h);
     gamePlayer.checkDragHammer(beginX, beginY);
 }
 
@@ -210,7 +199,7 @@ function move(ev){
     ev.preventDefault();
     if(bStart === 0)return;
     var touches = ev.touches;
-    var poi = windowToCanvas(gameCanvas,ev.clientX || ev.pageX || touches[0].clientX,ev.clientY || ev.pageY || touches[0].clientY);
+    var poi = toolHelper.windowToCanvas(gameCanvas,ev.clientX || ev.pageX || touches[0].clientX,ev.clientY || ev.pageY || touches[0].clientY);
     var offsetX = poi.x - beginX,
         offsetY = poi.y - beginY;
     gamePlayer.hitCheck(offsetY);
@@ -224,26 +213,3 @@ function end (ev) {
     gamePlayer.isDragHammer = false;
     gamePlayer.hammerPosY =  - hammerImg.height * scaleRate/2;
 }
-
-function windowToCanvas(canvas,x,y){
-    var bbox = canvas.getBoundingClientRect();
-    return {
-        x:x - bbox.left - (bbox.width - canvas.width) / 2,
-        y:y - bbox.top - (bbox.height - canvas.height) / 2
-    };
-}
-
-(function () {
-    /*
-     * 禁止浏览器触摸事件
-     * */
-    document.addEventListener('touchmove', function(event){
-        // 判断默认行为是否可以被禁用
-        if (event.cancelable) {
-            // 判断默认行为是否已经被禁用
-            if (!event.defaultPrevented) {
-                event.preventDefault();
-            }
-        }
-    }, false);
-})();
