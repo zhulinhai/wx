@@ -6,12 +6,8 @@ var carImg = null,
     hammerImg = null,
     boomImg = null,
     roadImg = null,
-    scaleRate = 1,
-    gameCanvas = null,
-    gameCtx = null;
+    scaleRate = 1;
 var gamePlayer = {
-    gameInterval: -1,
-    timerInterval: -1,
     carPosX: 0,
     hammerPosX: 0,
     hammerPosY: 0,
@@ -33,15 +29,16 @@ var gamePlayer = {
         gamePlayer.startGame();
     },
     destroy: function () {
-        clearInterval(gamePlayer.gameInterval);
-        gamePlayer.gameInterval = -1;
-        clearInterval(gamePlayer.timerInterval);
-        gamePlayer.timerInterval = -1;
+        clearInterval(gameInterval);
+        gameInterval = -1;
+        clearInterval(timerInterval);
+        timerInterval = -1;
         gameCanvas.removeEventListener(STA_EN,start,false);
         gameCanvas.removeEventListener(MV_EV,move,false);
         gameCanvas.removeEventListener(END_EV,end,false);
     },
     startGame: function () {
+        currentScene = 1;
         carImg = new Image();
         carImg.src = 'images/1-car.png';
         carDestroyImg = new Image();
@@ -53,20 +50,11 @@ var gamePlayer = {
         roadImg = new Image();
         roadImg.src = 'images/1-road.png';
 
-        var $canvasBox = $('.canvasBox');
-        var canvas = document.getElementById('gameCanvas');
-        canvas.width = $canvasBox.width();
-        canvas.height = $canvasBox.height();
-        var ctx = canvas.getContext('2d');
-        var ratio = toolHelper.getPixelRatio(ctx);
-        canvas.style.height = canvas.height + 'px';
-        canvas.style.width = canvas.width + 'px';
-        canvas.width *= ratio;
-        canvas.height *= ratio;
-
+        var canvas = gameCanvas;
+        var ctx = gameCtx;
         scaleRate = canvas.width / 710;
         gamePlayer.hammerPosY =  - hammerImg.height * scaleRate/2;
-        gamePlayer.gameInterval = setInterval(function () {
+        gameInterval = setInterval(function () {
             ctx.clearRect(0,0, canvas.width, canvas.height);
             if (!gamePlayer.isGameOver) {
                 gamePlayer.drawRoad(ctx, canvas.width, canvas.height);
@@ -74,15 +62,11 @@ var gamePlayer = {
                 gamePlayer.drawHammer(ctx, canvas.width, canvas.height);
             } else {
                 gamePlayer.destroy();
-                clearInterval(gamePlayer.gameInterval);
-                gamePlayer.gameInterval = -1;
-                clearInterval(gamePlayer.timerInterval);
-                gamePlayer.timerInterval = -1;
             }
         }, 30);
 
         var count = 30;
-        gamePlayer.timerInterval = setInterval(function () {
+        timerInterval = setInterval(function () {
             if (--count < 0) {
                 gamePlayer.isGameOver = true;
                 gamePlayer.destroy();
@@ -94,8 +78,6 @@ var gamePlayer = {
             }
         }, 1000);
 
-        gameCanvas = canvas;
-        gameCtx = ctx;
         canvas.addEventListener(STA_EN,start,false);
         canvas.addEventListener(MV_EV,move,false);
         canvas.addEventListener(END_EV,end,false);

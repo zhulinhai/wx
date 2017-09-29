@@ -56,7 +56,7 @@
     </div>
     <div class="scene" style="display: block">
         <div class="header">
-            <img class="title" src="images/1-title.png" >
+            <img id="sceneTitle" class="title" src="images/1-title.png" >
             <div class="clockFrame"><label class="time">30S'</label><img class="clock animated shake" src="images/clock.png"></div>
         </div>
         <div class="content">
@@ -74,13 +74,34 @@
     <script type="text/javascript" src="js/gamePlayer.js"></script>
     <script type="text/javascript" src="js/overlayPlayer.js"></script>
     <script type="text/javascript">
-        var imageList = ["images/scene2/car-1.png", "images/1-road.png","images/1-hammer.png","images/1-car.png","images/1-carBack.png", "images/1-boom.png","images/1-car-destroy.png"];
+        var imageList = ["images/scene2/car-1.png", "images/scene2/car-2.png", "images/scene2/car-3.png","images/scene2/car-4.png","images/scene2/car-5.png", "images/1-road.png","images/1-hammer.png","images/1-car.png","images/1-carBack.png", "images/1-boom.png","images/1-car-destroy.png"];
         var currentScene = 1;
+        var gameCanvas = null, gameCtx = null;
+        var gameInterval= -1, timerInterval= -1;
         window.onload = function () {
             loadImages(imageList, function () {
-                gamePlayer.startGame();
+                initCanvas();
+//                gamePlayer.startGame();
+
+                overlayPlayer.init();
+                overlayPlayer.startGame();
             });
         };
+
+        function initCanvas() {
+            var $canvasBox = $('.canvasBox');
+            var canvas = document.getElementById('gameCanvas');
+            canvas.width = $canvasBox.width();
+            canvas.height = $canvasBox.height();
+            var ctx = canvas.getContext('2d');
+            var ratio = toolHelper.getPixelRatio(ctx);
+            canvas.style.height = canvas.height + 'px';
+            canvas.style.width = canvas.width + 'px';
+            canvas.width *= ratio;
+            canvas.height *= ratio;
+            gameCanvas = canvas;
+            gameCtx = ctx;
+        }
 
         function loadImages(sources,callback){
             var loadedImages = 0;
@@ -101,14 +122,14 @@
             $('.tipDialog').hide();
             if (currentScene == 1) {
                 gamePlayer.restartGame();
+            } else if (currentScene == 2) {
+                overlayPlayer.restartGame();
             }
-            scene1();
         }
         
         function jumpNext() {
             $('.tipDialog').hide();
             if (currentScene == 1) {
-                overlayPlayer.init();
                 overlayPlayer.startGame();
             }
         }
