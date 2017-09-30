@@ -5,8 +5,7 @@ var carImg = null,
     carDestroyImg = null,
     hammerImg = null,
     boomImg = null,
-    roadImg = null,
-    scaleRate = 1;
+    roadImg = null;
 var gamePlayer = {
     carPosX: 0,
     hammerPosX: 0,
@@ -33,9 +32,8 @@ var gamePlayer = {
         gameInterval = -1;
         clearInterval(timerInterval);
         timerInterval = -1;
-        gameCanvas.removeEventListener(STA_EN,start,false);
-        gameCanvas.removeEventListener(MV_EV,move,false);
-        gameCanvas.removeEventListener(END_EV,end,false);
+        // 取消绑定手势事件
+        unbindCanvasEvent();
     },
     startGame: function () {
         currentScene = 1;
@@ -52,16 +50,13 @@ var gamePlayer = {
 
         var canvas = gameCanvas;
         var ctx = gameCtx;
-        scaleRate = canvas.width / 710;
-        gamePlayer.hammerPosY =  - hammerImg.height * scaleRate/2;
+        gamePlayer.hammerPosY =  - (roadImg.height + carImg.height + hammerImg.height/4 )* scaleRate;
         gameInterval = setInterval(function () {
             ctx.clearRect(0,0, canvas.width, canvas.height);
             if (!gamePlayer.isGameOver) {
                 gamePlayer.drawRoad(ctx, canvas.width, canvas.height);
                 gamePlayer.drawCar(ctx, canvas.width, canvas.height);
                 gamePlayer.drawHammer(ctx, canvas.width, canvas.height);
-            } else {
-                gamePlayer.destroy();
             }
         }, 30);
 
@@ -78,9 +73,8 @@ var gamePlayer = {
             }
         }, 1000);
 
-        canvas.addEventListener(STA_EN,start,false);
-        canvas.addEventListener(MV_EV,move,false);
-        canvas.addEventListener(END_EV,end,false);
+        // 绑定手势事件
+        bindCanvasEvent();
     },
     stopGame: function (ctx, maxW, maxH) {
         var carPosY = maxH - (roadImg.height + carDestroyImg.height) * scaleRate;
@@ -141,7 +135,7 @@ var gamePlayer = {
                 gamePlayer.stopGame(gameCtx, gameCanvas.width, gameCanvas.height);
                 setTimeout(function () {
                     $('#tipSuccessDialog').show();
-                }, 200);
+                }, 2000);
             }
         } else {
             gamePlayer.hammerPosY += offY;
@@ -158,40 +152,3 @@ var gamePlayer = {
         }
     }
 };
-gamePlayer.init();
-
-// 移动相册的动作
-var hasTouch = 'ontouchstart' in window;
-var STA_EN = hasTouch ? "touchstart" : "mousedown",
-    MV_EV = hasTouch ? "touchmove":"mousemove",
-    END_EV = hasTouch ? "touchend" : "mouseup",
-    END_Cancel = hasTouch ? "touchcancel" : "mouseout";
-var bStart = 0;
-var beginX,beginY,startX = 0,startY = 0;
-function start(ev){
-    ev.preventDefault();
-    var touches = ev.touches;
-    var poi= toolHelper.windowToCanvas(gameCanvas,ev.clientX || ev.pageX || touches[0].clientX,ev.clientY || ev.pageY || touches[0].clientY);
-    beginX = poi.x;
-    beginY = poi.y;
-    gamePlayer.checkDragHammer(beginX, beginY);
-}
-
-function move(ev){
-    ev.preventDefault();
-    if(bStart === 0)return;
-    var touches = ev.touches;
-    var poi = toolHelper.windowToCanvas(gameCanvas,ev.clientX || ev.pageX || touches[0].clientX,ev.clientY || ev.pageY || touches[0].clientY);
-    var offsetX = poi.x - beginX,
-        offsetY = poi.y - beginY;
-    gamePlayer.hitCheck(offsetY);
-    beginX = poi.x;
-    beginY = poi.y;
-}
-
-function end (ev) {
-    ev.preventDefault();
-    bStart = 0;
-    gamePlayer.isDragHammer = false;
-    gamePlayer.hammerPosY =  - hammerImg.height * scaleRate/2;
-}

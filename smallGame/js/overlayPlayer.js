@@ -7,36 +7,26 @@ var overlayPlayer = {
     currentIndex: -1,
     currentScale: 1,
     isBackWard: false,
+    isGameOver: false,
     init: function () {
         $('.time').html("30S'");
-        $('#sceneTitle').attr('src', 'images/scene2/2-title.png');
+        $('#sceneTitle').attr('src', 'images/scene4/4-title.png');
         gameCtx.clearRect(0,0,gameCanvas.width,gameCanvas.height);
 
         this.carList = [];
-        var images = ['images/scene2/car-1.png','images/scene2/car-2.png','images/scene2/car-3.png','images/scene2/car-4.png','images/scene2/car-5.png'];
-        for (var i = 0; i< images.length; i++) {
+        for (var i = 0; i< scene5Images.length; i++) {
             var image = new Image();
-            image.src = images[i];
-
+            image.src = scene5Images[i];
             var item = [];
             item['carImg'] = image;
             item['scale'] = 1;
             item['isLand'] = false;
             this.carList[i] = item;
         }
-        this.currentIndex = 0;
-
-        $('#gameCanvas').click(function () {
-            if (overlayPlayer.currentIndex >= 4) {
-                overlayPlayer.destroy();
-                return;
-            }
-            overlayPlayer.carList[overlayPlayer.currentIndex].scale = overlayPlayer.currentScale;
-            overlayPlayer.carList[overlayPlayer.currentIndex].isLand = true;
-            overlayPlayer.currentIndex ++;
-            overlayPlayer.currentScale = 1;
-            // 检测是否游戏结束
-        });
+        overlayPlayer.currentIndex = 0;
+        overlayPlayer.isGameOver = false;
+        overlayPlayer.isBackWard = false;
+        currentScene = 5;
     },
     destroy: function () {
         clearInterval(gameInterval);
@@ -45,20 +35,16 @@ var overlayPlayer = {
         timerInterval = -1;
         clearInterval(carInterval);
         carInterval = -1;
+        $('#gameCanvas').unbind();
     },
     startGame: function () {
-        overlayPlayer.init();
-
         var canvas = gameCanvas;
         var ctx = gameCtx;
-        currentScene = 2;
         gameInterval = setInterval(function () {
             ctx.clearRect(0,0, canvas.width, canvas.height);
             if (!overlayPlayer.isGameOver) {
                 overlayPlayer.drawChangedCar(ctx, canvas.width, canvas.height);
                 overlayPlayer.drawCars(ctx, canvas.width, canvas.height);
-            } else {
-                overlayPlayer.destroy();
             }
         }, 30);
 
@@ -76,19 +62,43 @@ var overlayPlayer = {
         }, 1000);
 
         carInterval = setInterval(function () {
-            if (overlayPlayer.currentScale >= 1.2) {
+            if (overlayPlayer.currentScale >= 1.4) {
                 overlayPlayer.isBackWard = true;
-            } else if (overlayPlayer.currentScale <= 0.8) {
+            } else if (overlayPlayer.currentScale <= 0.6) {
                 overlayPlayer.isBackWard = false;
             }
             if (overlayPlayer.isBackWard) {
-                overlayPlayer.currentScale -= 0.1;
+                overlayPlayer.currentScale -= 0.2;
             } else {
-                overlayPlayer.currentScale += 0.1;
+                overlayPlayer.currentScale += 0.2;
             }
         }, 200);
+
+        $('#gameCanvas').click(function () {
+            if (overlayPlayer.checkGameOver()) {
+                overlayPlayer.isGameOver = true;
+                gameCtx.clearRect(0,0, gameCanvas.width, gameCanvas.height);
+                overlayPlayer.drawCars(gameCtx, gameCanvas.width, gameCanvas.height);
+                overlayPlayer.destroy();
+                $('#tipFailDialog').show();
+                return;
+            }
+
+            if (overlayPlayer.currentIndex >= 4) {
+                overlayPlayer.carList[overlayPlayer.currentIndex].scale = overlayPlayer.currentScale;
+                overlayPlayer.carList[overlayPlayer.currentIndex].isLand = true;
+                gameCtx.clearRect(0,0, gameCanvas.width, gameCanvas.height);
+                overlayPlayer.drawCars(gameCtx, gameCanvas.width, gameCanvas.height);
+                overlayPlayer.destroy();
+                return;
+            }
+            overlayPlayer.carList[overlayPlayer.currentIndex].scale = overlayPlayer.currentScale;
+            overlayPlayer.carList[overlayPlayer.currentIndex].isLand = true;
+            overlayPlayer.currentIndex ++;
+        });
     },
     restartGame: function () {
+        overlayPlayer.init();
         overlayPlayer.startGame();
     },
     drawChangedCar: function (ctx, maxW, maxH) {
@@ -96,16 +106,29 @@ var overlayPlayer = {
         var carScale = overlayPlayer.currentScale;
         var carImg = item.carImg;
         var centerX = (maxW - carImg.width * scaleRate * carScale)/2;
-        gameCtx.drawImage(carImg, centerX, 10, carImg.width * scaleRate * carScale, carImg.height * scaleRate * carScale);
+        ctx.drawImage(carImg, centerX, 10, carImg.width * scaleRate * carScale, carImg.height * scaleRate * carScale);
     },
     drawCars: function (ctx, maxW, maxH) {
         var height = 0;
-        for (var i = 0;i< overlayPlayer.carList; i++) {
+        for (var i = 0;i< overlayPlayer.carList.length; i++) {
             var item = overlayPlayer.carList[i];
             if (item.isLand) {
                 var carImg = item.carImg;
+                var carScale = item.scale;
+                var carH = carImg.height * scaleRate * carScale;
+                height += carH;
+                var centerX = (maxW - carImg.width * scaleRate * carScale)/2;
+                ctx.drawImage(carImg, centerX, maxH - height, carImg.width * scaleRate * carScale, carH);
             }
         }
-
+    },
+    checkGameOver: function () {
+        if (overlayPlayer.currentIndex == 0) {
+            return false;
+        }
+        var currentIndex = overlayPlayer.currentIndex;
+        var currentScale = overlayPlayer.currentScale;
+        var beforeScale = overlayPlayer.carList[--currentIndex].scale;
+        return currentScale >= beforeScale;
     }
 };
