@@ -33,7 +33,7 @@
     var roomID = '10001';
     window.onload = function(){
         var code = request('code');
-        Http = new Http('http://api.bobo119.com/api/');
+        Http = new Http('http://api.bjczxda.com/api/');
         Http.ajaxRequest({uri:'wx/userInfo/'+code,'success':function(json){
             if(json.success){
                 var data = json.data;
