@@ -16,10 +16,23 @@ var gamePlayer = {
     hammerRect: null,
     carRect: null,
     init: function () {
-        this.fixSize();
-    },
-    fixSize: function () {
-        $('.canvasBox').height($('.scene').height() - 9 * 20 * document.documentElement.clientWidth / 375);
+        $('.time').html("30S'");
+        $('#sceneTitle').attr('src',  scene4PrePath + '5-title.png');
+        gameCtx.clearRect(0,0,gameCanvas.width,gameCanvas.height);
+
+        currentScene = 5;
+        carImg = new Image();
+        carImg.src = 'images/1-car.png';
+        carDestroyImg = new Image();
+        carDestroyImg.src = 'images/1-car-destroy.png';
+        hammerImg = new Image();
+        hammerImg.src = 'images/1-hammer.png';
+        boomImg = new Image();
+        boomImg.src = 'images/1-boom.png';
+        roadImg = new Image();
+        roadImg.src = 'images/1-road.png';
+
+        gamePlayer.isGameOver = false;
     },
     restartGame: function () {
         gamePlayer.isDragHammer = false;
@@ -36,18 +49,6 @@ var gamePlayer = {
         unbindCanvasEvent();
     },
     startGame: function () {
-        currentScene = 1;
-        carImg = new Image();
-        carImg.src = 'images/1-car.png';
-        carDestroyImg = new Image();
-        carDestroyImg.src = 'images/1-car-destroy.png';
-        hammerImg = new Image();
-        hammerImg.src = 'images/1-hammer.png';
-        boomImg = new Image();
-        boomImg.src = 'images/1-boom.png';
-        roadImg = new Image();
-        roadImg.src = 'images/1-road.png';
-
         var canvas = gameCanvas;
         var ctx = gameCtx;
         gamePlayer.hammerPosY =  - (roadImg.height + carImg.height + hammerImg.height/4 )* scaleRate;
@@ -135,7 +136,7 @@ var gamePlayer = {
                 gamePlayer.stopGame(gameCtx, gameCanvas.width, gameCanvas.height);
                 setTimeout(function () {
                     $('#tipSuccessDialog').show();
-                }, 2000);
+                }, 1000);
             }
         } else {
             gamePlayer.hammerPosY += offY;

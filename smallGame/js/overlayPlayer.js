@@ -2,6 +2,7 @@
  * Created by zhulinhai on 17/9/28.
  */
 var carInterval = -1;
+var scene5Images;
 var overlayPlayer = {
     carList: null,
     currentIndex: -1,
@@ -13,6 +14,7 @@ var overlayPlayer = {
         $('#sceneTitle').attr('src', 'images/scene4/4-title.png');
         gameCtx.clearRect(0,0,gameCanvas.width,gameCanvas.height);
 
+        scene5Images = ["images/scene5/car-1.png","images/scene5/car-2.png","images/scene5/car-3.png","images/scene5/car-4.png","images/scene5/car-5.png"];
         this.carList = [];
         for (var i = 0; i< scene5Images.length; i++) {
             var image = new Image();

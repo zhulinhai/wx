@@ -22,6 +22,7 @@ var jumpPlayer = {
         mountainTop = 0;
         jumpPlayer.carStep = 0;
         jumpPlayer.carPosX = 0;
+        jumpPlayer.mountainOffX = 0;
         currentScene = 2;
 
         jumpPlayer.carImg = new Image();
@@ -63,9 +64,11 @@ var jumpPlayer = {
                 $('.time').html(count +"S'");
 
                 if (jumpPlayer.carPosX >= gameCanvas.width) {
+                    jumpPlayer.isGameOver = true;
+                    jumpPlayer.destroy();
                     setTimeout(function () {
                         $('#tipSuccessDialog').show();
-                    }, 2000);
+                    }, 1000);
                 }
             }
         }, 1000);
@@ -74,7 +77,7 @@ var jumpPlayer = {
         bindCanvasEvent();
     },
     stopGame: function (ctx, maxW, maxH) {
-        gamePlayer.destroy();
+        jumpPlayer.destroy();
     },
     restartGame: function () {
         jumpPlayer.init();
