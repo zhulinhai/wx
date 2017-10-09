@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
     <meta name="format-detection" content="telephone=no">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -21,24 +22,216 @@
             win.addEventListener(resizeEvt, recalc, false);
             doc.addEventListener('DOMContentLoaded', recalc, false);
         })(document, window);
+
+        (function () {
+            /*
+             * 禁止浏览器触摸事件
+             * */
+            document.addEventListener('touchmove', function(event){
+                // 判断默认行为是否可以被禁用
+                if (event.cancelable) {
+                    // 判断默认行为是否已经被禁用
+                    if (!event.defaultPrevented) {
+                        event.preventDefault();
+                    }
+                }
+            }, false);
+        })();
     </script>
 </head>
 <body>
-    <div class="stage">
+    <!-- loading页面 -->
+    <div id="loadingDialog">
+        <div class="content">
+            <img class="loading-gif" src="images/loading.gif" >
+            <p id="loading-percent">0%</p>
+        </div>
+    </div>
+    <div class="tipDialog" id="tipSuccessDialog" style="display: none">
+        <div class="content">
+            <img src="./images/dialog/success.png" alt="" class="success">
+            <img src="./images/dialog/title-success.png" alt="" class="title">
+            <a href="javascript:jumpNext();"><div class="btnNext"></div></a>
+        </div>
+    </div>
+    <div class="tipDialog" id="tipFailDialog" style="display: none">
+        <div class="content">
+            <img src="./images/dialog/fail.png" alt="" class="fail">
+            <img src="./images/dialog/title-fail.png" alt="" class="title">
+            <a href="javascript:replayGame()"><div class="btnReplay"></div></a>
+        </div>
+    </div>
+    <div class="scene" style="display: block">
         <div class="header">
-            <img class="logo" src="images/logo.png" alt="">
-            <div class="clockFrame"><label>30S</label><img class="clock" src="images/clock.png"></div>
+            <img id="sceneTitle" class="title" src="images/1-title.png" >
+            <div class="clockFrame"><label class="time">30S'</label><img class="clock animated shake" src="images/clock.png"></div>
         </div>
         <div class="content">
-            <img class="title" src="images/1-title.png" >
             <div class="canvasBox">
                 <canvas id="gameCanvas"></canvas>
             </div>
+        </div>
+        <div class="bottom">
             <img class="btnHelp" src="images/1-btnHelp.png" />
         </div>
     </div>
 
+    <!-- 横屏提示 -->
+    <div id="orientLayer">
+        <div class="contentFrame">
+            <img class="phone rotatePhoneAnimation" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIoAAAELCAMAAAAxwu6fAAAAY1BMVEUAAAD///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////+aRQ2gAAAAIHRSTlMAS5nM8R/4QhQr6uZmBzsMjbTRv1Wtp3c04MVegdmfbRWDO7QAAAUMSURBVHja7d3ZkqIwFIDhEAj7vgm4nfd/ypkpEdA+iMRArOnzX45TXZ+CLMEAoyiK+k15IS/MTSt46C07Gu7DLvm8eQmJC9ixIp6FuDXsXO3iEq+F3Ws9TFLaoCG7/CkJQVPhs8SxQVO28ygRPmjLFw8UEzRmfsWK8mN1SQLQWpAMlANo7jBQAtBcMHyRQXtOT0lBe2lPyWF9tjmbDevLb5IIVmeF7EWhBauLbntkWF3M8ORXvtseOoa1ZWyhSvLNGTKbATz5DZUhSTl9D8VconS7USB8LQlhPwpwbx7icZCnfEFEIQpRiEIUJKJgEQXrF1G4hmycwjRkEYUoRCEKUX5GFCyiYBEFiyhYRMEiChZRsIiCRRQsomARBYsoWETBIgoWUbCIgkUULKJgEQWLKG8ljAPvzH9l/OAIbRSDB/BYmzoaKF7qA5afin0pTQXzVZ5yivxElVrsRDlasJRV7kFJLvBOl2RzindGPgPk3+DcbEXB56kE9bVxb+uPc639R6CzKSWeSiweP0MvNj75Rz2lsWDITl3sy3WaYGxjM4o3kVwEwxPZxOJtRHHbcdm8er9GMK5L7jaU8e124vVOMod7xSaUcPz70dLnV8C96wYUYaESvCgbFqWrnpJCnzlKXlhM6OP9RlohpRinob2TG8At+9//F2mrkFLBrZK9lzPspllcA3QKKWW/PWHvxoclOi4nNRTGx1X2rVwfJoUqKczhvGQrOsEkR+vJhwOTXI2Uo4lMotNAcQ8BPJTpoOCHv6keynioMHbUQxkPFcYanRSWcBhLVFEiOUx8hr4zU0VpDTlLdD/SzVRRPIDKlcN4HfzrpIpSLk0GXZwnWspS8J1J58lZRAXgSVPwQxX7FMlhjDZSRTlDXx7LWSKmiJLAGE+kLKooDUwKDJ2UIzxUCX2UFB6zjtooGTwUHFxtlAAmmUeN64r7NGVFI8VBZni/15FzRynlCpMs921IVIyncIooHP7WQV+99uzwqJDSAVwaVqHnVssntpAppLSpO93k+rOLCL/nTqGQ0u916nXjK8MSTbccdcresIyjTmLTsbjOfXv8C44bj1CeF0YoO7hXbz5u65dsPsOCe22y1Wi2DUOZmANzGLKazcb4YwuGrJOLQQ7TywAxU03BLWBfjOjpZf7wurPp9aDGh2l2du2vLrvxtXp6zdn/Khne2dv82mHE4Z2qZI8rqoYPS9nXna4zC74gqcR+V9+96hWk2fc3CSINAMtPPQ2/1IhPOTzWckPb71fcOORZfyPSgyHoVz1EuUcULKJgEQWLKFhEwSIKFlGwiIJFFCyiYBEFiyhYRMEiChZRsIiCRRQsomARBYsoWETBIgoWUXbJ+vo7RK/vN9zCe0VEwSIK1rdSzL99AcW637nCSX29lOmc8yTVSPEd9pDj66L4HnvK8/VQbAe7i4IWyokhnXRQggSjJIEGyoGhHTRQBE4R+1PObKbz7pRqjpLtTuFzFP5/UGKQqZ6j1CBT3M/6lCmfo+Qgkzc8MVQiF5e4IFX0yfs44pTjR58xV7mE8o++BA5IFar7UMD57EnEvkAnBckUfLoLy5NnSZJ/umtNAkmLQG7R8+HxRghyBeVUUgagYK3LQTKz7N9RUpogWa7que92wdOUFzbI5otvfRq+rke/45un0gYN4TdP81rYvdabvXnhztUum8vpYMc6h70q5j7sks9jtlgT8sLctIKHDaMoivpV/QF5Z4VepxJtcAAAAABJRU5ErkJggg==">
+            <p class="tipTitle">为了更好的体验，请使用竖屏浏览</p>
+        </div>
+    </div>
+
     <script type="text/javascript" src="js/jquery-1.12.1.min.js"></script>
+    <script type="text/javascript" src="js/tool.js"></script>
     <script type="text/javascript" src="js/gamePlayer.js"></script>
+    <script type="text/javascript" src="js/jumpPlayer.js"></script>
+    <script type="text/javascript" src="js/overlayPlayer.js"></script>
+    <script type="text/javascript">
+        var imageList = ["images/1-road.png","images/1-hammer.png","images/1-car.png","images/1-carBack.png", "images/1-boom.png","images/1-car-destroy.png",
+            "images/scene2/2-car.png", "images/scene2/2-title.png", "images/scene2/2-cloud.png", "images/scene2/2-mountain.png",
+            'images/scene5/car-1.png','images/scene5/car-2.png','images/scene5/car-3.png','images/scene5/car-4.png','images/scene5/car-5.png'];
+        var currentScene = 1;
+        var scaleRate = 1;
+        var gameCanvas = null, gameCtx = null;
+        var gameInterval= -1, timerInterval= -1;
+        window.onload = function () {
+            scaleRate = document.documentElement.clientWidth / 375;
+            loadImages(imageList, function () {
+                setTimeout(function () {
+                    $('#loadingDialog').hide();
+                    gamePlayer.init();
+                    initCanvas();
+                    gamePlayer.startGame();
+                }, 1000);
+            });
+        };
+
+        function initCanvas() {
+            var $canvasBox = $('.canvasBox');
+            var canvas = document.getElementById('gameCanvas');
+            canvas.width = $canvasBox.width();
+            canvas.height = $canvasBox.height();
+            var ctx = canvas.getContext('2d');
+            var ratio = toolHelper.getPixelRatio(ctx);
+            canvas.style.height = canvas.height + 'px';
+            canvas.style.width = canvas.width + 'px';
+            canvas.width *= ratio;
+            canvas.height *= ratio;
+            gameCanvas = canvas;
+            gameCtx = ctx;
+        }
+
+        function loadImages(sources,callback){
+            var loadedImages = 0;
+            var numImages = sources.length;
+            for (var src in sources) {
+                var image = new Image();
+                image.onload = function(){
+                    var per=parseInt(loadedImages/numImages *100);
+                    var $loadingPercent = $('#loading-percent');
+                    $loadingPercent.html(per + '%');
+                    if (++loadedImages >= numImages) {
+                        $loadingPercent.html('100%');
+                        callback&&callback();
+                    }
+                };
+                image.src = sources[src];
+            }
+        }
+
+        function replayGame() {
+            $('.tipDialog').hide();
+            if (currentScene == 1) {
+                gamePlayer.restartGame();
+            } else if (currentScene == 2) {
+                jumpPlayer.restartGame();
+            } else if (currentScene == 5) {
+                overlayPlayer.restartGame();
+            }
+        }
+        
+        function jumpNext() {
+            $('.tipDialog').hide();
+            if (currentScene == 1) {
+                jumpPlayer.init();
+                jumpPlayer.startGame();
+            } else if (currentScene == 2) {
+
+            } else if (currentScene == 4) {
+                overlayPlayer.init();
+                overlayPlayer.startGame();
+            }
+        }
+    </script>
+    <script type="text/javascript">
+        // 移动相册的动作
+        var hasTouch = 'ontouchstart' in window;
+        var STA_EN = hasTouch ? "touchstart" : "mousedown",
+            MV_EV = hasTouch ? "touchmove":"mousemove",
+            END_EV = hasTouch ? "touchend" : "mouseup",
+            END_Cancel = hasTouch ? "touchcancel" : "mouseout";
+        var bStart = 0;
+        var beginX,beginY;
+        function start(ev){
+            ev.preventDefault();
+            bStart = 1;
+            var touches = ev.touches;
+            var poi= toolHelper.windowToCanvas(gameCanvas,ev.clientX || ev.pageX || touches[0].clientX,ev.clientY || ev.pageY || touches[0].clientY);
+            beginX = poi.x;
+            beginY = poi.y;
+            if (currentScene == 1) {
+                gamePlayer.checkDragHammer(beginX, beginY);
+            } else if (currentScene == 2) {
+                jumpPlayer.checkDragMountain(beginX, beginY);
+            }
+        }
+
+        function move(ev){
+            ev.preventDefault();
+            if(bStart === 0)return;
+            var touches = ev.touches;
+            var poi = toolHelper.windowToCanvas(gameCanvas,ev.clientX || ev.pageX || touches[0].clientX,ev.clientY || ev.pageY || touches[0].clientY);
+            var offsetX = poi.x - beginX,
+                offsetY = poi.y - beginY;
+            if (currentScene == 1) {
+                gamePlayer.hitCheck(offsetY);
+            } else if (currentScene == 2) {
+                jumpPlayer.moveMountain(offsetX);
+            }
+            beginX = poi.x;
+            beginY = poi.y;
+        }
+
+        function end (ev) {
+            ev.preventDefault();
+            bStart = 0;
+            beginX = 0;
+            beginY = 0;
+            if (currentScene == 1) {
+                gamePlayer.isDragHammer = false;
+                gamePlayer.hammerPosY =   - (roadImg.height + carImg.height + hammerImg.height/4 )* scaleRate;
+            } else if (currentScene == 2) {
+                jumpPlayer.checkGameOver();
+            }
+
+        }
+
+        // 绑定Canvas事件绑定
+        function bindCanvasEvent() {
+            gameCanvas.addEventListener(STA_EN,start,false);
+            gameCanvas.addEventListener(MV_EV,move,false);
+            gameCanvas.addEventListener(END_EV,end,false);
+        }
+
+        // 取消Canvas手势事件绑定
+        function unbindCanvasEvent() {
+            gameCanvas.removeEventListener(STA_EN,start,false);
+            gameCanvas.removeEventListener(MV_EV,move,false);
+            gameCanvas.removeEventListener(END_EV,end,false);
+        }
+    </script>
 </body>
 </html>
