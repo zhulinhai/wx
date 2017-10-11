@@ -7,7 +7,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="x5-fullscreen" content="true">
     <meta name="full-screen" content="yes">
-    <title>为十一疯狂打CALL</title>
+    <title>为双十一疯狂打CALL</title>
     <link rel="stylesheet" href="css/main.css">
     <script type="text/javascript">
         //rem设置
@@ -38,6 +38,15 @@
             }, false);
         })();
     </script>
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?2bc5e811de1949b0ab05e0d40251ce70";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
 </head>
 <body>
     <!-- loading页面 -->
@@ -61,10 +70,26 @@
             <a href="javascript:replayGame()"><div class="btnReplay"></div></a>
         </div>
     </div>
-    <div class="scene" style="display: block">
+    <div class="tipDialog" id="helpTipDialog" style="display: none">
+        <div class="content">
+            <a href="javascript:closeTipDialog();"><div class="closeDiv"></div></a>
+            <img src="./images/tips/tip-people.png" alt="" class="tip-people">
+            <img src="./images/tips/tip-title.png" alt="" class="tip-title">
+            <img src="./images/tips/tip-scene1.png" alt="" class="tip-info">
+        </div>
+    </div>
+    <div id="homeDialog" class="home" style="display: none">
+        <div class="content">
+            <img src="images/home/title.png" alt="" class="title animated tada infinite">
+            <img src="images/scene3/3-dance.gif" alt="" class="danceGirl">
+            <a href="javascript:startGame();"><img src="images/home/btnStart.png" class="btnStart animated pulse infinite"></a>
+            <img src="images/home/tips.png" alt="" class="tips">
+        </div>
+    </div>
+    <div class="scene" style="display: none">
         <div class="header">
             <img id="sceneTitle" class="title" src="images/1-title.png" >
-            <div class="clockFrame"><label class="time">30S'</label><img class="clock animated shake" src="images/clock.png"></div>
+            <div class="clockFrame"><label class="time">30S'</label><img class="clock" src="images/clock.png"></div>
         </div>
         <div class="content">
             <div class="canvasBox">
@@ -72,9 +97,21 @@
             </div>
         </div>
         <div class="bottom">
-            <img class="btnHelp" src="images/1-btnHelp.png" />
+            <a href="javascript:showHelpDialog();"><img class="btnHelp animated pulse infinite" src="images/1-btnHelp.png" /></a>
         </div>
     </div>
+    <div id="overPage" class="overPage" style="display: none">
+        <img src="images/logo.png" alt="" class="logo">
+        <div class="content">
+            <img src="images/over/people.png" alt="" class="people">
+            <img src="images/over/title.png" alt="" class="title">
+            <img src="images/over/qrcode.jpg" alt="" class="qrcode">
+        </div>
+    </div>
+
+    <!-- 音乐控制 -->
+    <a href="javascript:clickToggle();"><div id="audioPlayer" class="rotateRingAni"></div></a>
+    <audio id="clickSound" style="position: absolute;z-index: -1;opacity: 0" loop="loop"><source src="images/bg.mp3"></audio>
 
     <!-- 横屏提示 -->
     <div id="orientLayer">
@@ -85,12 +122,17 @@
     </div>
 
     <script type="text/javascript" src="js/jquery-1.12.1.min.js"></script>
+    <script type="text/javascript" src="js/RequestAnimationFrame.js"></script>
+    <script type="text/javascript" src="js/tween.min.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
     <script type="text/javascript" src="js/tool.js"></script>
     <script type="text/javascript" src="js/gamePlayer.js"></script>
     <script type="text/javascript" src="js/jumpPlayer.js"></script>
     <script type="text/javascript" src="js/dancePlayer.js"></script>
     <script type="text/javascript" src="js/carsPlayer.js"></script>
     <script type="text/javascript" src="js/overlayPlayer.js"></script>
-    <script type="text/javascript" src="js/main.js"></script>
+
+    <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script type="text/javascript" src="js/wx_share.js"></script>
 </body>
 </html>

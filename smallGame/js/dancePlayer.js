@@ -2,9 +2,8 @@
  * Created by zhulinhai on 17/10/09.
  */
 
-var danceImages, doorsImages, studyImg, doorsImg, danceImg;
-var danceIndex = 0, doorIndex = 0;
-var scene3PrePath = 'images/scene3/';
+var danceImages, doorsImages, studyImg;
+var danceIndex = 0;
 var dancePlayer = {
     isGameOver: false,
     isDance: true,
@@ -12,16 +11,13 @@ var dancePlayer = {
     doorState: 0, /*0-close 1- half open  2- open*/
     init: function () {
         $('.time').html("30S'");
-        $('#sceneTitle').attr('src',  scene3PrePath + '3-title.png');
+        $('#sceneTitle').attr('src', ('images/scene3/3-title.png'));
         gameCtx.clearRect(0,0,gameCanvas.width,gameCanvas.height);
 
         currentScene = 3;
-        danceImages = ["3-dance_001.jpg", "3-dance_002.jpg","3-dance_003.jpg","3-dance_004.jpg", "3-dance_005.jpg","3-dance_006.jpg"];
-        doorsImages = ["3-doorClose.png","3-doorHalfOpen.png","3-doorOpen.png"];
-        danceImg = new Image();
-        studyImg = new Image();
-        studyImg.src = scene3PrePath + '3-study.png';
-        doorsImg = new Image();
+        danceImages = [getImgByKey('dance001-3'), getImgByKey('dance002-3'),getImgByKey('dance003-3'),getImgByKey('dance004-3'),getImgByKey('dance005-3'),getImgByKey('dance006-3'),];
+        doorsImages = [getImgByKey('doorClose-3'),getImgByKey('doorHalfOpen-3'),getImgByKey('doorOpen-3')];
+        studyImg = getImgByKey('study-3');
         dancePlayer.isGameOver = false;
         dancePlayer.isDance = true;
         dancePlayer.doorState = 0;
@@ -76,39 +72,34 @@ var dancePlayer = {
     drawDanceGirl: function (ctx, maxW, maxH) {
         danceIndex++;
         danceIndex %= 6;
-        danceImg.src = scene3PrePath + danceImages[danceIndex];
-        var img = danceImg;
+        var img = danceImages[danceIndex];
         var imgH = img.height * scaleRate;
         var imgW = img.width * scaleRate;
-        ctx.drawImage(img, (maxW - imgW)/2, maxW - imgW, imgW, imgH);
+        ctx.drawImage(img, (maxW - imgW)/2, maxH - imgH, imgW, imgH);
     },
     drawStudyGirl: function (ctx, maxW, maxH) {
         var img = studyImg;
         var imgH = img.height * scaleRate;
         var imgW = img.width * scaleRate;
-        ctx.drawImage(img, (maxW - imgW)/2, maxH - imgH - 50, imgW, imgH);
+        ctx.drawImage(img, (maxW - imgW)/2, maxH - imgH - 50 * scaleRate, imgW, imgH);
     },
     drawDoor: function (ctx, maxW, maxH, index) {
-        doorsImg.src = scene3PrePath + doorsImages[index];
-        var img = doorsImg;
+        var img = doorsImages[index];
         var imgH = img.height * scaleRate;
         var imgW = img.width * scaleRate;
-        ctx.drawImage(img, maxW - imgW - 20, 20, imgW, imgH);
+        ctx.drawImage(img, maxW - imgW - 40 * scaleRate, 40 * scaleRate, imgW, imgH);
     },
-    changeDanceState: function () {
-        dancePlayer.isDance = !dancePlayer.isDance;
+    holdStudyState: function () {
+        dancePlayer.isDance = false;
+    },
+    recoverDanceSate: function () {
+        dancePlayer.isDance = true;
     },
     controlDoorState: function () {
         var rndTime = 5 + 6 * Math.random();
         setTimeout(function () {
             if (!dancePlayer.isGameOver) {
                 dancePlayer.mumComing();
-                var rnd2Time = 5 + 6 * Math.random();
-                setTimeout(function () {
-                    if (!dancePlayer.isGameOver) {
-                        dancePlayer.mumComing();
-                    }
-                }, rnd2Time * 1000);
             }
         }, rndTime * 1000);
     },
@@ -119,11 +110,8 @@ var dancePlayer = {
             if (dancePlayer.isDance ) {
                 dancePlayer.catchDanceGirl();
             } else {
-                unbindCanvasEvent();
-                setTimeout(function () {
-                    bindCanvasEvent();
-                    dancePlayer.doorState = 0;
-                }, 1000);
+                dancePlayer.stopGame();
+                $('#tipSuccessDialog').show();
             }
         }, 1000);
     },

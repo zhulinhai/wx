@@ -17,27 +17,18 @@ var gamePlayer = {
     carRect: null,
     init: function () {
         $('.time').html("30S'");
-        $('#sceneTitle').attr('src',  scene4PrePath + '5-title.png');
+        $('#sceneTitle').attr('src', 'images/1-title.png');
+        currentScene = 1;
         gameCtx.clearRect(0,0,gameCanvas.width,gameCanvas.height);
-
-        currentScene = 5;
-        carImg = new Image();
-        carImg.src = 'images/1-car.png';
-        carDestroyImg = new Image();
-        carDestroyImg.src = 'images/1-car-destroy.png';
-        hammerImg = new Image();
-        hammerImg.src = 'images/1-hammer.png';
-        boomImg = new Image();
-        boomImg.src = 'images/1-boom.png';
-        roadImg = new Image();
-        roadImg.src = 'images/1-road.png';
-
+        carImg = getImgByKey('car-1');
+        carDestroyImg = getImgByKey('car-destroy-1');
+        hammerImg = getImgByKey('hammer-1');
+        boomImg = getImgByKey('boom-1');
+        roadImg = getImgByKey('road-1');
         gamePlayer.isGameOver = false;
     },
     restartGame: function () {
-        gamePlayer.isDragHammer = false;
-        gamePlayer.isGameOver = false;
-        $('.time').html("30S'");
+        gamePlayer.init();
         gamePlayer.startGame();
     },
     destroy: function () {
@@ -101,10 +92,10 @@ var gamePlayer = {
         var imgW = carImg.width * scaleRate;
         var imgH = carImg.height * scaleRate;
         if (gamePlayer.carPosX > maxW - imgW) {
-            carImg.src = 'images/1-carBack.png';
+            carImg = getImgByKey('carBack-1');
             gamePlayer.isBackWard = true;
         } else if (gamePlayer.carPosX< 0) {
-            carImg.src = 'images/1-car.png';
+            carImg = getImgByKey('car-1');
             gamePlayer.isBackWard = false;
         }
         var top = maxH - (roadImg.height + carImg.height) * scaleRate;
@@ -142,7 +133,6 @@ var gamePlayer = {
             gamePlayer.hammerPosY += offY;
             gamePlayer.hammerPosY = Math.min(gamePlayer.carRect.top, gamePlayer.hammerPosY);
         }
-
     },
     checkDragHammer: function (x, y) {
         // 是否可以拖动

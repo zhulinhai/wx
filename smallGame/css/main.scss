@@ -1,10 +1,19 @@
 @import "common";
+@import "../../public/css/animate.css";
 
 body {
   width: 100%;
   height: 100%;
   overflow: hidden;
   font-family: "Microsoft YaHei UI", "微软雅黑", "宋体", sans-serif;
+}
+
+a,a:hover,a:active,a:visited,a:link,a:focus{
+  -webkit-tap-highlight-color:rgba(0,0,0,0);
+  -webkit-tap-highlight-color: transparent;
+  outline:none;
+  background: none;
+  text-decoration: none;
 }
 
 // loading dialog
@@ -38,6 +47,17 @@ body {
   }
 }
 
+#audioPlayer {
+  position: fixed;
+  bottom: 0.75rem;
+  right: 0.75rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  background: url("../images/audio.png") no-repeat;
+  background-size: 200% auto;
+  z-index: 10;
+}
+
 .tipDialog {
   position: fixed;
   top: 0;
@@ -45,7 +65,7 @@ body {
   width: 100%;
   height: 100%;
   background-color: rgba(0,0,0,0.6);
-  z-index: 10;
+  z-index: 20;
   .content {
     position: absolute;
     top: 50%;
@@ -56,14 +76,15 @@ body {
     height: 16.3rem;
     background-color: white;
     border-radius: 1rem;
-    .closeDialog {
+    .closeDiv {
       float: right;
       margin-top: 0.2rem;
       margin-right: 0.3rem;
-      width: 2rem;
-      height: 2rem;
+      width: 1.5rem;
+      height: 1.5rem;
       background: url("../images/dialog/close.png") no-repeat center;
       background-size: 1.1rem;
+      clear: both;
     }
     .success {
       display: block;
@@ -92,6 +113,62 @@ body {
       background: url("../images/dialog/btnReplay.png") no-repeat center;
       background-size: 6.45rem 2.4rem;
     }
+    .tip-people {
+      display: block;
+      margin: 2.5rem auto 1rem;
+      width: 3.5rem;
+    }
+    .tip-title, .tip-info {
+      display: block;
+      margin: 0 auto;
+      height: 1.05rem;
+    }
+    .tip-info {
+      margin-top: 0.5rem;
+      height: 0.95rem;
+    }
+  }
+}
+
+.home {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: white url("../images/home/bg.jpg") no-repeat center;
+  background-size: 100% auto;
+  z-index: 11;
+  .content {
+    position: absolute;
+    top: 50%;
+    margin-top: -16rem;
+    width: 100%;
+    height: 32rem;
+    .title {
+      display: block;
+      margin: 1rem auto 0;
+      width: 16rem;
+      height: 5.8rem;
+    }
+    .danceGirl {
+      display: block;
+      margin: 0 auto;
+      width: 12.9rem;
+      height: 17.5rem;
+    }
+    .btnStart {
+      display: block;
+      margin: 0.5rem auto 0;
+      width: 7.05rem;
+      height: 2.65rem;
+    }
+    .tips {
+      display: block;
+      margin: 1rem auto;
+      width: 12.7rem;
+      height: 2.6rem;
+    }
   }
 }
 
@@ -102,6 +179,7 @@ body {
   width: 100%;
   height: 100%;
   overflow: hidden;
+  z-index: 10;
   .header {
     width: 100%;
     height: 3.5rem;
@@ -137,6 +215,48 @@ body {
   }
 }
 
+.overPage {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  z-index: 11;
+  .logo {
+    position: absolute;
+    left: 1rem;
+    top: 1rem;
+    width: 5.9rem;
+  }
+  .content {
+    position: absolute;
+    top: 50%;
+    margin-top: -12.5rem;
+    width: 100%;
+    height: 26rem;
+    bottom: 0;
+    .people {
+      display: block;
+      margin: 0 auto;
+      width: 12.2rem;
+      height: 15.7rem;
+    }
+    .title {
+      display: block;
+      margin: 1rem auto;
+      width: 11.5rem;
+      height: 3.4rem;
+    }
+    .qrcode {
+      display: block;
+      margin: 0 auto;
+      width: 4.3rem;
+      height: 4.3rem;
+    }
+  }
+}
+
 
 .bottom {
   position: absolute;
@@ -152,25 +272,26 @@ body {
   }
 }
 
-.animated {
-  animation-duration: 1s;
-  animation-fill-mode: both;
+/*
+* 旋转音乐播放器
+*/
+.rotateRingAni {
+  -webkit-animation: rotateRing 3s infinite linear;
+  -moz-animation: rotateRing 3s infinite linear;
+  animation: rotateRing 3s infinite linear;
 }
 
-@keyframes shake {
-  from, to {
-    transform: translate3d(0, 0, 0);
-  }
-
-  10%, 30%, 50%, 70%, 90% {
-    transform: translate3d(-10px, 0, 0);
-  }
-
-  20%, 40%, 60%, 80% {
-    transform: translate3d(10px, 0, 0);
-  }
+@-webkit-keyframes rotateRing {
+  from {-webkit-transform: rotate(0deg);transform: rotate(0deg);}
+  to {-webkit-transform: rotate(360deg);transform: rotate(360deg);}
 }
 
-.shake {
-  animation-name: shake;
+@-moz-keyframes rotateRing {
+  from {-moz-transform: rotate(0deg);transform: rotate(0deg);}
+  to {-moz-transform: rotate(360deg);transform: rotate(360deg);}
+}
+
+@keyframes rotateRing {
+  from {transform: rotate(0deg);}
+  to {transform: rotate(360deg);}
 }

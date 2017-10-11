@@ -1,30 +1,86 @@
 /**
  * Created by zhulinhai on 17/10/9.
  */
-var imageList = ["images/1-road.png","images/1-hammer.png","images/1-car.png","images/1-carBack.png", "images/1-boom.png","images/1-car-destroy.png",
-    "images/scene2/2-car.png", "images/scene2/2-title.png", "images/scene2/2-cloud.png", "images/scene2/2-mountain.png",
-    "images/scene3/3-dance_001.jpg", "images/scene3/3-dance_002.jpg","images/scene3/3-dance_003.jpg","images/scene3/3-dance_004.jpg","images/scene3/3-dance_005.jpg","images/scene3/3-dance_006.jpg","images/scene3/3-doorClose.png","images/scene3/3-doorHalfOpen.png","images/scene3/3-doorOpen.png", "images/scene3/3-title.png","images/scene3/3-study.png",
-    "images/scene4/4-add.png","images/scene4/4-car.png","images/scene4/4-sub.png","images/scene4/4-title.png",
-    "images/scene5/car-1.png","images/scene5/car-2.png","images/scene5/car-3.png","images/scene5/car-4.png","images/scene5/car-5.png"];
-var currentScene = 3;
+var imageList = [
+    {'key':'title-1','url':"images/1-title.png", 'img':null},
+    {'key':'road-1','url':"images/1-road.png", 'img':null},
+    {'key':'car-1','url':"images/1-car.png", 'img':null},
+    {'key':'hammer-1','url':"images/1-hammer.png", 'img':null},
+    {'key':'carBack-1','url':"images/1-carBack.png", 'img':null},
+    {'key':'boom-1','url':"images/1-boom.png", 'img':null},
+    {'key':'car-destroy-1','url':"images/1-car-destroy.png", 'img':null},
+    {'key':'car-2','url':"images/scene2/2-car.png", 'img':null},
+    {'key':'title-2','url':"images/scene2/2-title.png", 'img':null},
+    {'key':'cloud-2','url':"images/scene2/2-cloud.png", 'img':null},
+    {'key':'mountain-2','url':"images/scene2/2-mountain.png", 'img':null},
+    {'key':'dance001-3','url':"images/scene3/3-dance_001.jpg", 'img':null},
+    {'key':'dance002-3','url':"images/scene3/3-dance_002.jpg", 'img':null},
+    {'key':'dance003-3','url':"images/scene3/3-dance_003.jpg", 'img':null},
+    {'key':'dance004-3','url':"images/scene3/3-dance_004.jpg", 'img':null},
+    {'key':'dance005-3','url':"images/scene3/3-dance_005.jpg", 'img':null},
+    {'key':'dance006-3','url':"images/scene3/3-dance_006.jpg", 'img':null},
+    {'key':'doorClose-3','url':"images/scene3/3-doorClose.png", 'img':null},
+    {'key':'doorHalfOpen-3','url':"images/scene3/3-doorHalfOpen.png", 'img':null},
+    {'key':'doorOpen-3','url':"images/scene3/3-doorOpen.png", 'img':null},
+    {'key':'title-3','url':"images/scene3/3-title.png", 'img':null},
+    {'key':'study-3','url':"images/scene3/3-study.png", 'img':null},
+    {'key':'add-4','url':"images/scene4/4-add.png", 'img':null},
+    {'key':'car-4','url':"images/scene4/4-car.png", 'img':null},
+    {'key':'sub-4','url':"images/scene4/4-sub.png", 'img':null},
+    {'key':'title-4','url':"images/scene4/4-title.png", 'img':null},
+    {'key':'car-1-5','url':"images/scene5/car-1.png", 'img':null},
+    {'key':'car-2-5','url':"images/scene5/car-2.png", 'img':null},
+    {'key':'car-3-5','url':"images/scene5/car-3.png", 'img':null},
+    {'key':'car-4-5','url':"images/scene5/car-4.png", 'img':null},
+    {'key':'car-5-5','url':"images/scene5/car-5.png", 'img':null}
+];
+
+var currentScene = 0;
 var scaleRate = 1;
 var gameCanvas = null, gameCtx = null;
 var gameInterval= -1, timerInterval= -1;
+var musicPlayer = null;
 
 window.onload = function () {
-    scaleRate = document.documentElement.clientWidth / 375;
     loadImages(imageList, function () {
-        setTimeout(function () {
-            $('#loadingDialog').hide();
-            initCanvas();
-//                    gamePlayer.startGame();
-            carsPlayer.init();
-            carsPlayer.startGame();
-        }, 1000);
+        $('#loadingDialog').hide();
+        $('#homeDialog').show();
     });
 };
 
+function startGame() {
+    initCanvas();
+    $('#homeDialog').hide();
+    $('.scene').show();
+    gamePlayer.init();
+    gamePlayer.startGame();
+
+    musicPlayer = document.getElementById('clickSound');
+    if (musicPlayer.paused) {
+        clickToggle();
+    }
+}
+
+function clickToggle(){
+    if (musicPlayer.paused){
+        musicPlayer.play();
+        $('#audioPlayer').css('background-position-x', 0).addClass('rotateRingAni');
+    } else {
+        musicPlayer.pause();
+        $('#audioPlayer').css('background-position-x', '100%').removeClass('rotateRingAni');
+    }
+}
+
+function getImgByKey(key) {
+    var item = imageList.find(function (item, index, array) {
+        return item.key === key;
+    });
+    return item.img;
+}
+
 function initCanvas() {
+    scaleRate = window.screen.width / 375;
+
     var $canvasBox = $('.canvasBox');
     $canvasBox.height($('.scene').height() - 9 * 20 * document.documentElement.clientWidth / 375);
     var canvas = document.getElementById('gameCanvas');
@@ -32,6 +88,10 @@ function initCanvas() {
     canvas.height = $canvasBox.height();
     var ctx = canvas.getContext('2d');
     var ratio = toolHelper.getPixelRatio(ctx);
+    /*兼容 iPhone 6 plus */
+    if (ratio == 3) {
+        scaleRate = 1.5;
+    }
     canvas.style.height = canvas.height + 'px';
     canvas.style.width = canvas.width + 'px';
     canvas.width *= ratio;
@@ -40,10 +100,14 @@ function initCanvas() {
     gameCtx = ctx;
 }
 
+function fixPageSize() {
+    
+}
+
 function loadImages(sources,callback){
     var loadedImages = 0;
     var numImages = sources.length;
-    for (var src in sources) {
+    for (var i=0;i< numImages; i++) {
         var image = new Image();
         image.onload = function(){
             var per=parseInt(loadedImages/numImages *100);
@@ -54,8 +118,18 @@ function loadImages(sources,callback){
                 callback&&callback();
             }
         };
-        image.src = sources[src];
+        image.src = sources[i].url;
+        imageList[i].img = image;
     }
+}
+
+function showHelpDialog() {
+    $('.tip-info').attr('src', 'images/tips/tip-scene' + currentScene + '.png');
+    $('#helpTipDialog').show();
+}
+
+function closeTipDialog() {
+    $('#helpTipDialog').hide();
 }
 
 function replayGame() {
@@ -111,7 +185,11 @@ function start(ev){
     } else if (currentScene == 2) {
         jumpPlayer.checkDragMountain(beginX, beginY);
     } else if (currentScene == 3) {
-        dancePlayer.changeDanceState();
+        dancePlayer.holdStudyState();
+    } else if (currentScene == 4) {
+        carsPlayer.hitCheck(beginX, beginY);
+    } else if (currentScene == 5) {
+        overlayPlayer.tapCanvas();
     }
 }
 
@@ -126,6 +204,8 @@ function move(ev){
         gamePlayer.hitCheck(offsetY);
     } else if (currentScene == 2) {
         jumpPlayer.moveMountain(offsetX);
+    } else if (currentScene == 4) {
+        carsPlayer.moveCar(offsetX, offsetY);
     }
     beginX = poi.x;
     beginY = poi.y;
@@ -140,9 +220,12 @@ function end (ev) {
         gamePlayer.isDragHammer = false;
         gamePlayer.hammerPosY =   - (roadImg.height + carImg.height + hammerImg.height/4 )* scaleRate;
     } else if (currentScene == 2) {
-        jumpPlayer.checkGameOver();
+        jumpPlayer.endMoveMountain();
+    } else if (currentScene == 3) {
+        dancePlayer.recoverDanceSate();
+    } else if (currentScene == 4) {
+        carsPlayer.moveEnd();
     }
-
 }
 
 // 绑定Canvas事件绑定
