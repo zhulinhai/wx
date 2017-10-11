@@ -11,16 +11,14 @@ var overlayPlayer = {
     isGameOver: false,
     init: function () {
         $('.time').html("30S'");
-        $('#sceneTitle').attr('src', 'images/scene4/4-title.png');
+        $('#sceneTitle').attr('src', 'images/scene5/5-title.png');
         gameCtx.clearRect(0,0,gameCanvas.width,gameCanvas.height);
 
-        scene5Images = ["images/scene5/car-1.png","images/scene5/car-2.png","images/scene5/car-3.png","images/scene5/car-4.png","images/scene5/car-5.png"];
+        scene5Images = [getImgByKey('car-1-5'), getImgByKey('car-2-5'), getImgByKey('car-3-5'), getImgByKey('car-4-5'), getImgByKey('car-5-5')];
         this.carList = [];
         for (var i = 0; i< scene5Images.length; i++) {
-            var image = new Image();
-            image.src = scene5Images[i];
             var item = [];
-            item['carImg'] = image;
+            item['carImg'] = scene5Images[i];
             item['scale'] = 1;
             item['isLand'] = false;
             this.carList[i] = item;
@@ -37,7 +35,8 @@ var overlayPlayer = {
         timerInterval = -1;
         clearInterval(carInterval);
         carInterval = -1;
-        $('#gameCanvas').unbind();
+
+        unbindCanvasEvent();
     },
     startGame: function () {
         var canvas = gameCanvas;
@@ -74,30 +73,10 @@ var overlayPlayer = {
             } else {
                 overlayPlayer.currentScale += 0.2;
             }
-        }, 200);
+        }, 500);
 
-        $('#gameCanvas').click(function () {
-            if (overlayPlayer.checkGameOver()) {
-                overlayPlayer.isGameOver = true;
-                gameCtx.clearRect(0,0, gameCanvas.width, gameCanvas.height);
-                overlayPlayer.drawCars(gameCtx, gameCanvas.width, gameCanvas.height);
-                overlayPlayer.destroy();
-                $('#tipFailDialog').show();
-                return;
-            }
-
-            if (overlayPlayer.currentIndex >= 4) {
-                overlayPlayer.carList[overlayPlayer.currentIndex].scale = overlayPlayer.currentScale;
-                overlayPlayer.carList[overlayPlayer.currentIndex].isLand = true;
-                gameCtx.clearRect(0,0, gameCanvas.width, gameCanvas.height);
-                overlayPlayer.drawCars(gameCtx, gameCanvas.width, gameCanvas.height);
-                overlayPlayer.destroy();
-                return;
-            }
-            overlayPlayer.carList[overlayPlayer.currentIndex].scale = overlayPlayer.currentScale;
-            overlayPlayer.carList[overlayPlayer.currentIndex].isLand = true;
-            overlayPlayer.currentIndex ++;
-        });
+        // 绑定手势事件
+        bindCanvasEvent();
     },
     restartGame: function () {
         overlayPlayer.init();
@@ -132,5 +111,28 @@ var overlayPlayer = {
         var currentScale = overlayPlayer.currentScale;
         var beforeScale = overlayPlayer.carList[--currentIndex].scale;
         return currentScale >= beforeScale;
+    },
+    tapCanvas: function () {
+        if (overlayPlayer.checkGameOver()) {
+            overlayPlayer.isGameOver = true;
+            gameCtx.clearRect(0,0, gameCanvas.width, gameCanvas.height);
+            overlayPlayer.drawCars(gameCtx, gameCanvas.width, gameCanvas.height);
+            overlayPlayer.destroy();
+            $('#tipFailDialog').show();
+            return;
+        }
+
+        if (overlayPlayer.currentIndex >= 4) {
+            overlayPlayer.carList[overlayPlayer.currentIndex].scale = overlayPlayer.currentScale;
+            overlayPlayer.carList[overlayPlayer.currentIndex].isLand = true;
+            gameCtx.clearRect(0,0, gameCanvas.width, gameCanvas.height);
+            overlayPlayer.drawCars(gameCtx, gameCanvas.width, gameCanvas.height);
+            overlayPlayer.destroy();
+            $('#overPage').show();
+            return;
+        }
+        overlayPlayer.carList[overlayPlayer.currentIndex].scale = overlayPlayer.currentScale;
+        overlayPlayer.carList[overlayPlayer.currentIndex].isLand = true;
+        overlayPlayer.currentIndex ++;
     }
 };
