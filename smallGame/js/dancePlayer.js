@@ -110,8 +110,19 @@ var dancePlayer = {
             if (dancePlayer.isDance ) {
                 dancePlayer.catchDanceGirl();
             } else {
-                dancePlayer.stopGame();
-                $('#tipSuccessDialog').show();
+                var interval = setInterval(function () {
+                    if (dancePlayer.isDance) {
+                        clearInterval(interval);
+                        interval = -1;
+                        dancePlayer.catchDanceGirl();
+                    }
+                }, 30);
+                setTimeout(function () {
+                    clearInterval(interval);
+                    interval = -1;
+                    dancePlayer.stopGame();
+                    $('#tipSuccessDialog').show();
+                }, 2000);
             }
         }, 1000);
     },

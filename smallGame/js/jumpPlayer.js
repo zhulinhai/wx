@@ -114,10 +114,10 @@ var jumpPlayer = {
     },
     drawCarFallAni: function (ctx, maxW, maxH) {
         TWEEN.removeAll();
+        unbindCanvasEvent();
+
         var carTop = jumpPlayer.carTop;
-        var img = jumpPlayer.carImg;
         var position = { y: carTop };
-        var canvas = gameCanvas;
         var tweenC = new TWEEN.Tween(position);
         tweenC.to({ y: maxH }, 1000);
         tweenC.onUpdate(function() {
@@ -144,7 +144,6 @@ var jumpPlayer = {
         var img = jumpPlayer.carImg;
         var imgW = img.width * scaleRate;
         var positionB = { x: carPosX + imgW/2, y: carTop - 100 * scaleRate };
-        var ctx = gameCtx, canvas = gameCanvas;
         var tween = new TWEEN.Tween(position);
         tween.to(positionB, 500);
         tween.onUpdate(function() {
@@ -189,12 +188,14 @@ var jumpPlayer = {
         }
     },
     moveMountain: function (offX) {
-        jumpPlayer.mountainOffX += offX;
-        var minOffset = -(jumpPlayer.mountainImg.width * scaleRate - gameCanvas.width);
-        if (jumpPlayer.mountainOffX <= minOffset) {
-            jumpPlayer.mountainOffX = minOffset;
-        } else if ( jumpPlayer.mountainOffX >= 0){
-            jumpPlayer.mountainOffX = 0;
+        if (jumpPlayer.isDragMountain) {
+            jumpPlayer.mountainOffX += offX;
+            var minOffset = -(jumpPlayer.mountainImg.width * scaleRate - gameCanvas.width);
+            if (jumpPlayer.mountainOffX <= minOffset) {
+                jumpPlayer.mountainOffX = minOffset;
+            } else if ( jumpPlayer.mountainOffX >= 0){
+                jumpPlayer.mountainOffX = 0;
+            }
         }
     },
     checkPassValley: function (carPosX) {

@@ -121,17 +121,19 @@ var gamePlayer = {
         ctx.drawImage(roadImg, 0, maxH - imgH, maxW, imgH);
     },
     hitCheck: function (offY) {
-        var hammerH = gamePlayer.hammerPosY + offY + gamePlayer.hammerRect.h;
-        if (hammerH > gamePlayer.carRect.top) {
-            if ( gamePlayer.hammerPosX > gamePlayer.carRect.left && gamePlayer.hammerPosX < (gamePlayer.carRect.left + gamePlayer.carRect.w)) {
-                gamePlayer.stopGame(gameCtx, gameCanvas.width, gameCanvas.height);
-                setTimeout(function () {
-                    $('#tipSuccessDialog').show();
-                }, 1000);
+        if (gamePlayer.isDragHammer) {
+            var hammerH = gamePlayer.hammerPosY + offY + gamePlayer.hammerRect.h;
+            if (hammerH > gamePlayer.carRect.top) {
+                if ( gamePlayer.hammerPosX > gamePlayer.carRect.left && gamePlayer.hammerPosX < (gamePlayer.carRect.left + gamePlayer.carRect.w)) {
+                    gamePlayer.stopGame(gameCtx, gameCanvas.width, gameCanvas.height);
+                    setTimeout(function () {
+                        $('#tipSuccessDialog').show();
+                    }, 1000);
+                }
+            } else {
+                gamePlayer.hammerPosY += offY;
+                gamePlayer.hammerPosY = Math.min(gamePlayer.carRect.top, gamePlayer.hammerPosY);
             }
-        } else {
-            gamePlayer.hammerPosY += offY;
-            gamePlayer.hammerPosY = Math.min(gamePlayer.carRect.top, gamePlayer.hammerPosY);
         }
     },
     checkDragHammer: function (x, y) {
@@ -141,5 +143,9 @@ var gamePlayer = {
             bStart = 1;
             gamePlayer.isDragHammer = true;
         }
+    },
+    endDragHammer: function () {
+        gamePlayer.isDragHammer = false;
+        gamePlayer.hammerPosY =   - (roadImg.height + carImg.height + hammerImg.height/4 )* scaleRate;
     }
 };

@@ -44,6 +44,7 @@ var musicPlayer = null;
 window.onload = function () {
     loadImages(imageList, function () {
         $('#loadingDialog').hide();
+        fixPageSize();
         $('#homeDialog').show();
     });
 };
@@ -79,10 +80,10 @@ function getImgByKey(key) {
 }
 
 function initCanvas() {
-    scaleRate = window.screen.width / 375;
+    scaleRate = $(document).width() / 375;
 
     var $canvasBox = $('.canvasBox');
-    $canvasBox.height($('.scene').height() - 9 * 20 * document.documentElement.clientWidth / 375);
+    $canvasBox.height($('.scene').height() - 9 * 20 * scaleRate);
     var canvas = document.getElementById('gameCanvas');
     canvas.width = $canvasBox.width();
     canvas.height = $canvasBox.height();
@@ -101,7 +102,18 @@ function initCanvas() {
 }
 
 function fixPageSize() {
-    
+    var domHeight =  $(document).height();
+    var needHeight = 32 * 20 * scaleRate;
+    if (needHeight > domHeight) {
+        var scaleDom = domHeight / needHeight;
+        $('#homeDialog').find('.content').css('-webkit-transform', 'scale(' + scaleDom + ')');
+    }
+
+    var overNeedHeight = 28 * 20 * scaleRate;
+    if (overNeedHeight > domHeight) {
+        var scaleOverDom = domHeight / overNeedHeight;
+        $('#overPage').find('.content').css('-webkit-transform', 'scale(' + scaleOverDom + ')');
+    }
 }
 
 function loadImages(sources,callback){
@@ -217,8 +229,7 @@ function end (ev) {
     beginX = 0;
     beginY = 0;
     if (currentScene == 1) {
-        gamePlayer.isDragHammer = false;
-        gamePlayer.hammerPosY =   - (roadImg.height + carImg.height + hammerImg.height/4 )* scaleRate;
+        gamePlayer.endDragHammer();
     } else if (currentScene == 2) {
         jumpPlayer.endMoveMountain();
     } else if (currentScene == 3) {

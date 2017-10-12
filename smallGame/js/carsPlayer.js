@@ -119,9 +119,7 @@ var carsPlayer = {
 
         var list = carsPlayer.carsMoveList;
         list.forEach(function(item, index, array) {
-            if (item.isDraw) {
-                ctx.drawImage(img, item.left, item.top, imgW, imgH);
-            }
+            ctx.drawImage(img, item.left, item.top, imgW, imgH);
         });
     },
     drawBottom: function (ctx, maxW, maxH) {
