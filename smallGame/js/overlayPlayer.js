@@ -73,7 +73,7 @@ var overlayPlayer = {
             } else {
                 overlayPlayer.currentScale += 0.2;
             }
-        }, 300);
+        }, 100);
 
         // 绑定手势事件
         bindCanvasEvent();
