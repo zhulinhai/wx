@@ -1,0 +1,19 @@
+{
+  "name": "wechath5",
+  "version": "1.0.0",
+  "description": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx91b9ea7e64becfbb&redirect_uri=http%3a%2f%2fwx.bjczxda.com%2findex.html&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@git.oschina.net:yyjz/wx.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-sass": "^3.1.0"
+  }
+}
