@@ -8,9 +8,9 @@
 <meta name="keywords" content="">
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.5.0/croppie.min.css">
 <link rel="stylesheet" type="text/css" href="css/main.css">
-<script type="text/javascript" src="../public/scripts/jquery-1.12.1.min.js"></script>
+<script type="text/javascript" src="http://libs.cdnjs.net/zepto/1.2.0/zepto.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.5.0/croppie.min.js"></script>
-<script type="text/javascript" src="../public/scripts/hammer.js"></script>
+<!-- <script type="text/javascript" src="../public/scripts/hammer.js"></script> -->
 </head>
 <body>
 	<script type="text/javascript">
@@ -19,69 +19,29 @@
         document.documentElement.style.fontSize = (document.documentElement.clientWidth / 7.5) + 'px';  //375 fontSize = 50px
     })();
 </script>
-<div class="demo"></div>
-<input type="button" id="croppied" value="截取">
+<!-- <div class="demo"></div> -->
+<!-- <input type="button" id="croppied" value="截取"> -->
+<div>
+	<form>
+        <input type="hidden" name="flag" value="KICKS" />
+        <div class="form">
+            <div class="f_row"><div>姓&nbsp;&nbsp;&nbsp;&nbsp;名&nbsp;:</div><div><input type="text" name="name"></div></div>
+            <div class="f_row"><div>电&nbsp;&nbsp;&nbsp;&nbsp;话&nbsp;:</div><div><input type="text" name="mobile"></div></div>
+            <div class="f_row location"><div>所在地&nbsp;:</div>
+                <div><select class="s_select" name="province"><option value="省">省</option></select>
+                    <select class="s_select" name="city"><option value="市">市</option></select>
+                </div>
+            </div>
+            <div class="f_row"><div>经销商&nbsp;:</div>
+                <div><select name="dealer"><option value="经销商">经销商</option></select></div>
+            </div>
+            <div class="f_row submit">
+            	<div></div>
+                <div><a id="btn_submit" href="javascript:void(0);" title="">预约到店试驾</a></div>
+            </div>
+        </div>
+    </form>
+</div>
 </body>
-<script type="text/javascript">
-	var basic = $('.demo').croppie({
-		viewport: {
-	        width: 300,
-	        height: 300
-        },
-
-	    showZoomer:false,
-		url:'images/test.jpg'
-	});
-
-    var images = null;
-	$('#croppied').click(function(){
-			//on button click
-			basic.croppie('result', 'base64').then(function(base64) {
-			    // html is div (overflow hidden)
-			    // with img positioned inside.
-			    images = base64;
-			    draw();
-			});
-		});
-
-	function draw(fn){
-	    // var data1= new Array();
-	    // for(var i=0;i<$('.img_photo img').length;i++){
-	    //     data1[i]=$('.img_photo img').eq(i).attr('src');
-	    // }
-	    var data1 = [images,'images/01.png'];
-	    var c=document.createElement('canvas'),
-	        ctx=c.getContext('2d'),
-	        len=data1.length;
-		    c.width=300;
-		    c.height=300;
-		    ctx.rect(0,0,c.width,c.height);
-		    ctx.fillStyle='transparent';//画布填充颜色
-		    ctx.fill();
-
-	    function drawing(n){
-	        if(n<len){
-	            var img=new Image;
-	            //img.crossOrigin = 'Anonymous'; //解决跨域
-	            img.src=data1[n];
-	            img.onload=function(){
-	                ctx.drawImage(img,0,0,300,300);
-	                drawing(n+1);//递归
-	            }
-	        }else{
-	            //保存生成作品图片
-	            convertCanvasToImage(c);
-	            // Canvas2Image.saveAsJPEG(c); //保存到电脑
-	        }
-	    }
-
-	    drawing(0);
-}
-
-function convertCanvasToImage(canvas) {
-    var hc_image = new Image();
-    hc_image.src = canvas.toDataURL("image/png");
-    $('.demo').html(hc_image);
-}
-</script>
+<script type="text/javascript" src="js/main.js"></script>
 </html>
