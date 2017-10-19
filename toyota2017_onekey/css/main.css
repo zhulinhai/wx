@@ -2401,7 +2401,7 @@ html, body {
   -webkit-perspective: 1000px;
   overflow: hidden; }
 
-#actDetailDialog {
+#topDialog {
   position: fixed;
   top: 0;
   left: 0;
@@ -2409,7 +2409,7 @@ html, body {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.8);
   z-index: 10; }
-  #actDetailDialog .content {
+  #topDialog .content {
     position: absolute;
     left: 50%;
     top: 50%;
@@ -2419,7 +2419,7 @@ html, body {
     height: 20.2rem;
     background: url("../images/actBorder.png") no-repeat center;
     background-size: cover; }
-    #actDetailDialog .content .close {
+    #topDialog .content .close {
       position: absolute;
       top: 0.5rem;
       right: 0.5rem;
@@ -2428,7 +2428,7 @@ html, body {
       background: url("../images/actClose.png") no-repeat right top;
       background-size: 0.6rem;
       z-index: 2; }
-    #actDetailDialog .content .title {
+    #topDialog .content .title {
       margin: 1.5rem 1rem 0;
       text-align: center;
       font-size: 1.4rem;
@@ -2438,16 +2438,44 @@ html, body {
       border-top: 1px dotted #668ED4;
       border-bottom: 1px dotted #668ED4;
       color: #fff; }
-    #actDetailDialog .content .info {
+    #topDialog .content .info {
       margin-top: 0.5rem;
       width: 100%;
       height: 15rem;
       overflow-y: auto; }
-      #actDetailDialog .content .info p {
+      #topDialog .content .info p {
         margin: 0.5rem 1rem 0;
         line-height: 1rem;
         font-size: 0.7rem;
         color: #fff; }
+
+#actDetailDialog {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 10; }
+  #actDetailDialog .close {
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    margin-top: 1rem;
+    margin-right: 1rem;
+    width: 2rem;
+    height: 2rem;
+    background: url("../images/actClose.png") no-repeat right top;
+    background-size: 0.6rem;
+    z-index: 2; }
+  #actDetailDialog .content {
+    position: absolute;
+    left: 3%;
+    top: 3%;
+    width: 96%;
+    height: 96%;
+    background: url("../images/actInfo.png") no-repeat center;
+    background-size: auto 96%; }
 
 .wrap {
   width: 100%;
@@ -2580,9 +2608,9 @@ html, body {
 .screen2 {
   background: #000 url("../images/2-bg.jpg") no-repeat center;
   background-size: 100% auto; }
-  .screen2 canvas {
-    position: absolute;
-    z-index: 1; }
+  .screen2 #3dCanvas {
+    width: 100%;
+    height: 100%; }
   .screen2 .tipSwipe {
     position: absolute;
     top: 50%;

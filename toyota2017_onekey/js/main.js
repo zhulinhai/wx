@@ -1,15 +1,16 @@
-var infoList = [
-    {'key': 'arrive', 'title': '感恩回店礼', 'info': '<p>1.试驾RAV4、CROWN即有机会抽取豪华邮轮之旅</p><p>2.全场购车至高3年0利息，首付30%起</p><p>3.购买RAV4荣放即享40%首付24期0利息</p><p>4.购买普拉多2.7L即享50%首付24期0利息，30%首付36期低利息</p><p>5.更多一汽丰田购车金融政策详情请咨询当地经销店</p>'},
-    {'key': '10yuan', 'title': '10元话费礼', 'info': '<p>1.一汽丰田车主输入姓名、手机号，长按专属二维码完成认证，即可获得10元话费。</p><p>2.车主认证成功后10元话费将在一周内发放。</p>'},
-    {'key': 'plan', 'title': '安享计划礼', 'info': '<p>1.首年续保赠延保（对象AAA保险）</p><p>2.非首年续保赠机油（对象AAA保险）</p><p>3.购延保产品赠机油（对象AAA保险）</p><p>4.老客户置换额外再享2000元优惠</p>'},
-    {'key': 'lucky', 'title': '幸运抽奖礼', 'info': '<p>1.一汽丰田车主完成认证才有资格抽奖。</p><p>2.用户中奖后会在30个工作日内完成奖品发放。</p><p>3.京东卡和腾讯视频会员奖品会通过短信电子兑换码形式发放给中奖车主。</p><p>4.加油卡和车载净化器奖品需填写正确的收件人、联系电话及发货地址，因信息不全或错误造成礼品无法快递的，取消中奖资格。</p><p>5.中奖车主需保证留资电话准确无误，因电话错误造成无法联系或中奖电子码无法发送，取消中奖资格。</p><p>6.每个认证车主每天有3次抽奖机会，中奖奖品不可转让、不可买卖。</p>'},
-];
+// var infoList = [
+//     {'key': 'arrive', 'title': '感恩回店礼', 'info': '<p>1.试驾RAV4、CROWN即有机会抽取豪华邮轮之旅</p><p>2.全场购车至高3年0利息，首付30%起</p><p>3.购买RAV4荣放即享40%首付24期0利息</p><p>4.购买普拉多2.7L即享50%首付24期0利息，30%首付36期低利息</p><p>5.更多一汽丰田购车金融政策详情请咨询当地经销店</p>'},
+//     {'key': '10yuan', 'title': '10元话费礼', 'info': '<p>1.一汽丰田车主输入姓名、手机号，长按专属二维码完成认证，即可获得10元话费。</p><p>2.车主认证成功后10元话费将在一周内发放。</p>'},
+//     {'key': 'plan', 'title': '安享计划礼', 'info': '<p>1.首年续保赠延保（对象AAA保险）</p><p>2.非首年续保赠机油（对象AAA保险）</p><p>3.购延保产品赠机油（对象AAA保险）</p><p>4.老客户置换额外再享2000元优惠</p>'},
+//     {'key': 'lucky', 'title': '幸运抽奖礼', 'info': '<p>1.一汽丰田车主完成认证才有资格抽奖。</p><p>2.用户中奖后会在30个工作日内完成奖品发放。</p><p>3.京东卡和腾讯视频会员奖品会通过短信电子兑换码形式发放给中奖车主。</p><p>4.加油卡和车载净化器奖品需填写正确的收件人、联系电话及发货地址，因信息不全或错误造成礼品无法快递的，取消中奖资格。</p><p>5.中奖车主需保证留资电话准确无误，因电话错误造成无法联系或中奖电子码无法发送，取消中奖资格。</p><p>6.每个认证车主每天有3次抽奖机会，中奖奖品不可转让、不可买卖。</p>'},
+// ];
 var codeInfoList = [
-    {'tip1':'终于等到你','tip2':'还好最终团聚','codeImg': 'images/codeA.jpg'},
+    {'tip1':'终于等到你','tip2':'还好最终团聚','codeImg': 'images/codeB.jpg'},
     {'tip1':'WE ARE', 'tip2':'伐木累','codeImg': 'images/codeB.jpg'},
     {'tip1':'我们手牵手', 'tip2':'再也不分开','codeImg': 'images/codeC.jpg'}
 ];
 var $actDialog = $('#actDetailDialog');
+var $topDialog = $('#topDialog');
 var interval = -1;
 var curIndex = 0;
 var pageIndex = 0;
@@ -21,25 +22,26 @@ var startPosition, endPosition, moveLen;
 
 function bindClicks() {
     $('.screen1 .top').click(function () {
-        $actDialog.find('.title').html('安享管家');
-        $actDialog.find('.info').html('<p>Q：安享管家是什么平台？</p><p>A：综合服务平台</p><p style="margin-top: 0.5rem">Q：安享管家是针对客户哪些问题来量身定制解决方案？</p><p>A：买车用车</p><p  style="margin-top: 0.5rem">Q：安享管家以为什么为核心？</p><p>A：人·车·生活</p><p style="margin-top: 0.5rem">Q：安享管家是由哪8大服务版块组成？</p><p>A：贴心金融、安心保险、安心延保、诚信服务、纯牌零件、纯正精品、安心二手车、安心租车</p>');
-        $actDialog.show();
+        $topDialog.find('.title').html('安享管家');
+        $topDialog.find('.info').html('<p>Q：安享管家是什么平台？</p><p>A：综合服务平台</p><p style="margin-top: 0.5rem">Q：安享管家是针对客户哪些问题来量身定制解决方案？</p><p>A：买车用车</p><p  style="margin-top: 0.5rem">Q：安享管家以为什么为核心？</p><p>A：人·车·生活</p><p style="margin-top: 0.5rem">Q：安享管家是由哪8大服务版块组成？</p><p>A：贴心金融、安心保险、安心延保、诚信服务、纯牌零件、纯正精品、安心二手车、安心租车</p>');
+        $topDialog.show();
         isShowHomeTip = true;
     });
 
-    $('.close').click(function () {
-        if (!isShowHomeTip) {
-            startMarquee();
-        } else {
-            isShowHomeTip = false;
-        }
+    // 点击跳转留资页面
+    $('.screen1 .ringFrame').click(function () {
+        pageSlider.moveTo(3);
+    });
+
+    $('#actDetailDialog').find('.content').click(function () {
         $actDialog.hide();
     });
 
+    $('.close').click(function () {
+        $topDialog.hide();
+    });
+
     $('.itemBg').click(function () {
-        stopMarquee();
-        $actDialog.find('.title').html(infoList[curIndex].title);
-        $actDialog.find('.info').html(infoList[curIndex].info);
         $actDialog.show();
     });
 
@@ -205,5 +207,5 @@ $(document).ready(function(e){
     });
 
     page2Init();
-	bindClicks();
+    bindClicks();
 });

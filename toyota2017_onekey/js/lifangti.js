@@ -67,7 +67,7 @@ function page2Init() {
         });
     });
 
-    window.addEventListener( 'resize', onWindowResize, false );
+    // window.addEventListener( "resize", onWindowResize, false );
 }
 
 function onWindowResize() {
