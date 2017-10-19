@@ -1,5 +1,5 @@
 @charset "UTF-8";
-
+@import "animate.min";
 @import "reset-h5";
 /**
  *
@@ -54,14 +54,20 @@ html, body {
       z-index: 2;
     }
     .title {
-      margin-top: 1.5rem;
+      display: block;
+      margin: 1.5rem auto 0;
+      width: 12rem;
       text-align: center;
-      font-size: 2rem;
+      font-size: 1.6rem;
+      line-height: 2.3rem;
       font-weight: bold;
       text-shadow: 1px 1px 1px #000;
+      border-top: 1px dotted #668ED4;
+      border-bottom: 1px dotted #668ED4;
       color: #fff;
     }
     .info {
+      margin-top: 0.5rem;
       width: 100%;
       height: 15rem;
       overflow-y: auto;
@@ -99,6 +105,7 @@ html, body {
   height: 1rem;
   background: url("../images/arrow.png") no-repeat center;
   background-size: 0.8rem auto;
+  z-index:10;
 }
 .screen1{
   background: #000 url("../images/1-bg.jpg") no-repeat center;
@@ -137,7 +144,8 @@ html, body {
       left: 50%;
       margin-left: -6.9rem;
       width: 13.8rem;
-      z-index: -1;
+      height: 12.6rem;
+      z-index: 6;
     }
     .car-1 {
       position: absolute;
@@ -146,7 +154,7 @@ html, body {
       margin-top: 6.7rem;
       width: 5.5rem;
       height: 3.2rem;
-      z-index: 3;
+      z-index: 1;
     }
     .car-2 {
       position: absolute;
@@ -155,7 +163,7 @@ html, body {
       margin-top: 7.2rem;
       width: 6.45rem;
       height: 2.5rem;
-      z-index: 4;
+      z-index: 2;
     }
     .car-3 {
       position: absolute;
@@ -164,7 +172,7 @@ html, body {
       margin-top: 7.6rem;
       width: 8rem;
       height: 3.5rem;
-      z-index: 5;
+      z-index: 3;
     }
     .car-4 {
       position: absolute;
@@ -173,7 +181,7 @@ html, body {
       margin-top: 8.1rem;
       width: 8.7rem;
       height: 5.5rem;
-      z-index: 6;
+      z-index: 4;
     }
     .car-5 {
       position: absolute;
@@ -182,7 +190,7 @@ html, body {
       margin-top: 8rem;
       width: 7rem;
       height: 2.85rem;
-      z-index: 5;
+      z-index: 3;
     }
     .car-6 {
       position: absolute;
@@ -191,7 +199,7 @@ html, body {
       margin-top: 7.2rem;
       width: 7rem;
       height: 3rem;
-      z-index: 4;
+      z-index: 2;
     }
   }
   .ringFrame {
@@ -241,6 +249,7 @@ html, body {
     margin-left: -0.7rem;
     width: 1.4rem;
     height: 1.8rem;
+    animation-duration: 10s;
     z-index: 8;
   }
   .ring {
@@ -307,10 +316,11 @@ html, body {
     .btnAuth {
       display: block;
       margin: 0 auto;
-      width: 7.2rem;
-      height: 2.8rem;
+      width: 6.6rem;
+      height: 2.5rem;
+      border-radius: 3px;
       background: url("../images/btnOnekey.png") no-repeat;
-      background-size: cover;
+      background-size: 6.6rem 2.5rem;
     }
   }
 }
@@ -384,10 +394,11 @@ html, body {
     #btnSubmit {
       display: block;
       margin: 2rem auto 0;
-      width: 7.2rem;
-      height: 2.8rem;
+      width: 6.6rem;
+      height: 2.5rem;
+      border-radius: 3px;
       background: url("../images/btnSubmit.png") no-repeat;
-      background-size: cover;
+      background-size: 6.6rem 2.5rem;
     }
   }
 }
@@ -448,11 +459,20 @@ html, body {
         line-height: 1rem;
         text-align: center;
       }
-
     }
-
   }
+}
 
+@media screen and (max-height: 440px) {
+  #btnGetCode {
+    font-size: 0.5rem;
+  }
+  .screen5 {
+    .content {
+      transform: scale(0.9);
+      -webkit-transform: scale(0.9);
+    }
+  }
 }
 
 /*
@@ -548,5 +568,36 @@ html, body {
 @-webkit-keyframes animatedCodeLight {
   to {
     background-position-y: 100%;
+  }
+}
+
+/**
+ * 光晕效果
+ */
+.btnNucleusAnimation {
+  -webkit-animation: nucleus 3s infinite linear;
+  animation: nucleus 3s infinite linear;
+}
+@keyframes nucleus {
+  0% {
+    box-shadow: 0 0 0 transparent;
+  }
+  50% {
+    box-shadow: 0 0 1rem #2A66E4;
+  }
+  100% {
+    box-shadow: 0 0 0 transparent;
+  }
+}
+
+@-webkit-keyframes nucleus {
+  0% {
+    box-shadow: 0 0 0 transparent;
+  }
+  50% {
+    box-shadow: 0 0 1rem #2A66E4;
+  }
+  100% {
+    box-shadow: 0 0 0 transparent;
   }
 }

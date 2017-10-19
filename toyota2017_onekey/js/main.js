@@ -14,10 +14,24 @@ var interval = -1;
 var curIndex = 0;
 var pageIndex = 0;
 var pageSlider;
+var isShowTip = true;
+var isShowHomeTip = false;
+var startPosition, endPosition, moveLen;
 
 function bindClicks() {
+    $('.screen1 .top').click(function () {
+        $actDialog.find('.title').html('安享管家');
+        $actDialog.find('.info').html('<p>Q：安享管家是什么平台？</p><p>A：综合服务平台</p><p style="margin-top: 0.5rem">Q：安享管家是针对客户哪些问题来量身定制解决方案？</p><p>A：买车用车</p><p  style="margin-top: 0.5rem">Q：安享管家以为什么为核心？</p><p>A：人·车·生活</p><p style="margin-top: 0.5rem">Q：安享管家是由哪8大服务版块组成？</p><p>A：贴心金融、安心保险、安心延保、诚信服务、纯牌零件、纯正精品、安心二手车、安心租车</p>');
+        $actDialog.show();
+        isShowHomeTip = true;
+    });
+
     $('.close').click(function () {
-        startMarquee();
+        if (!isShowHomeTip) {
+            startMarquee();
+        } else {
+            isShowHomeTip = false;
+        }
         $actDialog.hide();
     });
 
@@ -36,12 +50,10 @@ function bindClicks() {
         alert("获取验证码");
     });
 
-    $('#3dCanvas').click(function () {
-        pageSlider.next();
-    });
-
-    var resultIndex = 1;
     $('#btnSubmit').click(function () {
+        // A- 0  B- 1 C- 2
+        var resultIndex = 1;
+
         // 获取结果 并设置结果展示内容
         var info = codeInfoList[resultIndex];
         console.log(info);
@@ -51,6 +63,67 @@ function bindClicks() {
         // 切屏
         pageSlider.next();
     });
+}
+
+function page1Animation() {
+    $('.screen1 .top').show().addClass('animated bounceInDown');
+    setTimeout(function () {
+        setTimeout(function () { $('.screen1 .car-1').show().addClass('animated fadeInRight'); }, 2100);
+        setTimeout(function () { $('.screen1 .car-2').show().addClass('animated fadeInRight'); }, 1400);
+        setTimeout(function () { $('.screen1 .car-3').show().addClass('animated fadeInRight'); }, 700);
+        setTimeout(function () { $('.screen1 .car-4').show().addClass('animated zoomIn'); }, 0);
+        setTimeout(function () { $('.screen1 .car-5').show().addClass('animated fadeInLeft'); }, 700);
+        setTimeout(function () { $('.screen1 .car-6').show().addClass('animated fadeInLeft'); }, 1400);
+    }, 700);
+    setTimeout(function () {
+        $('.screen1 .title').show().addClass('animated zoomIn');
+        $('.screen1 .ring').show();
+        setTimeout(function () {
+            $('.screen1 .screen-arrow').show();
+        }, 700);
+    }, 2800);
+}
+
+function page2Animation() {
+    setTimeout(function () {
+        var interval = setInterval(function () {
+            posY --;
+            if (posY <= 0) {
+                clearInterval(interval);
+                interval = -1;
+                posY = 0;
+                $('#3dCanvas').bind('touchstart', function (e) {
+                    var touch = e.touches[0];
+                    startPosition = {
+                        x: touch.pageX
+                    };
+                    if (isShowTip) {
+                        $('.screen2 .tipSwipe').hide();
+                        $('.screen2 .finger').hide();
+                        isShowTip = false;
+                        setTimeout(function () {
+                            $('.screen2 .screen-arrow').show();
+                        }, 700);
+                    }
+                }).bind('touchmove', function (e) {
+                    var touch = e.touches[0];
+                    endPosition = {
+                        x: touch.pageX
+                    };
+                    moveLen = endPosition.x - startPosition.x;
+                    if (Math.abs(moveLen)  >= 1) {
+                        startPosition.x = endPosition.x;
+                        objY+=moveLen;
+                    }
+                }).on('swipeUp', function () {
+                    pageSlider.next();
+                }).on('swipeDown', function () {
+                    pageSlider.prev();
+                });
+            }
+        }, 30);
+    }, 1000);
+
 }
 
 function updateActInfo(index) {
@@ -71,12 +144,14 @@ function startMarquee() {
                 curIndex ++;
             }
             updateActInfo(curIndex);
-        }, 2000);
+        }, 1000);
     }
 }
 function stopMarquee() {
-    clearInterval(interval);
-    interval = -1;
+    if (interval != -1) {
+        clearInterval(interval);
+        interval = -1;
+    }
 }
 
 $(document).ready(function(e){
@@ -94,20 +169,33 @@ $(document).ready(function(e){
         currentClass: 'current',        //可选, 当前屏的class (方便实现内容的进场动画)，默认值为 'current'
         rememberLastVisited: true,      //可选，记住上一次访问结束后的索引值，可用于实现页面返回后是否回到上次访问的页面
         animationPlayOnce: false,       //可选，切换页面时，动画只执行一次
-        oninit: function () {},         //可选，初始化完成时的回调
+        oninit: function () {
+            page1Animation();
+        },         //可选，初始化完成时的回调
         onbeforechange: function () {}, //可选，开始切换前的回调
         onchange: function () {
             pageIndex = this.index;
+            if (this.index === 1) {
+                page2Animation();
+            }
+
+            if (this.index === 2) {
+                updateActInfo(curIndex);
+                startMarquee();
+            } else {
+                stopMarquee();
+            }
         },       //可选，每一屏切换完成时的回调
-        onSwipeUp: function () {},      //可选，swipeUp 回调
-        onSwipeDown: function () {},    //可选，swipeDown 回调
+        onSwipeUp: function () {
+
+        },      //可选，swipeUp 回调
+        onSwipeDown: function () {
+
+        },    //可选，swipeDown 回调
         onSwipeLeft: function () {},    //可选，swipeLeft 回调
         onSwipeRight: function () {}    //可选，swipeRight 回调
     });
 
-	loadPage2();
+    page2Init();
 	bindClicks();
-	updateActInfo(curIndex);
-    startMarquee();
-
 });

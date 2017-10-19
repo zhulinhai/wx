@@ -9,7 +9,7 @@
 	<meta name="wxm:appmessage_title" content="一汽丰田 一键认证关怀备至">
 	<meta name="wxm:appmessage_desc" content="认证100%有奖">
 	<!-- 分享缩略图，必须为绝对路径，且图片链接必须为http协议（由于安卓微信客户端无法获取https的分享图片，仅此处需要强制http协议）-->
-	<meta name="wxm:img_url" content="http://wximg.qq.com/tmt/_demo/wxmoment/img/thumb.jpg">
+	<meta name="wxm:img_url" content="http://wximg.qq.com/_demo/wxmoment/images/shareImg.jpg">
 	<!-- 分享链接-->
 	<meta name="wxm:link" content="https://wximg.qq.com/tmt/_demo/wxmoment/share.html">
 	<!-- 在 meta 标签中进行基础分享信息设置 End-->
@@ -48,25 +48,25 @@
 				<img src="images/logoRight.png" alt="" class="logoRight">
 			</div>
 			<div class="content">
-				<img src="images/1-top.png" alt="" class="top">
-				<img src="images/car-1.png" alt="" class="car-1">
-				<img src="images/car-2.png" alt="" class="car-2">
-				<img src="images/car-3.png" alt="" class="car-3">
-				<img src="images/car-4.png" alt="" class="car-4">
-				<img src="images/car-5.png" alt="" class="car-5">
-				<img src="images/car-6.png" alt="" class="car-6">
+				<img src="images/1-top.png" style="display: none" alt="" class="top">
+				<img src="images/car-1.png" style="display: none" alt="" class="car-1">
+				<img src="images/car-2.png" style="display: none" alt="" class="car-2">
+				<img src="images/car-3.png" style="display: none" alt="" class="car-3">
+				<img src="images/car-4.png" style="display: none" alt="" class="car-4">
+				<img src="images/car-5.png" style="display: none" alt="" class="car-5">
+				<img src="images/car-6.png" style="display: none" alt="" class="car-6">
 			</div>
 			<div class="ringFrame">
-				<img src="images/1-ring.png" alt="" class="ring rotateRingAni">
-				<img src="images/1-title.png" alt="" class="title">
+				<img src="images/1-ring.png"  style="display: none" alt="" class="ring rotateRingAni">
+				<img src="images/1-title.png" style="display: none" alt="" class="title">
 			</div>
-			<div class="screen-arrow"></div>
+			<div class="screen-arrow animated fadeInDown infinite" style="display: none"></div>
 		</section>
-		<section class="screen screen2" data-lock-next="true">
+		<section class="screen screen2" data-lock-next="true" data-lock-prev="true">
 			<canvas id="3dCanvas"></canvas>
 			<img src="images/2-tipSwipe.png" alt="" class="tipSwipe">
-			<img src="images/2-ring.png" alt="" class="ring">
-			<img src="images/2-finger.png" alt="" class="finger">
+			<img src="images/2-finger.png" alt="" class="finger animated shake infinite">
+			<div class="screen-arrow animated fadeInDown infinite" style="display: none"></div>
 		</section>
 		<section class="screen screen3" data-lock-next="true">
             <div class="content">
@@ -79,7 +79,7 @@
                     <div class="item itemRight"></div>
                 </div>
                 <div class="car360 cars360Animation"></div>
-                <div class="btnAuth"></div>
+                <div class="btnAuth btnNucleusAnimation"></div>
             </div>
 		</section>
 		<section class="screen screen4" data-lock-next="true">
@@ -98,7 +98,7 @@
 					<label>验&nbsp;&nbsp;证&nbsp;码</label>
 					<input type="number" name="name">
 				</div>
-				<div id="btnSubmit"></div>
+				<div id="btnSubmit" class="btnNucleusAnimation"></div>
 			</div>
 		</section>
 		<section class="screen screen5">
@@ -120,9 +120,8 @@
 	</div>
 </body>
 <script src="http://wximg.qq.com/wxp/libs/wxmoment/0.0.4/wxmoment.js"></script>
-<script type="text/javascript" src="js/three.min.js?v=12321323"></script>
-<script type="text/javascript" src="js/OBJLoader.js?v=12321323"></script>
-<script type="text/javascript" src="js/OrbitControls.js?v=12321323"></script>
-<script type="text/javascript" src="js/lifangti.js?v=12321323"></script>
-<script type="text/javascript" src="js/main.js?v=12321323"></script>
+<script type="text/javascript" src="js/three.min.js"></script>
+<script type="text/javascript" src="js/OBJLoader.js"></script>
+<script type="text/javascript" src="js/lifangti.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
 </html>
