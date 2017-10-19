@@ -23,7 +23,7 @@ var startPosition, endPosition, moveLen;
 function bindClicks() {
     $('.screen1 .top').click(function () {
         $topDialog.find('.title').html('安享管家');
-        $topDialog.find('.info').html('<p>Q：安享管家是什么平台？</p><p>A：综合服务平台</p><p style="margin-top: 0.5rem">Q：安享管家是针对客户哪些问题来量身定制解决方案？</p><p>A：买车用车</p><p  style="margin-top: 0.5rem">Q：安享管家以为什么为核心？</p><p>A：人·车·生活</p><p style="margin-top: 0.5rem">Q：安享管家是由哪8大服务版块组成？</p><p>A：贴心金融、安心保险、安心延保、诚信服务、纯牌零件、纯正精品、安心二手车、安心租车</p>');
+        $topDialog.find('.info').html('<p style="font-weight: bold">Q：安享管家是什么平台？</p><p>A：综合服务平台</p><p style="margin-top: 0.5rem;font-weight: bold">Q：安享管家是针对客户哪些问题来量身定制解决方案？</p><p>A：买车用车</p><p  style="margin-top: 0.5rem;font-weight: bold">Q：安享管家以什么为核心？</p><p>A：人·车·生活</p><p style="margin-top: 0.5rem;font-weight: bold">Q：安享管家是由哪8大服务版块组成？</p><p>A：贴心金融、安心保险、安心延保、诚信服务、纯牌零件、纯正精品、安心二手车、安心租车</p>');
         $topDialog.show();
         isShowHomeTip = true;
     });
