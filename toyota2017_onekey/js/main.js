@@ -56,7 +56,7 @@ function bindClicks() {
 
         // 获取结果 并设置结果展示内容
         var info = codeInfoList[resultIndex];
-        console.log(info);
+        // console.log(info);
         $('.tip1').html(info.tip1);
         $('.tip2').html(info.tip2);
         $('.codeImg').attr('src', info.codeImg);
