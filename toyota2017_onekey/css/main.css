@@ -85,22 +85,43 @@ html, body {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.8);
   z-index: 10; }
   #actDetailDialog .content {
-    width: 100%;
-    height: 100%;
-    background: url("../images/4-actDetail.png") no-repeat center;
-    background-size: auto 98%; }
-  #actDetailDialog .close {
     position: absolute;
-    top: 0.5rem;
-    right: 0.5rem;
-    width: 2rem;
-    height: 2rem;
-    background: url("../images/4-close.png") no-repeat right top;
-    background-size: 1.5rem;
-    z-index: 2; }
+    left: 50%;
+    top: 50%;
+    margin-left: -7.65rem;
+    margin-top: -10.1rem;
+    width: 15.3rem;
+    height: 20.2rem;
+    background: url("../images/actBorder.png") no-repeat center;
+    background-size: cover; }
+    #actDetailDialog .content .close {
+      position: absolute;
+      top: 0.5rem;
+      right: 0.5rem;
+      width: 2rem;
+      height: 2rem;
+      background: url("../images/actClose.png") no-repeat right top;
+      background-size: 0.6rem;
+      z-index: 2; }
+    #actDetailDialog .content .title {
+      margin-top: 1.5rem;
+      text-align: center;
+      font-size: 2rem;
+      font-weight: bold;
+      text-shadow: 1px 1px 1px #000;
+      color: #fff; }
+    #actDetailDialog .content .info {
+      width: 100%;
+      height: 15rem;
+      overflow-y: auto; }
+      #actDetailDialog .content .info p {
+        margin: 0.5rem 1rem 0;
+        line-height: 1rem;
+        font-size: 0.7rem;
+        color: #fff; }
 
 .wrap {
   width: 100%;
@@ -112,7 +133,9 @@ html, body {
   height: 100%;
   overflow: hidden;
   -webkit-backface-visibility: hidden;
-  -webkit-perspective: 1000px; }
+  -webkit-perspective: 1000px;
+  background: #000 url("../images/bg.jpg") no-repeat center;
+  background-size: 100% auto; }
 
 .screen-arrow {
   position: absolute;
@@ -162,7 +185,7 @@ html, body {
     .screen1 .content .car-1 {
       position: absolute;
       left: 50%;
-      margin-left: -9.5rem;
+      margin-left: -9.3rem;
       margin-top: 6.7rem;
       width: 5.5rem;
       height: 3.2rem;
@@ -202,7 +225,7 @@ html, body {
     .screen1 .content .car-6 {
       position: absolute;
       left: 50%;
-      margin-left: 3.7rem;
+      margin-left: 3.4rem;
       margin-top: 7.2rem;
       width: 7rem;
       height: 3rem;
@@ -222,21 +245,285 @@ html, body {
       height: 9.7rem; }
     .screen1 .ringFrame .title {
       display: block;
-      margin: 3rem auto 0;
+      margin: 3.5rem auto 0;
       width: 5.15rem;
-      height: 4.2rem; }
+      height: 2.85rem; }
 
 .screen2 {
   background: #000 url("../images/2-bg.jpg") no-repeat center;
   background-size: 100% auto; }
-  .screen2 .light {
+  .screen2 canvas {
     position: absolute;
+    z-index: 1; }
+  .screen2 .tipSwipe {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: 7rem;
+    margin-left: -2.375rem;
+    width: 4.75rem;
+    height: 0.75rem;
+    z-index: 8; }
+  .screen2 .finger {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: 8rem;
+    margin-left: -0.7rem;
+    width: 1.4rem;
+    height: 1.8rem;
+    z-index: 8; }
+  .screen2 .ring {
+    position: absolute;
+    top: 50%;
+    margin-top: -4rem;
     width: 100%;
-    left: 0;
-    bottom: 0; }
+    pointer-events: none;
+    z-index: 10; }
 
-.screen3 {
-  background: #000 url("../images/bg.jpg") no-repeat center;
-  background-size: 100% auto; }
+.screen3 .content {
+  position: absolute;
+  top: 50%;
+  margin-top: -12rem;
+  width: 100%;
+  height: 24rem; }
+  .screen3 .content .itemsFrame {
+    display: block;
+    margin: 1rem auto 0;
+    width: 15.5rem;
+    height: 9.5rem; }
+    .screen3 .content .itemsFrame .item {
+      width: 3.2rem;
+      height: 3.4rem;
+      background: url("../images/3-items.png") no-repeat;
+      background-size: 400% auto; }
+    .screen3 .content .itemsFrame .itemMid {
+      display: block;
+      margin: 0 auto;
+      background-position-x: 66%; }
+    .screen3 .content .itemsFrame .itemLeft {
+      float: left;
+      background-position-x: 100%; }
+    .screen3 .content .itemsFrame .itemRight {
+      float: right;
+      background-position-x: 33%; }
+    .screen3 .content .itemsFrame .itemBg {
+      position: absolute;
+      left: 50%;
+      margin-left: -4.25rem;
+      margin-top: 0.7rem;
+      width: 8.5rem;
+      height: 8.6rem;
+      background: url("../images/3-itemBg.png") no-repeat;
+      background-size: cover;
+      z-index: 1; }
+      .screen3 .content .itemsFrame .itemBg .itemHover {
+        display: block;
+        margin: 1.5rem auto 0;
+        width: 5rem;
+        height: 5.25rem;
+        background: url("../images/3-items.png") no-repeat;
+        background-size: 400% auto;
+        background-position-x: 0; }
+  .screen3 .content .btnAuth {
+    display: block;
+    margin: 0 auto;
+    width: 7.2rem;
+    height: 2.8rem;
+    background: url("../images/btnOnekey.png") no-repeat;
+    background-size: cover; }
+
+.car360 {
+  display: block;
+  margin: 1.5rem auto;
+  width: 9.5rem;
+  height: 6.55rem;
+  background: url("../images/cars360.png") no-repeat center;
+  background-size: 1000% auto; }
+
+.screen4 .content {
+  position: absolute;
+  top: 50%;
+  margin-top: -12rem;
+  width: 100%;
+  height: 24rem; }
+  .screen4 .content .item {
+    display: block;
+    margin: 1rem auto 0;
+    width: 13.5rem;
+    height: 1.95rem;
+    background: url("../images/btnBg.png") no-repeat;
+    background-size: cover; }
+    .screen4 .content .item label {
+      display: inline-block;
+      width: 4.2rem;
+      height: 1.95rem;
+      line-height: 1.95rem;
+      font-weight: bold;
+      font-size: 0.8rem;
+      color: white;
+      text-align: right; }
+    .screen4 .content .item input {
+      -webkit-appearance: none;
+      box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      /*Firefox3.5+*/
+      -webkit-box-sizing: border-box;
+      /*Safari3.2+*/
+      width: 8rem;
+      height: 1.55rem;
+      line-height: 1.55rem;
+      margin-top: 0.2rem;
+      color: #fff;
+      font-size: 0.8rem;
+      border-radius: inherit;
+      background-color: transparent;
+      text-indent: 0.2rem;
+      vertical-align: top; }
+    .screen4 .content .item .input-2 {
+      width: 5.2rem; }
+    .screen4 .content .item #btnGetCode {
+      float: right;
+      width: 3.5rem;
+      height: 1.6rem;
+      line-height: 1.6rem;
+      margin-top: 0.2rem;
+      font-size: 0.6rem;
+      padding-left: 0.2rem;
+      padding-right: 0.1rem;
+      border-left: 1px solid #0c7bff;
+      color: #fff; }
+  .screen4 .content #btnSubmit {
+    display: block;
+    margin: 2rem auto 0;
+    width: 7.2rem;
+    height: 2.8rem;
+    background: url("../images/btnSubmit.png") no-repeat;
+    background-size: cover; }
+
+.screen5 .content {
+  position: absolute;
+  top: 50%;
+  margin-top: -14rem;
+  width: 100%;
+  height: 28rem; }
+  .screen5 .content .car360 {
+    margin-top: 0.5rem; }
+  .screen5 .content .tip-success {
+    display: block;
+    margin: 0 auto 0.6rem;
+    width: 7.3rem;
+    height: 2.4rem; }
+  .screen5 .content .tip1, .screen5 .content .tip2 {
+    font-size: 1.4rem;
+    font-weight: bold;
+    line-height: 1.8rem;
+    text-align: center;
+    color: #fff; }
+  .screen5 .content .codeFrame {
+    display: block;
+    margin: 1rem auto;
+    width: 7.6rem;
+    height: 8rem;
+    background: url("../images/codeBorder.png") no-repeat;
+    background-size: cover; }
+    .screen5 .content .codeFrame .codeImg {
+      display: block;
+      margin: 0 auto;
+      width: 5rem;
+      height: 5rem;
+      padding: 1.5rem 0; }
+    .screen5 .content .codeFrame .codeLight {
+      position: absolute;
+      width: 7.6rem;
+      height: 8rem;
+      pointer-events: none;
+      background: url("../images/codeLight.png") no-repeat center 0;
+      background-size: 6.5rem auto;
+      z-index: 1; }
+  .screen5 .content .longtapTips {
+    margin-bottom: 1rem; }
+    .screen5 .content .longtapTips p {
+      color: #fff;
+      font-size: 0.8rem;
+      line-height: 1rem;
+      text-align: center; }
+
+/*
+* cars360 animation
+*/
+.cars360Animation {
+  animation: carsAnimated 2s steps(9) infinite;
+  -webkit-animation: carsAnimated 2s steps(9) infinite; }
+
+@keyframes carsAnimated {
+  0% {
+    background-position-x: 0; }
+  100% {
+    background-position-x: 100%; } }
+@-webkit-keyframes carsAnimated {
+  0% {
+    background-position-x: 0; }
+  100% {
+    background-position-x: 100%; } }
+/*
+* 旋转圆环
+*/
+.rotateRingAni {
+  -webkit-animation: rotateRing 2s infinite linear alternate;
+  -moz-animation: rotateRing 2s infinite linear alternate;
+  animation: rotateRing 2s infinite linear alternate; }
+
+@-webkit-keyframes rotateRing {
+  from {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg); }
+  to {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg); } }
+@-moz-keyframes rotateRing {
+  from {
+    -moz-transform: rotate(0deg);
+    transform: rotate(0deg); }
+  to {
+    -moz-transform: rotate(360deg);
+    transform: rotate(360deg); } }
+@keyframes rotateRing {
+  from {
+    transform: rotate(0deg); }
+  to {
+    transform: rotate(360deg); } }
+/*
+* 手指动效
+*/
+.fingerAnimation {
+  animation: animatedFinger 1s ease-in-out infinite alternate;
+  -webkit-animation: animatedFinger 1s ease-in-out infinite alternate; }
+
+@keyframes animatedFinger {
+  from {
+    transform: scale(1); }
+  to {
+    transform: scale(0.8); } }
+@-webkit-keyframes animatedFinger {
+  from {
+    -webkit-transform: scale(1);
+    transform: scale(1); }
+  to {
+    -webkit-transform: scale(0.8);
+    transform: scale(0.8); } }
+/*
+* 二维码光效
+*/
+.codeLightAnimation {
+  animation: animatedCodeLight 3s ease-in-out infinite alternate;
+  -webkit-animation: animatedCodeLight 3s ease-in-out infinite alternate; }
+
+@keyframes animatedCodeLight {
+  to {
+    background-position-y: 100%; } }
+@-webkit-keyframes animatedCodeLight {
+  to {
+    background-position-y: 100%; } }
 
 /*# sourceMappingURL=main.css.map */

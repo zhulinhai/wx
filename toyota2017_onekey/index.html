@@ -14,7 +14,7 @@
 	<meta name="wxm:link" content="https://wximg.qq.com/tmt/_demo/wxmoment/share.html">
 	<!-- 在 meta 标签中进行基础分享信息设置 End-->
 
-	<title>一汽丰田</title>
+	<title>一汽丰田 一键认证关怀备至</title>
 	<link rel="stylesheet" href="css/main.css">
 	<script type="text/javascript">
         //rem设置
@@ -33,8 +33,13 @@
 </head>
 <body>
 	<div class="dialog" id="actDetailDialog" style="display: none">
-		<div class="close"></div>
-		<div class="content"></div>
+		<div class="content">
+			<div class="close"></div>
+			<p class="title">感恩回店礼</p>
+			<div class="info">
+				<p>1.试驾RAV4、CROWN即有机会抽取豪华邮轮之旅</p>
+			</div>
+		</div>
 	</div>
 	<div class="wrap">
 		<section class="screen screen1">
@@ -52,17 +57,65 @@
 				<img src="images/car-6.png" alt="" class="car-6">
 			</div>
 			<div class="ringFrame">
-				<img src="images/1-ring.png" alt="" class="ring">
+				<img src="images/1-ring.png" alt="" class="ring rotateRingAni">
 				<img src="images/1-title.png" alt="" class="title">
 			</div>
 			<div class="screen-arrow"></div>
 		</section>
-		<section class="screen screen2" data-lock-next="true" data-lock-prev="true">
+		<section class="screen screen2" data-lock-next="true">
 			<canvas id="3dCanvas"></canvas>
+			<img src="images/2-tipSwipe.png" alt="" class="tipSwipe">
+			<img src="images/2-ring.png" alt="" class="ring">
+			<img src="images/2-finger.png" alt="" class="finger">
 		</section>
-		<section class="screen screen3">
+		<section class="screen screen3" data-lock-next="true">
+            <div class="content">
+                <div class="itemsFrame">
+                    <div class="itemBg">
+                        <div class="itemHover"></div>
+                    </div>
+                    <div class="item itemMid"></div>
+                    <div class="item itemLeft"></div>
+                    <div class="item itemRight"></div>
+                </div>
+                <div class="car360 cars360Animation"></div>
+                <div class="btnAuth"></div>
+            </div>
 		</section>
-		<section class="screen screen4">
+		<section class="screen screen4" data-lock-next="true">
+			<div class="content">
+				<div class="car360 cars360Animation"></div>
+				<div class="item">
+					<label>姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名</label>
+					<input type="text" name="name">
+				</div>
+				<div class="item">
+					<label>手机号码</label>
+					<input class="input-2" type="tel" name="name">
+					<div id="btnGetCode">获取验证码</div>
+				</div>
+				<div class="item">
+					<label>验&nbsp;&nbsp;证&nbsp;码</label>
+					<input type="number" name="name">
+				</div>
+				<div id="btnSubmit"></div>
+			</div>
+		</section>
+		<section class="screen screen5">
+			<div class="content">
+                <div class="car360 cars360Animation"></div>
+				<img src="images/tip-sucess.png" alt="" class="tip-success">
+				<p class="tip1"></p>
+				<p class="tip2"></p>
+				<div class="codeFrame">
+					<div class="codeLight codeLightAnimation"></div>
+					<img class="codeImg">
+				</div>
+				<div class="longtapTips">
+					<p>长按二维码关注一汽丰田公众号，</p>
+					<p>尊享车管家服务。</p>
+				</div>
+			</div>
 		</section>
 	</div>
 </body>
@@ -72,31 +125,4 @@
 <script type="text/javascript" src="js/OrbitControls.js?v=12321323"></script>
 <script type="text/javascript" src="js/lifangti.js?v=12321323"></script>
 <script type="text/javascript" src="js/main.js?v=12321323"></script>
-<script>
-    $(document).ready(function(){
-        var wa = new WxMoment.Analytics({
-            projectName: "20150504WXMOMENT"
-        });
-        var pageSlider = new WxMoment.PageSlider({
-            pages: $('.screen'),
-            direction: 'vertical',          //可选，vertical 或 v 为上下滑动，horizontal 或 h 为左右滑动，默认为 vertical
-            currentClass: 'current',        //可选, 当前屏的class (方便实现内容的进场动画)，默认值为 'current'
-            rememberLastVisited: true,      //可选，记住上一次访问结束后的索引值，可用于实现页面返回后是否回到上次访问的页面
-            animationPlayOnce: false,       //可选，切换页面时，动画只执行一次
-            oninit: function () {},         //可选，初始化完成时的回调
-            onbeforechange: function () {}, //可选，开始切换前的回调
-            onchange: function () {},       //可选，每一屏切换完成时的回调
-            onSwipeUp: function () {},      //可选，swipeUp 回调
-            onSwipeDown: function () {},    //可选，swipeDown 回调
-            onSwipeLeft: function () {},    //可选，swipeLeft 回调
-            onSwipeRight: function () {}    //可选，swipeRight 回调
-        });
-
-        $('.close').click(function () {
-            $('#actDetailDialog').hide();
-        });
-    });
-
-
-</script>
 </html>
