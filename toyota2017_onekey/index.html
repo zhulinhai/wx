@@ -5,16 +5,16 @@
 	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
 
 	<!-- 在 meta 标签中进行基础分享信息设置-->
-	<meta name="wxm:timeline_title" content="一汽丰田 一键认证关怀备至">
-	<meta name="wxm:appmessage_title" content="一汽丰田 一键认证关怀备至">
-	<meta name="wxm:appmessage_desc" content="认证100%有奖">
+	<meta name="wxm:timeline_title" content="一汽丰田一键认证关怀备至">
+	<meta name="wxm:appmessage_title" content="一汽丰田一键认证关怀备至">
+	<meta name="wxm:appmessage_desc" content="车主认证100%有礼">
 	<!-- 分享缩略图，必须为绝对路径，且图片链接必须为http协议（由于安卓微信客户端无法获取https的分享图片，仅此处需要强制http协议）-->
 	<meta name="wxm:img_url" content="http://wximg.qq.com/_demo/wxmoment/images/shareImg.jpg">
 	<!-- 分享链接-->
 	<meta name="wxm:link" content="https://wximg.qq.com/tmt/_demo/wxmoment/share.html">
 	<!-- 在 meta 标签中进行基础分享信息设置 End-->
 
-	<title>一汽丰田 一键认证关怀备至</title>
+	<title>一汽丰田一键认证关怀备至</title>
 	<link rel="stylesheet" href="css/main.css">
 	<script type="text/javascript">
         //rem设置
@@ -64,8 +64,8 @@
 		</section>
 		<section class="screen screen2" data-lock-next="true" data-lock-prev="true">
 			<canvas id="3dCanvas"></canvas>
-			<img src="images/2-tipSwipe.png" alt="" class="tipSwipe">
-			<img src="images/2-finger.png" alt="" class="finger animated shake infinite">
+			<img src="images/2-tipSwipe.png" alt="" class="tipSwipe" style="display: none">
+			<img src="images/2-finger.png" alt="" class="finger animated shake infinite" style="display: none">
 			<div class="screen-arrow animated fadeInDown infinite" style="display: none"></div>
 		</section>
 		<section class="screen screen3" data-lock-next="true">
@@ -77,14 +77,19 @@
                     <div class="item itemMid"></div>
                     <div class="item itemLeft"></div>
                     <div class="item itemRight"></div>
+					<img src="images/3-btnDetail.png" alt="" class="btnDetail">
                 </div>
-                <div class="car360 cars360Animation"></div>
+				<div class="carFrame">
+					<div class="car360 cars360Animation"></div>
+				</div>
                 <div class="btnAuth btnNucleusAnimation"></div>
             </div>
 		</section>
 		<section class="screen screen4" data-lock-next="true">
 			<div class="content">
-				<div class="car360 cars360Animation"></div>
+				<div class="carFrame">
+					<div class="car360 cars360Animation"></div>
+				</div>
 				<div class="item">
 					<label>姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名</label>
 					<input type="text" name="name">
@@ -103,7 +108,9 @@
 		</section>
 		<section class="screen screen5">
 			<div class="content">
-                <div class="car360 cars360Animation"></div>
+				<div class="carFrame">
+					<div class="car360 cars360Animation"></div>
+				</div>
 				<img src="images/tip-sucess.png" alt="" class="tip-success">
 				<p class="tip1"></p>
 				<p class="tip2"></p>
@@ -112,8 +119,8 @@
 					<img class="codeImg">
 				</div>
 				<div class="longtapTips">
-					<p>长按二维码关注一汽丰田公众号，</p>
-					<p>尊享车管家服务。</p>
+					<p>长按二维码关注一汽丰田公众号</p>
+					<p>了解更多活动详情</p>
 				</div>
 			</div>
 		</section>

@@ -54,11 +54,9 @@ html, body {
       z-index: 2;
     }
     .title {
-      display: block;
-      margin: 1.5rem auto 0;
-      width: 12rem;
+      margin: 1.5rem 1rem 0;
       text-align: center;
-      font-size: 1.6rem;
+      font-size: 1.4rem;
       line-height: 2.3rem;
       font-weight: bold;
       text-shadow: 1px 1px 1px #000;
@@ -145,7 +143,7 @@ html, body {
       margin-left: -6.9rem;
       width: 13.8rem;
       height: 12.6rem;
-      z-index: 6;
+      z-index: 1;
     }
     .car-1 {
       position: absolute;
@@ -272,7 +270,7 @@ html, body {
       display: block;
       margin: 1rem auto 0;
       width: 15.5rem;
-      height: 9.5rem;
+      height: 10.5rem;
       .item {
         width: 3.2rem;
         height: 3.4rem;
@@ -295,12 +293,12 @@ html, body {
       .itemBg {
         position: absolute;
         left: 50%;
-        margin-left: -4.25rem;
+        margin-left: -4rem;
         margin-top: 0.7rem;
-        width: 8.5rem;
+        width: 8rem;
         height: 8.6rem;
         background: url("../images/3-itemBg.png") no-repeat;
-        background-size: cover;
+        background-size: 8rem 8.6rem;
         z-index: 1;
         .itemHover {
           display: block;
@@ -311,6 +309,12 @@ html, body {
           background-size: 400% auto;
           background-position-x: 0;
         }
+      }
+      .btnDetail {
+        display: block;
+        margin: 5rem auto 0;
+        width: 4.15rem;
+        height: 2.15rem;
       }
     }
     .btnAuth {
@@ -325,13 +329,18 @@ html, body {
   }
 }
 
-.car360 {
+.carFrame {
   display: block;
   margin: 1.5rem auto;
   width: 9.5rem;
   height: 6.55rem;
-  background: url("../images/cars360.png") no-repeat center;
-  background-size: 1000% auto;
+  overflow: hidden;
+  .car360 {
+    width: 9.5rem;
+    height: 6.55rem;
+    background: url("../images/cars360.png") no-repeat center;
+    background-size: 1000% auto;
+  }
 }
 
 .screen4 {
@@ -469,8 +478,8 @@ html, body {
   }
   .screen5 {
     .content {
-      transform: scale(0.9);
-      -webkit-transform: scale(0.9);
+      transform: scale(0.8);
+      -webkit-transform: scale(0.8);
     }
   }
 }
@@ -479,8 +488,8 @@ html, body {
 * cars360 animation
 */
 .cars360Animation {
-  animation: carsAnimated 2s steps(9) infinite;
   -webkit-animation: carsAnimated 2s steps(9) infinite;
+  animation: carsAnimated 2s steps(9) infinite;
 }
 
 @keyframes carsAnimated {
@@ -523,32 +532,6 @@ html, body {
 @keyframes rotateRing {
   from {transform: rotate(0deg);}
   to {transform: rotate(360deg);}
-}
-
-/*
-* 手指动效
-*/
-.fingerAnimation {
-  animation: animatedFinger 1s ease-in-out infinite alternate;
-  -webkit-animation: animatedFinger 1s ease-in-out infinite alternate;
-}
-
-@keyframes animatedFinger {
-  from {
-    transform: scale(1);
-  }
-  to {
-    transform: scale(0.8);
-  }
-}
-
-@-webkit-keyframes animatedFinger {
-  from {
-    -webkit-transform: scale(1);transform: scale(1);
-  }
-  to {
-    -webkit-transform: scale(0.8);transform: scale(0.8);
-  }
 }
 
 /*

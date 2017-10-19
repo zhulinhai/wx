@@ -15,6 +15,7 @@ var curIndex = 0;
 var pageIndex = 0;
 var pageSlider;
 var isShowTip = true;
+var isShowPage2 = false;
 var isShowHomeTip = false;
 var startPosition, endPosition, moveLen;
 
@@ -35,7 +36,7 @@ function bindClicks() {
         $actDialog.hide();
     });
 
-    $('.itemHover').click(function () {
+    $('.itemBg').click(function () {
         stopMarquee();
         $actDialog.find('.title').html(infoList[curIndex].title);
         $actDialog.find('.info').html(infoList[curIndex].info);
@@ -66,25 +67,29 @@ function bindClicks() {
 }
 
 function page1Animation() {
-    $('.screen1 .top').show().addClass('animated bounceInDown');
+    setTimeout(function () { $('.screen1 .car-1').show().addClass('animated fadeInRight'); }, 1800);
+    setTimeout(function () { $('.screen1 .car-2').show().addClass('animated fadeInRight'); }, 1100);
+    setTimeout(function () { $('.screen1 .car-3').show().addClass('animated fadeInRight'); }, 700);
+    setTimeout(function () { $('.screen1 .car-4').show().addClass('animated zoomIn'); }, 0);
+    setTimeout(function () { $('.screen1 .car-5').show().addClass('animated fadeInLeft'); }, 400);
+    setTimeout(function () { $('.screen1 .car-6').show().addClass('animated fadeInLeft'); }, 1500);
     setTimeout(function () {
-        setTimeout(function () { $('.screen1 .car-1').show().addClass('animated fadeInRight'); }, 2100);
-        setTimeout(function () { $('.screen1 .car-2').show().addClass('animated fadeInRight'); }, 1400);
-        setTimeout(function () { $('.screen1 .car-3').show().addClass('animated fadeInRight'); }, 700);
-        setTimeout(function () { $('.screen1 .car-4').show().addClass('animated zoomIn'); }, 0);
-        setTimeout(function () { $('.screen1 .car-5').show().addClass('animated fadeInLeft'); }, 700);
-        setTimeout(function () { $('.screen1 .car-6').show().addClass('animated fadeInLeft'); }, 1400);
-    }, 700);
+        $('.screen1 .top').show().addClass('animated zoomIn');
+    }, 2500);
     setTimeout(function () {
         $('.screen1 .title').show().addClass('animated zoomIn');
         $('.screen1 .ring').show();
         setTimeout(function () {
             $('.screen1 .screen-arrow').show();
         }, 700);
-    }, 2800);
+    }, 3200);
 }
 
 function page2Animation() {
+    if (isShowPage2) {
+        return;
+    }
+    isShowPage2 = true;
     setTimeout(function () {
         var interval = setInterval(function () {
             posY --;
@@ -92,6 +97,9 @@ function page2Animation() {
                 clearInterval(interval);
                 interval = -1;
                 posY = 0;
+
+                $('.screen2 .tipSwipe').show();
+                $('.screen2 .finger').show();
                 $('#3dCanvas').bind('touchstart', function (e) {
                     var touch = e.touches[0];
                     startPosition = {
@@ -128,10 +136,10 @@ function page2Animation() {
 
 function updateActInfo(index) {
     var item = [index % 4, (index+1)  % 4,(index+2) % 4,(index+3) % 4];
-    $('.itemHover').css('background-position-x', item[0] * 33 + '%');
-    $('.itemRight').css('background-position-x', item[1] * 33 + '%');
-    $('.itemMid').css('background-position-x', item[2] * 33 + '%');
-    $('.itemLeft').css('background-position-x', item[3] * 33 + '%');
+    $('.itemHover').css('background-position-x', item[0] * 33.3 + '%');
+    $('.itemRight').css('background-position-x', item[1] * 33.3 + '%');
+    $('.itemMid').css('background-position-x', item[2] * 33.3 + '%');
+    $('.itemLeft').css('background-position-x', item[3] * 33.3 + '%');
 }
 
 function startMarquee() {
