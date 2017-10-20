@@ -451,8 +451,9 @@ html, body {
     margin-top: -14rem;
     width: 100%;
     height: 28rem;
-    .car360 {
-      margin-top: 0.5rem;
+    .carFrame {
+      display: block;
+      margin: 0.5rem auto 1rem;
     }
     .tip-success {
       display: block;

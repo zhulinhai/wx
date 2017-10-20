@@ -94,7 +94,7 @@ function page2Animation() {
     isShowPage2 = true;
     setTimeout(function () {
         var interval = setInterval(function () {
-            posY --;
+            posY -= 2;
             if (posY <= 0) {
                 clearInterval(interval);
                 interval = -1;

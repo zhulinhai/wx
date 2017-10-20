@@ -2775,8 +2775,9 @@ html, body {
   margin-top: -14rem;
   width: 100%;
   height: 28rem; }
-  .screen5 .content .car360 {
-    margin-top: 0.5rem; }
+  .screen5 .content .carFrame {
+    display: block;
+    margin: 0.5rem auto 1rem; }
   .screen5 .content .tip-success {
     display: block;
     margin: 0 auto 0.6rem;
