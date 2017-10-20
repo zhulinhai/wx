@@ -2510,7 +2510,8 @@ html, body {
     top: 0;
     left: 0;
     width: 100%;
-    height: 1.6rem; }
+    height: 1.6rem;
+    z-index: 10; }
     .screen1 .logo .logoLeft {
       float: left;
       width: 4.5rem;
