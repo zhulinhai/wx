@@ -1,0 +1,72 @@
+/*
+*1.5times
+*/
+$baseFontSize: 100px;
+
+@function pxToRem($px){
+	@return $px / $baseFontSize * 1rem;
+}
+
+*{
+  margin:0;
+  padding:0;
+}
+
+html,body{
+	width:100%;
+	height:100%;
+}
+
+@media screen and (max-width:321px){
+    body{font-size:12px}
+}
+
+@media screen and (min-width:321px) and (max-width:400px){
+    body{font-size:16px}
+}
+
+@media screen and (min-width:400px){
+    body{font-size:18px}
+}
+
+@mixin clearfix {
+
+  &:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+  }
+}
+
+.demo {
+	margin:0 auto;
+	width: 100%;
+	height:6.0rem;
+}
+
+.cr-viewport{
+  background: url('../images/01.png') left top no-repeat;
+  background-size:100% 100%;
+}
+
+.form {
+	margin:0 auto;
+	width:90%;
+	.f_row{
+		width:100%;
+
+		& > div:first-child{
+			float:left;
+		}
+
+		& > div:last-child{
+			float:right;
+		}
+
+		@include clearfix;
+	} /*end f_row*/
+
+	
+}
