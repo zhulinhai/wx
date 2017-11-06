@@ -110,12 +110,12 @@ $(function () {
                 stopLampAni();
             }
             if (this.index === 1) {
-                // 5s未点击 自动跳转
+                // 2.5s未点击 自动跳转
                 setTimeout(function () {
                     if (pageSlider.index === 1) {
                         page2Ani();
                     }
-                }, 5000);
+                }, 2500);
             }
 
             if (this.index === 2 && !isPage2Loaded) {
@@ -130,19 +130,19 @@ $(function () {
                 setTimeout(function () {
                     $('.s-item1 .box').show().addClass('animated bounceInDown');
                     setTimeout(function () {
-                        $('.s-item1 .light').show().addClass('animated flash');
+                        $('.s-item1 .light').show().addClass('animated flash infinite');
                         $('.s-item1 .gift-title').show().addClass('animated zoomIn');
-                    }, 700);
+                    }, 300);
                     setTimeout(function () {
                         $('.s-item1 .gift-txt01').show().addClass('animated fadeInUp');
-                    }, 1000);
+                    }, 500);
                 }, 1000);
                 setTimeout(function () {
                     $('.s-item2 .box').show().addClass('animated bounceInDown');
                     setTimeout(function () {
-                        $('.s-item2 .light').show().addClass('animated flash');
+                        $('.s-item2 .light').show().addClass('animated flash infinite');
                         $('.s-item2 .gift-title').show().addClass('animated zoomIn');
-                    }, 700);
+                    }, 300);
                     setTimeout(function () {
                         $('.s-item2 .gift-txt02').show().addClass('animated fadeInUp');
                         setTimeout(function () {
@@ -151,23 +151,22 @@ $(function () {
                         setTimeout(function () {
                             $('.s-item2 .p-2').show().addClass('animated fadeInUp');
                         }, 600);
-                    }, 1000);
-                }, 2000);
+                    }, 500);
+                }, 1500);
                 setTimeout(function () {
                     $('.s-item3 .box').show().addClass('animated bounceInDown');
                     setTimeout(function () {
-                        $('.s-item3 .light').show().addClass('animated flash');
+                        $('.s-item3 .light').show().addClass('animated flash infinite');
                         $('.s-item3 .gift-title').show().addClass('animated zoomIn');
-                    }, 700);
+                    }, 300);
                     setTimeout(function () {
                         $('.s-item3 .gift-txt03').show().addClass('animated fadeInUp');
-                        $screen3.scrollTop( $screen3[0].scrollHeight);
-                    }, 1000);
-                }, 3600);
+                    }, 500);
+                }, 2000);
                 setTimeout(function () {
                     $('#btnAllGet').show();
                     $('.girl').show().addClass('animated fadeInUp');
-                }, 5300);
+                }, 2500);
             }
         },       //可选，每一屏切换完成时的回调
         onSwipeUp: function () {},      //可选，swipeUp 回调

@@ -17,7 +17,7 @@
 	<!-- 在 meta 标签中进行基础分享信息设置 End-->
 
 	<title>绑定幸福 绑定你</title>
-	<link rel="stylesheet" href="css/main.css">
+	<link rel="stylesheet" href="css/main.css?v=0.0.1">
 	<script type="text/javascript">
         //rem设置
         (function(doc, win) {
@@ -65,7 +65,6 @@
 			<div id="btnStart" class="btnStart animated pulse infinite">幸福出发</div>
 		</section>
 		<section class="screen screen2">
-			<img class="logo" src="images/logo.png">
 			<div class="content">
 				<ul>
 					<li><div class="icon icon1"></div><span class="checkBox"></span><p>看轮胎</p></li>
@@ -84,11 +83,15 @@
 			</div>
 		</section>
 		<section class="screen screen3">
-			<img class="logo" src="images/logo.png">
+			<img src="images/3-title.png" alt="" class="title" style="display: none">
+			<p class="tip" style="display: none">您不愧为出行老司机！腻害！！前方大量幸福包高能预警......</p>
+			<div id="btnDetail" class="btnDetail animated pulse infinite" style="display: none"></div>
+			<div class="clouds">
+				<img src="images/1-cloud_01.png" alt="" class="cloud cloud-1 cloud1Ani">
+				<img src="images/1-cloud_02.png" alt="" class="cloud cloud-2 cloud2Ani">
+				<img src="images/1-cloud_02.png" alt="" class="cloud cloud-3 cloud3Ani">
+			</div>
 			<div class="content">
-				<img src="images/3-title.png" alt="" class="title" style="display: none">
-				<p class="tip" style="display: none">您不愧为出行老司机！腻害！！前方大量幸福包高能预警......</p>
-				<div id="btnDetail" class="btnDetail animated pulse infinite" style="display: none"></div>
 				<div class="item s-item1">
 					<div class="giftBox">
 						<div class="box" style="display: none"></div>
@@ -121,11 +124,9 @@
 						<img src="images/3-gift-txt03.png" alt="" class="gift-txt03" style="display: none">
 					</div>
 				</div>
-				<div class="bottom">
-					<div id="btnAllGet" class="btnAll animated pulse infinite" style="display: none"></div>
-					<img src="images/3-girl.png" alt="" class="girl" style="display: none">
-				</div>
 			</div>
+			<div id="btnAllGet" class="btnAll animated pulse infinite" style="display: none"></div>
+			<img src="images/3-girl.png" alt="" class="girl" style="display: none">
 		</section>
 		<section class="screen screen4" data-lock-next="true">
 			<div class="clouds">
@@ -148,7 +149,6 @@
 			</div>
 		</section>
 		<section class="screen screen5">
-			<img class="logo" src="images/logo.png">
 			<div class="clouds">
 				<img src="images/1-cloud_01.png" alt="" class="cloud cloud-1 cloud1Ani">
 				<img src="images/1-cloud_02.png" alt="" class="cloud cloud-2 cloud3Ani">
@@ -170,5 +170,5 @@
 	</div>
 </body>
 <script src="http://wximg.qq.com/wxp/libs/wxmoment/0.0.4/wxmoment.js"></script>
-<script src="js/main.js"></script>
+<script src="js/main.js?v=0.0.1"></script>
 </html>
