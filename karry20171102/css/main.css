@@ -9,40 +9,115 @@ html, body {
   width: 100%;
   height: 100%; }
 
-@media screen and (max-width: 321px) {
-  body {
-    font-size: 12px; } }
+body {
+  font-family: "Microsoft Yahei", "Helvetica Neue", Helvetica, Tahoma, sans-serif;
+  font-size: 24px; }
 
-@media screen and (min-width: 321px) and (max-width: 400px) {
-  body {
-    font-size: 16px; } }
-
-@media screen and (min-width: 400px) {
-  body {
-    font-size: 18px; } }
-
-.demo {
-  margin: 0 auto;
-  width: 100%;
-  height: 6.0rem; }
-
-.cr-viewport {
-  background: url("../images/01.png") left top no-repeat;
-  background-size: 100% 100%; }
+input, select, textarea {
+  border: none;
+  border-radius: 0;
+  -webkit-appearance: none;
+  box-sizing: border-box;
+  vertical-align: middle; }
 
 .form {
   margin: 0 auto;
-  width: 90%;
-  /*end f_row*/ }
-  .form .f_row {
-    width: 100%; }
-    .form .f_row > div:first-child {
-      float: left; }
-    .form .f_row > div:last-child {
-      float: right; }
-    .form .f_row:after {
-      content: ".";
-      display: block;
-      height: 0;
-      clear: both;
-      visibility: hidden; }
+  width: 570px;
+  height: 294px;
+  background: url(../images/bg_form.jpg) left top no-repeat;
+  background-size: 100% 100%;
+  overflow: hidden; }
+  .form .info {
+    margin: 0 auto;
+    width: 530px;
+    overflow: hidden; }
+    .form .info .f_row {
+      width: 100%;
+      height: 25px; }
+      .form .info .f_row div {
+        float: left;
+        width: 145px;
+        height: 100%;
+        margin-right: 10px;
+        overflow: hidden; }
+        .form .info .f_row div p {
+          width: 25px;
+          height: 25px;
+          float: left;
+          background-color: #f5f5f5; }
+        .form .info .f_row div input, .form .info .f_row div select {
+          float: left;
+          height: 100%;
+          background-color: #ffffff;
+          line-height: 25px;
+          width: 120px;
+          text-indent: 12px; }
+        .form .info .f_row div select {
+          background-image: url(../images/icon_dropdown.png);
+          background-position: 95% center;
+          background-repeat: no-repeat;
+          background-size: 6.5px 3.5px; }
+        .form .info .f_row div:after {
+          content: ".";
+          display: block;
+          height: 0;
+          clear: both;
+          visibility: hidden; }
+      .form .info .f_row div:last-child {
+        margin-right: 0; }
+      .form .info .f_row:after {
+        content: ".";
+        display: block;
+        height: 0;
+        clear: both;
+        visibility: hidden; }
+    .form .info .f_row:last-child {
+      margin-top: 10px; }
+  .form .submit {
+    display: block;
+    width: 60px;
+    height: 60px;
+    float: right;
+    background-color: #d50c12; }
+  .form:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden; }
+
+.icon_name {
+  background-image: url("../images/icon_name.png");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 11.5px 12px; }
+
+.icon_mobile {
+  background-image: url("../images/icon_mobile.png");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 7.5px 14px; }
+
+.icon_car {
+  background-image: url("../images/icon_car.png");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 16px 6.5px; }
+
+.icon_province {
+  background-image: url("../images/icon_province.png");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 9.5px 12px; }
+
+.icon_city {
+  background-image: url("../images/icon_city.png");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 13px 11.5px; }
+
+.icon_dealer {
+  background-image: url("../images/icon_dealer.png");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 13px 10.5px; }

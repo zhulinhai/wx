@@ -1,10 +1,11 @@
 /*
 *1.5times
 */
-$baseFontSize: 100px;
+$baseFontSize: 200px;
 
-@function pxToRem($px){
-	@return $px / $baseFontSize * 1rem;
+
+@function resize($px){
+	@return $px / 2; 
 }
 
 *{
@@ -17,17 +18,30 @@ html,body{
 	height:100%;
 }
 
-@media screen and (max-width:321px){
-    body{font-size:12px}
+body {
+	font-family: "Microsoft Yahei", "Helvetica Neue", Helvetica, Tahoma, sans-serif;
+	font-size:24px;
 }
 
-@media screen and (min-width:321px) and (max-width:400px){
-    body{font-size:16px}
+input, select,textarea {
+    border: none;
+    border-radius: 0;
+    -webkit-appearance: none;
+    box-sizing: border-box;
+    vertical-align:middle;
 }
 
-@media screen and (min-width:400px){
-    body{font-size:18px}
-}
+// @media screen and (max-width:321px){
+//     body{font-size:12px}
+// }
+
+// @media screen and (min-width:321px) and (max-width:400px){
+//     body{font-size:16px}
+// }
+
+// @media screen and (min-width:400px){
+//     body{font-size:18px}
+// }
 
 @mixin clearfix {
 
@@ -40,33 +54,115 @@ html,body{
   }
 }
 
-.demo {
-	margin:0 auto;
-	width: 100%;
-	height:6.0rem;
-}
-
-.cr-viewport{
-  background: url('../images/01.png') left top no-repeat;
-  background-size:100% 100%;
-}
-
 .form {
 	margin:0 auto;
-	width:90%;
-	.f_row{
-		width:100%;
+	width: resize(1140px);
+	height: resize(588px);
+	background: url(../images/bg_form.jpg) left top no-repeat;
+	background-size: 100% 100%;
+	overflow: hidden;
 
-		& > div:first-child{
-			float:left;
+	.info {
+		margin:0 auto;
+		width: resize(1060px);
+		overflow: hidden; 
+
+		.f_row {
+			width:100%;
+			height:resize(50px);
+
+			div {
+				float: left;
+				width: resize(290px);
+				height:100%;
+				margin-right: resize(20px);
+				overflow: hidden;
+
+				p { 
+					width: resize(50px);
+					height:resize(50px);
+					float: left;
+					background-color: #f5f5f5;
+				}
+
+				input,select {
+					float: left;
+					height: 100%;
+					background-color: #ffffff;
+					line-height: resize(50px); 
+					width: resize(290px - 50px);
+					text-indent: 12px;
+				}
+
+				select {
+					background-image: url(../images/icon_dropdown.png);
+					background-position: 95% center;
+					background-repeat: no-repeat;
+					background-size: resize(13px) resize(7px);
+				}
+
+				@include clearfix;
+			}
+
+			div:last-child {
+				margin-right: 0;
+			}
+
+			@include clearfix;
 		}
 
-		& > div:last-child{
-			float:right;
-		}
+		.f_row:last-child { margin-top: resize(20px); }
+	}
 
-		@include clearfix;
-	} /*end f_row*/
+	.submit {
+		display:block;
+		width: resize(120px);
+		height: resize(120px);
+		float: right;
+		background-color: #d50c12;
+	}
 
-	
+	@include clearfix;
+}
+
+.icon_name {
+	background-image: url("../images/icon_name.png");
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: resize(23px) resize(24px);
+}
+
+.icon_mobile {
+	background-image: url("../images/icon_mobile.png");
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: resize(15px) resize(28px);
+}
+
+.icon_car {
+	background-image: url("../images/icon_car.png");
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: resize(32px) resize(13px);
+}
+
+.icon_province {
+	background-image: url("../images/icon_province.png");
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: resize(19px) resize(24px);
+}
+
+.icon_city {
+	background-image: url("../images/icon_city.png");
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: resize(26px) resize(23px);
+}
+
+.icon_dealer {
+	background-image: url("../images/icon_dealer.png");
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: resize(26px) resize(21px);
 }
