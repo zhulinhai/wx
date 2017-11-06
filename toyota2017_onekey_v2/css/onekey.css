@@ -1,0 +1,131 @@
+.shareCarAni {
+  -webkit-animation: animatedShareCar 2s infinite linear;
+  animation: animatedShareCar 2s infinite linear; }
+
+@keyframes animatedShareCar {
+  0% {
+    top: 14rem;
+    right: 15rem;
+    transform: rotate(35deg);
+    opacity: 0; }
+  10% {
+    top: 9rem;
+    right: 11rem;
+    opacity: 1;
+    transform: rotate(0deg); }
+  40% {
+    top: 5rem;
+    right: 10rem;
+    transform: rotate(15deg);
+    opacity: 1; }
+  50% {
+    top: 4rem;
+    right: 9.2rem;
+    transform: rotate(35deg);
+    opacity: 1; }
+  60% {
+    top: 3rem;
+    right: 7.5rem;
+    transform: rotate(65deg);
+    opacity: 1; }
+  65% {
+    top: 2rem;
+    right: 4rem;
+    transform: rotate(65deg);
+    opacity: 1; }
+  70% {
+    top: 1rem;
+    right: 2rem;
+    transform: rotate(60deg);
+    opacity: 1; }
+  80% {
+    top: 1rem;
+    right: 2rem;
+    transform: rotate(50deg);
+    opacity: 1; }
+  100% {
+    top: 0;
+    right: 1rem;
+    opacity: 0; } }
+@-webkit-keyframes animatedShareCar {
+  0% {
+    top: 14rem;
+    right: 15rem;
+    -webkit-transform: rotate(35deg);
+    opacity: 0; }
+  10% {
+    top: 9rem;
+    right: 11rem;
+    opacity: 1;
+    -webkit-transform: rotate(0deg); }
+  40% {
+    top: 5rem;
+    right: 10rem;
+    -webkit-transform: rotate(15deg);
+    opacity: 1; }
+  50% {
+    top: 4rem;
+    right: 9.2rem;
+    -webkit-transform: rotate(35deg);
+    opacity: 1; }
+  60% {
+    top: 3rem;
+    right: 7.5rem;
+    -webkit-transform: rotate(65deg);
+    opacity: 1; }
+  65% {
+    top: 2rem;
+    right: 4rem;
+    -webkit-transform: rotate(65deg);
+    opacity: 1; }
+  70% {
+    top: 1rem;
+    right: 2rem;
+    -webkit-transform: rotate(60deg);
+    opacity: 1; }
+  80% {
+    top: 1rem;
+    right: 2rem;
+    -webkit-transform: rotate(50deg);
+    opacity: 1; }
+  100% {
+    top: 0;
+    right: 1rem;
+    opacity: 0; } }
+.handAni {
+  -webkit-animation: handAnimated 2s infinite linear;
+  animation: handAnimated 2s infinite linear; }
+
+@keyframes handAnimated {
+  20% {
+    opacity: 1; }
+  50% {
+    opacity: 1;
+    margin-top: 3.5rem; }
+  100% {
+    opacity: 0;
+    margin-top: 3.5rem;
+    transform: perspective(500px) scale3d(0.8, 0.8, 0.8); } }
+@-webkit-keyframes handAnimated {
+  20% {
+    opacity: 1; }
+  50% {
+    opacity: 1;
+    margin-top: 3.5rem; }
+  100% {
+    opacity: 0;
+    margin-top: 3.5rem;
+    -webkit-transform: perspective(500px) scale3d(0.8, 0.8, 0.8);
+    transform: perspective(500px) scale3d(0.8, 0.8, 0.8); } }
+.snowAni {
+  -webkit-animation: snowAnimated 3s ease-in-out alternate infinite;
+  animation: snowAnimated 3s ease-in-out alternate infinite; }
+
+@keyframes snowAnimated {
+  to {
+    right: 0.3rem; } }
+@-webkit-keyframes snowAnimated {
+  to {
+    right: 0.3rem; } }
+
+/*# sourceMappingURL=onekey.css.map */

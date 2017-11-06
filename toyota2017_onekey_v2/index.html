@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+	<meta name="screen-orientation" content="portrait"><!-- uc强制竖屏 -->
+	<meta name="x5-orientation" content="portrait"><!-- QQ强制竖屏 -->
+
+	<!-- 在 meta 标签中进行基础分享信息设置-->
+	<meta name="wxm:timeline_title" content="绑定幸福 绑定你">
+	<meta name="wxm:appmessage_title" content="绑定幸福 绑定你">
+	<meta name="wxm:appmessage_desc" content="一汽丰田车主认证即享好礼">
+	<!-- 分享缩略图，必须为绝对路径，且图片链接必须为http协议（由于安卓微信客户端无法获取https的分享图片，仅此处需要强制http协议）-->
+	<meta name="wxm:img_url" content="http://wximg.qq.com/_demo/wxmoment/images/shareLogo.jpg">
+	<!-- 分享链接-->
+	<meta name="wxm:link" content="https://wximg.qq.com/tmt/_demo/wxmoment/share.html">
+	<!-- 在 meta 标签中进行基础分享信息设置 End-->
+
+	<title>绑定幸福 绑定你</title>
+	<link rel="stylesheet" href="css/main.css">
+	<script type="text/javascript">
+        //rem设置
+        (function(doc, win) {
+            var docEl = doc.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                recalc = function() {
+                    var clientWidth = docEl.clientWidth;
+                    if (!clientWidth) return;
+                    docEl.style.fontSize = 20 * (clientWidth / 375) + 'px';
+                };
+            win.addEventListener(resizeEvt, recalc, false);
+            doc.addEventListener('DOMContentLoaded', recalc, false);
+        })(document, window);
+	</script>
+</head>
+<body>
+	<div class="dialog" id="shareDialog" style="display: none">
+		<img src="images/6-shareRoad.png" alt="" class="shareRoad">
+		<img src="images/6-shareCar.png" alt="" class="shareCar shareCarAni">
+	</div>
+	<div class="dialog" id="actRuleDialog" style="display: none">
+		<div class="content"></div>
+	</div>
+	<div class="wrap">
+		<section class="screen screen1">
+			<img class="logo" src="images/logo.png">
+			<div class="clouds">
+				<img src="images/1-cloud_01.png" alt="" class="cloud cloud-1 cloud1Ani">
+				<img src="images/1-cloud_02.png" alt="" class="cloud cloud-2 cloud2Ani">
+				<img src="images/1-cloud_02.png" alt="" class="cloud cloud-3 cloud3Ani">
+			</div>
+			<div class="content">
+				<div class="titleFrame">
+					<div class="lampsFrame">
+						<div class="lamp lampLeft lampAni"></div>
+						<div class="lamp lampMid lampAni"></div>
+						<div class="lamp lampRight lampAni"></div>
+					</div>
+					<img src="images/1-title.png" alt="" class="title">
+				</div>
+				<p class="tip">一汽丰田车主认证即享好礼</p>
+				<img src="images/1-people.png" alt="" class="people">
+				<div class="snowDiv snowAni"></div>
+			</div>
+			<div id="btnStart" class="btnStart animated pulse infinite">幸福出发</div>
+		</section>
+		<section class="screen screen2">
+			<img class="logo" src="images/logo.png">
+			<div class="content">
+				<ul>
+					<li><div class="icon icon1"></div><span class="checkBox"></span><p>看轮胎</p></li>
+					<li><div class="icon icon2"></div><span class="checkBox"></span><p>查仪表</p></li>
+					<li><div class="icon icon3"></div><span class="checkBox"></span><p>擦玻璃</p></li>
+					<li><div class="icon icon4"></div><span class="checkBox"></span><p>看路况</p></li>
+					<li><div class="icon icon5"></div><span class="checkBox"></span><p>驾驶证</p></li>
+					<li><div class="icon icon6"></div><span class="checkBox"></span><p>查限号</p></li>
+					<li><div class="icon icon7"></div><span class="checkBox"></span><p>行驶车</p></li>
+					<li class="li8"><div class="icon icon8"></div><span id="itemCheck8" class="checkBox uncheck"></span><p class="p-1">关注一汽丰田</p><p class="p-2">公众号</p></li>
+					<li><div class="icon icon9"></div><span class="checkBox"></span><p>系安全带</p></li>
+				</ul>
+				<img src="images/2-title.png" alt="" class="title">
+				<img src="images/2-title-get.png" alt="" class="title-get">
+				<img src="images/2-hand.png" alt="" class="hand handAni">
+			</div>
+		</section>
+		<section class="screen screen3">
+			<img class="logo" src="images/logo.png">
+			<div class="content">
+				<img src="images/3-title.png" alt="" class="title" style="display: none">
+				<p class="tip" style="display: none">您不愧为出行老司机！腻害！！前方大量幸福包高能预警......</p>
+				<div id="btnDetail" class="btnDetail animated pulse infinite" style="display: none"></div>
+				<div class="item s-item1">
+					<div class="giftBox">
+						<div class="box" style="display: none"></div>
+						<div class="light" style="display: none"></div>
+						<img src="images/3-gift-title01.png" alt="" class="gift-title" style="display: none">
+					</div>
+					<div class="titleDiv">
+						<img src="images/3-gift-txt01.png" alt="" class="gift-txt01" style="display: none">
+					</div>
+				</div>
+				<div class="item s-item2">
+					<div class="giftBox giftBox2">
+						<div class="box box2" style="display: none"></div>
+						<div class="light" style="display: none"></div>
+						<img src="images/3-gift-title02.png" alt="" class="gift-title" style="display: none">
+					</div>
+					<div class="titleDiv titleDiv2">
+						<img src="images/3-gift-txt02.png" alt="" class="gift-txt02" style="display: none">
+						<p class="p-1" style="display: none">1000元加油卡/500元京东卡</p>
+						<p class="p-2" style="display: none">腾讯视频会员/车载净化器</p>
+					</div>
+				</div>
+				<div class="item s-item3">
+					<div class="giftBox">
+						<div class="box box3" style="display: none"></div>
+						<div class="light" style="display: none"></div>
+						<img src="images/3-gift-title03.png" alt="" class="gift-title" style="display: none">
+					</div>
+					<div class="titleDiv">
+						<img src="images/3-gift-txt03.png" alt="" class="gift-txt03" style="display: none">
+					</div>
+				</div>
+				<div class="bottom">
+					<div id="btnAllGet" class="btnAll animated pulse infinite" style="display: none"></div>
+					<img src="images/3-girl.png" alt="" class="girl" style="display: none">
+				</div>
+			</div>
+		</section>
+		<section class="screen screen4" data-lock-next="true">
+			<div class="clouds">
+				<img src="images/1-cloud_01.png" alt="" class="cloud cloud-1 cloud1Ani">
+				<img src="images/1-cloud_02.png" alt="" class="cloud cloud-2 cloud2Ani">
+				<img src="images/1-cloud_02.png" alt="" class="cloud cloud-3 cloud3Ani">
+			</div>
+			<div class="content">
+				<img src="images/4-title.png" alt="" class="title">
+				<img src="images/4-heart_01.png" alt="" class="heart-01 animated fadeInUp infinite">
+				<img src="images/4-heart_02.png" alt="" class="heart-02 animated fadeInUp infinite">
+				<img src="images/4-heart_03.png" alt="" class="heart-03 animated fadeInUp infinite">
+				<form action="">
+					<div class="item"><label for="name">姓&nbsp;&nbsp;&nbsp;名</label><input id="name" name="name" type="text"></div>
+					<div class="item"><label for="tel">电&nbsp;&nbsp;&nbsp;话</label><input id="tel" name="tel" type="tel"><div id="btnGetCode">获取验证码</div></div>
+					<div class="item"><label for="code">验证码</label><input id="code" name="code" type="text"></div>
+					<div id="btnSubmit" class="animated pulse infinite">提交信息</div>
+				</form>
+				<img src="images/4-bottom.png" alt="" class="bottomImg">
+			</div>
+		</section>
+		<section class="screen screen5">
+			<img class="logo" src="images/logo.png">
+			<div class="clouds">
+				<img src="images/1-cloud_01.png" alt="" class="cloud cloud-1 cloud1Ani">
+				<img src="images/1-cloud_02.png" alt="" class="cloud cloud-2 cloud3Ani">
+				<img src="images/1-cloud_02.png" alt="" class="cloud cloud-3 cloud2Ani">
+			</div>
+			<div class="content">
+				<div class="lampDiv">
+					<div class="lamp"></div>
+				</div>
+				<img alt="" class="title">
+				<div class="qrcodeDiv">
+					<img class="qrcode">
+				</div>
+				<p>长按二维码关注一汽丰田公众号</p>
+				<p>了解更多活动详情</p>
+				<div id="btnShare" class="animated pulse infinite"></div>
+			</div>
+		</section>
+	</div>
+</body>
+<script src="http://wximg.qq.com/wxp/libs/wxmoment/0.0.4/wxmoment.js"></script>
+<script src="js/main.js"></script>
+</html>
