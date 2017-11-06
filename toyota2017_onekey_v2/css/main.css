@@ -2612,7 +2612,7 @@ html, body {
   -webkit-transform: rotate(35deg); }
 
 #actRuleDialog {
-  background: rgba(0, 0, 0, 0.8) url("../images/actRule-2.png") no-repeat center;
+  background: rgba(0, 0, 0, 0.8) url("../images/actRule-3.png") no-repeat center;
   background-size: auto 85%; }
 
 .wrap {
@@ -2847,7 +2847,7 @@ html, body {
     margin-left: auto;
     margin-right: auto;
     width: 4.6rem;
-    height: 1.45rem;
+    height: 1.5rem;
     background: url("../images/3-btnDetail.png") no-repeat center;
     background-size: 4.55rem 1.45rem; }
   .screen3 .clouds {
@@ -2929,21 +2929,22 @@ html, body {
         margin-right: 1rem;
         overflow: hidden; }
         .screen3 .content .item .titleDiv .gift-txt01 {
+          margin-top: 2rem;
           width: 8.1rem;
-          height: 2.5rem;
-          margin-top: 3rem; }
+          height: 2.5rem; }
         .screen3 .content .item .titleDiv .gift-txt02 {
-          margin-top: 2.5rem;
+          margin-top: 2rem;
           width: 8.1rem;
           height: 2.5rem; }
         .screen3 .content .item .titleDiv .gift-txt03 {
-          margin-top: 3rem;
-          width: 9.3rem;
-          height: 3.65rem; }
+          margin-top: 2rem;
+          width: 10rem;
+          height: 2.5rem; }
         .screen3 .content .item .titleDiv p {
-          font-size: 0.5rem;
+          font-size: 0.6rem;
           line-height: 0.8rem;
-          margin-right: 0.5rem; }
+          margin-right: 0.5rem;
+          font-style: italic; }
       .screen3 .content .item .giftBox2 {
         margin-left: -0.5rem; }
         .screen3 .content .item .giftBox2 .box {
@@ -2959,7 +2960,7 @@ html, body {
     .screen3 .content .s-item1 {
       margin-top: -9rem; }
     .screen3 .content .s-item2 {
-      margin-top: -3.65rem; }
+      margin-top: -3.2rem; }
     .screen3 .content .s-item3 {
       margin-top: 3rem; }
   .screen3 .btnAll {
@@ -2969,7 +2970,7 @@ html, body {
     bottom: 1.5rem;
     width: 6.6rem;
     height: 1.9rem;
-    background: url("../images/3-btnAll.png") no-repeat;
+    background: url("../images/3-btnAll-2.png") no-repeat;
     background-size: 6.6rem 1.9rem; }
   .screen3 .girl {
     position: absolute;

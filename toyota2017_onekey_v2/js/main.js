@@ -135,6 +135,9 @@ $(function () {
                     }, 300);
                     setTimeout(function () {
                         $('.s-item1 .gift-txt01').show().addClass('animated fadeInUp');
+                        setTimeout(function () {
+                            $('.s-item1 .p-1').show().addClass('animated fadeInUp');
+                        }, 300);
                     }, 500);
                 }, 1000);
                 setTimeout(function () {
@@ -161,6 +164,12 @@ $(function () {
                     }, 300);
                     setTimeout(function () {
                         $('.s-item3 .gift-txt03').show().addClass('animated fadeInUp');
+                        setTimeout(function () {
+                            $('.s-item3 .p-1').show().addClass('animated fadeInUp');
+                        }, 300);
+                        setTimeout(function () {
+                            $('.s-item3 .p-2').show().addClass('animated fadeInUp');
+                        }, 600);
                     }, 500);
                 }, 2000);
                 setTimeout(function () {
