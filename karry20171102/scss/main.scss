@@ -1,11 +1,12 @@
 /*
 *1.5times
 */
-$baseFontSize: 200px;
+$baseFontSize: 75px;
 
 
 @function resize($px){
-	@return $px / 2; 
+
+	@return $px / $baseFontSize * 1rem; 
 }
 
 *{
@@ -20,7 +21,7 @@ html,body{
 
 body {
 	font-family: "Microsoft Yahei", "Helvetica Neue", Helvetica, Tahoma, sans-serif;
-	font-size:12px;
+	font-size:resize(24px);
 }
 
 a {
@@ -92,7 +93,7 @@ input, select,textarea {
 	    top: resize(26px);
 	    left:resize(270px);
 		span { 
-          font-size: 19px;
+          font-size: resize(38px);
           font-weight: bold;
           letter-spacing:2px;
 		}
@@ -113,7 +114,7 @@ input, select,textarea {
 
 	    span {
 	    	color: #484848;
-	    	font-size: 7px;
+	    	font-size: resize(14px);
 	    	font-style:italic;
 	    }
 	}
@@ -149,7 +150,7 @@ input, select,textarea {
 
 				div {
 					float: left;
-					width: resize(290px);
+					width: resize(280px);
 					height:100%;
 					margin-right: resize(20px);
 					overflow: hidden;
@@ -166,8 +167,9 @@ input, select,textarea {
 						height: 100%;
 						background-color: #ffffff;
 						line-height: resize(50px); 
-						width: resize(290px - 50px);
+						width: resize(280px - 55px);
 						text-indent: 12px;
+						font-size: resize(24px);
 					}
 
 					select {
@@ -197,7 +199,7 @@ input, select,textarea {
 			height: resize(122px);
 			float: right;
 			background-color: #d50c12;
-			font-size: 18px;
+			font-size: resize(36px);
 			font-weight: 600;
 			color: #ffffff;
 
@@ -224,7 +226,7 @@ input, select,textarea {
 		span { 
 			float: left;
 		   margin-left: resize(12px);
-           font-size: 10px;
+           font-size: resize(10px);
            color: #535353;
 		}
 

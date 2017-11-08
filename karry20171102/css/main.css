@@ -11,7 +11,7 @@ html, body {
 
 body {
   font-family: "Microsoft Yahei", "Helvetica Neue", Helvetica, Tahoma, sans-serif;
-  font-size: 12px; }
+  font-size: 0.32rem; }
 
 a {
   margin: 0;
@@ -41,9 +41,9 @@ input, select, textarea {
 
 .pop {
   position: relative;
-  margin: 8px auto 0 auto;
-  width: 570px;
-  height: 294px;
+  margin: 0.21333rem auto 0 auto;
+  width: 15.2rem;
+  height: 7.84rem;
   background: url(../images/bg_form.jpg) left top no-repeat;
   background-size: 100% 100%;
   overflow: hidden; }
@@ -51,10 +51,10 @@ input, select, textarea {
     position: absolute;
     width: auto;
     height: auto;
-    top: 13px;
-    left: 135px; }
+    top: 0.34667rem;
+    left: 3.6rem; }
     .pop .pop_title span {
-      font-size: 19px;
+      font-size: 0.50667rem;
       font-weight: bold;
       letter-spacing: 2px; }
     .pop .pop_title .red {
@@ -65,58 +65,59 @@ input, select, textarea {
     position: absolute;
     width: auto;
     height: auto;
-    top: 40px;
-    left: 135px; }
+    top: 1.06667rem;
+    left: 3.6rem; }
     .pop .pop_title_a span {
       color: #484848;
-      font-size: 7px;
+      font-size: 0.18667rem;
       font-style: italic; }
   .pop .btn_close {
     position: absolute;
     display: block;
-    width: 23.5px;
-    top: 8px;
-    right: 12px; }
+    width: 0.62667rem;
+    top: 0.21333rem;
+    right: 0.32rem; }
     .pop .btn_close img {
       width: 100%; }
 
 .form {
-  margin: 71px auto 0 auto;
-  width: 530px;
+  margin: 1.89333rem auto 0 auto;
+  width: 14.13333rem;
   overflow: hidden; }
   .form .form_body {
     width: 100%;
     overflow: hidden; }
     .form .form_body .info {
       float: left;
-      width: 455px;
+      width: 12.13333rem;
       overflow: hidden; }
       .form .form_body .info .f_row {
         width: 100%;
-        height: 25px; }
+        height: 0.66667rem; }
         .form .form_body .info .f_row div {
           float: left;
-          width: 145px;
+          width: 3.73333rem;
           height: 100%;
-          margin-right: 10px;
+          margin-right: 0.26667rem;
           overflow: hidden; }
           .form .form_body .info .f_row div p {
-            width: 25px;
-            height: 25px;
+            width: 0.66667rem;
+            height: 0.66667rem;
             float: left;
             background-color: #f5f5f5; }
           .form .form_body .info .f_row div input, .form .form_body .info .f_row div select {
             float: left;
             height: 100%;
             background-color: #ffffff;
-            line-height: 25px;
-            width: 120px;
-            text-indent: 12px; }
+            line-height: 0.66667rem;
+            width: 3rem;
+            text-indent: 12px;
+            font-size: 0.32rem; }
           .form .form_body .info .f_row div select {
             background-image: url(../images/icon_dropdown.png);
             background-position: 95% center;
             background-repeat: no-repeat;
-            background-size: 6.5px 3.5px;
+            background-size: 0.17333rem 0.09333rem;
             padding-right: 18px; }
           .form .form_body .info .f_row div:after {
             content: ".";
@@ -133,18 +134,18 @@ input, select, textarea {
           clear: both;
           visibility: hidden; }
       .form .form_body .info .f_row:last-child {
-        margin-top: 10px; }
+        margin-top: 0.26667rem; }
     .form .form_body .submit {
       display: block;
-      width: 61px;
-      height: 61px;
+      width: 1.62667rem;
+      height: 1.62667rem;
       float: right;
       background-color: #d50c12;
-      font-size: 18px;
+      font-size: 0.48rem;
       font-weight: 600;
       color: #ffffff; }
       .form .form_body .submit p:first-child {
-        margin-top: 13px; }
+        margin-top: 0.34667rem; }
       .form .form_body .submit p {
         text-align: center;
         height: auto;
@@ -158,18 +159,18 @@ input, select, textarea {
   .form .allow {
     width: auto;
     height: auto;
-    margin-top: 13px;
+    margin-top: 0.34667rem;
     overflow: hidden; }
     .form .allow a {
       float: left;
       display: block;
-      width: 10px; }
+      width: 0.26667rem; }
       .form .allow a img {
         width: 100%; }
     .form .allow span {
       float: left;
-      margin-left: 6px;
-      font-size: 10px;
+      margin-left: 0.16rem;
+      font-size: 0.13333rem;
       color: #535353; }
     .form .allow:after {
       content: ".";
@@ -182,34 +183,34 @@ input, select, textarea {
   background-image: url("../images/icon_name.png");
   background-position: center center;
   background-repeat: no-repeat;
-  background-size: 11.5px 12px; }
+  background-size: 0.30667rem 0.32rem; }
 
 .icon_mobile {
   background-image: url("../images/icon_mobile.png");
   background-position: center center;
   background-repeat: no-repeat;
-  background-size: 7.5px 14px; }
+  background-size: 0.2rem 0.37333rem; }
 
 .icon_car {
   background-image: url("../images/icon_car.png");
   background-position: center center;
   background-repeat: no-repeat;
-  background-size: 16px 6.5px; }
+  background-size: 0.42667rem 0.17333rem; }
 
 .icon_province {
   background-image: url("../images/icon_province.png");
   background-position: center center;
   background-repeat: no-repeat;
-  background-size: 9.5px 12px; }
+  background-size: 0.25333rem 0.32rem; }
 
 .icon_city {
   background-image: url("../images/icon_city.png");
   background-position: center center;
   background-repeat: no-repeat;
-  background-size: 13px 11.5px; }
+  background-size: 0.34667rem 0.30667rem; }
 
 .icon_dealer {
   background-image: url("../images/icon_dealer.png");
   background-position: center center;
   background-repeat: no-repeat;
-  background-size: 13px 10.5px; }
+  background-size: 0.34667rem 0.28rem; }

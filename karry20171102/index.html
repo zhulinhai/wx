@@ -11,13 +11,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="viewport" id="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1,user-scalable=no"/>
+<!-- <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"> -->
 <title>test</title>
 <link rel="stylesheet" type="text/css" href="css/main.css">
 <!-- write your code here -->
 <script src="https://code.createjs.com/createjs-2015.11.26.min.js"></script>
 <script type="text/javascript" src="../public/scripts/jquery-1.12.1.min.js"></script>
 <script type="text/javascript" src="../public/scripts/utils/validateUtil.js"></script>
+<script type="text/javascript" src="js/viewport.js"></script>
 <script type="text/javascript" src="js/assert.js"></script>
 <script type="text/javascript" src="js/main.js"></script>
 <!-- write your code here -->
@@ -33,12 +35,8 @@
         document.documentElement.style.fontSize = (deviceWidth / 7.5) + 'px'; //375 fontSize = 50px
     })();
 </script> -->
-<div id="animation_container" style="background-color:rgba(255, 255, 255, 1.00); width:1334px; height:622px">
-	<canvas id="canvas" width="1334" height="622" style="position: absolute; display: block; background-color:rgba(255, 255, 255, 1.00);"></canvas>
-	<div id="dom_overlay_container" style="pointer-events:none; overflow:hidden; width:1334px; height:622px; position: absolute; left: 0px; top: 0px; display: block;">
-	</div>
-</div>
-<div class="_pop" style="display: none;">
+<canvas id="canvas" width="1338" height="670" style="position: absolute; display: none; background-color:rgba(255, 255, 255, 1.00);"></canvas>
+<div class="_pop" style="display: block;">
 	<div class="pop">
 		<p class="pop_title"><span class="red">预约</span><span class="normal">试驾</span></p>
 		<p class="pop_title_a"><span>REGISTRATION DRIVE</span></p>
