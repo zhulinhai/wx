@@ -11,8 +11,7 @@
 				if (userAgentInfo.indexOf(Agents[v]) > 0) { return Agents[v]; };
 			};
 			return "pc";
-		};
-			
+		};		
   /*
   *设置viewport, 仅在iphone、iPad上设置viewport，Android或者其他设备使用默认viewport。
   *宽度大于移动设备最大宽度时，提示请在移动设备上浏览
@@ -31,7 +30,7 @@
 
      rem = docEl.clientWidth / 10;
      docEl.style.fontSize = rem + 'px';
-     
+
   })();
 
 })();
