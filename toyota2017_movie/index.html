@@ -26,7 +26,7 @@
             if(json.success){
                 var data = json.data;
                 userName = data.nickname;
-                $('#headimgurl').attr('src', data.headimgurl);
+                $('#headimgurl').css('src', data.headimgurl);
                 console.log(data);
             }
         }});
