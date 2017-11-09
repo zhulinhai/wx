@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="https://code.createjs.com/createjs-2015.11.26.min.js"></script>
+	<script type="text/javascript" src="js/assert.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
+</head>
+<body  onload="init();" style="margin: 0px;background-color: #000000;">
+	<canvas id="mainView" width="1000" height="600"  style="position:absolute;"></canvas>
+	<!-- <div style="display: none;">
+		<div class="row"><select name="province" id="province"><option></option></select><select name="city" id="city"><option></option></select></div>
+		<div class="row"><select name="dealer" id="dealer"><option></option></select></div>
+	</div> -->
+</body>
+<!-- <script type="text/javascript" src="../public/scripts/jquery-1.12.1.min.js"></script>
+<script type="text/javascript">
+	    var provinces,cities,dealers;
+		$.getJSON('data.json', function(json) {
+				/*optional stuff to do after success */
+				provinces = json.provinces;
+				cities = json.cities;
+				dealers = json.dealers;
+
+				$("#province").empty();
+				var option = '<option value="省">省</option>';
+				for(var i = 0; i < provinces.length; i++){
+					var p = provinces[i];
+					option += '<option value="'+ p.province +'">'+ p.province +'</option>';
+				}
+				$("#province").html(option);
+		});
+
+	    //省、市、经销商三级联动
+		$("#province").on('change',function(){
+			var selected = $(this).val();
+			$("#city").empty();
+            $("#city").html('<option value="市">市</option>');
+            $('#dealer').empty();
+            $('#dealer').html('<option value="经销商">经销商</option>');
+			 if(selected !='省'){
+                  for(var i = 0; i < cities.length; i++){
+                  	   var city = cities[i];
+                      if(city.province == $(this).val())
+                          $("#city").append('<option value="'+ city.city +'">'+ city.city +'</option>');
+                  }
+            }
+		});
+		//市、经销商二级联动
+		$("#city").on('change',function(){
+			var selected = $(this).val();
+		 	
+		 	$("#dealer").empty();
+		  	$("#dealer").append('<option value="经销商">经销商</option>');
+			
+			if(selected !='市'){
+                  for(var i = 0; i < dealers.length; i++){
+                  	   var dealer = dealers[i];
+                      if(dealer.city == $(this).val())
+                          $("#dealer").append('<option value="'+ dealer.dealer +'">'+ dealer.dealer +'</option>');
+                  }
+            }
+		});
+</script> -->
+</html>
