@@ -15,7 +15,6 @@
     <img id="headImgUrl">
 </body>
 <script src="../public/scripts/jquery-1.12.1.min.js"></script>
-<script src="../public/scripts/utils/httpUtil.js"></script>
 <script type="text/javascript">
     var host = 'http://api.bjczxda.com/api/';
     var userName;
@@ -29,8 +28,8 @@
                 if(json.success){
                     var data = json.data;
                     userName = data.nickname;
-                    $('#headimgurl').css('src', data.headimgurl);
                     console.log(data);
+                    $('#headImgUrl').attr('src', data.headimgurl);
                 }
             },
             error:function(e){
