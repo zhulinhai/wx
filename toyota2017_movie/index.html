@@ -17,19 +17,26 @@
 <script src="../public/scripts/jquery-1.12.1.min.js"></script>
 <script src="../public/scripts/utils/httpUtil.js"></script>
 <script type="text/javascript">
-    var Http;
+    var host = 'http://api.bjczxda.com/api/';
     var userName;
     window.onload = function(){
         var code = request('code');
-        Http = new Http('http://api.bjczxda.com/api/');
-        Http.ajaxRequest({uri:'wx/userInfo/'+code,'success':function(json){
-            if(json.success){
-                var data = json.data;
-                userName = data.nickname;
-                $('#headimgurl').css('src', data.headimgurl);
-                console.log(data);
+        $.ajax({
+            type: 'get',
+            url: host + 'wx/userInfo/'+code,
+            data : {'code': code},
+            success:function(json){
+                if(json.success){
+                    var data = json.data;
+                    userName = data.nickname;
+                    $('#headimgurl').css('src', data.headimgurl);
+                    console.log(data);
+                }
+            },
+            error:function(e){
+                alert(e.responseJSON.message);
             }
-        }});
+        });
     };
 
     function request(paras){
