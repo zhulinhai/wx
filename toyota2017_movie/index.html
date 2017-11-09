@@ -24,13 +24,8 @@
             if(json.success){
                 var data = json.data;
                 userName = data.nickname;
-                var datas = 'openid='+data.openid + '&name='+data.nickname + '&portraitUri=' + data.portraitUri;
-                Http.ajaxRequest({uri:'im/getToken',datas:datas,success:function(json){
-                    if(json.success){
-                        var data = json.data;
-                        console.log(data);
-                    }
-                }})
+
+                console.log(data);
             }
         }});
     };
