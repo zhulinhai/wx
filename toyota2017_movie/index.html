@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>跨越人生路，积累幸福里程</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+</head>
+<body>
+    <!-- 分享 -->
+    <input type="hidden" name="appId" value="">
+    <input type="hidden" name="timestamp" value="">
+    <input type="hidden" name="nonceStr" value="">
+    <input type="hidden" name="signature" value="">
+</body>
+<script src="../public/scripts/jquery-1.12.1.min.js"></script>
+<script src="../public/scripts/utils/httpUtil.js"></script>
+<script type="text/javascript">
+    var Http;
+    var userName;
+    window.onload = function(){
+        var code = request('code');
+        Http = new Http('http://api.bjczxda.com/api/');
+        Http.ajaxRequest({uri:'wx/userInfo/'+code,'success':function(json){
+            if(json.success){
+                var data = json.data;
+                userName = data.nickname;
+                var datas = 'openid='+data.openid + '&name='+data.nickname + '&portraitUri=' + data.portraitUri;
+                Http.ajaxRequest({uri:'im/getToken',datas:datas,success:function(json){
+                    if(json.success){
+                        var data = json.data;
+                        console.log(data);
+                    }
+                }})
+            }
+        }});
+    };
+
+    function request(paras){
+        var url = location.search;
+        var paraString = url.substring(url.indexOf("?")+1,url.length).split("&");
+        var paraObj = {};
+        for (i=0; j=paraString[i]; i++){
+            paraObj[j.substring(0,j.indexOf("=")).toLowerCase()] = j.substring(j.indexOf("=")+1,j.length);
+        }
+        var returnValue = paraObj[paras.toLowerCase()];
+        if(typeof(returnValue)=="undefined"){
+            return "";
+        }else{
+            return returnValue;
+        }
+    }
+</script>
+</html>
