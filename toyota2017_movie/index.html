@@ -2,55 +2,73 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="screen-orientation" content="portrait"><!-- uc强制竖屏 -->
+    <meta name="x5-orientation" content="portrait"><!-- QQ强制竖屏 -->
+
+    <!-- 在 meta 标签中进行基础分享信息设置-->
+    <meta name="wxm:timeline_title" content="跨越人生路，积累幸福里程">
+    <meta name="wxm:appmessage_title" content="跨越人生路，积累幸福里程">
+    <meta name="wxm:appmessage_desc" content="一汽丰田车主认证即享好礼">
+    <!-- 分享缩略图，必须为绝对路径，且图片链接必须为http协议（由于安卓微信客户端无法获取https的分享图片，仅此处需要强制http协议）-->
+    <meta name="wxm:img_url" content="http://wximg.qq.com/_demo/wxmoment/images/shareLogo.jpg">
+    <!-- 分享链接-->
+    <meta name="wxm:link" content="https://wximg.qq.com/tmt/_demo/wxmoment/share.html">
+    <!-- 在 meta 标签中进行基础分享信息设置 End-->
     <title>跨越人生路，积累幸福里程</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="css/main.css">
+    <script type="text/javascript">
+        //rem设置
+        (function(doc, win) {
+            var docEl = doc.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                recalc = function() {
+                    var clientWidth = docEl.clientWidth;
+                    if (!clientWidth) return;
+                    docEl.style.fontSize = 20 * (clientWidth / 375) + 'px';
+                };
+            win.addEventListener(resizeEvt, recalc, false);
+            doc.addEventListener('DOMContentLoaded', recalc, false);
+        })(document, window);
+    </script>
 </head>
 <body>
-    <!-- 分享 -->
-    <input type="hidden" name="appId" value="">
-    <input type="hidden" name="timestamp" value="">
-    <input type="hidden" name="nonceStr" value="">
-    <input type="hidden" name="signature" value="">
+    <div class="dialog" id="loadingDialog" style="display: none">
 
-    <img id="headImgUrl" src="" width="320">
+    </div>
+
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <section class="swiper-slide screen1" style="display: none">
+                <img id="headImgUrl" src="" width="320" style="display: block">
+            </section>
+            <section class="swiper-slide screen2" style="display: none">
+            </section>
+            <section class="swiper-slide screen3">
+                <form>
+                    <input name="flag" type="text" value="ft_movie" hidden>
+                    <div class="item"><label for="name">姓&nbsp;&nbsp;&nbsp;名</label><input id="name" name="name" type="text"></div>
+                    <div class="item"><label for="mobile">电&nbsp;&nbsp;&nbsp;话</label><input id="mobile" name="mobile" type="tel"></div>
+                    <div class="item"><label for="car">意向车型</label><select id="car" name="car"><option>请选择</option><option>222</option></select></div>
+                    <div class="item"><label for="province">省份</label><select id="province" name="province"><option>请选择</option></select></div>
+                    <div class="item"><label for="city">城市</label><select id="city" name="city"><option>请选择</option></select></div>
+                    <div class="item"><label for="dealer">经销商</label><select id="dealer" name="dealer"><option>请选择</option></select></div>
+                    <div id="btnSubmit">提交信息</div>
+                </form>
+            </section>
+        </div>
+    </div>
+
+    <div id="orientLayer"><!-- 横屏提示 -->
+        <div class="contentFrame">
+            <img class="phone rotatePhoneAnimation" src="src/rotatePhone.png" />
+            <p class="tipTitle">为了更好的体验，请使用竖屏浏览</p>
+        </div>
+    </div>
 </body>
-<script src="../public/scripts/jquery-1.12.1.min.js"></script>
-<script type="text/javascript">
-    var host = 'http://api.bjczxda.com/api/';
-    var userName;
-    window.onload = function(){
-        var code = request('code');
-        $.ajax({
-            type: 'get',
-            url: host + 'wx/userInfo/'+code,
-            data : {'code': code},
-            success:function(json){
-                if(json.success){
-                    var data = json.data;
-                    userName = data.nickname;
-                    console.log(data);
-                    $('#headImgUrl').attr('src', data.headimgurl);
-                }
-            },
-            error:function(e){
-                alert(e.responseJSON.message);
-            }
-        });
-    };
-
-    function request(paras){
-        var url = location.search;
-        var paraString = url.substring(url.indexOf("?")+1,url.length).split("&");
-        var paraObj = {};
-        for (i=0; j=paraString[i]; i++){
-            paraObj[j.substring(0,j.indexOf("=")).toLowerCase()] = j.substring(j.indexOf("=")+1,j.length);
-        }
-        var returnValue = paraObj[paras.toLowerCase()];
-        if(typeof(returnValue)=="undefined"){
-            return "";
-        }else{
-            return returnValue;
-        }
-    }
-</script>
+<script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+<script type="text/javascript" src="js/data.js"></script>
+<script type="text/javascript" src="js/swiper.min.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
 </html>

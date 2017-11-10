@@ -1,4 +1,128 @@
-* {
-  padding: 0;
+@charset "UTF-8";
+@import "rotatePhone";
+@import "animate.min";
+@import "reset-h5";
+
+*{
   margin: 0;
+  padding: 0;
+}
+html, body {
+  font-family: "Microsoft Yahei", "Helvetica Neue", Helvetica, Tahoma, sans-serif;
+  height: 100%;
+  background-color: #fff;
+  -webkit-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -webkit-overflow-scrolling: touch;
+  -webkit-tap-highlight-color:rgba(0, 0, 0, 0);
+  -webkit-backface-visibility:hidden;
+  -webkit-perspective:1000px;
+  overflow: hidden;
+}
+
+@mixin center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@mixin bgImg($bgImg) {
+  background: url($bgImg) no-repeat;
+  background-size: cover;
+}
+
+.dialog {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.8);
+  z-index: 10;
+}
+
+.swiper-container,.swiper-wrapper {
+  width: 100%;
+  height: 100%;
+}
+.swiper-slide{
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  -webkit-backface-visibility: hidden;
+  -webkit-perspective: 1000px;
+  background-size: 100% auto;
+}
+.screen1 {
+  background-color: #FF0000;
+}
+.screen2 {
+  background-color: #00FF00;
+}
+.screen3 {
+  background-color: #0000FF;
+
+  form {
+    .item {
+      @include center();
+      width: 14.1rem;
+      height: 2rem;
+      border: 1px solid #38424E;
+      margin-top: 1rem;
+      background-color: #eee9e6;
+      overflow: hidden;
+      label {
+        display: inline-block;
+        *display: inline;
+        *zoom: 1;
+        width: 3.8rem;
+        height: 2rem;
+        line-height: 2rem;
+        font-size: 0.8rem;
+        text-align: center;
+        color: #38424E;
+      }
+      input, select {
+        -webkit-appearance: none;
+        box-sizing: border-box;
+        -moz-box-sizing: border-box; /*Firefox3.5+*/
+        -webkit-box-sizing: border-box; /*Safari3.2+*/
+        width: 9rem;
+        height: 2rem;
+        line-height: 2rem;
+        color: #38424E;
+        font-size: 0.8rem;
+        background-color: transparent;
+        text-indent: 0.2rem;
+        vertical-align: top;
+      }
+      select {
+
+      }
+
+      #btnGetCode {
+        float: right;
+        width: 4.6rem;
+        height: 2rem;
+        line-height: 2rem;
+        color: white;
+        text-align: center;
+        background-color: #faa040;
+      }
+    }
+    #btnSubmit {
+      @include center();
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+      color: white;
+      width: 5.05rem;
+      height: 1.75rem;
+      line-height: 1.5rem;
+      text-align: center;
+      background-size: 5rem 1.75rem;
+    }
+  }
 }
