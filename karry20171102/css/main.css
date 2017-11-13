@@ -44,7 +44,8 @@ input, select, textarea {
   background-image: url("../images/hint.jpg");
   background-position: left top;
   background-repeat: no-repeat;
-  background-size: 100% 100%; }
+  background-size: 100% 100%;
+  overflow: hidden; }
 
 .btn_music {
   position: absolute;
