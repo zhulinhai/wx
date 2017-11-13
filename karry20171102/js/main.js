@@ -74,7 +74,7 @@ function handleComplete(evt) {
 }
 
 
-
+var fullScreenWidth = 0;
 //判断手机横竖屏状态： html标签图片标签id = bbgImg
 function hengshuping()
 {
@@ -84,11 +84,16 @@ function hengshuping()
         // document.getElementById("hint").style.width=document.documentElement.clientWidth+"px";
         document.getElementById("hint").style.display ="block";
         isStop=true;
+		if(!fullScreenWidth && document.body.clientWidth > document.body.clientHeight )
+			fullScreenWidth = document.body.clientWidth
     }
 
     if (window.orientation == 90 || window.orientation == -90) {
         //alert("横屏状态！")
         document.getElementById("hint").style.display ="none";
+		if(getOS() == IPHONE && krpano){
+			$('#pano').css('width',fullScreenWidth + 'px');
+		}
         isStop=false;
     }
 }
@@ -187,6 +192,8 @@ function handleJumpBtn(){
 function handleOpenBox(){
 	if($('._pop').is(':hidden')){
 		$('._pop').show();
+		$('.pop').removeClass('animated bounceOutDown');
+		$('.pop').addClass('animated bounceInUp');
 	}
 }
 
@@ -277,7 +284,12 @@ function initPage(){
 		*响应点击关闭留资框按钮
 		*/
 		$('.btn_close').on('click',function(){
-			$('._pop').hide();
+			$('.pop').removeClass('animated bounceInUp');
+			$('.pop').addClass('animated bounceOutDown');
+			setTimeout(function(){
+				$('._pop').hide();
+			},1000);
+
 		});
 
 		/*

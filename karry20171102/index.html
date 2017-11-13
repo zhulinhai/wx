@@ -13,7 +13,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" id="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1,user-scalable=no"/>
 <title>开瑞K5&K60</title>
-<link rel="stylesheet" type="text/css" href="css/main.css">
+<link rel="stylesheet" type="text/css" href="css/main.css"/>
+<link rel="stylesheet" type="text/css" href="../public/css/animate.css"/>
 <!-- write your code here -->
 <script src="https://code.createjs.com/createjs-2015.11.26.min.js"></script>
 <script type="text/javascript" src="../public/scripts/jquery-1.12.1.min.js"></script>
@@ -25,7 +26,7 @@
 <script type="text/javascript" src="360/tour.js"></script>
 <!-- write your code here -->
 </head>
-<body onload="init();">
+<body onload="init();" ontouchmove="event.preventDefault();">
 <audio id="audio" autoplay="autoplay" src="sound/bg1.mp3"  type="audio/mpeg"></audio>
 <div id="hint">
 	<p style="position:absolute; font-size: 2em; top:58%; text-align: center; width: 100%; font-weight: bold;">切换手机横屏模式</p>
@@ -35,7 +36,7 @@
 <div id="pano" style="position: absolute;left: 0;top:0;display: none;z-index:1;width:100%;height:100%;">
 	<noscript><table style="width:100%;height:100%;"><tr style="vertical-align:middle;"><td><div style="text-align:center;">ERROR:<br/><br/>Javascript not activated<br/><br/></div></td></tr></table></noscript>
 	<script>
-		embedpano({swf:"360/tour.swf", xml:"360/tour.xml", target:"pano", html5:"prefer", mobilescale:1.0, passQueryParameters:true});
+		embedpano({swf:"360/tour.swf", xml:"360/tour.xml", target:"pano", html5:"auto", mobilescale:1.0, passQueryParameters:true});
 	</script>
 </div>
 <div class="_pop" style="display: none;">
@@ -72,7 +73,7 @@
 		</div>
 	</div>
 </div>
-<a href="javascript:void(0);" class="btn_music">
+<a href="javascript:void(0);" class="btn_music" style="display: none">
 	<img src="images/icon_music.png"/>
 </a>
 </body>
