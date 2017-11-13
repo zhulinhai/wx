@@ -71,10 +71,37 @@ input, select,textarea {
   }
 }
 
+#hint {
+	position: absolute;
+	width:100%;
+	height:100%;
+	left:0;
+	top:0;
+	z-index:1000;
+	background-image:url("../images/hint.jpg");
+	background-position: left top;
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
+
 .btn_music {
 	position: absolute;
+	display: block;
+	z-index:200;
+	width:resize(67px);
+	height:resize(67px);
+	top:.4rem;
+	right:.5rem;
+	
+	img {
+		width:100%;
+	}
 }
 ._pop{
+	position:absolute;
+	top:0;
+	left:0;
+	z-index:1000;
 	width:100%;
 	height:100%;
 	overflow: hidden;
