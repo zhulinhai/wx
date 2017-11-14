@@ -12,7 +12,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" id="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1,user-scalable=no"/>
-<title>开瑞K5&K60</title>
+<title>开瑞K50S&K60全新上市</title>
 <link rel="stylesheet" type="text/css" href="css/main.css"/>
 <link rel="stylesheet" type="text/css" href="../public/css/animate.css"/>
 <!-- write your code here -->
@@ -27,7 +27,7 @@
 <!-- write your code here -->
 </head>
 <body onload="init();" ontouchmove="event.preventDefault();">
-<audio id="audio" autoplay="autoplay" src="sound/bg1.mp3"  type="audio/mpeg"></audio>
+<audio id="audio" autoplay="autoplay" src="sound/bg1.mp3"  type="audio/mpeg" loop="loop"></audio>
 <div id="hint">
 	<p style="position:absolute; font-size: 2em; top:58%; text-align: center; width: 100%; font-weight: bold;">切换手机横屏模式</p>
 </div>
@@ -49,8 +49,8 @@
 				<form>
 					<div class="info">
 						<div class="f_row">
-							<div><p class="icon_name"></p><input type="text" name="name" id="name"></div>
-							<div><p class="icon_mobile"></p><input type="text" id="mobile" name="mobile"></div>
+							<div><p class="icon_name"></p><input type="text" name="name" id="name" placeholder="姓名"></div>
+							<div><p class="icon_mobile"></p><input type="text" id="mobile" name="mobile" placeholder="手机号码"></div>
 							<div><p class="icon_car"></p><select name="client_ip" id="car_type">
 								<option>车型</option>
 								<option value="K50">K50</option>
@@ -73,8 +73,11 @@
 		</div>
 	</div>
 </div>
-<a href="javascript:void(0);" class="btn_music" style="display: none">
+<a href="javascript:void(0);" class="btn_music" style="display: none;">
 	<img src="images/icon_music.png"/>
 </a>
 </body>
+<!-- 微信分享api -->
+<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript" src="js/wx_share.js"></script>
 </html>

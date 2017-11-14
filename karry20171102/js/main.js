@@ -3,30 +3,21 @@ var carIndex =-1 ,gameMc;
 var mcArr = [];
 
 var isStop = false , isGame = false;
+var bgMusic;
 
 function init() {
 	canvas = document.getElementById("canvas");
 	images = images||{};
 	ss = ss||{};
-	
+	bgMusic = document.getElementById('audio');
 	var loader = new createjs.LoadQueue(false);
 	loader.addEventListener("fileload", handleFileLoad);
 	loader.addEventListener("complete", handleComplete);
 	loader.loadManifest([p1.properties.manifest[0],p2.properties.manifest[0]]);
 
-	//--创建页面监听，等待微信端页面加载完毕 触发音频播放
-	document.addEventListener('DOMContentLoaded', function () {
-	    function audioAutoPlay() {
-	        var audio = document.getElementById('audio');
-	            audio.play();
-	        document.addEventListener("WeixinJSBridgeReady", function () {
-	            audio.play();
-	        }, false);
-	    }
-	    audioAutoPlay();
-	});
 	
 	initPage();
+
 }
 
 function handleFileLoad(evt) {	
@@ -34,6 +25,10 @@ function handleFileLoad(evt) {
 }
 
 function handleComplete(evt) {
+	$('html').one('touchstart',function(){
+		bgMusic.play();
+	});
+	$('.btn_music').show();
 	//This function is always called, irrespective of the content. You can use the variable "stage" after it is created in token create_stage.
 	var queue = evt.target;
 	var ssMetadata = p2.ssMetadata;
@@ -132,6 +127,7 @@ function dis(p1x,p1y,p2x,p2y){
 
 var isOpen = false;
 var subIndex = 0;
+
 function onTick(e){
 
 	if(!isStop){
@@ -299,9 +295,11 @@ function initPage(){
 			if(!$(this).hasClass('off')){ //关音乐
 				$(this).addClass('off');
 				$('.btn_music > img').attr('src','images/icon_music_no.png');
+				bgMusic.pause();
 			}else { //开音乐
 				$(this).removeClass('off');
 				$('.btn_music > img').attr('src','images/icon_music.png');
+				bgMusic.play();
 			}
 		});
 }
