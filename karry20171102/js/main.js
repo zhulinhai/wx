@@ -28,7 +28,7 @@ function handleComplete(evt) {
 	$('html').one('touchstart',function(){
 		bgMusic.play();
 	});
-	// $('.btn_music').show();
+	$('.btn_music').show();
 	// $('.btn_jump').show().on('clcik',function(){
 	// 	handleJumpBtn();
 	// });
