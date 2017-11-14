@@ -28,7 +28,10 @@ function handleComplete(evt) {
 	$('html').one('touchstart',function(){
 		bgMusic.play();
 	});
-	$('.btn_music').show();
+	// $('.btn_music').show();
+	// $('.btn_jump').show().on('clcik',function(){
+	// 	handleJumpBtn();
+	// });
 	//This function is always called, irrespective of the content. You can use the variable "stage" after it is created in token create_stage.
 	var queue = evt.target;
 	var ssMetadata = p2.ssMetadata;
@@ -178,7 +181,12 @@ function handleJumpBtn(){
 	isGame = true;
 	krpano = document.getElementById("krpanoSWFObject");
 	setTimeout(function(){ 
-		krpano.call("set(plugin[skin_gyro].enabled,true)");  
+		krpano.call("set(plugin[skin_gyro].enabled,true)");
+		$('.btn_openbox').show();
+		$('.btn_openbox').on('click',function(){
+			handleOpenBox();
+		});
+
 	},1000);
 }
 
