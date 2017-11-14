@@ -18,9 +18,9 @@
             }
 
             var title ='开瑞K50S&K60全新上市'; // 分享标题
-            var link ='http://wx.bjczxda.com/karry/index.html';
+            var link ='http://wx.bjczxda.com/karry20171102/index.html';
             var desc = '开瑞K50S&K60全新上市'; // 分享描述
-            var imgUrl = 'http://wx.bjczxda.com/karry/images/share.jpg';
+            var imgUrl = 'http://wx.bjczxda.com/karry20171102/images/share.jpg';
 
             var wx_appId = rt.data.appId;
             var wx_timestamp = rt.data.timestamp;
