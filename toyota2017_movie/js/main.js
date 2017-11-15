@@ -494,13 +494,33 @@ var main = {
                     if(json.success){
                         var data = json.data;
                         $('.userName').html(data.nickname);
-                        $('.headImg').attr('src', data.headimgurl);
+                        var img = main.getCrossBase64Img(data.headimgurl);
+                        if (img != '') {
+                            $('.headImg').attr('src', img);
+                        }
                     }
                 },
                 error:function(e){
                     alert(e.responseJSON.message);
                 }
             });
+        }
+    },
+    getCrossBase64Img: function (url) {
+        var img = new Image();
+        img.crossOrigin = "Anonymous"; //注意存放顺序
+        img.src = url;
+        img.onload = function () {
+            var canvas = document.createElement('canvasImg');
+            canvas.width = img.width;
+            canvas.height = img.height;
+            var ctx = canvas.getContext("2d");
+            ctx.drawImage(img, 0, 0, img.width, img.height);
+            return canvas.toDataURL("image/png");
+        };
+
+        img.onerror = function () {
+            return '';
         }
     }
 };
