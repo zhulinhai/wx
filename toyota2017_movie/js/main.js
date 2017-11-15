@@ -1,4 +1,4 @@
-var host = 'http://api.bjczxda.com/api/';
+var host = 'http://api.bjczxda.com/api/'; //'http://localhost:8000/api/';//
 var carList = ["广汽丰田 埃尔法", "广汽丰田 凯美瑞双擎", "广汽丰田 雷凌", "广汽丰田 雷凌双擎", "广汽丰田 全新汉兰达", "广汽丰田 全新凯美瑞", "广汽丰田 逸致", "广汽丰田 致享", "广汽丰田 致炫", "雷克萨斯 全新CT", "雷克萨斯 ES", "雷克萨斯 GS", "雷克萨斯 GX", "雷克萨斯 IS", "雷克萨斯 LS", "雷克萨斯 LX", "雷克萨斯 全新NX", "雷克萨斯 RC", "雷克萨斯 RC F", "雷克萨斯 RX", "雷克萨斯 LX570", "一汽丰田 86", "一汽丰田 HIACE", "一汽丰田 RAV4", "一汽丰田 卡罗拉", "一汽丰田 卡罗拉花冠", "一汽丰田 卡罗拉双擎", "一汽丰田 柯斯达", "一汽丰田 兰德酷路泽", "一汽丰田 全新普拉多", "一汽丰田 普锐斯", "一汽丰田 普瑞维亚", "一汽丰田 全新皇冠", "一汽丰田 锐志", "一汽丰田 威驰", "一汽丰田 威驰FS"];
 var tipsInfo = [
     "我已经收集到50万公里幸福里程，感谢爸妈的陪伴，只愿你们身体健康，未来我们还要一起走。",
@@ -418,7 +418,7 @@ var main = {
             taintTest: false,
             onrendered: function (canvas) {
                 //生成base64图片数据
-                var dataUrl = canvas.toDataURL("image/png").replace("image/png","image/octet-stream");
+                var dataUrl = canvas.toDataURL("image/png");
                 $('#posterImg').attr('src', dataUrl);
             }
         });
@@ -452,7 +452,6 @@ var main = {
             return;
         }
 
-        var flag = trim($("input[name='flag']").val());
         var url = host + 'ftMovie/luckyDraw';
         $.ajax({
             type: "post",
