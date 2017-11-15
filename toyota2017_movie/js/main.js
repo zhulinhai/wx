@@ -22,8 +22,8 @@ var main = {
     isScreen2Animated: false,
     init: function () {
         this.initSwiper();
-        this.bindUserInfo();
         this.bindClicks();
+        this.bindUserInfo();
         this.getUserInfo();
     },
     initSwiper: function () {
@@ -493,7 +493,7 @@ var main = {
                     if(json.success){
                         var data = json.data;
                         $('.userName').html(data.nickname);
-                        $('.headImg').attr('src', data.headimgurl);
+                        $('.headImg').attr('src', data.headimgurlBase64);
                         // var img = main.getCrossBase64Img(data.headimgurl);
                         // if (img != '') {
                         //     $('.headImg').attr('src', img);
