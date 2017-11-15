@@ -24,6 +24,7 @@ var main = {
         this.initSwiper();
         this.bindUserInfo();
         this.bindClicks();
+        this.getUserInfo();
     },
     initSwiper: function () {
         this.mainSwiper = new Swiper('.swiper-container', {
@@ -483,7 +484,7 @@ var main = {
             }
         });
     },
-    getUserInfo: function (callBack) {
+    getUserInfo: function () {
         var code = request('code');
         if (code && code != '') {
             $.ajax({
@@ -494,7 +495,6 @@ var main = {
                         var data = json.data;
                         $('.userName').html(data.nickname);
                         $('.headImg').attr('src', data.headimgurl);
-                        callBack&&callBack();
                     }
                 },
                 error:function(e){
