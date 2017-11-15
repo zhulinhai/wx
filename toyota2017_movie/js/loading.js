@@ -36,12 +36,21 @@ loadingHandler.startInterval();
 Pace.on('hide', function() {
     loadingHandler.clearInterval();
     loadingHandler.setLoadingPercent(100);
-    // main.getUserInfo(function () {
+    var code = request('code');
+    if (code && code != '') {
+        main.getUserInfo(code, start);
+    } else  {
+        /*无法获取头像和昵称，H5链接*/
+        start();
+    }
+
+    function start() {
         $('#loadingDialog').hide();
         setTimeout(function () {
             main.init();
             main.playScreen1Ani();
         }, 300);
-    // });
+    }
+
 });
 // end pace加载

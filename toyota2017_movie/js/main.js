@@ -24,7 +24,6 @@ var main = {
         this.initSwiper();
         this.bindClicks();
         this.bindUserInfo();
-        this.getUserInfo();
     },
     initSwiper: function () {
         this.mainSwiper = new Swiper('.swiper-container', {
@@ -483,28 +482,22 @@ var main = {
             }
         });
     },
-    getUserInfo: function () {
-        var code = request('code');
-        if (code && code != '') {
-            $.ajax({
-                type: 'get',
-                url: host + 'wx/userInfo/'+code,
-                success:function(json){
-                    if(json.success){
-                        var data = json.data;
-                        $('.userName').html(data.nickname);
-                        $('.headImg').attr('src', data.headimgurlBase64);
-                        // var img = main.getCrossBase64Img(data.headimgurl);
-                        // if (img != '') {
-                        //     $('.headImg').attr('src', img);
-                        // }
-                    }
-                },
-                error:function(e){
-                    alert(e.responseJSON.message);
+    getUserInfo: function (code, callBack) {
+        $.ajax({
+            type: 'get',
+            url: host + 'wx/userInfo/'+code,
+            success:function(json){
+                if(json.success){
+                    var data = json.data;
+                    $('.userName').html(data.nickname);
+                    $('.headImg').attr('src', data.headimgurlBase64);
+                    callBack&&callBack();
                 }
-            });
-        }
+            },
+            error:function(e){
+                alert(e.responseJSON.message);
+            }
+        });
     },
     getCrossBase64Img: function (url) {
         var img = new Image();
