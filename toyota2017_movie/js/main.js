@@ -418,7 +418,7 @@ var main = {
             taintTest: false,
             onrendered: function (canvas) {
                 //生成base64图片数据
-                var dataUrl = canvas.toDataURL();
+                var dataUrl = canvas.toDataURL("image/png").replace("image/png","image/octet-stream");
                 $('#posterImg').attr('src', dataUrl);
             }
         });
