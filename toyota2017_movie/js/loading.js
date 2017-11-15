@@ -55,7 +55,6 @@ var main = {
     collectCount: 0,
     isScreen2Animated: false,
     init: function () {
-        this.requestUserInfo();
         this.initSwiper();
         this.bindUserInfo();
         this.bindClicks();
@@ -518,26 +517,6 @@ var main = {
             }
         });
 
-    },
-    requestUserInfo: function() {
-        var code = request('code');
-        if (code && code != '') {
-            $.ajax({
-                type: 'get',
-                url: host + 'wx/userInfo/'+code,
-                success:function(json){
-                    if(json.success){
-                        var data = json.data;
-                        console.log(data);
-                        $('.userName').html(data.nickname);
-                        $('.headImg').attr('src', data.headimgurl);
-                    }
-                },
-                error:function(e){
-                    alert(e.responseJSON.message);
-                }
-            });
-        }
     }
 };
 
@@ -550,10 +529,29 @@ function showActRuleDialog() {
 Pace.on('hide', function() {
     loadingHandler.clearInterval();
     loadingHandler.setLoadingPercent(100);
-    setTimeout(function () {
-        $('#loadingDialog').hide();
-        main.init();
-        main.playScreen1Ani();
-    }, 300);
+    // setTimeout(function () {
+        var code = request('code');
+        if (code && code != '') {
+            $.ajax({
+                type: 'get',
+                url: host + 'wx/userInfo/'+code,
+                success:function(json){
+                    if(json.success){
+                        var data = json.data;
+                        console.log(data);
+                        $('.userName').html(data.nickname);
+                        $('.headImg').attr('src', data.headimgurl);
+
+                        $('#loadingDialog').hide();
+                        main.init();
+                        main.playScreen1Ani();
+                    }
+                },
+                error:function(e){
+                    alert(e.responseJSON.message);
+                }
+            });
+        }
+    // }, 300);
 });
 // end pace加载
