@@ -36,10 +36,12 @@ loadingHandler.startInterval();
 Pace.on('hide', function() {
     loadingHandler.clearInterval();
     loadingHandler.setLoadingPercent(100);
-    main.getUserInfo(function () {
+    // main.getUserInfo(function () {
         $('#loadingDialog').hide();
-        main.init();
-        main.playScreen1Ani();
-    });
+        setTimeout(function () {
+            main.init();
+            main.playScreen1Ani();
+        }, 300);
+    // });
 });
 // end pace加载
