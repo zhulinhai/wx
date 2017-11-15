@@ -24,10 +24,10 @@ var main = {
     collectCount: 0,
     isScreen2Animated: false,
     init: function () {
+        this.requestUserInfo();
         this.initSwiper();
         this.bindUserInfo();
         this.bindClicks();
-        this.requestUserInfo();
     },
     initSwiper: function () {
         this.mainSwiper = new Swiper('.swiper-container', {
@@ -101,7 +101,7 @@ var main = {
         setTimeout(function () { $screen1.find('.content').show();}, 1400);
         setTimeout(function () {
             $screen1.find('.boat').show();
-            $btnDetail.show().addClass(' animated fadeInUp');
+            $btnDetail.show().addClass('animated fadeInUp');
             setTimeout(function () {
                 $btnDetail.removeClass('animated fadeInUp').addClass('animated pulse infinite');
             }, 800);
