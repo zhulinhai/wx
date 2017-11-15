@@ -490,7 +490,7 @@ var main = {
                 if(json.success){
                     var data = json.data;
                     $('.userName').html(data.nickname);
-                    $('.headImg').attr('src', data.headimgurlBase64);
+                    $('.headImg').attr('src', data.headimglocal);
                     callBack&&callBack();
                 }
             },
