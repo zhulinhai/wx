@@ -494,10 +494,11 @@ var main = {
                     if(json.success){
                         var data = json.data;
                         $('.userName').html(data.nickname);
-                        var img = main.getCrossBase64Img(data.headimgurl);
-                        if (img != '') {
-                            $('.headImg').attr('src', img);
-                        }
+                        $('.headImg').attr('src', data.headimgurl);
+                        // var img = main.getCrossBase64Img(data.headimgurl);
+                        // if (img != '') {
+                        //     $('.headImg').attr('src', img);
+                        // }
                     }
                 },
                 error:function(e){
