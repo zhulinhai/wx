@@ -71,10 +71,38 @@ input, select,textarea {
   }
 }
 
+#hint {
+	position: absolute;
+	width:100%;
+	height:100%;
+	left:0;
+	top:0;
+	z-index:1000;
+	background-image:url("../images/hint.jpg");
+	background-position: left top;
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	overflow: hidden;
+}
+
 .btn_music {
 	position: absolute;
+	display: block;
+	z-index:200;
+	width:resize(67px);
+	height:resize(67px);
+	top:.4rem;
+	right:.5rem;
+	
+	img {
+		width:100%;
+	}
 }
 ._pop{
+	position:absolute;
+	top:0;
+	left:0;
+	z-index:200;
 	width:100%;
 	height:100%;
 	overflow: hidden;
@@ -174,6 +202,11 @@ input, select,textarea {
 						width: resize(280px - 55px);
 						text-indent: 12px;
 						font-size: resize(24px);
+						color:#636363;
+					}
+
+					input::-webkit-input-placeholder {
+						color: #636363;
 					}
 
 					select {
@@ -230,7 +263,7 @@ input, select,textarea {
 		span { 
 			float: left;
 		   margin-left: resize(12px);
-           font-size: resize(10px);
+           font-size: .26rem;
            color: #535353;
 		}
 
