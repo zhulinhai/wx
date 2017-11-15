@@ -494,7 +494,7 @@ var main = {
                     if(json.success){
                         var data = json.data;
                         $('.userName').html(data.nickname);
-                        $('.headImg').attr('src', data.headimgurl);
+                        // $('.headImg').attr('src', data.headimgurl);
                     }
                 },
                 error:function(e){
