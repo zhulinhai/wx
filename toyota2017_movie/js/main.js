@@ -354,7 +354,7 @@ var main = {
         var $resultDialog = $('#resultDialog');
         $resultDialog.find('.num').attr('src', imgList[main.collectCount - 1]);
         // 更新弹出框内容
-        $resultDialog.fadeIn(300);
+        $resultDialog.show();
     },
     updateCollectState: function () {
         $('#study').attr('src', main.isCollectStudy?'src/2-study-selected.png':'src/2-study.png');
@@ -490,7 +490,7 @@ var main = {
                 if(json.success){
                     var data = json.data;
                     $('.userName').html(data.nickname);
-                    $('.headImg').attr('src', data.headimglocal);
+                    $('.headImg').attr('src', 'http://api.bjczxda.com/' + data.headimglocal);
                     callBack&&callBack();
                 }
             },
