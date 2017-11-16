@@ -14,6 +14,12 @@ var loadingHandler = {
     init: function () {
     },
     startInterval: function () {
+        var code = request('code');
+        if ( !code || code == '') {
+            window.location.replace = 'http://dwz.cn/6R8Dw4';
+            return;
+        }
+
         loadingHandler.myInterval = setInterval(function(){
             var progress = parseInt(document.querySelectorAll('.pace-progress')[0].getAttribute("data-progress"));
             loadingHandler.setLoadingPercent(progress);
@@ -32,13 +38,6 @@ var loadingHandler = {
     }
 };
 loadingHandler.startInterval();
-Pace.on('start', function () {
-    console.log('start');
-    var code = request('code');
-    if ( !code || code == '') {
-        window.location.replace = 'http://dwz.cn/6R8Dw4';
-    }
-});
 
 Pace.on('done', function() {
     loadingHandler.clearInterval();
