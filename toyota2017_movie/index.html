@@ -5,19 +5,26 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
     <meta name="screen-orientation" content="portrait"><!-- uc强制竖屏 -->
     <meta name="x5-orientation" content="portrait"><!-- QQ强制竖屏 -->
-
     <!-- 在 meta 标签中进行基础分享信息设置-->
-    <meta name="wxm:timeline_title" content="跨越人生路，积累幸福里程">
-    <meta name="wxm:appmessage_title" content="跨越人生路，积累幸福里程">
-    <meta name="wxm:appmessage_desc" content="一汽丰田车主认证即享好礼">
+    <meta name="wxm:timeline_title" content="跨越人生路，感恩幸福礼">
+    <meta name="wxm:appmessage_title" content="跨越人生路，感恩幸福礼">
+    <meta name="wxm:appmessage_desc" content="丰田金融百万客户感恩季，兑换里程好礼即可获得10元话费。">
     <!-- 分享缩略图，必须为绝对路径，且图片链接必须为http协议（由于安卓微信客户端无法获取https的分享图片，仅此处需要强制http协议）-->
-    <meta name="wxm:img_url" content="http://wximg.qq.com/_demo/wxmoment/images/shareLogo.jpg">
+    <meta name="wxm:img_url" content="http://wx.bjczxda.com/toyota2017_movie/src/shareLogo.jpg">
     <!-- 分享链接-->
-    <meta name="wxm:link" content="https://wximg.qq.com/tmt/_demo/wxmoment/share.html">
+    <meta name="wxm:link" content="http://wx.bjczxda.com/toyota2017_movie/index.html"><!-- http://dwz.cn/6R8Dw4 -->
     <!-- 在 meta 标签中进行基础分享信息设置 End-->
-    <title>跨越人生路，积累幸福里程</title>
+    <title>跨越人生路，感恩幸福礼</title>
     <link rel="stylesheet" href="css/main.css">
     <script type="text/javascript">
+
+        /* 判断是否存在code 跳转授权页面 */
+        (function () {
+            if (location.search.indexOf('code') == -1) {
+                window.location.href = 'http://dwz.cn/6R8Dw4';
+            }
+        })();
+
         //rem设置
         (function(doc, win) {
             var docEl = doc.documentElement,
@@ -30,31 +37,281 @@
             win.addEventListener(resizeEvt, recalc, false);
             doc.addEventListener('DOMContentLoaded', recalc, false);
         })(document, window);
+        (function () {
+            /*
+             * 禁止浏览器触摸事件
+             * */
+            document.addEventListener('touchmove', function(event){
+                // 判断默认行为是否可以被禁用
+                if (event.cancelable) {
+                    // 判断默认行为是否已经被禁用
+                    if (!event.defaultPrevented) {
+                        event.preventDefault();
+                    }
+                }
+            }, false);
+        })();
+    </script>
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?97ed50efc7547c796f5ba920db8b5b38";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
     </script>
 </head>
 <body>
-    <div class="dialog" id="loadingDialog" style="display: none">
-
+    <!-- loading框 -->
+    <div class="dialog" id="loadingDialog" style="display: block">
+        <img id="loading-ring" class="loading-ring rotateRingAni" src="src/loading-ring.png" />
+        <p id="loading-percent" class="loading-percent">0%</p>
+    </div>
+    <!-- 结果提示框 -->
+    <div class="dialog" id="tipResultDialog" style="display: none">
+        <div class="content">
+            <img id="resultImg" src="src/7-result-none.png" alt="" class="resultImg">
+            <img id="closeBtn" src="src/7-closebtn.png" alt="" class="closeBtn">
+        </div>
+    </div>
+    <!-- 分享提示框 -->
+    <div class="dialog" id="shareTipDialog" style="display: none">
+        <img class="shareImg" src="src/8-shareImg.png">
+    </div>
+    <!-- 活动详情页面 -->
+    <div class="dialog" id="actRuleDialog" style="display: none"></div>
+    <!-- 里程收集求学页面 -->
+    <div class="dialog" id="studyDialog" style="display: none">
+        <div class="slide slide-1">
+            <img src="src/3-1-mist1.png" alt="" class="mist-1" style="display: none">
+            <img src="src/3-1-mist2.png" alt="" class="mist-2" style="display: none">
+            <img src="src/3-1-pen.png" class="pen" style="display: none">
+            <img src="src/3-1-qiu.png" class="qiu" style="display: none">
+            <img src="src/3-1-xue.png" class="xue" style="display: none">
+            <div class="inputDiv">
+                <p class="title">你第一次离家外出求学的时间？</p>
+                <input type="month" name="user_date" value="2017-11" />
+            </div>
+            <div class="btnFrame">
+                <img class="btnLeft btnSkip animated pulse infinite" src="src/3-btn-skip.png" alt="">
+                <img class="btnRight btnNext animated pulse infinite" src="src/3-btn-next.png" alt="">
+            </div>
+        </div>
+        <div class="slide slide-2" style="display: none">
+            <div class="content">
+                <div class="div-1" style="display: none">
+                    <p class="animated fadeInUp" style="animation-delay: 0s;">从蹒跚学步咿呀学语</p>
+                    <p class="animated fadeInUp" style="animation-delay: 0.4s;">到只身一人离家求学</p>
+                    <p class="animated fadeInUp" style="animation-delay: 0.8s;">总有最熟悉的身影相伴</p>
+                </div>
+                <img src="src/4-1-S1.png" alt="" class="s-1" style="display: none">
+                <img src="src/4-1-S2.png" alt="" class="s-2" style="display: none">
+                <img src="src/4-1-S3.png" alt="" class="s-3" style="display: none">
+                <div class="div-2" style="display: none">
+                    <p class="animated fadeInUp" style="animation-delay: 0s;">父母陪你一起走过了多少人生路途</p>
+                    <p class="animated fadeInUp" style="animation-delay: 0.4s;">点点滴滴都是你最珍贵的幸福里程</p>
+                </div>
+                <div class="btnCollect" style="display: none"></div>
+            </div>
+        </div>
+    </div>
+    <div class="dialog" id="workDialog" style="display: none">
+        <div class="slide slide-1">
+            <img src="src/3-2-bamboo.png" alt="" class="bamboo" style="display: none">
+            <img src="src/3-2-gong.png" class="gong" style="display: none">
+            <img src="src/3-2-zuo.png" class="zuo" style="display: none">
+            <div class="inputDiv">
+                <p class="title">你初入职场的时间？</p>
+                <input type="month" name="user_date" value="2017-11" />
+            </div>
+            <div class="btnFrame">
+                <img class="btnLeft btnSkip animated pulse infinite" src="src/3-btn-skip.png" alt="">
+                <img class="btnRight btnNext animated pulse infinite" src="src/3-btn-next.png" alt="">
+            </div>
+        </div>
+        <div class="slide slide-2" style="display: none">
+            <div class="content">
+                <div class="div-1" style="display: none">
+                    <p class="animated fadeInUp" style="animation-delay: 0s;">从青春校园</p>
+                    <p class="animated fadeInUp" style="animation-delay: 0.4s;">到奋斗职场</p>
+                    <p class="animated fadeInUp" style="animation-delay: 0.8s;">幸好，你不是孤单一个人</p>
+                </div>
+                <img src="src/4-2-S1.png" alt="" class="s-1" style="display: none">
+                <img src="src/4-2-S2.png" alt="" class="s-2" style="display: none">
+                <img src="src/4-2-S3.png" alt="" class="s-3" style="display: none">
+                <div class="div-2" style="display: none">
+                    <p class="animated fadeInUp" style="animation-delay: 0s;">很幸运刚毕业就遇到了他们</p>
+                    <p class="animated fadeInUp" style="animation-delay: 0.4s;">帮助你蜕变、成长</p>
+                </div>
+                <div class="btnCollect" style="display: none"></div>
+            </div>
+        </div>
+    </div>
+    <div class="dialog" id="carDialog" style="display: none">
+        <div class="slide slide-1">
+            <img src="src/3-3-car.png" alt="" class="car" style="display: none">
+            <img src="src/3-3-carBG.png" alt="" class="carBg" style="display: none">
+            <img src="src/3-3-mai.png" class="mai" style="display: none">
+            <img src="src/3-3-che.png" class="che" style="display: none">
+            <div class="inputDiv">
+                <p class="title">自己买下第一辆车的时间？</p>
+                <input type="month" name="user_date" value="2017-11" />
+            </div>
+            <div class="btnFrame">
+                <img class="btnLeft btnSkip animated pulse infinite" src="src/3-btn-skip.png" alt="">
+                <img class="btnRight btnNext animated pulse infinite" src="src/3-btn-next.png" alt="">
+            </div>
+        </div>
+        <div class="slide slide-2" style="display: none">
+            <div class="content">
+                <div class="div-1" style="display: none">
+                    <p class="animated fadeInUp" style="animation-delay: 0s;">从职场小白</p>
+                    <p class="animated fadeInUp" style="animation-delay: 0.4s;">到精英白领</p>
+                    <p class="animated fadeInUp" style="animation-delay: 0.8s;">感谢那个从来没放弃过的自己</p>
+                </div>
+                <img src="src/4-3-S1.png" alt="" class="s-1" style="display: none">
+                <img src="src/4-3-S2.png" alt="" class="s-2" style="display: none">
+                <img src="src/4-3-S3.png" alt="" class="s-3" style="display: none">
+                <div class="div-2" style="display: none">
+                    <p class="animated fadeInUp" style="animation-delay: 0s;">正因为你的努力奋斗</p>
+                    <p class="animated fadeInUp" style="animation-delay: 0.4s;">才有你现在的收获</p>
+                </div>
+                <div class="btnCollect" style="display: none"></div>
+            </div>
+        </div>
+    </div>
+    <div class="dialog" id="familyDialog" style="display: none">
+        <div class="slide slide-1">
+            <img src="src/3-4-campus.png" alt="" class="campus" style="display: none">
+            <img src="src/3-4-flower1.png" alt="" class="flower1" style="display: none">
+            <img src="src/3-4-flower2.png" alt="" class="flower2" style="display: none">
+            <img src="src/3-4-cheng.png" class="cheng" style="display: none">
+            <img src="src/3-4-jia.png" class="jia" style="display: none">
+            <div class="inputDiv">
+                <p class="title">和TA一起领证的那天？</p>
+                <input type="month" name="user_date" value="2017-11" />
+            </div>
+            <div class="btnFrame">
+                <img class="btnLeft btnSkip animated pulse infinite" src="src/3-btn-skip.png" alt="">
+                <img class="btnRight btnNext animated pulse infinite" src="src/3-btn-next.png" alt="">
+            </div>
+        </div>
+        <div class="slide slide-2" style="display: none">
+            <div class="content">
+                <div class="div-1" style="display: none">
+                    <p class="animated fadeInUp" style="animation-delay: 0s;">第一次怦然心动</p>
+                    <p class="animated fadeInUp" style="animation-delay: 0.4s;">想和你牵手一辈子</p>
+                    <p class="animated fadeInUp" style="animation-delay: 0.8s;">看看身边的TA</p>
+                </div>
+                <img src="src/4-4-S1.png" alt="" class="s-1" style="display: none">
+                <img src="src/4-4-S2.png" alt="" class="s-2" style="display: none">
+                <img src="src/4-4-S3.png" alt="" class="s-3" style="display: none">
+                <div class="div-2" style="display: none">
+                    <p class="animated fadeInUp" style="animation-delay: 0s;">对TA说句“我爱你”</p>
+                </div>
+                <div class="btnCollect" style="display: none"></div>
+            </div>
+        </div>
+    </div>
+    <!-- 里程收集结果页 -->
+    <div class="dialog" id="resultDialog" style="display: none">
+        <div class="content">
+            <p class="title">恭喜你，已经累积了</p>
+            <div class="circle">
+                <img src="src/5-50.png" class="num">
+                <p>万公里</p>
+            </div>
+            <p class="tip">幸福里程</p>
+        </div>
+        <div class="btnFrame">
+            <img class="btnLeft btnMyWay animated pulse infinite" src="src/5-btn-myway.png" alt="">
+            <img class="btnRight btnContinue animated pulse infinite" src="src/5-btn-continue.png" alt="">
+        </div>
+    </div>
+    <!-- 海报页面 -->
+    <div id="poster">
+        <img class="posterBg" src="src/6-posterBg.jpg">
+        <div class="top">
+            <img class="headImg" crossorigin="anonymous" src="src/2-userDefault.png" >
+            <p class="tip"><span class="userName">XXX</span>的人生路</p>
+        </div>
+        <ul>
+            <li class="l1"><img src="src/6-study-gray.png" alt="" class="study"> <span class="studyDate">XXXX年XX月</span>，第一次离开家外出求学。</li>
+            <li class="l2"><span class="workDate">XXXX年XX月</span>，初入职场。 <img src="src/6-work-gray.png" alt="" class="work"></li>
+            <li class="l3"><img src="src/6-car-gray.png" alt="" class="car"> <span class="carDate">XXXX年XX月</span>，人生的第一辆车。</li>
+            <li class="l4"><span class="familyDate">XXXX年XX月</span>，和TA领证成家。 <img src="src/6-family-gray.png" alt="" class="family"></li>
+        </ul>
+        <div class="bottom">
+            <div class="leftDiv">
+                <p class="tipInfo"></p>
+            </div>
+            <img src="src/6-qrcode.png" alt="" class="qrcode">
+        </div>
     </div>
 
+    <!-- 主页面 -->
+    <img class="logo" src="src/logo.png">
     <div class="swiper-container">
         <div class="swiper-wrapper">
-            <section class="swiper-slide screen1" style="display: none">
-                <img id="headImgUrl" src="" width="320" style="display: block">
+            <section class="swiper-slide screen1">
+                <div class="bg" style="display: none"></div>
+                <img class="slogan" src="src/1-slogan.png" alt="" style="display: none">
+                <div class="content" style="display: none">
+                    <p class="animated fadeInUp" style="animation-delay: 0s;">你是否还记得第一次外出求学奔波了多少公里？</p>
+                    <p class="animated fadeInUp" style="animation-delay: 0.4s;">你是否还记得为了追寻另一半穿越了多少座城市？</p>
+                    <p class="animated fadeInUp" style="animation-delay: 0.8s;">这一路走来欢笑、泪水</p>
+                    <p class="animated fadeInUp" style="animation-delay: 1.2s;">再回头看看</p>
+                    <div id="btnDetail" class="btnDetail" style="display: none"></div>
+                </div>
+                <img class="boat boatAni" src="src/1-boat.png" alt="" style="display: none">
             </section>
-            <section class="swiper-slide screen2" style="display: none">
+            <section class="swiper-slide screen2">
+                <div class="topFrame">
+                    <p class="title" style="display: none">看看你已经走了多远？</p>
+                    <div class="info" style="display: none">
+                        <img class="headImg" alt="" src="src/2-userDefault.png">
+                        <lable class="userName">XXX</lable>
+                        <div class="btnActRule" id="btnActRule"></div>
+                    </div>
+                </div>
+                <div class="content" style="display: none">
+                    <img src="src/2-line.png" alt="" id="line" class="line" style="display: none">
+                    <img src="src/2-study.png" alt="" class="study animated bounceInDown" id="study">
+                    <img src="src/2-work.png" alt="" class="work animated bounceInDown" id="work">
+                    <img src="src/2-car.png" alt="" class="car animated bounceInDown" id="car">
+                    <img src="src/2-family.png" alt="" class="family animated bounceInDown" id="family">
+                </div>
+                <div class="btnMakeRoad animated pulse infinite" id="btnMakeRoad" style="display: none"></div>
             </section>
-            <section class="swiper-slide screen3">
-                <form>
-                    <input name="flag" type="text" value="ft_movie" hidden>
-                    <div class="item"><label for="name">姓&nbsp;&nbsp;&nbsp;名</label><input id="name" name="name" type="text"></div>
-                    <div class="item"><label for="mobile">电&nbsp;&nbsp;&nbsp;话</label><input id="mobile" name="mobile" type="tel"></div>
-                    <div class="item"><label for="car">意向车型</label><select id="car" name="car"><option>请选择</option><option>222</option></select></div>
-                    <div class="item"><label for="province">省份</label><select id="province" name="province"><option>请选择</option></select></div>
-                    <div class="item"><label for="city">城市</label><select id="city" name="city"><option>请选择</option></select></div>
-                    <div class="item"><label for="dealer">经销商</label><select id="dealer" name="dealer"><option>请选择</option></select></div>
-                    <div id="btnSubmit">提交信息</div>
-                </form>
+            <section class="swiper-slide screen3"><!-- 海报生成页面 -->
+                <div class="content" style="display: block">
+                    <img alt="" id="posterImg">
+                    <div class="tipFrame">
+                        <p class="tipTitle">长按保存图片可分享好友</p>
+                        <a class="actRule" href="javascript:showActRuleDialog();">活动规则</a>
+                    </div>
+                </div>
+                <div class="btnFrame" style="display: none">
+                    <img id="btnExchange" class="btnLeft animated pulse infinite" src="src/6-btn-exchange.png" alt="">
+                    <img id="btnShare" class="btnRight animated pulse infinite" src="src/6-btn-share.png" alt="">
+                </div>
+            </section>
+            <section class="swiper-slide screen4">
+                <div class="content">
+                    <p class="title">兑换里程好礼</p>
+                    <p class="tip">请填写个人真实信息，每日前300名用户可获精美礼品一份。</p>
+                    <p class="tip">详情请看<a class="actRule" href="javascript:showActRuleDialog();">活动规则</a></p>
+                    <form>
+                        <div class="item"><label for="name">姓&nbsp;&nbsp;&nbsp;&nbsp;名</label><input id="name" name="name" type="text" value=""></div>
+                        <div class="item"><label for="mobile">电&nbsp;&nbsp;&nbsp;&nbsp;话</label><input id="mobile" name="mobile" type="tel" value=""></div>
+                        <div class="item"><select id="favorCar" name="favorCar"><option selected>意向车型</option></select></div>
+                        <div class="item2"><div class="divLeft"><select class="s2" id="province" name="province"><option>省份</option></select></div><div class="divRight"><select id="city" class="s3" name="city"><option>城市</option></select></div></div>
+                        <div class="item"><select id="dealer" name="dealer"><option>经销商</option></select></div>
+                        <div class="btnSubmit" id="btnSubmit"></div>
+                    </form>
+                </div>
+                <img class="boat boatAni" src="src/1-boat.png" alt="" style="display: none">
             </section>
         </div>
     </div>
@@ -65,10 +322,19 @@
             <p class="tipTitle">为了更好的体验，请使用竖屏浏览</p>
         </div>
     </div>
+
+    <script type="text/javascript" src="js/pace.min.js"></script>
+    <script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
+    <script type="text/javascript" src="js/html2canvas.min.js"></script>
+    <script type="text/javascript" src="js/common.js"></script>
+    <script type="text/javascript" src="js/swiper.min.js"></script>
+    <script type="text/javascript" src="js/data.js"></script>
+    <script type="text/javascript" src="js/main.js?v=0.9.8"></script>
+    <script type="text/javascript" src="js/loading.js?v=0.9.5"></script>
+
+    <!-- 分享页面 -->
+    <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script type="text/javascript" src="js/wx_share.js?v=0.0.5"></script>
+
 </body>
-<script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
-<script type="text/javascript" src="js/common.js"></script>
-<script type="text/javascript" src="js/data.js"></script>
-<script type="text/javascript" src="js/swiper.min.js"></script>
-<script type="text/javascript" src="js/main.js"></script>
 </html>

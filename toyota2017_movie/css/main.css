@@ -2399,7 +2399,7 @@ body, html {
   height: auto; }
 
 body {
-  font-family: Arial, "STHeiti", Helvetica, sans-serif;
+  font-family: "宋体","SimSun", sans-serif;
   background: #fff;
   font-size: 14px;
   height: 100%;
@@ -2410,7 +2410,7 @@ button,
 input,
 select,
 textarea {
-  font-family: "Microsoft Yahei", "Helvetica Neue", Helvetica, Tahoma, sans-serif;
+  font-family: "宋体","SimSun", sans-serif;
   -webkit-font-smoothing: antialiased;
   /*chrome、safari*/
   -moz-osx-font-smoothing: grayscale;
@@ -2454,7 +2454,7 @@ input, select, textarea {
   padding: 0; }
 
 html, body {
-  font-family: "Microsoft Yahei", "Helvetica Neue", Helvetica, Tahoma, sans-serif;
+  font-family: "宋体","SimSun", sans-serif;
   height: 100%;
   background-color: #fff;
   -webkit-box-sizing: border-box;
@@ -2476,81 +2476,868 @@ html, body {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.8);
   z-index: 10; }
-
-.swiper-container, .swiper-wrapper {
-  width: 100%;
-  height: 100%; }
-
-.swiper-slide {
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  -webkit-backface-visibility: hidden;
-  -webkit-perspective: 1000px;
-  background-size: 100% auto; }
-
-.screen1 {
-  background-color: #FF0000; }
-
-.screen2 {
-  background-color: #00FF00; }
-
-.screen3 {
-  background-color: #0000FF; }
-  .screen3 form .item {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 14.1rem;
-    height: 2rem;
-    border: 1px solid #38424E;
-    margin-top: 1rem;
-    background-color: #eee9e6;
-    overflow: hidden; }
-    .screen3 form .item label {
-      display: inline-block;
-      *display: inline;
-      *zoom: 1;
-      width: 3.8rem;
-      height: 2rem;
-      line-height: 2rem;
-      font-size: 0.8rem;
-      text-align: center;
-      color: #38424E; }
-    .screen3 form .item input, .screen3 form .item select {
+  .dialog .slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    -webkit-backface-visibility: hidden;
+    -webkit-perspective: 1000px; }
+  .dialog .slide-1 .inputDiv {
+    position: absolute;
+    left: 50%;
+    margin-left: -7.6rem;
+    bottom: 6rem;
+    width: 15.2rem;
+    height: 6.95rem;
+    background: url("../src/3-selection-bg.png") no-repeat;
+    background-size: 15.2rem 6.95rem; }
+    .dialog .slide-1 .inputDiv .title {
+      margin-top: 1.5rem;
+      height: 1rem;
+      line-height: 1rem;
+      font-size: 0.7rem;
+      text-align: center; }
+    .dialog .slide-1 .inputDiv input {
+      display: block;
+      margin: 0.5rem auto 0;
       -webkit-appearance: none;
       box-sizing: border-box;
       -moz-box-sizing: border-box;
       /*Firefox3.5+*/
       -webkit-box-sizing: border-box;
       /*Safari3.2+*/
+      width: 7.2rem;
+      height: 1.5rem;
+      line-height: 1.5rem;
+      color: #38424E;
+      font-size: 0.7rem;
+      text-indent: 0.2rem;
+      text-align: center;
+      vertical-align: top;
+      border-radius: 3px;
+      background: #fff url("../src/3-selection-arrow.png") no-repeat 6.3rem center;
+      background-size: 0.4rem 0.2rem; }
+  .dialog .slide-2 {
+    background: url("../src/loading-bg.jpg") repeat-y;
+    background-size: 100% auto; }
+    .dialog .slide-2 .s-1, .dialog .slide-2 .s-2, .dialog .slide-2 .s-3 {
+      -webkiet-filter: grayscale(100%);
+      filter: grayscale(100%); }
+    .dialog .slide-2 .div-1, .dialog .slide-2 .div-2 {
+      font-size: 0.7rem; }
+
+.logo {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  width: 3rem;
+  height: 1.7rem;
+  z-index: 6; }
+
+#loadingDialog {
+  background: #fff url("../src/loading-bg.jpg") repeat-y;
+  background-size: 100% auto;
+  z-index: 20; }
+  #loadingDialog #loading-ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -2.62rem;
+    margin-top: -2.45rem;
+    width: 5.24rem;
+    height: 4.9rem;
+    z-index: 1; }
+  #loadingDialog #loading-percent {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 1rem;
+    line-height: 1rem;
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: #707070;
+    text-align: center;
+    margin-top: -0.5rem;
+    z-index: 2; }
+
+#actRuleDialog {
+  background: rgba(0, 0, 0, 0.8) url("../src/2-popup.jpg") no-repeat center;
+  background-size: 80% auto;
+  z-index: 20; }
+
+#shareTipDialog .shareImg {
+  float: right;
+  width: 13.8rem;
+  height: 17.55rem; }
+
+#tipResultDialog .content {
+  position: absolute;
+  top: 50%;
+  margin-top: -13rem;
+  width: 100%;
+  height: 26rem; }
+  #tipResultDialog .content .resultImg {
+    display: block;
+    margin: 0 auto;
+    width: 8.2rem;
+    height: 22.8rem; }
+  #tipResultDialog .content .closeBtn {
+    display: block;
+    margin: 1rem auto 0;
+    width: 2.65rem;
+    height: 1.45rem; }
+
+.btnFrame {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 50%;
+  margin-left: -7.5rem;
+  width: 15rem;
+  height: 2.5rem; }
+  .btnFrame .btn, .btnFrame .btnLeft, .btnFrame .btnRight {
+    width: 5.85rem;
+    height: 2.05rem; }
+  .btnFrame .btnLeft {
+    float: left; }
+  .btnFrame .btnRight {
+    float: right; }
+
+#resultDialog {
+  background: url("../src/5-bg.jpg") no-repeat;
+  background-size: cover;
+  z-index: 6; }
+  #resultDialog .content {
+    position: absolute;
+    top: 50%;
+    margin-top: -4.5rem;
+    width: 100%;
+    height: 13rem; }
+    #resultDialog .content p {
+      text-align: center;
+      line-height: 2rem;
+      font-size: 1.2rem;
+      color: #252424; }
+    #resultDialog .content .circle {
+      display: block;
+      margin: 0.5rem auto;
+      width: 8rem;
+      height: 8.2rem;
+      background: url("../src/5-circle.png") no-repeat center;
+      background-size: 7.9rem 8.1rem; }
+      #resultDialog .content .circle .num {
+        display: block;
+        margin: 0 auto;
+        width: auto;
+        height: 2.25rem;
+        padding-top: 2.5rem; }
+
+#studyDialog {
+  background: url("../src/loading-bg.jpg") repeat-y;
+  background-size: 100% auto;
+  z-index: 5; }
+  #studyDialog .slide-1 .mist-1 {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 11.8rem;
+    height: 9.95rem; }
+  #studyDialog .slide-1 .mist-2 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 4.05rem;
+    height: 7.8rem; }
+  #studyDialog .slide-1 .pen {
+    position: absolute;
+    width: 14.15rem;
+    height: 12.1rem;
+    top: 50%;
+    margin-top: -10rem;
+    right: 0;
+    z-index: -1; }
+  #studyDialog .slide-1 .qiu {
+    position: absolute;
+    top: 2rem;
+    left: 3rem;
+    width: 3rem;
+    height: 3.7rem; }
+  #studyDialog .slide-1 .xue {
+    position: absolute;
+    top: 6rem;
+    left: 3rem;
+    width: 3.6rem;
+    height: 4.1rem; }
+  #studyDialog .slide-2 .content .s-1, #studyDialog .slide-2 .content .s-2, #studyDialog .slide-2 .content .s-3 {
+    position: absolute;
+    top: 50%;
+    width: 11.2rem;
+    height: 10.45rem; }
+  #studyDialog .slide-2 .content .s-1 {
+    right: 0;
+    margin-top: -12.5rem; }
+  #studyDialog .slide-2 .content .s-2 {
+    left: 0;
+    margin-top: -6.5rem;
+    width: 10.8rem;
+    height: 10.6rem; }
+  #studyDialog .slide-2 .content .s-3 {
+    right: 0;
+    margin-top: -0.5rem;
+    width: 11.35rem;
+    height: 9rem; }
+  #studyDialog .slide-2 .content p {
+    line-height: 1.2rem;
+    font-size: 0.65rem; }
+  #studyDialog .slide-2 .content .div-1 {
+    position: absolute;
+    top: 50%;
+    left: 0.8rem;
+    margin-top: -11rem; }
+  #studyDialog .slide-2 .content .div-2 {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    margin-top: 8.5rem;
+    text-align: center; }
+  #studyDialog .slide-2 .content .btnCollect {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -5.8rem;
+    margin-top: 11.5rem;
+    width: 11.6rem;
+    height: 2.35rem;
+    background: url("../src/4-btn.png") no-repeat center;
+    background-size: 11.55rem 2.35rem; }
+
+#workDialog {
+  z-index: 5; }
+  #workDialog .slide-1 {
+    background: url("../src/3-2-bg.jpg") no-repeat;
+    background-size: cover; }
+    #workDialog .slide-1 .bamboo {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 7.75rem;
+      height: 13.75rem; }
+    #workDialog .slide-1 .gong {
+      position: absolute;
+      top: 50%;
+      margin-top: -8rem;
+      left: 3.8rem;
+      width: 3.8rem;
+      height: 3rem; }
+    #workDialog .slide-1 .zuo {
+      position: absolute;
+      top: 50%;
+      margin-top: -4rem;
+      left: 3.8rem;
+      width: 4.05rem;
+      height: 3.65rem; }
+  #workDialog .slide-2 .content .s-1, #workDialog .slide-2 .content .s-2, #workDialog .slide-2 .content .s-3 {
+    position: absolute;
+    top: 50%;
+    width: 11.45rem;
+    height: 10.3rem; }
+  #workDialog .slide-2 .content .s-1 {
+    left: 0;
+    margin-top: -12.8rem; }
+  #workDialog .slide-2 .content .s-2 {
+    right: 0;
+    margin-top: -6rem;
+    width: 13.45rem;
+    height: 11.65rem; }
+  #workDialog .slide-2 .content .s-3 {
+    left: 0;
+    width: 11.15rem;
+    height: 10.8rem; }
+  #workDialog .slide-2 .content p {
+    line-height: 1.2rem;
+    font-size: 0.65rem;
+    text-align: right; }
+  #workDialog .slide-2 .content .div-1 {
+    position: absolute;
+    top: 50%;
+    right: 0.8rem;
+    margin-top: -8.5rem; }
+  #workDialog .slide-2 .content .div-2 {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    right: 0.8rem;
+    margin-top: 8rem; }
+  #workDialog .slide-2 .content .btnCollect {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -5.8rem;
+    margin-top: 11.5rem;
+    width: 11.6rem;
+    height: 2.35rem;
+    background: url("../src/4-btn.png") no-repeat center;
+    background-size: 11.55rem 2.35rem; }
+
+#carDialog {
+  z-index: 5; }
+  #carDialog .slide-1 {
+    background: url("../src/3-3-bg.jpg") no-repeat;
+    background-size: cover; }
+    #carDialog .slide-1 .car {
+      position: absolute;
+      top: 50%;
+      margin-top: -5rem;
+      left: 3rem;
+      width: 10.75rem;
+      height: 5.3rem; }
+    #carDialog .slide-1 .carBg {
+      position: absolute;
+      top: 50%;
+      margin-top: -6.5rem;
+      left: 0.5rem;
+      width: 12.3rem;
+      height: 8.15rem;
+      z-index: -1; }
+    #carDialog .slide-1 .mai {
+      position: absolute;
+      top: 4rem;
+      right: 1.2rem;
+      width: 4rem;
+      height: 3.75rem; }
+    #carDialog .slide-1 .che {
+      position: absolute;
+      top: 8rem;
+      right: 1.5rem;
+      width: 3.7rem;
+      height: 4.1rem; }
+  #carDialog .slide-2 .content .s-1, #carDialog .slide-2 .content .s-2, #carDialog .slide-2 .content .s-3 {
+    position: absolute;
+    top: 50%;
+    width: 10rem;
+    height: 11.05rem; }
+  #carDialog .slide-2 .content .s-1 {
+    right: 0;
+    margin-top: -12rem; }
+  #carDialog .slide-2 .content .s-2 {
+    left: 0;
+    margin-top: -6rem;
+    width: 10.85rem;
+    height: 11.4rem; }
+  #carDialog .slide-2 .content .s-3 {
+    right: 0;
+    width: 11.8rem;
+    height: 11.3rem;
+    z-index: -1; }
+  #carDialog .slide-2 .content p {
+    line-height: 1.2rem;
+    font-size: 0.65rem;
+    text-align: left; }
+  #carDialog .slide-2 .content .div-1 {
+    position: absolute;
+    top: 50%;
+    left: 0.8rem;
+    margin-top: -11.5rem; }
+  #carDialog .slide-2 .content .div-2 {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    left: 0.8rem;
+    margin-top: 7rem; }
+  #carDialog .slide-2 .content .btnCollect {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -5.8rem;
+    margin-top: 11.5rem;
+    width: 11.6rem;
+    height: 2.35rem;
+    background: url("../src/4-btn.png") no-repeat center;
+    background-size: 11.55rem 2.35rem; }
+
+#familyDialog {
+  z-index: 5; }
+  #familyDialog .slide-1 {
+    background: url("../src/3-4-bg.jpg") no-repeat;
+    background-size: cover; }
+    #familyDialog .slide-1 .campus {
+      position: absolute;
+      top: 50%;
+      margin-top: -9rem;
+      left: 0;
       width: 9rem;
+      height: 10.6rem; }
+    #familyDialog .slide-1 .flower1 {
+      position: absolute;
+      top: 0.5rem;
+      left: 0;
+      width: 5.6rem;
+      height: 7.6rem; }
+    #familyDialog .slide-1 .flower2 {
+      position: absolute;
+      width: 3.2rem;
+      height: 5.1rem;
+      top: 50%;
+      margin-top: -4rem;
+      right: 0;
+      z-index: -1; }
+    #familyDialog .slide-1 .cheng {
+      position: absolute;
+      top: 2rem;
+      left: 50%;
+      margin-left: 1rem;
+      width: 4.35rem;
+      height: 4.15rem; }
+    #familyDialog .slide-1 .jia {
+      position: absolute;
+      top: 6rem;
+      left: 50%;
+      margin-top: 1rem;
+      margin-left: 1.5rem;
+      width: 3.6rem;
+      height: 3.9rem; }
+    #familyDialog .slide-1 .inputDiv {
+      position: absolute;
+      left: 50%;
+      margin-left: -7.6rem;
+      bottom: 6rem;
+      width: 15.2rem;
+      height: 6.95rem;
+      background: url("../src/3-selection-bg.png") no-repeat;
+      background-size: 15.2rem 6.95rem; }
+      #familyDialog .slide-1 .inputDiv .title {
+        margin-top: 1.5rem;
+        height: 1rem;
+        line-height: 1rem;
+        font-size: 0.7rem;
+        text-align: center; }
+      #familyDialog .slide-1 .inputDiv input {
+        display: block;
+        margin: 0.5rem auto 0;
+        -webkit-appearance: none;
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        /*Firefox3.5+*/
+        -webkit-box-sizing: border-box;
+        /*Safari3.2+*/
+        width: 7.2rem;
+        height: 1.2rem;
+        line-height: 1.2rem;
+        color: #38424E;
+        font-size: 0.7rem;
+        text-indent: 0.2rem;
+        text-align: center;
+        vertical-align: top;
+        background: #fff url("../src/3-selection-arrow.png") no-repeat 6.3rem center;
+        background-size: 0.4rem 0.2rem; }
+  #familyDialog .slide-2 .content .s-1, #familyDialog .slide-2 .content .s-2, #familyDialog .slide-2 .content .s-3 {
+    position: absolute;
+    top: 50%;
+    width: 10.65rem;
+    height: 11.25rem; }
+  #familyDialog .slide-2 .content .s-1 {
+    left: 0;
+    margin-top: -12rem; }
+  #familyDialog .slide-2 .content .s-2 {
+    right: 0;
+    margin-top: -5rem;
+    width: 10.75rem;
+    height: 10.75rem; }
+  #familyDialog .slide-2 .content .s-3 {
+    left: 0;
+    width: 10.75rem;
+    height: 11rem; }
+  #familyDialog .slide-2 .content .div-1 {
+    position: absolute;
+    top: 50%;
+    right: 0.8rem;
+    margin-top: -9rem;
+    line-height: 1.2rem;
+    font-size: 0.65rem;
+    text-align: right; }
+  #familyDialog .slide-2 .content .div-2 {
+    position: absolute;
+    right: 0;
+    width: 50%;
+    top: 50%;
+    line-height: 1.2rem;
+    font-size: 0.65rem;
+    margin-top: 7.5rem;
+    text-align: center; }
+  #familyDialog .slide-2 .content .btnCollect {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -5.8rem;
+    margin-top: 11.5rem;
+    width: 11.6rem;
+    height: 2.35rem;
+    background: url("../src/4-btn.png") no-repeat center;
+    background-size: 11.55rem 2.35rem; }
+
+.swiper-container, .collect-swiper, .swiper-wrapper {
+  width: 100%;
+  height: 100%;
+  background: url("../src/loading-bg.jpg") repeat-y;
+  background-size: 100% auto; }
+
+.swiper-slide {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  -webkit-backface-visibility: hidden;
+  -webkit-perspective: 1000px; }
+
+.bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("../src/1-bg.jpg") no-repeat center;
+  background-size: 100% auto; }
+
+.boat {
+  position: absolute;
+  bottom: 1.5rem;
+  right: 3.2rem;
+  width: 3.95rem;
+  height: 1.25rem;
+  z-index: 1; }
+
+.screen1 .slogan {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -6.55rem;
+  margin-top: -7rem;
+  width: 13.1rem;
+  height: 2.9rem; }
+.screen1 .content {
+  position: absolute;
+  top: 50%;
+  width: 100%; }
+  .screen1 .content p {
+    text-align: center;
+    font-size: 0.7rem;
+    line-height: 2rem; }
+  .screen1 .content .btnDetail {
+    display: block;
+    margin: 0 auto;
+    width: 12rem;
+    height: 2.6rem;
+    background: url("../src/1-btn.png") no-repeat center;
+    background-size: 11.675rem auto; }
+
+.screen2 {
+  background: url("../src/2-bg.jpg") no-repeat center;
+  background-size: 100% auto; }
+  .screen2 .topFrame {
+    position: absolute;
+    top: 2.5rem;
+    width: 100%; }
+    .screen2 .topFrame .title {
+      font-size: 0.9rem;
+      line-height: 2rem;
+      text-align: center;
+      margin-bottom: 0.5rem; }
+    .screen2 .topFrame .info .headImg {
+      float: left;
+      width: 2.7rem;
+      height: 2.7rem;
+      border-radius: 2.7rem;
+      margin-left: 1rem;
+      border: 3px solid #E6E6E6; }
+    .screen2 .topFrame .info .userName {
+      float: left;
+      line-height: 2.65rem;
+      font-size: 0.7rem;
+      margin-left: 0.5rem; }
+    .screen2 .topFrame .info .btnActRule {
+      float: right;
+      width: 3.75rem;
+      height: 1.5rem;
+      margin-top: 0.5rem;
+      margin-right: 1rem;
+      background: url("../src/2-btn-rule.png") no-repeat;
+      background-size: 3.75rem 1.5rem; }
+  .screen2 .content img {
+    position: absolute;
+    top: 50%;
+    left: 50%; }
+  .screen2 .content .study {
+    margin-left: 1rem;
+    margin-top: -4rem;
+    width: 1.8rem;
+    height: 2.65rem;
+    animation-delay: 0.3s; }
+  .screen2 .content .work {
+    margin-left: 5.8rem;
+    margin-top: -1.3rem;
+    width: 1.7rem;
+    height: 2.4rem;
+    animation-delay: 0.6s; }
+  .screen2 .content .car {
+    margin-left: 2.3rem;
+    margin-top: 3.3rem;
+    width: 1.85rem;
+    height: 2.7rem;
+    animation-delay: 0.9s; }
+  .screen2 .content .family {
+    margin-left: -3.3rem;
+    margin-top: 0.5rem;
+    width: 1.875rem;
+    height: 2.825rem;
+    animation-delay: 1.2s; }
+  .screen2 .content .line {
+    width: 7.2rem;
+    height: 5.6rem;
+    margin-top: -2.3rem;
+    margin-left: -1.5rem; }
+  .screen2 .btnMakeRoad {
+    position: absolute;
+    left: 50%;
+    bottom: 3rem;
+    margin-left: -5.85rem;
+    width: 11.7rem;
+    height: 2.5rem;
+    background: url("../src/2-btn.png") no-repeat;
+    background-size: 11.65rem 2.45rem; }
+  .screen2 .btnHover {
+    background: url("../src/2-btn-selected.png") no-repeat;
+    background-size: 11.65rem 2.45rem; }
+
+#poster {
+  position: fixed;
+  width: 14.45rem;
+  height: 19.4rem;
+  z-index: -10; }
+  #poster .posterBg {
+    position: absolute;
+    width: 14.45rem;
+    height: 19.4rem;
+    z-index: -1; }
+  #poster .top {
+    height: 4.2rem;
+    padding-top: 0.5rem; }
+    #poster .top .headImg {
+      display: block;
+      margin: 0 auto;
+      width: 2.9rem;
+      height: 2.9rem;
+      border-radius: 2.9rem; }
+    #poster .top .tip {
+      font-size: 0.8rem;
+      text-align: center; }
+  #poster ul {
+    list-style: none; }
+    #poster ul li {
+      height: 2.2rem;
+      line-height: 2.8rem;
+      text-align: center;
+      font-size: 0.65rem;
+      color: #8B8686; }
+      #poster ul li img {
+        display: inline-block;
+        vertical-align: middle;
+        width: 1.85rem;
+        height: 2.8rem;
+        margin-top: -0.3rem; }
+  #poster .bottom {
+    display: block;
+    margin: 1rem auto 0;
+    width: 13rem;
+    height: 5rem;
+    padding-top: 0.5rem;
+    border-top: 1px dotted #A2A3A3; }
+    #poster .bottom .leftDiv {
+      float: left;
+      width: 9.5rem; }
+      #poster .bottom .leftDiv p {
+        font-size: 0.6rem;
+        margin-left: 0.3rem;
+        line-height: 0.8rem; }
+    #poster .bottom .qrcode {
+      float: right;
+      width: 3.5rem;
+      height: 3.5rem; }
+
+.screen3 .content {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  margin-top: -12rem;
+  width: 100%; }
+  .screen3 .content #posterImg {
+    display: block;
+    margin: 0.5rem auto;
+    width: 14.45rem;
+    height: 19.4rem; }
+  .screen3 .content .tipFrame {
+    display: block;
+    margin: 0.5rem auto;
+    width: 14.45rem;
+    font-size: 0.7rem; }
+    .screen3 .content .tipFrame .tipTitle {
+      float: left;
+      text-align: left;
+      line-height: 1.2rem; }
+    .screen3 .content .tipFrame .actRule {
+      float: right;
+      height: 1.2rem;
+      line-height: 1.2rem;
+      color: #B7342C;
+      text-decoration: underline; }
+    .screen3 .content .tipFrame .actRule:hover {
+      color: #B7342C;
+      text-decoration: underline; }
+.screen3 .btnFrame .btn, .screen3 .btnFrame .btnLeft, .screen3 .btnFrame .btnRight {
+  width: 6.5rem;
+  height: 2.05rem; }
+
+.screen4 {
+  background: url("../src/7-bg.jpg") no-repeat center;
+  background-size: cover; }
+  .screen4 .content {
+    position: absolute;
+    top: 50%;
+    margin-top: -10.5rem;
+    width: 100%;
+    height: 21rem; }
+    .screen4 .content p {
+      text-align: center; }
+    .screen4 .content .title {
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      margin-top: 0.5rem; }
+    .screen4 .content .tip {
+      line-height: 1rem;
+      font-size: 0.65rem; }
+      .screen4 .content .tip .actRule, .screen4 .content .tip .actRule:hover {
+        color: #B7342C;
+        text-decoration: underline; }
+    .screen4 .content input, .screen4 .content select {
+      -webkit-appearance: none;
+      box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      /*Firefox3.5+*/
+      -webkit-box-sizing: border-box;
+      /*Safari3.2+*/
+      width: 7rem;
       height: 2rem;
       line-height: 2rem;
       color: #38424E;
-      font-size: 0.8rem;
-      background-color: transparent;
+      font-size: 0.7rem;
       text-indent: 0.2rem;
-      vertical-align: top; }
-    .screen3 form .item #btnGetCode {
-      float: right;
-      width: 4.6rem;
-      height: 2rem;
-      line-height: 2rem;
+      text-align: left;
+      vertical-align: top;
+      background-color: transparent; }
+    .screen4 .content .item {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      width: 11.3rem;
+      height: 2.1rem;
+      margin-top: 0.5rem;
+      background: transparent url("../src/7-form1.png") no-repeat;
+      background-size: 11.3rem 2.1rem;
+      overflow: hidden; }
+      .screen4 .content .item label {
+        display: inline-block;
+        *display: inline;
+        *zoom: 1;
+        width: 3.8rem;
+        height: 2rem;
+        line-height: 2rem;
+        font-size: 0.7rem;
+        text-align: left;
+        text-indent: 0.8rem;
+        color: #38424E; }
+      .screen4 .content .item select {
+        width: 11.3rem;
+        height: 2.1rem;
+        text-indent: 0.8rem;
+        background: url("../src/3-selection-arrow.png") no-repeat 10.3rem center;
+        background-size: 0.4rem 0.2rem; }
+      .screen4 .content .item #btnGetCode {
+        float: right;
+        width: 4.6rem;
+        height: 2rem;
+        line-height: 2rem;
+        color: white;
+        text-align: center;
+        background-color: #faa040; }
+    .screen4 .content .item2 {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      width: 11.3rem;
+      height: 2.1rem;
+      margin-top: 0.5rem; }
+      .screen4 .content .item2 .divLeft, .screen4 .content .item2 .divRight {
+        float: left;
+        width: 5.375rem;
+        height: 2.1rem;
+        background: transparent url("../src/7-form2.png") no-repeat;
+        background-size: 5.375rem 2.1rem; }
+        .screen4 .content .item2 .divLeft select, .screen4 .content .item2 .divRight select {
+          width: 5.375rem;
+          height: 2.1rem;
+          text-indent: 0.8rem;
+          background: url("../src/3-selection-arrow.png") no-repeat 4.4rem center;
+          background-size: 0.4rem 0.2rem; }
+      .screen4 .content .item2 .divRight {
+        float: right; }
+    .screen4 .content #btnSubmit {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
       color: white;
+      width: 11.65rem;
+      height: 2.45rem;
+      line-height: 2.45rem;
       text-align: center;
-      background-color: #faa040; }
-  .screen3 form #btnSubmit {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    color: white;
-    width: 5.05rem;
-    height: 1.75rem;
-    line-height: 1.5rem;
-    text-align: center;
-    background-size: 5rem 1.75rem; }
+      background: url("../src/7-btn-submit.png") no-repeat;
+      background-size: 11.65rem 2.45rem; }
+
+/*
+* 旋转圆环
+*/
+.rotateRingAni {
+  -webkit-animation: rotateRing 2s infinite linear;
+  animation: rotateRing 2s infinite linear; }
+
+@-webkit-keyframes rotateRing {
+  from {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg); }
+  to {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg); } }
+@keyframes rotateRing {
+  from {
+    transform: rotate(0deg); }
+  to {
+    transform: rotate(360deg); } }
+/*
+* 船动画
+*/
+.boatAni {
+  -webkit-animation: moveBoat 1.2s linear forwards;
+  animation: moveBoat 1.2s linear forwards; }
+
+@-webkit-keyframes moveBoat {
+  from {
+    bottom: -4rem;
+    right: 14rem; } }
+@keyframes moveBoat {
+  from {
+    bottom: -4rem;
+    right: 14rem; } }
 
 /*# sourceMappingURL=main.css.map */
