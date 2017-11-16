@@ -38,9 +38,10 @@ Pace.on('hide', function() {
     loadingHandler.setLoadingPercent(100);
     var code = request('code');
     if (code && code != '') {
+        console.log('start getUserInfo');
         main.getUserInfo(code, start);
     } else  {
-        /*无法获取头像和昵称，H5链接*/
+        /*无取头像和昵称，H5链接*/
         start();
     }
 
