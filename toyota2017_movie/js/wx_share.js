@@ -18,8 +18,7 @@
             var desc = document.querySelector('meta[name="wxm:appmessage_desc"]').getAttribute('content'); // 分享描述
             var imgUrl = document.querySelector('meta[name="wxm:img_url"]').getAttribute('content');
 
-            console.log('link:' +link);
-            console.log('imgUrl:' +imgUrl);
+            alert(link + ' imgUrl:' + imgUrl);
 
             var wx_appId = rt.data.appId;
             var wx_timestamp = rt.data.timestamp;
