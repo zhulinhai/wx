@@ -2,7 +2,7 @@
  * Created by luhao on 2016/12/29.
  */
 (function ($){
-    var param = 'url='+encodeURIComponent($('meta[name="wxm:link"]'));
+    var param = 'url='+encodeURIComponent(location.href);
     $.ajax({
         type:'GET',
         url:'http://api.bobo119.com/api/wx/signature?'+ param,
@@ -17,6 +17,9 @@
             var link =$('meta[name="wxm:link"]');
             var desc = $('meta[name="wxm:appmessage_desc"]'); // 分享描述
             var imgUrl = $('meta[name="wxm:img_url"]');
+
+            console.log('link:' +link);
+            console.log('imgUrl:' +imgUrl);
 
             var wx_appId = rt.data.appId;
             var wx_timestamp = rt.data.timestamp;
