@@ -490,7 +490,7 @@ var main = {
                 if(json.success){
                     var data = json.data;
                     $('.userName').html(data.nickname);
-                    $('.headImg').attr('src', 'http://api.bjczxda.com/' + data.headimglocal);
+                    $('.headImg').attr('src', 'http://wx.bjczxda.com/' + data.headimglocal);
                     callBack&&callBack();
                 }
             },
