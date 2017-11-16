@@ -2,7 +2,7 @@
  * Created by luhao on 2016/12/29.
  */
 (function ($){
-    var param = 'url='+encodeURIComponent(location.href);
+    var param = 'url='+encodeURIComponent($('meta[name="wxm:link"]'));
     $.ajax({
         type:'GET',
         url:'http://api.bobo119.com/api/wx/signature?'+ param,
