@@ -14,12 +14,6 @@ var loadingHandler = {
     init: function () {
     },
     startInterval: function () {
-        var code = request('code');
-        if ( !code || code == '') {
-            window.location.replace = 'http://dwz.cn/6R8Dw4';
-            return;
-        }
-
         loadingHandler.myInterval = setInterval(function(){
             var progress = parseInt(document.querySelectorAll('.pace-progress')[0].getAttribute("data-progress"));
             loadingHandler.setLoadingPercent(progress);
@@ -46,7 +40,6 @@ Pace.on('done', function() {
     if (code && code != '') {
         main.getUserInfo(code, start);
     } else  {
-        window.location.replace = 'http://dwz.cn/6R8Dw4';
         /*无取头像和昵称，H5链接*/
         // start();
     }
