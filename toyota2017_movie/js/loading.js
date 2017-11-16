@@ -33,7 +33,7 @@ var loadingHandler = {
 };
 loadingHandler.startInterval();
 
-Pace.on('hide', function() {
+Pace.on('done', function() {
     loadingHandler.clearInterval();
     loadingHandler.setLoadingPercent(100);
     var code = request('code');
