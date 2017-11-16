@@ -354,7 +354,7 @@ var main = {
         var $resultDialog = $('#resultDialog');
         $resultDialog.find('.num').attr('src', imgList[main.collectCount - 1]);
         // 更新弹出框内容
-        $resultDialog.show();
+        $resultDialog.fadeIn(300);
     },
     updateCollectState: function () {
         $('#study').attr('src', main.isCollectStudy?'src/2-study-selected.png':'src/2-study.png');
