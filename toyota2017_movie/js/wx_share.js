@@ -13,10 +13,10 @@
                 return alert(rt.message);
             }
 
-            var title =$('meta[name="wxm:timeline_title"]'); // 分享标题
-            var link =$('meta[name="wxm:link"]');
-            var desc = $('meta[name="wxm:appmessage_desc"]'); // 分享描述
-            var imgUrl = $('meta[name="wxm:img_url"]');
+            var title = document.querySelector('meta[name="wxm:timeline_title"]').getAttribute('content'); // 分享标题
+            var link = document.querySelector('meta[name="wxm:link"]').getAttribute('content');
+            var desc = document.querySelector('meta[name="wxm:appmessage_desc"]').getAttribute('content'); // 分享描述
+            var imgUrl = document.querySelector('meta[name="wxm:img_url"]').getAttribute('content');
 
             console.log('link:' +link);
             console.log('imgUrl:' +imgUrl);
