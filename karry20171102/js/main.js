@@ -9,7 +9,7 @@ function init() {
 	canvas = document.getElementById("canvas");
 	images = images||{};
 	ss = ss||{};
-	bgMusic = document.getElementById('audio');
+	// bgMusic = document.getElementById('audio');
 	var loader = new createjs.LoadQueue(false);
 	loader.addEventListener("fileload", handleFileLoad);
 	loader.addEventListener("complete", handleComplete);
@@ -25,10 +25,10 @@ function handleFileLoad(evt) {
 }
 
 function handleComplete(evt) {
-	$('html').one('touchstart',function(){
-		bgMusic.play();
-	});
-	$('.btn_music').show();
+	// $('html').one('touchstart',function(){
+	// 	bgMusic.play();
+	// });
+	// $('.btn_music').show();
 	// $('.btn_jump').show().on('clcik',function(){
 	// 	handleJumpBtn();
 	// });
