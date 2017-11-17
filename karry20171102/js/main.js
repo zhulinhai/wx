@@ -57,7 +57,7 @@ function handleComplete(evt) {
 		function resizeCanvas() {			
 			var w = p2.properties.width, h = p2.properties.height;			
 			var iw = document.documentElement.clientWidth , ih=document.documentElement.clientHeight;			
-			var orientation = window.orientation || 0;
+			var orientation = window.orientation || 90;
 			// alert(orientation + 'iw :' + iw + ' ih: ' + ih);
 
 			if(orientation == 90 || -90){ //如果是竖屏
