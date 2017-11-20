@@ -2572,7 +2572,7 @@ html, body {
 
 #actRuleDialog {
   background: rgba(255, 255, 255, 0.9) url("../src/2-popup.jpg") no-repeat center;
-  background-size: auto 85%;
+  background-size: 80% auto;
   z-index: 20; }
 
 #shareTipDialog {
