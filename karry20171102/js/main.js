@@ -9,13 +9,13 @@ function init() {
 	canvas = document.getElementById("canvas");
 	images = images||{};
 	ss = ss||{};
-	bgMusic = document.getElementById('audio');
+	// bgMusic = document.getElementById('audio');
 	var loader = new createjs.LoadQueue(false);
 	loader.addEventListener("fileload", handleFileLoad);
 	loader.addEventListener("complete", handleComplete);
 	loader.loadManifest([p1.properties.manifest[0],p2.properties.manifest[0]]);
 
-	
+	zhuge.track('访问首页');
 	initPage();
 
 }
@@ -25,10 +25,10 @@ function handleFileLoad(evt) {
 }
 
 function handleComplete(evt) {
-	$('html').one('touchstart',function(){
-		bgMusic.play();
-	});
-	$('.btn_music').show();
+	// $('html').one('touchstart',function(){
+	// 	bgMusic.play();
+	// });
+	// $('.btn_music').show();
 	// $('.btn_jump').show().on('clcik',function(){
 	// 	handleJumpBtn();
 	// });
@@ -141,13 +141,15 @@ function onTick(e){
 			return;
 		}
 
-		for(var i = 1; i < 3; i++){
+		for(var i = 1; i < 6; i++){
 
 			if(dis(krpano.get("hotspot[spot"+ i +"].ath"),krpano.get("hotspot[spot"+ i +"].atv"),Math.floor(krpano.get("view.hlookat")),Math.floor(krpano.get("view.vlookat")))){
 
 				if(!isOpen){
 					isOpen = true;
-					carIndex = i - 1;
+					// carIndex = i - 1;
+					//奇数为开瑞K50S，偶数为开瑞K60
+					carIndex = i%2 ? 0 : 1;
 					subIndex = i;
 					gameMc.instance.gotoAndPlay(1);
 				}
@@ -180,6 +182,7 @@ function handleJumpBtn(){
 	$('#pano').show();
 	isGame = true;
 	krpano = document.getElementById("krpanoSWFObject");
+	zhuge.track('全景页');
 	setTimeout(function(){ 
 		krpano.call("set(plugin[skin_gyro].enabled,true)");
 		$('.btn_openbox').show();
@@ -198,6 +201,7 @@ function handleOpenBox(){
 		$('._pop').show();
 		$('.pop').removeClass('animated bounceOutDown');
 		$('.pop').addClass('animated bounceInUp');
+		zhuge.track('留资页');
 	}
 }
 
