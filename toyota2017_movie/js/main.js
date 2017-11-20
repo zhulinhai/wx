@@ -413,7 +413,7 @@ var main = {
 
         var url = host + 'ftMovie/luckyDraw';
         $.ajax({
-            type: "get",
+            type: "POST",
             url: url,
             data: {
                 'name': name,
