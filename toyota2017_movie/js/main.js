@@ -1,10 +1,11 @@
 var host = 'http://api.bjczxda.com/api/'; //'http://localhost:8000/api/';//
-var carList = ["广汽丰田 埃尔法", "广汽丰田 凯美瑞双擎", "广汽丰田 雷凌", "广汽丰田 雷凌双擎", "广汽丰田 全新汉兰达", "广汽丰田 全新凯美瑞", "广汽丰田 逸致", "广汽丰田 致享", "广汽丰田 致炫", "雷克萨斯 全新CT", "雷克萨斯 ES", "雷克萨斯 GS", "雷克萨斯 GX", "雷克萨斯 IS", "雷克萨斯 LS", "雷克萨斯 LX", "雷克萨斯 全新NX", "雷克萨斯 RC", "雷克萨斯 RC F", "雷克萨斯 RX", "雷克萨斯 LX570", "一汽丰田 86", "一汽丰田 HIACE", "一汽丰田 RAV4", "一汽丰田 卡罗拉", "一汽丰田 卡罗拉花冠", "一汽丰田 卡罗拉双擎", "一汽丰田 柯斯达", "一汽丰田 兰德酷路泽", "一汽丰田 全新普拉多", "一汽丰田 普锐斯", "一汽丰田 普瑞维亚", "一汽丰田 全新皇冠", "一汽丰田 锐志", "一汽丰田 威驰", "一汽丰田 威驰FS"];
+// var carList = ["广汽丰田 埃尔法", "广汽丰田 凯美瑞双擎", "广汽丰田 雷凌", "广汽丰田 雷凌双擎", "广汽丰田 全新汉兰达", "广汽丰田 全新凯美瑞", "广汽丰田 逸致", "广汽丰田 致享", "广汽丰田 致炫", "雷克萨斯 全新CT", "雷克萨斯 ES", "雷克萨斯 GS", "雷克萨斯 GX", "雷克萨斯 IS", "雷克萨斯 LS", "雷克萨斯 LX", "雷克萨斯 全新NX", "雷克萨斯 RC", "雷克萨斯 RC F", "雷克萨斯 RX", "雷克萨斯 LX570", "一汽丰田 86", "一汽丰田 HIACE", "一汽丰田 RAV4", "一汽丰田 卡罗拉", "一汽丰田 卡罗拉花冠", "一汽丰田 卡罗拉双擎", "一汽丰田 柯斯达", "一汽丰田 兰德酷路泽", "一汽丰田 全新普拉多", "一汽丰田 普锐斯", "一汽丰田 普瑞维亚", "一汽丰田 全新皇冠", "一汽丰田 锐志", "一汽丰田 威驰", "一汽丰田 威驰FS"];
+var handles = [$('#studyDialog'), $('#workDialog'), $('#carDialog'), $('#familyDialog')];
 var tipsInfo = [
-    "我已经收集到50万公里幸福里程，感谢爸妈的陪伴，只愿你们身体健康，未来我们还要一起走。",
-    "我已经收集到100万公里幸福里程，感谢爸妈的陪伴，感恩同事的帮扶，未来我们还要一起走。",
-    "我已经收集到150万公里幸福里程，感谢爸妈的陪伴，感恩同事的帮扶，还有从未懈怠过的自己，未来我依然会继续努力。",
-    "我已经收集到200万公里幸福里程，感谢爸妈的陪伴，感恩同事的帮扶，以及从未懈怠过的自己，还有，亲爱的，谢谢你对我的信赖，未来刚刚开始。"
+    "公里幸福里程，感谢您的陪伴，只愿你们身体健康，未来我们还要一起走。",
+    "公里幸福里程，感谢您的陪伴，感恩同事的帮扶，未来我们还要一起走。",
+    "公里幸福里程，感谢您的陪伴，感恩同事的帮扶，还有从未懈怠过的自己，未来我依然会继续努力。",
+    "公里幸福里程，感谢您的陪伴，感恩同事的帮扶，以及从未懈怠过的自己，还有，亲爱的，谢谢你对我的信赖，未来刚刚开始。"
 ];
 var main = {
     mainSwiper: null,
@@ -20,6 +21,8 @@ var main = {
     familyDate: null,
     collectCount: 0,
     isScreen2Animated: false,
+    isScreen3Animated: false,
+    isScreen4Animated: false,
     init: function () {
         this.initSwiper();
         this.bindClicks();
@@ -31,23 +34,27 @@ var main = {
             loop: false,
             followFinger: false,
             onSlideChangeEnd: function (swiper) {
-                if (swiper.activeIndex == 0) {
+                if (swiper.activeIndex === 0) {
                     main.mainSwiper.unlockSwipeToNext();
                 }
 
-                if (swiper.activeIndex == 1) {
+                if (swiper.activeIndex === 1) {
                     if (!main.isScreen2Animated) {
                         main.playScreen2Ani();
                     }
                 }
 
-                if (swiper.activeIndex == 2) {
+                if (swiper.activeIndex === 2) {
                     main.playScreen3Ani();
-                } else {
-                    $('.screen3').find('.btnFrame').removeClass('animated fadeInUp').hide();
                 }
 
-                if (swiper.activeIndex == 3) {
+                if (swiper.activeIndex === 3) {
+                    $('.screen4').find('.btn-exchange').show().addClass('animated fadeInUp');
+                } else {
+                    $('.screen4').find('.btn-exchange').removeClass('animated fadeInUp').hide();
+                }
+
+                if (swiper.activeIndex === 4) {
                     $('.screen4').find('.boat').show();
                 }
 
@@ -61,26 +68,26 @@ var main = {
         var dealers = dataList.dealer;
         var $province = $('#province'),
             $city = $('#city'),
-            $dealer = $('#dealer'),
-            $favorCar = $('#favorCar');
+            $dealer = $('#dealer');
+            // $favorCar = $('#favorCar');
 
-        for(var j = 0; j < carList.length; j ++) $favorCar.append('<option>'+carList[j]+'</option>');
+        // for(var j = 0; j < carList.length; j ++) $favorCar.append('<option>'+carList[j]+'</option>');
         $province.change(function(){
             $city.empty().html('<option>城市</option>');
             $dealer.empty().html('<option>经销商</option>');
 
-            if($province.val() != '省份'){
+            if($province.val() !== '省份'){
                 for(var j = 0; j < cities.length; j++)
-                    if(cities[j].p == $('#province').val())
+                    if(cities[j].p === $('#province').val())
                         $('#city').append('<option>'+cities[j].c+'</option>');
             }
         });
 
         $city.change(function(){
             $dealer.empty().html('<option>经销商</option>');
-            if($city.val() != '城市'){
+            if($city.val() !== '城市'){
                 for(var j = 0; j < dealers.length; j++)
-                    if(dealers[j].d == $('#city').val())
+                    if(dealers[j].d === $('#city').val())
                         $('#dealer').append('<option>'+dealers[j].c +'</option>');
             }
         });
@@ -114,6 +121,7 @@ var main = {
             $('#btnMakeRoad').show().addClass(' animated fadeInUp');
             setTimeout(function () {
                 $('#btnMakeRoad').removeClass('animated fadeInUp').addClass('animated pulse infinite');
+                $screen2.find('.tipFrame').show();
             }, 800);
         }, 1400);
         setTimeout(function () {
@@ -126,25 +134,47 @@ var main = {
         main.isScreen2Animated = true;
     },
     playScreen3Ani: function () {
-        $('.screen3').find('.btnFrame').show().addClass('animated fadeInUp');
+        TWEEN.removeAll();
+
+        var num = getCountMonthsMail();
+        if (!num) {
+            num = 0;
+        }
+        var position = { num : 0 };
+        var tween = new TWEEN.Tween(position).to({num: num}, 1000);
+        tween.onUpdate(function(){
+            $('.num').html(parseInt(this.num));
+        });
+        tween.onComplete(function () {
+            main.mainSwiper.unlockSwipeToNext();
+        });
+        tween.start();
+        main.isScreen3Animated = true;
+        main.mainSwiper.lockSwipeToNext();
+
+        requestAnimationFrame(animate);
+        function animate() {
+            requestAnimationFrame(animate);
+            TWEEN.update();
+        }
     },
     playSlide2Ani: function (handler) {
         handler.find('.slide-2').show();
         handler.find('.div-1').show();
         setTimeout(function () {
-            handler.find('.s-1').fadeIn(300);
+            handler.find('.s-1').show().addClass('animated fadeInUp');
             setTimeout(function () {
                 handler.find('.s-1').css({'filter':'grayscale(0)', '-webkit-filter': 'grayscale(0)'});
             }, 700);
         }, 100);
         setTimeout(function () {
-            handler.find('.s-2').fadeIn(300);
+            handler.find('.s-2').show().addClass('animated fadeInUp');
             setTimeout(function () {
                 handler.find('.s-2').css({'filter':'grayscale(0)', '-webkit-filter': 'grayscale(0)'});
             }, 700);
         }, 500);
         setTimeout(function () {
-            handler.find('.s-3').fadeIn(300);
+            handler.find('.s-3').show().addClass('animated fadeInUp');
             setTimeout(function () {
                 handler.find('.s-3').css({'filter':'grayscale(0)', '-webkit-filter': 'grayscale(0)'});
             }, 700);
@@ -154,10 +184,7 @@ var main = {
         }, 2000);
 
         setTimeout(function () {
-            handler.find('.btnCollect').show().addClass(' animated fadeInUp');
-            setTimeout(function () {
-                handler.find('.btnCollect').removeClass('animated fadeInUp').addClass('animated pulse infinite');
-            }, 800);
+            handler.find('.btnFrame2').show().addClass('animated fadeInUp');
         }, 2400);
     },
     bindClicks: function () {
@@ -168,125 +195,7 @@ var main = {
             main.submitInfo();
         });
         $('#btnActRule').click(showActRuleDialog);
-        $('#btnShare').click(function () {
-            $('#shareTipDialog').show().click(function () {
-                $(this).hide();
-            });
-        });
         $('#btnMakeRoad').click(main.clickMakeRoad);
-        $('#btnExchange').click(function () {
-            main.mainSwiper.slideNext();
-        });
-
-        var $studyDialog = $('#studyDialog'), $workDialog = $('#workDialog'),$carDialog = $('#carDialog'), $familyDialog = $('#familyDialog');
-        /*求学对话框*/
-        $('#study').click(function () {
-            if (main.isCollectStudy) {
-                return;
-            }
-
-            main.playStudy1Ani($studyDialog);
-            $studyDialog.find('.btnSkip').click(function () {
-                $studyDialog.fadeOut(300);
-            });
-
-            $studyDialog.find('.btnNext').click(function () {
-                main.studyDate = $studyDialog.find('input[name="user_date"]').val();
-                main.playSlide2Ani($studyDialog);
-                $studyDialog.find('.slide-1').fadeOut(300);
-            });
-
-            $studyDialog.find('.btnCollect').click(function () {
-                $studyDialog.fadeOut(300);
-                main.isCollectStudy = 1;
-                main.showResultDialog();
-            });
-        });
-
-        /*工作对话框*/
-        $('#work').click(function () {
-            if (main.isCollectWork) {
-                return;
-            }
-
-            main.playWork1Ani($workDialog);
-            $workDialog.find('.btnSkip').click(function () {
-                $workDialog.fadeOut(300);
-            });
-
-            $workDialog.find('.btnNext').click(function () {
-                main.workDate = $workDialog.find('input[name="user_date"]').val();
-                main.playSlide2Ani($workDialog);
-                $workDialog.find('.slide-1').fadeOut(300);
-            });
-
-            $workDialog.find('.btnCollect').click(function () {
-                $workDialog.fadeOut(300);
-                main.isCollectWork = 1;
-                main.showResultDialog();
-            });
-        });
-
-        /*车辆对话框*/
-        $('#car').click(function () {
-            if (main.isCollectCar) {
-                return;
-            }
-
-            main.playCar1Ani($carDialog);
-            $carDialog.find('.btnSkip').click(function () {
-                $carDialog.fadeOut(300);
-            });
-
-            $carDialog.find('.btnNext').click(function () {
-                main.carDate = $carDialog.find('input[name="user_date"]').val();
-                main.playSlide2Ani($carDialog);
-                $carDialog.find('.slide-1').fadeOut(300);
-            });
-
-            $carDialog.find('.btnCollect').click(function () {
-                $carDialog.fadeOut(300);
-                main.isCollectCar = 1;
-                main.showResultDialog();
-            });
-        });
-
-        /*家庭对话框*/
-        $('#family').click(function () {
-            if (main.isCollectFamily) {
-                return;
-            }
-
-            main.playFamily1Ani($familyDialog);
-            $familyDialog.find('.btnSkip').click(function () {
-                $familyDialog.fadeOut(300);
-            });
-
-            $familyDialog.find('.btnNext').click(function () {
-                main.familyDate = $familyDialog.find('input[name="user_date"]').val();
-                main.playSlide2Ani($familyDialog);
-                $familyDialog.find('.slide-1').fadeOut(300);
-            });
-
-            $familyDialog.find('.btnCollect').click(function () {
-                $familyDialog.fadeOut(300);
-                main.isCollectFamily = 1;
-                main.showResultDialog();
-            });
-        });
-
-        var $resultDialog = $('#resultDialog');
-        $('.btnContinue').click(function () {
-            main.updateCollectState();
-            $resultDialog.fadeOut(300);
-            if (main.collectCount >= 4) {
-                setTimeout(main.clickMakeRoad, 300);
-            }
-        });
-        $('.btnMyWay').click(function () {
-            main.updateCollectState();
-            $resultDialog.fadeOut(300);
-        });
     },
     clickMakeRoad: function () {
         if (main.isCollected()) {
@@ -308,6 +217,12 @@ var main = {
                 handle.find('.xue').show().addClass('animated fadeInUp');
             }, 500);
         }, 1000);
+        setTimeout(function () {
+            handle.find('.inputDiv').show().addClass('animated zoomIn');
+            setTimeout(function () {
+                handle.find('.btnFrame1').show().addClass('animated fadeInUp');
+            }, 500);
+        }, 1800);
     },
     playWork1Ani: function (handle) {
         handle.fadeIn(300);
@@ -318,6 +233,19 @@ var main = {
                 handle.find('.zuo').show().addClass('animated fadeInUp');
             }, 500);
         }, 1000);
+
+        setTimeout(function () {
+            handle.find('.qiu').show().addClass('animated fadeInUp');
+            setTimeout(function () {
+                handle.find('.xue').show().addClass('animated fadeInUp');
+            }, 500);
+        }, 1000);
+        setTimeout(function () {
+            handle.find('.inputDiv').show().addClass('animated zoomIn');
+            setTimeout(function () {
+                handle.find('.btnFrame1').show().addClass('animated fadeInUp');
+            }, 500);
+        }, 1800);
     },
     playCar1Ani: function (handle) {
         handle.fadeIn(300);
@@ -331,6 +259,19 @@ var main = {
                 handle.find('.che').show().addClass('animated fadeInUp');
             }, 500);
         }, 1000);
+
+        setTimeout(function () {
+            handle.find('.qiu').show().addClass('animated fadeInUp');
+            setTimeout(function () {
+                handle.find('.xue').show().addClass('animated fadeInUp');
+            }, 500);
+        }, 1000);
+        setTimeout(function () {
+            handle.find('.inputDiv').show().addClass('animated zoomIn');
+            setTimeout(function () {
+                handle.find('.btnFrame1').show().addClass('animated fadeInUp');
+            }, 500);
+        }, 1800);
     },
     playFamily1Ani: function (handle) {
         handle.fadeIn(300);
@@ -347,30 +288,35 @@ var main = {
                 handle.find('.jia').show().addClass('animated fadeInUp');
             }, 500);
         }, 1200);
-    },
-    showResultDialog: function () {
-        main.collectCount = main.isCollectStudy + main.isCollectWork + main.isCollectCar + main.isCollectFamily;
-        var imgList = ['src/5-50.png', 'src/5-100.png', 'src/5-150.png', 'src/5-200.png'];
-        var $resultDialog = $('#resultDialog');
-        $resultDialog.find('.num').attr('src', imgList[main.collectCount - 1]);
-        // 更新弹出框内容
-        $resultDialog.fadeIn(300);
+
+        setTimeout(function () {
+            handle.find('.qiu').show().addClass('animated fadeInUp');
+            setTimeout(function () {
+                handle.find('.xue').show().addClass('animated fadeInUp');
+            }, 500);
+        }, 1700);
+        setTimeout(function () {
+            handle.find('.inputDiv').show().addClass('animated zoomIn');
+            setTimeout(function () {
+                handle.find('.btnFrame1').show().addClass('animated fadeInUp');
+            }, 500);
+        }, 2200);
     },
     updateCollectState: function () {
         $('#study').attr('src', main.isCollectStudy?'src/2-study-selected.png':'src/2-study.png');
         $('#work').attr('src', main.isCollectWork?'src/2-work-selected.png':'src/2-work.png');
         $('#car').attr('src', main.isCollectCar?'src/2-car-selected.png':'src/2-car.png');
         $('#family').attr('src', main.isCollectFamily?'src/2-family-selected.png':'src/2-family.png');
-
         if (main.isCollected()) {
             $('#btnMakeRoad').addClass('btnHover');
         }
         if (main.collectCount >= 4) {
             $('#line').show();
         }
+        main.convertPosterInfo();
     },
     convertPosterInfo: function () {
-        if (main.collectCount == 0) return;
+        if (main.collectCount === 0) return;
         var $poster = $('#poster');
         if (main.isCollectStudy) {
             $poster.find('.study').attr('src', 'src/6-study.png');
@@ -392,44 +338,50 @@ var main = {
             $poster.find('.l4').css('color', '#000');
             $poster.find('.familyDate').html(main.familyDate.replace('-', '年') + '月');
         }
-        $poster.find('.tipInfo').html(tipsInfo[main.collectCount - 1]);
-        main.saveDivToPoster();
-    },
-    saveDivToPoster: function () {
-        var $poster = $("#poster");
-        var w = $poster.width();
-        var h = $poster.height();
 
-        //要将 canvas 的宽高设置成容器宽高的 3 倍
-        var canvas = document.createElement("canvas");
-        var scaleBy = getPixelRatio(canvas.getContext('2d'));
-        canvas.width = w * scaleBy;
-        canvas.height = h * scaleBy;
-        canvas.style.width = w + "px";
-        canvas.style.height = h + "px";
-        var context = canvas.getContext("2d");
-        //然后将画布缩放，将图像放大两倍画到画布上
-        context.scale(scaleBy, scaleBy);
-
-        html2canvas(document.getElementById('poster'), {
-            canvas: canvas,
-            allowTaint: true,
-            taintTest: false,
-            onrendered: function (canvas) {
-                //生成base64图片数据
-                var dataUrl = canvas.toDataURL("image/png");
-                $('#posterImg').attr('src', dataUrl);
-            }
-        });
+        var mail = getCountMonthsMail();
+        if (!mail) {
+            mail = 0;
+        }
+        $poster.find('.tipInfo').html('我已经收集到' + mail + tipsInfo[main.collectCount - 1]);
     },
+    // saveDivToPoster: function () {
+    //     var $poster = $("#poster");
+    //     var w = $poster.width();
+    //     var h = $poster.height();
+    //
+    //     //要将 canvas 的宽高设置成容器宽高的 3 倍
+    //     var canvas = document.createElement("canvas");
+    //     var scaleBy = getPixelRatio(canvas.getContext('2d'));
+    //     canvas.width = w * scaleBy;
+    //     canvas.height = h * scaleBy;
+    //     canvas.style.width = w + "px";
+    //     canvas.style.height = h + "px";
+    //     var context = canvas.getContext("2d");
+    //     //然后将画布缩放，将图像放大两倍画到画布上
+    //     context.scale(scaleBy, scaleBy);
+    //
+    //     html2canvas(document.getElementById('poster'), {
+    //         canvas: canvas,
+    //         allowTaint: true,
+    //         taintTest: false,
+    //         onrendered: function (canvas) {
+    //             //生成base64图片数据
+    //             var dataUrl = canvas.toDataURL("image/png");
+    //             $('#posterImg').attr('src', dataUrl);
+    //         }
+    //     });
+    // },
     submitInfo: function () {
-        var name, mobile, car, province,city, dealer;
+        var name, mobile, car, province,city, dealer, IDCard, email;
         name=trim($("input[name='name']").val());
         mobile=trim($("input[name='mobile']").val());
         car =trim($("#favorCar").find("option:selected").text());
         province =trim($("#province").find("option:selected").text());
         city =trim($("#city").find("option:selected").text());
         dealer=trim($("#dealer").find("option:selected").text());
+        IDCard=trim($("input[name='IDCard']").val());
+        email=trim($("input[name='email']").val());
 
         if(isNullOrEmpty(name)) {
             alert("请填写姓名!");
@@ -437,23 +389,31 @@ var main = {
         }else if(!checkIsMobile(mobile)){
             alert("请输入正确的手机号!");
             return;
-        }else if(car.indexOf("意向车型")>=0){
-            alert("请选择意向车型");
-            return;
-        }else if(province.indexOf("省份")>=0){
-            alert("请选择省份");
-            return;
-        }else if(city.indexOf("城市")>=0){
-            alert("请选择城市");
-            return;
-        }else if(dealer.indexOf("经销商")>=0){
-            alert("请选择经销商");
-            return;
+        }
+        if(car.indexOf("意向车型")>=0){
+            car = '';
+            // alert("请选择意向车型");
+            // return;
+        }
+        if(province.indexOf("省份")>=0){
+            province = '';
+            // alert("请选择省份");
+            // return;
+        }
+        if(city.indexOf("城市")>=0){
+            city = '';
+            // alert("请选择城市");
+            // return;
+        }
+        if(dealer.indexOf("经销商")>=0){
+            dealer = '';
+            // alert("请选择经销商");
+            // return;
         }
 
         var url = host + 'ftMovie/luckyDraw';
         $.ajax({
-            type: "post",
+            type: "get",
             url: url,
             data: {
                 'name': name,
@@ -462,7 +422,9 @@ var main = {
                 'province': province,
                 'city': city,
                 'dealer': dealer,
-                'flag':'ft_movie'
+                'flag':'ft_movie',
+                'IDCard': IDCard,
+                'email': email
             },
             dataType: "json",
             success: function(data){
@@ -470,9 +432,8 @@ var main = {
                 if (response.success) {
                     var prize = parseInt(response.data.prize);
                     $('#resultImg').attr('src', prize?'src/7-result-10.png':'src/7-result-none.png');
-                    $('#tipResultDialog').show().click(function () {
-                        $(this).hide();
-                    });
+                    showNextPage();
+
                 } else {
                     alert(response.message);
                 }
@@ -498,29 +459,105 @@ var main = {
                 alert(e.responseJSON.message);
             }
         });
-    },
-    getCrossBase64Img: function (url) {
-        var img = new Image();
-        img.crossOrigin = "Anonymous"; //注意存放顺序
-        img.src = url;
-        img.onload = function () {
-            var canvas = document.createElement('canvasImg');
-            canvas.width = img.width;
-            canvas.height = img.height;
-            var ctx = canvas.getContext("2d");
-            ctx.drawImage(img, 0, 0, img.width, img.height);
-            return canvas.toDataURL("image/png");
-        };
-
-        img.onerror = function () {
-            return '';
-        }
     }
 };
 
+function showCollectDialog(index) {
+    var handle = handles[index];
+    if (index === 0 && !main.isCollectStudy) {
+        main.playStudy1Ani(handle);
+    }
+    if (index === 1 && !main.isCollectWork) {
+        main.playWork1Ani(handle);
+    }
+    if (index === 2 && !main.isCollectCar) {
+        main.playCar1Ani(handle);
+    }
+    if (index === 3 && !main.isCollectFamily) {
+        main.playFamily1Ani(handle);
+    }
+}
+
+function gotoSkip(index) {
+    var handle = handles[index];
+    handle.fadeOut(300);
+}
+
+function gotoSubmit(index) {
+    var handle = handles[index];
+    var inputVal = handle.find('input[name="user_date"]').val();
+    if (index === 0) {
+        main.studyDate = inputVal;
+        main.isCollectStudy = 1;
+    } else if (index === 1) {
+        main.workDate = inputVal;
+        main.isCollectWork = 1;
+    } else if (index === 2) {
+        main.carDate = inputVal;
+        main.isCollectCar = 1;
+    } else if (index === 3) {
+        main.familyDate = inputVal;
+        main.isCollectFamily = 1;
+    }
+    main.collectCount = main.isCollectStudy + main.isCollectWork + main.isCollectCar + main.isCollectFamily;
+    main.updateCollectState();
+    handle.find('.slide-1').fadeOut(300);
+    main.playSlide2Ani(handle);
+}
+
+function gotoContinue(index) {
+    gotoSkip(index);
+    if (main.collectCount >= 4) {
+        setTimeout(main.clickMakeRoad, 300);
+    }
+}
+
+function gotoMyway(index) {
+    gotoSkip(index);
+    setTimeout(showNextPage, 300);
+}
+
+/*
+* 计算里程数
+*/
+function getCountMonthsMail() {
+    var months = 0;
+    var dateNow = new Date();
+    if (main.isCollectStudy) {
+        months += getDifferMonths(main.studyDate, dateNow);
+    }
+    if (main.isCollectWork) {
+        months += getDifferMonths(main.workDate, dateNow);
+    }
+    if (main.isCollectCar) {
+        months += getDifferMonths(main.carDate, dateNow);
+    }
+    if (main.isCollectFamily) {
+        months += getDifferMonths(main.familyDate, dateNow);
+    }
+    return months * 500;
+}
+
 function showActRuleDialog() {
-    $('#actRuleDialog').show().click(function () {
-        $(this).hide();
+    $('#actRuleDialog').fadeIn(300).click(function () {
+        $(this).fadeOut(300);
     });
 }
 
+function showShareTipDialog() {
+    $('#shareTipDialog').fadeIn(300).click(function () {
+        $(this).fadeOut(300);
+    });
+}
+
+function showNextPage() {
+    main.mainSwiper.unlockSwipeToNext();
+    main.mainSwiper.slideNext();
+    main.mainSwiper.lockSwipeToNext();
+}
+
+function getDifferMonths(date, dateNow) {
+    var year = parseInt(date.substr(0, 4));
+    var month = parseInt(date.substr(5, 2));
+    return ((dateNow.getFullYear() - year) * 12 + (dateNow.getMonth() + 1) - month);
+}

@@ -7,12 +7,24 @@
   margin: 0;
   padding: 0;
 }
+/*声明 WebFont*/
+@font-face {
+  font-family: '仿宋';
+  src: url('../fonts/仿宋_GB2312.ttf');
+  src:
+          url('../fonts/仿宋_GB2312.eot?#font-spider') format('embedded-opentype'),
+          url('../fonts/仿宋_GB2312.woff') format('woff'),
+          url('../fonts/仿宋_GB2312.ttf') format('truetype'),
+          url('../fonts/仿宋_GB2312.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
 html, body {
-  font-family: "宋体","SimSun", sans-serif;
+  font-family: "仿宋" !important;
   height: 100%;
   background-color: #fff;
   -webkit-box-sizing: border-box;
-  -ms-box-sizing: border-box;
   box-sizing: border-box;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -35,7 +47,7 @@ html, body {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0,0,0,0.8);
+  background-color: rgba(255,255,255,0.9);
   z-index: 10;
   .slide {
     position: absolute;
@@ -91,6 +103,8 @@ html, body {
     .s-1, .s-2, .s-3 {
       -webkiet-filter: grayscale(100%);
       filter: grayscale(100%);
+      transition-duration: 0.3s;
+      -webkit-transition-duration: 0.3s;
     }
     .div-1, .div-2 {
       font-size: 0.7rem;
@@ -100,8 +114,8 @@ html, body {
 
 .logo {
   position: absolute;
-  top: 0.5rem;
-  right: 0.5rem;
+  top: 0.75rem;
+  right: 0.75rem;
   width: 3rem;
   height: 1.7rem;
   z-index: 6;
@@ -138,44 +152,23 @@ html, body {
 }
 
 #actRuleDialog {
-  background: rgba(0,0,0,0.8) url("../src/2-popup.jpg") no-repeat center;
-  background-size: 80% auto;
+  background: rgba(255,255,255,0.9) url("../src/2-popup.jpg") no-repeat center;
+  background-size: auto 85%;
   z-index: 20;
 }
 
 #shareTipDialog {
+  z-index: 20;
   .shareImg {
     float: right;
-    width: 13.8rem;
-    height: 17.55rem;
-  }
-}
-
-#tipResultDialog {
-  .content {
-    position: absolute;
-    top: 50%;
-    margin-top: -13rem;
-    width: 100%;
-    height: 26rem;
-    .resultImg {
-      display: block;
-      margin: 0 auto;
-      width: 8.2rem;
-      height: 22.8rem;
-    }
-    .closeBtn {
-      display: block;
-      margin: 1rem auto 0;
-      width: 2.65rem;
-      height: 1.45rem;
-    }
+    width: 12.15rem;
+    height: 18.4rem;
   }
 }
 
 .btnFrame {
   position: absolute;
-  bottom: 1.5rem;
+  bottom: 0.5rem;
   left: 50%;
   margin-left: -7.5rem;
   width: 15rem;
@@ -191,40 +184,6 @@ html, body {
   .btnRight {
     float: right;
     @extend .btn;
-  }
-}
-
-#resultDialog {
-  background: url("../src/5-bg.jpg") no-repeat;
-  background-size: cover;
-  z-index: 6;
-  .content {
-    position: absolute;
-    top: 50%;
-    margin-top: -4.5rem;
-    width: 100%;
-    height: 13rem;
-    p {
-      text-align: center;
-      line-height: 2rem;
-      font-size: 1.2rem;
-      color: #252424;
-    }
-    .circle {
-      display: block;
-      margin: 0.5rem auto;
-      width: 8rem;
-      height: 8.2rem;
-      background: url("../src/5-circle.png") no-repeat center;
-      background-size: 7.9rem 8.1rem;
-      .num {
-        display: block;
-        margin: 0 auto;
-        width: auto;
-        height: 2.25rem;
-        padding-top: 2.5rem;
-      }
-    }
   }
 }
 
@@ -314,17 +273,6 @@ html, body {
         margin-top: 8.5rem;
         text-align: center;
       }
-      .btnCollect {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        margin-left: -5.8rem;
-        margin-top: 11.5rem;
-        width: 11.6rem;
-        height: 2.35rem;
-        background: url("../src/4-btn.png") no-repeat center;
-        background-size: 11.55rem 2.35rem;
-      }
     }
   }
 }
@@ -400,17 +348,6 @@ html, body {
         top: 50%;
         right: 0.8rem;
         margin-top: 8rem;
-      }
-      .btnCollect {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        margin-left: -5.8rem;
-        margin-top: 11.5rem;
-        width: 11.6rem;
-        height: 2.35rem;
-        background: url("../src/4-btn.png") no-repeat center;
-        background-size: 11.55rem 2.35rem;
       }
     }
   }
@@ -495,17 +432,6 @@ html, body {
         top: 50%;
         left: 0.8rem;
         margin-top: 7rem;
-      }
-      .btnCollect {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        margin-left: -5.8rem;
-        margin-top: 11.5rem;
-        width: 11.6rem;
-        height: 2.35rem;
-        background: url("../src/4-btn.png") no-repeat center;
-        background-size: 11.55rem 2.35rem;
       }
     }
   }
@@ -638,17 +564,6 @@ html, body {
         margin-top: 7.5rem;
         text-align: center;
       }
-      .btnCollect {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        margin-left: -5.8rem;
-        margin-top: 11.5rem;
-        width: 11.6rem;
-        height: 2.35rem;
-        background: url("../src/4-btn.png") no-repeat center;
-        background-size: 11.55rem 2.35rem;
-      }
     }
   }
 }
@@ -719,7 +634,6 @@ html, body {
 .screen2 {
   background: url("../src/2-bg.jpg") no-repeat center;
   background-size: 100% auto;
-
   .topFrame {
     position: absolute;
     top: 2.5rem;
@@ -802,7 +716,7 @@ html, body {
   .btnMakeRoad {
     position: absolute;
     left: 50%;
-    bottom: 3rem;
+    bottom: 3.5rem;
     margin-left: -5.85rem;
     width: 11.7rem;
     height: 2.5rem;
@@ -813,88 +727,147 @@ html, body {
     background: url("../src/2-btn-selected.png") no-repeat;
     background-size: 11.65rem 2.45rem;
   }
-}
-
-#poster {
-  position: fixed;
-  width: 14.45rem;
-  height: 19.4rem;
-  z-index: -10;
-  .posterBg {
+  .tipFrame {
     position: absolute;
-    width: 14.45rem;
-    height: 19.4rem;
-    z-index: -1;
-  }
-  .top {
-    height: 4.2rem;
-    padding-top: 0.5rem;
-    .headImg {
-      display: block;
-      margin: 0 auto;
-      width: 2.9rem;
-      height: 2.9rem;
-      border-radius: 2.9rem;
-    }
-    .tip {
-      font-size: 0.8rem;
+    bottom: 0.5rem;
+    width: 100%;
+    height: 2.5rem;
+    p {
+      line-height: 1.2rem;
+      font-size: 0.7rem;
       text-align: center;
-    }
-  }
-
-  ul {
-    list-style: none;
-    li {
-      height: 2.2rem;
-      line-height: 2.8rem;
-      text-align: center;
-      font-size: 0.65rem;
-      color: #8B8686;
-      img {
-        display: inline-block;
-        vertical-align: middle;
-        width: 1.85rem;
-        height: 2.8rem;
-        margin-top: -0.3rem;
-      }
-    }
-  }
-  .bottom {
-    display: block;
-    margin: 1rem auto 0;
-    width: 13rem;
-    height: 5rem;
-    padding-top: 0.5rem;
-    border-top: 1px dotted #A2A3A3;
-    .leftDiv {
-      float: left;
-      width: 9.5rem;
-      p {
-        font-size: 0.6rem;
-        margin-left: 0.3rem;
-        line-height: 0.8rem;
-      }
-    }
-    .qrcode {
-      float: right;
-      width: 3.5rem;
-      height: 3.5rem;
     }
   }
 }
-
 .screen3 {
+  background: url("../src/5-bg.jpg") no-repeat;
+  background-size: cover;
+  .content {
+    position: absolute;
+    top: 50%;
+    margin-top: -5rem;
+    width: 100%;
+    height: 13rem;
+    p {
+      text-align: center;
+      line-height: 2rem;
+      font-size: 1.2rem;
+      color: #252424;
+    }
+    .circle {
+      display: block;
+      margin: 0.5rem auto;
+      width: 8rem;
+      height: 8.2rem;
+      background: url("../src/5-circle.png") no-repeat center;
+      background-size: 7.9rem 8.1rem;
+      .num {
+        width: 100%;
+        height: 2.25rem;
+        font-weight: bold;
+        line-height: 2.25rem;
+        text-align: center;
+        padding-top: 2.5rem;
+      }
+    }
+  }
+
+  .btnMyroad {
+    position: absolute;
+    left:  50%;
+    margin-left: -5.8rem;
+    bottom: 3rem;
+    width: 11.6rem;
+    height: 2.4rem;
+  }
+}
+.screen4 {
+  background: url("../src/loading-bg.jpg") repeat-y;
+  background-size: 100% auto;
   .content {
     position: absolute;
     top: 50%;
     left: 0;
     margin-top: -12rem;
     width: 100%;
-    #posterImg {
+    height: 19.4rem;
+    //#posterImg {
+    //  display: block;
+    //  margin: 0.5rem auto;
+    //  width: 14.45rem;
+    //  height: 19.4rem;
+    //}
+    #poster {
+      //position: fixed;
+      //width: 14.45rem;
+      //height: 19.4rem;
+      //z-index: -10;
       display: block;
       margin: 0.5rem auto;
       width: 14.45rem;
       height: 19.4rem;
+      .posterBg {
+        position: absolute;
+        width: 14.45rem;
+        height: 19.4rem;
+        z-index: -1;
+      }
+      .top {
+        height: 4.2rem;
+        padding-top: 0.5rem;
+        .headImg {
+          display: block;
+          margin: 0 auto;
+          width: 2.9rem;
+          height: 2.9rem;
+          border-radius: 2.9rem;
+        }
+        .tip {
+          font-size: 0.8rem;
+          text-align: center;
+        }
+      }
+
+      ul {
+        list-style: none;
+        li {
+          height: 2.2rem;
+          line-height: 2.8rem;
+          text-align: center;
+          font-size: 0.65rem;
+          color: #8B8686;
+          img {
+            display: inline-block;
+            vertical-align: middle;
+            width: 1.85rem;
+            height: 2.8rem;
+            margin-top: -0.3rem;
+          }
+        }
+      }
+      .bottom {
+        display: block;
+        margin: 1rem auto 0;
+        width: 13rem;
+        height: 5rem;
+        padding-top: 0.5rem;
+        border-top: 1px dotted #A2A3A3;
+        p {
+          font-size: 0.7rem;
+          margin-left: 0.3rem;
+          line-height: 1rem;
+        }
+        //.leftDiv {
+        //  float: left;
+        //  width: 9.5rem;
+        //
+        //}
+        //.qrcode {
+        //  float: right;
+        //  width: 3.5rem;
+        //  height: 3.5rem;
+        //}
+      }
     }
     .tipFrame {
       display: block;
@@ -920,6 +893,14 @@ html, body {
     }
   }
 
+  .btn-exchange {
+    position: absolute;
+    left: 50%;
+    margin-left: -5.8rem;
+    bottom: 3rem;
+    width: 11.6rem;
+    height: 2.45rem;
+  }
   .btnFrame {
     .btn {
       width: 6.5rem;
@@ -928,30 +909,36 @@ html, body {
   }
 
 }
-.screen4 {
+.screen5 {
   background: url("../src/7-bg.jpg") no-repeat center;
   background-size: cover;
   .content {
     position: absolute;
     top: 50%;
-    margin-top: -10.5rem;
+    margin-top: -12rem;
     width: 100%;
-    height: 21rem;
+    height: 24rem;
     p {
       text-align: center;
     }
     .title {
       font-size: 1rem;
-      margin-bottom: 1rem;
+      margin-bottom: 0.5rem;
       margin-top: 0.5rem;
     }
     .tip {
       line-height: 1rem;
-      font-size: 0.65rem;
+      font-size: 0.6rem;
       .actRule, .actRule:hover {
         color: #B7342C;
         text-decoration: underline;
       }
+      strong {
+        color: #B7342C;
+      }
+    }
+    .tip2 {
+      margin-top: 0.3rem;
     }
 
     input, select {
@@ -972,10 +959,11 @@ html, body {
     .item {
       @include center();
       width: 11.3rem;
-      height: 2.1rem;
-      margin-top: 0.5rem;
+      height: 2rem;
+      font-family: "microsoft yahei", sans-serif;
+      margin-top: 0.3rem;
       background: transparent url("../src/7-form1.png") no-repeat;
-      background-size: 11.3rem 2.1rem;
+      background-size: 11.3rem 2rem;
       overflow: hidden;
       label {
         display: inline-block;
@@ -988,10 +976,13 @@ html, body {
         text-align: left;
         text-indent: 0.8rem;
         color: #38424E;
+        span {
+          color: #B7342C;
+        }
       }
       select {
         width: 11.3rem;
-        height: 2.1rem;
+        height: 2rem;
         text-indent: 0.8rem;
         background: url("../src/3-selection-arrow.png") no-repeat 10.3rem center;
         background-size: 0.4rem 0.2rem;
@@ -1045,6 +1036,29 @@ html, body {
     }
   }
 }
+.screen6 {
+  background: url("../src/7-bg.jpg") no-repeat center;
+  background-size: cover;
+  .content {
+    position: absolute;
+    top: 50%;
+    margin-top: -13rem;
+    width: 100%;
+    height: 26rem;
+    .resultImg {
+      display: block;
+      margin: 0 auto;
+      width: 8.2rem;
+      height: 22.8rem;
+    }
+    .btnShare {
+      display: block;
+      margin: 1rem auto 0;
+      width: 11.675rem;
+      height: 2.45rem;
+    }
+  }
+}
 
 /*
 * 旋转圆环
@@ -1056,30 +1070,30 @@ html, body {
 
 @-webkit-keyframes rotateRing {
   from {-webkit-transform: rotate(0deg);transform: rotate(0deg);}
-  to {-webkit-transform: rotate(360deg);transform: rotate(360deg);}
+  to {-webkit-transform: rotate(-360deg);transform: rotate(-360deg);}
 }
 
 @keyframes rotateRing {
   from {transform: rotate(0deg);}
-  to {transform: rotate(360deg);}
+  to {transform: rotate(-360deg);}
 }
 
 /*
 * 船动画
 */
 .boatAni {
-  -webkit-animation: moveBoat 1.2s linear forwards;
-  animation: moveBoat 1.2s linear forwards;
+  -webkit-animation: moveBoat 2s ease;
+  animation: moveBoat 2s ease;
 }
 @-webkit-keyframes moveBoat {
   from {
-    bottom: -4rem;
+    bottom: 0.5rem;
     right: 14rem;
   }
 }
 @keyframes moveBoat {
   from {
-    bottom: -4rem;
+    bottom: 0.5rem;
     right: 14rem;
   }
 }
