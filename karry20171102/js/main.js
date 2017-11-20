@@ -141,15 +141,16 @@ function onTick(e){
 			return;
 		}
 
-		for(var i = 1; i < 6; i++){
+		for(var i = 1; i < 3
+			; i++){
 
 			if(dis(krpano.get("hotspot[spot"+ i +"].ath"),krpano.get("hotspot[spot"+ i +"].atv"),Math.floor(krpano.get("view.hlookat")),Math.floor(krpano.get("view.vlookat")))){
 
 				if(!isOpen){
 					isOpen = true;
-					// carIndex = i - 1;
+					carIndex = i - 1;
 					//奇数为开瑞K50S，偶数为开瑞K60
-					carIndex = i%2 ? 0 : 1;
+					// carIndex = i%2 ? 0 : 1;
 					subIndex = i;
 					gameMc.instance.gotoAndPlay(1);
 				}
