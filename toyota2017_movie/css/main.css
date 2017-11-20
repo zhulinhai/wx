@@ -2962,7 +2962,7 @@ html, body {
     top: 2.5rem;
     width: 100%; }
     .screen2 .topFrame .title {
-      font-size: 0.9rem;
+      font-size: 1rem;
       line-height: 2rem;
       text-align: center;
       margin-bottom: 0.5rem; }
@@ -2977,7 +2977,8 @@ html, body {
       float: left;
       line-height: 2.65rem;
       font-size: 0.7rem;
-      margin-left: 0.5rem; }
+      margin-left: 0.5rem;
+      font-family: "microsoft yahei", sans-serif; }
     .screen2 .topFrame .info .btnActRule {
       float: right;
       width: 3.75rem;
@@ -3022,7 +3023,7 @@ html, body {
   .screen2 .btnMakeRoad {
     position: absolute;
     left: 50%;
-    bottom: 3.5rem;
+    bottom: 5rem;
     margin-left: -5.85rem;
     width: 11.7rem;
     height: 2.5rem;
@@ -3033,7 +3034,7 @@ html, body {
     background-size: 11.65rem 2.45rem; }
   .screen2 .tipFrame {
     position: absolute;
-    bottom: 0.5rem;
+    bottom: 2rem;
     width: 100%;
     height: 2.5rem; }
     .screen2 .tipFrame p {
@@ -3109,6 +3110,8 @@ html, body {
         .screen4 .content #poster .top .tip {
           font-size: 0.8rem;
           text-align: center; }
+          .screen4 .content #poster .top .tip span {
+            font-family: "microsoft yahei", sans-serif; }
       .screen4 .content #poster ul {
         list-style: none; }
         .screen4 .content #poster ul li {
@@ -3171,7 +3174,7 @@ html, body {
     top: 50%;
     margin-top: -12rem;
     width: 100%;
-    height: 26rem; }
+    height: 24rem; }
     .screen5 .content p {
       text-align: center; }
     .screen5 .content .title {

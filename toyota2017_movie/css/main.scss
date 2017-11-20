@@ -639,7 +639,7 @@ html, body {
     top: 2.5rem;
     width: 100%;
     .title {
-      font-size: 0.9rem;
+      font-size: 1rem;
       line-height: 2rem;
       text-align: center;
       margin-bottom: 0.5rem;
@@ -658,7 +658,7 @@ html, body {
         line-height: 2.65rem;
         font-size: 0.7rem;
         margin-left: 0.5rem;
-
+        font-family: "microsoft yahei", sans-serif;
       }
       .btnActRule {
         float: right;
@@ -716,7 +716,7 @@ html, body {
   .btnMakeRoad {
     position: absolute;
     left: 50%;
-    bottom: 3.5rem;
+    bottom: 5rem;
     margin-left: -5.85rem;
     width: 11.7rem;
     height: 2.5rem;
@@ -729,7 +729,7 @@ html, body {
   }
   .tipFrame {
     position: absolute;
-    bottom: 0.5rem;
+    bottom: 2rem;
     width: 100%;
     height: 2.5rem;
     p {
@@ -825,6 +825,9 @@ html, body {
         .tip {
           font-size: 0.8rem;
           text-align: center;
+          span {
+            font-family: "microsoft yahei", sans-serif;
+          }
         }
       }
 

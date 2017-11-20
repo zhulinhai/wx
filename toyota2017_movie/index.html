@@ -15,13 +15,13 @@
     <meta name="wxm:link" content="http://wx.bjczxda.com/toyota2017_movie/index.html"><!-- http://dwz.cn/6R8Dw4 -->
     <!-- 在 meta 标签中进行基础分享信息设置 End-->
     <title>跨越人生路，感恩幸福礼</title>
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/main.css?v=0.0.1">
     <script type="text/javascript">
 
         /* 判断是否存在code 跳转授权页面 */
         (function () {
             if (location.search.indexOf('code') === -1) {
-                window.location.replace('http://dwz.cn/6R8Dw4') ;
+//                window.location.replace('http://dwz.cn/6R8Dw4');
             }
         })();
 
@@ -121,7 +121,7 @@
             <img src="src/3-2-zuo.png" class="zuo" style="display: none">
             <div class="inputDiv" style="display: none">
                 <p class="title">你初入职场的时间？</p>
-                <input type="month" name="user_date" value="2017-11" />
+                <input type="month" name="user_date" required min="1900-01" max="2017-11" value="2017-11" />
             </div>
             <div class="btnFrame btnFrame1" style="display: none">
                 <a href="javascript:gotoSkip(1);"><img class="btnLeft btnSkip animated pulse infinite" src="src/3-btn-skip.png" alt=""></a>
@@ -157,7 +157,7 @@
             <img src="src/3-3-che.png" class="che" style="display: none">
             <div class="inputDiv" style="display: none">
                 <p class="title">自己买下第一辆车的时间？</p>
-                <input type="month" name="user_date" value="2017-11" />
+                <input type="month" name="user_date" required min="1900-01" max="2017-11" value="2017-11" />
             </div>
             <div class="btnFrame btnFrame1" style="display: none">
                 <a href="javascript:gotoSkip(2);"><img class="btnLeft btnSkip animated pulse infinite" src="src/3-btn-skip.png" alt=""></a>
@@ -194,7 +194,7 @@
             <img src="src/3-4-jia.png" class="jia" style="display: none">
             <div class="inputDiv" style="display: none">
                 <p class="title">和TA一起领证的那天？</p>
-                <input type="month" name="user_date" value="2017-11" />
+                <input type="month" name="user_date" required min="1900-01" max="2017-11" value="2017-11" />
             </div>
             <div class="btnFrame btnFrame1" style="display: none">
                 <a href="javascript:gotoSkip(3);"><img class="btnLeft btnSkip animated pulse infinite" src="src/3-btn-skip.png" alt=""></a>
