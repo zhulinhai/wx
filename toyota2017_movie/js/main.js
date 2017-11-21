@@ -440,7 +440,7 @@ var main = {
         }
 
         if(!isNullOrEmpty(IDCard)) {
-            if (IDCard.length != 18 || IDCard.length != 15 ) {
+            if (IDCard.length != 18 && IDCard.length != 15 ) {
                 alert('请输入正确的身份证号码(15或18位)');
                 return;
             }
@@ -543,6 +543,14 @@ function gotoSkip(index) {
 function gotoSubmit(index) {
     var handle = handles[index];
     var inputVal = handle.find('input[name="user_date"]').val();
+    var dateNow = new Date();
+    var year = parseInt(inputVal.substr(0, 4));
+    var month = parseInt(inputVal.substr(5, 2));
+    if (year > dateNow.getFullYear() || (year == dateNow.getFullYear() && month > (dateNow.getMonth() + 1))) {
+        alert('请选择正确日期(日期不能大于当前日期)');
+        return;
+    }
+
     if (index === 0) {
         main.studyDate = inputVal;
         main.isCollectStudy = 1;
