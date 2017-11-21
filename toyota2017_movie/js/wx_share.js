@@ -6,7 +6,6 @@ function getSingPackage(){
     $.ajax({
         type:'GET',
         url:'http://api.bobo119.com/api/wx/signature?'+ param,
-        async:true, //异步请求
         dataType: "jsonp",
         jsonp: "callback",
         success: function(data){
@@ -18,7 +17,7 @@ function getSingPackage(){
     });
 }
 
-function runShare(appId, timeStamp, nonceStr, signature){
+function runShare(appId, timestamp, nonceStr, signature){
 
     var title =$('meta[name="wxm:timeline_title"]'); // 分享标题
     var link =$('meta[name="wxm:link"]');
@@ -28,7 +27,7 @@ function runShare(appId, timeStamp, nonceStr, signature){
     wx.config({
         debug: false,
         appId: appId,
-        timestamp: timeStamp,
+        timestamp: timestamp,
         nonceStr: nonceStr,
         signature: signature,
         jsApiList: [
