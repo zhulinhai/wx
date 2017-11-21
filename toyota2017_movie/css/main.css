@@ -2571,9 +2571,13 @@ html, body {
     z-index: 2; }
 
 #actRuleDialog {
-  background: rgba(255, 255, 255, 0.9) url("../src/2-popup-2.jpg") no-repeat center;
-  background-size: 80% auto;
+  background-color: rgba(0, 0, 0, 0.3);
   z-index: 20; }
+  #actRuleDialog .content {
+    width: 100%;
+    height: 100%;
+    background: transparent url("../src/2-popup-3.jpg") no-repeat center;
+    background-size: 80% auto; }
 
 #shareTipDialog {
   z-index: 20; }
@@ -2581,6 +2585,42 @@ html, body {
     float: right;
     width: 12.15rem;
     height: 18.4rem; }
+
+#tipResultDialog {
+  background-color: rgba(255, 255, 255, 0.9);
+  z-index: 20; }
+  #tipResultDialog .content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -4.5rem;
+    margin-top: -4rem;
+    width: 9rem;
+    height: 12rem; }
+    #tipResultDialog .content .circle {
+      display: block;
+      margin: 0.5rem auto;
+      width: 9rem;
+      height: 9.2rem;
+      background: url("../src/5-circle.png") no-repeat left center;
+      background-size: 9rem 9.2rem; }
+      #tipResultDialog .content .circle p {
+        line-height: 1.2rem;
+        font-size: 0.7rem;
+        text-align: center;
+        text-indent: 0.5rem; }
+      #tipResultDialog .content .circle .p1 {
+        padding-top: 3rem; }
+    #tipResultDialog .content .circle-gray {
+      background: url("../src/circle-gray.png") no-repeat center;
+      background-size: 9rem 9.2rem; }
+    #tipResultDialog .content .btn-close {
+      display: block;
+      margin: 0.5rem auto;
+      width: 4rem;
+      height: 2rem;
+      background: url("../src/btn-close.png") no-repeat center;
+      background-size: 2.65rem 1.5rem; }
 
 .btnFrame {
   position: absolute;
@@ -2596,6 +2636,8 @@ html, body {
     float: left; }
   .btnFrame .btnRight {
     float: right; }
+  .btnFrame .centerBtn {
+    margin-right: 4.5rem; }
 
 #studyDialog {
   background: url("../src/loading-bg.jpg") repeat-y;
@@ -2653,7 +2695,7 @@ html, body {
     height: 9rem; }
   #studyDialog .slide-2 .content p {
     line-height: 1.2rem;
-    font-size: 0.65rem; }
+    font-size: 0.6rem; }
   #studyDialog .slide-2 .content .div-1 {
     position: absolute;
     top: 50%;
@@ -2954,93 +2996,93 @@ html, body {
     background: url("../src/1-btn.png") no-repeat center;
     background-size: 11.675rem auto; }
 
-.screen2 {
+.screen2 .bg {
   background: url("../src/2-bg.jpg") no-repeat center;
   background-size: 100% auto; }
-  .screen2 .topFrame {
-    position: absolute;
-    top: 2.5rem;
-    width: 100%; }
-    .screen2 .topFrame .title {
-      font-size: 1rem;
-      line-height: 2rem;
-      text-align: center;
-      margin-bottom: 0.5rem; }
-    .screen2 .topFrame .info .headImg {
-      float: left;
-      width: 2.7rem;
-      height: 2.7rem;
-      border-radius: 2.7rem;
-      margin-left: 1rem;
-      border: 3px solid #E6E6E6; }
-    .screen2 .topFrame .info .userName {
-      float: left;
-      line-height: 2.65rem;
-      font-size: 0.7rem;
-      margin-left: 0.5rem;
-      font-family: "microsoft yahei", sans-serif; }
-    .screen2 .topFrame .info .btnActRule {
-      float: right;
-      width: 3.75rem;
-      height: 1.5rem;
-      margin-top: 0.5rem;
-      margin-right: 1rem;
-      background: url("../src/2-btn-rule.png") no-repeat;
-      background-size: 3.75rem 1.5rem; }
-  .screen2 .content img {
-    position: absolute;
-    top: 50%;
-    left: 50%; }
-  .screen2 .content .study {
-    margin-left: 1rem;
-    margin-top: -4rem;
-    width: 1.8rem;
-    height: 2.65rem;
-    animation-delay: 0.3s; }
-  .screen2 .content .work {
-    margin-left: 5.8rem;
-    margin-top: -1.3rem;
-    width: 1.7rem;
-    height: 2.4rem;
-    animation-delay: 0.6s; }
-  .screen2 .content .car {
-    margin-left: 2.3rem;
-    margin-top: 3.3rem;
-    width: 1.85rem;
+.screen2 .topFrame {
+  position: absolute;
+  top: 2.5rem;
+  width: 100%; }
+  .screen2 .topFrame .title {
+    font-size: 1rem;
+    line-height: 2rem;
+    text-align: center;
+    margin-bottom: 0.5rem; }
+  .screen2 .topFrame .info .headImg {
+    float: left;
+    width: 2.7rem;
     height: 2.7rem;
-    animation-delay: 0.9s; }
-  .screen2 .content .family {
-    margin-left: -3.3rem;
+    border-radius: 2.7rem;
+    margin-left: 1rem;
+    border: 3px solid #E6E6E6; }
+  .screen2 .topFrame .info .userName {
+    float: left;
+    line-height: 2.65rem;
+    font-size: 0.7rem;
+    margin-left: 0.5rem;
+    font-family: "microsoft yahei", sans-serif; }
+  .screen2 .topFrame .info .btnActRule {
+    float: right;
+    width: 3.75rem;
+    height: 1.5rem;
     margin-top: 0.5rem;
-    width: 1.875rem;
-    height: 2.825rem;
-    animation-delay: 1.2s; }
-  .screen2 .content .line {
-    width: 7.2rem;
-    height: 5.6rem;
-    margin-top: -2.3rem;
-    margin-left: -1.5rem; }
-  .screen2 .btnMakeRoad {
-    position: absolute;
-    left: 50%;
-    bottom: 5rem;
-    margin-left: -5.85rem;
-    width: 11.7rem;
-    height: 2.5rem;
-    background: url("../src/2-btn.png") no-repeat;
-    background-size: 11.65rem 2.45rem; }
-  .screen2 .btnHover {
-    background: url("../src/2-btn-selected.png") no-repeat;
-    background-size: 11.65rem 2.45rem; }
-  .screen2 .tipFrame {
-    position: absolute;
-    bottom: 2rem;
-    width: 100%;
-    height: 2.5rem; }
-    .screen2 .tipFrame p {
-      line-height: 1.2rem;
-      font-size: 0.7rem;
-      text-align: center; }
+    margin-right: 1rem;
+    background: url("../src/2-btn-rule.png") no-repeat;
+    background-size: 3.75rem 1.5rem; }
+.screen2 .content img {
+  position: absolute;
+  top: 50%;
+  left: 50%; }
+.screen2 .content .study {
+  margin-left: 1rem;
+  margin-top: -4rem;
+  width: 1.8rem;
+  height: 2.65rem;
+  animation-delay: 0.3s; }
+.screen2 .content .work {
+  margin-left: 5.8rem;
+  margin-top: -1.3rem;
+  width: 1.7rem;
+  height: 2.4rem;
+  animation-delay: 0.6s; }
+.screen2 .content .car {
+  margin-left: 2.3rem;
+  margin-top: 3.3rem;
+  width: 1.85rem;
+  height: 2.7rem;
+  animation-delay: 0.9s; }
+.screen2 .content .family {
+  margin-left: -3.3rem;
+  margin-top: 0.5rem;
+  width: 1.875rem;
+  height: 2.825rem;
+  animation-delay: 1.2s; }
+.screen2 .content .line {
+  width: 7.2rem;
+  height: 5.6rem;
+  margin-top: -2.3rem;
+  margin-left: -1.5rem; }
+.screen2 .btnMakeRoad {
+  position: absolute;
+  left: 50%;
+  bottom: 5rem;
+  margin-left: -5.85rem;
+  width: 11.7rem;
+  height: 2.5rem;
+  background: url("../src/2-btn.png") no-repeat;
+  background-size: 11.65rem 2.45rem; }
+.screen2 .btnHover {
+  background: url("../src/2-btn-selected.png") no-repeat;
+  background-size: 11.65rem 2.45rem; }
+.screen2 .tipFrame {
+  position: absolute;
+  bottom: 2rem;
+  width: 100%;
+  height: 2.5rem; }
+  .screen2 .tipFrame p {
+    line-height: 1.2rem;
+    font-size: 0.6rem;
+    text-align: center; }
 
 .screen3 {
   background: url("../src/5-bg.jpg") no-repeat;
@@ -3134,7 +3176,7 @@ html, body {
         padding-top: 0.5rem;
         border-top: 1px dotted #A2A3A3; }
         .screen4 .content #poster .bottom p {
-          font-size: 0.7rem;
+          font-size: 0.6rem;
           margin-left: 0.3rem;
           line-height: 1rem; }
     .screen4 .content .tipFrame {
@@ -3159,7 +3201,7 @@ html, body {
     position: absolute;
     left: 50%;
     margin-left: -5.8rem;
-    bottom: 3rem;
+    bottom: 2.5rem;
     width: 11.6rem;
     height: 2.45rem; }
   .screen4 .btnFrame .btn, .screen4 .btnFrame .btnLeft, .screen4 .btnFrame .btnRight {
@@ -3172,9 +3214,9 @@ html, body {
   .screen5 .content {
     position: absolute;
     top: 50%;
-    margin-top: -12rem;
+    margin-top: -13rem;
     width: 100%;
-    height: 24rem; }
+    height: 26rem; }
     .screen5 .content p {
       text-align: center; }
     .screen5 .content .title {
@@ -3286,9 +3328,9 @@ html, body {
   .screen6 .content {
     position: absolute;
     top: 50%;
-    margin-top: -13rem;
+    margin-top: -14rem;
     width: 100%;
-    height: 26rem; }
+    height: 28rem; }
     .screen6 .content .resultImg {
       display: block;
       margin: 0 auto;
@@ -3299,6 +3341,11 @@ html, body {
       margin: 1rem auto 0;
       width: 11.675rem;
       height: 2.45rem; }
+    .screen6 .content .tip {
+      line-height: 1.2rem;
+      font-size: 0.6rem;
+      text-align: center;
+      margin-top: 0.5rem; }
 
 /*
 * 旋转圆环

@@ -152,8 +152,13 @@ html, body {
 }
 
 #actRuleDialog {
-  background: rgba(255,255,255,0.9) url("../src/2-popup-2.jpg") no-repeat center;
-  background-size: 80% auto;
+  background-color: rgba(0,0,0,0.3);
+  .content {
+    width: 100%;
+    height: 100%;
+    background: transparent url("../src/2-popup-3.jpg") no-repeat center;
+    background-size: 80% auto;
+  }
   z-index: 20;
 }
 
@@ -164,6 +169,50 @@ html, body {
     width: 12.15rem;
     height: 18.4rem;
   }
+}
+
+#tipResultDialog {
+  background-color: rgba(255,255,255,0.9);
+  z-index: 20;
+  .content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -4.5rem;
+    margin-top: -4rem;
+    width: 9rem;
+    height: 12rem;
+    .circle {
+      display: block;
+      margin: 0.5rem auto;
+      width: 9rem;
+      height: 9.2rem;
+      background: url("../src/5-circle.png") no-repeat left center;
+      background-size: 9rem 9.2rem;
+      p {
+        line-height: 1.2rem;
+        font-size: 0.7rem;
+        text-align: center;
+        text-indent: 0.5rem;
+      }
+      .p1 {
+        padding-top: 3rem;
+      }
+    }
+    .circle-gray {
+      background: url("../src/circle-gray.png") no-repeat center;
+      background-size: 9rem 9.2rem;
+    }
+    .btn-close {
+      display: block;
+      margin: 0.5rem auto 0;
+      width: 4rem;
+      height: 2rem;
+      background: url("../src/btn-close.png") no-repeat center;
+      background-size: 2.65rem 1.5rem;
+    }
+  }
+
 }
 
 .btnFrame {
@@ -184,6 +233,9 @@ html, body {
   .btnRight {
     float: right;
     @extend .btn;
+  }
+  .centerBtn {
+    margin-right: 4.5rem;
   }
 }
 
@@ -258,7 +310,7 @@ html, body {
       }
       p {
         line-height: 1.2rem;
-        font-size: 0.65rem;
+        font-size: 0.6rem;
       }
       .div-1 {
         position: absolute;
@@ -630,10 +682,11 @@ html, body {
   }
 }
 
-
 .screen2 {
-  background: url("../src/2-bg.jpg") no-repeat center;
-  background-size: 100% auto;
+  .bg {
+    background: url("../src/2-bg.jpg") no-repeat center;
+    background-size: 100% auto;
+  }
   .topFrame {
     position: absolute;
     top: 2.5rem;
@@ -734,7 +787,7 @@ html, body {
     height: 2.5rem;
     p {
       line-height: 1.2rem;
-      font-size: 0.7rem;
+      font-size: 0.6rem;
       text-align: center;
     }
   }
@@ -856,7 +909,7 @@ html, body {
         padding-top: 0.5rem;
         border-top: 1px dotted #A2A3A3;
         p {
-          font-size: 0.7rem;
+          font-size: 0.6rem;
           margin-left: 0.3rem;
           line-height: 1rem;
         }
@@ -900,7 +953,7 @@ html, body {
     position: absolute;
     left: 50%;
     margin-left: -5.8rem;
-    bottom: 3rem;
+    bottom: 2.5rem;
     width: 11.6rem;
     height: 2.45rem;
   }
@@ -918,9 +971,9 @@ html, body {
   .content {
     position: absolute;
     top: 50%;
-    margin-top: -12rem;
+    margin-top: -13rem;
     width: 100%;
-    height: 24rem;
+    height: 26rem;
     p {
       text-align: center;
     }
@@ -1045,9 +1098,9 @@ html, body {
   .content {
     position: absolute;
     top: 50%;
-    margin-top: -13rem;
+    margin-top: -14rem;
     width: 100%;
-    height: 26rem;
+    height: 28rem;
     .resultImg {
       display: block;
       margin: 0 auto;
@@ -1059,6 +1112,12 @@ html, body {
       margin: 1rem auto 0;
       width: 11.675rem;
       height: 2.45rem;
+    }
+    .tip {
+      line-height: 1.2rem;
+      font-size: 0.6rem;
+      text-align: center;
+      margin-top: 0.5rem;
     }
   }
 }

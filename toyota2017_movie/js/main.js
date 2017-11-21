@@ -1,11 +1,11 @@
 var host = 'http://api.bjczxda.com/api/'; //'http://localhost:8000/api/';//
-// var carList = ["广汽丰田 埃尔法", "广汽丰田 凯美瑞双擎", "广汽丰田 雷凌", "广汽丰田 雷凌双擎", "广汽丰田 全新汉兰达", "广汽丰田 全新凯美瑞", "广汽丰田 逸致", "广汽丰田 致享", "广汽丰田 致炫", "雷克萨斯 全新CT", "雷克萨斯 ES", "雷克萨斯 GS", "雷克萨斯 GX", "雷克萨斯 IS", "雷克萨斯 LS", "雷克萨斯 LX", "雷克萨斯 全新NX", "雷克萨斯 RC", "雷克萨斯 RC F", "雷克萨斯 RX", "雷克萨斯 LX570", "一汽丰田 86", "一汽丰田 HIACE", "一汽丰田 RAV4", "一汽丰田 卡罗拉", "一汽丰田 卡罗拉花冠", "一汽丰田 卡罗拉双擎", "一汽丰田 柯斯达", "一汽丰田 兰德酷路泽", "一汽丰田 全新普拉多", "一汽丰田 普锐斯", "一汽丰田 普瑞维亚", "一汽丰田 全新皇冠", "一汽丰田 锐志", "一汽丰田 威驰", "一汽丰田 威驰FS"];
+var carList = ["广汽丰田 埃尔法", "广汽丰田 凯美瑞双擎", "广汽丰田 雷凌", "广汽丰田 雷凌双擎", "广汽丰田 全新汉兰达", "广汽丰田 全新凯美瑞", "广汽丰田 逸致", "广汽丰田 致享", "广汽丰田 致炫", "雷克萨斯 全新CT", "雷克萨斯 ES", "雷克萨斯 GS", "雷克萨斯 GX", "雷克萨斯 IS", "雷克萨斯 LS", "雷克萨斯 LX", "雷克萨斯 全新NX", "雷克萨斯 RC", "雷克萨斯 RC F", "雷克萨斯 RX", "雷克萨斯 LX570", "一汽丰田 86", "一汽丰田 HIACE", "一汽丰田 RAV4", "一汽丰田 卡罗拉", "一汽丰田 卡罗拉花冠", "一汽丰田 卡罗拉双擎", "一汽丰田 柯斯达", "一汽丰田 兰德酷路泽", "一汽丰田 全新普拉多", "一汽丰田 普锐斯", "一汽丰田 普瑞维亚", "一汽丰田 全新皇冠", "一汽丰田 锐志", "一汽丰田 威驰", "一汽丰田 威驰FS"];
 var handles = [$('#studyDialog'), $('#workDialog'), $('#carDialog'), $('#familyDialog')];
 var tipsInfo = [
-    "公里幸福里程，感谢您的陪伴，只愿你们身体健康，未来我们还要一起走。",
-    "公里幸福里程，感谢您的陪伴，感恩同事的帮扶，未来我们还要一起走。",
-    "公里幸福里程，感谢您的陪伴，感恩同事的帮扶，还有从未懈怠过的自己，未来我依然会继续努力。",
-    "公里幸福里程，感谢您的陪伴，感恩同事的帮扶，以及从未懈怠过的自己，还有，亲爱的，谢谢你对我的信赖，未来刚刚开始。"
+    "一路的勤学苦练",
+    "同事的帮扶鼓励",
+    "从未懈怠的自己",
+    "最亲爱的你携手"
 ];
 var main = {
     mainSwiper: null,
@@ -68,10 +68,10 @@ var main = {
         var dealers = dataList.dealer;
         var $province = $('#province'),
             $city = $('#city'),
-            $dealer = $('#dealer');
-            // $favorCar = $('#favorCar');
+            $dealer = $('#dealer'),
+            $favorCar = $('#favorCar');
 
-        // for(var j = 0; j < carList.length; j ++) $favorCar.append('<option>'+carList[j]+'</option>');
+        for(var j = 0; j < carList.length; j ++) $favorCar.append('<option>'+carList[j]+'</option>');
         $province.change(function(){
             $city.empty().html('<option>城市</option>');
             $dealer.empty().html('<option>经销商</option>');
@@ -112,6 +112,7 @@ var main = {
     },
     playScreen2Ani: function () {
         var $screen2 = $('.screen2');
+        $screen2.find('.bg').fadeIn(700);
         $screen2.find('.title').show().addClass('animated fadeInUp');
         setTimeout(function () {
             $screen2.find('.info').show().addClass('animated fadeInUp');
@@ -184,6 +185,11 @@ var main = {
         }, 2000);
 
         setTimeout(function () {
+            if (main.collectCount >= 4) {
+                handler.find('.btnContinue').hide();
+                handler.find('.btnMyWay').addClass('centerBtn');
+                main.showTipDialog('您的幸福里程已收集完，','点击"下一步"','前往兑换好礼', false);
+            }
             handler.find('.btnFrame2').show().addClass('animated fadeInUp');
         }, 2400);
     },
@@ -202,11 +208,13 @@ var main = {
             main.mainSwiper.unlockSwipeToNext();
             main.convertPosterInfo();
             main.mainSwiper.slideNext();
+        } else {
+            main.showTipDialog('您还未收集幸福里程，','至少要收集一项，','才可参与活动', true);
         }
     },
     playStudy1Ani: function (handle) {
         handle.fadeIn(300);
-        handle.find('.pen').show().addClass('animated bounceInDown');
+        handle.find('.pen').show().addClass('animated fadeInDown');
         setTimeout(function () {
             handle.find('.mist-1').fadeIn(300);
             handle.find('.mist-2').fadeIn(300);
@@ -339,11 +347,31 @@ var main = {
             $poster.find('.familyDate').html(main.familyDate.replace('-', '年') + '月');
         }
 
+        $poster.find('.tipInfo').html(main.getTipInfo());
+    },
+    getTipInfo: function () {
         var mail = getCountMonthsMail();
         if (!mail) {
             mail = 0;
         }
-        $poster.find('.tipInfo').html('我已经收集到' + mail + tipsInfo[main.collectCount - 1]);
+        var info = '我已经收集到' + mail + '公里幸福里程，感谢您的陪伴，';
+        if (main.isCollectStudy) {
+            info += tipsInfo[0];
+        }
+        if (main.isCollectWork) {
+            info += main.isCollectStudy?'、':'';
+            info += tipsInfo[1];
+        }
+        if (main.isCollectCar) {
+            info += (main.isCollectWork ||main.isCollectStudy) ?'、':'';
+            info += tipsInfo[2];
+        }
+        if (main.isCollectFamily) {
+            info += (main.isCollectWork ||main.isCollectStudy || main.isCollectCar)?'、':'';
+            info += tipsInfo[3];
+        }
+        info += '。谢谢你们对我的信赖，未来刚刚开始。';
+        return info;
     },
     // saveDivToPoster: function () {
     //     var $poster = $("#poster");
@@ -435,7 +463,8 @@ var main = {
                     showNextPage();
 
                 } else {
-                    alert(response.message);
+                    // alert(response.message);
+                    main.showTipDialog('','您今日已参与抽奖，','请明日再来', false);
                 }
             },
             error: function(data){
@@ -458,6 +487,19 @@ var main = {
             error:function(e){
                 alert(e.responseJSON.message);
             }
+        });
+    },
+    showTipDialog: function (p1,p2,p3, isGray) {
+        var $tipResultDialog = $('#tipResultDialog');
+        $tipResultDialog.find('.circle').removeClass('circle-gray');
+        $tipResultDialog.find('.p1').html(p1);
+        $tipResultDialog.find('.p2').html(p2);
+        $tipResultDialog.find('.p3').html(p3);
+        if (isGray) {
+            $tipResultDialog.find('.circle').addClass('circle-gray');
+        }
+        $tipResultDialog.fadeIn(300).click(function () {
+            $(this).fadeOut(300);
         });
     }
 };
@@ -539,15 +581,21 @@ function getCountMonthsMail() {
 }
 
 function showActRuleDialog() {
-    $('#actRuleDialog').fadeIn(300).click(function () {
-        $(this).fadeOut(300);
+    var $actRuleDialog = $('#actRuleDialog');
+    $actRuleDialog.fadeIn(300).click(function () {
+        $actRuleDialog.find('.content').removeClass('animated bounceInUp').addClass('animated bounceOutDown');
+        setTimeout(function () {
+            $actRuleDialog.find('.content').removeClass('animated bounceOutDown');
+            $actRuleDialog.hide();
+        }, 700);
     });
+    $actRuleDialog.find('.content').show().addClass('animated bounceInUp');
 }
 
 function showShareTipDialog() {
-    $('#shareTipDialog').fadeIn(300).click(function () {
-        $(this).fadeOut(300);
-    });
+    // $('#shareTipDialog').fadeIn(300).click(function () {
+    //     $(this).fadeOut(300);
+    // });
 }
 
 function showNextPage() {

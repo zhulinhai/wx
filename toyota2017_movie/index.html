@@ -15,7 +15,7 @@
     <meta name="wxm:link" content="http://wx.bjczxda.com/toyota2017_movie/index.html"><!-- http://dwz.cn/6R8Dw4 -->
     <!-- 在 meta 标签中进行基础分享信息设置 End-->
     <title>跨越人生路，感恩幸福礼</title>
-    <link rel="stylesheet" href="css/main.css?v=0.0.5">
+    <link rel="stylesheet" href="css/main.css?v=0.0.6">
     <script type="text/javascript">
 
         /* 判断是否存在code 跳转授权页面 */
@@ -75,7 +75,9 @@
         <img class="shareImg" src="src/8-shareImg.png">
     </div>
     <!-- 活动详情页面 -->
-    <div class="dialog" id="actRuleDialog" style="display: none"></div>
+    <div class="dialog" id="actRuleDialog" style="display: none">
+        <div class="content"></div>
+    </div>
     <!-- 里程收集求学页面 -->
     <div class="dialog" id="studyDialog" style="display: none">
         <div class="slide slide-1">
@@ -109,7 +111,7 @@
                 </div>
                 <div class="btnFrame btnFrame2" style="display: none">
                     <a href="javascript:gotoContinue(0);"><img class="btnLeft btnContinue animated pulse infinite" src="src/4-btn-continue.png" alt=""></a>
-                    <a href="javascript:gotoMyway(0);"><img class="btnRight btnMyWay animated pulse infinite" src="src/3-btn-submit.png" alt=""></a>
+                    <a href="javascript:gotoMyway(0);"><img class="btnRight btnMyWay animated pulse infinite" src="src/3-btn-next.png" alt=""></a>
                 </div>
             </div>
         </div>
@@ -144,7 +146,7 @@
                 </div>
                 <div class="btnFrame btnFrame2" style="display: none">
                     <a href="javascript:gotoContinue(1);"><img class="btnLeft btnContinue animated pulse infinite" src="src/4-btn-continue.png" alt=""></a>
-                    <a href="javascript:gotoMyway(1);"><img class="btnRight btnMyWay animated pulse infinite" src="src/3-btn-submit.png" alt=""></a>
+                    <a href="javascript:gotoMyway(1);"><img class="btnRight btnMyWay animated pulse infinite" src="src/3-btn-next.png" alt=""></a>
                 </div>
             </div>
         </div>
@@ -180,7 +182,7 @@
                 </div>
                 <div class="btnFrame btnFrame2" style="display: none">
                     <a href="javascript:gotoContinue(2);"><img class="btnLeft btnContinue animated pulse infinite" src="src/4-btn-continue.png" alt=""></a>
-                    <a href="javascript:gotoMyway(2);"><img class="btnRight btnMyWay animated pulse infinite" src="src/3-btn-submit.png" alt=""></a>
+                    <a href="javascript:gotoMyway(2);"><img class="btnRight btnMyWay animated pulse infinite" src="src/3-btn-next.png" alt=""></a>
                 </div>
             </div>
         </div>
@@ -216,9 +218,21 @@
                 </div>
                 <div class="btnFrame btnFrame2" style="display: none">
                     <a href="javascript:gotoContinue(3);"><img class="btnLeft btnContinue animated pulse infinite" src="src/4-btn-continue.png" alt=""></a>
-                    <a href="javascript:gotoMyway(3);"><img class="btnRight btnMyWay animated pulse infinite" src="src/3-btn-submit.png" alt=""></a>
+                    <a href="javascript:gotoMyway(3);"><img class="btnRight btnMyWay animated pulse infinite" src="src/3-btn-next.png" alt=""></a>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <!-- 提示框页面 -->
+    <div class="dialog" id="tipResultDialog" style="display: none;">
+        <div class="content">
+            <div class="circle circle-gray">
+                <p class="p1"></p>
+                <p class="p2"></p>
+                <p class="p3"></p>
+            </div>
+            <div class="btn-close"></div>
         </div>
     </div>
 
@@ -239,6 +253,7 @@
                 <img class="boat boatAni" src="src/1-boat.png" alt="" style="display: none">
             </section>
             <section class="swiper-slide screen2">
+                <div class="bg" style="display: none"></div>
                 <div class="topFrame">
                     <p class="title" style="display: none">看看你已经走了多远？</p>
                     <div class="info" style="display: none">
@@ -256,8 +271,8 @@
                 </div>
                 <div class="btnMakeRoad animated pulse infinite" id="btnMakeRoad" style="display: none"></div>
                 <div class="tipFrame" style="display: none">
-                    <p class="animated fadeInUp" style="animation-delay: 0s;">点击生成人数路可参与抽奖，</p>
-                    <p class="animated fadeInUp" style="animation-delay: 0.4s;">生成的人生路越多，中奖的几率越大。</p>
+                    <p class="animated fadeInUp" style="animation-delay: 0s;">点击 “求学、工作、买车、成家” 分别收集幸福里程</p>
+                    <p class="animated fadeInUp" style="animation-delay: 0.4s;">点击提交生成人生路，幸福里程越多中奖几率越大</p>
                 </div>
             </section>
             <section class="swiper-slide screen3">
@@ -308,7 +323,7 @@
                         <p class="tip tip2">填写以下信息还有机会获得<strong>1.5万元旅游大奖</strong></p>
                         <div class="item"><label for="IDCard">身份证号码</label><input id="IDCard" name="IDCard" type="text" value=""></div>
                         <div class="item"><label for="email">邮&nbsp;&nbsp;&nbsp;&nbsp;箱</label><input id="email" name="email" type="text" value=""></div>
-                        <!--<div class="item"><select id="favorCar" name="favorCar"><option selected>意向车型</option></select></div>-->
+                        <div class="item"><select id="favorCar" name="favorCar"><option selected>意向车型</option></select></div>
                         <div class="item2"><div class="divLeft"><select class="s2" id="province" name="province"><option>省份</option></select></div><div class="divRight"><select id="city" class="s3" name="city"><option>城市</option></select></div></div>
                         <div class="item"><select id="dealer" name="dealer"><option>经销商</option></select></div>
                         <div class="btnSubmit" id="btnSubmit"></div>
@@ -319,7 +334,8 @@
             <section class="swiper-slide screen6">
                 <div class="content">
                     <img id="resultImg" alt="" class="resultImg">
-                    <a href="javascript:showShareTipDialog();"><img src="src/7-btn-share.png" alt="" class="btnShare"></a>
+                    <img src="src/7-btn-share-2.png" alt="" class="btnShare">
+                    <p class="tip">点击右上角感谢TA，一起领取幸福好礼。</p>
                 </div>
             </section>
         </div>
@@ -339,7 +355,7 @@
     <script type="text/javascript" src="js/common.js?v=0.0.1"></script>
     <script type="text/javascript" src="js/swiper.min.js"></script>
     <script type="text/javascript" src="js/data.js"></script>
-    <script type="text/javascript" src="js/main.js?v=0.9.10"></script>
+    <script type="text/javascript" src="js/main.js?v=0.9.11"></script>
 
     <!-- 分享页面 -->
     <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
