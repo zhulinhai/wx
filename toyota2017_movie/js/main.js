@@ -485,7 +485,8 @@ var main = {
                 }
             },
             error:function(e){
-                alert(e.responseJSON.message);
+                alert("获取信息失败，可能原因: 授权超时");
+                // alert(e.responseJSON.message);
             }
         });
     },
