@@ -23,7 +23,7 @@ function getSingPackage(){
             var signature = rt.data.signature;
 
             wx.config({
-                debug: true,
+                debug: false,
                 appId: appId,
                 timestamp: timestamp,
                 nonceStr: nonceStr,
