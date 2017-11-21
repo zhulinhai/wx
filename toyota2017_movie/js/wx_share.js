@@ -8,9 +8,15 @@ function getSingPackage(){
         url:'http://api.bobo119.com/api/wx/signature?'+ param,
         dataType: "jsonp",
         jsonp: "callback",
-        success: function(data){
-            data = eval('(data)');
-            runShare(data.appId, data.timestamp, data.nonceStr, data.signature);
+        success: function(rt){
+            if(!rt.success){
+                return alert(rt.message);
+            }
+            var wx_appId = rt.data.appId;
+            var wx_timestamp = rt.data.timestamp;
+            var wx_nonceStr = rt.data.nonceStr;
+            var wx_signature = rt.data.signature;
+            runShare(wx_appId, wx_timestamp, wx_nonceStr, wx_signature);
         },
         error:function(msg){
         }
