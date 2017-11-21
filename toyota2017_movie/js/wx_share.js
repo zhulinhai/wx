@@ -6,8 +6,7 @@ function getSingPackage(){
     $.ajax({
         type:'GET',
         url:'http://api.bobo119.com/api/wx/signature?'+ param,
-        dataType: "jsonp",
-        jsonp: "callback",
+        async:true, //异步请求
         success: function(rt){
             if(!rt.success){
                 return alert(rt.message);
