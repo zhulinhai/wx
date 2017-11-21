@@ -21,18 +21,12 @@
 }
 
 html, body {
-  font-family: "仿宋" !important;
+  font-family: "仿宋";
+  font-size: 20px;
   height: 100%;
   background-color: #fff;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -webkit-overflow-scrolling: touch;
-  -webkit-tap-highlight-color:rgba(0, 0, 0, 0);
-  -webkit-backface-visibility:hidden;
-  -webkit-perspective:1000px;
   overflow: hidden;
+  -webkit-font-smoothing: antialiased;
 }
 
 @mixin center {
@@ -144,6 +138,7 @@ html, body {
     line-height: 1rem;
     font-size: 0.8rem;
     font-weight: bold;
+    font-family: "Microsoft YaHei UI", "微软雅黑", "宋体", sans-serif;
     color: #707070;
     text-align: center;
     margin-top: -0.5rem;
@@ -154,10 +149,16 @@ html, body {
 #actRuleDialog {
   background-color: rgba(0,0,0,0.3);
   .content {
-    width: 100%;
-    height: 100%;
-    background: transparent url("../src/2-popup-3.jpg") no-repeat center;
-    background-size: 80% auto;
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    margin-left: -7.55rem;
+    width: 15.1rem;
+    height: 80%;
+    overflow: scroll;
+    img {
+      width: 100%;
+    }
   }
   z-index: 20;
 }
@@ -191,12 +192,12 @@ html, body {
       background-size: 9rem 9.2rem;
       p {
         line-height: 1.2rem;
-        font-size: 0.7rem;
+        font-size: 0.65rem;
         text-align: center;
         text-indent: 0.5rem;
       }
       .p1 {
-        padding-top: 3rem;
+        padding-top: 2.6rem;
       }
     }
     .circle-gray {
@@ -711,7 +712,7 @@ html, body {
         line-height: 2.65rem;
         font-size: 0.7rem;
         margin-left: 0.5rem;
-        font-family: "microsoft yahei", sans-serif;
+        font-family: "Microsoft YaHei UI", "微软雅黑", "宋体", sans-serif;
       }
       .btnActRule {
         float: right;
@@ -817,10 +818,10 @@ html, body {
       .num {
         width: 100%;
         height: 2.25rem;
-        font-weight: bold;
         line-height: 2.25rem;
         text-align: center;
         padding-top: 2.5rem;
+        font-family: "Microsoft YaHei UI", "微软雅黑", "宋体", sans-serif;
       }
     }
   }
@@ -1098,9 +1099,9 @@ html, body {
   .content {
     position: absolute;
     top: 50%;
-    margin-top: -14rem;
+    margin-top: -13rem;
     width: 100%;
-    height: 28rem;
+    height: 26rem;
     .resultImg {
       display: block;
       margin: 0 auto;
@@ -1114,10 +1115,12 @@ html, body {
       height: 2.45rem;
     }
     .tip {
-      line-height: 1.2rem;
+      line-height: 1rem;
       font-size: 0.6rem;
       text-align: center;
-      margin-top: 0.5rem;
+    }
+    .tip-1 {
+      margin-top: 1rem;
     }
   }
 }

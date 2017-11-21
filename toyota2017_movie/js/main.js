@@ -5,7 +5,7 @@ var tipsInfo = [
     "一路的勤学苦练",
     "同事的帮扶鼓励",
     "从未懈怠的自己",
-    "最亲爱的你携手"
+    "与最亲爱的你携手"
 ];
 var main = {
     mainSwiper: null,
@@ -439,6 +439,20 @@ var main = {
             // return;
         }
 
+        if(!isNullOrEmpty(IDCard)) {
+            if (IDCard.length != 18 && IDCard.length != 15 ) {
+                alert('请输入正确的身份证号码(15或18位)');
+                return;
+            }
+        }
+
+        if(!isNullOrEmpty(email)) {
+            if (!isEmail(email)) {
+                alert('请输入正确的邮箱地址');
+                return;
+            }
+        }
+
         var url = host + 'ftMovie/luckyDraw';
         $.ajax({
             type: "POST",
@@ -464,7 +478,7 @@ var main = {
 
                 } else {
                     // alert(response.message);
-                    main.showTipDialog('','您今日已参与抽奖，','请明日再来', false);
+                    main.showTipDialog('您今日已参与抽奖，', '请明日继续参加，和好友', '一起兑换旅程好礼！', false);
                 }
             },
             error: function(data){
@@ -529,6 +543,14 @@ function gotoSkip(index) {
 function gotoSubmit(index) {
     var handle = handles[index];
     var inputVal = handle.find('input[name="user_date"]').val();
+    var dateNow = new Date();
+    var year = parseInt(inputVal.substr(0, 4));
+    var month = parseInt(inputVal.substr(5, 2));
+    if (year > dateNow.getFullYear() || (year == dateNow.getFullYear() && month > (dateNow.getMonth() + 1))) {
+        alert('请选择正确日期(日期不能大于当前日期)');
+        return;
+    }
+
     if (index === 0) {
         main.studyDate = inputVal;
         main.isCollectStudy = 1;
