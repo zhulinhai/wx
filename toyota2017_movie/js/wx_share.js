@@ -7,7 +7,7 @@ function getSingPackage(){
     var desc = $('meta[name="wxm:appmessage_desc"]').attr("content"); // 分享描述
     var imgUrl = $('meta[name="wxm:img_url"]').attr("content");
 
-    var param = 'url='+encodeURIComponent(link);
+    var param = 'url='+encodeURIComponent(location.href);
     $.ajax({
         type:'GET',
         url:'http://api.bobo119.com/api/wx/signature?'+ param,
