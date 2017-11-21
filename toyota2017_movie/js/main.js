@@ -464,7 +464,7 @@ var main = {
 
                 } else {
                     // alert(response.message);
-                    main.showTipDialog('您今日已参与抽奖，', '请明日继续参加，', '和好友一起兑换旅程好礼！', false);
+                    main.showTipDialog('您今日已参与抽奖，', '请明日继续参加，和好友', '一起兑换旅程好礼！', false);
                 }
             },
             error: function(data){
