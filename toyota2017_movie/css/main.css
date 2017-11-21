@@ -2616,7 +2616,7 @@ html, body {
       background-size: 9rem 9.2rem; }
     #tipResultDialog .content .btn-close {
       display: block;
-      margin: 0.5rem auto;
+      margin: 0.5rem auto 0;
       width: 4rem;
       height: 2rem;
       background: url("../src/btn-close.png") no-repeat center;
@@ -3229,7 +3229,7 @@ html, body {
       .screen5 .content .tip .actRule, .screen5 .content .tip .actRule:hover {
         color: #B7342C;
         text-decoration: underline; }
-      .screen5 .content .tip strong {
+      .screen5 .content .tip strong, .screen5 .content .tip span {
         color: #B7342C; }
     .screen5 .content .tip2 {
       margin-top: 0.3rem; }
