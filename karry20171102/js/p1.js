@@ -804,27 +804,27 @@ p.nominalBounds = new cjs.Rectangle(0,0,394.7,26.8);
 	// 图层 1
 	this.shape = new cjs.Shape();
 	this.shape.graphics.f("#000000").s().p("AhiBUIAbhjIBHAAIgVBPQgFASgRAAIgUABIABgOIARABQAIAAADgJIADgNIgsAAIgJAkgAhIAmIAsAAIAFgRIgsAAgAhBALIAsAAIAFgPIgsAAgAAKBRQgTAAAGgUIAPg7IANAAIgHAcQAbgJAfgPIAFAMQghAOgiAMIgEAOQgDALAJAAIAaAAQAJAAADgIIAIgWIANAEQgFAQgEAHQgHAPgTAAgAAjgEQgVAAAFgUIAPg4IAOAAIgIAdQAbgJAbgOIAFANQgfANggALIgCAJQgDAMAJAAIAWAAQALAAAEgIIAIgWIAMAFIgJAWQgGAPgVAAgAgCgfIhGAGIgCgPQAJgEAMgMQANgMANgPIANAGQgUATgVATIAwgDIgHgRIANgHQAKAVAGASIgOAHIgDgLg");
-	this.shape.setTransform(338,14.1);
+	this.shape.setTransform(351.6,14.1);
 
 	this.shape_1 = new cjs.Shape();
 	this.shape_1.graphics.f("#000000").s().p("AAVBUIACgHIhbAAIgCAHIgNAAIAVhNIB0AAIgUBNgAhBBCIBaAAIAFgTIhaAAgAg5AlIBaAAIAFgTIhaAAgAhbADQAigKAOgTIgkAAIACgLIAnAAIAHgSIgRAAQgKAJgLAIIgGgKQAXgPAMgUIAMADIgKAOIA0AAIgDALIgdAAIgGASIAjAAIgDALIglAAIgCADIAgAUIgKAJQgPgLgPgIQgQARgfALIgFgMgAA9AAIACgJIgpAAIgDAJIgNAAIAThEIBDAAIgSBEgAAZgUIApAAIAKglIgpAAg");
-	this.shape_1.setTransform(320.3,14.2);
+	this.shape_1.setTransform(334,14.2);
 
 	this.shape_2 = new cjs.Shape();
-	this.shape_2.graphics.f("#000000").s().p("AhnBEQAigFAWgLQgLgKgJgQIALgHIgNAAIAShGIA+AAIAEgQIhLAAIADgMICgAAIgCAMIhIAAIgFAQIA7AAIgVBOIgOAAIACgIIgxAAQgJAUgNALQAfAMA/AAIgLAOQhEgCgdgPQgYANgnAIIgFgMgAggAsQALgHAJgSIgrAAQAIAQAPAJgAAFAIIAwAAIAFgSIguAAIgHASgAg1AIIAvAAIAGgSIgwAAgAAPgWIAuAAIAFgSIgtAAIgGASgAgtgWIAvAAIAGgSIgwAAg");
-	this.shape_2.setTransform(301.7,14.7);
+	this.shape_2.graphics.f("#000000").s().p("AhmBEQAhgFAWgLQgMgKgHgQIAKgHIgNAAIAThGIA9AAIAEgQIhKAAIADgMICgAAIgDAMIhIAAIgFAQIA7AAIgWBOIgNAAIACgIIgyAAQgIAUgNALQAfAMA/AAIgLAOQhEgCgdgPQgYANgnAIIgEgMgAggAsQALgHAJgSIgrAAQAHAQAQAJgAAFAIIAwAAIAFgSIgtAAIgIASgAg1AIIAvAAIAGgSIgwAAgAAPgWIAuAAIAFgSIgtAAIgGASgAgtgWIAvAAIAFgSIgvAAg");
+	this.shape_2.setTransform(315.4,14.7);
 
 	this.shape_3 = new cjs.Shape();
-	this.shape_3.graphics.f("#000000").s().p("AhgBPIAEgNIBIAAIAIgdIg5AAIAEgNIA4AAIAIgZIgzAAIAEgMIByAAIgEAMIgyAAIgHAZIA5AAIgDANIg6AAIgHAdIBIAAIgDANgAhPgOQA+gbAkglIATAAIgEAEQATAmAsASIgNAOQgpgWgVglQgkAhg7AcIgGgMg");
-	this.shape_3.setTransform(283.7,14);
+	this.shape_3.graphics.f("#000000").s().p("AhgBPIADgNIBJAAIAIgdIg5AAIADgNIA6AAIAHgZIgzAAIADgMIBzAAIgDAMIgzAAIgHAZIA5AAIgEANIg5AAIgHAdIBIAAIgDANgAhOgOQA8gbAmglIASAAIgEAEQATAmAsASIgNAOQgpgWgWglQgiAhg8AcIgFgMg");
+	this.shape_3.setTransform(297.3,14);
 
 	this.shape_4 = new cjs.Shape();
 	this.shape_4.graphics.f("#000000").s().p("AgFA4QgjAUg0AIIgEgNQAugHAggPIgrgVIAXgaIguAAIAEgLIA2AAIAZggIALAHIgUAZIBnAAIgDALIgmAAQgQAagaATIAwAYIgMANIgzgcgAgnAWIAlASQAYgPAPgXIg6AAIgSAUgABLgYIAFgUIiBAAIgFAUIgOAAIAJghIBOAAIgKgTIANgIQAIAMAFALIgKAEIBIAAIgIAhg");
-	this.shape_4.setTransform(265.7,14.2);
+	this.shape_4.setTransform(279.4,14.2);
 
 	this.shape_5 = new cjs.Shape();
 	this.shape_5.graphics.f("#000000").s().p("AgTAXIAWgsIARAAIgaAsg");
-	this.shape_5.setTransform(252.7,20.5);
+	this.shape_5.setTransform(259.5,20.5);
 
 	this.shape_6 = new cjs.Shape();
 	this.shape_6.graphics.f("#000000").s().p("Ag/BJQAdgJANgQQALgNAJgfIgHAAIgPACIgCgMQAHgDAGgFQARgQAQgRIglAAIADgMIA3AAIgIgSIAOgHIAKATIgKAGIA2AAIgDAMIhIAAIAJADQgUAUgSAPIA9gBQgEgLgEgIIAOgIQAJAUAJAXIgPAIIgFgOIgQAAIgQA6QgDALAIAAIAJAAQAIAAAEgJIAIgWIAMAFIgJAXQgHAOgPAAIgQAAQgSAAAFgUIAPg7IgUACQgLAkgMAPQgPATgfAMIgGgMgAhlA3IBAgMIgEAMIg7AOgAhXAXQAOgMAVgXIgbACIAAgMQAVgTAcgpIANAFQgbAhgTAVIAVAAIARgUIALAFQgdAjgZAXIAlgFIgFAMIg0AHg");
@@ -889,7 +889,7 @@ p.nominalBounds = new cjs.Rectangle(0,0,394.7,26.8);
 	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.shape_20},{t:this.shape_19},{t:this.shape_18},{t:this.shape_17},{t:this.shape_16},{t:this.shape_15},{t:this.shape_14},{t:this.shape_13},{t:this.shape_12},{t:this.shape_11},{t:this.shape_10},{t:this.shape_9},{t:this.shape_8},{t:this.shape_7},{t:this.shape_6},{t:this.shape_5},{t:this.shape_4},{t:this.shape_3},{t:this.shape_2},{t:this.shape_1},{t:this.shape}]}).wait(1));
 
 }).prototype = p = new cjs.MovieClip();
-p.nominalBounds = new cjs.Rectangle(0,0,353,26.8);
+p.nominalBounds = new cjs.Rectangle(0,0,366.7,26.8);
 
 
 (lib.ggdfvvb = function(mode,startPosition,loop) {
