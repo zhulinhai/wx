@@ -439,6 +439,20 @@ var main = {
             // return;
         }
 
+        if(!isNullOrEmpty(IDCard)) {
+            if (IDCard.length != 18 || IDCard.length != 15 ) {
+                alert('请输入正确的身份证号码(15或18位)');
+                return;
+            }
+        }
+
+        if(!isNullOrEmpty(email)) {
+            if (!isEmail(email)) {
+                alert('请输入正确的邮箱地址');
+                return;
+            }
+        }
+
         var url = host + 'ftMovie/luckyDraw';
         $.ajax({
             type: "POST",
