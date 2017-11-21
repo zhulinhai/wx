@@ -2,10 +2,10 @@
  * 分享  by getSingPackage
  */
 function getSingPackage(){
-    var title =$('meta[name="wxm:timeline_title"]'); // 分享标题
-    var link =$('meta[name="wxm:link"]');
-    var desc = $('meta[name="wxm:appmessage_desc"]'); // 分享描述
-    var imgUrl = $('meta[name="wxm:img_url"]');
+    var title =$('meta[name="wxm:timeline_title"]').attr("content"); // 分享标题
+    var link =$('meta[name="wxm:link"]').attr("content");
+    var desc = $('meta[name="wxm:appmessage_desc"]').attr("content"); // 分享描述
+    var imgUrl = $('meta[name="wxm:img_url"]').attr("content");
 
     var param = 'url='+encodeURIComponent(link);
     $.ajax({
