@@ -15,7 +15,7 @@
     <meta name="wxm:link" content="http://wx.bjczxda.com/toyota2017_movie/index.html"><!-- http://dwz.cn/6R8Dw4 -->
     <!-- 在 meta 标签中进行基础分享信息设置 End-->
     <title>跨越人生路，感恩幸福礼</title>
-    <link rel="stylesheet" href="css/main.css?v=0.0.8">
+    <link rel="stylesheet" href="css/main.css?v=0.0.9">
     <script type="text/javascript">
 
         /* 判断是否存在code 跳转授权页面 */
@@ -37,20 +37,6 @@
             win.addEventListener(resizeEvt, recalc, false);
             doc.addEventListener('DOMContentLoaded', recalc, false);
         })(document, window);
-        (function () {
-            /*
-             * 禁止浏览器触摸事件
-             * */
-            document.addEventListener('touchmove', function(event){
-                // 判断默认行为是否可以被禁用
-                if (event.cancelable) {
-                    // 判断默认行为是否已经被禁用
-                    if (!event.defaultPrevented) {
-                        event.preventDefault();
-                    }
-                }
-            }, false);
-        })();
     </script>
     <!-- 百度统计 -->
     <script>
@@ -76,7 +62,9 @@
     </div>
     <!-- 活动详情页面 -->
     <div class="dialog" id="actRuleDialog" style="display: none">
-        <div class="content"></div>
+        <div class="content">
+            <img src="src/2-popup-4.jpg">
+        </div>
     </div>
     <!-- 里程收集求学页面 -->
     <div class="dialog" id="studyDialog" style="display: none">
@@ -228,9 +216,9 @@
     <div class="dialog" id="tipResultDialog" style="display: none;">
         <div class="content">
             <div class="circle circle-gray">
-                <p class="p1"></p>
-                <p class="p2"></p>
-                <p class="p3"></p>
+                <p class="p1">您今日已参与抽奖，</p>
+                <p class="p2">请明日继续参加，</p>
+                <p class="p3">和好友一起兑换旅程好礼！</p>
             </div>
             <div class="btn-close"></div>
         </div>
@@ -335,8 +323,8 @@
             <section class="swiper-slide screen6">
                 <div class="content">
                     <img id="resultImg" alt="" class="resultImg">
-                    <img src="src/7-btn-share-2.png" alt="" class="btnShare">
-                    <p class="tip">点击右上角感谢TA，一起领取幸福好礼。</p>
+                    <p class="tip tip-1">点击右上角，感恩旅途上中的TA们，</p>
+                    <p class="tip">一起领取幸福好礼!</p>
                 </div>
             </section>
         </div>
@@ -351,16 +339,16 @@
 
     <script type="text/javascript" src="js/pace.min.js"></script>
     <script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
-    <script type="text/javascript" src="js/loading.js?v=0.9.5"></script>
+    <script type="text/javascript" src="js/common.js?v=0.0.3"></script>
+    <script type="text/javascript" src="js/loading.js?v=0.9.8"></script>
     <script type="text/javascript" src="js/Tween.min.js"></script>
-    <script type="text/javascript" src="js/common.js?v=0.0.1"></script>
     <script type="text/javascript" src="js/swiper.min.js"></script>
     <script type="text/javascript" src="js/data.js"></script>
-    <script type="text/javascript" src="js/main.js?v=0.9.11"></script>
+    <script type="text/javascript" src="js/main.js?v=0.9.13"></script>
 
     <!-- 分享页面 -->
     <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
-    <script type="text/javascript" src="js/wx_share.js?v=0.0.5"></script>
+    <script type="text/javascript" src="js/wx_share.js?v=0.0.6"></script>
 
 </body>
 </html>

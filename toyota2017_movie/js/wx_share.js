@@ -1,1 +1,101 @@
-!function(e){var t="url="+encodeURIComponent(location.href);e.ajax({type:"GET",url:"http://api.bobo119.com/api/wx/signature?"+t,async:!0,success:function(e){if(!e.success)return alert(e.message);var t=document.querySelector('meta[name="wxm:timeline_title"]').getAttribute("content"),n=document.querySelector('meta[name="wxm:link"]').getAttribute("content"),a=document.querySelector('meta[name="wxm:appmessage_desc"]').getAttribute("content"),c=document.querySelector('meta[name="wxm:img_url"]').getAttribute("content"),r=e.data.appId,i=e.data.timestamp,o=e.data.nonceStr,u=e.data.signature;wx.config({debug:!1,appId:r,timestamp:i,nonceStr:o,signature:u,jsApiList:["onMenuShareTimeline","onMenuShareAppMessage","onMenuShareQQ","onMenuShareWeibo"]}),wx.ready(function(){wx.onMenuShareTimeline({title:t,link:n,desc:a,imgUrl:c,success:function(){},cancel:function(){}}),wx.onMenuShareAppMessage({title:t,desc:a,link:n,imgUrl:c,type:"",dataUrl:"",success:function(){},cancel:function(){}}),wx.onMenuShareQQ({title:t,desc:a,link:n,imgUrl:c,success:function(){},cancel:function(){}}),wx.onMenuShareWeibo({title:t,desc:a,link:n,imgUrl:c,success:function(){},cancel:function(){}})})},error:function(e){var t=e.responseJSON;t?alert(t.message):alert("WeChat share request: Server Error!")}})}(jQuery);
+/**
+ * 分享  by getSingPackage
+ */
+function getSingPackage(){
+    var param = 'url='+encodeURIComponent(location.href);
+    $.ajax({
+        type:'GET',
+        url:'http://api.bobo119.com/api/wx/signature?'+ param,
+        async:true, //异步请求
+        dataType: "jsonp",
+        jsonp: "callback",
+        success: function(data){
+            data = eval('(data)');
+            runShare(data.appId, data.timestamp, data.nonceStr, data.signature);
+        },
+        error:function(msg){
+        }
+    });
+}
+
+function runShare(appId, timeStamp, nonceStr, signature){
+
+    var title =$('meta[name="wxm:timeline_title"]'); // 分享标题
+    var link =$('meta[name="wxm:link"]');
+    var desc = $('meta[name="wxm:appmessage_desc"]'); // 分享描述
+    var imgUrl = $('meta[name="wxm:img_url"]');
+
+    wx.config({
+        debug: false,
+        appId: appId,
+        timestamp: timeStamp,
+        nonceStr: nonceStr,
+        signature: signature,
+        jsApiList: [
+            'onMenuShareTimeline',
+            'onMenuShareAppMessage',
+            'onMenuShareQQ',
+            'onMenuShareWeibo'
+            // 所有要调用的 API 都要加到这个列表中
+        ]
+    });
+    wx.ready(function () {
+        //alert($('#shareWeixinImg').attr('src'));
+        // 在这里调用 API
+
+        wx.onMenuShareTimeline({
+            title:title, // 分享标题
+            link: link, // 分享链接
+            desc: desc, // 分享描述
+            imgUrl:imgUrl, // 分享图标
+            success: function () {
+                // 用户确认分享后执行的回调函数
+            },
+            cancel: function () {
+                // 用户取消分享后执行的回调函数
+            }
+        });
+
+        wx.onMenuShareAppMessage({
+            title: title, // 分享标题
+            desc: desc, // 分享描述
+            link: link, // 分享链接
+            imgUrl: imgUrl, // 分享图标
+            type: '', // 分享类型,music、video或link，不填默认为link
+            dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+            success: function () {
+                // 用户确认分享后执行的回调函数
+            },
+            cancel: function () {
+                // 用户取消分享后执行的回调函数
+            }
+        });
+
+        wx.onMenuShareQQ({
+            title: title, // 分享标题
+            desc: desc, // 分享描述
+            link: link, // 分享链接
+            imgUrl: imgUrl, // 分享图标
+            success: function () {
+                // 用户确认分享后执行的回调函数
+            },
+            cancel: function () {
+                // 用户取消分享后执行的回调函数
+            }
+        });
+
+        wx.onMenuShareWeibo({
+            title: title, // 分享标题
+            desc: desc, // 分享描述
+            link: link, // 分享链接
+            imgUrl: imgUrl, // 分享图标
+            success: function () {
+                // 用户确认分享后执行的回调函数
+            },
+            cancel: function () {
+                // 用户取消分享后执行的回调函数
+            }
+        });
+
+    });
+}

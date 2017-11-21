@@ -5,7 +5,7 @@ var tipsInfo = [
     "一路的勤学苦练",
     "同事的帮扶鼓励",
     "从未懈怠的自己",
-    "最亲爱的你携手"
+    "与最亲爱的你携手"
 ];
 var main = {
     mainSwiper: null,
@@ -464,7 +464,7 @@ var main = {
 
                 } else {
                     // alert(response.message);
-                    main.showTipDialog('','您今日已参与抽奖，','请明日再来', false);
+                    main.showTipDialog('您今日已参与抽奖，', '请明日继续参加，', '和好友一起兑换旅程好礼！', false);
                 }
             },
             error: function(data){
