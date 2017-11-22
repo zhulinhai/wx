@@ -496,8 +496,10 @@ var main = {
             success:function(json){
                 if(json.success){
                     var data = json.data;
+                    console.log(data);
                     $('.userName').html(data.nickname);
-                    $('.headImg').attr('src', 'http://wx.bjczxda.com/' + data.headimglocal);
+                    $('.headImg').attr('src', data.headimgurl);
+                    // $('.headImg').attr('src', 'http://wx.bjczxda.com/' + data.headimglocal);
                     callBack&&callBack();
                 }
             },
