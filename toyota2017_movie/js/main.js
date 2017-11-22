@@ -34,10 +34,6 @@ var main = {
             loop: false,
             followFinger: false,
             onSlideChangeEnd: function (swiper) {
-                if (swiper.activeIndex === 0) {
-                    main.mainSwiper.unlockSwipeToNext();
-                }
-
                 if (swiper.activeIndex === 1) {
                     if (!main.isScreen2Animated) {
                         main.playScreen2Ani();
@@ -54,9 +50,9 @@ var main = {
                     $('.screen4').find('.btn-exchange').removeClass('animated fadeInUp').hide();
                 }
 
-                if (swiper.activeIndex === 4) {
-                    $('.screen4').find('.boat').show();
-                }
+                // if (swiper.activeIndex === 4) {
+                //     $('.screen5').find('.boat').show();
+                // }
 
             }
         });
@@ -146,9 +142,6 @@ var main = {
         var tween = new TWEEN.Tween(position).to({num: num}, 1000);
         tween.onUpdate(function(){
             $('.num').html(parseInt(this.num));
-        });
-        tween.onComplete(function () {
-            main.mainSwiper.unlockSwipeToNext();
         });
         tween.start();
         main.isScreen3Animated = true;
