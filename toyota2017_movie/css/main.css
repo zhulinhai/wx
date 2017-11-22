@@ -3275,11 +3275,14 @@ html, body {
         color: #38424E; }
         .screen5 .content .item label span {
           color: #B7342C; }
-      .screen5 .content .item select {
+      .screen5 .content .item .box {
         width: 11.3rem;
-        text-indent: 0.8rem;
+        height: 2rem;
         background: url("../src/3-selection-arrow.png") no-repeat 10.3rem center;
         background-size: 0.4rem 0.2rem; }
+      .screen5 .content .item select {
+        width: 10.1rem;
+        text-indent: 0.8rem; }
       .screen5 .content .item #btnGetCode {
         float: right;
         width: 4.6rem;
@@ -3301,11 +3304,14 @@ html, body {
         height: 2rem;
         background: transparent url("../src/7-form2.png") no-repeat;
         background-size: 5.375rem 2rem; }
-        .screen5 .content .item2 .divLeft select, .screen5 .content .item2 .divRight select {
+        .screen5 .content .item2 .divLeft .box, .screen5 .content .item2 .divRight .box {
           width: 5.375rem;
-          text-indent: 0.8rem;
+          height: 2rem;
           background: url("../src/3-selection-arrow.png") no-repeat 4.4rem center;
           background-size: 0.4rem 0.2rem; }
+        .screen5 .content .item2 .divLeft select, .screen5 .content .item2 .divRight select {
+          width: 4.2rem;
+          text-indent: 0.8rem; }
       .screen5 .content .item2 .divRight {
         float: right; }
     .screen5 .content #btnSubmit {

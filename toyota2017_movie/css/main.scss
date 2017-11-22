@@ -1039,11 +1039,15 @@ html, body {
           color: #B7342C;
         }
       }
-      select {
+      .box {
         width: 11.3rem;
-        text-indent: 0.8rem;
+        height: 2rem;
         background: url("../src/3-selection-arrow.png") no-repeat 10.3rem center;
         background-size: 0.4rem 0.2rem;
+      }
+      select {
+        width: 10.1rem;
+        text-indent: 0.8rem;
       }
       #btnGetCode {
         float: right;
@@ -1066,11 +1070,15 @@ html, body {
         height: 2rem;
         background: transparent url("../src/7-form2.png") no-repeat;
         background-size: 5.375rem 2rem;
-        select {
+        .box {
           width: 5.375rem;
-          text-indent: 0.8rem;
+          height: 2rem;
           background: url("../src/3-selection-arrow.png") no-repeat 4.4rem center;
           background-size: 0.4rem 0.2rem;
+        }
+        select {
+          width: 4.2rem;
+          text-indent: 0.8rem;
         }
       }
 
