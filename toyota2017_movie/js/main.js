@@ -60,6 +60,7 @@ var main = {
 
             }
         });
+        this.mainSwiper.lockSwipeToNext();
         $('.swiper-slide').width($(document.body).width()).height($(document.body).height());
     },
     bindUserInfo: function () {
@@ -194,9 +195,7 @@ var main = {
         }, 2400);
     },
     bindClicks: function () {
-        $('#btnDetail').click(function () {
-            main.mainSwiper.slideNext();
-        });
+        $('#btnDetail').click(showNextPage);
         $('#btnSubmit').click(function () {
             main.submitInfo();
         });
@@ -351,9 +350,13 @@ var main = {
     },
     getTipInfo: function () {
         var mail = getCountMonthsMail();
-        if (!mail) {
+        if (!mail || mail < 0) {
             mail = 0;
         }
+        if (main.collectCount >= 4) {
+            return '我已经收集到' + mail +'公里幸福里程，感谢家人、同事、同学一直以来的陪伴，只愿您们身体健康，谢谢你们对我的信赖，未来刚刚开始。'
+        }
+
         var info = '我已经收集到' + mail + '公里幸福里程，感谢您的陪伴，';
         if (main.isCollectStudy) {
             info += tipsInfo[0];
@@ -493,8 +496,10 @@ var main = {
             success:function(json){
                 if(json.success){
                     var data = json.data;
+                    console.log(data);
                     $('.userName').html(data.nickname);
-                    $('.headImg').attr('src', 'http://wx.bjczxda.com/' + data.headimglocal);
+                    $('.headImg').attr('src', data.headimgurl);
+                    // $('.headImg').attr('src', 'http://wx.bjczxda.com/' + data.headimglocal);
                     callBack&&callBack();
                 }
             },
@@ -547,7 +552,7 @@ function gotoSubmit(index) {
     var year = parseInt(inputVal.substr(0, 4));
     var month = parseInt(inputVal.substr(5, 2));
     if (year > dateNow.getFullYear() || (year == dateNow.getFullYear() && month > (dateNow.getMonth() + 1))) {
-        alert('请选择正确日期(日期不能大于当前日期)');
+        main.showTipDialog('穿越时空只有电视才','有哦，请选择正确时间','(日期不能大于现在)', true);
         return;
     }
 
