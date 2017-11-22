@@ -14,8 +14,6 @@ function init() {
 	loader.addEventListener("fileload", handleFileLoad);
 	loader.addEventListener("complete", handleComplete);
 	loader.loadManifest([p1.properties.manifest[0],p2.properties.manifest[0]]);
-
-	zhuge.track('访问首页');
 	initPage();
 
 }
@@ -183,7 +181,6 @@ function handleJumpBtn(){
 	$('#pano').show();
 	isGame = true;
 	krpano = document.getElementById("krpanoSWFObject");
-	zhuge.track('全景页');
 	setTimeout(function(){ 
 		krpano.call("set(plugin[skin_gyro].enabled,true)");
 		$('.btn_openbox').show();
@@ -202,7 +199,6 @@ function handleOpenBox(){
 		$('._pop').show();
 		$('.pop').removeClass('animated bounceOutDown');
 		$('.pop').addClass('animated bounceInUp');
-		zhuge.track('留资页');
 	}
 }
 
