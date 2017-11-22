@@ -170,6 +170,9 @@ $(function () {
                         setTimeout(function () {
                             $('.s-item3 .p-2').show().addClass('animated fadeInUp');
                         }, 600);
+                        setTimeout(function () {
+                            $('.s-item3 .p-3').show().addClass('animated fadeInUp');
+                        }, 900);
                     }, 500);
                 }, 2000);
                 setTimeout(function () {

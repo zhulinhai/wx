@@ -2945,6 +2945,9 @@ html, body {
           line-height: 0.8rem;
           margin-right: 0.5rem;
           font-style: italic; }
+        .screen3 .content .item .titleDiv .p-3 {
+          color: #757273;
+          font-size: 0.5rem; }
       .screen3 .content .item .giftBox2 {
         margin-left: -0.5rem; }
         .screen3 .content .item .giftBox2 .box {
@@ -2974,10 +2977,10 @@ html, body {
     background-size: 6.6rem 1.9rem; }
   .screen3 .girl {
     position: absolute;
-    right: 0.8rem;
+    right: 0;
     bottom: 0;
-    width: 4.9rem;
-    height: 6.5rem;
+    width: 4.6rem;
+    height: auto;
     pointer-events: none;
     z-index: 2; }
 
@@ -3070,7 +3073,7 @@ html, body {
         height: 2rem;
         line-height: 2rem;
         color: #38424E;
-        font-size: 0.7rem;
+        font-size: 0.8rem;
         background-color: transparent;
         text-indent: 0.2rem;
         vertical-align: top; }
