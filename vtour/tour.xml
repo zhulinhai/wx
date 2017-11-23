@@ -76,23 +76,16 @@
 
 
 	
-	<scene name="scene_19" title="19" onstart="" havevrimage="true" thumburl="panos/19.tiles/thumb.jpg" lat="" lng="" heading="">
+	<scene name="scene_01" title="01" onstart="" thumburl="panos/01.tiles/thumb.jpg" lat="" lng="" heading="">
 
 		<view hlookat="0" vlookat="0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
 
-		<preview url="panos/19.tiles/preview.jpg" />
+		<preview url="panos/01.tiles/preview.jpg" />
 
-		<image type="CUBE" multires="true" tilesize="512" if="!webvr.isenabled">
-			<level tiledimagewidth="1280" tiledimageheight="1280">
-				<cube url="panos/19.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
-			</level>
-			<level tiledimagewidth="640" tiledimageheight="640">
-				<cube url="panos/19.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
-			</level>
-		</image>
+		<image>
+			<cube url="panos/01.tiles/pano_%s.jpg" />
 
-		<image if="webvr.isenabled">
-			<cube url="panos/19.tiles/vr/pano_%s.jpg" />
+			<cube url="panos/01.tiles/mobile/pano_%s.jpg" devices="mobile" />
 		</image>
 
 		<!-- place your scene hotspots here -->
