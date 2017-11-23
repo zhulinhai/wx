@@ -20,6 +20,7 @@ var main = {
     carDate: null,
     familyDate: null,
     collectCount: 0,
+    isRequested: false,
     isScreen2Animated: false,
     isScreen3Animated: false,
     isScreen4Animated: false,
@@ -397,6 +398,9 @@ var main = {
     //     });
     // },
     submitInfo: function () {
+        if (main.isRequested) {
+            return;
+        }
         var name, mobile, car, province,city, dealer, IDCard, email;
         name=trim($("input[name='name']").val());
         mobile=trim($("input[name='mobile']").val());
@@ -449,6 +453,7 @@ var main = {
             }
         }
 
+        main.isRequested = true;
         var url = host + 'ftMovie/luckyDraw';
         $.ajax({
             type: "POST",
@@ -466,10 +471,11 @@ var main = {
             },
             dataType: "json",
             success: function(data){
+                main.isRequested = false;
                 var response = eval('(data)');
                 if (response.success) {
                     var prize = parseInt(response.data.prize);
-                    $('#resultImg').attr('src', prize?'src/7-result-10.png':'src/7-result-none.png');
+                    $('#resultImg').attr('src', prize?'src/7-result-10yuan.png':'src/7-result-none.png');
                     showNextPage();
 
                 } else {
@@ -478,6 +484,7 @@ var main = {
                 }
             },
             error: function(data){
+                main.isRequested = false;
                 alert("加载超时,请检查网络连接");
             }
         });
