@@ -458,6 +458,10 @@ html, body {
           margin-right: 0.5rem;
           font-style: italic;
         }
+        .p-3 {
+          color: #757273;
+          font-size: 0.5rem;
+        }
       }
       .giftBox2 {
         margin-left: -0.5rem;
@@ -499,10 +503,10 @@ html, body {
   }
   .girl {
     position: absolute;
-    right: 0.8rem;
+    right: 0;
     bottom: 0;
-    width: 4.9rem;
-    height: 6.5rem;
+    width: 4.6rem;
+    height: auto;
     pointer-events: none;
     z-index: 2;
   }
