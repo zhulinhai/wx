@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<!--
+	NOTES:
+
+	1. All tokens are represented by '$' sign in the template.
+	2. You can write your code only wherever mentioned.
+	3. All occurrences of existing tokens will be replaced by their appropriate values.
+	4. Blank lines will be removed automatically.
+	5. Remove unnecessary comments before creating your template.
+-->
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" id="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1,user-scalable=no"/>
+<title>开瑞K50S&K60全新上市</title>
+<link rel="stylesheet" type="text/css" href="css/main.css"/>
+<link rel="stylesheet" type="text/css" href="../public/css/animate.css"/>
+<!-- write your code here -->
+<script src="https://code.createjs.com/createjs-2015.11.26.min.js"></script>
+<script type="text/javascript" src="../public/scripts/jquery-1.12.1.min.js"></script>
+<script type="text/javascript" src="../public/scripts/utils/validateUtil.js"></script>
+<script type="text/javascript" src="js/viewport.js"></script>
+<script type="text/javascript" src="js/p1.js"></script>
+<script type="text/javascript" src="js/p2.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript" src="360/tour.js"></script>
+<!-- write your code here -->
+</head>
+<body onload="init();" ontouchmove="event.preventDefault();">
+<audio id="audio" autoplay="autoplay" src="sound/bgm1.mp3"  type="audio/mpeg" loop="loop"></audio>
+<div id="hint">
+	<p style="position:absolute; font-size: 2em; top:58%; text-align: center; width: 100%; font-weight: bold;">切换手机横屏模式</p>
+</div>
+<canvas id="canvas" width="1334" height="646" style="position: absolute; left:0; top:0; z-index:100;display: block; background-color:rgba(255, 255, 255, 0.00);">
+</canvas>
+<div id="pano" style="position: absolute;left: 0;top:0;display: none;z-index:1;width:100%;height:100%;">
+	<noscript><table style="width:100%;height:100%;"><tr style="vertical-align:middle;"><td><div style="text-align:center;">ERROR:<br/><br/>Javascript not activated<br/><br/></div></td></tr></table></noscript>
+	<script>
+		embedpano({swf:"360/tour.swf", xml:"360/tour.xml", target:"pano", html5:"auto", mobilescale:1.0, passQueryParameters:true});
+	</script>
+</div>
+<div class="_pop" style="display: none;">
+	<div class="pop">
+		<p class="pop_title"><span class="red">预约</span><span class="normal">试驾</span></p>
+		<p class="pop_title_a"><span>REGISTRATION DRIVE</span></p>
+		<a href="javascript:void(0);" class="btn_close"><img src="images/icon_close.png" alt="closed pop"></a>
+		<div class="form">
+			<div class="form_body">
+				<form>
+					<div class="info">
+						<div class="f_row">
+							<div><p class="icon_name"></p><input type="text" name="name" id="name" placeholder="姓名"></div>
+							<div><p class="icon_mobile"></p><input type="text" id="mobile" name="mobile" placeholder="手机号码"></div>
+							<div><p class="icon_car"></p><select name="client_ip" id="car_type">
+								<option>车型</option>
+								<option value="K50">K50</option>
+								<option value="K60">K60</option>
+							</select></div>
+						</div>
+						<div class="f_row">
+							<div><p class="icon_province"></p><select name="province" id="province"></select></div>
+							<div><p class="icon_city"></p><select name="city" id="city"><option value="城市">城市</option></select></div>
+							<div><p class="icon_dealer"></p><select name="dealer" id="dealer"><option value="经销商">经销商</option></select></div>
+						</div>
+					</div>
+				</form>
+				<a href="javascript:void(0);" class="submit">
+					<p>提交</p>
+					<p>信息</p>
+				</a>
+			</div>
+			<div class="allow"><a href="javascript:void(0);"><img src="images/icon_allow.png"/></a><span>允许经销商联系试驾事宜。</span></div>
+		</div>
+	</div>
+</div>
+<a href="javascript:void(0);" class="btn_music" style="display: none;">
+	<img src="images/icon_music.png"/>
+</a>
+<!-- <a href="javascript:void(0);" class="btn_jump" style="position: absolute;display: block;bottom:.2rem;left:.3rem;width: 2rem;height: 1rem;background-color: transparent;z-index:150;display: none;"></a> -->
+<a href="javascript:void(0);" class="btn_openbox" style="position: absolute;display: block;bottom:.3rem;left:.9rem;width: 2.5rem;height: 1.5rem;background-color: transparent;z-index:150;display: none;"></a>
+</body>
+<!-- 微信分享api -->
+<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript" src="js/wx_share.js"></script>
+</html>

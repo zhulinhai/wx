@@ -1,0 +1,248 @@
+/*
+*1.5times
+*/
+* {
+  margin: 0;
+  padding: 0; }
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden; }
+
+body {
+  font-family: "Microsoft Yahei", "Helvetica Neue", Helvetica, Tahoma, sans-serif;
+  font-size: 0.32rem; }
+
+a {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  text-decoration: none;
+  vertical-align: baseline;
+  background: transparent; }
+
+a:link, a:visited, a:hover, a:active {
+  text-decoration: none;
+  outline: none; }
+
+input, select, textarea {
+  border: none;
+  border-radius: 0;
+  -webkit-appearance: none;
+  box-sizing: border-box;
+  vertical-align: middle; }
+
+#hint {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  z-index: 1000;
+  background-image: url("../images/hint.jpg");
+  background-position: left top;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  overflow: hidden; }
+
+.btn_music {
+  position: absolute;
+  display: block;
+  z-index: 200;
+  width: 0.89333rem;
+  height: 0.89333rem;
+  top: .4rem;
+  right: .5rem; }
+  .btn_music img {
+    width: 100%; }
+
+._pop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 200;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.6); }
+
+.pop {
+  position: relative;
+  margin: 0.21333rem auto 0 auto;
+  width: 15.2rem;
+  height: 7.84rem;
+  background: url(../images/bg_form.jpg) left top no-repeat;
+  background-size: 100% 100%;
+  overflow: hidden; }
+  .pop .pop_title {
+    position: absolute;
+    width: auto;
+    height: auto;
+    top: 0.34667rem;
+    left: 3.6rem; }
+    .pop .pop_title span {
+      font-size: 0.50667rem;
+      font-weight: bold;
+      letter-spacing: 2px; }
+    .pop .pop_title .red {
+      color: #d50c12; }
+    .pop .pop_title .normal {
+      color: #ffffff; }
+  .pop .pop_title_a {
+    position: absolute;
+    width: auto;
+    height: auto;
+    top: 1.06667rem;
+    left: 3.6rem; }
+    .pop .pop_title_a span {
+      color: #484848;
+      font-size: 0.18667rem;
+      font-style: italic; }
+  .pop .btn_close {
+    position: absolute;
+    display: block;
+    width: 0.62667rem;
+    top: 0.21333rem;
+    right: 0.32rem; }
+    .pop .btn_close img {
+      width: 100%; }
+
+.form {
+  margin: 1.89333rem auto 0 auto;
+  width: 14.13333rem;
+  overflow: hidden; }
+  .form .form_body {
+    width: 100%;
+    overflow: hidden; }
+    .form .form_body .info {
+      float: left;
+      width: 12.13333rem;
+      overflow: hidden; }
+      .form .form_body .info .f_row {
+        width: 100%;
+        height: 0.66667rem; }
+        .form .form_body .info .f_row div {
+          float: left;
+          width: 3.73333rem;
+          height: 100%;
+          margin-right: 0.26667rem;
+          overflow: hidden; }
+          .form .form_body .info .f_row div p {
+            width: 0.66667rem;
+            height: 0.66667rem;
+            float: left;
+            background-color: #f5f5f5; }
+          .form .form_body .info .f_row div input, .form .form_body .info .f_row div select {
+            float: left;
+            height: 100%;
+            background-color: #ffffff;
+            line-height: 0.66667rem;
+            width: 3rem;
+            text-indent: 12px;
+            font-size: 0.32rem;
+            color: #636363; }
+          .form .form_body .info .f_row div input::-webkit-input-placeholder {
+            color: #636363; }
+          .form .form_body .info .f_row div select {
+            background-image: url(../images/icon_dropdown.png);
+            background-position: 95% center;
+            background-repeat: no-repeat;
+            background-size: 0.17333rem 0.09333rem;
+            padding-right: 18px; }
+          .form .form_body .info .f_row div:after {
+            content: ".";
+            display: block;
+            height: 0;
+            clear: both;
+            visibility: hidden; }
+        .form .form_body .info .f_row div:last-child {
+          margin-right: 0; }
+        .form .form_body .info .f_row:after {
+          content: ".";
+          display: block;
+          height: 0;
+          clear: both;
+          visibility: hidden; }
+      .form .form_body .info .f_row:last-child {
+        margin-top: 0.26667rem; }
+    .form .form_body .submit {
+      display: block;
+      width: 1.62667rem;
+      height: 1.62667rem;
+      float: right;
+      background-color: #d50c12;
+      font-size: 0.48rem;
+      font-weight: 600;
+      color: #ffffff; }
+      .form .form_body .submit p:first-child {
+        margin-top: 0.34667rem; }
+      .form .form_body .submit p {
+        text-align: center;
+        height: auto;
+        line-height: 100%; }
+    .form .form_body:after {
+      content: ".";
+      display: block;
+      height: 0;
+      clear: both;
+      visibility: hidden; }
+  .form .allow {
+    width: auto;
+    height: auto;
+    margin-top: 0.34667rem;
+    overflow: hidden; }
+    .form .allow a {
+      float: left;
+      display: block;
+      width: 0.26667rem; }
+      .form .allow a img {
+        width: 100%; }
+    .form .allow span {
+      float: left;
+      margin-left: 0.16rem;
+      font-size: .26rem;
+      color: #535353; }
+    .form .allow:after {
+      content: ".";
+      display: block;
+      height: 0;
+      clear: both;
+      visibility: hidden; }
+
+.icon_name {
+  background-image: url("../images/icon_name.png");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 0.30667rem 0.32rem; }
+
+.icon_mobile {
+  background-image: url("../images/icon_mobile.png");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 0.2rem 0.37333rem; }
+
+.icon_car {
+  background-image: url("../images/icon_car.png");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 0.42667rem 0.17333rem; }
+
+.icon_province {
+  background-image: url("../images/icon_province.png");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 0.25333rem 0.32rem; }
+
+.icon_city {
+  background-image: url("../images/icon_city.png");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 0.34667rem 0.30667rem; }
+
+.icon_dealer {
+  background-image: url("../images/icon_dealer.png");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 0.34667rem 0.28rem; }
