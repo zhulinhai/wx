@@ -19,7 +19,7 @@
 
             var title ='开瑞K50S&K60全新上市'; // 分享标题
             var link ='http://wx.bjczxda.com/karry20171124/index.html';
-            var desc = '开瑞K50S&K60全新上市'; // 分享描述
+            var desc = '2018款开瑞K50S&K60全新上市，配置升级，幸福来袭。5万元起坐享全景天窗。'; // 分享描述
             var imgUrl = 'http://wx.bjczxda.com/karry20171124/images/share.jpg';
 
             var wx_appId = rt.data.appId;
