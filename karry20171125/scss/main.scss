@@ -1,0 +1,314 @@
+/*
+*1.5times
+*/
+$baseFontSize: 75px;
+
+
+@function resize($px){
+
+	@return $px / $baseFontSize * 1rem; 
+}
+
+*{
+  margin:0;
+  padding:0;
+}
+
+html,body{
+	width:100%;
+	height:100%;
+	overflow: hidden;
+}
+
+body {
+	font-family: "Microsoft Yahei", "Helvetica Neue", Helvetica, Tahoma, sans-serif;
+	font-size:resize(24px);
+}
+
+a {
+    margin:0;
+    padding:0;
+    border:0;
+    font-size:100%;
+    text-decoration: none;
+    vertical-align:baseline;
+    background:transparent;
+}
+
+a:link, a:visited, a:hover, a:active {
+    text-decoration: none;
+    outline: none;
+}
+
+input, select,textarea {
+    border: none;
+    border-radius: 0;
+    -webkit-appearance: none;
+    box-sizing: border-box;
+    vertical-align:middle;
+}
+
+// @media screen and (max-width:321px){
+//     body{font-size:12px}
+// }
+
+// @media screen and (min-width:321px) and (max-width:400px){
+//     body{font-size:16px}
+// }
+
+// @media screen and (min-width:400px){
+//     body{font-size:18px}
+// }
+
+@mixin clearfix {
+
+  &:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+  }
+}
+
+#hint {
+	position: absolute;
+	width:100%;
+	height:100%;
+	left:0;
+	top:0;
+	z-index:1000;
+	background-image:url("../images/hint.jpg");
+	background-position: left top;
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	overflow: hidden;
+}
+
+.btn_music {
+	position: absolute;
+	display: block;
+	z-index:200;
+	width:resize(67px);
+	height:resize(67px);
+	top:.4rem;
+	right:.5rem;
+	
+	img {
+		width:100%;
+	}
+}
+._pop{
+	position:absolute;
+	top:0;
+	left:0;
+	z-index:200;
+	width:100%;
+	height:100%;
+	overflow: hidden;
+	background-color: rgba(0,0,0,.6);
+}
+
+.pop {
+	position: relative;
+	margin:resize(16px) auto 0 auto;
+	width: resize(1140px);
+	height: resize(588px);
+	background: url(../images/bg_form.jpg) left top no-repeat;
+	background-size: 100% 100%;
+	overflow: hidden;
+
+	.pop_title {
+	    position: absolute;
+	    width:auto;
+	    height:auto;
+	    top: resize(26px);
+	    left:resize(270px);
+		span { 
+          font-size: resize(38px);
+          font-weight: bold;
+          letter-spacing:2px;
+		}
+		.red { 
+          color: #d50c12;
+		}
+		.normal {
+			color: #ffffff;
+		}
+	}
+
+	.pop_title_a {
+		position: absolute;
+	    width:auto;
+	    height:auto;
+	    top: resize(80px);
+	    left: resize(270px); 
+
+	    span {
+	    	color: #484848;
+	    	font-size: resize(14px);
+	    	font-style:italic;
+	    }
+	}
+
+	.btn_close {
+		position: absolute;
+		display: block;
+		width: resize(47px);
+		top: resize(16px);
+		right: resize(24px);
+        
+		img { width:100%; } 
+	}
+}
+
+.form {
+	margin:resize(142px) auto 0 auto;
+	width: resize(1060px);
+	overflow: hidden;
+
+	.form_body { 
+		width:100%; 
+		overflow: hidden;
+
+		.info {
+			float: left;
+			width: resize(910px);
+			overflow: hidden; 
+
+			.f_row {
+				width:100%;
+				height:resize(50px);
+
+				div {
+					float: left;
+					width: resize(280px);
+					height:100%;
+					margin-right: resize(20px);
+					overflow: hidden;
+
+					p { 
+						width: resize(50px);
+						height:resize(50px);
+						float: left;
+						background-color: #f5f5f5;
+					}
+
+					input,select {
+						float: left;
+						height: 100%;
+						background-color: #ffffff;
+						line-height: resize(50px); 
+						width: resize(280px - 55px);
+						text-indent: 12px;
+						font-size: resize(24px);
+						color:#636363;
+					}
+
+					input::-webkit-input-placeholder {
+						color: #636363;
+					}
+
+					select {
+						background-image: url(../images/icon_dropdown.png);
+						background-position: 95% center;
+						background-repeat: no-repeat;
+						background-size: resize(13px) resize(7px);
+					    padding-right: 18px;
+					}
+
+					@include clearfix;
+				}
+
+				div:last-child {
+					margin-right: 0;
+				}
+
+				@include clearfix;
+			}
+
+			.f_row:last-child { margin-top: resize(20px); }
+		}
+
+		.submit {
+			display:block;
+			width: resize(122px);
+			height: resize(122px);
+			float: right;
+			background-color: #d50c12;
+			font-size: resize(36px);
+			font-weight: 600;
+			color: #ffffff;
+
+			p:first-child { margin-top: resize(26px); }
+			p { text-align: center; height:auto; line-height:100%; }
+		}
+
+		@include clearfix;
+	}
+
+	.allow {
+		width:auto;
+		height:auto;
+		margin-top: resize(26px);
+		overflow: hidden;
+
+		a {  
+			float: left;
+			display: block;
+		    width: resize(20px);
+		    img { width:100%; }
+		}
+
+		span { 
+			float: left;
+		   margin-left: resize(12px);
+           font-size: .26rem;
+           color: #535353;
+		}
+
+		@include clearfix;
+	}
+}
+
+.icon_name {
+	background-image: url("../images/icon_name.png");
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: resize(23px) resize(24px);
+}
+
+.icon_mobile {
+	background-image: url("../images/icon_mobile.png");
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: resize(15px) resize(28px);
+}
+
+.icon_car {
+	background-image: url("../images/icon_car.png");
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: resize(32px) resize(13px);
+}
+
+.icon_province {
+	background-image: url("../images/icon_province.png");
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: resize(19px) resize(24px);
+}
+
+.icon_city {
+	background-image: url("../images/icon_city.png");
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: resize(26px) resize(23px);
+}
+
+.icon_dealer {
+	background-image: url("../images/icon_dealer.png");
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: resize(26px) resize(21px);
+}

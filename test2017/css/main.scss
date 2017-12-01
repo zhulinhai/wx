@@ -1,0 +1,1170 @@
+@charset "UTF-8";
+// @import "rotatePhone";
+// @import "animate.min";
+// @import "reset-h5";
+
+$baseFontSize: 75px;
+
+
+@function resize($px){
+
+  @return $px / $baseFontSize * 1rem; 
+}
+
+
+*{
+  margin: 0;
+  padding: 0;
+}
+/*声明 WebFont*/
+@font-face {
+  font-family: '仿宋';
+  src: url('../fonts/仿宋_GB2312.ttf');
+  src:
+          url('../fonts/仿宋_GB2312.eot?#font-spider') format('embedded-opentype'),
+          url('../fonts/仿宋_GB2312.woff') format('woff'),
+          url('../fonts/仿宋_GB2312.ttf') format('truetype'),
+          url('../fonts/仿宋_GB2312.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+html, body {
+  font-family: "仿宋" !important;
+  height: 100%;
+  background-color: #fff;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -webkit-overflow-scrolling: touch;
+  -webkit-tap-highlight-color:rgba(0, 0, 0, 0);
+  -webkit-backface-visibility:hidden;
+  -webkit-perspective:1000px;
+  overflow: hidden;
+}
+
+@mixin center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.dialog {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255,255,255,0.9);
+  z-index: 10;
+  .slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    -webkit-backface-visibility: hidden;
+    -webkit-perspective: 1000px;
+  }
+  .slide-1 {
+    .inputDiv {
+      position: absolute;
+      left: 50%;
+      margin-left: -7.6rem;
+      bottom: 6rem;
+      width: 15.2rem;
+      height: 6.95rem;
+      background: url("../src/3-selection-bg.png") no-repeat;
+      background-size: 15.2rem 6.95rem;
+      .title {
+        margin-top: 1.5rem;
+        height: 1rem;
+        line-height: 1rem;
+        font-size: 0.7rem;
+        text-align: center;
+      }
+      input {
+        display: block;
+        margin: 0.5rem auto 0;
+        -webkit-appearance: none;
+        box-sizing: border-box;
+        -moz-box-sizing: border-box; /*Firefox3.5+*/
+        -webkit-box-sizing: border-box; /*Safari3.2+*/
+        width: 7.2rem;
+        height: 1.5rem;
+        line-height: 1.5rem;
+        color: #38424E;
+        font-size: 0.7rem;
+        text-indent: 0.2rem;
+        text-align: center;
+        vertical-align: top;
+        border-radius: 3px;
+        background: #fff url("../src/3-selection-arrow.png") no-repeat 6.3rem center;
+        background-size: 0.4rem 0.2rem;
+      }
+    }
+  }
+  .slide-2 {
+    background: url("../src/loading-bg.jpg") repeat-y;
+    background-size: 100% auto;
+    .s-1, .s-2, .s-3 {
+      -webkiet-filter: grayscale(100%);
+      filter: grayscale(100%);
+      transition-duration: 0.3s;
+      -webkit-transition-duration: 0.3s;
+    }
+    .div-1, .div-2 {
+      font-size: 0.7rem;
+    }
+  }
+}
+
+.logo {
+  position: absolute;
+  top: resize(15px);
+  right: resize(15px);
+  width: resize(121px);
+  height: resize(69px);
+  z-index: 6;
+}
+
+#loadingDialog {
+  background: #fff url("../src/loading-bg.jpg") repeat-y;
+  background-size: 100% auto;
+  z-index: 20;
+  #loading-ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -2.62rem;
+    margin-top: -2.45rem;
+    width: 5.24rem;
+    height: 4.9rem;
+    z-index: 1;
+  }
+  #loading-percent {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 1rem;
+    line-height: 1rem;
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: #707070;
+    text-align: center;
+    margin-top: -0.5rem;
+    z-index: 2;
+  }
+}
+
+#actRuleDialog {
+  background-color: rgba(0,0,0,0.3);
+  .content {
+    width: 100%;
+    height: 100%;
+    background: transparent url("../src/2-popup-3.jpg") no-repeat center;
+    background-size: 80% auto;
+  }
+  z-index: 20;
+}
+
+#shareTipDialog {
+  z-index: 20;
+  .shareImg {
+    float: right;
+    width: 12.15rem;
+    height: 18.4rem;
+  }
+}
+
+#tipResultDialog {
+  background-color: rgba(255,255,255,0.9);
+  z-index: 20;
+  .content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -4.5rem;
+    margin-top: -4rem;
+    width: 9rem;
+    height: 12rem;
+    .circle {
+      display: block;
+      margin: 0.5rem auto;
+      width: 9rem;
+      height: 9.2rem;
+      background: url("../src/5-circle.png") no-repeat left center;
+      background-size: 9rem 9.2rem;
+      p {
+        line-height: 1.2rem;
+        font-size: 0.7rem;
+        text-align: center;
+        text-indent: 0.5rem;
+      }
+      .p1 {
+        padding-top: 3rem;
+      }
+    }
+    .circle-gray {
+      background: url("../src/circle-gray.png") no-repeat center;
+      background-size: 9rem 9.2rem;
+    }
+    .btn-close {
+      display: block;
+      margin: 0.5rem auto 0;
+      width: 4rem;
+      height: 2rem;
+      background: url("../src/btn-close.png") no-repeat center;
+      background-size: 2.65rem 1.5rem;
+    }
+  }
+
+}
+
+.btnFrame {
+  position: absolute;
+  bottom: 0.5rem;
+  left: 50%;
+  margin-left: -7.5rem;
+  width: 15rem;
+  height: 2.5rem;
+  .btn {
+    width: 5.85rem;
+    height: 2.05rem;
+  }
+  .btnLeft {
+    float: left;
+    @extend .btn;
+  }
+  .btnRight {
+    float: right;
+    @extend .btn;
+  }
+  .centerBtn {
+    margin-right: 4.5rem;
+  }
+}
+
+#studyDialog {
+  background: url("../src/loading-bg.jpg") repeat-y;
+  background-size: 100% auto;
+  z-index: 5;
+  .slide-1 {
+    .mist-1 {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 11.8rem;
+      height: 9.95rem;
+    }
+    .mist-2 {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 4.05rem;
+      height: 7.8rem;
+    }
+    .pen {
+      position: absolute;
+      width: 14.15rem;
+      height: 12.1rem;
+      top: 50%;
+      margin-top: -10rem;
+      right: 0;
+      z-index: -1;
+    }
+    .qiu {
+      position: absolute;
+      top: 2rem;
+      left: 3rem;
+      width: 3rem;
+      height: 3.7rem;
+
+    }
+    .xue {
+      position: absolute;
+      top: 6rem;
+      left: 3rem;
+      width: 3.6rem;
+      height: 4.1rem;
+
+    }
+  }
+  .slide-2 {
+    .content {
+      .s-1, .s-2,.s-3 {
+        position: absolute;
+        top: 50%;
+        width: 11.2rem;
+        height: 10.45rem;
+      }
+      .s-1 {
+        right: 0;
+        margin-top: -12.5rem;
+      }
+      .s-2 {
+        left: 0;
+        margin-top: -6.5rem;
+        width: 10.8rem;
+        height: 10.6rem;
+      }
+      .s-3 {
+        right: 0;
+        margin-top: -0.5rem;
+        width: 11.35rem;
+        height: 9rem;
+      }
+      p {
+        line-height: 1.2rem;
+        font-size: 0.6rem;
+      }
+      .div-1 {
+        position: absolute;
+        top: 50%;
+        left: 0.8rem;
+        margin-top: -11rem;
+      }
+      .div-2 {
+        position: absolute;
+        width: 100%;
+        top: 50%;
+        margin-top: 8.5rem;
+        text-align: center;
+      }
+    }
+  }
+}
+#workDialog {
+  z-index: 5;
+  .slide-1 {
+    background: url("../src/3-2-bg.jpg") no-repeat;
+    background-size: cover;
+    .bamboo {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 7.75rem;
+      height: 13.75rem;
+    }
+
+    .gong {
+      position: absolute;
+      top: 50%;
+      margin-top: -8rem;
+      left: 3.8rem;
+      width: 3.8rem;
+      height: 3rem;
+    }
+    .zuo {
+      position: absolute;
+      top: 50%;
+      margin-top: -4rem;
+      left: 3.8rem;
+      width: 4.05rem;
+      height: 3.65rem;
+
+    }
+  }
+  .slide-2 {
+    .content {
+      .s-1, .s-2,.s-3 {
+        position: absolute;
+        top: 50%;
+        width: 11.45rem;
+        height: 10.3rem;
+
+      }
+      .s-1 {
+        left: 0;
+        margin-top: -12.8rem;
+      }
+      .s-2 {
+        right: 0;
+        margin-top: -6rem;
+        width: 13.45rem;
+        height: 11.65rem;
+      }
+      .s-3 {
+        left: 0;
+        width: 11.15rem;
+        height: 10.8rem;
+      }
+      p {
+        line-height: 1.2rem;
+        font-size: 0.65rem;
+        text-align: right;
+      }
+      .div-1 {
+        position: absolute;
+        top: 50%;
+        right: 0.8rem;
+        margin-top: -8.5rem;
+      }
+      .div-2 {
+        position: absolute;
+        width: 100%;
+        top: 50%;
+        right: 0.8rem;
+        margin-top: 8rem;
+      }
+    }
+  }
+}
+#carDialog {
+  z-index: 5;
+  .slide-1 {
+    background: url("../src/3-3-bg.jpg") no-repeat;
+    background-size: cover;
+    .car {
+      position: absolute;
+      top: 50%;
+      margin-top: -5rem;
+      left: 3rem;
+      width: 10.75rem;
+      height: 5.3rem;
+    }
+    .carBg {
+      position: absolute;
+      top: 50%;
+      margin-top: -6.5rem;
+      left: 0.5rem;
+      width: 12.3rem;
+      height: 8.15rem;
+      z-index: -1;
+    }
+    .mai {
+      position: absolute;
+      top: 4rem;
+      right: 1.2rem;
+      width: 4rem;
+      height: 3.75rem;
+
+    }
+    .che {
+      position: absolute;
+      top: 8rem;
+      right: 1.5rem;
+      width: 3.7rem;
+      height: 4.1rem;
+
+    }
+  }
+  .slide-2 {
+    .content {
+      .s-1, .s-2,.s-3 {
+        position: absolute;
+        top: 50%;
+        width: 10rem;
+        height: 11.05rem;
+      }
+      .s-1 {
+        right: 0;
+        margin-top: -12rem;
+      }
+      .s-2 {
+        left: 0;
+        margin-top: -6rem;
+        width: 10.85rem;
+        height: 11.4rem;
+      }
+      .s-3 {
+        right: 0;
+        width: 11.8rem;
+        height: 11.3rem;
+        z-index: -1;
+      }
+      p {
+        line-height: 1.2rem;
+        font-size: 0.65rem;
+        text-align: left;
+      }
+      .div-1 {
+        position: absolute;
+        top: 50%;
+        left: 0.8rem;
+        margin-top: -11.5rem;
+      }
+      .div-2 {
+        position: absolute;
+        width: 100%;
+        top: 50%;
+        left: 0.8rem;
+        margin-top: 7rem;
+      }
+    }
+  }
+}
+#familyDialog {
+  z-index: 5;
+  .slide-1 {
+    background: url("../src/3-4-bg.jpg") no-repeat;
+    background-size: cover;
+    .campus {
+      position: absolute;
+      top: 50%;
+      margin-top: -9rem;
+      left: 0;
+      width: 9rem;
+      height: 10.6rem;
+    }
+    .flower1 {
+      position: absolute;
+      top: 0.5rem;
+      left: 0;
+      width: 5.6rem;
+      height: 7.6rem;
+    }
+    .flower2 {
+      position: absolute;
+      width: 3.2rem;
+      height: 5.1rem;
+      top: 50%;
+      margin-top: -4rem;
+      right: 0;
+      z-index: -1;
+    }
+    .cheng {
+      position: absolute;
+      top: 2rem;
+      left: 50%;
+      margin-left: 1rem;
+      width: 4.35rem;
+      height: 4.15rem;
+    }
+    .jia {
+      position: absolute;
+      top: 6rem;
+      left: 50%;
+      margin-top: 1rem;
+      margin-left: 1.5rem;
+      width: 3.6rem;
+      height: 3.9rem;
+
+    }
+
+    .inputDiv {
+      position: absolute;
+      left: 50%;
+      margin-left: -7.6rem;
+      bottom: 6rem;
+      width: 15.2rem;
+      height: 6.95rem;
+      background: url("../src/3-selection-bg.png") no-repeat;
+      background-size: 15.2rem 6.95rem;
+      .title {
+        margin-top: 1.5rem;
+        height: 1rem;
+        line-height: 1rem;
+        font-size: 0.7rem;
+        text-align: center;
+      }
+      input {
+        display: block;
+        margin: 0.5rem auto 0;
+        -webkit-appearance: none;
+        box-sizing: border-box;
+        -moz-box-sizing: border-box; /*Firefox3.5+*/
+        -webkit-box-sizing: border-box; /*Safari3.2+*/
+        width: 7.2rem;
+        height: 1.2rem;
+        line-height: 1.2rem;
+        color: #38424E;
+        font-size: 0.7rem;
+        text-indent: 0.2rem;
+        text-align: center;
+        vertical-align: top;
+        background: #fff url("../src/3-selection-arrow.png") no-repeat 6.3rem center;
+        background-size: 0.4rem 0.2rem;
+      }
+    }
+  }
+  .slide-2 {
+    .content {
+      .s-1, .s-2,.s-3 {
+        position: absolute;
+        top: 50%;
+        width: 10.65rem;
+        height: 11.25rem;
+
+      }
+      .s-1 {
+        left: 0;
+        margin-top: -12rem;
+      }
+      .s-2 {
+        right: 0;
+        margin-top: -5rem;
+        width: 10.75rem;
+        height: 10.75rem;
+      }
+      .s-3 {
+        left: 0;
+        width: 10.75rem;
+        height: 11rem;
+      }
+
+      .div-1 {
+        position: absolute;
+        top: 50%;
+        right: 0.8rem;
+        margin-top: -9rem;
+        line-height: 1.2rem;
+        font-size: 0.65rem;
+        text-align: right;
+      }
+      .div-2 {
+        position: absolute;
+        right: 0;
+        width: 50%;
+        top: 50%;
+        line-height: 1.2rem;
+        font-size: 0.65rem;
+        margin-top: 7.5rem;
+        text-align: center;
+      }
+    }
+  }
+}
+
+.swiper-container, .collect-swiper, .swiper-wrapper {
+  width: 100%;
+  height: 100%;
+  background:  url("../src/loading-bg.jpg") repeat-y;
+  background-size: 100% auto;
+}
+.swiper-slide{
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  -webkit-backface-visibility: hidden;
+  -webkit-perspective: 1000px;
+}
+.bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("../src/1-bg.jpg") no-repeat center;
+  background-size: 100% auto;
+}
+
+.boat {
+  position: absolute;
+  bottom: 1.5rem;
+  right: 3.2rem;
+  width: 3.95rem;
+  height: 1.25rem;
+  z-index: 1;
+}
+
+.screen1 {
+  .slogan {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: resize(-268px);
+    margin-top: resize(-59px);
+    width: resize(526px);
+    height: resize(118px);
+  }
+  .content {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    p {
+      text-align: center;
+      font-size: resize(28px);
+      line-height: 200%;
+    }
+    .btnDetail {
+      display: block;
+      margin: 0 auto;
+      width: resize(467px);
+      height: resize(98px);
+      background: url("../src/1-btn.png") no-repeat center;
+      background-size: 100% auto;
+    }
+  }
+}
+
+.screen2 {
+  .bg {
+    background: url("../src/2-bg.jpg") no-repeat center;
+    background-size: 100% auto;
+  }
+  .topFrame {
+    position: absolute;
+    top: 2.5rem;
+    width: 100%;
+    .title {
+      font-size: 1rem;
+      line-height: 2rem;
+      text-align: center;
+      margin-bottom: 0.5rem;
+    }
+    .info {
+      .headImg {
+        float: left;
+        width: 2.7rem;
+        height: 2.7rem;
+        border-radius: 2.7rem;
+        margin-left: 1rem;
+        border: 3px solid #E6E6E6;
+      }
+      .userName {
+        float: left;
+        line-height: 2.65rem;
+        font-size: 0.7rem;
+        margin-left: 0.5rem;
+        font-family: "microsoft yahei", sans-serif;
+      }
+      .btnActRule {
+        float: right;
+        width: 3.75rem;
+        height: 1.5rem;
+        margin-top: 0.5rem;
+        margin-right: 1rem;
+        background: url("../src/2-btn-rule.png") no-repeat;
+        background-size: 3.75rem 1.5rem;
+      }
+    }
+  }
+  .content {
+    img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+    }
+    .study {
+      margin-left: 1rem;
+      margin-top: -4rem;
+      width: 1.8rem;
+      height: 2.65rem;
+      animation-delay: 0.3s;
+    }
+    .work {
+      margin-left: 5.8rem;
+      margin-top: -1.3rem;
+      width: 1.7rem;
+      height: 2.4rem;
+      animation-delay: 0.6s;
+    }
+    .car {
+      margin-left: 2.3rem;
+      margin-top: 3.3rem;
+      width: 1.85rem;
+      height: 2.7rem;
+      animation-delay: 0.9s;
+    }
+    .family {
+      margin-left: -3.3rem;
+      margin-top: 0.5rem;
+      width: 1.875rem;
+      height: 2.825rem;
+      animation-delay: 1.2s;
+    }
+    .line {
+      width: 7.2rem;
+      height: 5.6rem;
+      margin-top: -2.3rem;
+      margin-left: -1.5rem;
+    }
+
+  }
+  .btnMakeRoad {
+    position: absolute;
+    left: 50%;
+    bottom: 5rem;
+    margin-left: -5.85rem;
+    width: 11.7rem;
+    height: 2.5rem;
+    background: url("../src/2-btn.png") no-repeat;
+    background-size: 11.65rem 2.45rem;
+  }
+  .btnHover {
+    background: url("../src/2-btn-selected.png") no-repeat;
+    background-size: 11.65rem 2.45rem;
+  }
+  .tipFrame {
+    position: absolute;
+    bottom: 2rem;
+    width: 100%;
+    height: 2.5rem;
+    p {
+      line-height: 1.2rem;
+      font-size: resize(24px);
+      text-align: center;
+    }
+  }
+}
+.screen3 {
+  background: url("../src/5-bg.jpg") no-repeat;
+  background-size: cover;
+  .content {
+    position: absolute;
+    top: 50%;
+    margin-top: -5rem;
+    width: 100%;
+    height: 13rem;
+    p {
+      text-align: center;
+      line-height: 2rem;
+      font-size: 1.2rem;
+      color: #252424;
+    }
+    .circle {
+      display: block;
+      margin: 0.5rem auto;
+      width: 8rem;
+      height: 8.2rem;
+      background: url("../src/5-circle.png") no-repeat center;
+      background-size: 7.9rem 8.1rem;
+      .num {
+        width: 100%;
+        height: 2.25rem;
+        font-weight: bold;
+        line-height: 2.25rem;
+        text-align: center;
+        padding-top: 2.5rem;
+      }
+    }
+  }
+
+  .btnMyroad {
+    position: absolute;
+    left:  50%;
+    margin-left: -5.8rem;
+    bottom: 3rem;
+    width: 11.6rem;
+    height: 2.4rem;
+  }
+}
+.screen4 {
+  background: url("../src/loading-bg.jpg") repeat-y;
+  background-size: 100% auto;
+  .content {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    margin-top: -12rem;
+    width: 100%;
+    height: 19.4rem;
+    //#posterImg {
+    //  display: block;
+    //  margin: 0.5rem auto;
+    //  width: 14.45rem;
+    //  height: 19.4rem;
+    //}
+    #poster {
+      //position: fixed;
+      //width: 14.45rem;
+      //height: 19.4rem;
+      //z-index: -10;
+      display: block;
+      margin: 0.5rem auto;
+      width: 14.45rem;
+      height: 19.4rem;
+      .posterBg {
+        position: absolute;
+        width: 14.45rem;
+        height: 19.4rem;
+        z-index: -1;
+      }
+      .top {
+        height: 4.2rem;
+        padding-top: 0.5rem;
+        .headImg {
+          display: block;
+          margin: 0 auto;
+          width: 2.9rem;
+          height: 2.9rem;
+          border-radius: 2.9rem;
+        }
+        .tip {
+          font-size: 0.8rem;
+          text-align: center;
+          span {
+            font-family: "microsoft yahei", sans-serif;
+          }
+        }
+      }
+
+      ul {
+        list-style: none;
+        li {
+          height: 2.2rem;
+          line-height: 2.8rem;
+          text-align: center;
+          font-size: 0.65rem;
+          color: #8B8686;
+          img {
+            display: inline-block;
+            vertical-align: middle;
+            width: 1.85rem;
+            height: 2.8rem;
+            margin-top: -0.3rem;
+          }
+        }
+      }
+      .bottom {
+        display: block;
+        margin: 1rem auto 0;
+        width: 13rem;
+        height: 5rem;
+        padding-top: 0.5rem;
+        border-top: 1px dotted #A2A3A3;
+        p {
+          font-size: 0.6rem;
+          margin-left: 0.3rem;
+          line-height: 1rem;
+        }
+        //.leftDiv {
+        //  float: left;
+        //  width: 9.5rem;
+        //
+        //}
+        //.qrcode {
+        //  float: right;
+        //  width: 3.5rem;
+        //  height: 3.5rem;
+        //}
+      }
+    }
+    .tipFrame {
+      display: block;
+      margin: 0.5rem auto;
+      width: 14.45rem;
+      font-size: 0.7rem;
+      .tipTitle {
+        float: left;
+        text-align: left;
+        line-height: 1.2rem;
+      }
+      .actRule {
+        float: right;
+        height: 1.2rem;
+        line-height: 1.2rem;
+        color: #B7342C;
+        text-decoration: underline;
+      }
+      .actRule:hover {
+        color: #B7342C;
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .btn-exchange {
+    position: absolute;
+    left: 50%;
+    margin-left: -5.8rem;
+    bottom: 2.5rem;
+    width: 11.6rem;
+    height: 2.45rem;
+  }
+  .btnFrame {
+    .btn {
+      width: 6.5rem;
+      height: 2.05rem;
+    }
+  }
+
+}
+.screen5 {
+  background: url("../src/7-bg.jpg") no-repeat center;
+  background-size: cover;
+  .content {
+    position: absolute;
+    top: 50%;
+    margin-top: -13.5rem;
+    width: 100%;
+    height: 27rem;
+    p {
+      text-align: center;
+    }
+    .title {
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+      margin-top: 0.5rem;
+    }
+    .tip {
+      line-height: 1rem;
+      font-size: 0.6rem;
+      .actRule, .actRule:hover {
+        color: #B7342C;
+        text-decoration: underline;
+      }
+      strong, span {
+        color: #B7342C;
+      }
+    }
+    .tip2 {
+      margin-top: 0.3rem;
+    }
+
+    input, select {
+      -webkit-appearance: none;
+      box-sizing: border-box;
+      -moz-box-sizing: border-box; /*Firefox3.5+*/
+      -webkit-box-sizing: border-box; /*Safari3.2+*/
+      width: 7rem;
+      height: 1.6rem;
+      line-height: 1.6rem;
+      margin-top: 0.2rem;
+      color: #38424E;
+      font-size: 0.7rem;
+      text-indent: 0.2rem;
+      text-align: left;
+      vertical-align: top;
+      background-color: transparent;
+    }
+    .item {
+      @include center();
+      width: 11.3rem;
+      height: 2rem;
+      font-family: "microsoft yahei", sans-serif;
+      margin-top: 0.3rem;
+      background: transparent url("../src/7-form1.png") no-repeat;
+      background-size: 11.3rem 2rem;
+      overflow: hidden;
+      label {
+        display: inline-block;
+        *display: inline;
+        *zoom: 1;
+        width: 3.8rem;
+        margin-top: 0.2rem;
+        height: 1.6rem;
+        line-height: 1.6rem;
+        font-size: 0.7rem;
+        text-align: left;
+        text-indent: 0.8rem;
+        color: #38424E;
+        span {
+          color: #B7342C;
+        }
+      }
+      select {
+        width: 11.3rem;
+        text-indent: 0.8rem;
+        background: url("../src/3-selection-arrow.png") no-repeat 10.3rem center;
+        background-size: 0.4rem 0.2rem;
+      }
+      #btnGetCode {
+        float: right;
+        width: 4.6rem;
+        height: 2rem;
+        line-height: 2rem;
+        color: white;
+        text-align: center;
+        background-color: #faa040;
+      }
+    }
+    .item2 {
+      @include center();
+      width: 11.3rem;
+      height: 2rem;
+      margin-top: 0.5rem;
+      .divLeft, .divRight {
+        float: left;
+        width: 5.375rem;
+        height: 2rem;
+        background: transparent url("../src/7-form2.png") no-repeat;
+        background-size: 5.375rem 2rem;
+        select {
+          width: 5.375rem;
+          text-indent: 0.8rem;
+          background: url("../src/3-selection-arrow.png") no-repeat 4.4rem center;
+          background-size: 0.4rem 0.2rem;
+        }
+      }
+
+      .divRight {
+        float: right;
+      }
+    }
+
+    #btnSubmit {
+      @include center();
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+      color: white;
+      width: 11.65rem;
+      height: 2.45rem;
+      line-height: 2.45rem;
+      text-align: center;
+      background: url("../src/7-btn-submit.png") no-repeat;
+      background-size: 11.65rem 2.45rem;
+    }
+  }
+}
+.screen6 {
+  background: url("../src/7-bg.jpg") no-repeat center;
+  background-size: cover;
+  .content {
+    position: absolute;
+    top: 50%;
+    margin-top: -14rem;
+    width: 100%;
+    height: 28rem;
+    .resultImg {
+      display: block;
+      margin: 0 auto;
+      width: 8.2rem;
+      height: 22.8rem;
+    }
+    .btnShare {
+      display: block;
+      margin: 1rem auto 0;
+      width: 11.675rem;
+      height: 2.45rem;
+    }
+    .tip {
+      line-height: 1.2rem;
+      font-size: 0.6rem;
+      text-align: center;
+      margin-top: 0.5rem;
+    }
+  }
+}
+
+/*
+* 旋转圆环
+*/
+.rotateRingAni {
+  -webkit-animation: rotateRing 2s infinite linear;
+  animation: rotateRing 2s infinite linear;
+}
+
+@-webkit-keyframes rotateRing {
+  from {-webkit-transform: rotate(0deg);transform: rotate(0deg);}
+  to {-webkit-transform: rotate(-360deg);transform: rotate(-360deg);}
+}
+
+@keyframes rotateRing {
+  from {transform: rotate(0deg);}
+  to {transform: rotate(-360deg);}
+}
+
+/*
+* 船动画
+*/
+.boatAni {
+  -webkit-animation: moveBoat 2s ease;
+  animation: moveBoat 2s ease;
+}
+@-webkit-keyframes moveBoat {
+  from {
+    bottom: 0.5rem;
+    right: 14rem;
+  }
+}
+@keyframes moveBoat {
+  from {
+    bottom: 0.5rem;
+    right: 14rem;
+  }
+}
