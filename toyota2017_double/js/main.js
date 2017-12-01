@@ -43,6 +43,11 @@ var mainHandler = {
                 }
 
                 if (this.index == 1) {
+                    /* 音乐播放状态  当前浏览器不支持自动播放 */
+                    if (mainHandler.musicPlayer.paused && !mainHandler.isUserTouch) {
+                        mainHandler.isUserTouch = true;
+                        mainHandler.musicPlayer.play();
+                    }
                     mainHandler.play2ContentAni();
                     $('.screen2 .div-1').show();
                     setTimeout(function () {
@@ -81,13 +86,6 @@ var mainHandler = {
     bindClicks: function () {
         this.musicPlayer = document.getElementById('clickSound');
         var music = mainHandler.musicPlayer;
-        $('.screen1').bind('touchstart', function () {
-            /* 音乐播放状态  当前浏览器不支持自动播放 */
-            if (music.paused && !mainHandler.isUserTouch) {
-                mainHandler.isUserTouch = true;
-                music.play();
-            }
-        });
         $('#audioPlayer').click(function () {
             mainHandler.isUserTouch = true;
             if (music.paused){
