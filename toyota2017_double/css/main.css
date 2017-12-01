@@ -2372,6 +2372,40 @@ Copyright (c) 2015 Daniel Eden
     background-position: 150% 0; }
   100% {
     background-position: 300% 0; } }
+@-webkit-keyframes shakeBody {
+  from {
+    -webkit-transform: none; }
+  15% {
+    -webkit-transform: translate3d(-5%, 0, 0) rotate3d(0, 0, 1, -5deg); }
+  30% {
+    -webkit-transform: translate3d(10%, 0, 0) rotate3d(0, 0, 1, 3deg); }
+  45% {
+    -webkit-transform: translate3d(-10%, 0, 0) rotate3d(0, 0, 1, -3deg); }
+  60% {
+    -webkit-transform: translate3d(8%, 0, 0) rotate3d(0, 0, 1, 2deg); }
+  75% {
+    -webkit-transform: translate3d(-5%, 0, 0) rotate3d(0, 0, 1, -1deg); }
+  to {
+    -webkit-transform: none; } }
+@keyframes shakeBody {
+  from {
+    transform: none; }
+  15% {
+    transform: translate3d(-5%, 0, 0) rotate3d(0, 0, 1, -5deg); }
+  30% {
+    transform: translate3d(10%, 0, 0) rotate3d(0, 0, 1, 3deg); }
+  45% {
+    transform: translate3d(-10%, 0, 0) rotate3d(0, 0, 1, -3deg); }
+  60% {
+    transform: translate3d(8%, 0, 0) rotate3d(0, 0, 1, 2deg); }
+  75% {
+    transform: translate3d(-5%, 0, 0) rotate3d(0, 0, 1, -1deg); }
+  to {
+    transform: none; } }
+.bodyAni {
+  animation-name: shakeBody;
+  -webkit-animation-name: shakeBody; }
+
 body, html {
   position: relative;
   width: 100%;
@@ -2543,12 +2577,17 @@ html, body {
   -webkit-perspective: 1000px;
   background-size: 100% auto; }
 
+#snowflake, #snowflake3, #snowflake4 {
+  position: absolute;
+  z-index: -1; }
+
+#snowflake2 {
+  position: absolute;
+  z-index: 1; }
+
 .screen1 {
   background: url("../src/1-bg.jpg") no-repeat;
   background-size: cover; }
-  .screen1 #snowflake {
-    position: absolute;
-    z-index: -1; }
   .screen1 .logo {
     position: absolute;
     top: 0.5rem;
@@ -2619,6 +2658,18 @@ html, body {
     width: 1.1rem;
     height: 0.85rem;
     z-index: 5; }
+
+#arrowWhite {
+  position: fixed;
+  bottom: 0.5rem;
+  left: 50%;
+  margin-left: -0.55rem;
+  width: 1.1rem;
+  height: 0.85rem;
+  z-index: 5; }
+
+.duration3 {
+  animation-duration: 3s; }
 
 .btn {
   width: 4.83rem;
@@ -2761,6 +2812,7 @@ html, body {
           margin-top: 1.5rem;
           margin-left: 3.8rem;
           font-style: italic;
+          width: 100%;
           z-index: 2;
           animation-delay: 0.8s; }
         .screen2 .mainContent .content .div-2 .p-2, .screen2 .mainContent .screen4 .content .div-2 .p-1, .screen4 .screen2 .mainContent .content .div-2 .p-1 {
@@ -2771,6 +2823,7 @@ html, body {
           margin-top: 2.5rem;
           margin-left: 3.7rem;
           font-style: italic;
+          width: 100%;
           z-index: 2;
           animation-delay: 1.2s; }
         .screen2 .mainContent .content .div-2 .ground {
@@ -2874,14 +2927,6 @@ html, body {
       margin-left: -7.9rem;
       width: 15.3rem;
       height: 1rem;
-      z-index: 2; }
-    .screen2 .mainContent .arrow {
-      position: absolute;
-      top: 42rem;
-      left: 50%;
-      margin-left: -0.55rem;
-      width: 1.1rem;
-      height: 0.85rem;
       z-index: 2; }
 
 .screen3 {

@@ -17,7 +17,7 @@
     <!-- 在 meta 标签中进行基础分享信息设置 End-->
 
     <title>诞诞的幸福</title>
-    <link rel="stylesheet" href="css/main.css?v=0.0.6">
+    <link rel="stylesheet" href="css/main.css?v=0.0.7">
     <script type="text/javascript">
         //rem设置
         (function(doc, win) {
@@ -69,6 +69,7 @@
             <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC0AAAAiCAMAAAD8kqB9AAAAgVBMVEUAAABv1f9v1f9v1f9v1f9v1f9v1f9v1f9v1f9v1f9v1f9v1f9v1f9v1f9v1f9v1f9v1f9v1f9v1f9v1f9v1f9v1f9v1f9v1f9v1f9v1f9v1f9v1f9v1f9v1f9v1f9v1f9v1f9v1f9v1f9v1f9v1f9v1f9v1f9v1f9v1f9v1f9v1f9wD0zFAAAAKnRSTlMATWE6Eko+Vzf79FwW6lNEDQWoXzEqIwkDhXoc5cef3dW4knNqzry6r29D07yFAAABfElEQVQ4y42T2ZKCMBBFGxCQVcQFQXF3lvz/B04uSaaBWOB5gs4pqunboSLwlwuaZ7H0g4oCRwJ/xoUWkO90eIsZF/iEB9u3XbClVD2wb7uG1Zpoq5+TUPrp2PUcBofrlZJd12Wf3TxxE92Hqhmb/b4ryU0fYIcXN4tL7Qdp3y3jbAPB/NQBM2+EENnd+Efphhv5cs9kvZHnOzIUvvwOyuJSK1+79QXFF4I50D97fDwSoG3gJ3AfrQCxbMQvqAcGVYqO6PZ0wfMWqUItz/bUp8ICXIWi+91zLBTf3YIMOWIsRhBZeRKaU8h9MIi0FhbRw+qDTKRfll1if8gGkYankXzFnlZDkSN9RAM5dmXtOBY50vPAvuNe0XsKNUamRR9rW+RIN7EwZKHdxyhSHmPUmKVm7Ehv2v7hpWasSHM1xkuuLtcUiPQ3Qh9PXmrGilSP8Yw+DjRD6kha8VKXaxK+pc58HxwpCOb64EjtpZ6I1F7q6Ug9+pTK8723S/0H2YAvDhI5B5EAAAAASUVORK5CYII=" alt="" class="arrow animated fadeInDown infinite" style="display: none">
         </section>
         <section class="screen screen2">
+            <canvas id="snowflake2"></canvas>
             <div class="mainContent">
                 <img src="src/2-star.png" alt="" class="star-1 animated swing infinite">
                 <img src="src/2-star.png" alt="" class="star-2 animated swing infinite">
@@ -100,15 +101,15 @@
                         <p class="p-1 animated fadeInUp">贺岁礼 兆丰年</p>
                         <p class="p-2 animated fadeInUp">小米Air全家欢</p>
                         <img src="src/2-3-xiaomiair.png" alt="" class="xiaomiair">
-                        <img src="src/2-3-man.png" alt="" class="man animated wobble">
-                        <img src="src/2-3-girl.png" alt="" class="girl animated wobble">
+                        <img src="src/2-3-man.png" alt="" class="man animated bodyAni infinite">
+                        <img src="src/2-3-girl.png" alt="" class="girl animated bodyAni infinite">
                     </div>
                 </div>
                 <img src="src/2-bottom.png" alt="" class="bottom" style="top: 12.4rem;">
-                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC0AAAAiCAMAAAD8kqB9AAAAllBMVEUAAAD////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////AJcWoAAAAMXRSTlMATWFLXT4RWFQ4+/RPFQ0E6mNEOysTOgh6NjHlx6mkhGtIJBvd1bhyIM6cjLy6r5STHibx1QAAAZFJREFUOMuNk+mWgjAMRhsqLmzCIAiKgvs2W9//5SZpgYr1wNyf6aUn5EtZYPN8zIYZ59wOmA3IbDzokmYzDpJZ0ufOlMRZDjVp0usSK+YDaL/XhY85YyuQeJMJQOy/cb3GpsP5BxAjy7Je/QTd6cgaKXmhvueN3fWTVLrItOmDWABihe4mUr7tP7nRxg3pct4OmWaeCSHCH3m/B/Y1ru/9DbGetX0QAcczKotjWfswIbc8UvEmg9Fc6XJHEEVGvnQvhSBcbIQH7Aka6lZInHNlEdXZUYUSz/bsmeUOwDsJBf1utHWF4qvtQ3PAWoSCItysRc16qvvQUKQPYeBcsH7tqk2kn4a9pf1kJgmNcf0inzyA3dKUVaQXpyO7EdYO7C12PUbNAyu54elI4SQ0Beg+TPa0i24rh5NOHwYpHpft8DL5uDoYkcK5tr/VUvdwgHaMR08+rl4o0sqhPiq51AZmpHe074N9ED4ghbh58nENsiA9Uo98mLlNprnUfZGaS90TqX5cw8Qox+y/LFMev12mP+W+N55W/hS+AAAAAElFTkSuQmCC" alt="" class="arrow animated fadeInDown infinite">
             </div>
         </section>
         <section class="screen screen3" data-lock-next="true">
+            <canvas id="snowflake3"></canvas>
             <img src="src/2-star.png" alt="" class="star-1 animated swing infinite">
             <img src="src/2-star.png" alt="" class="star-2 animated swing infinite">
             <img src="src/2-star.png" alt="" class="star-3 animated swing infinite">
@@ -126,6 +127,7 @@
             <img src="src/3-snowG.png" alt="" class="bottom">
         </section>
         <section class="screen screen4">
+            <canvas id="snowflake4"></canvas>
             <div class="content">
                 <div class="tipDialog">
                     <p class="p-1"></p>
@@ -137,6 +139,7 @@
             </div>
         </section>
     </div>
+    <img style="display: none;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC0AAAAiCAMAAAD8kqB9AAAAllBMVEUAAAD////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////AJcWoAAAAMXRSTlMATWFLXT4RWFQ4+/RPFQ0E6mNEOysTOgh6NjHlx6mkhGtIJBvd1bhyIM6cjLy6r5STHibx1QAAAZFJREFUOMuNk+mWgjAMRhsqLmzCIAiKgvs2W9//5SZpgYr1wNyf6aUn5EtZYPN8zIYZ59wOmA3IbDzokmYzDpJZ0ufOlMRZDjVp0usSK+YDaL/XhY85YyuQeJMJQOy/cb3GpsP5BxAjy7Je/QTd6cgaKXmhvueN3fWTVLrItOmDWABihe4mUr7tP7nRxg3pct4OmWaeCSHCH3m/B/Y1ru/9DbGetX0QAcczKotjWfswIbc8UvEmg9Fc6XJHEEVGvnQvhSBcbIQH7Aka6lZInHNlEdXZUYUSz/bsmeUOwDsJBf1utHWF4qvtQ3PAWoSCItysRc16qvvQUKQPYeBcsH7tqk2kn4a9pf1kJgmNcf0inzyA3dKUVaQXpyO7EdYO7C12PUbNAyu54elI4SQ0Beg+TPa0i24rh5NOHwYpHpft8DL5uDoYkcK5tr/VUvdwgHaMR08+rl4o0sqhPiq51AZmpHe074N9ED4ghbh58nENsiA9Uo98mLlNprnUfZGaS90TqX5cw8Qox+y/LFMev12mP+W+N55W/hS+AAAAAElFTkSuQmCC" alt="" class="arrow animated fadeInDown infinite" id="arrowWhite">
 
     <!-- 音乐控制 -->
     <div id="audioPlayer" class="rotateRingAni music_on"></div>
@@ -144,6 +147,6 @@
 
     <script src="http://wximg.qq.com/wxp/libs/wxmoment/0.0.4/wxmoment.js"></script>
     <script src="js/Tween.min.js"></script>
-    <script type="text/javascript" src="js/main.js?v=0.0.2"></script>
+    <script type="text/javascript" src="js/main.js?v=0.0.3"></script>
 </body>
 </html>
