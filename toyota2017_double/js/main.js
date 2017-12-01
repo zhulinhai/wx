@@ -90,10 +90,10 @@ var mainHandler = {
             mainHandler.isUserTouch = true;
             if (music.paused){
                 music.play();
-                $(this).css('background-position-x', 0).addClass('rotateRingAni');
+                $(this).removeClass('music_off').addClass('music_on rotateRingAni');
             } else {
                 music.pause();
-                $(this).css('background-position-x', '100%').removeClass('rotateRingAni');
+                $(this).addClass('music_off').removeClass('music_on rotateRingAni');
             }
         });
 
