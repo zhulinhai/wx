@@ -1,0 +1,30 @@
+@charset "UTF-8";
+/*
+* 旋转音乐播放器
+*/
+.rotateRingAni {
+  -webkit-animation: rotateRing 3s infinite linear;
+  -moz-animation: rotateRing 3s infinite linear;
+  animation: rotateRing 3s infinite linear; }
+
+@-webkit-keyframes rotateRing {
+  from {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg); }
+  to {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg); } }
+@-moz-keyframes rotateRing {
+  from {
+    -moz-transform: rotate(0deg);
+    transform: rotate(0deg); }
+  to {
+    -moz-transform: rotate(360deg);
+    transform: rotate(360deg); } }
+@keyframes rotateRing {
+  from {
+    transform: rotate(0deg); }
+  to {
+    transform: rotate(360deg); } }
+
+/*# sourceMappingURL=animate-double.css.map */

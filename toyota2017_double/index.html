@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="screen-orientation" content="portrait"><!-- uc强制竖屏 -->
+    <meta name="x5-orientation" content="portrait"><!-- QQ强制竖屏 -->
+
+    <!-- 在 meta 标签中进行基础分享信息设置-->
+    <meta name="wxm:timeline_title" content="诞诞的幸福">
+    <meta name="wxm:appmessage_title" content="诞诞的幸福">
+    <meta name="wxm:appmessage_desc" content="一汽丰田车主认证即享好礼">
+    <!-- 分享缩略图，必须为绝对路径，且图片链接必须为http协议（由于安卓微信客户端无法获取https的分享图片，仅此处需要强制http协议）-->
+    <meta name="wxm:img_url" content="http://wximg.qq.com/_demo/wxmoment/images/shareLogo.jpg">
+    <!-- 分享链接-->
+    <meta name="wxm:link" content="https://wximg.qq.com/tmt/_demo/wxmoment/share.html">
+    <!-- 在 meta 标签中进行基础分享信息设置 End-->
+
+    <title>诞诞的幸福</title>
+    <link rel="stylesheet" href="css/main.css?v=0.0.5">
+    <script type="text/javascript">
+        //rem设置
+        (function(doc, win) {
+            var docEl = doc.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                recalc = function() {
+                    var clientWidth = docEl.clientWidth;
+                    if (!clientWidth) return;
+                    docEl.style.fontSize = 20 * (clientWidth / 375) + 'px';
+                };
+            win.addEventListener(resizeEvt, recalc, false);
+            doc.addEventListener('DOMContentLoaded', recalc, false);
+        })(document, window);
+    </script>
+</head>
+<body>
+    <div class="dialog" id="actRuleDialog" style="display: none">
+        <div class="content">
+            <img src="src/5-title.png" alt="" class="title">
+            <ul>
+                <li class="menu">一重：话费礼</li>
+                <li>1. 一汽丰田车主输入姓名、手机 号，长按专属二维码完成认证， 即可获得10元话费。</li>
+                <li>2. 车主认证成功后10元话费将在 一周内发放。</li>
+                <li class="menu">二重：幸运礼</li>
+                <li>1.一汽丰田车主完成认证才有资格抽奖。</li>
+                <li>2.用户中奖后会在30个工作日内完成奖品发放。</li>
+                <li>3.京东卡和腾讯视频会员奖品会通过短信电子兑换码形式发放给中奖车主。</li>
+                <li>4.加油卡和车载净化器奖品需填写正确的收件人、联系电话及发货地址，因信息不全或错误造成礼品无法快递的，取消中奖资格。</li>
+                <li>5.中奖车主需保证留资电话准确无误，因电话错误造成无法联系或中奖电子码无法发送，取消中奖资格。</li>
+                <li>6.每个认证车主每天有3次抽奖机会，中奖奖品不可转让、不可买卖。</li>
+                <li>7. 一汽丰田车主输入姓名、手机 号，长按专属二维码完成认证， 即有机会获得<span>小米Air笔记本电脑</span>。</li>
+            </ul>
+        </div>
+        <div class="closeDiv"></div>
+    </div>
+    <div class="wrap">
+        <section class="screen screen1">
+            <!-- 雪花 -->
+            <canvas id="snowflake"></canvas>
+            <img src="src/1-logo.png" alt="" class="logo">
+            <img src="src/1-snowG.png" alt="" class="snowG">
+            <img src="src/1-slogan1.png" alt="" class="slogan1">
+            <img src="src/1-slogan2.png" alt="" class="slogan2">
+            <img src="src/1-gifts.png" alt="" class="gifts">
+            <img src="src/1-gift.png" alt="" class="gift" style="display: none">
+            <img src="src/1-man.png" alt="" class="man" style="display: none">
+            <img src="src/1-girl.png" alt="" class="girl" style="display: none">
+            <img src="src/1-title.png" alt="" class="title">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC0AAAAiCAMAAAD8kqB9AAAAgVBMVEUAAABv1f9v1f9v1f9v1f9v1f9v1f9v1f9v1f9v1f9v1f9v1f9v1f9v1f9v1f9v1f9v1f9v1f9v1f9v1f9v1f9v1f9v1f9v1f9v1f9v1f9v1f9v1f9v1f9v1f9v1f9v1f9v1f9v1f9v1f9v1f9v1f9v1f9v1f9v1f9v1f9v1f9v1f9wD0zFAAAAKnRSTlMATWE6Eko+Vzf79FwW6lNEDQWoXzEqIwkDhXoc5cef3dW4knNqzry6r29D07yFAAABfElEQVQ4y42T2ZKCMBBFGxCQVcQFQXF3lvz/B04uSaaBWOB5gs4pqunboSLwlwuaZ7H0g4oCRwJ/xoUWkO90eIsZF/iEB9u3XbClVD2wb7uG1Zpoq5+TUPrp2PUcBofrlZJd12Wf3TxxE92Hqhmb/b4ryU0fYIcXN4tL7Qdp3y3jbAPB/NQBM2+EENnd+Efphhv5cs9kvZHnOzIUvvwOyuJSK1+79QXFF4I50D97fDwSoG3gJ3AfrQCxbMQvqAcGVYqO6PZ0wfMWqUItz/bUp8ICXIWi+91zLBTf3YIMOWIsRhBZeRKaU8h9MIi0FhbRw+qDTKRfll1if8gGkYankXzFnlZDkSN9RAM5dmXtOBY50vPAvuNe0XsKNUamRR9rW+RIN7EwZKHdxyhSHmPUmKVm7Ehv2v7hpWasSHM1xkuuLtcUiPQ3Qh9PXmrGilSP8Yw+DjRD6kha8VKXaxK+pc58HxwpCOb64EjtpZ6I1F7q6Ug9+pTK8723S/0H2YAvDhI5B5EAAAAASUVORK5CYII=" alt="" class="arrow animated fadeInDown infinite" style="display: none">
+        </section>
+        <section class="screen screen2">
+            <div class="mainContent">
+                <img src="src/2-star.png" alt="" class="star-1 animated swing infinite">
+                <img src="src/2-star.png" alt="" class="star-2 animated swing infinite">
+                <img src="src/2-star.png" alt="" class="star-3 animated swing infinite">
+                <img src="src/2-star.png" alt="" class="star-4 animated swing infinite">
+                <img src="src/2-head.png" class="head">
+                <img src="src/2-title.png" alt="" class="title">
+                <div id="btnDetail" class="btn btnDetail animated pulse infinite">活动详情</div>
+                <img src="src/2-top.png" alt="" class="top">
+                <div class="content" style="height: 0;">
+                    <div class="div-1" style="display: none">
+                        <img src="src/2-1-ran.png" alt="" class="ran">
+                        <p class="p-1 animated fadeInUp">冬天里的一绑火！</p>
+                        <p class="p-2 animated fadeInUp">10元话费任性送！</p>
+                        <img src="src/2-1-iphone.png" alt="" class="iphone animated tada infinite">
+                        <div class="wifi wifiAni"></div>
+                    </div>
+                    <div class="div-2" style="display: none">
+                        <p class="p-1 animated fadeInUp">岁末好彩礼不停</p>
+                        <p class="p-2 animated fadeInUp">幸运福利滚滚来</p>
+                        <img src="src/2-2-cardOil.png" alt="" class="cardOil animated rotateInUpLeft">
+                        <img src="src/2-2-cardJD.png" alt="" class="cardJD animated rotateInUpLeft">
+                        <img src="src/2-2-TXVIP.png" alt="" class="cardTXVIP animated rotateInUpLeft">
+                        <img src="src/2-2-machine.png" alt="" class="machine">
+                        <img src="src/2-2-ground.png" alt="" class="ground">
+                        <img src="src/2-2-gifts.png" alt="" class="gifts">
+                    </div>
+                    <div class="div-3" style="display: none">
+                        <p class="p-1 animated fadeInUp">贺岁礼 兆丰年</p>
+                        <p class="p-2 animated fadeInUp">小米Air全家欢</p>
+                        <img src="src/2-3-xiaomiair.png" alt="" class="xiaomiair">
+                        <img src="src/2-3-man.png" alt="" class="man animated wobble">
+                        <img src="src/2-3-girl.png" alt="" class="girl animated wobble">
+                    </div>
+                </div>
+                <img src="src/2-bottom.png" alt="" class="bottom" style="top: 12.4rem;">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC0AAAAiCAMAAAD8kqB9AAAAllBMVEUAAAD////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////AJcWoAAAAMXRSTlMATWFLXT4RWFQ4+/RPFQ0E6mNEOysTOgh6NjHlx6mkhGtIJBvd1bhyIM6cjLy6r5STHibx1QAAAZFJREFUOMuNk+mWgjAMRhsqLmzCIAiKgvs2W9//5SZpgYr1wNyf6aUn5EtZYPN8zIYZ59wOmA3IbDzokmYzDpJZ0ufOlMRZDjVp0usSK+YDaL/XhY85YyuQeJMJQOy/cb3GpsP5BxAjy7Je/QTd6cgaKXmhvueN3fWTVLrItOmDWABihe4mUr7tP7nRxg3pct4OmWaeCSHCH3m/B/Y1ru/9DbGetX0QAcczKotjWfswIbc8UvEmg9Fc6XJHEEVGvnQvhSBcbIQH7Aka6lZInHNlEdXZUYUSz/bsmeUOwDsJBf1utHWF4qvtQ3PAWoSCItysRc16qvvQUKQPYeBcsH7tqk2kn4a9pf1kJgmNcf0inzyA3dKUVaQXpyO7EdYO7C12PUbNAyu54elI4SQ0Beg+TPa0i24rh5NOHwYpHpft8DL5uDoYkcK5tr/VUvdwgHaMR08+rl4o0sqhPiq51AZmpHe074N9ED4ghbh58nENsiA9Uo98mLlNprnUfZGaS90TqX5cw8Qox+y/LFMev12mP+W+N55W/hS+AAAAAElFTkSuQmCC" alt="" class="arrow animated fadeInDown infinite">
+            </div>
+        </section>
+        <section class="screen screen3" data-lock-next="true">
+            <img src="src/2-star.png" alt="" class="star-1 animated swing infinite">
+            <img src="src/2-star.png" alt="" class="star-2 animated swing infinite">
+            <img src="src/2-star.png" alt="" class="star-3 animated swing infinite">
+            <img src="src/2-star.png" alt="" class="star-4 animated swing infinite">
+            <img src="src/2-head.png" class="head">
+            <div class="content">
+                <img src="src/3-title.png" alt="" class="title">
+                <form>
+                    <div class="item"><label for="name">姓&nbsp;&nbsp;&nbsp;名</label><input id="name" name="name" type="text"></div>
+                    <div class="item"><label for="tel">手&nbsp;&nbsp;&nbsp;机</label><input id="tel" name="tel" type="tel"><div id="btnGetCode">获取验证码</div></div>
+                    <div class="item"><label for="code">验证码</label><input id="code" name="code" type="text"></div>
+                    <div id="btnSubmit" class="btn animated pulse infinite">提交</div>
+                </form>
+            </div>
+            <img src="src/3-snowG.png" alt="" class="bottom">
+        </section>
+        <section class="screen screen4">
+            <div class="content">
+                <div class="tipDialog">
+                    <p class="p-1"></p>
+                    <p class="p-2"></p>
+                </div>
+                <img alt="" class="qrCode">
+                <p class="tip">长按二维码关注一汽丰田公众号</p>
+                <p class="tip">了解更多活动详情</p>
+            </div>
+        </section>
+    </div>
+
+    <!-- 音乐控制 -->
+    <div id="audioPlayer" class="rotateRingAni"></div>
+    <audio id="clickSound" autoplay="autoplay" style="position: absolute;z-index: -1;opacity: 0" loop="loop"><source src="src/bg.mp3"></audio>
+
+    <script src="http://wximg.qq.com/wxp/libs/wxmoment/0.0.4/wxmoment.js"></script>
+    <script src="js/Tween.min.js"></script>
+    <script type="text/javascript" src="js/main.js?v=0.0.1"></script>
+</body>
+</html>
