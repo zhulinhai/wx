@@ -1,0 +1,20 @@
+* {
+  margin: 0;
+  padding: 0; }
+
+html, body {
+  width: 100%;
+  height: 100%; }
+
+body {
+  overflow: auto; }
+
+div {
+  width: 10rem;
+  height: 16.08rem;
+  background-color: red;
+  text-align: center;
+  overflow: hidden; }
+  div #solgan {
+    margin-top: 30%;
+    width: 7.01333rem; }

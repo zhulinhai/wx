@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<!-- 在 meta 标签中进行基础分享信息设置-->
+<meta name="wxm:timeline_title" content="据统计：每10个人中就有9个人患有此病……">
+<meta name="wxm:appmessage_title" content="据统计：每10个人中就有9个人患有此病……">
+<meta name="wxm:appmessage_desc" content="测一测你的出行焦虑指数，领取88元摩范出行券。">
+<!-- 分享缩略图，必须为绝对路径，且图片链接必须为http协议（由于安卓微信客户端无法获取https的分享图片，仅此处需要强制http协议）-->
+<meta name="wxm:img_url" content="http://wx.bjczxda.com/mofan/src/share.jpg">
+<!-- 分享链接-->
+<meta name="wxm:link" content="http://wx.bjczxda.com/mofan/index.html">
+<!-- 淘宝自适应做法 -->
+<meta name="viewport"  id="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+<title>出门怕不怕</title>
+<script type="text/javascript" src="js/viewport.js"></script>
+<link href="css/main.css" rel="stylesheet">
+</head>
+<body>
+    <div id="dom">
+    	<p id='test'></p>
+    	<img id="solgan" src="images/1-slogan.png" alt="slogan">
+    </div>
+    <script type="text/javascript">
+    	// alert(document.body.clientWidth);
+    	window.onload = function () {
+    		// body...
+    		var t = document.getElementById('test');
+    		var d = document.getElementById('dom');
+    		t.innerHTML = 'body宽:' + document.body.clientWidth;
+    		t.innerHTML += '\nbody高:'+ document.body.clientHeight;
+    		t.innerHTML += '\ndiv宽:'+ d.clientWidth;
+    		t.innerHTML += '\ndiv高:'+ d.clientHeight;
+
+    	}
+    </script>
+</body>
+</html>
