@@ -51,7 +51,7 @@ function bindClicks() {
 }
 function page2Ani() {
     $('.icon8').css({
-        'backgroundImage': 'url("images/2-logoHover.png")',
+        'backgroundImage': 'url("images/2-logoHover-2.png")',
         'background-size': 'cover'
     });
     $('.screen2 li').css({
