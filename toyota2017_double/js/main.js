@@ -29,25 +29,26 @@ var mainHandler = {
                 $('.screen1 .man').show().addClass('animated zoomIn');
                 setTimeout(function () {
                     $('.screen1 .girl').show().addClass('animated fadeInRight');
+                    setTimeout(function () {
+                        $('.screen1 .girl').removeClass('animated fadeInRight').addClass('animated bodyAni infinite duration3');
+                    }, 800);
                 }, 500);
                 setTimeout(function () {
+                    $('.screen1 .man').removeClass('animated zoomIn').addClass('animated bodyAni infinite duration3');
                     $('.screen1 .gift').show().addClass('animated bounceInDown');
                     $('.screen1 .arrow').show();
                 }, 800);
             },
             onchange: function () {
+                stopSnow();
+
                 if (this.index == 0) {
                     Snowflake("snowflake");
-                } else {
-                    stopSnow();
                 }
 
                 if (this.index == 1) {
-                    /* 音乐播放状态  当前浏览器不支持自动播放 */
-                    if (mainHandler.musicPlayer.paused && !mainHandler.isUserTouch) {
-                        mainHandler.isUserTouch = true;
-                        mainHandler.musicPlayer.play();
-                    }
+                    $('#arrowWhite').show();
+                    Snowflake("snowflake2");
                     mainHandler.play2ContentAni();
                     $('.screen2 .div-1').show();
                     setTimeout(function () {
@@ -63,6 +64,15 @@ var mainHandler = {
                     $('.screen2 .div-3').hide();
                     $('.screen2 .content').height('0');
                     $('.screen2 .bottom').css({'top': '12.4rem'});
+                    $('#arrowWhite').hide();
+                }
+
+                if (this.index == 2) {
+                    Snowflake("snowflake3");
+                }
+
+                if (this.index == 3) {
+                    Snowflake("snowflake4");
                 }
 
             }
@@ -85,15 +95,15 @@ var mainHandler = {
     },
     bindClicks: function () {
         this.musicPlayer = document.getElementById('clickSound');
-        var music = mainHandler.musicPlayer;
         $('#audioPlayer').click(function () {
             mainHandler.isUserTouch = true;
+            var music = mainHandler.musicPlayer;
             if (music.paused){
                 music.play();
-                $(this).css('background-position-x', 0).addClass('rotateRingAni');
+                $(this).removeClass('music_off').addClass('music_on rotateRingAni');
             } else {
                 music.pause();
-                $(this).css('background-position-x', '100%').removeClass('rotateRingAni');
+                $(this).addClass('music_off').removeClass('music_on rotateRingAni');
             }
         });
 
@@ -110,6 +120,14 @@ var mainHandler = {
 
         $('#btnGetCode').click(function () {
             alert("获取验证码");
+        });
+
+        $('.wrap').bind('touchstart', function () {
+            /* 音乐播放状态  当前浏览器不支持自动播放 */
+            if (mainHandler.musicPlayer.paused && !mainHandler.isUserTouch) {
+                mainHandler.isUserTouch = true;
+                mainHandler.musicPlayer.play();
+            }
         });
 
         var resultIndex = 1;
@@ -135,17 +153,24 @@ $(function () {
 
 
 /* 下雪功能 */
-var handleId = -1;
+var handleId = -1, el = null, ctx = null;
 /**
  * 雪球
  * @param {[type]} elementName [description]
  */
 function Snowflake(elementName) {
 
-    var snowElement = document.getElementById(elementName)
+    var snowElement = document.getElementById(elementName);
     var canvasContext = snowElement.getContext("2d");
     var width = $(document).width();
     var height = $(document).height();
+
+    el = snowElement;
+    ctx = canvasContext;
+
+    if (elementName == 'snowflake2') {
+        height = 43.75 * 20 * (width / 375);
+    }
 
     //canvas尺寸修正
     snowElement.width = width;
@@ -199,6 +224,7 @@ function Snowflake(elementName) {
 function stopSnow() {
     if (handleId != -1) {
         window.cancelAnimationFrame(handleId);
+        ctx.clearRect(0,0, el.width, el.height);
     }
 }
 
@@ -236,7 +262,7 @@ function Snow(snowSettings) {
     this.radius = randomInRange(snowSettings.minRadius, snowSettings.maxRadius);
     //初始的x位置
     this.initialX = Math.random() * snowSettings.maxX;
-    this.y = -(Math.random() * 500);
+    this.y = -(Math.random() * 300);
     //运行的速率
     this.speedY = randomInRange(snowSettings.minSpeedY, snowSettings.maxSpeedY);
     this.speedX = snowSettings.speedX;

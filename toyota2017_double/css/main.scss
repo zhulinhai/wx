@@ -46,12 +46,20 @@ html, body {
 #audioPlayer {
   position: fixed;
   top: 1.8rem;
-  right: 0.8rem;
-  width: 1rem;
-  height: 1rem;
-  background: url("../src/audio.png") no-repeat;
-  background-size: 200% auto;
+  right: 0.5rem;
+  width: 1.5rem;
+  height: 1.5rem;
   z-index: 11;
+}
+
+.music_on {
+  background: url("../src/music-on.png") no-repeat center;
+  background-size: 1rem auto;
+}
+
+.music_off {
+  background: url("../src/music-off.png") no-repeat center;
+  background-size: 1rem auto;
 }
 
 #actRuleDialog {
@@ -128,13 +136,18 @@ html, body {
   background-size: 100% auto;
 }
 
+#snowflake, #snowflake3, #snowflake4 {
+  position: absolute;
+  z-index: -1;
+}
+#snowflake2 {
+  position: absolute;
+  z-index: 1;
+}
+
 .screen1 {
   background: url("../src/1-bg.jpg") no-repeat;
   background-size: cover;
-  #snowflake {
-    position: absolute;
-    z-index: -1;
-  }
   .logo {
     position: absolute;
     top: 0.5rem;
@@ -215,6 +228,20 @@ html, body {
     height: 0.85rem;
     z-index: 5;
   }
+}
+
+#arrowWhite {
+  position: fixed;
+  bottom: 0.5rem;
+  left: 50%;
+  margin-left: -0.55rem;
+  width: 1.1rem;
+  height: 0.85rem;
+  z-index: 5;
+}
+
+.duration3 {
+  animation-duration: 3s;
 }
 
 .btn {
@@ -380,6 +407,7 @@ html, body {
           margin-top: 1.5rem;
           margin-left: 3.8rem;
           font-style: italic;
+          width: 100%;
           z-index: 2;
           animation-delay: 0.8s;
         }
@@ -391,6 +419,7 @@ html, body {
           margin-top: 2.5rem;
           margin-left: 3.7rem;
           font-style: italic;
+          width: 100%;
           z-index: 2;
           animation-delay: 1.2s;
         }
@@ -509,16 +538,6 @@ html, body {
       margin-left: -7.9rem;
       width: 15.3rem;
       height: 1rem;
-      z-index: 2;
-    }
-
-    .arrow {
-      position: absolute;
-      top: 42rem;
-      left: 50%;
-      margin-left: -0.55rem;
-      width: 1.1rem;
-      height: 0.85rem;
       z-index: 2;
     }
   }
