@@ -130,6 +130,11 @@ var mainHandler = {
             }
         });
 
+        $('.screen2 .content').click(function () {
+            // 切屏
+            mainHandler.pageSlider.next();
+        });
+
         var resultIndex = 1;
         $('#btnSubmit').click(function () {
             // 多次提交，清除索引状态 todo
