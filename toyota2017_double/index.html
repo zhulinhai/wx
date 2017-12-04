@@ -7,8 +7,8 @@
     <meta name="x5-orientation" content="portrait"><!-- QQ强制竖屏 -->
 
     <!-- 在 meta 标签中进行基础分享信息设置-->
-    <meta name="wxm:timeline_title" content="诞诞的幸福">
-    <meta name="wxm:appmessage_title" content="诞诞的幸福">
+    <meta name="wxm:timeline_title" content="诞诞的幸福——车主认证有礼">
+    <meta name="wxm:appmessage_title" content="诞诞的幸福——车主认证有礼">
     <meta name="wxm:appmessage_desc" content="一汽丰田车主认证即享好礼">
     <!-- 分享缩略图，必须为绝对路径，且图片链接必须为http协议（由于安卓微信客户端无法获取https的分享图片，仅此处需要强制http协议）-->
     <meta name="wxm:img_url" content="http://wximg.qq.com/_demo/wxmoment/images/shareLogo.jpg">
@@ -16,8 +16,8 @@
     <meta name="wxm:link" content="https://wximg.qq.com/tmt/_demo/wxmoment/share.html">
     <!-- 在 meta 标签中进行基础分享信息设置 End-->
 
-    <title>诞诞的幸福</title>
-    <link rel="stylesheet" href="css/main.css?v=0.0.7">
+    <title>诞诞的幸福——车主认证有礼</title>
+    <link rel="stylesheet" href="css/main.css?v=0.0.8">
     <script type="text/javascript">
         //rem设置
         (function(doc, win) {
@@ -147,6 +147,18 @@
 
     <script src="http://wximg.qq.com/wxp/libs/wxmoment/0.0.4/wxmoment.js"></script>
     <script src="js/Tween.min.js"></script>
-    <script type="text/javascript" src="js/main.js?v=0.0.3"></script>
+    <script type="text/javascript">
+        function audioAutoPlay(id){
+            var audio = document.getElementById(id);
+            document.addEventListener("WeixinJSBridgeReady", function () {
+                audio.play();
+            }, false);
+            document.addEventListener('YixinJSBridgeReady', function() {
+                audio.play();
+            }, false);
+        }
+        audioAutoPlay('clickSound');
+    </script>
+    <script type="text/javascript" src="js/main.js?v=0.0.4"></script>
 </body>
 </html>
