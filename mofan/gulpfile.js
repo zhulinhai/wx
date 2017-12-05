@@ -6,9 +6,9 @@
  */
 var gulp = require('gulp');
 var sass = require('gulp-sass');
+var fontSpider = require( 'gulp-font-spider' );
 
-
-gulp.watch('scss/*.scss',['default']);
+gulp.watch(['scss/*.scss','./index.html'],['default']);
 
 gulp.task('scss', function () {
    
@@ -18,4 +18,9 @@ gulp.task('scss', function () {
    
 });
 
-gulp.task('default',['scss']);
+gulp.task('fontspider', function() {
+    return gulp.src('./index.html')
+        .pipe(fontSpider());
+});
+
+gulp.task('default',['scss','fontspider']);

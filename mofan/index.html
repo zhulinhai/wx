@@ -14,28 +14,57 @@
 <meta name="viewport"  id="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
 <title>出门怕不怕</title>
 <script type="text/javascript" src="js/viewport.js"></script>
+<script type="text/javascript" src="../public/scripts/jquery-1.12.1.min.js"></script>
+<script type="text/javascript" src="js/jquery.burn.js"></script>
 <link href="css/main.css" rel="stylesheet">
 <script type="text/javascript" src="js/main.js"></script>
 </head>
 <body>
-    <div id="dom">
+<!--     <div id="dom">
     	<p id='test'></p>
     	<img id="solgan" src="images/1-slogan.png" alt="slogan">
+    </div> -->
+    <div class="loading">
+    	<div class="content">
+    		<div class="light traffic_light"></div>
+    		<p class="bold">据统计：</p>
+    		<p class="desc">在北京，每10个人中就有9个人患有此病......</p>
+    		<p class="percentage">25%</p>
+    	</div>
     </div>
-    <script type="text/javascript">
-    	// alert(document.body.clientWidth);
-    	window.onload = function () {
-    		// body...
-    		var t = document.getElementById('test');
-    		var d = document.getElementById('dom');
-    		t.innerHTML = 'body宽:' + document.body.clientWidth;
-    		t.innerHTML += '\nbody高:'+ document.body.clientHeight;
-    		t.innerHTML += '\ndiv宽:'+ d.clientWidth;
-    		t.innerHTML += '\ndiv高:'+ d.clientHeight;
-
-    		var arr = ['A','A','B','C','B','C','C'];
-    		console.log(statistics(arr));
-    	}
-    </script>
+    <div class="box">
+    	<img class="logo" src="images/logo.png">
+    	<a href="javascript:void(0);" class="btn_music"></a>
+    	<div class="pg_f">
+    		<div class="r1">
+    		  <img class="dots" src="images/dots.png">
+    		  <img class="left_wed" src="images/left_wed.png">
+    		  <img class="right_wed" src="images/right_wed.png">
+    		  <img class="web" src="images/wed.png">
+    		  <img class="web2" src="images/wed2.png">
+    		  <img class="people" src="images/people.png">
+    		  <img class="wave" src="images/wave.png">
+    		  <img class="start" src="images/start.png">
+    		  <img class="wave_r" src="images/wave.png">	
+    		</div>
+    		<a href="javascript:void(0);" class="btn_beginTest"><span>马上开测</span></a>
+    	</div>
+    	<div style="display: none;"></div>
+    </div>
 </body>
+<script type="text/javascript">
+    	// alert(document.body.clientWidth);
+    	// window.onload = function () {
+    	// 	// body...
+    	// 	var t = document.getElementById('test');
+    	// 	var d = document.getElementById('dom');
+    	// 	t.innerHTML = 'body宽:' + document.body.clientWidth;
+    	// 	t.innerHTML += '\nbody高:'+ document.body.clientHeight;
+    	// 	t.innerHTML += '\ndiv宽:'+ d.clientWidth;
+    	// 	t.innerHTML += '\ndiv高:'+ d.clientHeight;
+
+    	// 	var arr = ['A','B','C','B','B','C','C'];
+    	// 	console.log(getMustIndex(arr));
+    	// }
+    </script>
 </html>

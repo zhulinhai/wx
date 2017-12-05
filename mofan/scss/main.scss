@@ -1,5 +1,6 @@
 $baseFontSize: 75px;
-@function resize($px){
+$webMT:20px;
+@function pxToRem($px){
 	@return $px / $baseFontSize * 1rem; 
 }
 
@@ -9,25 +10,221 @@ $baseFontSize: 75px;
    padding: 0;
 }
 
-html,body{
-	width:100%;
-	height:100%;
+/*声明 WebFont*/
+@font-face {
+  font-family: '苏新诗古印宋简';
+  src: url('../fonts/h5.ttf');
+  src:
+          url('../fonts/h5.eot?#font-spider') format('embedded-opentype'),
+          url('../fonts/h5.woff') format('woff'),
+          url('../fonts/h5.ttf') format('truetype'),
+          url('../fonts/h5.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+html, body {
+  font-family: "Microsoft Yahei", "Helvetica Neue", Helvetica, Tahoma, sans-serif;
+  font-size: 20px;
+  height: 100%;
+  background-color: #fff;
+  overflow: hidden;
 }
 
 body {
-	overflow: auto;
+	font-size:pxToRem(24px);
 }
 
-div {
-	width:resize(750px);
-	height:resize(1206px);
-	background-color: red;
-	text-align: center;
+a {
+    margin:0;
+    padding:0;
+    border:0;
+    font-size:100%;
+    text-decoration: none;
+    vertical-align:baseline;
+    background:transparent;
+}
+
+a:link, a:visited, a:hover, a:active {
+    text-decoration: none;
+    outline: none;
+}
+
+input, select,textarea {
+    border: none;
+    border-radius: 0;
+    -webkit-appearance: none;
+    box-sizing: border-box;
+    vertical-align:middle;
+}
+
+.loading{
+	display: none;
+	position: relative;
+	width:100%;
+	height:100%;
+	background-color: #004b8f;
 	overflow: hidden;
 
-	#solgan {
-		margin-top: 30%;
-	 	width:resize(526px);
-   }
+	.content{
+		width:100%;
+		margin-top: pxToRem(185px);
+		overflow: hidden;
+
+		.light{
+			width:pxToRem(97px);
+			height:pxToRem(151px);
+			margin: 0 auto;
+			background-image:url('../images/img_light.png');
+			background-repeat: no-repeat;
+			background-size: pxToRem(291px) pxToRem(151px);
+		}
+
+		p {
+			text-align: center;
+			color:white;
+		}
+
+		.bold {
+			margin-top: pxToRem(75px);
+			font-size: 1.3em;
+			font-weight: bold;
+		}
+		.desc { margin-top: pxToRem(25px); }
+		.percentage { margin-top: pxToRem(80px); }
+	}
 }
+
+
+.box {
+	position: relative;
+	width:100%;
+	height:100%;
+	overflow: hidden;
+
+	.logo {
+		position: absolute;
+		z-index:10;
+		top:pxToRem(29px);
+		left:pxToRem(40px);
+		width:pxToRem(184px);
+	}
+
+	.btn_music {
+		position: absolute;
+		z-index:10;
+		display: block;
+		width:pxToRem(45px);
+		height:pxToRem(45px);
+		top:pxToRem(24px);
+		right:pxToRem(20px);
+		background-image: url("../images/icon_music.png");
+		background-repeat: no-repeat;
+		background-position: center;
+		background-size: pxToRem(45px) pxToRem(45px);
+	}
+}
+
+.pg_f {
+	position: absolute;
+	width:100%;
+	height:100%;
+	background: url("../images/bg_pg_1.jpg") 0 0 no-repeat;
+	background-size: cover;
+	overflow: hidden;
+
+	.r1{
+		position: relative;
+		width:pxToRem(695px);
+		margin: pxToRem(100px) auto 0 auto;
+	    text-align: center;
+	    overflow: hidden;
+
+		.dots {
+			display: none;
+			position: absolute;
+			left:50%;
+			margin-left: pxToRem(-257px);
+			width: pxToRem(515px);
+		}
+		.left_wed{
+			position: absolute;
+			left:pxToRem(65px);
+			top:pxToRem(148px + $webMT);
+			width:pxToRem(82px);
+		}
+		.right_wed{
+			position: absolute;
+			right:pxToRem(165px);
+			width:pxToRem(98px);
+		}
+		.web {
+			margin-top: pxToRem($webMT);
+			width:pxToRem(402px);
+		}
+		.web2{
+			width:pxToRem(695px);
+		}
+		.people{
+			width:pxToRem(233px);
+		}
+		.wave{
+			position: absolute;
+			width:pxToRem(57px);
+			top:pxToRem(280px + $webMT);
+			left:pxToRem(40px);
+		}
+
+		.wave_r {
+            position: absolute;
+			width:pxToRem(57px);
+			top:pxToRem(360px + $webMT);
+			right:pxToRem(20px);
+		}
+
+		.start {
+			position: absolute;
+			left:pxToRem(112px);
+			top:pxToRem(272px + $webMT);
+			width:pxToRem(20px);
+			transform: rotate(-40deg);
+		}
+	}
+	.btn_beginTest{
+		display: block;
+		margin: pxToRem(15px) auto 0 auto;
+		width:pxToRem(213px);
+		height: pxToRem(63px);
+		background: url("../images/btn_short.png") 0 0 no-repeat;
+		background-size: cover;
+		text-align: center;
+		
+		span {
+			color: white;
+			line-height: pxToRem(63px);
+			letter-spacing: 2px;
+			font-size: 1.3em;
+			text-shadow:0 0 3px #FF0000;
+		}
+	}
+}
+
+.traffic_light{
+  animation-name:traffic_light;
+  animation-duration:1s;
+  animation-timing-function:steps(3);
+  animation-iteration-count:infinite;
+}
+
+@keyframes traffic_light{
+	from { 
+		background-position: 0;
+	}
+
+	to{
+		background-position: pxToRem(-291px) 0;
+	}
+}
+
+
 
