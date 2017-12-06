@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>电信数据生成</title>
+</head>
+<body>
+    <a href="javascript: sendMsg();"><button>提交</button></a>
+
+    <script type="text/javascript" src="../public/scripts/jquery-1.12.1.min.js"></script>
+    <script type="text/javascript" src="data2.js"></script>
+    <script type="text/javascript">
+        function randomPassword(size)
+        {
+            var seed = ['0','1','2','3','4','5','6','7','8','9'];//数组
+            var seedlength = seed.length;//数组长度
+            var createPassword = '';
+            for (i=0;i<size;i++) {
+                j = Math.floor(Math.random()*seedlength);
+                createPassword += seed[j];
+            }
+            return createPassword;
+        }
+
+        function getCard() {
+            var card = '011100171110' + randomPassword(7);
+            return card;
+        }
+
+        // 生成卡密
+        function getPwd() {
+            var pwd = '11092038' + randomPassword(10);
+            return pwd;
+        }
+
+        function getTelekomContent(value) {
+            return '【丰田金融】' + value.name + '先生/女士，恭喜您获得丰田金融－跨越人生路，感恩幸福礼活动奖品，奖品为10元手机话费充值卡。卡号：' + getCard() +' 密码：'+ getPwd() +'。请拔打11888按提示充值。';
+        }
+
+        function sendMsg() {
+            var count = 0;
+            var send_time = '';
+            var arrList = [];
+            data2.forEach(function (value, index ,array) {
+                if (count >= 0 && count < 699) {
+                    send_time = '2017-11-27 17:43:14'
+                } else if (count >= 699 && count < 799) {
+                    send_time = '2017-11-28 17:53:34';
+                } else if (count >= 799 && count < 899) {
+                    send_time = '2017-11-29 16:52:31';
+                } else if (count >= 899 && count < 999) {
+                    send_time = '2017-11-30 18:13:12';
+                } else if (count >= 999 && count < 1099) {
+                    send_time = '2017-12-1 17:33:31';
+                } else {
+                    send_time = '2017-12-4 17:23:16';
+                }
+                var content = getTelekomContent(value);
+
+                arrList[index] = {};
+                arrList[index]['mobile'] = value.mobile;
+                arrList[index]['content'] = content;
+                arrList[index]['num_of_msn'] = 2;
+                arrList[index]['send_time'] = send_time;
+                arrList[index]['status'] = '提交成功';
+                count ++;
+            });
+
+//            JSONToExcelConvertor(JSON.stringify(arrList), "Report", '移动');
+
+
+            var url = 'http://127.0.0.1:8000/api/submitInfo';
+            $.ajax({
+                type: "post",
+                url: url,
+                data: {'info':JSON.stringify(arrList)},
+                dataType: "json",
+                success: function (data) {
+                    var response = eval('(data)');
+                    console.log(response);
+                },
+                error: function (data) {
+                    console.log(data);
+                    alert("加载超时,请检查网络连接");
+                }
+            });
+
+        }
+    </script>
+
+</body>
+</html>

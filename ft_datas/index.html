@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>移动数据生成</title>
+</head>
+<body>
+    <a href="javascript: sendMsg();"><button>提交</button></a>
+
+    <script type="text/javascript" src="../public/scripts/jquery-1.12.1.min.js"></script>
+    <script type="text/javascript" src="data1.js"></script>
+    <script type="text/javascript">
+        function randomPassword(size)
+        {
+            var seed = ['0','1','2','3','4','5','6','7','8','9'];//数组
+            var seedlength = seed.length;//数组长度
+            var createPassword = '';
+            for (i=0;i<size;i++) {
+                j = Math.floor(Math.random()*seedlength);
+                createPassword += seed[j];
+            }
+            return createPassword;
+        }
+
+        function getCard() {
+            var card = '166540303756' + randomPassword(5);
+            return card;
+        }
+
+        // 生成卡密
+        function getPwd() {
+            var pwd = '033' + randomPassword(15);
+            return pwd;
+        }
+
+        function getTelekomContent(value) {
+            return '【丰田金融】' + value.name + '先生/女士，恭喜您获得丰田金融－跨越人生路，感恩幸福礼活动奖品，奖品为10元手机话费充值卡。卡号：' + getCard() +' 密码：'+ getPwd() +'。请拔打13800138000按提示充值。';
+        }
+
+        function sendMsg() {
+            var count = 0;
+            var send_time = '';
+            var arrList = [];
+            data1.forEach(function (value, index ,array) {
+                if (count >=0 && count < 181) {
+                    send_time = '2017-11-24 17:53:34';
+                } else if (count >= 181 && count < 500){
+                    send_time = '2017-11-27 14:42:43';
+                } else if (count >= 500 && count < 900) {
+                    send_time = '2017-11-28 16:23:14'
+                } else if (count >= 900 && count < 1300) {
+                    send_time = '2017-11-29 16:52:31';
+                } else if (count >= 1300 && count < 1700) {
+                    send_time = '2017-11-30 18:13:12';
+                } else if (count >= 1700 && count < 2100) {
+                    send_time = '2017-12-1 17:33:31';
+                } else {
+                    send_time = '2017-12-4 17:23:16';
+                }
+                var content = getTelekomContent(value);
+
+                arrList[index] = {};
+                arrList[index]['mobile'] = value.mobile;
+                arrList[index]['content'] = content;
+                arrList[index]['num_of_msn'] = 2;
+                arrList[index]['send_time'] = send_time;
+                arrList[index]['status'] = '提交成功';
+                count ++;
+            });
+
+//            JSONToExcelConvertor(JSON.stringify(arrList), "Report", '移动');
+
+
+            var url = 'http://127.0.0.1:8000/api/submitInfo';
+            $.ajax({
+                type: "post",
+                url: url,
+                data: {'info':JSON.stringify(arrList)},
+                dataType: "json",
+                success: function (data) {
+                    var response = eval('(data)');
+                    console.log(response);
+                },
+                error: function (data) {
+                    console.log(data);
+                    alert("加载超时,请检查网络连接");
+                }
+            });
+
+        }
+
+        function JSONToExcelConvertor(JSONData, FileName, ShowLabel) {
+            //先转化json
+            var arrData = typeof JSONData != 'object' ? JSON.parse(JSONData) : JSONData;
+
+            var excel = '<table>';
+
+            //设置表头
+            var row = "<tr>";
+            for (var i = 0, l = ShowLabel.length; i < l; i++) {
+                row += "<td>" + ShowLabel[i].value + '</td>';
+            }
+
+
+            //换行
+            excel += row + "</tr>";
+
+            //设置数据
+            for (var i = 0; i < arrData.length; i++) {
+                var row = "<tr>";
+
+                for (var index in arrData[i]) {
+                    var value = arrData[i][index].value === "." ? "" : arrData[i][index].value;
+                    row += '<td>' + value + '</td>';
+                }
+
+                excel += row + "</tr>";
+            }
+
+            excel += "</table>";
+
+            var excelFile = "<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:x='urn:schemas-microsoft-com:office:excel' xmlns='http://www.w3.org/TR/REC-html40'>";
+            excelFile += '<meta http-equiv="content-type" content="application/vnd.ms-excel; charset=UTF-8">';
+            excelFile += '<meta http-equiv="content-type" content="application/vnd.ms-excel';
+            excelFile += '; charset=UTF-8">';
+            excelFile += "<head>";
+            excelFile += "<!--[if gte mso 9]>";
+            excelFile += "<xml>";
+            excelFile += "<x:ExcelWorkbook>";
+            excelFile += "<x:ExcelWorksheets>";
+            excelFile += "<x:ExcelWorksheet>";
+            excelFile += "<x:Name>";
+            excelFile += "{worksheet}";
+            excelFile += "</x:Name>";
+            excelFile += "<x:WorksheetOptions>";
+            excelFile += "<x:DisplayGridlines/>";
+            excelFile += "</x:WorksheetOptions>";
+            excelFile += "</x:ExcelWorksheet>";
+            excelFile += "</x:ExcelWorksheets>";
+            excelFile += "</x:ExcelWorkbook>";
+            excelFile += "</xml>";
+            excelFile += "<![endif]-->";
+            excelFile += "</head>";
+            excelFile += "<body>";
+            excelFile += excel;
+            excelFile += "</body>";
+            excelFile += "</html>";
+
+
+            var uri = 'data:application/vnd.ms-excel;charset=utf-8,' + encodeURIComponent(excelFile);
+
+            var link = document.createElement("a");
+            link.href = uri;
+
+            link.style = "visibility:hidden";
+            link.download = FileName + ".xls";
+
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+    </script>
+
+</body>
+</html>
