@@ -17,7 +17,7 @@
                 return alert(rt.message);
             }
 
-            var title =window.title; // 分享标题
+            // var title =window.title; // 分享标题
             var link =$('meta[name="wxm:link"]').attr("content");
 		    var desc = $('meta[name="wxm:appmessage_desc"]').attr("content"); // 分享描述
 		    var imgUrl = $('meta[name="wxm:img_url"]').attr("content");
@@ -45,7 +45,7 @@
             wx.ready(function () {
                 // 在这里调用 API
                 wx.onMenuShareTimeline({
-                    title:title, // 分享标题
+                    title:window.title, // 分享标题
                     link: link, // 分享链接
                     desc: desc, // 分享描述
                     imgUrl:imgUrl, // 分享图标
@@ -57,7 +57,7 @@
                 });
 
                 wx.onMenuShareAppMessage({
-                    title: title, // 分享标题
+                    title: window.title, // 分享标题
                     desc: desc, // 分享描述
                     link: link, // 分享链接
                     imgUrl: imgUrl, // 分享图标
@@ -72,7 +72,7 @@
                 });
 
                 wx.onMenuShareQQ({
-                    title: title, // 分享标题
+                    title: window.title, // 分享标题
                     desc: desc, // 分享描述
                     link: link, // 分享链接
                     imgUrl: imgUrl, // 分享图标
@@ -85,7 +85,7 @@
                 });
 
                 wx.onMenuShareWeibo({
-                    title: title, // 分享标题
+                    title: window.title, // 分享标题
                     desc: desc, // 分享描述
                     link: link, // 分享链接
                     imgUrl: imgUrl, // 分享图标

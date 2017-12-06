@@ -5,9 +5,9 @@
 
 /*声明 WebFont*/
 @font-face {
-  font-family: '苏新诗古印宋简';
-  src: url("../fonts/h5.ttf");
-  src: url("../fonts/h5.eot?#font-spider") format("embedded-opentype"), url("../fonts/h5.woff") format("woff"), url("../fonts/h5.ttf") format("truetype"), url("../fonts/h5.svg") format("svg");
+  font-family: '古印宋简';
+  src: url("../fonts/苏新诗古印宋简.ttf");
+  src: url("../fonts/苏新诗古印宋简.eot?#font-spider") format("embedded-opentype"), url("../fonts/苏新诗古印宋简.woff") format("woff"), url("../fonts/苏新诗古印宋简.ttf") format("truetype"), url("../fonts/苏新诗古印宋简.svg") format("svg");
   font-weight: normal;
   font-style: normal; }
 
@@ -15,7 +15,7 @@ html, body {
   font-family: "Microsoft Yahei", "Helvetica Neue", Helvetica, Tahoma, sans-serif;
   font-size: 20px;
   height: 100%;
-  background-color: #fff;
+  background-color: #000000;
   overflow: hidden; }
 
 body {
@@ -100,7 +100,7 @@ input, select, textarea {
   width: 100%;
   height: 100%;
   background: url("../images/bg_pg_1.jpg") 0 0 no-repeat;
-  background-size: cover;
+  background-size: 100% 100%;
   overflow: hidden; }
   .pg_f .r1 {
     position: relative;
@@ -109,10 +109,10 @@ input, select, textarea {
     text-align: center;
     overflow: hidden; }
     .pg_f .r1 .dots {
-      display: none;
       position: absolute;
+      top: -2.90667rem;
       left: 50%;
-      margin-left: -3.42667rem;
+      margin-left: -3.2rem;
       width: 6.86667rem; }
     .pg_f .r1 .left_wed {
       position: absolute;
@@ -146,6 +146,11 @@ input, select, textarea {
       top: 3.89333rem;
       width: 0.26667rem;
       transform: rotate(-40deg); }
+    .pg_f .r1 .start_r {
+      position: absolute;
+      right: 0.66667rem;
+      top: 1.93333rem;
+      width: 0.32rem; }
   .pg_f .btn_beginTest {
     display: block;
     margin: 0.2rem auto 0 auto;
@@ -157,9 +162,251 @@ input, select, textarea {
     .pg_f .btn_beginTest span {
       color: white;
       line-height: 0.84rem;
-      letter-spacing: 2px;
-      font-size: 1.3em;
-      text-shadow: 0 0 3px #FF0000; }
+      letter-spacing: 3px;
+      font-size: 1.3em; }
+
+.pg_quetison, .pg_result {
+  width: 100%;
+  height: 100%;
+  background: url("../images/bg_pg.jpg") 0 0 no-repeat;
+  background-size: 100% 100%;
+  overflow: hidden; }
+
+.pg_quetison .screen {
+  position: relative;
+  margin: 1.48rem auto 0 auto;
+  width: 9.42667rem;
+  height: 7.01333rem;
+  overflow: hidden; }
+  .pg_quetison .screen .l_u_corner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0.96rem; }
+  .pg_quetison .screen .r_d_corner {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 0.88rem; }
+  .pg_quetison .screen .question_img {
+    position: absolute;
+    top: 0.14667rem;
+    left: 0.23333rem;
+    width: 8.96rem;
+    height: 6.72rem; }
+    .pg_quetison .screen .question_img img {
+      width: 100%; }
+
+.pg_quetison .questions {
+  position: relative;
+  margin: 0.33333rem auto 0 auto;
+  width: 9.2rem;
+  font-size: 0.4rem;
+  color: #ffffff;
+  overflow: hidden; }
+  .pg_quetison .questions .issue {
+    font-weight: bold; }
+  .pg_quetison .questions .items {
+    margin-top: 0.69333rem; }
+    .pg_quetison .questions .items a {
+      display: block;
+      margin: 0 auto;
+      width: 8.08rem;
+      height: 1.05333rem;
+      border: 1px solid #2d85b9;
+      border-radius: 6px;
+      overflow: hidden;
+      color: #ffffff; }
+      .pg_quetison .questions .items a div {
+        float: left;
+        width: 0.69333rem;
+        height: 0.69333rem;
+        margin-top: 0.18rem;
+        margin-bottom: 0.18rem;
+        margin-left: 0.18rem;
+        background-position: 0 0;
+        background-repeat: no-repeat;
+        background-size: cover; }
+      .pg_quetison .questions .items a p {
+        float: left;
+        height: 100%;
+        line-height: 1.05333rem;
+        margin-left: 0.42667rem; }
+      .pg_quetison .questions .items a .uncheck {
+        background-image: url("../images/icon_uncheck.png"); }
+      .pg_quetison .questions .items a .checked {
+        background-image: url("../images/icon_checked.png"); }
+    .pg_quetison .questions .items a:nth-child(2) {
+      margin-top: 0.26667rem;
+      margin-bottom: 0.26667rem; }
+    .pg_quetison .questions .items a:after {
+      content: '';
+      width: 1px;
+      height: 0px;
+      clear: both; }
+
+.pg_quetison .btn_next {
+  position: absolute;
+  bottom: 0.64rem;
+  left: 50%;
+  margin-left: -1.42rem;
+  display: block;
+  width: 2.84rem;
+  height: 0.84rem;
+  background: url("../images/btn_short.png") 0 0 no-repeat;
+  background-size: cover;
+  text-align: center; }
+  .pg_quetison .btn_next span {
+    color: white;
+    line-height: 0.84rem;
+    letter-spacing: 3px;
+    font-size: 1.3em; }
+
+.pg_quetison .btn_result {
+  position: absolute;
+  bottom: 0.64rem;
+  left: 50%;
+  margin-left: -1.42rem;
+  display: block;
+  width: 2.84rem;
+  height: 0.84rem;
+  background: url("../images/btn_red.png") 0 0 no-repeat;
+  background-size: cover;
+  text-align: center; }
+  .pg_quetison .btn_result span {
+    color: white;
+    line-height: 0.84rem;
+    letter-spacing: 3px;
+    font-size: 1.3em; }
+
+.pg_result {
+  display: block; }
+  .pg_result .result {
+    position: relative;
+    margin: 1rem auto;
+    width: 9.16rem;
+    height: 14.45333rem;
+    background: url("../images/bg_result.png") 0 0 no-repeat;
+    background-size: cover;
+    overflow: hidden; }
+    .pg_result .result .title {
+      margin-top: 1.6rem;
+      margin-bottom: 0.86667rem;
+      font-size: 2.4em;
+      text-align: center;
+      letter-spacing: 2px; }
+    .pg_result .result .content {
+      width: 7.78667rem;
+      margin: 0 auto;
+      padding-left: 0.2rem;
+      overflow: hidden; }
+      .pg_result .result .content p {
+        margin-top: 0.21333rem;
+        color: #545454; }
+      .pg_result .result .content p:nth-child(1) {
+        margin-top: 0;
+        font-size: 0.50667rem; }
+      .pg_result .result .content p:nth-child(2) {
+        color: #af3535;
+        font-size: 0.50667rem; }
+      .pg_result .result .content p:nth-child(4) {
+        margin-top: 0.29333rem;
+        color: #184a7f;
+        font-size: 0.42667rem; }
+      .pg_result .result .content p:nth-child(3), .pg_result .result .content p:nth-child(5), .pg_result .result .content p:nth-child(6) {
+        padding-left: 0.06667rem; }
+    .pg_result .result .gingili {
+      width: auto;
+      padding-right: 0.18667rem;
+      margin: 0.4rem auto 0 auto;
+      text-align: center;
+      color: #af3535; }
+    .pg_result .result .car {
+      position: relative;
+      width: 6.64rem;
+      height: 3.2rem;
+      margin: 0 auto; }
+      .pg_result .result .car img {
+        position: absolute;
+        bottom: 0; }
+      .pg_result .result .car .car_1 {
+        width: 100%; }
+      .pg_result .result .car .car_2 {
+        display: none;
+        left: 50%;
+        margin-left: -3.22667rem;
+        width: 6.45333rem; }
+    .pg_result .result .btn_group {
+      width: 7.78667rem;
+      margin: 0.48rem auto 0 auto;
+      overflow: hidden; }
+      .pg_result .result .btn_group a {
+        display: block;
+        width: 3.64rem;
+        height: 0.84rem;
+        background: url("../images/btn_long.png") 0 0 no-repeat;
+        background-size: cover;
+        text-align: center; }
+        .pg_result .result .btn_group a span {
+          color: white;
+          line-height: 0.84rem; }
+      .pg_result .result .btn_group .btn_ticket {
+        float: left; }
+      .pg_result .result .btn_group .btn_again {
+        float: right;
+        letter-spacing: 3px; }
+    .pg_result .result .btn_group:after {
+      content: '';
+      width: 1px;
+      height: 0px;
+      clear: both; }
+    .pg_result .result .doctor {
+      position: absolute;
+      color: #7b7b7b;
+      bottom: 1rem;
+      left: 0.6rem; }
+
+#jg, #yf {
+  display: inline-block;
+  width: 0;
+  vertical-align: middle;
+  white-space: nowrap;
+  overflow: hidden; }
+
+.h5_font_family {
+  font-family: "古印宋简"; }
+
+.duration_4_3_s {
+  animation-duration: .75s; }
+
+.delay_4_1_s {
+  animation-delay: .25s; }
+
+.delay_2_1_s {
+  animation-delay: .5s; }
+
+.delay_4_3_s {
+  animation-delay: .75s; }
+
+.delay_1_s {
+  animation-delay: 1s; }
+
+.delay_1_4_1_s {
+  animation-delay: 1s; }
+
+.textShadow {
+  animation-name: textShadow;
+  animation-duration: 1s;
+  animation-direction: alternate;
+  animation-iteration-count: infinite; }
+
+@keyframes textShadow {
+  from {
+    font-weight: normal;
+    text-shadow: 0 0 0px yellow; }
+  to {
+    font-weight: bold;
+    text-shadow: 0 0 20px yellow; } }
 
 .traffic_light {
   animation-name: traffic_light;
