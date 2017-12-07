@@ -90,6 +90,7 @@ Pace.once('hide', function(e){
     loadInterval = -1;
 	initQuestions();
 	bindEvents();
+	doShare(jQuery);
 	loadTimeout = setTimeout(function(){
     	$('.loading').hide();
     	firstPageAni();
@@ -192,7 +193,7 @@ function bindEvents(){
 		    	$('.car_2').show();
 		    	window.title = "我已患有出行路怒早期，你呢？";
 		    }
-		    
+		    doShare(jQuery);
 		    //还原答案页
 		    resetQuestionPage(result);
 		    

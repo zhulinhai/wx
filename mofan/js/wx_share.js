@@ -4,9 +4,8 @@
  * @date    2017-08-14 16:20:10
  * @version $Id$
  */
-(function ($){
+var doShare = function ($){
     var param = 'url='+encodeURIComponent(location.href);
-    var iv;
     $.ajax({
         type:'GET',
         url:'http://api.bjczxda.com/api/wx/signature?'+ param,
@@ -107,4 +106,4 @@
             //    alert('WeChat share request: Server Error!');
         }
     });
-})(jQuery);
+}
