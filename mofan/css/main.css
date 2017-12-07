@@ -42,8 +42,11 @@ input, select, textarea {
   vertical-align: middle; }
 
 .loading {
-  display: none;
-  position: relative;
+  display: block;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 1000;
   width: 100%;
   height: 100%;
   background-color: #004b8f;
@@ -67,12 +70,16 @@ input, select, textarea {
       font-size: 1.3em;
       font-weight: bold; }
     .loading .content .desc {
-      margin-top: 0.33333rem; }
+      margin: 0.33333rem auto 0 auto;
+      text-align: left;
+      color: white; }
     .loading .content .percentage {
       margin-top: 1.06667rem; }
 
 .box {
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   overflow: hidden; }
@@ -153,7 +160,10 @@ input, select, textarea {
       width: 0.32rem; }
   .pg_f .btn_beginTest {
     display: block;
-    margin: 0.2rem auto 0 auto;
+    position: absolute;
+    bottom: 0.64rem;
+    left: 50%;
+    margin-left: -1.42rem;
     width: 2.84rem;
     height: 0.84rem;
     background: url("../images/btn_short.png") 0 0 no-repeat;
@@ -392,7 +402,13 @@ input, select, textarea {
   animation-delay: 1s; }
 
 .delay_1_4_1_s {
-  animation-delay: 1s; }
+  animation-delay: 1.25s; }
+
+.delay_1_4_3_s {
+  animation-delay: 1.75s; }
+
+.delay_2_4_3_s {
+  animation-delay: 2.75s; }
 
 .textShadow {
   animation-name: textShadow;

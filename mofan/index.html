@@ -13,29 +13,32 @@
 <!-- 淘宝自适应做法 -->
 <meta name="viewport"  id="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
 <title>出门怕不怕</title>
-<script type="text/javascript" src="js/viewport.js"></script>
-<script type="text/javascript" src="../public/scripts/jquery-1.12.1.min.js"></script>
-<script type="text/javascript" src="js/jquery.burn.js"></script>
 <link rel="stylesheet" type="text/css" href="../public/css/animate.css">
 <link href="css/main.css" rel="stylesheet">
+
+<script type="text/javascript" src="js/viewport.js"></script>
+<script type="text/javascript" src="../public/scripts/jquery-1.12.1.min.js"></script>
+ <!-- 预加载插件 -->
+<script type="text/javascript" src="../public/scripts/pace.js"></script>
+
 <script type="text/javascript" src="js/main.js"></script>
 <script type="text/javascript">
 	(function(){window.title = document.querySelector('meta[name="wxm:timeline_title"]').getAttribute("content");})();
 </script>
 </head>
-<body>
+<body ontouchmove="event.preventDefault();">
     <div class="loading">
     	<div class="content">
     		<div class="light traffic_light"></div>
     		<p class="bold">据统计：</p>
-    		<p class="desc">在北京，每10个人中就有9个人患有此病......</p>
-    		<p class="percentage">25%</p>
+    		<div class="desc"></div>
+    		<p class="percentage"></p>
     	</div>
     </div>
     <div class="box">
     	<img class="logo" src="images/logo.png">
     	<a href="javascript:void(0);" class="btn_music"></a>
-    	<div class="pg_f" style="display: none;">
+    	<div class="pg_f" style="display: block;">
     		<div class="r1">
     		  <img class="dots" src="images/dots.png">
     		  <img class="left_wed" src="images/left_wed.png">
@@ -77,7 +80,7 @@
 			<a href="javascript:void(0);" class="btn_next"><span class="textShadow">下一题</span></a>
 			<a href="javascript:void(0);" class="btn_result" style="display: none;"><span class="textShadow">诊断</span></a>
     	</div>
-    	<div class="pg_result">
+    	<div class="pg_result" style="display: none;">
     		<div class="result">
     			<p class="h5_font_family title">摩范出行处方笺</p>
     			<div class="content">
@@ -101,7 +104,7 @@
     		</div>
     	</div>
     </div>
-    <div class="h5_font_family" style="display: none;">望眼欲穿出行大神摩范出行夜租，给你温暖的呵护晴天霹雳出行狂魔摩范出行日租，给你时间的便捷随心所欲式出行小仙摩范出行时租，解你临时的困境
+    <div class="h5_font_family" style="display: none;">起早贪黑出行大神摩范出行夜租，给你温暖的呵护心力交瘁出行狂魔摩范出行日租，给你时间的便捷随心所欲式出行小仙摩范出行时租，解你临时的困境
     </div>
 </body>
 <script type="text/javascript">

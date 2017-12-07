@@ -5,13 +5,6 @@
  * @version $Id$
  */
 
- $(document).ready(function() {
-
-    initQuestions();
-    bindEvents();
-    resultAni();
-});
-
 var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
 //用户回答
 var currentSelected = -1;
@@ -19,6 +12,60 @@ var currentSelected = -1;
 var currentQuestionIndex = 1;
 //答案数组
 var aArr = [];
+//上一题已选择对象
+var preSelectedObj = null;
+
+var count = 0;
+
+var loadingW = '在北京，每10个人中就有9个人患有此病......';
+
+// $(document).ready(function() {
+	
+// 	var dw = Math.round((loadingW.length - 5) * parseInt($('body').css('font-size'))); 
+// 	$('.desc').width(dw);
+// 	printLoading(loadingW);
+// 	// alert(sizeof('在'));
+// });
+
+function printLoading($str){
+	// console.log($str);
+	if(count > ($str.length - 1)){
+		return;
+	}
+	$('.desc').append($str.charAt(count));
+	count++;
+	setTimeout(printLoading, 40, $str);
+}
+
+/*
+ *开始加载
+ */
+Pace.once('start',function(){
+    //loading 百分比显示
+    loadInterval = setInterval(function(){
+        var load = $('.pace-progress').attr('data-progress-text');
+        $('.percentage').html(load);
+    },100);
+});
+
+/**
+ * 完成加载
+ */
+Pace.once('done', function(e){
+	alert('done');
+    initQuestions();
+    bindEvents();
+    // "object" == typeof WeixinJSBridge ? WeixinJSBridge.invoke("WeixinJSBridgeReady", {}, function(i) {
+    // }) : document.addEventListener("WeixinJSBridgeReady", function(i) {
+    // }, false);
+    $('.loading').hide();
+    setTimeout(function(){
+    	// $('.loading').hide();
+        count = count < loadingW.length - 1 ? loadingW.length - 1 : count;
+    }, 500);  
+});
+		
+
 
 function bindEvents(){
 
@@ -47,6 +94,9 @@ function bindEvents(){
 					currentSelected = i;
 				}
 			});
+
+			preSelectedObj = div;
+			
 			$(div).removeClass('uncheck');
 			$(div).addClass('checked');
 			// console.log(currentSelected);
@@ -74,19 +124,19 @@ function bindEvents(){
 			recordAnswer();
 		    // alert(getMustIndex(aArr));
 		    // aArr = [];
-
+		    var result = getMustIndex(aArr);
 		    //填充结果页
-		    if(getMustIndex(aArr) == 'A'){
-		    	$('#jg').html('晴天霹雳出行狂魔');
-		    	$('#zz').html('负担重，压力大，缺少睡眠，整日奔波');
+		    if(result == 'A'){
+		    	$('#jg').html('心力交瘁出行狂魔');
+		    	$('#zz').html('家庭负担重，工作压力大，整日奔波');
 		    	$('#yf').html('摩范出行日租，给你时间的便捷');
 		    	$('#yof').html('24小时不限里程，建议一日一次');
 		    	$('#jag').html('199-228元封顶');
 		    	$('.car_1').hide();
 		    	$('.car_2').show();
 		    	window.title = "我已患有出行恐慌晚期，你呢？";
-		    }else if(getMustIndex(aArr) == 'B') {
-		    	$('#jg').html('望眼欲穿出行大神');
+		    }else if(result == 'B') {
+		    	$('#jg').html('起早贪黑出行大神');
 		    	$('#zz').html('孤单寂寞冷，加班多睡眠少，害怕夜晚来临');
 		    	$('#yf').html('摩范出行夜租，给你温暖的呵护');
 		    	$('#yof').html('当日17:00-次日9:00不限里程，建议一日一次');
@@ -96,42 +146,83 @@ function bindEvents(){
 		    	window.title = "我已患有出行中度抑郁症，你呢？";
 		    }else {
 		    	$('#jg').html('随心所欲式出行小仙');
-		    	$('#zz').html('工资不够花，生活琐事多，爱享受');
+		    	$('#zz').html('工资不够花，生活琐事多，状况突发');
 		    	$('#yf').html('摩范出行时租，解你临时的困境');
 		    	$('#yof').html('随取随用，建议一日三次');
-		    	$('#jag').html('1分钟1毛7+1公里1块钱');
+		    	$('#jag').html('0.17元/分钟+1元/公里');
 		    	$('.car_1').hide();
 		    	$('.car_2').show();
 		    	window.title = "我已患有出行路怒早期，你呢？";
 		    }
 		    
 		    //还原答案页
-		    currentQuestionIndex = 1;
-		    $('.q1').show();
-		    $('.q7').hide();
-		    $('.pg_quetison').hide();
-		    $('.pg_result').show();
+		    resetQuestionPage(result);
+		    
 		}else {
 			alert('请选择答案，进入诊断结果!');
 		}	
 		
 	});
+
+	//再测一次
+	$('.btn_again').on('click', function(e) {
+	    $('.result').addClass('animated bounceOutUp').one(animationEnd,function(){
+	    	$(this).removeClass('animated bounceOutUp');
+	    	$('.pg_result').hide();
+	    	$('.pg_quetison').show();
+	    	$('.question_img,.questions').addClass('animated fadeIn');
+	    });
+	    setTimeout(function(){
+	    	$('.question_img,.questions').removeClass('animated fadeIn');
+	    },2100);	    
+	});
 }
 
-function resultAni(){
+function resultAni($res){
 	$('.result').addClass('animated bounceInDown');
 	printWord($('#jg'));
-    $('#zz').addClass('animated delay_4_3_s fadeIn');
-    setTimeout(function(){ printWord($('#yf')) }, 500);
-    $('#yof').addClass('animated delay_1_4_1_s fadeIn');
-	$('#jag').addClass('animated delay_1_4_1_s fadeIn');	
+    $('#zz').addClass('animated delay_1_4_1_s fadeIn');
+    setTimeout(function(){ printWord($('#yf')) }, 750);
+
+    var index = $res == 'B' ? 1 : 2;
+	$('.car_'+index).addClass('animated delay_1_s fadeInRight');
+	$('.btn_ticket,.btn_again').addClass('animated delay_1_4_3_s bounceIn');
+
+	$('#yof').addClass('animated delay_2_4_3_s fadeIn');
+	$('#jag').addClass('animated delay_2_4_3_s fadeIn').one(animationEnd,function(){
+		$('.result').addClass('animated bounceInDown');
+		$('#zz').removeClass('animated delay_1_4_1_s fadeIn');
+		$('.car_'+index).removeClass('animated delay_1_s fadeInRight');
+	    $('.btn_ticket,.btn_again').removeClass('animated delay_1_4_3_s bounceIn');
+	    $('#yof').removeClass('animated delay_2_4_3_s fadeIn');
+	    $(this).removeClass('animated delay_2_4_3_s fadeIn');
+	});
+}
+
+function resetQuestionPage($result){
+	currentQuestionIndex = 1;
+    
+	$('.q7').hide();
+	$('.q1').show();
+    $('.question_7').hide();
+    $('.question_1').show();
+    $('.btn_result').hide();
+    $('.btn_next').show();
+    $('.pg_quetison').hide();
+    $('.pg_result').show();
+    resultAni($result);
+}
+
+function resetPrint(){
+	$('#jg').removeAttr('style');
+	$('#yf').removeAttr('style');
 }
 
 function printWord($obj){
 	var str = $($obj).html();
 	var fontSize = $($obj).css('font-size');
 	var w = (str.length+1) * parseInt(fontSize);
-	$($obj).css('transition','width 1s 1s steps('+ str.length +')');
+	$($obj).css('transition','width 1s 1s steps('+ (str.length+1) +')');
 	$($obj).css('width', w + 'px');
 }
 
@@ -202,6 +293,9 @@ function recordAnswer(){
 	}
 	//重置选项		
 	currentSelected = -1;
+
+	$(preSelectedObj).removeClass('checked');
+	$(preSelectedObj).addClass('uncheck');
 }
 
 function initQuestions(){
