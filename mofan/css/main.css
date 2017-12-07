@@ -306,13 +306,15 @@ input, select, textarea {
       text-align: center;
       letter-spacing: 2px; }
     .pg_result .result .content {
-      width: 7.78667rem;
+      width: 8rem;
       margin: 0 auto;
       padding-left: 0.2rem;
       overflow: hidden; }
       .pg_result .result .content p {
-        margin-top: 0.21333rem;
+        margin-top: 0.16rem;
         color: #545454; }
+        .pg_result .result .content p span {
+          vertical-align: middle; }
       .pg_result .result .content p:nth-child(1) {
         margin-top: 0;
         font-size: 0.50667rem; }
@@ -326,16 +328,21 @@ input, select, textarea {
       .pg_result .result .content p:nth-child(3), .pg_result .result .content p:nth-child(5), .pg_result .result .content p:nth-child(6) {
         padding-left: 0.06667rem; }
     .pg_result .result .gingili {
-      width: auto;
-      padding-right: 0.18667rem;
-      margin: 0.4rem auto 0 auto;
-      text-align: center;
-      color: #af3535; }
+      position: absolute;
+      bottom: 6.53333rem;
+      left: 50%;
+      margin-left: -2.80667rem;
+      width: 5.61333rem;
+      height: 0.32rem;
+      background: url("../images/banner.png") 0 0 no-repeat;
+      background-size: cover; }
     .pg_result .result .car {
-      position: relative;
+      position: absolute;
+      bottom: 3.26667rem;
+      left: 50%;
+      margin-left: -3.32rem;
       width: 6.64rem;
-      height: 3.2rem;
-      margin: 0 auto; }
+      height: 3.2rem; }
       .pg_result .result .car img {
         position: absolute;
         bottom: 0; }
@@ -347,8 +354,11 @@ input, select, textarea {
         margin-left: -3.22667rem;
         width: 6.45333rem; }
     .pg_result .result .btn_group {
+      position: absolute;
+      bottom: 1.93333rem;
+      left: 50%;
+      margin-left: -3.89333rem;
       width: 7.78667rem;
-      margin: 0.48rem auto 0 auto;
       overflow: hidden; }
       .pg_result .result .btn_group a {
         display: block;
@@ -409,6 +419,74 @@ input, select, textarea {
 
 .delay_2_4_3_s {
   animation-delay: 2.75s; }
+
+.musicRotate {
+  animation-name: musicRotate;
+  animation-duration: 3s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite; }
+
+@keyframes musicRotate {
+  from {
+    transform: rotate(0deg); }
+  50% {
+    transform: rotate(180deg); }
+  to {
+    transform: rotate(360deg); } }
+
+.dotZoomIn {
+  animation-name: dotZoomIn;
+  animation-duration: .5s;
+  animation-fill-mode: backwards; }
+
+@keyframes dotZoomIn {
+  from {
+    opacity: 0;
+    transform: scale3d(100, 100, 1); }
+  to {
+    opacity: 1;
+    transform: scale3d(1, 1, 1); } }
+
+.peopleShake {
+  animation-name: peopleShake;
+  animation-duration: 1.5s;
+  animation-timing-function: steps(10);
+  animation-fill-mode: backwards; }
+
+@keyframes peopleShake {
+  0% {
+    opacity: 0;
+    transform: rotate(-5deg) scale3d(0.1, 0.1, 1); }
+  10% {
+    opacity: .1;
+    transform: rotate(5deg) scale3d(0.2, 0.2, 1); }
+  20% {
+    opacity: .2;
+    transform: rotate(-5deg) scale3d(0.3, 0.3, 1); }
+  30% {
+    opacity: .3;
+    transform: rotate(5deg) scale3d(0.4, 0.4, 1); }
+  40% {
+    opacity: .4;
+    transform: rotate(-5deg) scale3d(0.5, 0.5, 1); }
+  50% {
+    opacity: .5;
+    transform: rotate(5deg) scale3d(0.6, 0.6, 1); }
+  60% {
+    opacity: .6;
+    transform: rotate(-5deg) scale3d(0.7, 0.7, 1); }
+  70% {
+    opacity: .7;
+    transform: rotate(5deg) scale3d(0.8, 0.8, 1); }
+  80% {
+    opacity: .8;
+    transform: rotate(-5deg) scale3d(0.9, 0.9, 1); }
+  90% {
+    opacity: .9;
+    transform: rotate(5deg) scale3d(1, 1, 1); }
+  100% {
+    opacity: 1;
+    transform: rotate(0deg) scale3d(1, 1, 1); } }
 
 .textShadow {
   animation-name: textShadow;

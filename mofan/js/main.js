@@ -19,23 +19,46 @@ var count = 0;
 
 var loadingW = '在北京，每10个人中就有9个人患有此病......';
 
-// $(document).ready(function() {
-	
-// 	var dw = Math.round((loadingW.length - 5) * parseInt($('body').css('font-size'))); 
-// 	$('.desc').width(dw);
-// 	printLoading(loadingW);
-// 	// alert(sizeof('在'));
+// $.fn.extend({
+//     animateCss: function (animationName, callback) {
+//         var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
+//         this.addClass('animated ' + animationName).one(animationEnd, function() {
+//             $(this).removeClass('animated ' + animationName);
+//             if (callback) {
+//               callback();
+//             }
+//         });
+//         return this;
+//     }
 // });
+var audio = null;
+
+$(document).ready(function() {
+	
+	audio = document.getElementById('audio');
+	var dw = Math.round((loadingW.length - 5) * parseInt($('body').css('font-size'))); 
+	$('.desc').width(dw);
+	printLoading(loadingW);
+
+});
+
 
 function printLoading($str){
 	// console.log($str);
 	if(count > ($str.length - 1)){
+		clearTimeout(printTimeout);
+		printTimeout =-1;
 		return;
 	}
 	$('.desc').append($str.charAt(count));
 	count++;
-	setTimeout(printLoading, 40, $str);
+	printTimeout = setTimeout(printLoading, 40, $str);
 }
+
+/**
+* 循环对象
+*/
+var loadInterval,firstPageInterval,loadTimeout, againTimeout,resultTimeout,printTimeout;
 
 /*
  *开始加载
@@ -44,25 +67,37 @@ Pace.once('start',function(){
     //loading 百分比显示
     loadInterval = setInterval(function(){
         var load = $('.pace-progress').attr('data-progress-text');
-        $('.percentage').html(load);
+        $('.percentage').html(load); 
     },100);
 });
+
+// Pace.once('hide',function(){
+	
+// });
+
 
 /**
  * 完成加载
  */
-Pace.once('done', function(e){
-	alert('done');
-    initQuestions();
-    bindEvents();
-    // "object" == typeof WeixinJSBridge ? WeixinJSBridge.invoke("WeixinJSBridgeReady", {}, function(i) {
-    // }) : document.addEventListener("WeixinJSBridgeReady", function(i) {
-    // }, false);
-    $('.loading').hide();
-    setTimeout(function(){
-    	// $('.loading').hide();
+Pace.once('hide', function(e){
+
+    "object" == typeof WeixinJSBridge ? WeixinJSBridge.invoke("WeixinJSBridgeReady", {}, function(i) {
+    	audio.play();
+    }) : document.addEventListener("WeixinJSBridgeReady", function(i) {
+        audio.play();
+    }, false);
+
+    loadInterval = -1;
+	initQuestions();
+	bindEvents();
+	loadTimeout = setTimeout(function(){
+    	$('.loading').hide();
+    	firstPageAni();
         count = count < loadingW.length - 1 ? loadingW.length - 1 : count;
+        clearTimeout(loadTimeout);
+        loadTimeout = -1;
     }, 500);  
+    
 });
 		
 
@@ -73,6 +108,8 @@ function bindEvents(){
 	$('.btn_beginTest').on('click',function(e){
 		$('.pg_f').hide();
 		$('.pg_quetison').show();
+		clearInterval(firstPageInterval);
+		firstPageInterval = -1;
 		questionInAni(currentQuestionIndex);
 	});
 
@@ -120,6 +157,7 @@ function bindEvents(){
 
 	//诊断按钮
 	$('.btn_result').on('click', function(e) {
+		console.log('点击诊断按钮' + Math.random()*10000 );
 		if(currentSelected != -1){
 			recordAnswer();
 		    // alert(getMustIndex(aArr));
@@ -166,23 +204,86 @@ function bindEvents(){
 
 	//再测一次
 	$('.btn_again').on('click', function(e) {
-	    $('.result').addClass('animated bounceOutUp').one(animationEnd,function(){
-	    	$(this).removeClass('animated bounceOutUp');
+		console.log('点击再测一次按钮' + Math.random()*10000 );
+	    
+	    $('.result').addClass('animated bounceOutUp');
+	    setTimeout(function(){
+	    	$('.result').removeClass('animated bounceOutUp');
 	    	$('.pg_result').hide();
 	    	$('.pg_quetison').show();
-	    	$('.question_img,.questions').addClass('animated fadeIn');
-	    });
-	    setTimeout(function(){
-	    	$('.question_img,.questions').removeClass('animated fadeIn');
-	    },2100);	    
+	    	resetPrint();
+	    	console.log('执行再测一次动画' + Math.random()*10000 );
+	    }, 1000);
+
+	    $('.question_img').addClass('animated delay_1_s fadeIn');
+	    $('.questions').addClass('animated delay_1_s fadeIn').one(animationEnd,function(event){
+	    	$('.question_img').removeClass('animated delay_1_s fadeIn');
+	    	$('.questions').removeClass('animated delay_1_s fadeIn');
+	    	console.log('删除再测一次动画' + Math.random()*10000 );
+	    	event.stopPropagation();
+	    }); 
+
+	    e.stopPropagation();
+	});
+
+    //音乐开关
+	$('.btn_music').click(function(event) {
+		/* Act on the event */
+		if($(this).hasClass('musicRotate')){
+			$(this).removeClass('musicRotate');
+			audio.pause();
+		}else{
+			$(this).addClass('musicRotate');
+			audio.play();
+		}
 	});
 }
+
+var selectors = ['.start','.start_r','.dots'];
+
+function firstPageAni(){
+	$('.dots').addClass('dotZoomIn');
+	$('.web').addClass('animated bounceIn');
+	$('.web2').addClass('animated bounceInRight');
+	$('.left_wed').addClass('animated delay_4_3_s bounceIn');
+	$('.right_wed').addClass('animated delay_4_3_s bounceIn');
+	$('.wave').addClass('animated delay_4_3_s bounceInLeft');
+	$('.wave_r').addClass('animated delay_4_3_s bounceInRight');
+	$('.start').addClass('animated delay_4_3_s fadeIn');
+
+	$('.start_r').addClass('animated delay_4_3_s fadeIn')
+	.one(animationEnd,function(){
+		$('.dots').removeClass('dotZoomIn');
+		$('.dots').addClass('animated');
+		$('.web').removeClass('animated bounceIn');
+		$('.web2').removeClass('animated bounceInRight');
+		$('.left_wed').removeClass('animated delay_4_3_s bounceIn');
+		$('.right_wed').removeClass('animated delay_4_3_s bounceIn');
+		$('.wave').removeClass('animated delay_4_3_s bounceInLeft');
+		$('.wave_r').removeClass('animated delay_4_3_s bounceInRight');
+		$('.start').removeClass('delay_4_3_s fadeIn');
+		$(this).removeClass('delay_4_3_s fadeIn');
+		firstPageInterval = setInterval(function(){
+			var i = Math.floor(Math.random() * 3);
+			var s = selectors[i];
+			$(s).toggleClass('flash');
+		},1500);
+	});
+	$('.btn_beginTest').addClass('animated delay_1_4_3_s bounceIn');
+	$('.people').addClass('delay_4_1_s peopleShake');
+
+}
+
 
 function resultAni($res){
 	$('.result').addClass('animated bounceInDown');
 	printWord($('#jg'));
     $('#zz').addClass('animated delay_1_4_1_s fadeIn');
-    setTimeout(function(){ printWord($('#yf')) }, 750);
+    resultTimeout = setTimeout(function(){ 
+    	printWord($('#yf'));
+    	clearTimeout(resultTimeout);
+    	resultTimeout = -1; 
+    }, 750);
 
     var index = $res == 'B' ? 1 : 2;
 	$('.car_'+index).addClass('animated delay_1_s fadeInRight');
@@ -190,7 +291,7 @@ function resultAni($res){
 
 	$('#yof').addClass('animated delay_2_4_3_s fadeIn');
 	$('#jag').addClass('animated delay_2_4_3_s fadeIn').one(animationEnd,function(){
-		$('.result').addClass('animated bounceInDown');
+		$('.result').removeClass('animated bounceInDown');
 		$('#zz').removeClass('animated delay_1_4_1_s fadeIn');
 		$('.car_'+index).removeClass('animated delay_1_s fadeInRight');
 	    $('.btn_ticket,.btn_again').removeClass('animated delay_1_4_3_s bounceIn');
@@ -211,6 +312,7 @@ function resetQuestionPage($result){
     $('.pg_quetison').hide();
     $('.pg_result').show();
     resultAni($result);
+    aArr = [];
 }
 
 function resetPrint(){
@@ -234,7 +336,7 @@ function questionInAni($index){
 	*执行动画
 	*/
 	$('.question_'+ $index).addClass('animated flipInY');
-	$(issue).addClass('animated duration_4_3_s delay_4_1_s fadeIn');
+	$(issue).addClass('animated delay_4_1_s fadeIn');
 	$(items[0]).addClass('animated duration_4_3_s delay_4_1_s fadeInRight');
 	$(items[1]).addClass('animated duration_4_3_s delay_2_1_s fadeInRight');
 	$(items[2]).addClass('animated duration_4_3_s delay_4_3_s fadeInRight').one(animationEnd,function(e){

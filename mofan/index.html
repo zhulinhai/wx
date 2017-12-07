@@ -27,6 +27,7 @@
 </script>
 </head>
 <body ontouchmove="event.preventDefault();">
+	<audio id="audio" autoplay="autoplay" src="bgm.mp3"  type="audio/mpeg" loop="loop"></audio>
     <div class="loading">
     	<div class="content">
     		<div class="light traffic_light"></div>
@@ -37,7 +38,7 @@
     </div>
     <div class="box">
     	<img class="logo" src="images/logo.png">
-    	<a href="javascript:void(0);" class="btn_music"></a>
+    	<a href="javascript:void(0);" class="btn_music musicRotate"></a>
     	<div class="pg_f" style="display: block;">
     		<div class="r1">
     		  <img class="dots" src="images/dots.png">
@@ -91,7 +92,7 @@
     				<p><span>用法：</span><span id="yof">24小时不限里程，建议一日一次</span></p>
     				<p><span>价格：</span><span id="jag">199-228元封顶</span></p>
     			</div>
-    			<div class="gingili">芝麻信用超700免押金</div>
+    			<div class="gingili"></div>
     			<div class="car">
     				<img class="car_1" src="images/car_1.png">
     				<img class="car_2" src="images/car_2.png">
@@ -107,19 +108,7 @@
     <div class="h5_font_family" style="display: none;">起早贪黑出行大神摩范出行夜租，给你温暖的呵护心力交瘁出行狂魔摩范出行日租，给你时间的便捷随心所欲式出行小仙摩范出行时租，解你临时的困境
     </div>
 </body>
-<script type="text/javascript">
-    	// alert(document.body.clientWidth);
-    	// window.onload = function () {
-    	// 	// body...
-    	// 	var t = document.getElementById('test');
-    	// 	var d = document.getElementById('dom');
-    	// 	t.innerHTML = 'body宽:' + document.body.clientWidth;
-    	// 	t.innerHTML += '\nbody高:'+ document.body.clientHeight;
-    	// 	t.innerHTML += '\ndiv宽:'+ d.clientWidth;
-    	// 	t.innerHTML += '\ndiv高:'+ d.clientHeight;
-
-    	// 	var arr = ['A','B','C','B','B','C','C'];
-    	// 	console.log(getMustIndex(arr));
-    	// }
-    </script>
+<!-- 微信分享api -->
+<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript" src="js/wx_share.js"></script>
 </html>

@@ -412,14 +412,18 @@ $questionLeft:(707px-672px)/2;
 	    }
 
 	    .content {
-	    	width:pxToRem(584px);
+	    	width:pxToRem(600px);
 	    	margin: 0 auto;
 	    	padding-left: pxToRem(15px);
 	    	overflow: hidden;
 
 	    	p { 
-	    		margin-top: pxToRem(16px); 
+	    		margin-top: pxToRem(12px); 
 	    		color: #545454;
+
+	    		span{
+	    			vertical-align: middle;
+	    		}
 	    	}
 	    	p:nth-child(1){
 	    		margin-top: 0;
@@ -440,18 +444,23 @@ $questionLeft:(707px-672px)/2;
 	    }
 
 	    .gingili{
-	    	width:auto;
-	    	padding-right: pxToRem(14px);
-	    	margin: pxToRem(30px) auto 0 auto;
-	    	text-align: center;
-	    	color: #af3535;
+	    	position: absolute;
+	    	bottom: pxToRem(490px);
+	    	left:50%;
+	        margin-left: pxToRem(-421px/2);
+	    	width:pxToRem(421px);
+	    	height:pxToRem(24px);
+	    	background: url("../images/banner.png") 0 0 no-repeat;
+	    	background-size:cover;
 	    }
 
 	    .car {
-	    	position: relative;
+	    	position: absolute;
+	    	bottom:pxToRem(245px);
+	    	left:50%;
+	    	margin-left: pxToRem(-498px/2);
 	    	width:pxToRem(498px);
 	    	height:pxToRem(240px);
-	    	margin: 0 auto;
 
 	    	img {
 	    		position: absolute;
@@ -471,8 +480,11 @@ $questionLeft:(707px-672px)/2;
 	    }
 
 	    .btn_group{
+	    	position: absolute;
+	    	bottom:pxToRem(145px);
+	    	left:50%;
+	    	margin-left: pxToRem(-584px/2);
 	    	width:pxToRem(584px);
-	    	margin: pxToRem(36px) auto 0 auto;
 	    	overflow: hidden;
 
 	    	a {
@@ -554,6 +566,51 @@ $questionLeft:(707px-672px)/2;
 
 .delay_2_4_3_s {
 	animation-delay: 2.75s;
+}
+
+.musicRotate {
+	animation-name: musicRotate;
+    animation-duration: 3s;
+    animation-timing-function: linear; 
+    animation-iteration-count:infinite;
+}
+
+@keyframes musicRotate{
+	from { transform:rotate(0deg); }
+	50% { transform:rotate(180deg); }
+	to { transform:rotate(360deg); }
+}
+
+.dotZoomIn {
+  animation-name: dotZoomIn;
+  animation-duration: .5s;
+  animation-fill-mode: backwards;
+}
+
+@keyframes dotZoomIn{
+	from { opacity: 0; transform: scale3d(100,100,1); }
+	to { opacity: 1; transform: scale3d(1,1,1); }
+}
+
+.peopleShake {
+  animation-name: peopleShake;
+  animation-duration: 1.5s;
+  animation-timing-function: steps(10); 
+  animation-fill-mode: backwards;
+}
+
+@keyframes peopleShake{
+	0% { opacity: 0;  transform: rotate(-5deg) scale3d(.1,.1,1); }
+	10% { opacity: .1; transform: rotate(5deg) scale3d(.2,.2,1); }
+	20% { opacity: .2; transform: rotate(-5deg) scale3d(.3,.3,1); }
+	30% { opacity: .3; transform: rotate(5deg) scale3d(.4,.4,1); }
+	40% { opacity: .4; transform: rotate(-5deg) scale3d(.5,.5,1); }
+	50% { opacity: .5; transform: rotate(5deg) scale3d(.6,.6,1); }
+	60% { opacity: .6; transform: rotate(-5deg) scale3d(.7,.7,1); }
+	70% { opacity: .7; transform: rotate(5deg) scale3d(.8,.8,1); }
+	80% { opacity: .8; transform: rotate(-5deg) scale3d(.9,.9,1); }
+	90% { opacity: .9; transform: rotate(5deg) scale3d(1,1,1); }
+	100% { opacity: 1; transform: rotate(0deg) scale3d(1,1,1); }
 }
 
 .textShadow {
