@@ -484,6 +484,36 @@ html, body {
   background-color: #fff;
   -webkit-font-smoothing: antialiased; }
 
+#actRuleDialog {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.85);
+  z-index: 100; }
+  #actRuleDialog .contentFrame {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -8rem;
+    margin-top: -12rem;
+    width: 15rem;
+    height: 23rem;
+    padding: 0.5rem;
+    background-color: #fff;
+    overflow: scroll; }
+  #actRuleDialog .closeDialog {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: 6rem;
+    margin-top: -14.5rem;
+    width: 2rem;
+    height: 2rem;
+    background: url("../img/closeDialog.png") no-repeat center;
+    background-size: 1.85rem auto; }
+
 .mainContainer {
   width: 100%;
   height: 102rem;
@@ -505,11 +535,11 @@ html, body {
     z-index: 2; }
   .topFrame .title {
     position: absolute;
-    width: 15.9rem;
-    height: 5.2rem;
+    width: 15.8rem;
+    height: 4.15rem;
     left: 50%;
     margin-left: -7.95rem;
-    margin-top: 4rem; }
+    margin-top: 4.6rem; }
 
 .swiper-container, .swiper-wrapper, .swiper-slide {
   width: 17.25rem;
@@ -529,13 +559,139 @@ html, body {
   width: 16rem;
   z-index: 2; }
 
-.bottomDiv {
+#divRotate {
+  display: block;
+  width: 100%;
+  height: 17.1rem;
+  background: url("../img/shaveBg.png") no-repeat right 0;
+  background-size: 18.3rem 17.1rem; }
+  #divRotate #btnStart {
+    position: absolute;
+    left: 50%;
+    margin-left: -2.1rem;
+    margin-top: 6.5rem;
+    width: 4.1rem;
+    height: 4.8rem;
+    z-index: 3; }
+  #divRotate #rotate {
+    position: absolute;
+    left: 50%;
+    margin-left: -6.55rem;
+    margin-top: 2.55rem;
+    width: 12.9rem;
+    height: 12.9rem;
+    z-index: 1; }
+
+.title-2 {
+  display: block;
+  margin: 1.1rem auto 0.5rem;
+  width: auto;
+  height: 0.95rem; }
+
+.subTitle {
+  display: block;
+  margin: 1.5rem auto 0.5rem;
+  width: 6.75rem;
+  height: 0.95rem; }
+
+form input, form select {
+  -webkit-appearance: none;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  /*Firefox3.5+*/
+  -webkit-box-sizing: border-box;
+  /*Safari3.2+*/
+  width: 13.3rem;
+  height: 2.2rem;
+  margin-left: 0.5rem;
+  line-height: 2.2rem;
+  color: #38424E;
+  font-size: 0.7rem;
+  text-indent: 0.5rem;
+  border-radius: 0;
+  border: 1px solid #c1c2c3;
+  text-align: left;
+  vertical-align: top;
+  background-color: rgba(255, 255, 255, 0.8); }
+form .favorCar {
+  background-color: #f1f1f2; }
+form .item {
+  width: 100%;
+  height: 2.2rem;
+  font-family: "microsoft yahei", sans-serif;
+  margin-top: 0.5rem;
+  overflow: hidden; }
+  form .item label {
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+    width: 4rem;
+    height: 2.2rem;
+    line-height: 2.2rem;
+    font-size: 0.7rem;
+    text-align: right;
+    color: #38424E; }
+  form .item select {
+    background: rgba(255, 255, 255, 0.8) url("../img/arrowDown.png") no-repeat 12rem center;
+    background-size: 0.7rem 0.4rem; }
+  form .item #btnGetCode {
+    float: right;
+    width: 4.6rem;
+    height: 2rem;
+    line-height: 2rem;
+    color: white;
+    text-align: center;
+    background-color: #faa040; }
+form .btnFrame {
+  margin-left: 4.5rem;
+  width: 13.3rem; }
+  form .btnFrame #checkTag {
+    display: inline-block;
+    vertical-align: middle;
+    width: 0.6rem;
+    height: 0.6rem;
+    margin-right: 0.3rem; }
+  form .btnFrame p {
+    color: #8C8C8D;
+    line-height: 1rem;
+    height: 1rem;
+    font-size: 0.6rem;
+    margin-top: 0.5rem; }
+  form .btnFrame #btnSubmit {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    color: white;
+    width: 100%;
+    height: 2.25rem;
+    line-height: 2.25rem;
+    font-size: 1rem;
+    text-align: center;
+    background-color: #BC271A; }
+  form .btnFrame .legal {
+    color: #0c7bff;
+    text-decoration: underline; }
+
+.actRuleDiv {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 1080px;
-  height: 238px;
-  background: url("../img/bottomBg.png") no-repeat;
-  background-size: 1080px 238px; }
+  width: 17.2rem;
+  height: 25rem;
+  margin-top: 0.5rem;
+  overflow: scroll;
+  background-color: rgba(237, 238, 239, 0.8);
+  border-radius: 5px;
+  box-shadow: 0 1px 2px 2px #c1c2c3; }
+  .actRuleDiv p {
+    margin: 0 0.6rem;
+    font-size: 0.6rem;
+    line-height: 1rem; }
+    .actRuleDiv p strong {
+      font-size: 0.7rem; }
+  .actRuleDiv .menu {
+    line-height: 1.5rem;
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin-top: 0.5rem; }
 
 /*# sourceMappingURL=main.css.map */

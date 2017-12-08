@@ -27,6 +27,14 @@ var rotateFn = function (awards, angles, txt, callBack){
     })
 };
 
+function showActRuleDialog() {
+    $('#actRuleDialog').show();
+}
+
+function closeActRuleDialog() {
+    $('#actRuleDialog').hide();
+}
+
 function initSwiper() {
     mainSwiper = new Swiper('.swiper-container', {
         paginationClickable: true,

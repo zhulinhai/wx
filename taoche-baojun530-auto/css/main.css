@@ -484,6 +484,36 @@ html, body {
   background-color: #fff;
   -webkit-font-smoothing: antialiased; }
 
+#actRuleDialog {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.85);
+  z-index: 100; }
+  #actRuleDialog .contentFrame {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -8rem;
+    margin-top: -12rem;
+    width: 15rem;
+    height: 23rem;
+    padding: 0.5rem;
+    background-color: #fff;
+    overflow: scroll; }
+  #actRuleDialog .closeDialog {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: 6rem;
+    margin-top: -14.5rem;
+    width: 2rem;
+    height: 2rem;
+    background: url("../img/closeDialog.png") no-repeat center;
+    background-size: 1.85rem auto; }
+
 .mainContainer {
   width: 100%;
   height: 102rem;
@@ -637,6 +667,9 @@ form .btnFrame {
     font-size: 1rem;
     text-align: center;
     background-color: #BC271A; }
+  form .btnFrame .legal {
+    color: #0c7bff;
+    text-decoration: underline; }
 
 .actRuleDiv {
   display: block;
