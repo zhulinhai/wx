@@ -7,35 +7,131 @@
 <meta name="wxm:appmessage_title" content="据统计：每10个人中就有9个人患有此病……">
 <meta name="wxm:appmessage_desc" content="测一测你的出行焦虑指数，领取88元摩范出行券。">
 <!-- 分享缩略图，必须为绝对路径，且图片链接必须为http协议（由于安卓微信客户端无法获取https的分享图片，仅此处需要强制http协议）-->
-<meta name="wxm:img_url" content="http://wx.bjczxda.com/mofan/src/share.jpg">
+<meta name="wxm:img_url" content="http://wx.bjczxda.com/mofan/images/share.jpg">
 <!-- 分享链接-->
 <meta name="wxm:link" content="http://wx.bjczxda.com/mofan/index.html">
 <!-- 淘宝自适应做法 -->
 <meta name="viewport"  id="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
 <title>出门怕不怕</title>
-<script type="text/javascript" src="js/viewport.js"></script>
+<!-- 百度统计 -->
+<!-- <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?7d4e47ef5c484063d4cbb424df25e3ae";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script> -->
+<!-- 诸葛IO -->
+<script type="text/javascript">
+    window.zhuge = window.zhuge || [];window.zhuge.methods = "_init debug identify track trackLink trackForm page".split(" ");
+    window.zhuge.factory = function(b) {return function() {var a = Array.prototype.slice.call(arguments);a.unshift(b);
+    window.zhuge.push(a);return window.zhuge;}};for (var i = 0; i < window.zhuge.methods.length; i++) {
+    var key = window.zhuge.methods[i];window.zhuge[key] = window.zhuge.factory(key);}window.zhuge.load = function(b, x) {
+    if (!document.getElementById("zhuge-js")) {var a = document.createElement("script");var verDate = new Date();
+    var verStr = verDate.getFullYear().toString()+ verDate.getMonth().toString() + verDate.getDate().toString();
+    a.type = "text/javascript";a.id = "zhuge-js";a.async = !0;a.src = (location.protocol == 'http:' ? "http://sdk.zhugeio.com/zhuge.min.js?v=" : 'https://zgsdk.zhugeio.com/zhuge.min.js?v=') + verStr;
+    a.onerror = function(){window.zhuge.identify = window.zhuge.track = function(ename, props, callback){if(callback && Object.prototype.toString.call(callback) === '[object Function]')callback();};};
+    var c = document.getElementsByTagName("script")[0];c.parentNode.insertBefore(a, c);window.zhuge._init(b, x)}};
+    window.zhuge.load('37d8194fc6714d85a5f838a4eb19c334');//配置应用的AppKey
+</script>
+<link rel="stylesheet" type="text/css" href="../public/css/animate.css">
 <link href="css/main.css" rel="stylesheet">
-<script type="text/javascript" src="js/main.js"></script>
-</head>
-<body>
-    <div id="dom">
-    	<p id='test'></p>
-    	<img id="solgan" src="images/1-slogan.png" alt="slogan">
-    </div>
-    <script type="text/javascript">
-    	// alert(document.body.clientWidth);
-    	window.onload = function () {
-    		// body...
-    		var t = document.getElementById('test');
-    		var d = document.getElementById('dom');
-    		t.innerHTML = 'body宽:' + document.body.clientWidth;
-    		t.innerHTML += '\nbody高:'+ document.body.clientHeight;
-    		t.innerHTML += '\ndiv宽:'+ d.clientWidth;
-    		t.innerHTML += '\ndiv高:'+ d.clientHeight;
 
-    		var arr = ['A','A','B','C','B','C','C'];
-    		console.log(statistics(arr));
-    	}
-    </script>
+<script type="text/javascript" src="js/viewport.js"></script>
+<script type="text/javascript" src="../public/scripts/jquery-1.12.1.min.js"></script>
+ <!-- 预加载插件 -->
+<script type="text/javascript" src="../public/scripts/pace.js"></script>
+
+<script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript">
+	(function(){window.title = document.querySelector('meta[name="wxm:timeline_title"]').getAttribute("content");})();
+</script>
+</head>
+<body ontouchmove="event.preventDefault();">
+	<audio id="audio" autoplay="autoplay" src="bgm.mp3"  type="audio/mpeg" loop="loop"></audio>
+    <div class="loading">
+    	<div class="content">
+    		<div class="light traffic_light"></div>
+    		<p class="bold">据统计：</p>
+    		<div class="desc"></div>
+    		<p class="percentage"></p>
+    	</div>
+    </div>
+    <div class="box">
+    	<img class="logo" src="images/logo.png">
+    	<a href="javascript:void(0);" class="btn_music musicRotate"></a>
+    	<div class="pg_f" style="display: block;">
+    		<div class="r1">
+    		  <img class="dots" src="images/dots.png">
+    		  <img class="left_wed" src="images/left_wed.png">
+    		  <img class="right_wed" src="images/right_wed.png">
+    		  <img class="web" src="images/wed.png">
+    		  <img class="web2" src="images/wed2.png">
+    		  <img class="people" src="images/people.png">
+    		  <img class="wave" src="images/wave.png">
+    		  <img class="wave_r" src="images/wave.png">
+    		  <img class="start" src="images/start.png">
+    		  <img class="start_r" src="images/start.png">	
+    		</div>
+    		<a href="javascript:void(0);" class="btn_beginTest"><span class="textShadow">马上开测</span></a>
+    	</div>
+    	<div class="pg_quetison" style="display: none;">
+    		<div class="screen">
+    			<img class="l_u_corner" src="images/l_u_corner.png">
+    			<img class="r_d_corner" src="images/r_d_corner.png">
+    			<div class="question_img">
+    				<img class="question_1" src="images/question_1.png">
+    				<img class="question_2" style="display: none;" src="images/question_2.png">
+    				<img class="question_3" style="display: none;" src="images/question_3.png">
+    				<img class="question_4" style="display: none;" src="images/question_4.png">
+    				<img class="question_5" style="display: none;" src="images/question_5.png">
+    				<img class="question_6" style="display: none;" src="images/question_6.png">
+    				<img class="question_7" style="display: none;" src="images/question_7.png">
+    			</div>
+    		</div>
+    		<div class="questions">	
+    			<div class="q1">
+					<p class="issue">1、作为公司的苦力砥柱，一般如何奔赴第一战场？</p>
+					<div class="items">
+						<a href="javascript:void(0);" class="answerA"><div class="uncheck"></div><p>自己开车够潇洒，偶遇限行一脸懵。</p></a>
+						<a href="javascript:void(0);" class="answerB"><div class="uncheck"></div><p>公交/地铁绞肉机，一路拥挤比耐力。</p></a>
+						<a href="javascript:void(0);" class="answerC"><div class="uncheck"></div><p>有钱任性，打车上班。</p></a>
+					</div>
+				</div>
+			</div>
+			<a href="javascript:void(0);" class="btn_next"><span class="textShadow">下一题</span></a>
+			<a href="javascript:void(0);" class="btn_result" style="display: none;"><span class="textShadow">诊断</span></a>
+    	</div>
+    	<div class="pg_result" style="display: none;">
+    		<div class="result">
+    			<p class="h5_font_family title">摩范出行处方笺</p>
+    			<div class="content">
+    				<p class="h5_font_family">RP:</p>
+    				<p id="jg_p" class="h5_font_family"><span id="jg_s">诊断结果：</span><span id="jg">晴天霹雳出行狂魔</span></p>
+    				<p><span>主要症状：</span><span id="zz">负担重，压力大，缺少睡眠，整日奔波</span></p>
+    				<p class="h5_font_family"><span>药方：</span><span id="yf">摩范出行日租，给你时间的便捷</span></p>
+    				<p><span>用法：</span><span id="yof">24小时不限里程，建议一日一次</span></p>
+    				<p><span>价格：</span><span id="jag">199-228元封顶</span></p>
+    			</div>
+    			<div class="gingili"></div>
+    			<div class="car">
+    				<img class="car_1" src="images/car_1.png">
+    				<img class="car_2" src="images/car_2.png">
+    			</div>
+    			<div class="btn_group">
+    				<a href="javascript:void(0);" onclick="zhuge.track('ticket');" class="btn_ticket"><span class="textShadow">领取88元出行体验券</span></a>
+    				<a href="javascript:void(0);" class="btn_again"><span class="textShadow">再测一次</span></a>
+    			</div>
+    			<p class="h5_font_family doctor">医师：摩范出行</p>
+    		</div>
+    	</div>
+    </div>
+    <div class="h5_font_family" style="display: none;">起早贪黑出行大神摩范出行夜租，给你温暖的呵护心力交瘁出行狂魔摩范出行日租，给你时间的便捷随心所欲式出行小仙摩范出行时租，解你临时的困境
+    </div>
 </body>
+<!-- 微信分享api -->
+<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script id="share" type="text/javascript" src="js/wx_share.js"></script>
 </html>

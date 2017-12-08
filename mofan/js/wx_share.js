@@ -4,9 +4,8 @@
  * @date    2017-08-14 16:20:10
  * @version $Id$
  */
-(function ($){
+var doShare = function ($){
     var param = 'url='+encodeURIComponent(location.href);
-    var iv;
     $.ajax({
         type:'GET',
         url:'http://api.bjczxda.com/api/wx/signature?'+ param,
@@ -17,7 +16,7 @@
                 return alert(rt.message);
             }
 
-            var title =window.title; // 分享标题
+            // var title =window.title; // 分享标题
             var link =$('meta[name="wxm:link"]').attr("content");
 		    var desc = $('meta[name="wxm:appmessage_desc"]').attr("content"); // 分享描述
 		    var imgUrl = $('meta[name="wxm:img_url"]').attr("content");
@@ -45,11 +44,14 @@
             wx.ready(function () {
                 // 在这里调用 API
                 wx.onMenuShareTimeline({
-                    title:title, // 分享标题
+                    title:window.title, // 分享标题
                     link: link, // 分享链接
                     desc: desc, // 分享描述
                     imgUrl:imgUrl, // 分享图标
                     success: function () {
+                        // 用户确认分享后执行的回调函数
+                        // _hmt.push(['_trackEvent', 'Timeline', 'share']);
+                        zhuge.track('Timeline');
                     },
                     cancel: function () {
                         // 用户取消分享后执行的回调函数
@@ -57,7 +59,7 @@
                 });
 
                 wx.onMenuShareAppMessage({
-                    title: title, // 分享标题
+                    title: window.title, // 分享标题
                     desc: desc, // 分享描述
                     link: link, // 分享链接
                     imgUrl: imgUrl, // 分享图标
@@ -65,6 +67,8 @@
                     dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
                     success: function () {
                         // 用户确认分享后执行的回调函数
+                        // _hmt.push(['_trackEvent', 'ChatFirend', 'share']);
+                        zhuge.track('ChatFirend');
                     },
                     cancel: function () {
                         // 用户取消分享后执行的回调函数
@@ -72,12 +76,14 @@
                 });
 
                 wx.onMenuShareQQ({
-                    title: title, // 分享标题
+                    title: window.title, // 分享标题
                     desc: desc, // 分享描述
                     link: link, // 分享链接
                     imgUrl: imgUrl, // 分享图标
                     success: function () {
                         // 用户确认分享后执行的回调函数
+                        // _hmt.push(['_trackEvent', 'QQ', 'share']);
+                        zhuge.track('QQShare');
                     },
                     cancel: function () {
                         // 用户取消分享后执行的回调函数
@@ -85,12 +91,14 @@
                 });
 
                 wx.onMenuShareWeibo({
-                    title: title, // 分享标题
+                    title: window.title, // 分享标题
                     desc: desc, // 分享描述
                     link: link, // 分享链接
                     imgUrl: imgUrl, // 分享图标
                     success: function () {
                         // 用户确认分享后执行的回调函数
+                        // _hmt.push(['_trackEvent', 'Weibo', 'share']);
+                        zhuge.track('WeiboShare');
                     },
                     cancel: function () {
                         // 用户取消分享后执行的回调函数
@@ -107,4 +115,4 @@
             //    alert('WeChat share request: Server Error!');
         }
     });
-})(jQuery);
+}
