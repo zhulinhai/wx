@@ -117,6 +117,7 @@ function bindEvents(){
 		clearInterval(firstPageInterval);
 		firstPageInterval = -1;
 		questionInAni(currentQuestionIndex);
+		zhuge.track('第1题');
 	});
 
 	//选项按钮
