@@ -99,7 +99,7 @@ Pace.once('hide', function(e){
         clearTimeout(loadTimeout);
         loadTimeout = -1;
         // 百度统计，记录每一个题目页的浏览次数
-		_hmt.push(['_setCustomVar', 1, 'pageCount', '首页', 1]);
+		_hmt.push(['_setCustomVar', 1, 'pageCount', '首页', 3]);
     }, 500);  
     
 });
