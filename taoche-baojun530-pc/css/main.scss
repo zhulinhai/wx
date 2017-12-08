@@ -1,0 +1,110 @@
+@import "swiper.min";
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+a {text-decoration: none;-webkit-tap-highlight-color: rgba(0, 0, 0, 0);color: white;}
+a:link,a:visited,a:hover,a:active{text-decoration: none;}
+
+html, body {
+  font-family: "Microsoft YaHei UI", "微软雅黑", "宋体", sans-serif;
+  font-size: 20px;
+  min-width: 1920px;
+  height: 100%;
+  background-color: #fff;
+  -webkit-font-smoothing: antialiased;
+}
+
+@mixin center() {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.headImg,.bg {
+  width: 100%;
+}
+
+.topFrame {
+  width: 100%;
+  height: 41rem;
+  overflow: hidden;
+  background: url("../img/head.jpg") no-repeat;
+  background-size: 100% auto;
+  .logo {
+    position: absolute;
+    top: 1.9rem;
+    left: 50%;
+    margin-left: -25rem;
+    width: 3.5rem;
+    height: 4.2rem;
+    z-index: 2;
+  }
+  .title {
+    position: absolute;
+    width: 35.9rem;
+    height: 11.8rem;
+    left: 50%;
+    margin-left: -23.7rem;
+    margin-top: 8.6rem;
+  }
+}
+.mainContainer {
+  width: 100%;
+  height: 49.5rem;
+  background: url("../img/bg.jpg") no-repeat 0 bottom;
+  background-size: 100% auto;
+}
+.swiper-container,.swiper-wrapper,.swiper-slide {
+  width: 53.5rem;
+  height: 26rem;
+}
+.swiper-slide img {
+  width: 53.5rem;
+  height: 26rem;
+}
+.pagination {
+  position: absolute;
+  display: block;
+  margin-top: -2rem;
+  left: 50%;
+  margin-left: 9.5rem;
+  text-align: right;
+  width: 16rem;
+  z-index: 2;
+}
+.titleFrame {
+  display: block;
+  margin: 0 auto 1rem;
+  padding-top: 3rem;
+  width: 53.5rem;
+  height: 1.6rem;
+  .subTitle {
+    width: 6.8rem;
+    height: 1.6rem;
+  }
+}
+.bottomDiv {
+  display: block;
+  margin: 2rem auto;
+  width: 54rem;
+  height: 11.8rem;
+  background: url("../img/bottomBg.png") no-repeat;
+  background-size: 54rem auto;
+  .qrcodeBorder {
+    position: absolute;
+    margin-left: 9.8rem;
+    margin-top: 1.3rem;
+    width: 9.8rem;
+    height: 9.3rem;
+    z-index: 1;
+  }
+  .qrcode {
+    margin-left: 10.8rem;
+    margin-top: 2rem;
+    width: 7.9rem;
+    height: 7.9rem;
+  }
+}

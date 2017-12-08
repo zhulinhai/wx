@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="screen-orientation" content="portrait"><!-- uc强制竖屏 -->
+    <meta name="x5-orientation" content="portrait"><!-- QQ强制竖屏 -->
+    <!-- 在 meta 标签中进行基础分享信息设置-->
+    <meta name="wxm:timeline_title" content="宝骏530 免息型动">
+    <meta name="wxm:appmessage_title" content="宝骏530 免息型动">
+    <meta name="wxm:appmessage_desc" content="宝骏530 免息型动">
+    <!-- 分享缩略图，必须为绝对路径，且图片链接必须为http协议（由于安卓微信客户端无法获取https的分享图片，仅此处需要强制http协议）-->
+    <meta name="wxm:img_url" content="http://wx.bjczxda.com/baojun530_jd/src/shareLogo.jpg">
+    <!-- 分享链接-->
+    <meta name="wxm:link" content="http://wx.bjczxda.com/baojun530_jd/index.html">
+    <!-- 在 meta 标签中进行基础分享信息设置 End-->
+    <title>宝骏530 免息型动</title>
+    <link rel="stylesheet" href="css/main.css?v=0.0.9">
+    <script type="text/javascript">
+
+        //rem设置
+        (function(doc, win) {
+            var docEl = doc.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                recalc = function() {
+                    var clientWidth = docEl.clientWidth;
+                    if (!clientWidth) return;
+                    docEl.style.fontSize = 20 * (clientWidth / 375) + 'px';
+                };
+            win.addEventListener(resizeEvt, recalc, false);
+            doc.addEventListener('DOMContentLoaded', recalc, false);
+        })(document, window);
+    </script>
+    <!-- 百度统计 -->
+    <script>
+//        var _hmt = _hmt || [];
+//        (function() {
+//            var hm = document.createElement("script");
+//            hm.src = "https://hm.baidu.com/hm.js?97ed50efc7547c796f5ba920db8b5b38";
+//            var s = document.getElementsByTagName("script")[0];
+//            s.parentNode.insertBefore(hm, s);
+//        })();
+    </script>
+</head>
+<body>
+
+<!-- 主页面 -->
+<div class="mainContainer">
+    <div class="topFrame">
+        <img src="img/logo.png" class="logo">
+        <img src="img/title.png" alt="" class="title">
+    </div>
+
+    <img src="img/title-2.png" alt="" class="title-2">
+    <form>
+        <input type="text" name="flag" hidden>
+        <div class="item"><label for="favorCar">意向车型：</label><input id="favorCar" class="favorCar" name="favorCar" value="宝骏530" readonly></div>
+        <div class="item"><label for="name">*姓名：</label><input id="name" name="name" type="text" value="" placeholder="请输入您的姓名"></div>
+        <div class="item"><label for="mobile">*电话：</label><input id="mobile" name="mobile" type="tel" value="" placeholder="请输入您的手机号"></div>
+        <div class="item"><label for="province">*省份：</label><select id="province" name="province"><option>请选择</option></select></div>
+        <div class="item"><label for="city">*城市：</label><select id="city" name="city"><option>请选择</option></select></div>
+        <div class="item"><label for="dealer">*经销商：</label><select id="dealer" name="dealer"><option>请选择</option></select></div>
+        <div class="btnFrame">
+            <p><img id="checkTag" src="img/check.png" />我已阅读并接受个人信息保护法律声明</p>
+            <a href="javascript:submitInfo();"><div class="btnSubmit" id="btnSubmit">立即申请</div></a>
+            <p>* 带星号的选项必须填写</p>
+        </div>
+    </form>
+
+    <div id="divRotate">
+        <img id="rotate" src="img/shaveGift.png" />
+        <a href="javascript:luckyDraw();"><img id="btnStart" src="img/btnStart.png" /></a>
+    </div>
+
+    <img class="subTitle" src="img/title-display.png" />
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <img src="img/banner1.jpg" alt="">
+            </div>
+            <div class="swiper-slide">
+                <img src="img/banner2.jpg" alt="">
+            </div>
+            <div class="swiper-slide">
+                <img src="img/banner3.jpg" alt="">
+            </div>
+            <div class="swiper-slide">
+                <img src="img/banner4.jpg" alt="">
+            </div>
+            <div class="swiper-slide">
+                <img src="img/banner5.jpg" alt="">
+            </div>
+        </div>
+        <div class="pagination"></div>
+    </div>
+    <img class="subTitle" src="img/title-rule.png" />
+    <div class="actRuleDiv">
+        <p class="menu" style="margin-top: 1rem">一、活动时间</p>
+        <p><strong>1.线上提交申请及抽奖时间：</strong></p>
+        <p>2017年12月13日00:00:00-2017年12月31日11:59:59</p>
+        <p><strong>2.开奖时间：</strong></p>
+        <p>2017年12月13日00:00:00-2017年12月31日11:59:59（抽奖完成后会收到短信通知开奖结果）</p>
+        <p><strong>3.奖品发放时间：</strong></p>
+        <p>2017年12月13日-2018年3月31日（2018年3月31日前完成在经销店支付订金订车后，奖品可激活使用）</p>
+        <p><strong>4.适用人群：</strong></p>
+        <p>采用贷款（回租、联合贷）方式购买指定车型的用户</p>
+        <p><strong>5.适用车型：</strong>宝骏530</p>
+
+        <p class="menu">二、活动奖品</p>
+        <p>1.名额共20个，其中2年免息名额10个，3年免息名额10个。</p>
+        <p>2.12月13日-12月22日，每日提供一个2年免息名额；12日23日-12日30日每天提供一个3年免息名额，；12月31号当天提供二个3年免息名额。</p>
+
+        <p class="menu">三、抽奖流程</p>
+        <p>1.用户在活动专题页面提交个人报名信息，即可获得壹次抽奖机会。点击大转盘进行抽奖，每个实名验证的手机号仅能参与壹次抽奖。</p>
+        <p>2.中奖用户将会收到通知短信，短信作为中奖重要凭证之一，请务必妥善保管，转发无效。工作人员将电话联系用户确认中奖信息，若电话信息有误或提交虚假个人信息，本平台视为用户自动放弃奖品。</p>
+        <p>3.中奖用户在客服人员确定个人信息与购车意向后，会转交给销售顾问跟进近期的购车动态，用户到经销店支付订金、确定金融贷款产品时，即可激活和使用奖品。</p>
+
+        <p class="menu">四、注意事项</p>
+        <p>1.用户参加活动时填写的信息必须真实、有效，同一用户手机号只能进行一次奖品抽取，仅限本人使用，转让无效。</p>
+        <p>2.本活动车型在2017年12月12号起开始预售，用户即可抵达各经销店支付订金进行预订，车辆下订流程和细节以具体的经销店规定为准，与平台活动无关。</p>
+        <p>3.所有奖品均不能变现。</p>
+        <p>4.用户参与本活动即视为理解并同意本活动细则。</p>
+        <p>5.活动不与平台同期其他优惠活动叠加参加。</p>
+        <p>6.如出现不可抗力或情势变更的情况（包括但不限于重大灾害事件、活动受政府机关指令需要停止举办或调整的、活动遭受严重网络攻击或因系统故障需要暂停举办的），平台有权暂停或取消本次活动，并可依相关法律法规的规定主张免责。</p>
+        <p style="margin-bottom: 1rem">7.本集团旗下员工不享受参加此次活动的资格。</p>
+    </div>
+</div>
+
+<div id="orientLayer"><!-- 横屏提示 -->
+    <div class="contentFrame">
+        <img class="phone rotatePhoneAnimation" src="img/rotatePhone.png" />
+        <p class="tipTitle">为了更好的体验，请使用竖屏浏览</p>
+    </div>
+</div>
+
+<script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
+<script type="text/javascript" src="js/swiper.min.js"></script>
+<script type="text/javascript" src="js/dealer.js"></script>
+
+<!-- 分享页面 -->
+<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript" src="js/awardRotate.js"></script>
+<script type="text/javascript" src="js/wx_share.js?v=0.1.5"></script>
+<script type="text/javascript" src="js/main.js?v=0.1.5"></script>
+
+</body>
+</html>

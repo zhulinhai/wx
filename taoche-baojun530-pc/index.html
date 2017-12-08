@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="screen-orientation" content="portrait"><!-- uc强制竖屏 -->
+    <meta name="x5-orientation" content="portrait"><!-- QQ强制竖屏 -->
+    <!-- 在 meta 标签中进行基础分享信息设置-->
+    <meta name="wxm:timeline_title" content="宝骏530 免息型动">
+    <meta name="wxm:appmessage_title" content="宝骏530 免息型动">
+    <meta name="wxm:appmessage_desc" content="宝骏530 免息型动">
+    <!-- 在 meta 标签中进行基础分享信息设置 End-->
+    <title>宝骏530 免息型动</title>
+    <link rel="stylesheet" href="css/main.css?v=0.0.9">
+    <script type="text/javascript">
+
+        //rem设置
+        (function(doc, win) {
+            var docEl = doc.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                recalc = function() {
+                    var clientWidth = docEl.clientWidth;
+                    if (!clientWidth) return;
+                    docEl.style.fontSize = 20 * (clientWidth / 1920) + 'px';
+                };
+            win.addEventListener(resizeEvt, recalc, false);
+            doc.addEventListener('DOMContentLoaded', recalc, false);
+        })(document, window);
+    </script>
+    <!-- 百度统计 -->
+    <script>
+//        var _hmt = _hmt || [];
+//        (function() {
+//            var hm = document.createElement("script");
+//            hm.src = "https://hm.baidu.com/hm.js?97ed50efc7547c796f5ba920db8b5b38";
+//            var s = document.getElementsByTagName("script")[0];
+//            s.parentNode.insertBefore(hm, s);
+//        })();
+    </script>
+</head>
+<body>
+<div class="topFrame">
+    <img src="img/logo.png" class="logo">
+    <img src="img/title.png" alt="" class="title">
+</div>
+<!-- 主页面 -->
+<div class="mainContainer">
+    <div class="titleFrame">
+        <img class="subTitle" src="img/car-display.png" />
+    </div>
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <img src="img/banner.jpg" alt="">
+            </div>
+            <div class="swiper-slide">
+                <img src="img/banner2.jpg" alt="">
+            </div>
+            <div class="swiper-slide">
+                <img src="img/banner3.jpg" alt="">
+            </div>
+            <div class="swiper-slide">
+                <img src="img/banner4.jpg" alt="">
+            </div>
+            <div class="swiper-slide">
+                <img src="img/banner5.jpg" alt="">
+            </div>
+        </div>
+        <div class="pagination"></div>
+    </div>
+    <div class="bottomDiv">
+        <img class="qrcodeBorder" src="img/qrcodeBorder.png" alt="">
+        <img class="qrcode" src="img/qrcode.png">
+
+    </div>
+
+</div>
+
+<script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
+<script type="text/javascript" src="js/swiper.min.js"></script>
+<script type="text/javascript" src="js/main.js?v=0.1.6"></script>
+
+</body>
+</html>
