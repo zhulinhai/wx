@@ -50,7 +50,8 @@ var doShare = function ($){
                     imgUrl:imgUrl, // 分享图标
                     success: function () {
                         // 用户确认分享后执行的回调函数
-                        _hmt.push(['_trackEvent', 'Timeline', 'share']);
+                        // _hmt.push(['_trackEvent', 'Timeline', 'share']);
+                        zhuge.track('Timeline');
                     },
                     cancel: function () {
                         // 用户取消分享后执行的回调函数
@@ -66,7 +67,8 @@ var doShare = function ($){
                     dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
                     success: function () {
                         // 用户确认分享后执行的回调函数
-                        _hmt.push(['_trackEvent', 'ChatFirend', 'share']);
+                        // _hmt.push(['_trackEvent', 'ChatFirend', 'share']);
+                        zhuge.track('ChatFirend');
                     },
                     cancel: function () {
                         // 用户取消分享后执行的回调函数
@@ -80,7 +82,8 @@ var doShare = function ($){
                     imgUrl: imgUrl, // 分享图标
                     success: function () {
                         // 用户确认分享后执行的回调函数
-                        _hmt.push(['_trackEvent', 'QQ', 'share']);
+                        // _hmt.push(['_trackEvent', 'QQ', 'share']);
+                        zhuge.track('QQShare');
                     },
                     cancel: function () {
                         // 用户取消分享后执行的回调函数
@@ -94,7 +97,8 @@ var doShare = function ($){
                     imgUrl: imgUrl, // 分享图标
                     success: function () {
                         // 用户确认分享后执行的回调函数
-                        _hmt.push(['_trackEvent', 'Weibo', 'share']);
+                        // _hmt.push(['_trackEvent', 'Weibo', 'share']);
+                        zhuge.track('WeiboShare');
                     },
                     cancel: function () {
                         // 用户取消分享后执行的回调函数

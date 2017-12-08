@@ -40,7 +40,8 @@ $(document).ready(function() {
 	$('.desc').width(dw);
 	printLoading(loadingW);
 	 // 百度统计，记录每一个题目页的浏览次数
-	_hmt.push(['_setCustomVar', 1, 'pageCount', 'loading页', 3]);
+	// _hmt.push(['_setCustomVar', 1, 'pageCount', 'loading页', 3]);
+	zhuge.track('Loading页'); 
 });
 
 
@@ -99,7 +100,8 @@ Pace.once('hide', function(e){
         clearTimeout(loadTimeout);
         loadTimeout = -1;
         // 百度统计，记录每一个题目页的浏览次数
-		_hmt.push(['_setCustomVar', 1, 'pageCount', '首页', 3]);
+		// _hmt.push(['_setCustomVar', 1, 'pageCount', '首页', 3]);
+		zhuge.track('首页');
     }, 500);  
     
 });
@@ -282,7 +284,8 @@ function firstPageAni(){
 
 function resultAni($res){
 	// 百度统计，记录每一个题目页的浏览次数
-	_hmt.push(['_setCustomVar', 1, 'pageCount', '结果页', 3]);
+	// _hmt.push(['_setCustomVar', 1, 'pageCount', '结果页', 3]);
+	zhuge.track('结果页');
 
 	$('.result').addClass('animated bounceInDown');
 	printWord($('#jg'));
@@ -407,7 +410,8 @@ function recordAnswer(){
 	$(preSelectedObj).removeClass('checked');
 	$(preSelectedObj).addClass('uncheck');
 	// 百度统计，记录每一个题目页的浏览次数
-	_hmt.push(['_setCustomVar', 1, 'pageCount', '第'+ currentQuestionIndex +'题', 3]);
+	// _hmt.push(['_setCustomVar', 1, 'pageCount', '第'+ currentQuestionIndex +'题', 3]);
+	zhuge.track('第'+currentQuestionIndex+'题');
 }
 
 function initQuestions(){

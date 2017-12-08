@@ -14,7 +14,7 @@
 <meta name="viewport"  id="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
 <title>出门怕不怕</title>
 <!-- 百度统计 -->
-<script>
+<!-- <script>
 var _hmt = _hmt || [];
 (function() {
   var hm = document.createElement("script");
@@ -22,6 +22,19 @@ var _hmt = _hmt || [];
   var s = document.getElementsByTagName("script")[0]; 
   s.parentNode.insertBefore(hm, s);
 })();
+</script> -->
+<!-- 诸葛IO -->
+<script type="text/javascript">
+    window.zhuge = window.zhuge || [];window.zhuge.methods = "_init debug identify track trackLink trackForm page".split(" ");
+    window.zhuge.factory = function(b) {return function() {var a = Array.prototype.slice.call(arguments);a.unshift(b);
+    window.zhuge.push(a);return window.zhuge;}};for (var i = 0; i < window.zhuge.methods.length; i++) {
+    var key = window.zhuge.methods[i];window.zhuge[key] = window.zhuge.factory(key);}window.zhuge.load = function(b, x) {
+    if (!document.getElementById("zhuge-js")) {var a = document.createElement("script");var verDate = new Date();
+    var verStr = verDate.getFullYear().toString()+ verDate.getMonth().toString() + verDate.getDate().toString();
+    a.type = "text/javascript";a.id = "zhuge-js";a.async = !0;a.src = (location.protocol == 'http:' ? "http://sdk.zhugeio.com/zhuge.min.js?v=" : 'https://zgsdk.zhugeio.com/zhuge.min.js?v=') + verStr;
+    a.onerror = function(){window.zhuge.identify = window.zhuge.track = function(ename, props, callback){if(callback && Object.prototype.toString.call(callback) === '[object Function]')callback();};};
+    var c = document.getElementsByTagName("script")[0];c.parentNode.insertBefore(a, c);window.zhuge._init(b, x)}};
+    window.zhuge.load('37d8194fc6714d85a5f838a4eb19c334');//配置应用的AppKey
 </script>
 <link rel="stylesheet" type="text/css" href="../public/css/animate.css">
 <link href="css/main.css" rel="stylesheet">
@@ -108,7 +121,7 @@ var _hmt = _hmt || [];
     				<img class="car_2" src="images/car_2.png">
     			</div>
     			<div class="btn_group">
-    				<a href="javascript:void(0);" onclick="_hmt.push(['_trackEvent', 'ticket','click']);" class="btn_ticket"><span class="textShadow">领取88元出行体验券</span></a>
+    				<a href="javascript:void(0);" onclick="zhuge.track('ticket');" class="btn_ticket"><span class="textShadow">领取88元出行体验券</span></a>
     				<a href="javascript:void(0);" class="btn_again"><span class="textShadow">再测一次</span></a>
     			</div>
     			<p class="h5_font_family doctor">医师：摩范出行</p>
