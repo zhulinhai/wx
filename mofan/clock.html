@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<!-- 淘宝自适应做法 -->
+<meta name="viewport"  id="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+<title>出门怕不怕</title>
+<link rel="stylesheet" type="text/css" href="../public/css/animate.css">
+<script type="text/javascript" src="js/viewport.js"></script>
+<script type="text/javascript" src="../public/scripts/jquery-1.12.1.min.js"></script>
+ <!-- 预加载插件 -->
+ <style type="text/css">
+     html,body{
+	     width: 100%;
+	     height: 100%;
+	     background-color: #000000;
+     }
+
+ 	 #clock {
+ 	 	width: 100%;
+ 	 	overflow: hidden;
+ 	 	text-align: center;
+ 	 }
+
+ 	 #clock img {
+ 	 	vertical-align: middle;
+ 	 }
+
+ 	 #date{
+ 	 	text-align: center;
+ 	 	color: white;
+ 	 	font-size: 36px;
+ 	 }
+ </style>
+</head>
+<body ontouchmove="event.preventDefault();">
+	<div id="clock">
+		<img id="day" src="images/clock/1.png"><img src="images/clock/D.png">
+		<img id="hour_" src="images/clock/1.png"><img id="hour" src="images/clock/8.png"><img src="images/clock/symbol.png">
+		<img id="minute_" src="images/clock/1.png"><img id="minute" src="images/clock/8.png"><img src="images/clock/symbol.png">
+		<img id="s_" src="images/clock/1.png"><img id="s" src="images/clock/8.png">
+	</div>
+	<p id="date"></p>
+</body>
+<script type="text/javascript">
+	window.onload = function () {
+		// body...
+		// alert((new Date(2017,11,9).getTime() - new Date().getTime())/(1000*3600));
+		countDown(2017,11,10);
+
+	}
+	var timeout;
+	function countDown(year,month,day){
+		var now = new Date();
+        var endDate = new Date(year,month,day);
+        var leftTime=endDate.getTime()-now.getTime();
+        
+        if(leftTime < 0) {
+        	clearTimeout(timeout);
+        	timeout = -1;
+        	return;
+        }
+
+        var dd = parseInt(leftTime / 1000 / 60 / 60 / 24, 10);//计算剩余的天数
+        var hh = parseInt(leftTime / 1000 / 60 / 60 % 24, 10);//计算剩余的小时数
+        var mm = parseInt(leftTime / 1000 / 60 % 60, 10);//计算剩余的分钟数
+        var ss = parseInt(leftTime / 1000 % 60, 10);//计算剩余的秒数
+        setTime(dd,'day');
+        setTime(hh,'hour');
+        setTime(mm,'minute');
+        setTime(ss,'s');
+        // dd = checkTime(dd);
+        // hh = checkTime(hh);
+        // mm = checkTime(mm);
+        // ss = checkTime(ss);//小于10的话加0
+        // var cc = document.getElementById('date');
+        // cc.innerHTML = "距离" + year + "年" + month + "月" + day + "日还有：" + dd + "天" + hh + "小时" + mm + "分" + ss + "秒";
+
+        timeout = setTimeout(countDown, 1000,year,month,day);
+	} 
+
+	function checkTime(i)
+        {
+            if (i < 10) {
+                i = "0" + i;
+            }
+            return i;
+        }
+
+	function setTime(i,mark)
+        {
+            
+
+            switch (mark) {
+            	case 'day':
+            		// statements_1
+            		$('#day').attr('src','images/clock/'+ i +'.png');
+            		break;
+        		case 'hour':
+            		// statements_1
+            		if(i < 10){
+            			$('#hour_').attr('src','images/clock/0.png');
+            			$('#hour').attr('src','images/clock/'+ i +'.png');
+            		}else{
+            			$('#hour_').attr('src','images/clock/'+ Math.floor(i/10)+'.png');
+            			$('#hour').attr('src','images/clock/'+ i%10 +'.png');
+            		}
+            		break;
+        		case 'minute':
+            		// statements_1
+            		if(i < 10){
+            			$('#minute_').attr('src','images/clock/0.png');
+            			$('#minute').attr('src','images/clock/'+ i +'.png');
+            		}else{
+            			$('#minute_').attr('src','images/clock/'+ Math.floor(i/10)+'.png');
+            			$('#minute').attr('src','images/clock/'+ i%10 +'.png');
+            		}
+            		break;
+        		case 's':
+            		// statements_1
+            		if(i < 10){
+            			$('#s_').attr('src','images/clock/0.png');
+            			$('#s').attr('src','images/clock/'+ i +'.png');
+            		}else{
+            			$('#s_').attr('src','images/clock/'+ Math.floor(i/10)+'.png');
+            			$('#s').attr('src','images/clock/'+ i%10 +'.png');
+            		}
+            		break;
+            	default:
+            		// statements_def
+            		break;
+            }
+        }
+</script>
+</html>
