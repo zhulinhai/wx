@@ -40,7 +40,7 @@ $(document).ready(function() {
 	$('.desc').width(dw);
 	printLoading(loadingW);
 	 // 百度统计，记录每一个题目页的浏览次数
-	_hmt.push(['_setCustomVar', 1, 'pageCount', 'loading页', 1]);
+	_hmt.push(['_setCustomVar', 1, 'pageCount', 'loading页', 3]);
 });
 
 
@@ -282,7 +282,7 @@ function firstPageAni(){
 
 function resultAni($res){
 	// 百度统计，记录每一个题目页的浏览次数
-	_hmt.push(['_setCustomVar', 1, 'pageCount', '结果页', 1]);
+	_hmt.push(['_setCustomVar', 1, 'pageCount', '结果页', 3]);
 
 	$('.result').addClass('animated bounceInDown');
 	printWord($('#jg'));
@@ -407,7 +407,7 @@ function recordAnswer(){
 	$(preSelectedObj).removeClass('checked');
 	$(preSelectedObj).addClass('uncheck');
 	// 百度统计，记录每一个题目页的浏览次数
-	_hmt.push(['_setCustomVar', 1, 'pageCount', '第'+ currentQuestionIndex +'题', 1]);
+	_hmt.push(['_setCustomVar', 1, 'pageCount', '第'+ currentQuestionIndex +'题', 3]);
 }
 
 function initQuestions(){
