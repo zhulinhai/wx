@@ -39,7 +39,8 @@ $(document).ready(function() {
 	var dw = Math.round((loadingW.length - 5) * parseInt($('body').css('font-size'))); 
 	$('.desc').width(dw);
 	printLoading(loadingW);
-
+	 // 百度统计，记录每一个题目页的浏览次数
+	_hmt.push(['_setCustomVar', 1, 'pageCount', 'loading页', 1]);
 });
 
 
@@ -97,6 +98,8 @@ Pace.once('hide', function(e){
         count = count < loadingW.length - 1 ? loadingW.length - 1 : count;
         clearTimeout(loadTimeout);
         loadTimeout = -1;
+        // 百度统计，记录每一个题目页的浏览次数
+		_hmt.push(['_setCustomVar', 1, 'pageCount', '首页', 1]);
     }, 500);  
     
 });
@@ -150,6 +153,7 @@ function bindEvents(){
 				$(this).hide();
 				$('.btn_result').show();
 			}
+			// _hmt.push(['_trackEvent', category, action, opt_label, opt_value]);
 			recordAnswer();
 		}else {
 			alert('请选择答案，进入下一题!');
@@ -277,6 +281,9 @@ function firstPageAni(){
 
 
 function resultAni($res){
+	// 百度统计，记录每一个题目页的浏览次数
+	_hmt.push(['_setCustomVar', 1, 'pageCount', '结果页', 1]);
+
 	$('.result').addClass('animated bounceInDown');
 	printWord($('#jg'));
     $('#zz').addClass('animated delay_1_4_1_s fadeIn');
@@ -399,6 +406,8 @@ function recordAnswer(){
 
 	$(preSelectedObj).removeClass('checked');
 	$(preSelectedObj).addClass('uncheck');
+	// 百度统计，记录每一个题目页的浏览次数
+	_hmt.push(['_setCustomVar', 1, 'pageCount', '第'+ currentQuestionIndex +'题', 1]);
 }
 
 function initQuestions(){
