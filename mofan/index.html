@@ -36,6 +36,7 @@ var _hmt = _hmt || [];
 			var c = document.getElementsByTagName("script")[0];c.parentNode.insertBefore(a, c);window.zhuge._init(b, x)}};
 	window.zhuge.load('306ffd9a75f04c7791e0b6588f192cea');//配置应用的AppKey
 </script>
+<link rel="stylesheet" href="css/rotatePhone.css">
 <link rel="stylesheet" type="text/css" href="../public/css/animate.css">
 <link href="css/main.css" rel="stylesheet">
 
@@ -51,6 +52,13 @@ var _hmt = _hmt || [];
 </head>
 <body ontouchmove="event.preventDefault();">
 	<audio id="audio" autoplay="autoplay" src="bgm.mp3"  type="audio/mpeg" loop="loop"></audio>
+	<!-- 横屏提示 -->
+	<div id="orientLayer">
+		<div class="contentFrame">
+			<img class="phone rotatePhoneAnimation" src="images/img_rotatePhone.png"/>
+			<p class="tipTitle">为了更好的体验，请使用竖屏浏览</p>
+		</div>
+	</div>
     <div class="loading">
     	<div class="content">
     		<div class="light traffic_light"></div>
