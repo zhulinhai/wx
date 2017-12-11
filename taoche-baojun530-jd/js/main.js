@@ -14,8 +14,8 @@ var isSubmitting = false,isDrawLucking = false;
 var $rotate = $('#rotate');
 var phoneNum = null, mflag = null;
 var isCheckLegel = true;
-const host = 'http://localhost:8000/api/';
-// const host = 'http://api.bjczxda.com/api/';
+// const host = 'http://localhost:8000/api/';
+const host = 'http://api.bjczxda.com/api/';
 
 var rotateFn = function (awards, angles, txt, callBack){
     bRotate = true;
