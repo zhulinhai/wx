@@ -408,7 +408,6 @@ a:link, a:visited, a:hover, a:active {
 html, body {
   font-family: "Microsoft YaHei UI", "微软雅黑", "宋体", sans-serif;
   font-size: 20px;
-  min-width: 1920px;
   height: 100%;
   background-color: #fff;
   -webkit-font-smoothing: antialiased; }
@@ -440,8 +439,8 @@ html, body {
 
 .mainContainer {
   width: 100%;
-  height: 49.5rem;
-  background: url("../img/bg.jpg") no-repeat 0 bottom;
+  height: 90.6rem;
+  background: url("../img/bg.jpg") no-repeat;
   background-size: 100% auto; }
 
 .swiper-container, .swiper-wrapper, .swiper-slide {
@@ -463,18 +462,27 @@ html, body {
   z-index: 2; }
 
 .titleFrame {
-  display: block;
-  margin: 0 auto 1rem;
-  padding-top: 3rem;
+  position: absolute;
+  top: 57.4rem;
+  left: 50%;
+  margin-left: -26.75rem;
   width: 53.5rem;
   height: 1.6rem; }
   .titleFrame .subTitle {
     width: 6.8rem;
     height: 1.6rem; }
 
+.swiper-container {
+  position: absolute;
+  top: 60rem;
+  left: 50%;
+  margin-left: -26.75rem; }
+
 .bottomDiv {
-  display: block;
-  margin: 2rem auto;
+  position: absolute;
+  top: 43.4rem;
+  left: 50%;
+  margin-left: -27rem;
   width: 54rem;
   height: 11.8rem;
   background: url("../img/bottomBg.png") no-repeat;
@@ -487,9 +495,9 @@ html, body {
     height: 9.3rem;
     z-index: 1; }
   .bottomDiv .qrcode {
-    margin-left: 10.8rem;
-    margin-top: 2rem;
-    width: 7.9rem;
-    height: 7.9rem; }
+    margin-left: 10.9rem;
+    margin-top: 2.1rem;
+    width: 7.7rem;
+    height: 7.7rem; }
 
 /*# sourceMappingURL=main.css.map */
