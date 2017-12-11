@@ -142,7 +142,7 @@ function luckyDraw() {
     if(bRotate)return;
     // 1、是否留资   2、检查手机号码是否正常
     if (mflag && phoneNum) {
-        var url = host + '/taoche/luckyDrawAuto';
+        var url = host + 'taoche/luckyDrawAuto';
         $.ajax({
             type: "post",
             data:{
