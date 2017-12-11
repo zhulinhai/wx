@@ -157,7 +157,7 @@ function luckyDraw() {
             success: function(data){
                 var response = eval('(data)');
                 if (response.success) {
-                    var prize = parseInt(response.prize);
+                    var prize = response.data.prize;
                     var index = 0;
                     if (prize === 1) {
                         index = 1;

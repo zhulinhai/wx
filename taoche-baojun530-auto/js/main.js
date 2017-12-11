@@ -10,7 +10,7 @@ var $province = $('#province'),
     $dealer = $('#dealer');
 var $actRuleDialog = $('#actRuleDialog');
 var bRotate = false;
-var isSubmitting = false;
+var isSubmitting = false, isDrawLucking = false;
 var $rotate = $('#rotate');
 var phoneNum = null, mflag = null;
 var isCheckLegel = true;
@@ -139,9 +139,14 @@ function submitInfo() {
 }
 
 function luckyDraw() {
-    if(bRotate)return;
+    if (isDrawLucking || bRotate) {
+        return;
+    }
+
     // 1、是否留资   2、检查手机号码是否正常
+    var giftList=["谢谢参与","2年免息","行车记录仪价值500元","3年免息","购置税抵扣券4530元","100元京东卡"];
     if (mflag && phoneNum) {
+        isDrawLucking = true;
         var url = host + 'taoche/luckyDrawAuto';
         $.ajax({
             type: "post",
@@ -153,8 +158,8 @@ function luckyDraw() {
             success: function(data){
                 var response = eval('(data)');
                 if (response.success) {
-                    var index = parseInt(response.prize);
-                    var giftList=["谢谢参与","2年免息","行车记录仪价值500元","3年免息","购置税抵扣券4530元","100元京东卡"];
+                    var index = response.data.prize;
+                    isDrawLucking = false;
                     rotateFn(index, 360 - index * 60, giftList[index], function () {
                         if (index === 0) {
                             alert("谢谢参与");
