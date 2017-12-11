@@ -14,8 +14,8 @@ var isSubmitting = false, isDrawLucking = false;
 var $rotate = $('#rotate');
 var phoneNum = null, mflag = null;
 var isCheckLegel = true;
-// const host = 'http://localhost:8000/api/';
-const host = 'http://api.bjczxda.com/api/';
+const host = 'http://localhost:8000/api/';
+// const host = 'http://api.bjczxda.com/api/';
 
 var rotateFn = function (awards, angles, txt, callBack){
     bRotate = true;
@@ -106,6 +106,8 @@ function submitInfo() {
     }
 
     isSubmitting = true;
+    phoneNum = mobile;
+    mflag =  flag;
     var url = host + 'taoche/submitInfo';
     $.ajax({
         type: "post",
@@ -123,8 +125,6 @@ function submitInfo() {
         success: function(data){
             var response = eval('(data)');
             if (response.success) {
-                phoneNum = mobile;
-                mflag =  flag;
                 alert('留资成功，获得1次抽奖机会');
             } else {
                 alert(response.message);
@@ -158,18 +158,21 @@ function luckyDraw() {
             success: function(data){
                 var response = eval('(data)');
                 if (response.success) {
-                    var index = response.data.prize;
-                    isDrawLucking = false;
+                    var index = response.data.prize_level;
+                    bRotate = true;
                     rotateFn(index, 360 - index * 60, giftList[index], function () {
                         if (index === 0) {
                             alert("谢谢参与");
                         } else {
                             alert('恭喜您获得' + giftList[index] + ',请注意查收短信');
                         }
+
+                        bRotate = false;
                     });
                 } else {
                     alert(response.message);
                 }
+                isDrawLucking = false;
             },
             error:function(data){
                 alert('连接服务器失败，请检查网络连接!');
@@ -188,7 +191,6 @@ function getLegalContent() {
 $(function (){
     initSwiper();
     bindUserInfo();
-    getSingPackage();
 
     $('#checkTag').click(function () {
         isCheckLegel = !isCheckLegel;
