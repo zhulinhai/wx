@@ -153,7 +153,7 @@ function luckyDraw() {
             success: function(data){
                 var response = eval('(data)');
                 if (response.success) {
-                    var index = parseInt(data.prize);
+                    var index = parseInt(response.prize);
                     var giftList=["谢谢参与","2年免息","行车记录仪价值500元","3年免息","购置税抵扣券4530元","100元京东卡"];
                     rotateFn(index, 360 - index * 60, giftList[index], function () {
                         if (index === 0) {
