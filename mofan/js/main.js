@@ -102,7 +102,7 @@ Pace.once('hide', function(e){
         // 百度统计，记录每一个题目页的浏览次数
 		// _hmt.push(['_setCustomVar', 1, 'pageCount', '首页', 3]);
 		zhuge.track('首页');
-    }, 500);  
+    }, 2000);  
     
 });
 		
