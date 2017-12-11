@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>丰田金融二期</title>
+<link href="" rel="stylesheet">
+<script type="text/javascript" src="../public/scripts/jquery-1.12.1.min.js"></script>
+</head>
+<body>
+
+    	<div>
+    		<input type="text" id="name" name="name" placeholder="姓名">
+    	</div>
+		<div><input type="text" id="mobile"  name="mobile" placeholder="电话"></div>
+		<div>
+			<input type="hidden" id="flag"  name="flag" value="TOYOTA20171221">
+			<input type="hidden" id="data_type"  name="data_type" value="1">
+		</div>
+		<input type="button" value="提交" onclick="submit();">
+</body>
+<script type="text/javascript">
+
+	function submit(){
+		var name = $('#name').val();
+		var mobile = $('#mobile').val();
+		var flag = $('#flag').val();
+		var data_type = $('#data_type').val();
+		if(!name|| !mobile){
+			alert('null');
+			return;
+		}
+		var host = 'http://api.bjczxda.com/api/h5/saveClientFS';
+		$.get(host, { 'name': name, 'mobile': mobile ,'flag':flag,'data_type':data_type},
+          function(data){
+          	if(data.success){
+          		alert('提交成功');
+          	}else {
+          		alert(data.message);
+          	}
+          // alert("Data Loaded: " + data);
+      });
+	}
+</script>
+</html>
