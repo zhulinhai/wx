@@ -180,7 +180,7 @@ function bindEvents(){
 		    	$('#jag').html('199-228元封顶');
 		    	$('.car_1').hide();
 		    	$('.car_2').show();
-		    	window.title = "我已患有出行恐慌晚期，你呢？";
+		    	window.title = "我是心力交瘁出行狂魔，你呢？";
 		    }else if(result == 'B') {
 		    	$('#jg').html('起早贪黑出行大神');
 		    	$('#zz').html('孤单寂寞冷，加班多睡眠少，害怕夜晚来临');
@@ -189,7 +189,7 @@ function bindEvents(){
 		    	$('#jag').html('69-99元封顶');
 		    	$('.car_1').show();
 		    	$('.car_2').hide();
-		    	window.title = "我已患有出行中度抑郁症，你呢？";
+		    	window.title = "我是起早贪黑出行大神，你呢？";
 		    }else {
 		    	$('#jg').html('随心所欲式出行小仙');
 		    	$('#zz').html('工资不够花，生活琐事多，状况突发');
@@ -198,7 +198,7 @@ function bindEvents(){
 		    	$('#jag').html('0.17元/分钟+1元/公里');
 		    	$('.car_1').hide();
 		    	$('.car_2').show();
-		    	window.title = "我已患有出行路怒早期，你呢？";
+		    	window.title = "我是随心所欲式出行小仙，你呢？";
 		    }
 		    doShare(jQuery);
 		    //还原答案页
