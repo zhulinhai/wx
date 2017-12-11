@@ -193,6 +193,8 @@ function getLegalContent() {
 $(function (){
     initSwiper();
     bindUserInfo();
+    getSingPackage();
+
     $('#checkTag').click(function () {
         isCheckLegel = !isCheckLegel;
         $('#checkTag').attr('src', isCheckLegel?'img/check.png':'img/uncheck.png');
