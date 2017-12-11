@@ -496,19 +496,20 @@ html, body {
     position: absolute;
     left: 50%;
     top: 50%;
-    margin-left: -8rem;
-    margin-top: -12rem;
-    width: 15rem;
+    margin-left: -8.25rem;
+    margin-top: -11rem;
+    width: 15.5rem;
     height: 23rem;
     padding: 0.5rem;
     background-color: #fff;
-    overflow: scroll; }
+    overflow: scroll;
+    word-break: break-all; }
   #actRuleDialog .closeDialog {
     position: absolute;
     left: 50%;
     top: 50%;
-    margin-left: 6rem;
-    margin-top: -14.5rem;
+    margin-left: 6.5rem;
+    margin-top: -13.5rem;
     width: 2rem;
     height: 2rem;
     background: url("../img/closeDialog.png") no-repeat center;

@@ -14,7 +14,7 @@ var isSubmitting = false;
 var $rotate = $('#rotate');
 var phoneNum = null, mflag = null;
 var isCheckLegel = true;
-// const host = 'http://localhost:8000/api';
+// const host = 'http://localhost:8000/api/';
 const host = 'http://api.bjczxda.com/api/';
 
 var rotateFn = function (awards, angles, txt, callBack){
@@ -109,9 +109,9 @@ function submitInfo() {
     }
 
     isSubmitting = true;
-    var url = host + '/taoche/submitInfo';
+    var url = host + 'taoche/submitInfo';
     $.ajax({
-        type: "get",
+        type: "post",
         url: url,
         data: {
             'flag': flag,
@@ -146,9 +146,9 @@ function luckyDraw() {
     // 1、是否留资   2、检查手机号码是否正常
     if (mflag && phoneNum) {
         var giftList=["谢谢参与","2年免息","谢谢参与","3年免息"];
-        var url = host + '/taoche/luckyDrawAuto';
+        var url = host + 'taoche/luckyDrawAuto';
         $.ajax({
-            type: "get",
+            type: "post",
             data:{
                 'mobile': phoneNum,
                 'flag': mflag

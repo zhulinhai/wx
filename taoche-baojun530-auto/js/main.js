@@ -108,7 +108,7 @@ function submitInfo() {
     isSubmitting = true;
     var url = host + '/taoche/submitInfo';
     $.ajax({
-        type: "get",
+        type: "post",
         url: url,
         data: {
             'flag': flag,
@@ -144,7 +144,7 @@ function luckyDraw() {
     if (mflag && phoneNum) {
         var url = host + '/taoche/luckyDrawAuto';
         $.ajax({
-            type: "get",
+            type: "post",
             data:{
                 'mobile': phoneNum,
                 'flag': mflag

@@ -502,7 +502,8 @@ html, body {
     height: 23rem;
     padding: 0.5rem;
     background-color: #fff;
-    overflow: scroll; }
+    overflow: scroll;
+    word-break: break-all; }
   #actRuleDialog .closeDialog {
     position: absolute;
     left: 50%;
