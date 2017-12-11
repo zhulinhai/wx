@@ -157,7 +157,7 @@ function luckyDraw() {
             success: function(data){
                 var response = eval('(data)');
                 if (response.success) {
-                    var prize = parseInt(data.prize);
+                    var prize = response.data.prize;
                     var index = 0;
                     if (prize === 1) {
                         index = 1;
@@ -193,6 +193,8 @@ function getLegalContent() {
 $(function (){
     initSwiper();
     bindUserInfo();
+    getSingPackage();
+
     $('#checkTag').click(function () {
         isCheckLegel = !isCheckLegel;
         $('#checkTag').attr('src', isCheckLegel?'img/check.png':'img/uncheck.png');
