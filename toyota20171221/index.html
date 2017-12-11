@@ -29,7 +29,7 @@
 			alert('null');
 			return;
 		}
-		var host = 'http://localhost:9090/api/h5/saveClientFS';
+		var host = 'http://wx.bjczxda.com/api/h5/saveClientFS';
 		$.get(host, { 'name': name, 'mobile': mobile ,'flag':flag,'data_type':data_type},
           function(data){
           	if(data.success){
