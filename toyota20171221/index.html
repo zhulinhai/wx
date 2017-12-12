@@ -117,7 +117,7 @@ var carList = ["广汽丰田 埃尔法", "广汽丰田 凯美瑞双擎", "广汽
 		}
 		return;
 		var host = 'http://api.bjczxda.com/api/h5/saveClientFS';
-		var data = { 'name': name, 
+		var params = { 'name': name, 
 						'mobile': mobile ,
 						'flag':flag,
 						'data_type':data_type,
@@ -126,10 +126,10 @@ var carList = ["广汽丰田 埃尔法", "广汽丰田 凯美瑞双擎", "广汽
 						'car':car,
 						'province': province ,
 						'city':city,
-						'dealer':dealer,
+						'dealer':dealer
 					};
 		
-		$.get(host, data,
+		$.get(host, params,
           function(data){
           	if(data.success){
           		alert('提交成功');
