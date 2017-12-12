@@ -10,7 +10,7 @@ var $province = $('#province'),
     $dealer = $('#dealer');
 var $actRuleDialog = $('#actRuleDialog');
 var bRotate = false;
-var isSubmitting = false;
+var isSubmitting = false,isDrawLucking = false;
 var $rotate = $('#rotate');
 var phoneNum = null, mflag = null;
 var isCheckLegel = true;
@@ -109,6 +109,8 @@ function submitInfo() {
     }
 
     isSubmitting = true;
+    phoneNum = mobile;
+    mflag =  flag;
     var url = host + 'taoche/submitInfo';
     $.ajax({
         type: "post",
@@ -126,8 +128,6 @@ function submitInfo() {
         success: function(data){
             var response = eval('(data)');
             if (response.success) {
-                phoneNum = mobile;
-                mflag =  flag;
                 alert("留资成功，获得1次抽奖机会");
             } else {
                 alert(response.message);
@@ -142,11 +142,12 @@ function submitInfo() {
 }
 
 function luckyDraw() {
-    if(bRotate)return;
+    if(bRotate || isDrawLucking)return;
     // 1、是否留资   2、检查手机号码是否正常
     if (mflag && phoneNum) {
+        isDrawLucking = true;
         var giftList=["谢谢参与","2年免息","谢谢参与","3年免息"];
-        var url = host + 'taoche/luckyDrawAuto';
+        var url = host + 'taoche/luckyDrawJD';
         $.ajax({
             type: "post",
             data:{
@@ -157,7 +158,7 @@ function luckyDraw() {
             success: function(data){
                 var response = eval('(data)');
                 if (response.success) {
-                    var prize = response.data.prize;
+                    var prize = response.data.prize_level;
                     var index = 0;
                     if (prize === 1) {
                         index = 1;
@@ -165,19 +166,23 @@ function luckyDraw() {
                         index = 3;
                     }
 
+                    bRotate = true;
                     rotateFn(index, 360 - index * 90, giftList[index], function () {
                         if (index === 0) {
                             alert("谢谢参与");
                         } else {
                             alert('恭喜您获得' + giftList[index] + ',请注意查收短信');
                         }
+                        bRotate = false;
                     });
                 } else {
                     alert(response.message);
                 }
+                isDrawLucking = false;
             },
             error:function(data){
                 alert('连接服务器失败，请检查网络连接!');
+                isDrawLucking = false;
             }
         });
     } else {
@@ -193,7 +198,6 @@ function getLegalContent() {
 $(function (){
     initSwiper();
     bindUserInfo();
-    getSingPackage();
 
     $('#checkTag').click(function () {
         isCheckLegel = !isCheckLegel;

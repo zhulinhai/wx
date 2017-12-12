@@ -101,3 +101,5 @@ function getSingPackage(){
         }
     });
 }
+
+$(getSingPackage());
