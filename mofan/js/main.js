@@ -425,7 +425,7 @@ function initQuestions(){
 		htmlStr += '<a href="javascript:void(0);" class="answerA"><div class="uncheck"></div><p>1小时左右，上班路程追剧放松。</p></a>';
 		htmlStr += '<a href="javascript:void(0);" class="answerB"><div class="uncheck"></div><p>每天来回3小时，赶上北京飞广州。</p></a>';	
 		htmlStr += '<a href="javascript:void(0);" class="answerC"><div class="uncheck"></div><p>30分钟任意走，上班迟到从不怕。</p></a></div></div>';	
-		htmlStr += '<div class="q4" style="display:none;"><p class="issue">4、作为三好男人的你，为谁当私家司机？</p><div class="items">';
+		htmlStr += '<div class="q4" style="display:none;"><p class="issue">4、作为三好青年的你，为谁当私家司机？</p><div class="items">';
 		htmlStr += '<a href="javascript:void(0);" class="answerA"><div class="uncheck"></div><p>家有萌娃，风雨兼程日夜接送。</p></a>';
 		htmlStr += '<a href="javascript:void(0);" class="answerB"><div class="uncheck"></div><p>自我呵护，谁还不是个宝宝！</p></a>';	
 		htmlStr += '<a href="javascript:void(0);" class="answerC"><div class="uncheck"></div><p>新婚青年，陪伴老婆上下班。</p></a></div></div>';	
