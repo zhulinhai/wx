@@ -173,7 +173,7 @@ function bindEvents(){
 		    var result = getMustIndex(aArr);
 		    //填充结果页
 		    if(result == 'A'){
-		    	$('#jg').html('心力交瘁出行狂魔');
+		    	$('#jg').html('心力交瘁式出行狂魔');
 		    	$('#zz').html('家庭负担重，工作压力大，整日奔波');
 		    	$('#yf').html('摩范出行日租，给你时间的便捷');
 		    	$('#yof').html('24小时不限里程，建议一日一次');
@@ -182,7 +182,7 @@ function bindEvents(){
 		    	$('.car_2').show();
 		    	window.title = "我是心力交瘁出行狂魔，你呢？";
 		    }else if(result == 'B') {
-		    	$('#jg').html('起早贪黑出行大神');
+		    	$('#jg').html('起早贪黑式出行大神');
 		    	$('#zz').html('孤单寂寞冷，加班多睡眠少，害怕夜晚来临');
 		    	$('#yf').html('摩范出行夜租，给你温暖的呵护');
 		    	$('#yof').html('当日17:00-次日9:00不限里程，建议一日一次');
@@ -425,7 +425,7 @@ function initQuestions(){
 		htmlStr += '<a href="javascript:void(0);" class="answerA"><div class="uncheck"></div><p>1小时左右，上班路程追剧放松。</p></a>';
 		htmlStr += '<a href="javascript:void(0);" class="answerB"><div class="uncheck"></div><p>每天来回3小时，赶上北京飞广州。</p></a>';	
 		htmlStr += '<a href="javascript:void(0);" class="answerC"><div class="uncheck"></div><p>30分钟任意走，上班迟到从不怕。</p></a></div></div>';	
-		htmlStr += '<div class="q4" style="display:none;"><p class="issue">4、作为三好男人的你，为谁当私家司机？</p><div class="items">';
+		htmlStr += '<div class="q4" style="display:none;"><p class="issue">4、作为三好青年的你，为谁当私家司机？</p><div class="items">';
 		htmlStr += '<a href="javascript:void(0);" class="answerA"><div class="uncheck"></div><p>家有萌娃，风雨兼程日夜接送。</p></a>';
 		htmlStr += '<a href="javascript:void(0);" class="answerB"><div class="uncheck"></div><p>自我呵护，谁还不是个宝宝！</p></a>';	
 		htmlStr += '<a href="javascript:void(0);" class="answerC"><div class="uncheck"></div><p>新婚青年，陪伴老婆上下班。</p></a></div></div>';	
