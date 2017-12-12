@@ -5,6 +5,12 @@
 <title>丰田金融二期</title>
 <link href="" rel="stylesheet">
 <script type="text/javascript" src="../public/scripts/jquery-1.12.1.min.js"></script>
+<script type="text/javascript" src="../toyota2017_movie/js/data.js"></script>
+<style type="text/css">
+	select {
+		min-width: 170px;
+	}
+</style>
 </head>
 <body>
 
@@ -12,13 +18,65 @@
     		<input type="text" id="name" name="name" placeholder="姓名">
     	</div>
 		<div><input type="text" id="mobile"  name="mobile" placeholder="电话"></div>
+	    <div><input type="text" id="email" name="email" placeholder="邮箱"></div>
+	    <div><input type="text" id="IDCard" name="IDCard" placeholder="身份证"></div>
+	    <div><select id="car" name="car">
+	    	<option>意向车型</option>
+	    </select></div>
+        <div><select id="province" name="province">
+        	<option>省份</option>
+        </select></div>
+	    <div><select id="city" name="city">
+	    	<option>城市</option>
+	    </select></div>
+	    <div><select id="dealer" name="dealer">
+	    	<option>经销商</option>
+	    </select></div>
 		<div>
 			<input type="hidden" id="flag"  name="flag" value="TOYOTA20171221">
 			<input type="hidden" id="data_type"  name="data_type" value="1">
 		</div>
-		<input type="button" value="提交" onclick="submit();">
+		<input type="button" value="提交" onclick="submit();"><input type="button" value="提交详细资料" onclick="submitAll();">
+
+		<section>
+			
+		</section>
 </body>
 <script type="text/javascript">
+var carList = ["广汽丰田 埃尔法", "广汽丰田 凯美瑞双擎", "广汽丰田 雷凌", "广汽丰田 雷凌双擎", "广汽丰田 全新汉兰达", "广汽丰田 全新凯美瑞", "广汽丰田 逸致", "广汽丰田 致享", "广汽丰田 致炫", "雷克萨斯 全新CT", "雷克萨斯 ES", "雷克萨斯 GS", "雷克萨斯 GX", "雷克萨斯 IS", "雷克萨斯 LS", "雷克萨斯 LX", "雷克萨斯 全新NX", "雷克萨斯 RC", "雷克萨斯 RC F", "雷克萨斯 RX", "雷克萨斯 LX570", "一汽丰田 86", "一汽丰田 HIACE", "一汽丰田 RAV4", "一汽丰田 卡罗拉", "一汽丰田 卡罗拉花冠", "一汽丰田 卡罗拉双擎", "一汽丰田 柯斯达", "一汽丰田 兰德酷路泽", "一汽丰田 全新普拉多", "一汽丰田 普锐斯", "一汽丰田 普瑞维亚", "一汽丰田 全新皇冠", "一汽丰田 锐志", "一汽丰田 威驰", "一汽丰田 威驰FS"];
+   
+    window.onload = function(){
+    	var provinces = dataList.province;
+        var cities = dataList.city;
+        var dealers = dataList.dealer;
+        var $province = $('#province'),
+            $city = $('#city'),
+            $dealer = $('#dealer'),
+            $favorCar = $('#car');
+
+        for(var j = 0; j < carList.length; j ++) $favorCar.append('<option>'+carList[j]+'</option>');
+    	for(var i = 0; i < provinces.length; i ++) $province.append('<option>'+provinces[i].p+'</option>');
+       
+        $province.change(function(){
+            $city.empty().html('<option>城市</option>');
+            $dealer.empty().html('<option>经销商</option>');
+
+            if($province.val() !== '省份'){
+                for(var j = 0; j < cities.length; j++)
+                    if(cities[j].p === $('#province').val())
+                        $('#city').append('<option>'+cities[j].c+'</option>');
+            }
+        });
+
+        $city.change(function(){
+            $dealer.empty().html('<option>经销商</option>');
+            if($city.val() !== '城市'){
+                for(var j = 0; j < dealers.length; j++)
+                    if(dealers[j].d === $('#city').val())
+                        $('#dealer').append('<option>'+dealers[j].c +'</option>');
+            }
+        });     
+    }
 
 	function submit(){
 		var name = $('#name').val();
@@ -31,6 +89,47 @@
 		}
 		var host = 'http://api.bjczxda.com/api/h5/saveClientFS';
 		$.get(host, { 'name': name, 'mobile': mobile ,'flag':flag,'data_type':data_type},
+          function(data){
+          	if(data.success){
+          		alert('提交成功');
+          	}else {
+          		alert(data.message);
+          	}
+          // alert("Data Loaded: " + data);
+      });
+	}
+
+	function submitAll(){
+		var name = $('#name').val();
+		var mobile = $('#mobile').val();
+		var flag = $('#flag').val();
+		var data_type = $('#data_type').val();
+		var email = $('#email').val();
+		var IDCard = $('#IDCard').val();
+		var car = $('#car').val();
+		var province = $('#province').val();
+		var city = $('#city').val();
+		var dealer = $('#dealer').val();
+
+		if(!name || !mobile || !email || !IDCard || car == '意向车型' || province== '省份' || city== '城市' || dealer== '经销商'){
+			alert('请填写完整信息');
+			return;
+		}
+		return;
+		var host = 'http://api.bjczxda.com/api/h5/saveClientFS';
+		var data = { 'name': name, 
+						'mobile': mobile ,
+						'flag':flag,
+						'data_type':data_type,
+						'email': email ,
+						'IDCard':IDCard,
+						'car':car,
+						'province': province ,
+						'city':city,
+						'dealer':dealer,
+					};
+		
+		$.get(host, data,
           function(data){
           	if(data.success){
           		alert('提交成功');
