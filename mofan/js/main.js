@@ -435,7 +435,7 @@ function initQuestions(){
 		htmlStr += '<a href="javascript:void(0);" class="answerC"><div class="uncheck"></div><p>天有不测风云，总有被劈中的时候。</p></a></div></div>';	
 		htmlStr += '<div class="q6" style="display:none;"><p class="issue">6、工作是否需要经常加班苦干？</p><div class="items">';
 		htmlStr += '<a href="javascript:void(0);" class="answerA"><div class="uncheck"></div><p>是的，996一族。</p></a>';
-		htmlStr += '<a href="javascript:void(0);" class="answerB"><div class="uncheck"></div><p>偶尔加班。小加怡情。</p></a>';	
+		htmlStr += '<a href="javascript:void(0);" class="answerB"><div class="uncheck"></div><p>偶尔加班，小加怡情。</p></a>';	
 		htmlStr += '<a href="javascript:void(0);" class="answerC"><div class="uncheck"></div><p>朝九晚五，从不加班。</p></a></div></div>';	
 		htmlStr += '<div class="q7" style="display:none;"><p class="issue">7、工作之余，怎样尽情放纵自己？</p><div class="items">';
 		htmlStr += '<a href="javascript:void(0);" class="answerA"><div class="uncheck"></div><p>全家周边游，呼吸野外新鲜空气。</p></a>';
