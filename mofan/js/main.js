@@ -173,7 +173,7 @@ function bindEvents(){
 		    var result = getMustIndex(aArr);
 		    //填充结果页
 		    if(result == 'A'){
-		    	$('#jg').html('心力交瘁出行狂魔');
+		    	$('#jg').html('心力交瘁式出行狂魔');
 		    	$('#zz').html('家庭负担重，工作压力大，整日奔波');
 		    	$('#yf').html('摩范出行日租，给你时间的便捷');
 		    	$('#yof').html('24小时不限里程，建议一日一次');
@@ -182,7 +182,7 @@ function bindEvents(){
 		    	$('.car_2').show();
 		    	window.title = "我是心力交瘁出行狂魔，你呢？";
 		    }else if(result == 'B') {
-		    	$('#jg').html('起早贪黑出行大神');
+		    	$('#jg').html('起早贪黑式出行大神');
 		    	$('#zz').html('孤单寂寞冷，加班多睡眠少，害怕夜晚来临');
 		    	$('#yf').html('摩范出行夜租，给你温暖的呵护');
 		    	$('#yof').html('当日17:00-次日9:00不限里程，建议一日一次');
