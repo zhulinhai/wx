@@ -418,13 +418,13 @@ function recordAnswer(){
 function initQuestions(){
    
    var htmlStr = '<div class="q2" style="display:none;"><p class="issue">2、一日之计在于晨，几点起床搬（上）砖（班）？</p><div class="items">';
-		htmlStr += '<a href="javascript:void(0);" class="answerA"><div class="uncheck"></div><p>踩点上班，争分多秒抢睡觉。</p></a>';
+		htmlStr += '<a href="javascript:void(0);" class="answerA"><div class="uncheck"></div><p>踩点上班，争分夺秒抢睡觉。</p></a>';
 		htmlStr += '<a href="javascript:void(0);" class="answerB"><div class="uncheck"></div><p>公鸡打鸣，早起的鸟儿有虫吃。</p></a>';	
 		htmlStr += '<a href="javascript:void(0);" class="answerC"><div class="uncheck"></div><p>睡到自然醒，人生在世需随意。</p></a></div></div>';	  
 		htmlStr += '<div class="q3" style="display:none;"><p class="issue">3、上班路漫漫，从家到公司需要多长时间？</p><div class="items">';
-		htmlStr += '<a href="javascript:void(0);" class="answerA"><div class="uncheck"></div><p>1小时左右，上班路程追剧放松。</p></a>';
+		htmlStr += '<a href="javascript:void(0);" class="answerA"><div class="uncheck"></div><p>1小时左右，疲劳困倦袭上身。</p></a>';
 		htmlStr += '<a href="javascript:void(0);" class="answerB"><div class="uncheck"></div><p>每天来回3小时，赶上北京飞广州。</p></a>';	
-		htmlStr += '<a href="javascript:void(0);" class="answerC"><div class="uncheck"></div><p>30分钟任意走，上班迟到从不怕。</p></a></div></div>';	
+		htmlStr += '<a href="javascript:void(0);" class="answerC"><div class="uncheck"></div><p>30分钟虽不长，不远不近好纠结。</p></a></div></div>';	
 		htmlStr += '<div class="q4" style="display:none;"><p class="issue">4、作为三好青年的你，为谁当私家司机？</p><div class="items">';
 		htmlStr += '<a href="javascript:void(0);" class="answerA"><div class="uncheck"></div><p>家有萌娃，风雨兼程日夜接送。</p></a>';
 		htmlStr += '<a href="javascript:void(0);" class="answerB"><div class="uncheck"></div><p>自我呵护，谁还不是个宝宝！</p></a>';	
@@ -435,7 +435,7 @@ function initQuestions(){
 		htmlStr += '<a href="javascript:void(0);" class="answerC"><div class="uncheck"></div><p>天有不测风云，总有被劈中的时候。</p></a></div></div>';	
 		htmlStr += '<div class="q6" style="display:none;"><p class="issue">6、工作是否需要经常加班苦干？</p><div class="items">';
 		htmlStr += '<a href="javascript:void(0);" class="answerA"><div class="uncheck"></div><p>是的，996一族。</p></a>';
-		htmlStr += '<a href="javascript:void(0);" class="answerB"><div class="uncheck"></div><p>偶尔加班。小加怡情。</p></a>';	
+		htmlStr += '<a href="javascript:void(0);" class="answerB"><div class="uncheck"></div><p>偶尔加班，小加怡情。</p></a>';	
 		htmlStr += '<a href="javascript:void(0);" class="answerC"><div class="uncheck"></div><p>朝九晚五，从不加班。</p></a></div></div>';	
 		htmlStr += '<div class="q7" style="display:none;"><p class="issue">7、工作之余，怎样尽情放纵自己？</p><div class="items">';
 		htmlStr += '<a href="javascript:void(0);" class="answerA"><div class="uncheck"></div><p>全家周边游，呼吸野外新鲜空气。</p></a>';
